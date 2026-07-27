@@ -161,6 +161,21 @@ pnpm exec playwright install chromium
 
 ---
 
+## Context wiki
+
+[`wiki/`](wiki/) records why the repo is the way it is: executed plans, the decisions behind them, and what was ruled out. Start at [`wiki/INDEX.md`](wiki/INDEX.md) and open only the page it routes to.
+
+```
+wiki/
+├── INDEX.md          # read this first — routes to everything else
+├── MECHANICS.md      # the capture protocol
+├── topics/           # per-subsystem design history
+├── journal/          # one entry per substantive change
+└── plans/            # executed plans + an audit table
+```
+
+Modelled on [`ui-design-brain`](https://github.com/verndale/ui-design-brain)'s wiki, minus its knowledge graph, generated `connections/` pages, and `scripts/wiki/` automation — this repo has none of that tooling, so capture is manual. The differences are listed at the bottom of `INDEX.md`.
+
 ## Related
 
 - [`ui-design-brain`](https://github.com/verndale/ui-design-brain) — canonical vocabulary; this library implements it

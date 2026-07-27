@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
+import { useRef, useState } from 'react';
 
 import { Modal } from './Modal';
 
@@ -11,6 +12,8 @@ import { Modal } from './Modal';
 const meta = {
   title: 'Modal',
   component: Modal,
+  // Mirrors component.json; `pnpm contracts` fails if the two disagree.
+  tags: ['maturity:candidate'],
   parameters: {
     layout: 'centered',
     docs: {
@@ -18,6 +21,10 @@ const meta = {
         component:
           'An overlay that demands attention — interaction is required before returning to the content beneath. Full-screen below `lg`, a capped centered panel above it.',
       },
+      // The dialog portals into document.body and is fixed-position, so an
+      // inline Docs story paints over the whole page. Each story gets its own
+      // iframe instead, which is where its portal then lands.
+      story: { inline: false, height: '520px' },
     },
   },
   argTypes: {
@@ -59,10 +66,146 @@ export const Default: Story = {
       </>
     );
   },
+  /**
+   * The full round trip, which is the only way the focus contract is provable:
+   * a dialog that takes focus but never gives it back strands keyboard users at
+   * the top of the document.
+   */
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const body = within(document.body);
+    const trigger = canvas.getByRole('button', { name: 'Open dialog' });
+
+    await step('opens from the trigger', async () => {
+      await userEvent.click(trigger);
+      await expect(await body.findByRole('dialog')).toBeInTheDocument();
+    });
+
+    await step('moves focus into the dialog', async () => {
+      const dialog = body.getByRole('dialog');
+      await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
+    });
+
+    await step('closes on Escape and returns focus to the trigger', async () => {
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+      await waitFor(() => expect(trigger).toHaveFocus());
+    });
+  },
+};
+
+/** The close control is a real button with its own accessible name. */
+export const ClosesFromButton: Story = {
+  args: { open: false },
+  render: function Render(args) {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)} className="cursor-pointer rounded-small bg-action-base px-s py-2xs text-text-inverse">
+          Open dialog
+        </button>
+        <Modal {...args} open={open} onClose={() => setOpen(false)}>
+          <p className="text-text-secondary">Dismiss with the close control.</p>
+        </Modal>
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const body = within(document.body);
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Open dialog' }));
+    await body.findByRole('dialog');
+
+    await userEvent.click(body.getByRole('button', { name: 'Close dialog' }));
+    await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+  },
+};
+
+/**
+ * Tab cycles within the dialog rather than escaping to the page behind it. The
+ * trap is the reason this component exists rather than a positioned div.
+ */
+export const TrapsFocus: Story = {
+  args: { open: true, description: 'Tab past the last control and focus wraps.' },
+  render: (args) => (
+    <Modal
+      {...args}
+      onClose={() => {}}
+      footer={
+        <div className="flex justify-end gap-2xs">
+          <button type="button" className="cursor-pointer rounded-small px-s py-2xs text-text-primary">
+            Cancel
+          </button>
+          <button type="button" className="cursor-pointer rounded-small bg-action-base px-s py-2xs text-text-inverse">
+            Confirm
+          </button>
+        </div>
+      }
+    >
+      <p className="text-text-secondary">Three controls: close, Cancel, Confirm.</p>
+    </Modal>
+  ),
+  play: async ({ step }) => {
+    const body = within(document.body);
+    const dialog = await body.findByRole('dialog');
+
+    // Initial focus lands on a rAF, so tabbing before it resolves would test
+    // the document's tab order rather than the trap's.
+    await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
+
+    await step('every Tab stop stays inside the dialog', async () => {
+      // More stops than the dialog has controls, so the wrap is exercised.
+      for (let i = 0; i < 6; i += 1) {
+        await userEvent.tab();
+        await expect(dialog.contains(document.activeElement)).toBe(true);
+      }
+    });
+
+    await step('Shift+Tab also stays inside', async () => {
+      for (let i = 0; i < 4; i += 1) {
+        await userEvent.tab({ shift: true });
+        await expect(dialog.contains(document.activeElement)).toBe(true);
+      }
+    });
+  },
+};
+
+/** Focus can be redirected somewhere other than the opener. */
+export const ReturnsFocusToRef: Story = {
+  args: { open: false },
+  render: function Render(args) {
+    const [open, setOpen] = useState(false);
+    const landing = useRef<HTMLButtonElement>(null);
+    return (
+      <div className="flex gap-2xs">
+        <button type="button" onClick={() => setOpen(true)} className="cursor-pointer rounded-small bg-action-base px-s py-2xs text-text-inverse">
+          Open dialog
+        </button>
+        <button ref={landing} type="button" className="cursor-pointer rounded-small border border-border-strong px-s py-2xs text-text-primary">
+          Focus lands here
+        </button>
+        <Modal {...args} open={open} onClose={() => setOpen(false)} returnFocusRef={landing}>
+          <p className="text-text-secondary">Closing returns focus to the second button, not the opener.</p>
+        </Modal>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const body = within(document.body);
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Open dialog' }));
+    await body.findByRole('dialog');
+    await userEvent.keyboard('{Escape}');
+
+    await waitFor(() => expect(canvas.getByRole('button', { name: 'Focus lands here' })).toHaveFocus());
+  },
 };
 
 /** Every slot filled, including the pinned footer. */
 export const WithAllSlots: Story = {
+  tags: ['motion'],
   args: {
     open: true,
     eyebrow: <span className="text-sm tracking-wide text-text-secondary uppercase">Confirmation</span>,
@@ -89,6 +232,74 @@ export const WithAllSlots: Story = {
       <p className="text-text-secondary">Removing this component also removes its stories and contract.</p>
     </Modal>
   ),
+  /**
+   * `aria-labelledby` and `aria-describedby` are only worth anything if they
+   * resolve to elements that actually exist — a dangling id reads as no name at
+   * all, and nothing in the markup makes that visible.
+   */
+  play: async ({ step }) => {
+    const body = within(document.body);
+    const dialog = await body.findByRole('dialog');
+
+    await step('is a modal dialog', async () => {
+      await expect(dialog).toHaveAttribute('aria-modal', 'true');
+    });
+
+    await step('aria-labelledby resolves to the title', async () => {
+      const labelId = dialog.getAttribute('aria-labelledby');
+      await expect(labelId).toBeTruthy();
+      await expect(document.getElementById(labelId!)).toHaveTextContent('Delete this component?');
+    });
+
+    await step('aria-describedby resolves to the description', async () => {
+      const describedId = dialog.getAttribute('aria-describedby');
+      await expect(describedId).toBeTruthy();
+      await expect(document.getElementById(describedId!)).toHaveTextContent('This cannot be undone.');
+    });
+
+    await step('the dialog is reachable by its accessible name', async () => {
+      await expect(body.getByRole('dialog', { name: 'Delete this component?' })).toBeInTheDocument();
+    });
+
+    await step('the entrance animation collapses under reduced motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // The panel and scrim both animate via --animate-*, which is built from
+      // --duration-base. Nothing here hard-codes a duration, so the media query
+      // is the single switch — that is the property worth pinning.
+      await expect(getComputedStyle(dialog).animationDuration).toBe(reduced ? '0s' : '0.3s');
+      await expect(getComputedStyle(dialog).animationName).not.toBe('none');
+    });
+  },
+};
+
+/**
+ * A click on the scrim dismisses; a click inside the panel must not. The guard
+ * is `event.target === event.currentTarget`, which is easy to regress into a
+ * dialog that closes whenever anything inside it is clicked.
+ */
+export const ClosesOnBackdrop: Story = {
+  args: { open: true, onClose: fn() },
+  render: (args) => (
+    <Modal {...args}>
+      <p className="text-text-secondary">Clicking this paragraph must not close the dialog.</p>
+    </Modal>
+  ),
+  play: async ({ args, step }) => {
+    const body = within(document.body);
+    const dialog = await body.findByRole('dialog');
+
+    await step('a click inside the panel is ignored', async () => {
+      await userEvent.click(body.getByText('Clicking this paragraph must not close the dialog.'));
+      await expect(args.onClose).not.toHaveBeenCalled();
+    });
+
+    await step('a click on the scrim closes', async () => {
+      const scrim = dialog.ownerDocument.querySelector('[aria-hidden].fixed.inset-0');
+      await expect(scrim).toBeTruthy();
+      await userEvent.click(scrim as HTMLElement);
+      await expect(args.onClose).toHaveBeenCalled();
+    });
+  },
 };
 
 /** The narrower panel. Below `lg` both sizes are full-screen. */

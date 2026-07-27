@@ -1,0 +1,23 @@
+{
+  "canonical": "Breadcrumbs",
+  "slug": "breadcrumbs",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["items", "currentPageTitle", "backLinkLabel", "separator", "backIcon"],
+  "variants": ["light", "dark"],
+  "tokens": ["color-text-primary", "color-text-inverse", "color-border-focus", "size-touch-medium"],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/breadcrumbs/Breadcrumbs.tsx"
+  },
+  "declienting": [
+    "Removed the cross-bucket imports of Breadcrumbs.helpers and Breadcrumbs.types from components/renderings/page-content/breadcrumbs/. A ui primitive reaching into a rendering component is the coupling that stopped this being reusable; the types now live with the component.",
+    "Replaced the BreadcrumbBackArrowIcon import with a backIcon slot, and made the separator a slot too.",
+    "Replaced the import of textLinkAnimatedUnderline from the sibling text-link component with the shared src/lib/underline module.",
+    "Replaced the [data-theme='dark'] selector coupling with an explicit surface prop, so the variant does not depend on an ancestor the component cannot see.",
+    "Replaced the hard-coded 44px mobile tap target with the --size-touch-medium token.",
+    "Kept verbatim: the nav landmark with an aria-label, aria-current on the current page, the current page rendered as text rather than a link, and the xl breakpoint collapse to a single back link."
+  ],
+  "maturity": "candidate"
+}

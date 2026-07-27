@@ -54,7 +54,10 @@ export function Modal({
 
   useEffect(() => setMounted(true), []);
 
-  useFocusTrap({ containerRef: dialogRef, enabled: open });
+  // `mounted` gates the portal, so dialogRef is still null on the first render
+  // of an already-open dialog. Without it in the condition the trap's effect
+  // runs once against a null ref and never re-runs — no listeners, no trap.
+  useFocusTrap({ containerRef: dialogRef, enabled: open && mounted });
   useScrollLock(open);
 
   // Remember the opener before focus moves, and restore it on close so keyboard
@@ -143,7 +146,14 @@ export function Modal({
             </button>
           </header>
 
-          <div className="min-h-0 flex-1 overflow-y-auto px-page-margin pb-l">{children}</div>
+          {/*
+            tabIndex makes the scrolling body reachable by keyboard. Without it a
+            body that overflows can only be scrolled by pointer, which strands
+            keyboard users on long content (WCAG 2.1.1).
+          */}
+          <div tabIndex={0} className="min-h-0 flex-1 overflow-y-auto px-page-margin pb-l">
+            {children}
+          </div>
 
           {footer ? (
             <footer className="shrink-0 border-t border-border-subtle px-page-margin py-m">{footer}</footer>

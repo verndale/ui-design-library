@@ -13,6 +13,8 @@
  *      referencing a token nobody defines renders unstyled.
  *   4. Components use semantic tokens, not raw colour values.
  *   5. Provenance and maturity are present, so no component's origin is a mystery.
+ *   6. The story's `maturity:*` tag agrees with component.json. The sidebar
+ *      badge renders from the tag, so a disagreement shows the wrong maturity.
  *
  * Exit codes: 0 pass · 1 one or more failures.
  */
@@ -105,6 +107,20 @@ for (const slug of dirs) {
   const stories = files.find((f) => /\.stories\.tsx$/.test(f));
   if (!impl) fail(`[files] components/${slug} has no implementation (.tsx)`);
   if (!stories) fail(`[files] components/${slug} has no stories file — the story is the API contract`);
+
+  // The sidebar maturity badge reads a story tag, but maturity is declared in
+  // component.json. Two sources for one fact drift silently, so they must agree.
+  if (stories && contract.maturity) {
+    const source = fs.readFileSync(path.join(dir, stories), 'utf8');
+    const tagged = source.match(/'maturity:([a-z]+)'/);
+    if (!tagged) {
+      fail(`[maturity] components/${slug}/${stories} has no 'maturity:*' tag — the sidebar badge reads it`);
+    } else if (tagged[1] !== contract.maturity) {
+      fail(
+        `[maturity] components/${slug} is "${contract.maturity}" in component.json but tagged "${tagged[1]}" in ${stories}`,
+      );
+    }
+  }
 
   if (impl) {
     const source = fs.readFileSync(path.join(dir, impl), 'utf8');

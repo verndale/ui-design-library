@@ -32,9 +32,34 @@
      maps its brand onto it. */
   --color-border-accent: #1d2025;
 
-  /* Interactive — neutral by design; a project maps its brand onto these. */
   --color-action-base: #1d2025;
   --color-action-hover: #383d45;
+
+  /* Control surfaces. Three variants is deliberate — every extra one is a decision
+     each consuming project then has to make. A brand maps onto these names. */
+  --color-control-primary-bg: #1d2025;
+  --color-control-primary-text: #ffffff;
+  --color-control-primary-bg-hover: #383d45;
+  --color-control-secondary-bg: transparent;
+  --color-control-secondary-text: #1d2025;
+  --color-control-secondary-border: #1d2025;
+  --color-control-secondary-bg-hover: #1d2025;
+  --color-control-secondary-text-hover: #ffffff;
+  --color-control-ghost-bg: rgb(255 255 255 / 0.1);
+  --color-control-ghost-text: #ffffff;
+  --color-control-ghost-border: rgb(255 255 255 / 0.4);
+  --color-control-ghost-bg-hover: rgb(255 255 255 / 0.2);
+  --color-control-disabled-bg: #e3e6ea;
+  --color-control-disabled-text: #9aa1ab;
+
+  /* Link */
+  --color-link: #1d2025;
+
+  /* Minimum tap targets, per WCAG 2.5.8. Components use these rather than
+     inventing a height, so the floor is raised in one place. */
+  --size-touch-large: 48px;
+  --size-touch-medium: 40px;
+  --size-touch-small: 36px;
 
   /* Spacing scale. Components compose these; they never use arbitrary values. */
   --spacing-3xs: 0.25rem;

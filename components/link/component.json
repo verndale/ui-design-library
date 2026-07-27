@@ -1,0 +1,24 @@
+{
+  "canonical": "Link",
+  "slug": "link",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["children", "startIcon", "endIcon"],
+  "variants": ["large", "medium", "small"],
+  "tokens": ["color-link", "color-border-focus", "size-touch-large", "size-touch-medium", "size-touch-small", "ease-standard"],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/text-link/TextLink.tsx"
+  },
+  "declienting": [
+    "Removed the Sitecore Content SDK Link wrapper, the LinkField prop, the editing-mode branching, and resolveSitecoreLiveLinkPlan. The library takes a resolved href; link-field resolution stays in the project.",
+    "Removed the next/link import and the eight forwarded Next-specific props in favour of a polymorphic `as`, so the component is not Next-only.",
+    "Replaced the ExternalLinkIcon import with startIcon and endIcon slots.",
+    "Moved the animated underline into src/lib/underline.ts so Breadcrumbs can share it without importing from another component.",
+    "Replaced hard-coded 48/40/36px touch targets with --size-touch-* tokens, so the WCAG 2.5.8 floor is raised in one place.",
+    "Dropped the five card-specific underline exports (event card, podcast card, search-result card); those are project compositions, not link behaviour.",
+    "Kept verbatim: the background-size underline with box-decoration-break clone, its motion-reduce path, the touch-target pseudo-element technique, and aria-disabled semantics."
+  ],
+  "maturity": "candidate"
+}

@@ -1,0 +1,36 @@
+{
+  "canonical": "Carousel",
+  "slug": "carousel",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": [
+    "slides",
+    "renderPrevious",
+    "renderNext"
+  ],
+  "variants": [
+    "loop"
+  ],
+  "tokens": [
+    "color-border-strong",
+    "color-text-primary",
+    "color-text-secondary",
+    "color-border-focus",
+    "radius-pill",
+    "ease-standard"
+  ],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/carousel/"
+  },
+  "declienting": [
+    "Kept embla-carousel-react as a dependency — it is a standing frontend-team standard, so capturing the a11y layer headless would have added indirection for no benefit. Declared as a peerDependency because the library ships as source.",
+    "Removed the import of the project's Button; the arrow controls are now local, with renderPrevious and renderNext slots for a project's own icons.",
+    "Collapsed the eight sibling modules (CarouselChevronIcons, CarouselFocusOverlays, carouselA11y.constants, carouselA11y.helpers, carouselA11yContext, useCarouselArrowKeyboardFocus, useCarouselArrowTabOrder) into one component; the context existed to thread state between files that no longer exist separately.",
+    "Mapped chevron and focus-overlay colours onto semantic tokens.",
+    "Kept verbatim: inert applied via setAttribute rather than a React prop, so Tab skips off-screen slides; arrow controls disabling at the ends; the labelled carousel region; and per-slide role=group with an announced position.",
+    "Replaced the engine's slidesInView() reporting for inert gating with direct geometry. slidesInView() returned empty before the engine measured, which marked every slide inert and made the whole carousel unreachable by keyboard — strictly worse than no gating. IntersectionObserver was tried and rejected: it only delivers callbacks while the page paints, so the state is undefined in a background tab and unverifiable headless. Comparing each slide box to the viewport box is true whenever it is asked, and fails open when the viewport has no width."
+  ],
+  "maturity": "candidate"
+}

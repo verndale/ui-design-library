@@ -14,6 +14,7 @@
   "declienting": [
     "Added a --color-border-accent semantic token; CN's border-border-accent had no library equivalent and inlining the value would have hard-coded a brand decision.",
     "Mapped px-padding-xl py-padding-xxs onto library spacing, and switched to logical ps/pe so the rule sits correctly in right-to-left.",
+    "Fixed an incomplete conversion in that same change: the padding was made logical but the accent rule was left as physical border-l, so in right-to-left the rule and the text sat on opposite sides. Now border-s. Caught by a computed-style assertion in the RightToLeft story — the markup reads identically either way.",
     "Dropped the exported richTextQuoteClasses = 'rtf' constant, which exists only for a Sitecore import map.",
     "Added my-0 to drop the user-agent blockquote margin.",
     "Kept verbatim: the blockquote element and the accent-rule treatment."

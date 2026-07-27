@@ -1,0 +1,34 @@
+{
+  "canonical": "Button",
+  "slug": "button",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["children", "startIcon", "endIcon"],
+  "variants": ["primary", "secondary", "ghost", "light", "dark", "large", "medium", "small"],
+  "tokens": [
+    "color-control-primary-bg", "color-control-primary-text", "color-control-primary-bg-hover",
+    "color-control-secondary-bg", "color-control-secondary-text", "color-control-secondary-border",
+    "color-control-secondary-bg-hover", "color-control-secondary-text-hover",
+    "color-control-ghost-bg", "color-control-ghost-text", "color-control-ghost-border", "color-control-ghost-bg-hover",
+    "color-control-disabled-bg", "color-control-disabled-text",
+    "color-surface-base", "color-surface-sunken", "color-text-primary", "color-text-inverse",
+    "color-border-focus", "radius-pill", "ease-standard",
+    "size-touch-large", "size-touch-medium", "size-touch-small"
+  ],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/button/"
+  },
+  "declienting": [
+    "Removed the Sitecore Content SDK link handling, the LinkField prop, and helpers/sitecore-link; a navigating control is now `as=\"a\"` with an href.",
+    "Removed next/link in favour of a polymorphic `as`, so the component is not Next-only.",
+    "Renamed the colour-scheme context to surface (light/dark), which describes what it actually selects rather than how it is implemented.",
+    "Cut four variants to three: secondaryOutline collapsed into secondary, and the accent variant was dropped because it existed only to carry the client's brand red.",
+    "Mapped every --sem-button-* and --color-brand-* token onto neutral control-* semantic tokens.",
+    "Replaced hard-coded 48/40/36px heights with --size-touch-* tokens.",
+    "Added an explicit guard so `type` is set only on a native button and aria-disabled is used otherwise; the source assumed a button element.",
+    "Kept verbatim: the surface context, the icon slots, and the disabled plus aria-disabled pairing."
+  ],
+  "maturity": "candidate"
+}

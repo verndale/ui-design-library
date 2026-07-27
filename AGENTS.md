@@ -31,15 +31,21 @@ New components land as `maturity: "candidate"`. Promoting to `supported` is a de
 
 ## Accessibility is the point
 
-Most of why a captured component is worth keeping is the accessibility work already in it. Storybook runs the a11y addon at `test: 'error'`. When you touch a component, preserve: focus management on open and close, keyboard operation, correct roles and relationships (`aria-labelledby`/`aria-describedby` resolving to real elements), and a reduced-motion path. Verify in the browser rather than assuming the markup implies the behaviour.
+Most of why a captured component is worth keeping is the accessibility work already in it. axe runs against every story and a violation **fails `pnpm test`** (see README, "Accessibility is enforced"). When a rule is genuinely wrong for one story, scope it off on that story with a reason — never loosen the global setting.
+
+axe only catches what is inspectable in the markup. Focus management, keyboard operation, and `aria-labelledby`/`aria-describedby` actually resolving to real elements are not things it checks, so those belong in a `play` function. Assert the behaviour, not the class list: a component whose focus trap never attaches renders identically to one whose trap works, and both pass a snapshot.
 
 ## Motion
 
 All motion runs through `--duration-fast` / `--duration-base` and `--ease-standard`. Those durations collapse to `0ms` under `prefers-reduced-motion`, so one switch turns motion off everywhere. Do not hard-code a duration in a component.
 
+`pnpm test:motion` enforces this: Playwright emulates the real media query and re-runs the `motion`-tagged stories under it. A broken reduced-motion path renders identically to a working one under the default preference, so nothing else catches it. When you add motion to a component, tag its story `motion` and branch the assertion on `matchMedia('(prefers-reduced-motion: reduce)').matches` — the same play function then covers both preferences.
+
+Note there are **two** mechanisms and they fail independently: the token collapse (`duration-[var(--duration-base)]`, which Card relies on) and `motion-reduce:transition-none` (which Button uses). Covering one does not cover the other.
+
 ## Environment
 
-Node 24+ and pnpm 10+ via Corepack; `pnpm install`. `pnpm test` runs the typecheck and the contract checks — that is the gate. `pnpm storybook` to browse.
+Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs the typecheck, the contract checks, and the story tests — that is the gate. `pnpm storybook` to browse.
 
 ## Commits & release — the maintainer's job, not the agent's
 

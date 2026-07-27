@@ -1,0 +1,27 @@
+{
+  "canonical": "Badge",
+  "slug": "badge",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["label", "startIcon"],
+  "variants": ["light", "dark", "dismissible", "disabled"],
+  "tokens": [
+    "color-border-strong", "color-text-primary", "color-text-inverse",
+    "color-border-focus", "radius-pill", "ease-standard"
+  ],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/tag/Tag.tsx"
+  },
+  "declienting": [
+    "Captured CN's `tag` rather than its `badge`: both resolve to the Badge canonical, but tag is the stronger implementation (101 lines, four test suites including two a11y) and carries the dismiss affordance the thinner one lacks.",
+    "Replaced the MaterialSymbol icon import with a startIcon slot, and kept the dismiss glyph as an inline SVG so there is no icon-set dependency.",
+    "Mapped the --color-button-tag-outline-* token family onto library semantic tokens; the outline treatment is now expressed with border-strong and text tokens rather than a bespoke palette.",
+    "Replaced the four getTagOutline*ClassName helper functions with inline class composition — they existed to thread a colorScheme through, which the surface prop now does directly.",
+    "Removed the separate decorative focus-ring span in favour of focus-visible on the button itself, so the ring follows the actual focus target.",
+    "Renamed colorScheme to surface and RemovableTag to Badge, matching the canonical.",
+    "Kept verbatim: the dismiss affordance, the `Remove ${label}` default accessible name, and the disabled handling."
+  ],
+  "maturity": "candidate"
+}

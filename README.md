@@ -174,7 +174,7 @@ wiki/
 └── plans/            # executed plans + an audit table
 ```
 
-Modelled on [`ui-design-brain`](https://github.com/verndale/ui-design-brain)'s wiki, minus its knowledge graph, generated `connections/` pages, and `scripts/wiki/` automation — this repo has none of that tooling, so capture is manual. The differences are listed at the bottom of `INDEX.md`.
+Modelled on [`ui-design-brain`](https://github.com/verndale/ui-design-brain)'s wiki, including its knowledge graph (`pnpm graph:build` / `pnpm graph:view`, [`scripts/graph/README.md`](scripts/graph/README.md)) and wiki-sync bot automation, adapted to this repo's shape. What's still different is listed at the bottom of `INDEX.md`.
 
 ## Related
 

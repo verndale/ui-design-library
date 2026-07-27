@@ -6,7 +6,7 @@ Write-side protocol for the context wiki: when to capture, what to write, and th
 
 - Capture trigger
 - Per capture, in the same delivery
-- No automation
+- Automation
 - Content rules
 - Size and pruning
 - Templates
@@ -31,11 +31,19 @@ Do not capture: typo fixes, formatting-only changes, dependency bumps, or versio
 
 PR number and commit sha are usually unknown at delivery time — the maintainer commits, not the agent. Write `pr: pending`.
 
-## No automation
+## Automation
 
-Unlike ui-design-brain, this repo has no wiki tooling: no `pnpm wiki:archive-plan`, no merge-sync bot, no pre-commit reminder, no nightly issue sync. Every step above is done by hand, in the same delivery as the change.
+Ported from ui-design-brain, adapted to this repo's shape — see [the graph-wiki-subsystem topic](topics/graph-wiki-subsystem.md) for the full picture:
 
-The practical consequence is that `pr: pending` stays pending until somebody edits it, and a change delivered without an entry leaves no trace that one is missing. If capture starts being skipped, port the automation rather than relying on discipline.
+- **Pre-commit** (`.husky/pre-commit`): warns (never blocks) when a staged commit is substantive but adds no `wiki/journal/` entry, and rebuilds + stages the knowledge graph (`scripts/graph/build-graph.cjs`) plus `wiki/connections*` unconditionally. Skipped under `$CI`.
+- **Wiki sync** (`.github/workflows/wiki-sync.yml`): on PR merge, fills `pr: pending` in journal entries; for a substantive PR with no entry, drafts a deterministic stub (`draft: ai` and AI-enriched only if `WIKI_AI=true` is set and the result stays grounded in the actual diff — otherwise the stub's Why is a `TODO` for a human to fill in); appends a topic Decisions bullet; and completes a `plans/INDEX.md` row when the PR references an archived plan. Lands as a `bot/wiki-sync/<pr>` PR — never a direct push to main.
+- **Nightly issue sync** (`.github/workflows/wiki-issue-sync.yml`): marks an issue cited under a topic's `## Open threads` with ` — closed` once it closes.
+
+What did **not** come over: `scripts/wiki/archive-plan.cjs` and `find-unarchived-plans.cjs` (the CLI for archiving a plan and the `~/.claude/plans` scanning backstop) — this repo's plans are archived by hand, per the template below, so nothing calls them. `pnpm wiki:archive-plan` is not a script here.
+
+Both bot workflows need `secrets.PR_BOT_TOKEN` configured in the GitHub repo to actually run — that's account-side configuration, not something a commit can set up. Until it's configured, the workflow files exist but fail at checkout or PR-creation.
+
+The practical consequence for now: `pr: pending` stays pending until the workflows are wired up or somebody edits it by hand.
 
 ## Content rules
 

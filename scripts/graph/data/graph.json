@@ -462,9 +462,11 @@
         "storybook-tooling"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 1717,
+      "bytes": 1762,
       "degree": 6
     },
     {
@@ -476,9 +478,11 @@
         "graph-wiki-subsystem"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 4205,
+      "bytes": 4250,
       "degree": 4
     },
     {
@@ -490,9 +494,11 @@
         "story-testing"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 2581,
+      "bytes": 2626,
       "degree": 4
     },
     {
@@ -505,9 +511,11 @@
         "storybook-tooling"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 4070,
+      "bytes": 4115,
       "degree": 7
     },
     {
@@ -519,9 +527,11 @@
         "storybook-tooling"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 3226,
+      "bytes": 3271,
       "degree": 4
     },
     {
@@ -546,9 +556,11 @@
         "storybook-tooling"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 6369,
+      "bytes": 6456,
       "degree": 5
     },
     {
@@ -561,9 +573,11 @@
         "story-testing"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 5259,
+      "bytes": 5346,
       "degree": 7
     },
     {
@@ -573,9 +587,11 @@
       "dir": "wiki/plans",
       "topics": [],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 1653,
+      "bytes": 1779,
       "degree": 5
     },
     {
@@ -594,9 +610,11 @@
         "pre-commit journal reminder",
         "graph freshness"
       ],
-      "prs": [],
+      "prs": [
+        "2"
+      ],
       "issues": [],
-      "bytes": 5541,
+      "bytes": 5679,
       "degree": 17
     },
     {

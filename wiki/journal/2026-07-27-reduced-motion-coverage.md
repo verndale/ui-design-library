@@ -2,7 +2,7 @@
 date: 2026-07-27
 topics: [story-testing]
 plan: plans/2026-07-27-storybook-review-addons-and-reduced-motion.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/2
 ---
 # Reduced-motion coverage
 

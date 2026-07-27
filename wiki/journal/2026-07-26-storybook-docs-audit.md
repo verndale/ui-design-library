@@ -2,7 +2,7 @@
 date: 2026-07-26
 topics: [storybook-tooling]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/2
 ---
 # Storybook Docs audit
 

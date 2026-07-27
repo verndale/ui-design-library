@@ -2,7 +2,7 @@
 date: 2026-07-27
 topics: [story-testing, storybook-tooling]
 plan: plans/2026-07-26-add-story-tests-and-enforce-a11y.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/2
 ---
 # Story tests and the a11y gate
 

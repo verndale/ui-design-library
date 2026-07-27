@@ -1,0 +1,37 @@
+{
+  "canonical": "Modal",
+  "slug": "modal",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["title", "eyebrow", "description", "children", "footer"],
+  "variants": ["medium", "large"],
+  "tokens": [
+    "color-surface-raised",
+    "color-surface-inverse",
+    "color-surface-scrim",
+    "color-text-primary",
+    "color-text-secondary",
+    "color-text-inverse",
+    "color-border-subtle",
+    "color-border-focus",
+    "color-action-hover",
+    "radius-medium",
+    "radius-pill",
+    "shadow-overlay",
+    "spacing-page-margin"
+  ],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/modal/ModalShellDialog.client.tsx"
+  },
+  "declienting": [
+    "Replaced the focus trap imported from components/renderings/navigation/main-navigation/useFocusTrap with the library-owned src/lib/focus.ts.",
+    "Removed the motion/react dependency; entrance and transitions are CSS driven by --duration-* and --ease-standard.",
+    "Mapped CN tokens to library semantic tokens: background-primary to surface-raised, border-light to border-subtle, layout-page-margin to spacing-page-margin, alpha-gray-18 to surface-scrim.",
+    "Dropped the brand hover colour (--color-surface-accent-red) for the neutral action-hover token.",
+    "Replaced the multiplication-sign close glyph with an inline SVG so the control has no text content to be announced.",
+    "Added a footer slot and a size variant; CN passed layout in through titleClassName and bodyClassName overrides instead."
+  ],
+  "maturity": "candidate"
+}

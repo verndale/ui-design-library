@@ -1,0 +1,22 @@
+{
+  "canonical": "Quote",
+  "slug": "quote",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["children"],
+  "variants": [],
+  "tokens": ["color-border-accent", "spacing-m", "spacing-s", "spacing-2xs"],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/quote/Quote.tsx"
+  },
+  "declienting": [
+    "Added a --color-border-accent semantic token; CN's border-border-accent had no library equivalent and inlining the value would have hard-coded a brand decision.",
+    "Mapped px-padding-xl py-padding-xxs onto library spacing, and switched to logical ps/pe so the rule sits correctly in right-to-left.",
+    "Dropped the exported richTextQuoteClasses = 'rtf' constant, which exists only for a Sitecore import map.",
+    "Added my-0 to drop the user-agent blockquote margin.",
+    "Kept verbatim: the blockquote element and the accent-rule treatment."
+  ],
+  "maturity": "candidate"
+}

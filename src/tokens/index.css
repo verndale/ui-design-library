@@ -1,0 +1,4 @@
+/* The library's style entry point. A consuming project imports this once, then
+   overrides any semantic token it needs in its own layer. */
+@import 'tailwindcss';
+@import './semantic.css';

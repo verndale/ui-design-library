@@ -1,0 +1,21 @@
+{
+  "canonical": "Card",
+  "slug": "card",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["children"],
+  "variants": ["default", "unsetBackground"],
+  "tokens": ["color-surface-raised", "ease-standard"],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/card/Card.tsx"
+  },
+  "declienting": [
+    "Mapped bg-background-primary to the surface-raised semantic token.",
+    "Replaced the hard-coded *:duration-300 with the --duration-base token, so reduced motion is switched centrally rather than per component.",
+    "Dropped the data-component override prop; the hook is now fixed, which is what makes it a reliable test and analytics selector.",
+    "Kept verbatim: the group-hover and group-focus-visible scale pair and their motion-reduce counterparts — keyboard focus triggering the same zoom as hover is the part worth keeping."
+  ],
+  "maturity": "candidate"
+}

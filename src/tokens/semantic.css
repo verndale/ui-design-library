@@ -1,0 +1,95 @@
+/**
+ * Semantic tokens — the library's styling contract.
+ *
+ * Components reference ONLY these names. A consuming project re-themes the
+ * library by overriding these custom properties with its own values; it never
+ * edits a component. That is what makes a component portable: the same Modal
+ * renders in CN's palette or anyone else's without a line changing.
+ *
+ * The values here are a neutral default so Storybook has something to render.
+ * They are deliberately unbranded — a component that ships a client's red is a
+ * client's component, not a library one.
+ */
+
+@theme {
+  /* Surfaces */
+  --color-surface-base: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #f4f5f7;
+  --color-surface-inverse: #1d2025;
+  --color-surface-scrim: rgb(29 32 37 / 0.6);
+
+  /* Text */
+  --color-text-primary: #1d2025;
+  --color-text-secondary: #5b626d;
+  --color-text-inverse: #ffffff;
+
+  /* Borders */
+  --color-border-subtle: #e3e6ea;
+  --color-border-strong: #b9bfc8;
+  --color-border-focus: #2f6fed;
+  /* Accent rule used by quotes and emphasis blocks. Neutral by default — a project
+     maps its brand onto it. */
+  --color-border-accent: #1d2025;
+
+  /* Interactive — neutral by design; a project maps its brand onto these. */
+  --color-action-base: #1d2025;
+  --color-action-hover: #383d45;
+
+  /* Spacing scale. Components compose these; they never use arbitrary values. */
+  --spacing-3xs: 0.25rem;
+  --spacing-2xs: 0.5rem;
+  --spacing-xs: 0.75rem;
+  --spacing-s: 1rem;
+  --spacing-m: 1.5rem;
+  --spacing-l: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Page gutter — the one value projects most often need to override. */
+  --spacing-page-margin: 1.25rem;
+
+  /* Radii */
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-pill: 9999px;
+
+  /* Elevation */
+  --shadow-overlay: 0 10px 24px rgb(0 0 0 / 0.12), 0 1px 4px rgb(0 0 0 / 0.05),
+    0 4px 16px rgb(0 0 0 / 0.07);
+
+  /* Motion. Every component must degrade to 0s under prefers-reduced-motion.
+     `--ease-*` and `--animate-*` are Tailwind theme namespaces, so these become
+     `ease-standard` / `animate-fade-in` utilities. Duration is a plain custom
+     property — there is no `--duration-*` namespace — so components reference it
+     as `duration-[var(--duration-fast)]`. */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-fade-in: fade-in var(--duration-base) var(--ease-standard);
+  --animate-scale-in: scale-in var(--duration-base) var(--ease-standard);
+}
+
+:root {
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+}
+
+/* One switch turns motion off everywhere: every component's transitions and
+   entrances are expressed through these two durations. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    scale: 0.96;
+  }
+}

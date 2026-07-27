@@ -1,0 +1,21 @@
+{
+  "canonical": "Avatar",
+  "slug": "avatar",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["children"],
+  "variants": [],
+  "tokens": ["radius-small"],
+  "provenance": {
+    "project": "cn",
+    "run": "runs/cn/2026-07-26/",
+    "source": "cn-website/src/components/ui/avatar/Avatar.tsx"
+  },
+  "declienting": [
+    "Removed min-h-[280px] min-w-[280px] flex-[1_0_0] — a CN page-layout decision baked into a primitive. Sizing now comes from the caller and the frame only guarantees the 1:1 crop.",
+    "Mapped rounded-small to the library radius token.",
+    "Added m-0 because a bare figure carries a user-agent margin that CN's layout happened to absorb.",
+    "Kept verbatim: the figure element and the aspect-square overflow-hidden frame."
+  ],
+  "maturity": "candidate"
+}

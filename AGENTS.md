@@ -47,6 +47,14 @@ Note there are **two** mechanisms and they fail independently: the token collaps
 
 Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs the typecheck, the contract checks, and the story tests — that is the gate. `pnpm storybook` to browse.
 
+## Context wiki
+
+`wiki/` records why the repo is the way it is — executed plans, decisions, and the reasoning behind them. Start at [`wiki/INDEX.md`](wiki/INDEX.md), which routes to the one page your question needs; never load the whole wiki.
+
+Capturing history is part of a substantive change, in the same delivery: a journal entry, the executed plan archived, and the affected topic page's Decisions updated. The protocol is [`wiki/MECHANICS.md`](wiki/MECHANICS.md).
+
+Two things worth knowing before you read it. A pre-commit hook rebuilds the knowledge graph and warns (never blocks) when a substantive commit adds no journal entry; on merge, a bot fills in `pr:` links, drafts a stub for a substantive PR that added none, and updates the affected topic — see [`wiki/topics/graph-wiki-subsystem.md`](wiki/topics/graph-wiki-subsystem.md). It still needs `secrets.PR_BOT_TOKEN` configured in the repo to actually run. And the capture trigger includes **investigations that found nothing**, because "we already checked that" is exactly the knowledge `git log` cannot hold.
+
 ## Commits & release — the maintainer's job, not the agent's
 
 **Permission boundary:** edit under `components/` and `src/` freely. Everything below is the maintainer's.

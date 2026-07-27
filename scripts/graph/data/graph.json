@@ -1,0 +1,1119 @@
+{
+  "counts": {
+    "nodes": 48,
+    "edges": 78,
+    "byType": {
+      "surface": 21,
+      "root-doc": 4,
+      "component": 9,
+      "token-layer": 1,
+      "wiki-index": 3,
+      "wiki-journal": 5,
+      "wiki-plan": 2,
+      "wiki-topic": 3
+    },
+    "byEdgeType": {
+      "covers": 22,
+      "links-to": 34,
+      "plan": 3,
+      "topic": 10,
+      "uses-tokens": 9
+    }
+  },
+  "nodes": [
+    {
+      "id": ".github/workflows/test.yml",
+      "label": "test.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1670,
+      "degree": 1
+    },
+    {
+      "id": ".github/workflows/wiki-issue-sync.yml",
+      "label": "wiki-issue-sync.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3216,
+      "degree": 1
+    },
+    {
+      "id": ".github/workflows/wiki-sync.yml",
+      "label": "wiki-sync.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4973,
+      "degree": 1
+    },
+    {
+      "id": ".husky/pre-commit",
+      "label": "pre-commit",
+      "type": "surface",
+      "dir": ".husky",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 688,
+      "degree": 1
+    },
+    {
+      "id": ".storybook/main.ts",
+      "label": "main.ts",
+      "type": "surface",
+      "dir": ".storybook",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1112,
+      "degree": 1
+    },
+    {
+      "id": ".storybook/manager.ts",
+      "label": "manager.ts",
+      "type": "surface",
+      "dir": ".storybook",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1335,
+      "degree": 1
+    },
+    {
+      "id": ".storybook/preview.ts",
+      "label": "preview.ts",
+      "type": "surface",
+      "dir": ".storybook",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2583,
+      "degree": 2
+    },
+    {
+      "id": ".storybook/withDirection.tsx",
+      "label": "withDirection.tsx",
+      "type": "surface",
+      "dir": ".storybook",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1027,
+      "degree": 1
+    },
+    {
+      "id": "AGENTS.md",
+      "label": "UI Design Library — agent guide",
+      "type": "root-doc",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 5526,
+      "degree": 4
+    },
+    {
+      "id": "CLAUDE.md",
+      "label": "CLAUDE.md",
+      "type": "root-doc",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 310,
+      "degree": 0
+    },
+    {
+      "id": "components/avatar/component.json",
+      "label": "Avatar",
+      "type": "component",
+      "dir": "components/avatar",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 795,
+      "degree": 1
+    },
+    {
+      "id": "components/badge/component.json",
+      "label": "Badge",
+      "type": "component",
+      "dir": "components/badge",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1648,
+      "degree": 1
+    },
+    {
+      "id": "components/breadcrumbs/component.json",
+      "label": "Breadcrumbs",
+      "type": "component",
+      "dir": "components/breadcrumbs",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1500,
+      "degree": 1
+    },
+    {
+      "id": "components/button/component.json",
+      "label": "Button",
+      "type": "component",
+      "dir": "components/button",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2099,
+      "degree": 1
+    },
+    {
+      "id": "components/card/component.json",
+      "label": "Card",
+      "type": "component",
+      "dir": "components/card",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1249,
+      "degree": 1
+    },
+    {
+      "id": "components/carousel/component.json",
+      "label": "Carousel",
+      "type": "component",
+      "dir": "components/carousel",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2124,
+      "degree": 1
+    },
+    {
+      "id": "components/link/component.json",
+      "label": "Link",
+      "type": "component",
+      "dir": "components/link",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1547,
+      "degree": 1
+    },
+    {
+      "id": "components/modal/component.json",
+      "label": "Modal",
+      "type": "component",
+      "dir": "components/modal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2131,
+      "degree": 1
+    },
+    {
+      "id": "components/quote/component.json",
+      "label": "Quote",
+      "type": "component",
+      "dir": "components/quote",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1286,
+      "degree": 1
+    },
+    {
+      "id": "CONTRIBUTING.md",
+      "label": "Contributing",
+      "type": "root-doc",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3911,
+      "degree": 0
+    },
+    {
+      "id": "README.md",
+      "label": "ui-design-library",
+      "type": "root-doc",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 10598,
+      "degree": 3
+    },
+    {
+      "id": "scripts/check-contracts.cjs",
+      "label": "check-contracts.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 5434,
+      "degree": 1
+    },
+    {
+      "id": "scripts/evals/graph-check.cjs",
+      "label": "graph-check.cjs",
+      "type": "surface",
+      "dir": "scripts/evals",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4705,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/build-graph.cjs",
+      "label": "build-graph.cjs",
+      "type": "surface",
+      "dir": "scripts/graph",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 19404,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/routing-policy.json",
+      "label": "routing-policy.json",
+      "type": "surface",
+      "dir": "scripts/graph",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 713,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/routing.cjs",
+      "label": "routing.cjs",
+      "type": "surface",
+      "dir": "scripts/graph",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 11971,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/serve.cjs",
+      "label": "serve.cjs",
+      "type": "surface",
+      "dir": "scripts/graph",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1871,
+      "degree": 1
+    },
+    {
+      "id": "scripts/wiki/ci-journal-warn.cjs",
+      "label": "ci-journal-warn.cjs",
+      "type": "surface",
+      "dir": "scripts/wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1596,
+      "degree": 1
+    },
+    {
+      "id": "scripts/wiki/on-merge-sync.cjs",
+      "label": "on-merge-sync.cjs",
+      "type": "surface",
+      "dir": "scripts/wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 10344,
+      "degree": 1
+    },
+    {
+      "id": "scripts/wiki/pre-commit-journal.cjs",
+      "label": "pre-commit-journal.cjs",
+      "type": "surface",
+      "dir": "scripts/wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2263,
+      "degree": 1
+    },
+    {
+      "id": "scripts/wiki/refresh-issue-state.cjs",
+      "label": "refresh-issue-state.cjs",
+      "type": "surface",
+      "dir": "scripts/wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3506,
+      "degree": 1
+    },
+    {
+      "id": "src/tokens/semantic.css",
+      "label": "Semantic tokens",
+      "type": "token-layer",
+      "dir": "src/tokens",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3896,
+      "degree": 10
+    },
+    {
+      "id": "vitest.config.ts",
+      "label": "vitest.config.ts",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 260,
+      "degree": 1
+    },
+    {
+      "id": "vitest.motion.config.ts",
+      "label": "vitest.motion.config.ts",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 888,
+      "degree": 1
+    },
+    {
+      "id": "vitest.shared.ts",
+      "label": "vitest.shared.ts",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1813,
+      "degree": 1
+    },
+    {
+      "id": "wiki/INDEX.md",
+      "label": "Context Wiki",
+      "type": "wiki-index",
+      "dir": "wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 5070,
+      "degree": 13
+    },
+    {
+      "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "label": "Storybook Docs audit",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "storybook-tooling"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1717,
+      "degree": 6
+    },
+    {
+      "id": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
+      "label": "Knowledge graph + wiki automation",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4205,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
+      "label": "Reduced-motion coverage",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2581,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "label": "Story tests and the a11y gate",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "story-testing",
+        "storybook-tooling"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4070,
+      "degree": 7
+    },
+    {
+      "id": "wiki/journal/2026-07-27-storybook-review-tooling.md",
+      "label": "Storybook review tooling",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "storybook-tooling"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3226,
+      "degree": 4
+    },
+    {
+      "id": "wiki/MECHANICS.md",
+      "label": "Wiki Mechanics",
+      "type": "wiki-index",
+      "dir": "wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 6425,
+      "degree": 7
+    },
+    {
+      "id": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
+      "label": "Add story tests and enforce accessibility",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "story-testing",
+        "storybook-tooling"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 6369,
+      "degree": 5
+    },
+    {
+      "id": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "label": "Storybook review addons and reduced-motion coverage",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "storybook-tooling",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 5259,
+      "degree": 7
+    },
+    {
+      "id": "wiki/plans/INDEX.md",
+      "label": "Plan Audit",
+      "type": "wiki-index",
+      "dir": "wiki/plans",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1653,
+      "degree": 5
+    },
+    {
+      "id": "wiki/topics/graph-wiki-subsystem.md",
+      "label": "Knowledge graph & wiki automation — Design History",
+      "type": "wiki-topic",
+      "dir": "wiki/topics",
+      "topics": [],
+      "aliases": [
+        "knowledge graph",
+        "graph viewer",
+        "sigma.js viewer",
+        "wiki automation",
+        "wiki-sync bot",
+        "wiki-issue-sync bot",
+        "pre-commit journal reminder",
+        "graph freshness"
+      ],
+      "prs": [],
+      "issues": [],
+      "bytes": 5541,
+      "degree": 17
+    },
+    {
+      "id": "wiki/topics/story-testing.md",
+      "label": "Story testing — Design History",
+      "type": "wiki-topic",
+      "dir": "wiki/topics",
+      "topics": [],
+      "aliases": [
+        "story tests",
+        "play functions",
+        "addon-vitest",
+        "vitest browser mode",
+        "a11y gate",
+        "axe enforcement",
+        "reduced motion",
+        "prefers-reduced-motion",
+        "test setup"
+      ],
+      "prs": [],
+      "issues": [],
+      "bytes": 6253,
+      "degree": 14
+    },
+    {
+      "id": "wiki/topics/storybook-tooling.md",
+      "label": "Storybook tooling — Design History",
+      "type": "wiki-topic",
+      "dir": "wiki/topics",
+      "topics": [],
+      "aliases": [
+        "storybook config",
+        "autodocs",
+        "docs page",
+        "pseudo states",
+        "focus-visible toggle",
+        "direction toggle",
+        "RTL",
+        "maturity badge",
+        "tag badges",
+        "viewport",
+        "backgrounds",
+        "toolbar"
+      ],
+      "prs": [],
+      "issues": [],
+      "bytes": 4794,
+      "degree": 15
+    }
+  ],
+  "edges": [
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".github/workflows/wiki-issue-sync.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".github/workflows/wiki-sync.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".husky/pre-commit",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/evals/graph-check.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/build-graph.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/routing-policy.json",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/routing.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/serve.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/wiki/ci-journal-warn.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/wiki/on-merge-sync.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/wiki/pre-commit-journal.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/wiki/refresh-issue-state.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": ".github/workflows/test.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": ".storybook/preview.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "vitest.config.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "vitest.motion.config.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "vitest.shared.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": ".storybook/main.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": ".storybook/manager.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": ".storybook/preview.ts",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": ".storybook/withDirection.tsx",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": "scripts/check-contracts.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "README.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "wiki/INDEX.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "wiki/MECHANICS.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "README.md",
+      "target": "src/tokens/semantic.css",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "README.md",
+      "target": "wiki/INDEX.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-27-storybook-review-tooling.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/MECHANICS.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/plans/INDEX.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/topics/storybook-tooling.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "target": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
+      "target": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/MECHANICS.md",
+      "target": "wiki/INDEX.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/MECHANICS.md",
+      "target": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/MECHANICS.md",
+      "target": "wiki/plans/INDEX.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/MECHANICS.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/MECHANICS.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
+      "type": "links-to",
+      "count": 5,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "type": "links-to",
+      "count": 3,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
+      "type": "links-to",
+      "count": 3,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": "wiki/journal/2026-07-27-storybook-review-tooling.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/storybook-tooling.md",
+      "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "links-to",
+      "count": 3,
+      "anchors": []
+    },
+    {
+      "source": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
+      "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-storybook-review-tooling.md",
+      "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
+      "target": "wiki/topics/storybook-tooling.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-story-tests-and-a11y-gate.md",
+      "target": "wiki/topics/storybook-tooling.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-07-27-storybook-review-tooling.md",
+      "target": "wiki/topics/storybook-tooling.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
+      "target": "wiki/topics/storybook-tooling.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "target": "wiki/topics/storybook-tooling.md",
+      "type": "topic"
+    },
+    {
+      "source": "components/avatar/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 1
+    },
+    {
+      "source": "components/badge/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 6
+    },
+    {
+      "source": "components/breadcrumbs/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 4
+    },
+    {
+      "source": "components/button/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 24
+    },
+    {
+      "source": "components/card/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 2
+    },
+    {
+      "source": "components/carousel/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 6
+    },
+    {
+      "source": "components/link/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 6
+    },
+    {
+      "source": "components/modal/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 13
+    },
+    {
+      "source": "components/quote/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 4
+    }
+  ]
+}

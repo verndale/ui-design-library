@@ -2,7 +2,7 @@
 date: 2026-07-27
 topics: [graph-wiki-subsystem]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/2
 ---
 # Knowledge graph + wiki automation
 

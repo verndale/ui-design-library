@@ -2,7 +2,9 @@
 status: implemented
 executed: 2026-07-27
 date: 2026-07-26
-evidence: ["pending — maintainer commits"]
+evidence:
+  - "pending — maintainer commits"
+  - "PR #2 https://github.com/verndale/ui-design-library/pull/2 (merged 2026-07-27)"
 source_tool: file
 source: "proposed and approved in-session (Claude Code, 2026-07-26); no plan-mode artifact on disk"
 topics: [story-testing, storybook-tooling]

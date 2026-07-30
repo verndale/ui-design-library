@@ -7,8 +7,8 @@
   "variants": ["row", "column"],
   "tokens": ["color-text-primary", "color-text-secondary", "spacing-3xs", "spacing-2xs", "spacing-s"],
   "provenance": {
-    "project": "mc",
-    "run": "runs/mc/2026-07-30/",
+    "project": "mimecast",
+    "run": "runs/mimecast/2026-07-30/",
     "source": "src/components/renderings/stat-cards/stat-card/StatCard.tsx"
   },
   "declienting": [

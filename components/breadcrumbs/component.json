@@ -7,8 +7,8 @@
   "variants": ["light", "dark"],
   "tokens": ["color-text-primary", "color-text-inverse", "color-border-focus", "size-touch-medium"],
   "provenance": {
-    "project": "cn",
-    "run": "runs/cn/2026-07-26/",
+    "project": "canadian-national",
+    "run": "runs/canadian-national/2026-07-26/",
     "source": "cn-website/src/components/ui/breadcrumbs/Breadcrumbs.tsx"
   },
   "declienting": [

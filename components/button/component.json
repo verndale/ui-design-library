@@ -16,8 +16,8 @@
     "size-touch-large", "size-touch-medium", "size-touch-small"
   ],
   "provenance": {
-    "project": "cn",
-    "run": "runs/cn/2026-07-26/",
+    "project": "canadian-national",
+    "run": "runs/canadian-national/2026-07-26/",
     "source": "cn-website/src/components/ui/button/"
   },
   "declienting": [

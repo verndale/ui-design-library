@@ -1,0 +1,38 @@
+{
+  "canonical": "Search input",
+  "slug": "search-input",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["results"],
+  "variants": [],
+  "tokens": [
+    "color-surface-raised",
+    "color-surface-sunken",
+    "color-text-primary",
+    "color-text-secondary",
+    "color-control-primary-bg",
+    "color-control-primary-text",
+    "color-control-primary-bg-hover",
+    "color-border-focus",
+    "radius-pill"
+  ],
+  "provenance": {
+    "project": "canadian-national",
+    "run": "runs/canadian-national/2026-07-26/",
+    "source": "cn-website/src/components/ui/search-field/SearchField.tsx"
+  },
+  "declienting": [
+    "Replaced the hard-composed FeaturedSearchCard results row with a `results` ReactNode slot — the caller owns result rendering; the role=region / aria-live=polite / aria-label results container was kept.",
+    "Removed the internal useState<SearchResult[]>([]) stub and the SearchResult type — CN search-API wiring; results now arrive through the slot.",
+    "Renamed the analytics hook data-component=\"search-field\" to data-component=\"search-input\" so it keys on the canonical slug.",
+    "Mapped the submit control's client tokens bg-button-accent-bg / text-button-accent-text / bg-button-accent-bg-hover to bg-control-primary-bg / text-control-primary-text / hover:bg-control-primary-bg-hover.",
+    "Mapped the placeholder colour text-text-tertiary (no library equivalent) to placeholder:text-text-secondary.",
+    "Mapped the clear button's hover bg-interactive-hover-light to hover:bg-surface-sunken — the ghost-hover token is translucent white and invisible on the raised input surface.",
+    "Mapped client spacing utilities gap-padding-s / pl-padding-s / gap-layout-gutter to gap-2xs / pl-s / gap-2xs and dropped pb-padding-xxs; the library exposes --spacing-*, not CN's padding-*/layout-gutter scale.",
+    "Mapped the typography utility text-ui-lg to text-base and dropped font-family-body (the field inherits the page family); the library defines no typography tokens.",
+    "Mapped hard-coded control sizes onto touch tokens: input h-[48px] to min-h-[var(--size-touch-large)], submit size-[40px] to size-[var(--size-touch-medium)], clear size-[32px] to size-[var(--size-touch-small)] (raised to the 36px touch floor).",
+    "Restored a visible keyboard focus indicator on the input — CN removed every focus outline and ring; the library field uses focus-visible:outline-2 outline-offset-2 outline-border-focus.",
+    "Kept verbatim: the role=search landmark, the sr-only bound label, aria-labels on submit/clear, aria-hidden icons, the live results region, the controlled/uncontrolled duality, inputMode/enterKeyHint/autoComplete/autoFocus, clear-then-refocus, and the submit trimming an empty query before firing onSearch."
+  ],
+  "maturity": "candidate"
+}

@@ -1,11 +1,11 @@
 {
   "counts": {
-    "nodes": 50,
-    "edges": 80,
+    "nodes": 51,
+    "edges": 81,
     "byType": {
       "surface": 21,
       "root-doc": 4,
-      "component": 10,
+      "component": 11,
       "token-layer": 1,
       "wiki-index": 3,
       "wiki-journal": 6,
@@ -17,7 +17,7 @@
       "links-to": 35,
       "plan": 3,
       "topic": 10,
-      "uses-tokens": 10
+      "uses-tokens": 11
     }
   },
   "nodes": [
@@ -250,6 +250,18 @@
       "degree": 1
     },
     {
+      "id": "components/search-input/component.json",
+      "label": "Search input",
+      "type": "component",
+      "dir": "components/search-input",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2814,
+      "degree": 1
+    },
+    {
       "id": "components/stat/component.json",
       "label": "Stat",
       "type": "component",
@@ -415,7 +427,7 @@
       "prs": [],
       "issues": [],
       "bytes": 3896,
-      "degree": 11
+      "degree": 12
     },
     {
       "id": "vitest.config.ts",
@@ -1163,6 +1175,12 @@
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 4
+    },
+    {
+      "source": "components/search-input/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 9
     },
     {
       "source": "components/stat/component.json",

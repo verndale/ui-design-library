@@ -1,0 +1,27 @@
+{
+  "canonical": "Stat",
+  "slug": "stat",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["value", "label", "description"],
+  "variants": ["row", "column"],
+  "tokens": ["color-text-primary", "color-text-secondary", "spacing-3xs", "spacing-2xs", "spacing-s"],
+  "provenance": {
+    "project": "mc",
+    "run": "runs/mc/2026-07-30/",
+    "source": "src/components/renderings/stat-cards/stat-card/StatCard.tsx"
+  },
+  "declienting": [
+    "Removed @optimizely/cms-sdk: the contentType() schema and ContentProps typing, the getPreviewUtils()/pa() Visual-Builder preview spreads, and OptimizelyComponent child rendering. Replaced with plain React props and StatGroup mapping children to list items.",
+    "Replaced displaySettings.rail + normalizeRail/Rail/DEFAULT_DETAIL_STATS_RAIL (@/lib/rail) with an explicit orientation: 'row' | 'column' prop.",
+    "Rewrote @/lib/cn (the project's tailwind-merge) as the library's inline [...].filter(Boolean).join(' ') class-join.",
+    "Mapped project tokens to library semantic tokens: text-content-primary to text-text-primary, text-content-secondary to text-text-secondary, gap-m (16px) to gap-s (16px). text-stats-m (a composite ~64-80px/900 display token) became text-6xl font-extrabold — the library has no display type-scale token; text-body-l became text-base.",
+    "Stripped the card surface (bg-surface-light, rounded-m, p-card-m, min-h-[254px]): the Stat pattern points at Card for the container, so Stat is the figure and the surface is caller composition.",
+    "Dropped uppercase on the value (a brand treatment) and the fixed min-height (a row-alignment device — StatGroup's items-stretch equalizes instead).",
+    "Reordered to value-then-label reading order per the Stat pattern; the source rendered the label (eyebrow) first.",
+    "Dropped the .stat-grid subgrid alignment trick and the StatCardsContainer carousel/grid section wrapper (embla + SectionHeader) — page composition, not the Stat primitive.",
+    "Renamed the data-component hooks stat-card/detail-stats to stat/stat-group; stripped client ticket/Figma/Confluence references from comments (no client copy existed in code — it was content-driven).",
+    "Kept verbatim: the sr-only <h2> + <ul aria-labelledby> group naming and the native <ul>/<li> structure — the accessible-name contract is the reason this was worth capturing."
+  ],
+  "maturity": "candidate"
+}

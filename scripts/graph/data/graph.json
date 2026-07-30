@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 48,
-    "edges": 78,
+    "nodes": 50,
+    "edges": 80,
     "byType": {
       "surface": 21,
       "root-doc": 4,
-      "component": 9,
+      "component": 10,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 5,
+      "wiki-journal": 6,
       "wiki-plan": 2,
       "wiki-topic": 3
     },
     "byEdgeType": {
       "covers": 22,
-      "links-to": 34,
+      "links-to": 35,
       "plan": 3,
       "topic": 10,
-      "uses-tokens": 9
+      "uses-tokens": 10
     }
   },
   "nodes": [
@@ -250,6 +250,18 @@
       "degree": 1
     },
     {
+      "id": "components/stat/component.json",
+      "label": "Stat",
+      "type": "component",
+      "dir": "components/stat",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2407,
+      "degree": 1
+    },
+    {
       "id": "CONTRIBUTING.md",
       "label": "Contributing",
       "type": "root-doc",
@@ -403,7 +415,7 @@
       "prs": [],
       "issues": [],
       "bytes": 3896,
-      "degree": 10
+      "degree": 11
     },
     {
       "id": "vitest.config.ts",
@@ -450,8 +462,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5070,
-      "degree": 13
+      "bytes": 5365,
+      "degree": 14
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -533,6 +545,18 @@
       "issues": [],
       "bytes": 3271,
       "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-07-30-add-stat-component.md",
+      "label": "Add the Stat component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2126,
+      "degree": 1
     },
     {
       "id": "wiki/MECHANICS.md",
@@ -855,6 +879,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-30-add-stat-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -1132,6 +1163,12 @@
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 4
+    },
+    {
+      "source": "components/stat/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 5
     }
   ]
 }

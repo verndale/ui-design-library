@@ -33,6 +33,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-07-30 — [Add the Stat component](journal/2026-07-30-add-stat-component.md) — a de-cliented capture of a client's StatCard/DetailStats: `Stat` (the value + label figure) and `StatGroup` (the sr-only-heading + `aria-labelledby` accessible-name contract), with a row/column orientation.
 - 2026-07-27 — [Knowledge graph + wiki automation](journal/2026-07-27-graph-and-wiki-automation.md) — ported the graph builder/viewer and the wiki-sync / wiki-issue-sync bots, reversing the earlier "no automation" omission; added and then removed the CI freshness gate on direction.
 - 2026-07-27 — [Reduced-motion coverage](journal/2026-07-27-reduced-motion-coverage.md) — a second Vitest config re-runs `motion`-tagged stories under an emulated `prefers-reduced-motion`, closing the one documented contract with no coverage.
 - 2026-07-27 — [Storybook review tooling](journal/2026-07-27-storybook-review-tooling.md) — pseudo-states, a local direction toggle, maturity badges backed by a sixth contract check, and viewport/backgrounds configured from core.

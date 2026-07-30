@@ -4,7 +4,7 @@ Every component's declared dependency on the semantic token layer.
 
 Part of the [connections map](../connections.md), generated from the knowledge graph — **do not edit by hand**. Rebuilt on every `pnpm graph:build` and verified fresh by `pnpm evals:graph`.
 
-9 components declare tokens:
+10 components declare tokens:
 
 - [Avatar](../../components/avatar/component.json) — 1 token declared
 - [Badge](../../components/badge/component.json) — 6 tokens declared
@@ -15,3 +15,4 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Link](../../components/link/component.json) — 6 tokens declared
 - [Modal](../../components/modal/component.json) — 13 tokens declared
 - [Quote](../../components/quote/component.json) — 4 tokens declared
+- [Stat](../../components/stat/component.json) — 5 tokens declared

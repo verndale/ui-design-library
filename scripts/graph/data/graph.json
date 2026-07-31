@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 54,
-    "edges": 90,
+    "nodes": 58,
+    "edges": 94,
     "byType": {
       "surface": 21,
       "root-doc": 4,
-      "component": 11,
+      "component": 13,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 7,
+      "wiki-journal": 9,
       "wiki-plan": 3,
       "wiki-topic": 4
     },
     "byEdgeType": {
       "covers": 23,
-      "links-to": 40,
+      "links-to": 42,
       "plan": 4,
       "topic": 12,
-      "uses-tokens": 11
+      "uses-tokens": 13
     }
   },
   "nodes": [
@@ -250,6 +250,18 @@
       "degree": 1
     },
     {
+      "id": "components/rich-text/component.json",
+      "label": "Rich text",
+      "type": "component",
+      "dir": "components/rich-text",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1884,
+      "degree": 1
+    },
+    {
       "id": "components/search-input/component.json",
       "label": "Search input",
       "type": "component",
@@ -259,6 +271,18 @@
       "prs": [],
       "issues": [],
       "bytes": 2814,
+      "degree": 1
+    },
+    {
+      "id": "components/section-header/component.json",
+      "label": "Section header",
+      "type": "component",
+      "dir": "components/section-header",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1717,
       "degree": 1
     },
     {
@@ -427,7 +451,7 @@
       "prs": [],
       "issues": [],
       "bytes": 3896,
-      "degree": 12
+      "degree": 14
     },
     {
       "id": "vitest.config.ts",
@@ -474,8 +498,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5836,
-      "degree": 16
+      "bytes": 6408,
+      "degree": 18
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -557,6 +581,30 @@
       "issues": [],
       "bytes": 3271,
       "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-07-30-add-rich-text-component.md",
+      "label": "Add the Rich text component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2249,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-07-30-add-section-header-component.md",
+      "label": "Add the Section header component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2174,
+      "degree": 1
     },
     {
       "id": "wiki/journal/2026-07-30-add-stat-component.md",
@@ -956,6 +1004,20 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-30-add-rich-text-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-30-add-section-header-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-07-30-add-stat-component.md",
       "type": "links-to",
       "count": 1,
@@ -1292,10 +1354,22 @@
       "count": 4
     },
     {
+      "source": "components/rich-text/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 8
+    },
+    {
       "source": "components/search-input/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 9
+    },
+    {
+      "source": "components/section-header/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 5
     },
     {
       "source": "components/stat/component.json",

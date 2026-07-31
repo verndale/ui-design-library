@@ -1,0 +1,23 @@
+{
+  "canonical": "Section header",
+  "slug": "section-header",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["eyebrow", "heading", "description"],
+  "variants": ["left", "center"],
+  "tokens": ["color-text-primary", "color-text-secondary", "color-link", "spacing-m", "spacing-l"],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-07-30/",
+    "source": "frontend/src/html/modules/heading-with-description.hbs"
+  },
+  "declienting": [
+    "Ported the Handlebars template to a React component: the {{#if}} guards became conditional JSX, and {{{description}}} (raw HTML interpolation) became a description: ReactNode prop the caller composes.",
+    "Replaced the BEM classes (heading-with-description__eyebrow/__heading/__description and the --left/--center modifiers) with Tailwind utilities; the alignment modifier became an alignment: 'left' | 'center' prop toggling items-* / text-*.",
+    "Dropped the .rtf .rtf--inherit-type rich-text container on the description; it now takes composed content and styles only inline links (color-link), leaving prose rendering to the caller.",
+    "Mapped tokens onto the library semantic layer: heading to color-text-primary; eyebrow and description to color-text-secondary; the 24px eyebrow-to-heading gap to spacing-m; the 32px heading-to-description gap to spacing-l.",
+    "Dropped client sample copy (the 'Our Handprint' eyebrow and the climate-change heading and body text) — every string is a prop.",
+    "Kept verbatim: the <h2>-heading / <p>-eyebrow semantics, group-level alignment, and collapse-when-empty for both optional parts — the accessibility contract that made it worth capturing."
+  ],
+  "maturity": "candidate"
+}

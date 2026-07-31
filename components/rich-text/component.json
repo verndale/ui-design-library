@@ -1,0 +1,23 @@
+{
+  "canonical": "Rich text",
+  "slug": "rich-text",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["content"],
+  "variants": ["default", "checkmark"],
+  "tokens": ["color-text-primary", "color-text-secondary", "color-link", "spacing-l", "spacing-m", "spacing-s", "spacing-xs", "spacing-2xs"],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-07-30/",
+    "source": "frontend/src/html/components/rich-text.hbs"
+  },
+  "declienting": [
+    "Ported the Handlebars template to a React component; the {{{content}}} raw-HTML injection became a children: ReactNode slot the caller composes (CMS-string ingestion and sanitization are a caller/adapter concern).",
+    "Replaced the project's global .rtf flow stylesheet (frontend/src/styles/rich-text.css, element selectors + margin rhythm) with Tailwind descendant utilities on the component itself ([&_h2], [&_p], [&_ul], [&_a], ...), so it carries its own prose contract instead of depending on a global class.",
+    "Mapped the flow rhythm and colours onto the library semantic layer: headings and emphasis to color-text-primary, body to color-text-secondary, links to color-link, and the vertical rhythm to spacing-l / spacing-m / spacing-s / spacing-xs / spacing-2xs.",
+    "Reimplemented the rtf--checkmark list style as a ::marker recolour + glyph rather than list-none + a ::before pseudo, so the unordered list keeps its list semantics (list-none drops the list role in WebKit).",
+    "Dropped client sample copy (press-contacts / portfolio text) and the temporary inline CTA/Media button mocks the story carried — content is caller-provided.",
+    "Kept verbatim: authored headings render at their real level with no forced re-leveling, ordered/unordered lists stay real ol/ul/li, and link text is its own accessible name — the prose-semantics contract."
+  ],
+  "maturity": "candidate"
+}

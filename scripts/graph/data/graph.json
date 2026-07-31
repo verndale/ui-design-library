@@ -683,9 +683,11 @@
       "dir": "wiki/journal",
       "topics": [],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "11"
+      ],
       "issues": [],
-      "bytes": 2168,
+      "bytes": 2214,
       "degree": 1
     },
     {
@@ -695,9 +697,11 @@
       "dir": "wiki/journal",
       "topics": [],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "11"
+      ],
       "issues": [],
-      "bytes": 2051,
+      "bytes": 2097,
       "degree": 1
     },
     {
@@ -707,9 +711,11 @@
       "dir": "wiki/journal",
       "topics": [],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "11"
+      ],
       "issues": [],
-      "bytes": 1701,
+      "bytes": 1747,
       "degree": 1
     },
     {
@@ -808,12 +814,13 @@
         "graph freshness"
       ],
       "prs": [
+        "11",
         "8",
         "5",
         "2"
       ],
       "issues": [],
-      "bytes": 5978,
+      "bytes": 6129,
       "degree": 17
     },
     {

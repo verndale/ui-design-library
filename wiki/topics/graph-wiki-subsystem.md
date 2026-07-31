@@ -18,6 +18,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-07-31 — feat(ui-design-library): Add Accordion, Alert, and Toast components ([PR #11](https://github.com/verndale/ui-design-library/pull/11))
 - 2026-07-31 — feat(ui-design-library): Add RichText and SectionHeader components ([PR #8](https://github.com/verndale/ui-design-library/pull/8))
 - 2026-07-31 — feat(ui-design-library): Enhance documentation on structural variants ([PR #5](https://github.com/verndale/ui-design-library/pull/5))
 - 2026-07-27 — feat(ci): Implement automated wiki issue synchronization ([PR #2](https://github.com/verndale/ui-design-library/pull/2))

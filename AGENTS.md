@@ -12,7 +12,7 @@ See [README.md](README.md) for the layout and the consumption model.
 
 Everything here exists to keep these true. `pnpm contracts` enforces them.
 
-1. **Slug equality.** `components/<slug>/` where `slug == kebab(canonical)`, matching the catalog. This is the whole lookup mechanism — break it and the library stops being deterministically usable.
+1. **Slug equality.** A canonical resolves to a directory by its slug: `components/<slug>/` where `slug == kebab(canonical)`, matching the catalog. When one canonical holds structurally-distinct implementations, the default keeps the bare slug and each alternate is `components/<slug>--<variant>/` — same `canonical`, same `slug`, a distinct `variant`, exactly one marked `default`. The key is `(canonical, variant)`, deterministic either way. This is the whole lookup mechanism — break it and the library stops being deterministically usable.
 2. **The story file is the API contract.** Every prop declared in `argTypes` with a control and a description. A component without stories is not reusable, because nobody can see its surface.
 3. **Semantic tokens only.** Components reference `bg-surface-raised`, never a hex value and never a client's brand token. A raw colour in a component fails the check. Values live in `src/tokens/semantic.css`; consuming projects override them.
 
@@ -28,6 +28,10 @@ Components arrive as **captures** from a `project-retrospective` run, and execut
 Record every removal in `component.json`'s `declienting` array. That list is the honest cost of the rewrite, and the next person reads it to estimate the one after.
 
 New components land as `maturity: "candidate"`. Promoting to `supported` is a deliberate human decision, not a side effect of editing.
+
+### Structural variants
+
+Most captures are a fresh canonical or a better take on one that overwrites the candidate in place. A capture that is a *structurally different* implementation of a canonical the library already has — a mega menu alongside the plain Navigation bar — lands as a new sibling directory `components/<slug>--<variant>/`, not a rewrite of the incumbent. Its `component.json` shares the `canonical` and `slug`, adds `variant` (the structural axis, singular — distinct from the existing `variants` array of prop-value options), and omits `default`; the incumbent gains `variant` and `default: true`. `pnpm contracts` validates the axis: one `default` per canonical, unique `variant` values, the `<slug>--<variant>` directory name agreeing with the fields, and variant story titles that nest under the canonical (`<Canonical> / <label>`) so the Storybook sidebar does not collide.
 
 ## Accessibility is the point
 

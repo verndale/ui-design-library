@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 51,
-    "edges": 81,
+    "nodes": 54,
+    "edges": 90,
     "byType": {
       "surface": 21,
       "root-doc": 4,
       "component": 11,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 6,
-      "wiki-plan": 2,
-      "wiki-topic": 3
+      "wiki-journal": 7,
+      "wiki-plan": 3,
+      "wiki-topic": 4
     },
     "byEdgeType": {
-      "covers": 22,
-      "links-to": 35,
-      "plan": 3,
-      "topic": 10,
+      "covers": 23,
+      "links-to": 40,
+      "plan": 4,
+      "topic": 12,
       "uses-tokens": 11
     }
   },
@@ -126,7 +126,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5526,
+      "bytes": 6777,
       "degree": 4
     },
     {
@@ -282,7 +282,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3911,
+      "bytes": 4862,
       "degree": 0
     },
     {
@@ -294,7 +294,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10598,
+      "bytes": 12418,
       "degree": 3
     },
     {
@@ -306,8 +306,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5434,
-      "degree": 1
+      "bytes": 13181,
+      "degree": 2
     },
     {
       "id": "scripts/evals/graph-check.cjs",
@@ -330,7 +330,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 19404,
+      "bytes": 19673,
       "degree": 1
     },
     {
@@ -474,8 +474,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5365,
-      "degree": 14
+      "bytes": 5836,
+      "degree": 16
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -571,6 +571,22 @@
       "degree": 1
     },
     {
+      "id": "wiki/journal/2026-07-30-variant-axis.md",
+      "label": "Native variant axis",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "variant-axis"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "4"
+      ],
+      "bytes": 4337,
+      "degree": 4
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -617,6 +633,20 @@
       "degree": 7
     },
     {
+      "id": "wiki/plans/2026-07-30-variant-axis.md",
+      "label": "Native variant axis for @verndale/ui-design-library",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "variant-axis"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 21079,
+      "degree": 4
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -626,9 +656,11 @@
       "prs": [
         "2"
       ],
-      "issues": [],
-      "bytes": 1779,
-      "degree": 5
+      "issues": [
+        "4"
+      ],
+      "bytes": 2119,
+      "degree": 6
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -699,6 +731,26 @@
       "issues": [],
       "bytes": 4794,
       "degree": 15
+    },
+    {
+      "id": "wiki/topics/variant-axis.md",
+      "label": "Variant axis — Design History",
+      "type": "wiki-topic",
+      "dir": "wiki/topics",
+      "topics": [],
+      "aliases": [
+        "variant axis",
+        "structural variant",
+        "native variant",
+        "compound slug",
+        "one canonical many implementations",
+        "slug--variant",
+        "mega menu vs nav bar"
+      ],
+      "prs": [],
+      "issues": [],
+      "bytes": 3532,
+      "degree": 6
     }
   ],
   "edges": [
@@ -813,6 +865,11 @@
       "type": "covers"
     },
     {
+      "source": "wiki/topics/variant-axis.md",
+      "target": "scripts/check-contracts.cjs",
+      "type": "covers"
+    },
+    {
       "source": "AGENTS.md",
       "target": "README.md",
       "type": "links-to",
@@ -898,6 +955,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-30-variant-axis.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -927,6 +991,13 @@
     {
       "source": "wiki/INDEX.md",
       "target": "wiki/topics/storybook-tooling.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/topics/variant-axis.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -995,6 +1066,13 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-07-30-variant-axis.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
       "type": "links-to",
@@ -1058,6 +1136,20 @@
       "anchors": []
     },
     {
+      "source": "wiki/topics/variant-axis.md",
+      "target": "wiki/journal/2026-07-30-variant-axis.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/variant-axis.md",
+      "target": "wiki/plans/2026-07-30-variant-axis.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
       "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
       "type": "plan"
@@ -1070,6 +1162,11 @@
     {
       "source": "wiki/journal/2026-07-27-storybook-review-tooling.md",
       "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-07-30-variant-axis.md",
+      "target": "wiki/plans/2026-07-30-variant-axis.md",
       "type": "plan"
     },
     {
@@ -1103,6 +1200,11 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-07-30-variant-axis.md",
+      "target": "wiki/topics/variant-axis.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -1120,6 +1222,11 @@
     {
       "source": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
       "target": "wiki/topics/storybook-tooling.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-07-30-variant-axis.md",
+      "target": "wiki/topics/variant-axis.md",
       "type": "topic"
     },
     {

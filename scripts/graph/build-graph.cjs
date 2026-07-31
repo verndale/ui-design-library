@@ -109,7 +109,10 @@ function extractLabel(id, type, text) {
   if (type === "component") {
     try {
       const parsed = JSON.parse(text);
-      return parsed.canonical || parsed.slug || path.basename(path.dirname(id));
+      const label = parsed.canonical || parsed.slug || path.basename(path.dirname(id));
+      // Variants share a canonical; disambiguate alternates so the graph does not
+      // render two identically-labelled nodes. The default keeps the bare label.
+      return parsed.variant && parsed.default !== true ? `${label} (${parsed.variant})` : label;
     } catch {
       return path.basename(path.dirname(id));
     }

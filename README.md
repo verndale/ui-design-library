@@ -24,16 +24,19 @@ That is the whole mechanism. Because both sides key on the same slug, a build pi
 ## Layout
 
 ```
-components/<slug>/
-├── <Component>.tsx          the implementation
-├── <Component>.stories.tsx  the API contract — see below
-└── component.json           canonical, slots, variants, tokens, provenance
+components/<slug>/                    a canonical's default implementation
+├── <Component>.tsx                   the implementation
+├── <Component>.stories.tsx           the API contract — see below
+└── component.json                    canonical, slots, variants, tokens, provenance
 
-src/tokens/                  the semantic token layer (the styling contract)
-src/lib/                     shared, dependency-free primitives (focus, scroll)
+components/<slug>--<variant>/         a structurally-distinct implementation of the same
+                                      canonical (optional) — same three files
+
+src/tokens/                           the semantic token layer (the styling contract)
+src/lib/                              shared, dependency-free primitives (focus, scroll)
 ```
 
-`<slug>` is always `kebab(canonical)`, matching the catalog. `pnpm contracts` enforces it.
+A canonical resolves to a directory. In the common case that is one implementation — `components/<slug>/`, `<slug> == kebab(canonical)`, matching the catalog. When a canonical needs more than one *structurally* distinct implementation (a plain nav bar and a mega menu, both **Navigation**), the default stays the bare `components/<slug>/` and each alternate is a sibling `components/<slug>--<variant>/`. Both carry `slug == kebab(canonical)`; `variant` (singular — the structural axis, not the prop-value `variants` array) distinguishes them, and one is the `default`. The key is `(canonical, variant)`. Single-variant components need neither field. `pnpm contracts` enforces all of it.
 
 ---
 
@@ -118,6 +121,13 @@ Then import the token layer once, and components where you need them:
 import { Modal } from '../../ui-design-library/components/modal/Modal';
 ```
 
+A structural variant lives in its own directory; both satisfy the same catalog canonical — import the structure the design resolved to:
+
+```tsx
+import { Navigation } from '../../ui-design-library/components/navigation/Navigation';        // default
+import { MegaMenu } from '../../ui-design-library/components/navigation--mega-menu/MegaMenu'; // alternate
+```
+
 Override any semantic token in your own layer to re-theme. Pin the submodule to a commit and bump it deliberately, the way you already do for the pipeline.
 
 ---
@@ -132,15 +142,18 @@ Captures usually come from labels that **already resolve** — a mature Card or 
 
 Step 2 is a rewrite, not a copy. `component.json`'s `declienting` array records exactly what was stripped, so the cost is visible rather than folklore.
 
+A capture that is a *structurally distinct* take on a canonical the library already ships — a mega menu where **Navigation** ships a plain bar — lands as a new `components/<slug>--<variant>/` directory rather than overwriting the incumbent. Its `component.json` shares the `canonical` and `slug` and sets `variant`; the incumbent gains `variant` and `default: true`. This is the one case where a second capture of the same canonical does not replace the first.
+
 ---
 
 ## Quality gates
 
 ```bash
-pnpm test              # typecheck + contracts + story tests + reduced-motion tests
+pnpm test              # typecheck + contracts + contract self-test + story tests + reduced-motion tests
 pnpm typecheck         # tsc --noEmit
-pnpm contracts         # slug/canonical agreement, declared tokens exist, no raw colours,
-                       # provenance present, stories present, maturity tag matches
+pnpm contracts         # slug/canonical agreement, the variant axis, declared tokens exist,
+                       # no raw colours, provenance present, stories present, maturity tag matches
+pnpm contracts:selftest # exercises the contract checker itself against fixtures
 pnpm test:stories      # every story rendered in Chromium: play functions + axe
 pnpm test:stories:watch # the same, in watch mode
 pnpm test:motion       # `motion`-tagged stories re-run under prefers-reduced-motion

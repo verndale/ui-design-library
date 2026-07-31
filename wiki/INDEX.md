@@ -34,6 +34,9 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-07-31 — [Add the Accordion component](journal/2026-07-31-add-accordion-component.md) — a de-cliented capture of an independently-expandable disclosure set; `aria-expanded`/`aria-controls` header buttons, `inert` collapsed panels skipped by Tab, and a `grid-template-rows` reveal gated on reduced motion, with an optional show-more.
+- 2026-07-31 — [Add the Alert component](journal/2026-07-31-add-alert-component.md) — a de-cliented page-level notification with `positive`/`critical` severity, an announced live region, and optional dismiss/auto-dismiss; introduced the library's first tone tokens.
+- 2026-07-31 — [Add the Toast component](journal/2026-07-31-add-toast-component.md) — a de-cliented transient bottom-anchored confirmation that portals to the body and auto-dismisses, with `neutral`/`critical` live-region semantics, kept deliberately distinct from Alert.
 - 2026-07-30 — [Add the Rich text component](journal/2026-07-30-add-rich-text-component.md) — a de-cliented prose renderer for already-authored content (headings, lists, links) with a default/checkmark list style, styled via Tailwind descendant utilities; the read-only counterpart to a Rich text editor.
 - 2026-07-30 — [Add the Section header component](journal/2026-07-30-add-section-header-component.md) — a de-cliented capture of an eyebrow + h2 + description section intro, with left/center group alignment and the h2/p outline-safety contract kept verbatim.
 - 2026-07-30 — [Native variant axis](journal/2026-07-30-variant-axis.md) — one canonical can now hold structurally-distinct implementations; default on the bare slug, alternates as `components/<slug>--<variant>/`, keyed `(canonical, variant)` and enforced by the contract checker.

@@ -1,0 +1,32 @@
+{
+  "canonical": "Alert",
+  "slug": "alert",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["message", "dismiss"],
+  "variants": ["positive", "critical"],
+  "tokens": [
+    "color-surface-raised",
+    "color-text-primary",
+    "color-tone-positive",
+    "color-tone-critical",
+    "color-border-subtle",
+    "radius-medium",
+    "spacing-m",
+    "spacing-s"
+  ],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-07-30/",
+    "source": "frontend/src/js/shared/banner.ts"
+  },
+  "declienting": [
+    "Ported the imperative showBanner(messageHtml, { variant, dismissMs, className }) utility to a declarative React <Alert>; the messageHtml innerHTML sink became a children: ReactNode slot, which removes the XSS surface, and the caller owns visibility through open.",
+    "Dropped the className override hook: its only caller-specific use was the mini-cart's add-to-cart-banner styling, a commerce coupling (the mini-cart was Rejected as commerce). Presentation is expressed through variant instead.",
+    "Dropped the imperative fixed-position insertion into a client banner container; the library Alert is an in-flow block whose top-of-page placement is the caller's, because page-level positioning is a client-page concern.",
+    "Replaced the inline SVG icon markup with an inline currentColor tone icon per variant; the library ships no Icon component yet.",
+    "Mapped banner.css surface/text classes onto library semantic tokens: the surface to color-surface-raised, text to color-text-primary, and the positive/critical variants to color-tone-positive / color-tone-critical — new status tokens added to src/tokens/semantic.css, since the library had no tone layer; plus border color-border-subtle, box radius-medium, and rhythm spacing-m / spacing-s.",
+    "Kept verbatim: the icon + message + dismiss layout, the role/aria-live pairing per variant (positive → status/polite, critical → alert/assertive), and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Toast rather than merged."
+  ],
+  "maturity": "candidate"
+}

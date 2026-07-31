@@ -2,7 +2,7 @@
 date: 2026-07-30
 topics: [variant-axis]
 plan: plans/2026-07-30-variant-axis.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/5
 ---
 # Native variant axis
 

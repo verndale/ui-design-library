@@ -22,7 +22,7 @@ Totals: 3 implemented (3 plans).
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
-| 2026-07-30 | [Native variant axis](2026-07-30-variant-axis.md) | implemented | pending, [issue #4](https://github.com/verndale/ui-design-library/issues/4) | variant-axis |
+| 2026-07-30 | [Native variant axis](2026-07-30-variant-axis.md) | implemented | pending, [issue #4](https://github.com/verndale/ui-design-library/issues/4), [PR #5](https://github.com/verndale/ui-design-library/pull/5) | variant-axis |
 | 2026-07-27 | [Storybook review addons and reduced-motion coverage](2026-07-27-storybook-review-addons-and-reduced-motion.md) | implemented | pending, [PR #2](https://github.com/verndale/ui-design-library/pull/2) | storybook-tooling, story-testing |
 | 2026-07-26 | [Add story tests and enforce accessibility](2026-07-26-add-story-tests-and-enforce-a11y.md) | implemented | pending, [PR #2](https://github.com/verndale/ui-design-library/pull/2) | story-testing, storybook-tooling |
 

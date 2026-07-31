@@ -1,0 +1,33 @@
+{
+  "canonical": "Toast",
+  "slug": "toast",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["message"],
+  "variants": ["neutral", "critical"],
+  "tokens": [
+    "color-surface-raised",
+    "color-text-primary",
+    "color-tone-critical",
+    "color-border-subtle",
+    "radius-medium",
+    "shadow-overlay",
+    "spacing-l",
+    "spacing-s",
+    "spacing-2xs",
+    "spacing-page-margin"
+  ],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-07-30/",
+    "source": "frontend/src/js/shared/toast.ts"
+  },
+  "declienting": [
+    "Ported the imperative showToast(messageHtml, { variant, dismissMs }) utility to a declarative React <Toast> that portals to document.body with consumer-controlled open; the messageHtml innerHTML sink became a children: ReactNode slot, which removes the XSS surface.",
+    "Replaced the inline SVG status-icon markup with an inline currentColor icon per variant; the library ships no Icon component yet.",
+    "Mapped toast.css surface/text classes onto library semantic tokens: surface color-surface-raised, text color-text-primary, and the critical variant color-tone-critical — a new tone token added to src/tokens/semantic.css, since the library had no tone layer; plus border color-border-subtle, box radius-medium, elevation shadow-overlay, the bottom offset spacing-l, and inline padding spacing-s / spacing-2xs.",
+    "Drove the entrance animation through the --animate-fade-in / --duration-base tokens, so the reduced-motion media query is the single switch that collapses it, rather than a bespoke component keyframe.",
+    "Kept verbatim: the role/aria-live pairing per variant (neutral → status/polite, critical → alert/assertive) and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Alert rather than merged."
+  ],
+  "maturity": "candidate"
+}

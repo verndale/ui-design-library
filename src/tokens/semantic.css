@@ -52,6 +52,13 @@
   --color-control-disabled-bg: #e3e6ea;
   --color-control-disabled-text: #9aa1ab;
 
+  /* Tone — status feedback. The one place the neutral palette carries meaning:
+     positive/critical convey an outcome on Alert and Toast. Deliberately
+     unbranded defaults a project maps onto; both clear WCAG AA contrast against
+     surface-raised, as text and as a non-text accent. */
+  --color-tone-positive: #067647;
+  --color-tone-critical: #b42318;
+
   /* Link */
   --color-link: #1d2025;
 

@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 58,
-    "edges": 94,
+    "nodes": 64,
+    "edges": 100,
     "byType": {
       "surface": 21,
       "root-doc": 4,
-      "component": 13,
+      "component": 16,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 9,
+      "wiki-journal": 12,
       "wiki-plan": 3,
       "wiki-topic": 4
     },
     "byEdgeType": {
       "covers": 23,
-      "links-to": 42,
+      "links-to": 45,
       "plan": 4,
       "topic": 12,
-      "uses-tokens": 13
+      "uses-tokens": 16
     }
   },
   "nodes": [
@@ -140,6 +140,30 @@
       "issues": [],
       "bytes": 310,
       "degree": 0
+    },
+    {
+      "id": "components/accordion/component.json",
+      "label": "Accordion",
+      "type": "component",
+      "dir": "components/accordion",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2342,
+      "degree": 1
+    },
+    {
+      "id": "components/alert/component.json",
+      "label": "Alert",
+      "type": "component",
+      "dir": "components/alert",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2105,
+      "degree": 1
     },
     {
       "id": "components/avatar/component.json",
@@ -298,6 +322,18 @@
       "degree": 1
     },
     {
+      "id": "components/toast/component.json",
+      "label": "Toast",
+      "type": "component",
+      "dir": "components/toast",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1864,
+      "degree": 1
+    },
+    {
       "id": "CONTRIBUTING.md",
       "label": "Contributing",
       "type": "root-doc",
@@ -450,8 +486,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3896,
-      "degree": 14
+      "bytes": 4260,
+      "degree": 17
     },
     {
       "id": "vitest.config.ts",
@@ -498,8 +534,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6408,
-      "degree": 18
+      "bytes": 7297,
+      "degree": 21
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -639,6 +675,42 @@
       ],
       "bytes": 4382,
       "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-07-31-add-accordion-component.md",
+      "label": "Add the Accordion component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2168,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-07-31-add-alert-component.md",
+      "label": "Add the Alert component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2051,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-07-31-add-toast-component.md",
+      "label": "Add the Toast component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1701,
+      "degree": 1
     },
     {
       "id": "wiki/MECHANICS.md",
@@ -1037,6 +1109,27 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-31-add-accordion-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-31-add-alert-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-31-add-toast-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -1305,6 +1398,18 @@
       "type": "topic"
     },
     {
+      "source": "components/accordion/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 8
+    },
+    {
+      "source": "components/alert/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 8
+    },
+    {
       "source": "components/avatar/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
@@ -1381,6 +1486,12 @@
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 5
+    },
+    {
+      "source": "components/toast/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 10
     }
   ]
 }

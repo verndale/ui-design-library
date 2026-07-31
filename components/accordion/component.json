@@ -1,0 +1,32 @@
+{
+  "canonical": "Accordion",
+  "slug": "accordion",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["heading", "items"],
+  "variants": ["default", "standalone", "show-more"],
+  "tokens": [
+    "color-text-primary",
+    "color-text-secondary",
+    "color-border-subtle",
+    "color-border-focus",
+    "radius-medium",
+    "spacing-m",
+    "spacing-s",
+    "spacing-2xs"
+  ],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-07-30/",
+    "source": "frontend/src/html/modules/accordion/accordion.hbs"
+  },
+  "declienting": [
+    "Ported the Handlebars template and the vanilla frontend/src/js/modules/accordion.ts behaviour module to a React component; the data-module/data-initial-item-count/data-more-label/data-less-label attribute wiring became items, initialItemCount, and moreLabel/lessLabel props with component state, and the {{> accordion-item}} partial became the items array.",
+    "Replaced the hand-written height animation (a transitionend handler torn down through a pendingTransitionHandlers WeakMap) with a CSS grid-template-rows 0fr→1fr transition; reduced motion is handled by the --duration-base token, which the token layer zeroes under prefers-reduced-motion, rather than a JS prefersReducedMotion branch.",
+    "Replaced setPanelInteractivity, which gated a FOCUSABLE_SELECTOR set to keep collapsed content out of the tab order, with the native inert attribute on the collapsed panel — same effect, no selector list.",
+    "Replaced the {{> svg name=\"add-circle-16\" }} / minus-circle-16 sprite icons with an inline currentColor SVG that swaps plus for minus; the library ships no Icon component yet.",
+    "Mapped the BEM classes (accordion__item / __toggle / __panel / --standalone) and design-system utilities onto library semantic tokens: labels color-text-primary, panel body color-text-secondary, dividers color-border-subtle, the focus ring color-border-focus, the vertical rhythm spacing-m / spacing-s / spacing-2xs, and the standalone box radius-medium.",
+    "Kept verbatim: aria-expanded on each toggle, aria-controls linking each button to its panel, headers wrapped in an h3 for heading navigation, the collapsed-panel focus gating, and the reduced-motion short-circuit — the accessibility contract that made it worth capturing."
+  ],
+  "maturity": "candidate"
+}

@@ -9,6 +9,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Reduced-motion coverage](../../wiki/journal/2026-07-27-reduced-motion-coverage.md) → [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md)
 - [Story tests and the a11y gate](../../wiki/journal/2026-07-27-story-tests-and-a11y-gate.md) → [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md)
 - [Storybook review tooling](../../wiki/journal/2026-07-27-storybook-review-tooling.md) → [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md)
+- [Native variant axis](../../wiki/journal/2026-07-30-variant-axis.md) → [Native variant axis for @verndale/ui-design-library](../../wiki/plans/2026-07-30-variant-axis.md)
 
 ## Page → topic
 
@@ -18,10 +19,12 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Story tests and the a11y gate](../../wiki/journal/2026-07-27-story-tests-and-a11y-gate.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Story tests and the a11y gate](../../wiki/journal/2026-07-27-story-tests-and-a11y-gate.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review tooling](../../wiki/journal/2026-07-27-storybook-review-tooling.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
+- [Native variant axis](../../wiki/journal/2026-07-30-variant-axis.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
+- [Native variant axis for @verndale/ui-design-library](../../wiki/plans/2026-07-30-variant-axis.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 
 ## Topic → covered surface
 
@@ -47,6 +50,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md) → [preview.ts](../../.storybook/preview.ts)
 - [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md) → [withDirection.tsx](../../.storybook/withDirection.tsx)
 - [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md) → [check-contracts.cjs](../../scripts/check-contracts.cjs)
+- [Variant axis — Design History](../../wiki/topics/variant-axis.md) → [check-contracts.cjs](../../scripts/check-contracts.cjs)
 
 ## Cross-area links (seams)
 

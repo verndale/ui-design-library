@@ -22,6 +22,7 @@
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
     "contracts": "node scripts/check-contracts.cjs",
+    "contracts:selftest": "node scripts/check-contracts.selftest.cjs",
     "graph:build": "node scripts/graph/build-graph.cjs",
     "graph:view": "node scripts/graph/serve.cjs",
     "graph:navigate": "node scripts/wiki/navigate.cjs",
@@ -30,7 +31,7 @@
     "test:stories": "vitest run -c vitest.config.ts",
     "test:stories:watch": "vitest -c vitest.config.ts",
     "test:motion": "vitest run -c vitest.motion.config.ts",
-    "test": "pnpm typecheck && pnpm contracts && pnpm test:stories && pnpm test:motion"
+    "test": "pnpm typecheck && pnpm contracts && pnpm contracts:selftest && pnpm test:stories && pnpm test:motion"
   },
   "peerDependencies": {
     "embla-carousel-react": "^8.0.0",

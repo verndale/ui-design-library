@@ -28,11 +28,13 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 - [Knowledge graph & wiki automation](topics/graph-wiki-subsystem.md) — the deterministic graph + Sigma.js viewer and the wiki-sync / wiki-issue-sync bots, ported from ui-design-brain.
 - [Story testing](topics/story-testing.md) — the story-as-test layer: the runner, what belongs in a `play` function, the a11y gate, and the reduced-motion project.
 - [Storybook tooling](topics/storybook-tooling.md) — the browsing and review surface: autodocs, pseudo-states, the direction toggle, maturity badges, viewport and backgrounds.
+- [Variant axis](topics/variant-axis.md) — one catalog canonical, more than one structurally-distinct implementation, keyed `(canonical, variant)` → `components/<slug>--<variant>/`.
 
 ## Journal
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-07-30 — [Native variant axis](journal/2026-07-30-variant-axis.md) — one canonical can now hold structurally-distinct implementations; default on the bare slug, alternates as `components/<slug>--<variant>/`, keyed `(canonical, variant)` and enforced by the contract checker.
 - 2026-07-30 — [Add the Stat component](journal/2026-07-30-add-stat-component.md) — a de-cliented capture of a client's StatCard/DetailStats: `Stat` (the value + label figure) and `StatGroup` (the sr-only-heading + `aria-labelledby` accessible-name contract), with a row/column orientation.
 - 2026-07-27 — [Knowledge graph + wiki automation](journal/2026-07-27-graph-and-wiki-automation.md) — ported the graph builder/viewer and the wiki-sync / wiki-issue-sync bots, reversing the earlier "no automation" omission; added and then removed the CI freshness gate on direction.
 - 2026-07-27 — [Reduced-motion coverage](journal/2026-07-27-reduced-motion-coverage.md) — a second Vitest config re-runs `motion`-tagged stories under an emulated `prefers-reduced-motion`, closing the one documented contract with no coverage.

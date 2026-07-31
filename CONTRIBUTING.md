@@ -16,7 +16,7 @@ Nothing consumes this repo through a registry — projects pin it as a git submo
 
 Enforced by `pnpm contracts`:
 
-1. **Slug equality** — `components/<slug>/` with `slug == kebab(canonical)` from `ui-design-brain`.
+1. **Slug equality** — `components/<slug>/` with `slug == kebab(canonical)` from `ui-design-brain`. A canonical with more than one structural implementation keeps its default on the bare slug and adds each alternate as `components/<slug>--<variant>/` (same `canonical`/`slug`, distinct `variant`, one `default`).
 2. **Stories exist** — the story file is the API contract, not documentation.
 3. **Semantic tokens only** — no raw colours, no client brand names. Declared tokens must exist in `src/tokens/semantic.css`.
 
@@ -32,6 +32,7 @@ Start from a capture in a `project-retrospective` run. Executing it is a rewrite
 4. Write stories covering the default, each variant, and the edge states that break layouts (empty, very long, missing optional slot).
 5. Fill `component.json`, including the `declienting` array — every removal, specifically. "Minor cleanup" is not an entry.
 6. Land as `maturity: "candidate"`.
+7. If the capture is a structurally-distinct implementation of a canonical already in the library (a mega menu where Navigation ships a plain bar), land it as `components/<slug>--<variant>/` rather than overwriting the incumbent: share the `canonical` and `slug`, set `variant`, mark exactly one implementation `default: true`, and title the variant's stories `<Canonical> / <label>`. `pnpm contracts` checks the axis holds. This is separate from the `variants` array, which stays the list of prop-value options within one implementation.
 
 ## Verify the behaviour, not the markup
 
@@ -63,4 +64,5 @@ Enforced by the `commit-msg` hook and in CI. `pnpm commit` generates a pre-valid
 - Do not add a runtime dependency without a strong reason — prefer CSS and a small primitive.
 - Do not copy a component in from a client project without de-clienting it and recording what came out.
 - Do not promote a component to `supported` as a side effect of another change.
+- Do not fold a structurally-distinct implementation into an existing component's `variants` array. That array is prop-value options; a mega menu is a `variant` **directory**, not a Navigation prop.
 - Do not commit secrets or `.env`.

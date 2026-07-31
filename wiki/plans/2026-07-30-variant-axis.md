@@ -1,7 +1,10 @@
 ---
 status: implemented
 executed: 2026-07-30
-evidence: ["pending — maintainer commits", "issue #4"]
+evidence:
+  - "pending — maintainer commits"
+  - "issue #4"
+  - "PR #5 https://github.com/verndale/ui-design-library/pull/5 (merged 2026-07-31)"
 source_tool: claude
 source: ~/.claude/plans/brief-native-variant-modular-cray.md
 topics: [variant-axis]

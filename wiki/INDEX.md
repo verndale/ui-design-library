@@ -34,6 +34,8 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-07-30 — [Add the Rich text component](journal/2026-07-30-add-rich-text-component.md) — a de-cliented prose renderer for already-authored content (headings, lists, links) with a default/checkmark list style, styled via Tailwind descendant utilities; the read-only counterpart to a Rich text editor.
+- 2026-07-30 — [Add the Section header component](journal/2026-07-30-add-section-header-component.md) — a de-cliented capture of an eyebrow + h2 + description section intro, with left/center group alignment and the h2/p outline-safety contract kept verbatim.
 - 2026-07-30 — [Native variant axis](journal/2026-07-30-variant-axis.md) — one canonical can now hold structurally-distinct implementations; default on the bare slug, alternates as `components/<slug>--<variant>/`, keyed `(canonical, variant)` and enforced by the contract checker.
 - 2026-07-30 — [Add the Stat component](journal/2026-07-30-add-stat-component.md) — a de-cliented capture of a client's StatCard/DetailStats: `Stat` (the value + label figure) and `StatGroup` (the sr-only-heading + `aria-labelledby` accessible-name contract), with a row/column orientation.
 - 2026-07-27 — [Knowledge graph + wiki automation](journal/2026-07-27-graph-and-wiki-automation.md) — ported the graph builder/viewer and the wiki-sync / wiki-issue-sync bots, reversing the earlier "no automation" omission; added and then removed the CI freshness gate on direction.

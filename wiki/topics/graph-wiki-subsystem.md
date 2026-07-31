@@ -18,6 +18,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-07-31 — feat(ui-design-library): Add RichText and SectionHeader components ([PR #8](https://github.com/verndale/ui-design-library/pull/8))
 - 2026-07-31 — feat(ui-design-library): Enhance documentation on structural variants ([PR #5](https://github.com/verndale/ui-design-library/pull/5))
 - 2026-07-27 — feat(ci): Implement automated wiki issue synchronization ([PR #2](https://github.com/verndale/ui-design-library/pull/2))
 - 2026-07-27 — Fixed a real bug found while verifying the ported viewer actually renders: Sigma was constructed synchronously before the flex-derived `#graph` width was guaranteed to exist, throwing `Container has no width` on some fresh loads — silently, since `init()`'s trailing call had no `.catch()`. Reproduced on repeated clean reloads. Fixed with a two-`requestAnimationFrame` wait before construction, plus a try/catch in `init()` so any future failure surfaces on the page instead of an indefinite "loading…" ([journal](../journal/2026-07-27-graph-and-wiki-automation.md)).

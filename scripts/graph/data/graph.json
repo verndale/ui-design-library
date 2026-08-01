@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 64,
-    "edges": 100,
+    "nodes": 68,
+    "edges": 104,
     "byType": {
       "surface": 21,
       "root-doc": 4,
-      "component": 16,
+      "component": 18,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 12,
+      "wiki-journal": 14,
       "wiki-plan": 3,
       "wiki-topic": 4
     },
     "byEdgeType": {
       "covers": 23,
-      "links-to": 45,
+      "links-to": 47,
       "plan": 4,
       "topic": 12,
-      "uses-tokens": 16
+      "uses-tokens": 18
     }
   },
   "nodes": [
@@ -238,6 +238,18 @@
       "degree": 1
     },
     {
+      "id": "components/image/component.json",
+      "label": "Image",
+      "type": "component",
+      "dir": "components/image",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1131,
+      "degree": 1
+    },
+    {
       "id": "components/link/component.json",
       "label": "Link",
       "type": "component",
@@ -307,6 +319,18 @@
       "prs": [],
       "issues": [],
       "bytes": 1717,
+      "degree": 1
+    },
+    {
+      "id": "components/slider/component.json",
+      "label": "Slider",
+      "type": "component",
+      "dir": "components/slider",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1457,
       "degree": 1
     },
     {
@@ -487,7 +511,7 @@
       "prs": [],
       "issues": [],
       "bytes": 4260,
-      "degree": 17
+      "degree": 19
     },
     {
       "id": "vitest.config.ts",
@@ -534,8 +558,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7297,
-      "degree": 21
+      "bytes": 7924,
+      "degree": 23
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -702,6 +726,30 @@
       ],
       "issues": [],
       "bytes": 2097,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-07-31-add-image-component.md",
+      "label": "Add the Image component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2810,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-07-31-add-slider-component.md",
+      "label": "Add the Slider component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2905,
       "degree": 1
     },
     {
@@ -1130,6 +1178,20 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-31-add-image-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-07-31-add-slider-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-07-31-add-toast-component.md",
       "type": "links-to",
       "count": 1,
@@ -1453,6 +1515,12 @@
       "count": 6
     },
     {
+      "source": "components/image/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 1
+    },
+    {
       "source": "components/link/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
@@ -1487,6 +1555,12 @@
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 5
+    },
+    {
+      "source": "components/slider/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 9
     },
     {
       "source": "components/stat/component.json",

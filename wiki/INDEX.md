@@ -34,6 +34,8 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-07-31 — [Add the Slider component](journal/2026-07-31-add-slider-component.md) — a de-cliented slider over named options rather than a numeric range; the native input carries the index while the API speaks in values, and `aria-valuetext` announces the option label instead of the raw number.
+- 2026-07-31 — [Add the Image component](journal/2026-07-31-add-image-component.md) — a de-cliented responsive `<picture>` whose URL composition is an injectable `loader`; keeps the WebP-before-fallback source ordering and always-emitted intrinsic dimensions, and degrades to a plain `<img>` when no loader is supplied.
 - 2026-07-31 — [Add the Accordion component](journal/2026-07-31-add-accordion-component.md) — a de-cliented capture of an independently-expandable disclosure set; `aria-expanded`/`aria-controls` header buttons, `inert` collapsed panels skipped by Tab, and a `grid-template-rows` reveal gated on reduced motion, with an optional show-more.
 - 2026-07-31 — [Add the Alert component](journal/2026-07-31-add-alert-component.md) — a de-cliented page-level notification with `positive`/`critical` severity, an announced live region, and optional dismiss/auto-dismiss; introduced the library's first tone tokens.
 - 2026-07-31 — [Add the Toast component](journal/2026-07-31-add-toast-component.md) — a de-cliented transient bottom-anchored confirmation that portals to the body and auto-dismisses, with `neutral`/`critical` live-region semantics, kept deliberately distinct from Alert.

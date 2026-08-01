@@ -1,0 +1,23 @@
+{
+  "canonical": "Image",
+  "slug": "image",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["fallback"],
+  "variants": ["default", "rounded"],
+  "tokens": ["radius-medium"],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-07-31/",
+    "source": "frontend/src/html/components/picture.hbs"
+  },
+  "declienting": [
+    "hardcoded ?w=&h=&format=webp transform-query contract replaced with an injectable loader prop that owns URL composition",
+    "multiply Handlebars helper for 2x descriptors replaced with the loader being called at double the requested width and height",
+    "hardcoded placeholder image host (the unsplashId branch) removed entirely; placeholder sourcing moved to Storybook args",
+    "rounded-lg overflow-hidden replaced with the rounded-medium semantic radius",
+    "the two duplicated markup branches collapsed to one; with no loader the component renders a plain <img> rather than claiming WebP alternates it cannot generate",
+    "added decoding=\"async\" and a block/max-w-full box, which the source markup left to ambient client CSS"
+  ],
+  "maturity": "candidate"
+}

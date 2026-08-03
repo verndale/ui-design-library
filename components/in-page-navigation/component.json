@@ -1,0 +1,34 @@
+{
+  "canonical": "In-page navigation",
+  "slug": "in-page-navigation",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["item"],
+  "variants": ["default", "mobile-collapsed"],
+  "tokens": [
+    "color-surface-raised",
+    "color-border-subtle",
+    "color-border-focus",
+    "color-text-primary",
+    "color-text-secondary",
+    "radius-pill",
+    "radius-medium",
+    "spacing-2xs",
+    "spacing-xs",
+    "spacing-s"
+  ],
+  "provenance": {
+    "project": "canadian-national",
+    "run": "runs/canadian-national/2026-08-03/",
+    "source": "cn-website/src/components/renderings/navigation/jumplinks/Jumplinks.client.tsx"
+  },
+  "declienting": [
+    "Removed the Sitecore rendering wiring (params/rendering/page and the client heading-scan helpers in Jumplinks.helpers.ts); the component now takes an explicit items list of { id, label } where id is the target section's DOM id, so it no longer scans the page for H2s or depends on the CMS.",
+    "Reimplemented the scroll-spy dependency-free with a local IntersectionObserver hook (useActiveSection) over the section targets, with an optional controlled activeId override; the client version coupled its active-section logic to the project's heading model.",
+    "Mapped the client sticky-bar and pill token utilities onto library semantic tokens: the bar surface to bg-surface-raised, its border to border-border-subtle, the focus ring to outline-border-focus, the active/idle link colours to text-text-primary/text-text-secondary, the pill and drawer radii to rounded-pill/rounded-medium, and the paddings/gaps to the spacing-2xs/xs/s utilities.",
+    "Replaced the client SVG chevron asset with an inline currentColor chevron; the library ships no Icon component yet.",
+    "Replaced the fixed reveal transition with grid-template-rows 0fr→1fr on duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
+    "Kept verbatim: the <nav aria-label=\"On this page\"> landmark, aria-current on the active link, native anchor links (Tab reaches them, Enter activates), the mobile trigger's aria-expanded/aria-controls, and the collapsed drawer's inert gating out of the tab order — the accessibility contract that made it worth capturing."
+  ],
+  "maturity": "candidate"
+}

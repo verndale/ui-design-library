@@ -2,7 +2,7 @@
 date: 2026-08-03
 topics: []
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/16
 ---
 # Add the Tabs component
 

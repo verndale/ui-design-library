@@ -18,6 +18,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-03 — feat(ui-design-library): Add in-page navigation component ([PR #16](https://github.com/verndale/ui-design-library/pull/16))
 - 2026-08-01 — feat(ui-design-library): Add Image and Slider components with stories ([PR #13](https://github.com/verndale/ui-design-library/pull/13))
 - 2026-07-31 — feat(ui-design-library): Add Accordion, Alert, and Toast components ([PR #11](https://github.com/verndale/ui-design-library/pull/11))
 - 2026-07-31 — feat(ui-design-library): Add RichText and SectionHeader components ([PR #8](https://github.com/verndale/ui-design-library/pull/8))

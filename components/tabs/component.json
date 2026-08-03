@@ -1,0 +1,32 @@
+{
+  "canonical": "Tabs",
+  "slug": "tabs",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["items"],
+  "variants": ["pill"],
+  "tokens": [
+    "color-surface-inverse",
+    "color-text-inverse",
+    "color-text-secondary",
+    "color-text-primary",
+    "color-border-focus",
+    "radius-pill",
+    "spacing-2xs",
+    "spacing-m"
+  ],
+  "provenance": {
+    "project": "canadian-national",
+    "run": "runs/canadian-national/2026-08-03/",
+    "source": "cn-website/src/components/ui/tabs/Tabs.tsx"
+  },
+  "declienting": [
+    "Renamed the export from PillTabs to Tabs (the canonical); the PillTabItem/PillTabsProps types became TabItem/TabsProps.",
+    "Added an uncontrolled mode (defaultActiveId, with activeId + onSelect as an optional controlled override), matching the library's Slider convention; the client component was controlled-only (required activeId/onSelect).",
+    "Mapped the client Tailwind utilities onto library semantic tokens: the selected segment bg-background-inverse/text-links-inverse became bg-surface-inverse/text-text-inverse, the unselected text-text-tertiary became text-text-secondary (the library has no tertiary text token) with hover text-text-primary, the pill radius rounded-(--radius-pill) became rounded-pill, and the client spacing gap-padding-4xs/px-padding-m/py-padding-xxs became gap-2xs/px-m/py-2xs.",
+    "Replaced the client font-family-body/text-ui-md typography utilities with the library's text-base — the library ships no client type scale.",
+    "Replaced the fixed duration-200 ease-out + motion-reduce:transition-none transition with duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
+    "Kept verbatim: role=tablist/role=tab, aria-selected, the roving tabIndex (0 on the selected tab, -1 on the rest), the ArrowLeft/ArrowRight selection-and-focus loop with wraparound, and the items.length < 2 keyboard guard — the accessibility contract that made it worth capturing."
+  ],
+  "maturity": "candidate"
+}

@@ -34,6 +34,8 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-03 — [Add the Tabs component](journal/2026-08-03-add-tabs-component.md) — a de-cliented pill `tablist`: roving `tabIndex`, `aria-selected`, and an ArrowLeft/ArrowRight selection-and-focus loop with wraparound; controlled or uncontrolled, presentation only.
+- 2026-08-03 — [Add the In-page navigation component](journal/2026-08-03-add-in-page-navigation-component.md) — a de-cliented "on this page" section-nav: an `IntersectionObserver` scroll-spy driving `aria-current` in a `<nav>` landmark, a wide-viewport pill bar collapsing to an `inert`-gated mobile drawer.
 - 2026-07-31 — [Add the Slider component](journal/2026-07-31-add-slider-component.md) — a de-cliented slider over named options rather than a numeric range; the native input carries the index while the API speaks in values, and `aria-valuetext` announces the option label instead of the raw number.
 - 2026-07-31 — [Add the Image component](journal/2026-07-31-add-image-component.md) — a de-cliented responsive `<picture>` whose URL composition is an injectable `loader`; keeps the WebP-before-fallback source ordering and always-emitted intrinsic dimensions, and degrades to a plain `<img>` when no loader is supplied.
 - 2026-07-31 — [Add the Accordion component](journal/2026-07-31-add-accordion-component.md) — a de-cliented capture of an independently-expandable disclosure set; `aria-expanded`/`aria-controls` header buttons, `inert` collapsed panels skipped by Tab, and a `grid-template-rows` reveal gated on reduced motion, with an optional show-more.

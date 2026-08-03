@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 68,
-    "edges": 104,
+    "nodes": 72,
+    "edges": 108,
     "byType": {
       "surface": 21,
       "root-doc": 4,
-      "component": 18,
+      "component": 20,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 14,
+      "wiki-journal": 16,
       "wiki-plan": 3,
       "wiki-topic": 4
     },
     "byEdgeType": {
       "covers": 23,
-      "links-to": 47,
+      "links-to": 49,
       "plan": 4,
       "topic": 12,
-      "uses-tokens": 18
+      "uses-tokens": 20
     }
   },
   "nodes": [
@@ -250,6 +250,18 @@
       "degree": 1
     },
     {
+      "id": "components/in-page-navigation/component.json",
+      "label": "In-page navigation",
+      "type": "component",
+      "dir": "components/in-page-navigation",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2337,
+      "degree": 1
+    },
+    {
       "id": "components/link/component.json",
       "label": "Link",
       "type": "component",
@@ -343,6 +355,18 @@
       "prs": [],
       "issues": [],
       "bytes": 2419,
+      "degree": 1
+    },
+    {
+      "id": "components/tabs/component.json",
+      "label": "Tabs",
+      "type": "component",
+      "dir": "components/tabs",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2078,
       "degree": 1
     },
     {
@@ -511,7 +535,7 @@
       "prs": [],
       "issues": [],
       "bytes": 4260,
-      "degree": 19
+      "degree": 21
     },
     {
       "id": "vitest.config.ts",
@@ -558,8 +582,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7924,
-      "degree": 23
+      "bytes": 8507,
+      "degree": 25
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -768,6 +792,30 @@
       ],
       "issues": [],
       "bytes": 1747,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-08-03-add-in-page-navigation-component.md",
+      "label": "Add the In-page navigation component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2297,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-08-03-add-tabs-component.md",
+      "label": "Add the Tabs component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2081,
       "degree": 1
     },
     {
@@ -1204,6 +1252,20 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-03-add-in-page-navigation-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-03-add-tabs-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -1526,6 +1588,12 @@
       "count": 1
     },
     {
+      "source": "components/in-page-navigation/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 10
+    },
+    {
       "source": "components/link/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
@@ -1572,6 +1640,12 @@
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 5
+    },
+    {
+      "source": "components/tabs/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 8
     },
     {
       "source": "components/toast/component.json",

@@ -65,7 +65,9 @@ jobs:
         run: pnpm build
 
       - name: Inspect packed artifact
-        run: npm publish --dry-run --ignore-scripts
+        # package.json intentionally stays on a prerelease development version;
+        # npm requires an explicit non-latest tag even for a publish dry run.
+        run: npm publish --dry-run --ignore-scripts --tag development
 
       - name: Release
         env:

@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["title", "eyebrow", "description", "children", "footer"],
   "variants": ["medium", "large"],
+  "reuseFingerprint": {
+    "slots": ["heading", "body", "footer", "close"],
+    "affordance": "contain",
+    "role": "container"
+  },
   "tokens": [
     "color-surface-raised",
     "color-surface-inverse",

@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["message", "dismiss"],
   "variants": ["positive", "critical"],
+  "reuseFingerprint": {
+    "slots": ["body", "close"],
+    "affordance": "feedback",
+    "role": "notification"
+  },
   "tokens": [
     "color-surface-raised",
     "color-text-primary",

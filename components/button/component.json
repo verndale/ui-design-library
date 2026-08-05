@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["children", "startIcon", "endIcon"],
   "variants": ["primary", "secondary", "ghost", "light", "dark", "large", "medium", "small"],
+  "reuseFingerprint": {
+    "slots": ["action", "icon"],
+    "affordance": "trigger",
+    "role": "action-group"
+  },
   "tokens": [
     "color-control-primary-bg", "color-control-primary-text", "color-control-primary-bg-hover",
     "color-control-secondary-bg", "color-control-secondary-text", "color-control-secondary-border",

@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["results"],
   "variants": [],
+  "reuseFingerprint": {
+    "slots": ["field", "panel", "action"],
+    "affordance": "input",
+    "role": "container"
+  },
   "tokens": [
     "color-surface-raised",
     "color-surface-sunken",

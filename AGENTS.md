@@ -4,7 +4,7 @@ Guidance for any AI coding agent (Claude Code, Codex, Cursor, Copilot, …) work
 
 ## What this repo is
 
-`@verndale/ui-design-library` is the private component library for the frontend platform. Components are keyed by [`ui-design-brain`](https://github.com/verndale/ui-design-brain) canonical slugs so a resolved design label maps deterministically to an implementation. Consumed as a git submodule and imported from source — there is no build step and nothing is published.
+`@verndale/ui-design-library` is the public npm component library for the frontend platform. Components are keyed by [`ui-design-brain`](https://github.com/verndale/ui-design-brain) canonical slugs so a resolved design label maps deterministically to an implementation. Consumers install one exact version and import compiled `@verndale/ui-design-library/components/<directory>` subpaths.
 
 See [README.md](README.md) for the layout and the consumption model.
 
@@ -15,6 +15,8 @@ Everything here exists to keep these true. `pnpm contracts` enforces them.
 1. **Slug equality.** A canonical resolves to a directory by its slug: `components/<slug>/` where `slug == kebab(canonical)`, matching the catalog. When one canonical holds structurally-distinct implementations, the default keeps the bare slug and each alternate is `components/<slug>--<variant>/` — same `canonical`, same `slug`, a distinct `variant`, exactly one marked `default`. The key is `(canonical, variant)`, deterministic either way. This is the whole lookup mechanism — break it and the library stops being deterministically usable.
 2. **The story file is the API contract.** Every prop declared in `argTypes` with a control and a description. A component without stories is not reusable, because nobody can see its surface.
 3. **Semantic tokens only.** Components reference `bg-surface-raised`, never a hex value and never a client's brand token. A raw colour in a component fails the check. Values live in `src/tokens/semantic.css`; consuming projects override them.
+
+Every manifest also carries `reuseFingerprint`: the AI pipeline's governed structural slots, primary affordance, and content role. It is not the existing API-level `slots` list. `pnpm contracts` rejects missing, malformed, ungoverned, or duplicate fingerprint values.
 
 ## Adding a component
 
@@ -27,7 +29,7 @@ Components arrive as **captures** from a `project-retrospective` run, and execut
 
 Record every removal in `component.json`'s `declienting` array. That list is the honest cost of the rewrite, and the next person reads it to estimate the one after.
 
-New components land as `maturity: "candidate"`. Promoting to `supported` is a deliberate human decision, not a side effect of editing.
+New components land as `maturity: "candidate"`. Promoting to `supported` is a deliberate human decision, not a side effect of editing. After adding or removing a component, run `pnpm exports:sync`; normal test/build/prepack paths only check the committed export map and never rewrite it.
 
 ### Structural variants
 
@@ -49,7 +51,7 @@ Note there are **two** mechanisms and they fail independently: the token collaps
 
 ## Environment
 
-Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs the typecheck, the contract checks, and the story tests — that is the gate. `pnpm storybook` to browse.
+Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs the typecheck, contract/export checks, and story tests. `pnpm build` emits compiled ESM and declarations and verifies every public export. `pnpm storybook` browses the source stories.
 
 ## Context wiki
 
@@ -63,4 +65,4 @@ Two things worth knowing before you read it. A pre-commit hook rebuilds the know
 
 **Permission boundary:** edit under `components/` and `src/` freely. Everything below is the maintainer's.
 
-**Do not commit, push, merge, or tag.** Make the changes, run `pnpm test`, then stop and hand back. The maintainer commits with `pnpm commit` and pushes.
+**Do not commit, push, merge, tag, or publish.** Make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. The maintainer commits with `pnpm commit` and pushes; a merge to `main` is the only release trigger.

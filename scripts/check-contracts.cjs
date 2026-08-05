@@ -23,6 +23,8 @@
  *   8. Variant stories do not collide: the default's title is the canonical, an
  *      alternate's nests under it as "<Canonical> / <label>", and titles within
  *      a canonical are distinct.
+ *   9. Each component carries the AI reuse compatibility triad using the shared
+ *      governed slot, affordance, and role vocabulary.
  *
  * `variant` (singular) is the structural axis checked here. The free-form
  * `variants` array (a component's prop-value options) is a different thing and
@@ -41,6 +43,38 @@ const COMPONENTS = path.join(ROOT, 'components');
 const TOKENS = path.join(ROOT, 'src/tokens/semantic.css');
 
 const MATURITIES = ['candidate', 'supported', 'deprecated'];
+const REUSE_SLOTS = [
+  'media',
+  'heading',
+  'body',
+  'meta',
+  'action',
+  'badge',
+  'icon',
+  'footer',
+  'stat',
+  'chart',
+  'avatar',
+  'caption',
+  'toolbar',
+  'field',
+  'panel',
+  'row',
+  'close',
+  'other',
+];
+const REUSE_AFFORDANCES = ['navigate', 'display', 'input', 'expand', 'select', 'trigger', 'contain', 'feedback', 'other'];
+const REUSE_ROLES = [
+  'entity-summary',
+  'metric',
+  'media-showcase',
+  'editorial',
+  'action-group',
+  'container',
+  'structural',
+  'notification',
+  'other',
+];
 // A hex or rgb() literal in a component means a value escaped the token layer.
 const RAW_COLOR = /(#[0-9a-fA-F]{3,8}\b|\brgba?\()/;
 
@@ -80,6 +114,42 @@ function listComponentDirs(componentsDir) {
         .map((e) => e.name)
         .sort()
     : [];
+}
+
+function validateReuseFingerprint(contract, dirName, fail) {
+  const fingerprint = contract.reuseFingerprint;
+  if (!fingerprint || typeof fingerprint !== 'object' || Array.isArray(fingerprint)) {
+    fail(`[reuse] components/${dirName} is missing reuseFingerprint`);
+    return;
+  }
+
+  const expectedKeys = ['affordance', 'role', 'slots'];
+  const actualKeys = Object.keys(fingerprint).sort();
+  if (JSON.stringify(actualKeys) !== JSON.stringify(expectedKeys)) {
+    fail(`[reuse] components/${dirName} reuseFingerprint keys must be exactly ${expectedKeys.join(', ')}`);
+  }
+
+  if (!Array.isArray(fingerprint.slots) || fingerprint.slots.length === 0) {
+    fail(`[reuse] components/${dirName} reuseFingerprint.slots must be a non-empty array`);
+  } else {
+    const seenSlots = new Set();
+    for (const slot of fingerprint.slots) {
+      if (!REUSE_SLOTS.includes(slot)) {
+        fail(`[reuse] components/${dirName} reuseFingerprint slot "${slot}" is not governed`);
+      }
+      if (seenSlots.has(slot)) {
+        fail(`[reuse] components/${dirName} reuseFingerprint slot "${slot}" is duplicated`);
+      }
+      seenSlots.add(slot);
+    }
+  }
+
+  if (!REUSE_AFFORDANCES.includes(fingerprint.affordance)) {
+    fail(`[reuse] components/${dirName} reuseFingerprint affordance "${fingerprint.affordance}" is not governed`);
+  }
+  if (!REUSE_ROLES.includes(fingerprint.role)) {
+    fail(`[reuse] components/${dirName} reuseFingerprint role "${fingerprint.role}" is not governed`);
+  }
 }
 
 function check({ componentsDir = COMPONENTS, tokenCss = readTokenCss() } = {}) {
@@ -168,6 +238,7 @@ function check({ componentsDir = COMPONENTS, tokenCss = readTokenCss() } = {}) {
     if (!Array.isArray(contract.slots) || contract.slots.length === 0) {
       fail(`[contract] components/${dirName} declares no slots`);
     }
+    validateReuseFingerprint(contract, dirName, fail);
 
     for (const token of contract.tokens || []) {
       if (!definedTokens.has(token)) {

@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["label", "startIcon"],
   "variants": ["light", "dark", "dismissible", "disabled"],
+  "reuseFingerprint": {
+    "slots": ["badge", "icon", "close"],
+    "affordance": "display",
+    "role": "entity-summary"
+  },
   "tokens": [
     "color-border-strong", "color-text-primary", "color-text-inverse",
     "color-border-focus", "radius-pill", "ease-standard"

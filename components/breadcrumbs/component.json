@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["items", "currentPageTitle", "backLinkLabel", "separator", "backIcon"],
   "variants": ["light", "dark"],
+  "reuseFingerprint": {
+    "slots": ["action"],
+    "affordance": "navigate",
+    "role": "action-group"
+  },
   "tokens": ["color-text-primary", "color-text-inverse", "color-border-focus", "size-touch-medium"],
   "provenance": {
     "project": "canadian-national",

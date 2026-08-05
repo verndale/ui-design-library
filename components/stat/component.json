@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["value", "label", "description"],
   "variants": ["row", "column"],
+  "reuseFingerprint": {
+    "slots": ["stat", "heading", "body"],
+    "affordance": "display",
+    "role": "metric"
+  },
   "tokens": ["color-text-primary", "color-text-secondary", "spacing-3xs", "spacing-2xs", "spacing-s"],
   "provenance": {
     "project": "mimecast",

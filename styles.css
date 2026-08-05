@@ -1,0 +1,3 @@
+/* Public package style entry point. Consumers import Tailwind themselves and
+   register this package's compiled output with one explicit @source rule. */
+@import './src/tokens/semantic.css';

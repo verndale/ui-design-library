@@ -10,6 +10,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Story tests and the a11y gate](../../wiki/journal/2026-07-27-story-tests-and-a11y-gate.md) → [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md)
 - [Storybook review tooling](../../wiki/journal/2026-07-27-storybook-review-tooling.md) → [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md)
 - [Native variant axis](../../wiki/journal/2026-07-30-variant-axis.md) → [Native variant axis for @verndale/ui-design-library](../../wiki/plans/2026-07-30-variant-axis.md)
+- [Publish the UI library as a deterministic npm package](../../wiki/journal/2026-08-05-npm-package-and-ai-reuse.md) → [Validated Plan: npm-Published UI Library + Deterministic AI Reuse](../../wiki/plans/2026-08-05-npm-package-and-ai-reuse.md)
 
 ## Page → topic
 
@@ -20,11 +21,13 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Story tests and the a11y gate](../../wiki/journal/2026-07-27-story-tests-and-a11y-gate.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review tooling](../../wiki/journal/2026-07-27-storybook-review-tooling.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Native variant axis](../../wiki/journal/2026-07-30-variant-axis.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
+- [Publish the UI library as a deterministic npm package](../../wiki/journal/2026-08-05-npm-package-and-ai-reuse.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Native variant axis for @verndale/ui-design-library](../../wiki/plans/2026-07-30-variant-axis.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
+- [Validated Plan: npm-Published UI Library + Deterministic AI Reuse](../../wiki/plans/2026-08-05-npm-package-and-ai-reuse.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 
 ## Topic → covered surface
 
@@ -40,6 +43,12 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [on-merge-sync.cjs](../../scripts/wiki/on-merge-sync.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [pre-commit-journal.cjs](../../scripts/wiki/pre-commit-journal.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [refresh-issue-state.cjs](../../scripts/wiki/refresh-issue-state.cjs)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [release.yml](../../.github/workflows/release.yml)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [package.json](../../package.json)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [release.config.cjs](../../release.config.cjs)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [build-exports.cjs](../../scripts/build-exports.cjs)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [styles.css](../../styles.css)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [tsconfig.build.json](../../tsconfig.build.json)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [test.yml](../../.github/workflows/test.yml)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [preview.ts](../../.storybook/preview.ts)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [vitest.config.ts](../../vitest.config.ts)

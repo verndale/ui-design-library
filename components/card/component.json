@@ -10,6 +10,11 @@
     "default",
     "unsetBackground"
   ],
+  "reuseFingerprint": {
+    "slots": ["media", "heading", "body", "meta", "action", "badge"],
+    "affordance": "contain",
+    "role": "entity-summary"
+  },
   "tokens": [
     "color-surface-raised",
     "ease-standard"

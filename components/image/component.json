@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["fallback"],
   "variants": ["default", "rounded"],
+  "reuseFingerprint": {
+    "slots": ["media", "caption"],
+    "affordance": "display",
+    "role": "media-showcase"
+  },
   "tokens": ["radius-medium"],
   "provenance": {
     "project": "bentley",

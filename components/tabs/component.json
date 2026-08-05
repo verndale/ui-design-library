@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["items"],
   "variants": ["pill"],
+  "reuseFingerprint": {
+    "slots": ["action", "panel"],
+    "affordance": "select",
+    "role": "container"
+  },
   "tokens": [
     "color-surface-inverse",
     "color-text-inverse",

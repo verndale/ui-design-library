@@ -26,6 +26,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 <!-- One line per topic page: [Title](topics/<slug>.md) — hook. Keep alphabetical by slug. -->
 
 - [Knowledge graph & wiki automation](topics/graph-wiki-subsystem.md) — the deterministic graph + Sigma.js viewer and the wiki-sync / wiki-issue-sync bots, ported from ui-design-brain.
+- [Package distribution](topics/package-distribution.md) — deterministic npm exports, compatibility metadata, Tailwind consumption, and queued semantic releases.
 - [Story testing](topics/story-testing.md) — the story-as-test layer: the runner, what belongs in a `play` function, the a11y gate, and the reduced-motion project.
 - [Storybook tooling](topics/storybook-tooling.md) — the browsing and review surface: autodocs, pseudo-states, the direction toggle, maturity badges, viewport and backgrounds.
 - [Variant axis](topics/variant-axis.md) — one catalog canonical, more than one structurally-distinct implementation, keyed `(canonical, variant)` → `components/<slug>--<variant>/`.
@@ -34,6 +35,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-05 — [Publish the UI library as a deterministic npm package](journal/2026-08-05-npm-package-and-ai-reuse.md) — compiled component subpaths, governed reuse fingerprints, explicit Tailwind consumption, and queued automatic semantic releases.
 - 2026-08-03 — [Add the Tabs component](journal/2026-08-03-add-tabs-component.md) — a de-cliented pill `tablist`: roving `tabIndex`, `aria-selected`, and an ArrowLeft/ArrowRight selection-and-focus loop with wraparound; controlled or uncontrolled, presentation only.
 - 2026-08-03 — [Add the In-page navigation component](journal/2026-08-03-add-in-page-navigation-component.md) — a de-cliented "on this page" section-nav: an `IntersectionObserver` scroll-spy driving `aria-current` in a `<nav>` landmark, a wide-viewport pill bar collapsing to an `inert`-gated mobile drawer.
 - 2026-07-31 — [Add the Slider component](journal/2026-07-31-add-slider-component.md) — a de-cliented slider over named options rather than a numeric range; the native input carries the index while the API speaks in values, and `aria-valuetext` announces the option label instead of the raw number.

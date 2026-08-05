@@ -1,10 +1,10 @@
 {
   "name": "@verndale/ui-design-library",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Private component library keyed by ui-design-brain canonical slugs. Consumed as a git submodule and imported from source, so projects start from a built component instead of rebuilding it.",
-  "license": "UNLICENSED",
+  "version": "0.0.0-development",
+  "description": "Public React component library keyed by ui-design-brain canonical slugs.",
+  "license": "MIT",
   "author": "Verndale",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/verndale/ui-design-library.git"
@@ -13,6 +13,123 @@
   "engines": {
     "node": ">=24.14.0"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "files": [
+    "dist",
+    "components",
+    "src/lib",
+    "src/tokens",
+    "styles.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./components/accordion": {
+      "types": "./dist/components/accordion/Accordion.d.ts",
+      "import": "./dist/components/accordion/Accordion.js"
+    },
+    "./components/accordion/component.json": "./components/accordion/component.json",
+    "./components/alert": {
+      "types": "./dist/components/alert/Alert.d.ts",
+      "import": "./dist/components/alert/Alert.js"
+    },
+    "./components/alert/component.json": "./components/alert/component.json",
+    "./components/avatar": {
+      "types": "./dist/components/avatar/Avatar.d.ts",
+      "import": "./dist/components/avatar/Avatar.js"
+    },
+    "./components/avatar/component.json": "./components/avatar/component.json",
+    "./components/badge": {
+      "types": "./dist/components/badge/Badge.d.ts",
+      "import": "./dist/components/badge/Badge.js"
+    },
+    "./components/badge/component.json": "./components/badge/component.json",
+    "./components/breadcrumbs": {
+      "types": "./dist/components/breadcrumbs/Breadcrumbs.d.ts",
+      "import": "./dist/components/breadcrumbs/Breadcrumbs.js"
+    },
+    "./components/breadcrumbs/component.json": "./components/breadcrumbs/component.json",
+    "./components/button": {
+      "types": "./dist/components/button/Button.d.ts",
+      "import": "./dist/components/button/Button.js"
+    },
+    "./components/button/component.json": "./components/button/component.json",
+    "./components/card": {
+      "types": "./dist/components/card/Card.d.ts",
+      "import": "./dist/components/card/Card.js"
+    },
+    "./components/card/component.json": "./components/card/component.json",
+    "./components/carousel": {
+      "types": "./dist/components/carousel/Carousel.d.ts",
+      "import": "./dist/components/carousel/Carousel.js"
+    },
+    "./components/carousel/component.json": "./components/carousel/component.json",
+    "./components/image": {
+      "types": "./dist/components/image/Image.d.ts",
+      "import": "./dist/components/image/Image.js"
+    },
+    "./components/image/component.json": "./components/image/component.json",
+    "./components/in-page-navigation": {
+      "types": "./dist/components/in-page-navigation/InPageNavigation.d.ts",
+      "import": "./dist/components/in-page-navigation/InPageNavigation.js"
+    },
+    "./components/in-page-navigation/component.json": "./components/in-page-navigation/component.json",
+    "./components/link": {
+      "types": "./dist/components/link/Link.d.ts",
+      "import": "./dist/components/link/Link.js"
+    },
+    "./components/link/component.json": "./components/link/component.json",
+    "./components/modal": {
+      "types": "./dist/components/modal/Modal.d.ts",
+      "import": "./dist/components/modal/Modal.js"
+    },
+    "./components/modal/component.json": "./components/modal/component.json",
+    "./components/quote": {
+      "types": "./dist/components/quote/Quote.d.ts",
+      "import": "./dist/components/quote/Quote.js"
+    },
+    "./components/quote/component.json": "./components/quote/component.json",
+    "./components/rich-text": {
+      "types": "./dist/components/rich-text/RichText.d.ts",
+      "import": "./dist/components/rich-text/RichText.js"
+    },
+    "./components/rich-text/component.json": "./components/rich-text/component.json",
+    "./components/search-input": {
+      "types": "./dist/components/search-input/SearchInput.d.ts",
+      "import": "./dist/components/search-input/SearchInput.js"
+    },
+    "./components/search-input/component.json": "./components/search-input/component.json",
+    "./components/section-header": {
+      "types": "./dist/components/section-header/SectionHeader.d.ts",
+      "import": "./dist/components/section-header/SectionHeader.js"
+    },
+    "./components/section-header/component.json": "./components/section-header/component.json",
+    "./components/slider": {
+      "types": "./dist/components/slider/Slider.d.ts",
+      "import": "./dist/components/slider/Slider.js"
+    },
+    "./components/slider/component.json": "./components/slider/component.json",
+    "./components/stat": {
+      "types": "./dist/components/stat/Stat.d.ts",
+      "import": "./dist/components/stat/Stat.js"
+    },
+    "./components/stat/component.json": "./components/stat/component.json",
+    "./components/tabs": {
+      "types": "./dist/components/tabs/Tabs.d.ts",
+      "import": "./dist/components/tabs/Tabs.js"
+    },
+    "./components/tabs/component.json": "./components/tabs/component.json",
+    "./components/toast": {
+      "types": "./dist/components/toast/Toast.d.ts",
+      "import": "./dist/components/toast/Toast.js"
+    },
+    "./components/toast/component.json": "./components/toast/component.json",
+    "./styles.css": "./styles.css",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "prepare": "husky",
     "commit": "ai-commit run",
@@ -20,6 +137,12 @@
     "lint:commits:last": "commitlint --config node_modules/@verndale/ai-commit/lib/commitlint-preset.cjs --last",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "exports:sync": "node scripts/build-exports.cjs --write",
+    "exports:check": "node scripts/build-exports.cjs",
+    "exports:dist": "node scripts/build-exports.cjs --dist",
+    "build": "pnpm exports:check && node scripts/clean-dist.cjs && tsc -p tsconfig.build.json && pnpm exports:dist",
+    "prepack": "pnpm test && pnpm build",
+    "release": "semantic-release",
     "typecheck": "tsc --noEmit",
     "contracts": "node scripts/check-contracts.cjs",
     "contracts:selftest": "node scripts/check-contracts.selftest.cjs",
@@ -31,7 +154,7 @@
     "test:stories": "vitest run -c vitest.config.ts",
     "test:stories:watch": "vitest -c vitest.config.ts",
     "test:motion": "vitest run -c vitest.motion.config.ts",
-    "test": "pnpm typecheck && pnpm contracts && pnpm contracts:selftest && pnpm test:stories && pnpm test:motion"
+    "test": "pnpm typecheck && pnpm contracts && pnpm contracts:selftest && pnpm exports:check && pnpm test:stories && pnpm test:motion"
   },
   "peerDependencies": {
     "embla-carousel-react": "^8.0.0",
@@ -43,6 +166,10 @@
     "@storybook/addon-a11y": "^10.0.0",
     "@storybook/addon-docs": "^10.0.0",
     "@storybook/addon-vitest": "10.5.4",
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/github": "12.0.9",
+    "@semantic-release/npm": "13.1.5",
+    "@semantic-release/release-notes-generator": "14.1.1",
     "@storybook/react-vite": "^10.0.0",
     "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^19.0.0",
@@ -57,6 +184,7 @@
     "playwright": "^1.62.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "semantic-release": "25.0.9",
     "storybook": "^10.0.0",
     "storybook-addon-pseudo-states": "10.5.4",
     "storybook-addon-tag-badges": "3.1.0",

@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["eyebrow", "heading", "description"],
   "variants": ["left", "center"],
+  "reuseFingerprint": {
+    "slots": ["meta", "heading", "body", "action"],
+    "affordance": "display",
+    "role": "editorial"
+  },
   "tokens": ["color-text-primary", "color-text-secondary", "color-link", "spacing-m", "spacing-l"],
   "provenance": {
     "project": "bentley",

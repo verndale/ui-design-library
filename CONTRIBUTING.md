@@ -1,6 +1,6 @@
 # Contributing
 
-Nothing consumes this repo through a registry — projects pin it as a git submodule and import the source. So there is no release path; the bar is the three contracts and a component that actually works.
+This repository publishes `@verndale/ui-design-library` to npm. Projects install an exact version and import compiled component subpaths; merges to `main` release automatically after the full quality gate.
 
 ## Quick start
 
@@ -9,6 +9,7 @@ Nothing consumes this repo through a registry — projects pin it as a git submo
     pnpm storybook        # browse at http://localhost:6006
     # add or change a component
     pnpm test
+    pnpm build
     git add -A
     pnpm commit
 
@@ -20,7 +21,7 @@ Enforced by `pnpm contracts`:
 2. **Stories exist** — the story file is the API contract, not documentation.
 3. **Semantic tokens only** — no raw colours, no client brand names. Declared tokens must exist in `src/tokens/semantic.css`.
 
-Plus: `component.json` needs `provenance` (which project and run it came from) and a `maturity` of `candidate`, `supported`, or `deprecated`. That maturity is mirrored as a `maturity:*` tag on the story meta so the sidebar can badge it — `pnpm contracts` fails if the two disagree, because two sources for one fact drift silently.
+Plus: `component.json` needs `provenance` (which project and run it came from), a `maturity` of `candidate`, `supported`, or `deprecated`, and a governed `reuseFingerprint` (`slots`, `affordance`, `role`) for deterministic AI compatibility. The API-level `slots` remain separate. Maturity is mirrored as a `maturity:*` tag on the story meta so the sidebar can badge it — `pnpm contracts` fails if the two disagree, because two sources for one fact drift silently.
 
 ## Adding a component
 
@@ -30,9 +31,10 @@ Start from a capture in a `project-retrospective` run. Executing it is a rewrite
 2. Map client tokens onto semantic tokens. If a value has no semantic home, add the token rather than inlining the value.
 3. Drop client copy, assets, and brand colours.
 4. Write stories covering the default, each variant, and the edge states that break layouts (empty, very long, missing optional slot).
-5. Fill `component.json`, including the `declienting` array — every removal, specifically. "Minor cleanup" is not an entry.
+5. Fill `component.json`, including the `declienting` array and `reuseFingerprint`. Use only the governed compatibility vocabulary; do not copy API prop names into the structural fingerprint.
 6. Land as `maturity: "candidate"`.
 7. If the capture is a structurally-distinct implementation of a canonical already in the library (a mega menu where Navigation ships a plain bar), land it as `components/<slug>--<variant>/` rather than overwriting the incumbent: share the `canonical` and `slug`, set `variant`, mark exactly one implementation `default: true`, and title the variant's stories `<Canonical> / <label>`. `pnpm contracts` checks the axis holds. This is separate from the `variants` array, which stays the list of prop-value options within one implementation.
+8. Run `pnpm exports:sync`; the committed map is derived from component directories, and all read-only build/test gates fail if it drifts.
 
 ## Verify the behaviour, not the markup
 
@@ -54,9 +56,11 @@ Conventional Commits via `@verndale/ai-commit`, scope required:
 
     feat(modal): Add Modal captured from CN
     fix(tokens): Correct the scrim opacity
-    docs(readme): Clarify the submodule consumption model
+    docs(readme): Clarify exact-version package consumption
 
 Enforced by the `commit-msg` hook and in CI. `pnpm commit` generates a pre-validated message.
+
+The squash commit on `main` is also the release signal: breaking changes produce majors, `feat` produces minors, and every other allowed type produces a patch. Publishing itself is never run manually.
 
 ## What not to do
 

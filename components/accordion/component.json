@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["heading", "items"],
   "variants": ["default", "standalone", "show-more"],
+  "reuseFingerprint": {
+    "slots": ["heading", "panel"],
+    "affordance": "expand",
+    "role": "container"
+  },
   "tokens": [
     "color-text-primary",
     "color-text-secondary",

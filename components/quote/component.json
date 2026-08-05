@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["children"],
   "variants": [],
+  "reuseFingerprint": {
+    "slots": ["body", "meta"],
+    "affordance": "display",
+    "role": "editorial"
+  },
   "tokens": ["color-border-accent", "spacing-m", "spacing-s", "spacing-2xs"],
   "provenance": {
     "project": "canadian-national",

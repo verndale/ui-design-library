@@ -1,6 +1,6 @@
 # ui-design-library
 
-Private component library for Verndale's frontend platform. Components are keyed by [`ui-design-brain`](https://github.com/verndale/ui-design-brain) canonical slugs, so a resolved design label maps straight to an implementation.
+Public npm component library for Verndale's frontend platform. Components are keyed by [`ui-design-brain`](https://github.com/verndale/ui-design-brain) canonical slugs, so a resolved design label maps straight to an implementation.
 
 The catalog says what a **Modal** is. This repo is the Modal.
 
@@ -27,7 +27,8 @@ That is the whole mechanism. Because both sides key on the same slug, a build pi
 components/<slug>/                    a canonical's default implementation
 ├── <Component>.tsx                   the implementation
 ├── <Component>.stories.tsx           the API contract — see below
-└── component.json                    canonical, slots, variants, tokens, provenance
+└── component.json                    canonical, API slots, reuse fingerprint, variants,
+                                      tokens, provenance
 
 components/<slug>--<variant>/         a structurally-distinct implementation of the same
                                       canonical (optional) — same three files
@@ -104,31 +105,40 @@ The defaults here are deliberately unbranded. A component shipping a client's re
 
 ## Consuming it
 
-As a git submodule, imported from source — the same model projects already use for `ai-orchestration`. There is no build step and no package to publish; the consuming app compiles the TSX it imports.
+Install one exact version. The exact dependency is the orchestration pipeline's package-reuse opt-in; ranges, tags, aliases, workspace links, and `file:` dependencies are deliberately not accepted.
 
 ```bash
-git submodule add git@github.com:verndale/ui-design-library.git ui-design-library
+pnpm add --save-exact @verndale/ui-design-library@1.0.0
 ```
 
-Then import the token layer once, and components where you need them:
+Import Tailwind, the library's semantic layer, and one explicit source path in the application's global stylesheet. `@source` paths are relative to the stylesheet containing the directive, so adjust the example's `../` segments for the consuming project.
 
 ```css
-/* app styles, after your own Tailwind import */
-@import '../ui-design-library/src/tokens/index.css';
+@import 'tailwindcss';
+@import '@verndale/ui-design-library/styles.css';
+@source '../../../node_modules/@verndale/ui-design-library/dist';
 ```
 
 ```tsx
-import { Modal } from '../../ui-design-library/components/modal/Modal';
+import { Modal } from '@verndale/ui-design-library/components/modal';
 ```
 
 A structural variant lives in its own directory; both satisfy the same catalog canonical — import the structure the design resolved to:
 
 ```tsx
-import { Navigation } from '../../ui-design-library/components/navigation/Navigation';        // default
-import { MegaMenu } from '../../ui-design-library/components/navigation--mega-menu/MegaMenu'; // alternate
+import { Navigation } from '@verndale/ui-design-library/components/navigation';
+import { MegaMenu } from '@verndale/ui-design-library/components/navigation--mega-menu';
 ```
 
-Override any semantic token in your own layer to re-theme. Pin the submodule to a commit and bump it deliberately, the way you already do for the pipeline.
+There is no root barrel and no short alias such as `@verndale/ui-design-library/modal`. The directory-shaped subpath is the public identity. Override semantic tokens in the consuming project's own layer; never edit the installed package.
+
+The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. `reuseFingerprint` is separate from API-level `slots`: it uses the pipeline's governed structural `slots` + `affordance` + `role` triad. `variant` remains the singular structural implementation axis, while `variants` remains the list of prop/style values.
+
+## Releases
+
+Every merge to `main` runs the full test/build/pack gate and semantic-release. A breaking change publishes a major, `feat` publishes a minor, and every other permitted conventional-commit type publishes a patch. Tags and GitHub releases use `v<version>`; the source `package.json` stays `0.0.0-development`.
+
+The initial `1.0.0` publish uses the repository's `NPM_TOKEN`. After that bootstrap, configure npm trusted publishing for `.github/workflows/release.yml` and remove the long-lived token; subsequent merges publish through GitHub OIDC without a manual command.
 
 ---
 
@@ -151,8 +161,11 @@ A capture that is a *structurally distinct* take on a canonical the library alre
 ```bash
 pnpm test              # typecheck + contracts + contract self-test + story tests + reduced-motion tests
 pnpm typecheck         # tsc --noEmit
+pnpm build             # deterministic ESM + declaration build, then export/dist parity
+pnpm exports:check     # component directories and committed package exports agree
+pnpm exports:sync      # deliberately update the committed map after adding/removing a component
 pnpm contracts         # slug/canonical agreement, the variant axis, declared tokens exist,
-                       # no raw colours, provenance present, stories present, maturity tag matches
+                       # no raw colours, provenance/stories/maturity, reuse fingerprint
 pnpm contracts:selftest # exercises the contract checker itself against fixtures
 pnpm test:stories      # every story rendered in Chromium: play functions + axe
 pnpm test:stories:watch # the same, in watch mode

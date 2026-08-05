@@ -20,6 +20,9 @@ import tailwindcss from '@tailwindcss/vite';
  * fails as ESM ("does not provide an export named 'elementRoles'"). aria-query
  * cannot be named directly — pnpm's isolated node_modules makes it unresolvable
  * from the project root, so naming it in `include` silently does nothing.
+ * `storybook/viewport` is also explicit: on a clean dependency cache Vite used
+ * to discover it mid-run, reload the browser, and detach half the story files
+ * from Vitest's active suite.
  */
 export const storybookProject = ({
   name,
@@ -31,7 +34,7 @@ export const storybookProject = ({
   tags?: { include?: string[]; exclude?: string[] };
 }) => ({
   plugins: [tailwindcss(), storybookTest({ configDir: '.storybook', tags })],
-  optimizeDeps: { include: ['storybook/test'] },
+  optimizeDeps: { include: ['storybook/test', 'storybook/viewport'] },
   test: {
     name,
     browser: {

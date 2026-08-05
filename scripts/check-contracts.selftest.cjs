@@ -32,6 +32,7 @@ function comp(root, dirName, opts) {
     title = canonical,
     tokens = [],
     slots = ['children'],
+    reuseFingerprint = { slots: ['body'], affordance: 'display', role: 'container' },
     name = 'C',
   } = opts;
   const contract = {
@@ -40,6 +41,7 @@ function comp(root, dirName, opts) {
     framework: 'react',
     styling: 'tailwind',
     slots,
+    reuseFingerprint,
     tokens,
     provenance: { project: 'x', source: 'y' },
     maturity,
@@ -74,6 +76,25 @@ const cases = [
       comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
     },
     expect: (f) => f.length === 0,
+  },
+  {
+    name: 'missing reuse fingerprint fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button', reuseFingerprint: null });
+    },
+    expect: (f) => f.some((m) => m.includes('components/button is missing reuseFingerprint')),
+  },
+  {
+    name: 'ungoverned reuse fingerprint slot fails',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        reuseFingerprint: { slots: ['children'], affordance: 'trigger', role: 'action-group' },
+      });
+    },
+    expect: (f) => f.some((m) => m.includes('reuseFingerprint slot "children" is not governed')),
   },
   {
     name: 'orphan alternate (no default dir) fails',
@@ -167,7 +188,15 @@ const cases = [
       fs.writeFileSync(
         path.join(dir, 'component.json'),
         JSON.stringify(
-          { canonical: 'Guard', slug: 'guard', slots: ['children'], tokens: [], provenance: { project: 'x', source: 'y' }, maturity: 'candidate' },
+          {
+            canonical: 'Guard',
+            slug: 'guard',
+            slots: ['children'],
+            reuseFingerprint: { slots: ['body'], affordance: 'display', role: 'container' },
+            tokens: [],
+            provenance: { project: 'x', source: 'y' },
+            maturity: 'candidate',
+          },
           null,
           2,
         ),

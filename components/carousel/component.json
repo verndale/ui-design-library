@@ -11,6 +11,11 @@
   "variants": [
     "loop"
   ],
+  "reuseFingerprint": {
+    "slots": ["media", "panel", "action"],
+    "affordance": "select",
+    "role": "media-showcase"
+  },
   "tokens": [
     "color-border-strong",
     "color-text-primary",

@@ -5,6 +5,11 @@
   "styling": "tailwind",
   "slots": ["item"],
   "variants": ["default", "mobile-collapsed"],
+  "reuseFingerprint": {
+    "slots": ["action"],
+    "affordance": "navigate",
+    "role": "action-group"
+  },
   "tokens": [
     "color-surface-raised",
     "color-border-subtle",

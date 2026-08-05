@@ -28,6 +28,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-05 — chore(ci): Update documentation and workflows for npm release ([PR #19](https://github.com/verndale/ui-design-library/pull/19))
 - 2026-07-27 — Covered reduced motion with a second Vitest **config**, not a second project in one config: the `storybookTest` plugin caches generated setup under a path derived from `configDir`, so two projects sharing one race on it and every story file fails to import. Scoped by `motion` tag rather than the whole suite, since re-running axe everywhere to check durations is a poor trade ([plan](../plans/2026-07-27-storybook-review-addons-and-reduced-motion.md), [journal](../journal/2026-07-27-reduced-motion-coverage.md)).
 - 2026-07-27 — Covered **both** reduced-motion mechanisms separately, because they fail independently: the `--duration-*` token collapse (Card, Modal) and `motion-reduce:transition-none` (Button). Breaking the token block leaves Button passing ([journal](../journal/2026-07-27-reduced-motion-coverage.md)).
 - 2026-07-27 — Made axe a gate (`test: 'error'`) rather than advisory, now that a runner exists to enforce it. Per-story rule scoping handles genuine false positives ([journal](../journal/2026-07-27-story-tests-and-a11y-gate.md)).

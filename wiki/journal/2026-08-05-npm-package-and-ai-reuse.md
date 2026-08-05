@@ -2,7 +2,7 @@
 date: 2026-08-05
 topics: [package-distribution]
 plan: plans/2026-08-05-npm-package-and-ai-reuse.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/19
 ---
 # Publish the UI library as a deterministic npm package
 

@@ -1,7 +1,10 @@
 ---
 status: partial
 executed: 2026-08-05
-evidence: ["issue #18", "working tree"]
+evidence:
+  - "issue #18"
+  - "working tree"
+  - "PR #19 https://github.com/verndale/ui-design-library/pull/19 (merged 2026-08-05)"
 source_tool: codex
 source: current Codex task
 topics: [package-distribution]

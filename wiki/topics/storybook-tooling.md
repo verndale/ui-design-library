@@ -23,6 +23,7 @@ All nine components are `candidate`. Promotion is a deliberate human decision, n
 
 ## Decisions
 
+- 2026-08-05 — chore(ci): Update documentation and workflows for npm release ([PR #19](https://github.com/verndale/ui-design-library/pull/19))
 - 2026-07-31 — feat(ui-design-library): Enhance documentation on structural variants ([PR #5](https://github.com/verndale/ui-design-library/pull/5))
 - 2026-07-27 — Added a sixth contract check rather than accepting drift between `component.json` and the story tag. The duplication was introduced by the badge; guarding it was the cost of the badge ([journal](../journal/2026-07-27-storybook-review-tooling.md)).
 - 2026-07-27 — Built the direction toggle locally instead of adding `storybook-addon-rtl`. Ten lines against a dependency, matching the repo's preference for a small local primitive ([plan](../plans/2026-07-27-storybook-review-addons-and-reduced-motion.md), [journal](../journal/2026-07-27-storybook-review-tooling.md)).

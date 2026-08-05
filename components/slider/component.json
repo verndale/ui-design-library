@@ -29,5 +29,5 @@
     "--range-field-progress custom property renamed --slider-progress and scoped to the component root",
     "server-supplied max attribute removed; max is derived from options.length and the index is clamped against it"
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

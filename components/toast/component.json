@@ -29,5 +29,5 @@
     "Drove the entrance animation through the --animate-fade-in / --duration-base tokens, so the reduced-motion media query is the single switch that collapses it, rather than a bespoke component keyframe.",
     "Kept verbatim: the role/aria-live pairing per variant (neutral → status/polite, critical → alert/assertive) and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Alert rather than merged."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

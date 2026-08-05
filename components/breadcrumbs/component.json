@@ -19,5 +19,5 @@
     "Replaced the hard-coded 44px mobile tap target with the --size-touch-medium token.",
     "Kept verbatim: the nav landmark with an aria-label, aria-current on the current page, the current page rendered as text rather than a link, and the xl breakpoint collapse to a single back link."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

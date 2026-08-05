@@ -20,5 +20,5 @@
     "Dropped the five card-specific underline exports (event card, podcast card, search-result card); those are project compositions, not link behaviour.",
     "Kept verbatim: the background-size underline with box-decoration-break clone, its motion-reduce path, the touch-target pseudo-element technique, and aria-disabled semantics."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

@@ -20,7 +20,7 @@ const meta = {
   title: 'Tabs',
   component: Tabs,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
     layout: 'padded',
     docs: {

@@ -30,5 +30,5 @@
     "Added an explicit guard so `type` is set only on a native button and aria-disabled is used otherwise; the source assumed a button element.",
     "Kept verbatim: the surface context, the icon slots, and the disabled plus aria-disabled pairing."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

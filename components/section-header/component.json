@@ -19,5 +19,5 @@
     "Dropped client sample copy (the 'Our Handprint' eyebrow and the climate-change heading and body text) — every string is a prop.",
     "Kept verbatim: the <h2>-heading / <p>-eyebrow semantics, group-level alignment, and collapse-when-empty for both optional parts — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

@@ -19,5 +19,5 @@
     "Dropped client sample copy (press-contacts / portfolio text) and the temporary inline CTA/Media button mocks the story carried — content is caller-provided.",
     "Kept verbatim: authored headings render at their real level with no forced re-leveling, ordered/unordered lists stay real ol/ul/li, and link text is its own accessible name — the prose-semantics contract."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

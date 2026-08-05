@@ -13,7 +13,7 @@ const meta = {
   title: 'Modal',
   component: Modal,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
     layout: 'centered',
     docs: {

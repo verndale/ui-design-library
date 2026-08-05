@@ -7,7 +7,7 @@ const meta = {
   title: 'Section header',
   component: SectionHeader,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
     layout: 'padded',
     docs: {

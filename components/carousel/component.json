@@ -32,5 +32,5 @@
     "Kept verbatim: inert applied via setAttribute rather than a React prop, so Tab skips off-screen slides; arrow controls disabling at the ends; the labelled carousel region; and per-slide role=group with an announced position.",
     "Replaced the engine's slidesInView() reporting for inert gating with direct geometry. slidesInView() returned empty before the engine measured, which marked every slide inert and made the whole carousel unreachable by keyboard — strictly worse than no gating. IntersectionObserver was tried and rejected: it only delivers callbacks while the page paints, so the state is undefined in a background tab and unverifiable headless. Comparing each slide box to the viewport box is true whenever it is asked, and fails open when the viewport has no width."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

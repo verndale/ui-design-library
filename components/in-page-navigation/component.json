@@ -30,5 +30,5 @@
     "Replaced the fixed reveal transition with grid-template-rows 0fr→1fr on duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
     "Kept verbatim: the <nav aria-label=\"On this page\"> landmark, aria-current on the active link, native anchor links (Tab reaches them, Enter activates), the mobile trigger's aria-expanded/aria-controls, and the collapsed drawer's inert gating out of the tab order — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

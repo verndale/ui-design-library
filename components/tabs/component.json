@@ -28,5 +28,5 @@
     "Replaced the fixed duration-200 ease-out + motion-reduce:transition-none transition with duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
     "Kept verbatim: role=tablist/role=tab, aria-selected, the roving tabIndex (0 on the selected tab, -1 on the rest), the ArrowLeft/ArrowRight selection-and-focus loop with wraparound, and the items.length < 2 keyboard guard — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

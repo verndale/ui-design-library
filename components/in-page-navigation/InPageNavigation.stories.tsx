@@ -21,7 +21,7 @@ const meta = {
   title: 'In-page navigation',
   component: InPageNavigation,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
     layout: 'padded',
     docs: {

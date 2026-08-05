@@ -19,5 +19,5 @@
     "the two duplicated markup branches collapsed to one; with no loader the component renders a plain <img> rather than claiming WebP alternates it cannot generate",
     "added decoding=\"async\" and a block/max-w-full box, which the source markup left to ambient client CSS"
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

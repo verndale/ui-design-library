@@ -34,5 +34,5 @@
     "Restored a visible keyboard focus indicator on the input — CN removed every focus outline and ring; the library field uses focus-visible:outline-2 outline-offset-2 outline-border-focus.",
     "Kept verbatim: the role=search landmark, the sr-only bound label, aria-labels on submit/clear, aria-hidden icons, the live results region, the controlled/uncontrolled duality, inputMode/enterKeyHint/autoComplete/autoFocus, clear-then-refocus, and the submit trimming an empty query before firing onSearch."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

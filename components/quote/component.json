@@ -19,5 +19,5 @@
     "Added my-0 to drop the user-agent blockquote margin.",
     "Kept verbatim: the blockquote element and the accent-rule treatment."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

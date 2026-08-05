@@ -23,5 +23,5 @@
     "Renamed the data-component hooks stat-card/detail-stats to stat/stat-group; stripped client ticket/Figma/Confluence references from comments (no client copy existed in code — it was content-driven).",
     "Kept verbatim: the sr-only <h2> + <ul aria-labelledby> group naming and the native <ul>/<li> structure — the accessible-name contract is the reason this was worth capturing."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

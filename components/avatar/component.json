@@ -17,5 +17,5 @@
     "Added m-0 because a bare figure carries a user-agent margin that CN's layout happened to absorb.",
     "Kept verbatim: the figure element and the aspect-square overflow-hidden frame."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

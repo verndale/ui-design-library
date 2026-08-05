@@ -13,7 +13,7 @@ const meta = {
   title: 'Alert',
   component: Alert,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
     layout: 'padded',
     docs: {

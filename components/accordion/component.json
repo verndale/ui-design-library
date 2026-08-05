@@ -28,5 +28,5 @@
     "Mapped the BEM classes (accordion__item / __toggle / __panel / --standalone) and design-system utilities onto library semantic tokens: labels color-text-primary, panel body color-text-secondary, dividers color-border-subtle, the focus ring color-border-focus, the vertical rhythm spacing-m / spacing-s / spacing-2xs, and the standalone box radius-medium.",
     "Kept verbatim: aria-expanded on each toggle, aria-controls linking each button to its panel, headers wrapped in an h3 for heading navigation, the collapsed-panel focus gating, and the reduced-motion short-circuit — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

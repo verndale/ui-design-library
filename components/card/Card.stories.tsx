@@ -7,7 +7,7 @@ const meta = {
   title: 'Card',
   component: Card,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
     layout: 'centered',
     docs: {

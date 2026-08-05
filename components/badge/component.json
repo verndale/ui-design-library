@@ -23,5 +23,5 @@
     "Renamed colorScheme to surface and RemovableTag to Badge, matching the canonical.",
     "Kept verbatim: the dismiss affordance, the `Remove ${label}` default accessible name, and the disabled handling."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

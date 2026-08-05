@@ -28,5 +28,5 @@
     "Mapped banner.css surface/text classes onto library semantic tokens: the surface to color-surface-raised, text to color-text-primary, and the positive/critical variants to color-tone-positive / color-tone-critical — new status tokens added to src/tokens/semantic.css, since the library had no tone layer; plus border color-border-subtle, box radius-medium, and rhythm spacing-m / spacing-s.",
     "Kept verbatim: the icon + message + dismiss layout, the role/aria-live pairing per variant (positive → status/polite, critical → alert/assertive), and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Toast rather than merged."
   ],
-  "maturity": "candidate"
+  "maturity": "supported"
 }

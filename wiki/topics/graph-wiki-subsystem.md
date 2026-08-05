@@ -18,6 +18,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-05 — ci(ci): Update release workflow for dry run tagging ([PR #21](https://github.com/verndale/ui-design-library/pull/21))
 - 2026-08-05 — chore(ci): Update documentation and workflows for npm release ([PR #19](https://github.com/verndale/ui-design-library/pull/19))
 - 2026-08-03 — feat(ui-design-library): Add in-page navigation component ([PR #16](https://github.com/verndale/ui-design-library/pull/16))
 - 2026-08-01 — feat(ui-design-library): Add Image and Slider components with stories ([PR #13](https://github.com/verndale/ui-design-library/pull/13))

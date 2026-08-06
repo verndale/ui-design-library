@@ -913,9 +913,11 @@
       "dir": "wiki/journal",
       "topics": [],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "24"
+      ],
       "issues": [],
-      "bytes": 3546,
+      "bytes": 3592,
       "degree": 1
     },
     {
@@ -1048,6 +1050,7 @@
         "graph freshness"
       ],
       "prs": [
+        "24",
         "19",
         "16",
         "13",
@@ -1057,7 +1060,7 @@
         "2"
       ],
       "issues": [],
-      "bytes": 6568,
+      "bytes": 6706,
       "degree": 17
     },
     {
@@ -1095,10 +1098,11 @@
         "test setup"
       ],
       "prs": [
+        "24",
         "19"
       ],
       "issues": [],
-      "bytes": 6398,
+      "bytes": 6536,
       "degree": 14
     },
     {

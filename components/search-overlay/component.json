@@ -1,0 +1,43 @@
+{
+  "canonical": "Search overlay",
+  "slug": "search-overlay",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["heading", "supportingCopy", "input", "quickLinks", "resultsPanel"],
+  "variants": ["default"],
+  "reuseFingerprint": {
+    "affordance": "contain",
+    "role": "container",
+    "slots": ["heading", "field", "panel", "close"]
+  },
+  "tokens": [
+    "color-surface-scrim",
+    "color-surface-raised",
+    "color-surface-inverse",
+    "color-text-primary",
+    "color-text-secondary",
+    "color-text-inverse",
+    "color-action-hover",
+    "color-border-focus",
+    "radius-medium",
+    "radius-pill",
+    "shadow-overlay",
+    "spacing-page-margin"
+  ],
+  "provenance": {
+    "project": "bentley",
+    "run": "runs/bentley/2026-08-05/",
+    "source": "frontend/src/html/modules/search-overlay.hbs"
+  },
+  "declienting": [
+    "Reused the library's SearchInput component for the search field — its input, submit, clear, and polite results live region carry over — instead of re-implementing a field; the results panel rides through SearchInput's `results` slot.",
+    "Extracted the dialog shell (SSR portal gate, focus trap, scroll lock, Escape-to-close, focus restoration) into src/lib/dialog.ts (useDialog), now shared with Modal, rather than duplicating Modal's inline shell.",
+    "Reused the shared src/lib/CloseButton primitive for the dismiss control, shared with Modal.",
+    "Removed the search-API / results-feed wiring; results and suggestions arrive through the resultsPanel slot and the overlay emits query and submit events via onQueryChange / onSubmit.",
+    "Removed the CMS field bindings for the heading and quick links; heading is a required prop and quick links a slot.",
+    "Mapped component tokens onto library semantic tokens: panel surface to surface-raised, backdrop to surface-scrim, heading/description text to text-primary/text-secondary, panel elevation to shadow-overlay, bottom corners to radius-medium; the field and close control map their own tokens through SearchInput and CloseButton.",
+    "Dropped the decorative brand glow asset; the panel surface is a token.",
+    "Dropped the client's bespoke suggestion-list arrow-key navigation over a fixed suggestion list; results are a caller-owned slot in a polite live region, so option-level activedescendant is the caller's responsibility. Kept the dialog focus trap, Escape/backdrop dismissal, focus restoration, and the idle-to-active state split."
+  ],
+  "maturity": "candidate"
+}

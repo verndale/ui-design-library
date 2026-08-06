@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 81,
-    "edges": 122,
+    "nodes": 83,
+    "edges": 124,
     "byType": {
       "surface": 27,
       "root-doc": 4,
-      "component": 20,
+      "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 17,
+      "wiki-journal": 18,
       "wiki-plan": 4,
       "wiki-topic": 5
     },
     "byEdgeType": {
       "covers": 29,
-      "links-to": 54,
+      "links-to": 55,
       "plan": 5,
       "topic": 14,
-      "uses-tokens": 20
+      "uses-tokens": 21
     }
   },
   "nodes": [
@@ -42,7 +42,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1670,
+      "bytes": 1628,
       "degree": 1
     },
     {
@@ -334,6 +334,18 @@
       "degree": 1
     },
     {
+      "id": "components/search-overlay/component.json",
+      "label": "Search overlay",
+      "type": "component",
+      "dir": "components/search-overlay",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2497,
+      "degree": 1
+    },
+    {
       "id": "components/section-header/component.json",
       "label": "Section header",
       "type": "component",
@@ -414,7 +426,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8007,
+      "bytes": 8285,
       "degree": 1
     },
     {
@@ -583,7 +595,7 @@
       "prs": [],
       "issues": [],
       "bytes": 4260,
-      "degree": 21
+      "degree": 22
     },
     {
       "id": "styles.css",
@@ -654,8 +666,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8925,
-      "degree": 27
+      "bytes": 9298,
+      "degree": 28
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -892,6 +904,18 @@
       ],
       "issues": [],
       "bytes": 2127,
+      "degree": 1
+    },
+    {
+      "id": "wiki/journal/2026-08-05-add-search-overlay-component.md",
+      "label": "Add the Search overlay component",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3546,
       "degree": 1
     },
     {
@@ -1428,6 +1452,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-05-add-search-overlay-component.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 1,
@@ -1834,6 +1865,12 @@
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 9
+    },
+    {
+      "source": "components/search-overlay/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 12
     },
     {
       "source": "components/section-header/component.json",

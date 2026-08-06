@@ -35,6 +35,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-05 — [Add the Search overlay component](journal/2026-08-05-add-search-overlay-component.md) — a de-cliented full-screen search surface: a dialog shell (focus trap, Escape/backdrop dismiss, focus restoration) with an idle↔active split; reuses the library's SearchInput for the field, and shares a new `useDialog` hook and `CloseButton` primitive with Modal.
 - 2026-08-05 — [Publish the UI library as a deterministic npm package](journal/2026-08-05-npm-package-and-ai-reuse.md) — compiled component subpaths, governed reuse fingerprints, explicit Tailwind consumption, and queued automatic semantic releases.
 - 2026-08-03 — [Add the Tabs component](journal/2026-08-03-add-tabs-component.md) — a de-cliented pill `tablist`: roving `tabIndex`, `aria-selected`, and an ArrowLeft/ArrowRight selection-and-focus loop with wraparound; controlled or uncontrolled, presentation only.
 - 2026-08-03 — [Add the In-page navigation component](journal/2026-08-03-add-in-page-navigation-component.md) — a de-cliented "on this page" section-nav: an `IntersectionObserver` scroll-spy driving `aria-current` in a `<nav>` landmark, a wide-viewport pill bar collapsing to an `inert`-gated mobile drawer.

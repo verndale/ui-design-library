@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useId, useRef, useState, type ReactNode, type RefObject } from 'react';
+import { useId, useRef, type ReactNode, type RefObject } from 'react';
 import { createPortal } from 'react-dom';
 
-import { getFocusableElements, useFocusTrap, useScrollLock } from '../../src/lib/focus';
+import { CloseButton } from '../../src/lib/CloseButton';
+import { useDialog } from '../../src/lib/dialog';
+import { getFocusableElements } from '../../src/lib/focus';
 
 export type ModalProps = {
   /** Whether the dialog is open. The consumer owns this state. */
@@ -46,46 +48,19 @@ export function Modal({
   returnFocusRef,
 }: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const openerRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
   const descriptionId = useId();
-  // Portals need a DOM target, which does not exist during SSR.
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
-
-  // `mounted` gates the portal, so dialogRef is still null on the first render
-  // of an already-open dialog. Without it in the condition the trap's effect
-  // runs once against a null ref and never re-runs — no listeners, no trap.
-  useFocusTrap({ containerRef: dialogRef, enabled: open && mounted });
-  useScrollLock(open);
-
-  // Remember the opener before focus moves, and restore it on close so keyboard
-  // users land back where they were rather than at the top of the document.
-  useEffect(() => {
-    if (!open) return;
-    openerRef.current = (document.activeElement as HTMLElement) ?? null;
-    const frame = requestAnimationFrame(() => {
-      const root = dialogRef.current;
-      if (root) (getFocusableElements(root)[0] ?? root).focus();
-    });
-    return () => {
-      cancelAnimationFrame(frame);
-      const target = returnFocusRef?.current ?? openerRef.current;
-      target?.focus?.();
-    };
-  }, [open, returnFocusRef]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      event.stopPropagation();
-      onClose();
-    };
-    document.addEventListener('keydown', onKeyDown, true);
-    return () => document.removeEventListener('keydown', onKeyDown, true);
-  }, [open, onClose]);
+  // The shared overlay contract: SSR portal gate, focus trap, scroll lock,
+  // Escape-to-close, and focus restoration. A generic dialog takes initial focus
+  // on its first focusable control.
+  const { mounted } = useDialog({
+    open,
+    onClose,
+    containerRef: dialogRef,
+    returnFocusRef,
+    onOpenFocus: (root) => (getFocusableElements(root)[0] ?? root).focus(),
+  });
 
   if (!mounted || !open) return null;
 
@@ -128,22 +103,7 @@ export function Modal({
               ) : null}
             </div>
 
-            <button
-              type="button"
-              aria-label={closeLabel}
-              onClick={onClose}
-              className={[
-                'absolute end-s top-s inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-pill',
-                'bg-surface-inverse text-text-inverse',
-                'transition-colors duration-[var(--duration-fast)] ease-standard',
-                'hover:bg-action-hover',
-                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus',
-              ].join(' ')}
-            >
-              <svg aria-hidden viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M3 3l10 10M13 3L3 13" strokeLinecap="round" />
-              </svg>
-            </button>
+            <CloseButton label={closeLabel} onClick={onClose} className="absolute end-s top-s" />
           </header>
 
           {/*

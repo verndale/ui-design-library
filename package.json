@@ -102,6 +102,11 @@
       "import": "./dist/components/search-input/SearchInput.js"
     },
     "./components/search-input/component.json": "./components/search-input/component.json",
+    "./components/search-overlay": {
+      "types": "./dist/components/search-overlay/SearchOverlay.d.ts",
+      "import": "./dist/components/search-overlay/SearchOverlay.js"
+    },
+    "./components/search-overlay/component.json": "./components/search-overlay/component.json",
     "./components/section-header": {
       "types": "./dist/components/section-header/SectionHeader.d.ts",
       "import": "./dist/components/section-header/SectionHeader.js"

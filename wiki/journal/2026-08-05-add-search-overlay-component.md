@@ -2,7 +2,7 @@
 date: 2026-08-05
 topics: []
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/24
 ---
 # Add the Search overlay component
 

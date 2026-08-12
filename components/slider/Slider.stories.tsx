@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fireEvent, userEvent, within } from 'storybook/test';
 
-import { Slider, type SliderOption } from './Slider';
+import { Slider, type SliderOption } from './index';
 
 /**
  * Move the thumb by the option index.

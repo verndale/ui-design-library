@@ -1,0 +1,19 @@
+{
+  "name": "ui-design-library-next-consumer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "next build"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@verndale/ui-design-library": "file:__PACKED_LIBRARY__",
+    "embla-carousel-react": "8.6.0",
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwindcss": "4.3.3"
+  }
+}

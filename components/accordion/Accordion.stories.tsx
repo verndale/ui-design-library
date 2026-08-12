@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
 
-import { Accordion, type AccordionItem } from './Accordion';
+import { Accordion, type AccordionItem } from './index';
 
 const faq: AccordionItem[] = [
   { label: 'What is your return policy?', children: 'Returns are accepted within 30 days of delivery.' },

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { Quote } from './Quote';
+import { Quote } from './index';
 
 const meta = {
   title: 'Quote',

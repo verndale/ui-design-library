@@ -26,14 +26,14 @@
     "source": "cn-website/src/components/ui/button/"
   },
   "declienting": [
-    "Removed the Sitecore Content SDK link handling, the LinkField prop, and helpers/sitecore-link; a navigating control is now `as=\"a\"` with an href.",
-    "Removed next/link in favour of a polymorphic `as`, so the component is not Next-only.",
-    "Renamed the colour-scheme context to surface (light/dark), which describes what it actually selects rather than how it is implemented.",
+    "Removed the Sitecore Content SDK link handling, the LinkField prop, and helpers/sitecore-link; navigation now uses the library Link while Button remains a native button.",
+    "Removed next/link and the temporary polymorphic `as`/`href` seam, so framework routing remains consumer-owned without making Button Next-only.",
+    "Replaced the colour-scheme context with an explicit surface (light/dark) prop, which keeps the palette choice serializable across a server boundary.",
     "Cut four variants to three: secondaryOutline collapsed into secondary, and the accent variant was dropped because it existed only to carry the client's brand red.",
     "Mapped every --sem-button-* and --color-brand-* token onto neutral control-* semantic tokens.",
     "Replaced hard-coded 48/40/36px heights with --size-touch-* tokens.",
-    "Added an explicit guard so `type` is set only on a native button and aria-disabled is used otherwise; the source assumed a button element.",
-    "Kept verbatim: the surface context, the icon slots, and the disabled plus aria-disabled pairing."
+    "Narrowed the polymorphic control to a native button, so native type and disabled semantics no longer require an element-type guard.",
+    "Kept verbatim: the icon slots and disabled styling; the server-first rewrite made surface explicit and moved navigation to Link."
   ],
   "maturity": "supported"
 }

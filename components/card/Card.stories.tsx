@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 
-import { Card, CardMedia } from './Card';
+import { Card, CardMedia } from './index';
 
 const meta = {
   title: 'Card',

@@ -1,30 +1,7 @@
-import type { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
+import type { LinkProps, LinkSize } from './Link.types';
+import { LinkContent } from './parts/LinkContent';
 
-import { animatedUnderline } from '../../src/lib/underline';
-
-export type LinkSize = 'large' | 'medium' | 'small';
-
-export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> & {
-  children: ReactNode;
-  className?: string;
-  size?: LinkSize;
-  /**
-   * Render as a different element — pass a router's link component here. The
-   * library stays framework-neutral by never importing one itself.
-   */
-  as?: ElementType;
-  /**
-   * Add an invisible `::before` hit pad so the tap target meets the minimum
-   * height without the link's layout box growing. Use on standalone or stacked
-   * calls to action; leave off for links inline in a paragraph.
-   */
-  touchTarget?: boolean;
-  /** Decorative leading icon. */
-  startIcon?: ReactNode;
-  /** Decorative trailing icon. */
-  endIcon?: ReactNode;
-  disabled?: boolean;
-};
+export type { LinkProps, LinkSize } from './Link.types';
 
 const SIZES: Record<LinkSize, string> = {
   large: 'px-3xs py-2xs text-base',
@@ -38,17 +15,7 @@ const TOUCH: Record<LinkSize, string> = {
   small: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-[var(--size-touch-small)]",
 };
 
-const iconSlot = (size: LinkSize, side: 'start' | 'end') =>
-  [
-    'inline-flex shrink-0 align-middle text-inherit',
-    side === 'start' ? 'me-2xs' : 'ms-2xs',
-    size === 'small' ? '[&_svg]:size-4' : '[&_svg]:size-5',
-  ].join(' ');
-
-/**
- * A text link. The label carries an animated underline that draws on hover and
- * on keyboard focus, and underlines each line separately when the text wraps.
- */
+/** A framework-neutral text link with a multiline animated underline. */
 export function Link({
   children,
   className,
@@ -77,18 +44,9 @@ export function Link({
         .join(' ')}
       {...rest}
     >
-      {startIcon ? (
-        <span aria-hidden className={iconSlot(size, 'start')}>
-          {startIcon}
-        </span>
-      ) : null}
-      {/* The underline must live on an inner inline span — see src/lib/underline.ts. */}
-      <span className={animatedUnderline}>{children}</span>
-      {endIcon ? (
-        <span aria-hidden className={iconSlot(size, 'end')}>
-          {endIcon}
-        </span>
-      ) : null}
+      <LinkContent size={size} startIcon={startIcon} endIcon={endIcon}>
+        {children}
+      </LinkContent>
     </Component>
   );
 }

@@ -5,8 +5,8 @@
   "styling": "tailwind",
   "slots": [
     "slides",
-    "renderPrevious",
-    "renderNext"
+    "previousIcon",
+    "nextIcon"
   ],
   "variants": [
     "loop"
@@ -31,7 +31,7 @@
   },
   "declienting": [
     "Kept embla-carousel-react as a dependency — it is a standing frontend-team standard, so capturing the a11y layer headless would have added indirection for no benefit. Declared as a peerDependency because the library ships as source.",
-    "Removed the import of the project's Button; the arrow controls are now local, with renderPrevious and renderNext slots for a project's own icons.",
+    "Removed the import of the project's Button; the arrow controls are now local, with previousIcon and nextIcon slots for a project's own icons.",
     "Collapsed the eight sibling modules (CarouselChevronIcons, CarouselFocusOverlays, carouselA11y.constants, carouselA11y.helpers, carouselA11yContext, useCarouselArrowKeyboardFocus, useCarouselArrowTabOrder) into one component; the context existed to thread state between files that no longer exist separately.",
     "Mapped chevron and focus-overlay colours onto semantic tokens.",
     "Kept verbatim: inert applied via setAttribute rather than a React prop, so Tab skips off-screen slides; arrow controls disabling at the ends; the labelled carousel region; and per-slide role=group with an announced position.",

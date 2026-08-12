@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { RichText } from './RichText';
+import { RichText } from './index';
 
 const meta = {
   title: 'Rich text',

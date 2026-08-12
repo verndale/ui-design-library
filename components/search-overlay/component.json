@@ -31,7 +31,7 @@
   },
   "declienting": [
     "Reused the library's SearchInput component for the search field — its input, submit, clear, and polite results live region carry over — instead of re-implementing a field; the results panel rides through SearchInput's `results` slot.",
-    "Extracted the dialog shell (SSR portal gate, focus trap, scroll lock, Escape-to-close, focus restoration) into src/lib/dialog.ts (useDialog), now shared with Modal, rather than duplicating Modal's inline shell.",
+    "Extracted the dialog shell (SSR portal gate, focus trap, scroll lock, Escape-to-close, focus restoration) into src/lib/dialog.client.ts (useDialog), now shared with Modal, rather than duplicating Modal's inline shell.",
     "Reused the shared src/lib/CloseButton primitive for the dismiss control, shared with Modal.",
     "Removed the search-API / results-feed wiring; results and suggestions arrive through the resultsPanel slot and the overlay emits query and submit events via onQueryChange / onSubmit.",
     "Removed the CMS field bindings for the heading and quick links; heading is a required prop and quick links a slot.",

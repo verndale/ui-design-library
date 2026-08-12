@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { Breadcrumbs } from './Breadcrumbs';
+import { Breadcrumbs } from './index';
 
 const meta = {
   title: 'Breadcrumbs',

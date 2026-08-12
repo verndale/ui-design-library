@@ -31,7 +31,7 @@
     "data-module=\"range-field\" DOM-scan auto-init replaced with a React controlled/uncontrolled value API (value / defaultValue / onChange)",
     "hidden form-output input removed; the selected option's value is emitted through onChange and consumers own their own form wiring",
     "per-mark data-value/data-label/data-description attributes removed; the scale is a typed options prop instead of being read back off the DOM",
-    "--range-field-progress custom property renamed --slider-progress and scoped to the component root",
+    "--range-field-progress custom property replaced with a React-owned inline progress width, scoped to the painted track",
     "server-supplied max attribute removed; max is derived from options.length and the index is clamped against it"
   ],
   "maturity": "supported"

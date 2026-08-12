@@ -2,7 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 import { useState } from 'react';
 
-import { Alert } from './Alert';
+import {
+  Alert,
+  DismissibleAlert,
+  type AlertProps,
+  type DismissibleAlertProps,
+} from './index';
+
+type AlertStoryArgs = AlertProps &
+  Partial<Pick<DismissibleAlertProps, 'onDismiss' | 'dismissLabel' | 'dismissMs'>>;
 
 /**
  * The story file is this component's API contract. What is worth proving is the
@@ -19,32 +27,70 @@ const meta = {
     docs: {
       description: {
         component:
-          'A page-level notification: an icon, a message, and an optional dismiss on a raised surface with a tone accent. `positive` announces politely, `critical` assertively. Kept distinct from Toast, which is transient and bottom-anchored.',
+          'A server-safe page-level notification on a raised surface with a tone accent. `positive` announces politely and `critical` assertively. Use `DismissibleAlert` when dismissal or a timer is required.',
       },
     },
   },
   argTypes: {
     variant: { control: 'radio', options: ['positive', 'critical'], description: 'Severity — drives politeness, icon, and tone.' },
-    dismissLabel: { control: 'text', description: 'Accessible label for the dismiss control.' },
-    onDismiss: { action: 'dismiss', description: 'Called on dismiss and on auto-dismiss; also renders the dismiss control.' },
+    open: { control: 'boolean', description: 'Whether the alert is shown.' },
+    children: { control: 'text', description: 'The notification message.' },
+    className: { control: 'text', description: 'Optional class names for the alert frame.' },
+    onDismiss: {
+      control: false,
+      description: 'DismissibleAlert only: called by the dismiss control or auto-dismiss timer.',
+    },
+    dismissLabel: {
+      control: 'text',
+      description: 'DismissibleAlert only: accessible label for the dismiss control.',
+    },
+    dismissMs: {
+      control: 'number',
+      description: 'DismissibleAlert only: auto-dismiss delay in milliseconds; omit or use 0 to disable.',
+    },
   },
-  args: { variant: 'positive', children: 'Your changes have been saved.', onDismiss: fn() },
-} satisfies Meta<typeof Alert>;
+  args: { variant: 'positive', children: 'Your changes have been saved.', open: true },
+} satisfies Meta<AlertStoryArgs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** A positive notification that announces politely, with a working dismiss. */
+/** A positive notification is server-renderable and announces politely. */
 export const Default: Story = {
-  play: async ({ args, canvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const alert = canvas.getByRole('status');
 
     await expect(alert).toHaveAttribute('aria-live', 'polite');
     await expect(alert).toHaveTextContent('Your changes have been saved.');
 
+    await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
+  },
+};
+
+const dismiss = fn();
+
+/** Interactive dismissal is isolated in the explicitly client-side variant. */
+export const Dismissible: Story = {
+  render: function Render(args) {
+    const [open, setOpen] = useState(true);
+    return (
+      <DismissibleAlert
+        {...args}
+        open={open}
+        onDismiss={() => {
+          dismiss();
+          setOpen(false);
+        }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    dismiss.mockClear();
+    const canvas = within(canvasElement);
     await userEvent.click(canvas.getByRole('button', { name: 'Dismiss' }));
-    await expect(args.onDismiss).toHaveBeenCalled();
+    await expect(dismiss).toHaveBeenCalledTimes(1);
+    await expect(canvas.queryByRole('status')).not.toBeInTheDocument();
   },
 };
 
@@ -72,24 +118,20 @@ export const LongMessage: Story = {
  * gone, not merely by the callback firing.
  */
 export const AutoDismiss: Story = {
-  args: { dismissMs: 80 },
   render: function Render(args) {
     const [open, setOpen] = useState(true);
     return (
-      <Alert
+      <DismissibleAlert
         {...args}
         open={open}
-        onDismiss={() => {
-          setOpen(false);
-          args.onDismiss?.();
-        }}
+        dismissMs={80}
+        onDismiss={() => setOpen(false)}
       />
     );
   },
-  play: async ({ args, canvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole('status')).toBeInTheDocument();
     await waitFor(() => expect(canvas.queryByRole('status')).not.toBeInTheDocument());
-    await expect(args.onDismiss).toHaveBeenCalled();
   },
 };

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 import { useRef, useState } from 'react';
 
-import { Modal } from './Modal';
+import { Modal } from './index';
 
 /**
  * The story file is this component's API contract. `argTypes` is what a
@@ -167,6 +167,58 @@ export const TrapsFocus: Story = {
         await userEvent.tab({ shift: true });
         await expect(dialog.contains(document.activeElement)).toBe(true);
       }
+    });
+  },
+};
+
+/** Only the topmost overlay owns Escape, focus containment, and modal semantics. */
+export const StackedOverlays: Story = {
+  args: { open: true },
+  render: function Render(args) {
+    const [underlyingOpen, setUnderlyingOpen] = useState(true);
+    const [topOpen, setTopOpen] = useState(true);
+    return (
+      <>
+        <Modal
+          {...args}
+          open={underlyingOpen}
+          title="Underlying dialog"
+          onClose={() => setUnderlyingOpen(false)}
+        >
+          <button type="button">Underlying action</button>
+        </Modal>
+        <Modal {...args} open={topOpen} title="Top dialog" onClose={() => setTopOpen(false)}>
+          <button type="button">Top action</button>
+        </Modal>
+      </>
+    );
+  },
+  play: async ({ step }) => {
+    const body = within(document.body);
+    const top = await body.findByRole('dialog', { name: 'Top dialog' });
+    const underlyingHidden = document.querySelector<HTMLElement>('[data-component="modal"][aria-hidden="true"]');
+    if (!underlyingHidden) throw new Error('Expected an underlying hidden dialog');
+
+    await step('only the top overlay is exposed and focusable', async () => {
+      await expect(underlyingHidden).toHaveTextContent('Underlying dialog');
+      await expect(top).toHaveAttribute('aria-modal', 'true');
+      await expect(underlyingHidden).toHaveAttribute('aria-hidden', 'true');
+      await expect(underlyingHidden).toHaveAttribute('inert');
+      await waitFor(() => expect(top.contains(document.activeElement)).toBe(true));
+    });
+
+    await step('one Escape closes only the top overlay', async () => {
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(body.queryByRole('dialog', { name: 'Top dialog' })).not.toBeInTheDocument());
+      const underlying = await body.findByRole('dialog', { name: 'Underlying dialog' });
+      await expect(document.body.style.overflow).toBe('hidden');
+      await waitFor(() => expect(underlying.contains(document.activeElement)).toBe(true));
+    });
+
+    await step('closing the final overlay releases the shared scroll lock', async () => {
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+      await waitFor(() => expect(document.body.style.overflow).not.toBe('hidden'));
     });
   },
 };

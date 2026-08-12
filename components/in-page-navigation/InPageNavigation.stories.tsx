@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fireEvent, within } from 'storybook/test';
 
-import { InPageNavigation, type InPageNavigationItem } from './InPageNavigation';
+import { InPageNavigation, type InPageNavigationItem } from './index';
 
 const sections: InPageNavigationItem[] = [
   { id: 'overview', label: 'Overview' },

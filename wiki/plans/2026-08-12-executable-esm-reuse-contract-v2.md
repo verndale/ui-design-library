@@ -1,7 +1,13 @@
 ---
 status: partial
 executed: 2026-08-12
-evidence: ["issue #31", "pnpm verify", "21 packed native ESM imports", "packed Next 16/Tailwind consumer", "adversarial rendering-graph and release-range fixtures"]
+evidence:
+  - "issue #31"
+  - "pnpm verify"
+  - "21 packed native ESM imports"
+  - "packed Next 16/Tailwind consumer"
+  - "adversarial rendering-graph and release-range fixtures"
+  - "PR #35 https://github.com/verndale/ui-design-library/pull/35 (merged 2026-08-13)"
 source_tool: codex
 source: approved task conversation
 topics: [package-distribution, component-architecture]

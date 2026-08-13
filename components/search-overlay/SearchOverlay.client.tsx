@@ -1,9 +1,9 @@
 import { useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useDialog } from '../../src/lib/dialog.client';
-import { SearchOverlayPanel } from './parts/SearchOverlayPanel.client';
-import type { SearchOverlayProps } from './SearchOverlay.types';
+import { useDialog } from '../../src/lib/dialog.client.js';
+import { SearchOverlayPanel } from './parts/SearchOverlayPanel.client.js';
+import type { SearchOverlayProps } from './SearchOverlay.types.js';
 
 /** Search overlay controller: portal lifecycle, focus behavior, and idle/active state. */
 export function SearchOverlay({

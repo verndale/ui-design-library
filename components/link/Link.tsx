@@ -1,7 +1,7 @@
-import type { LinkProps, LinkSize } from './Link.types';
-import { LinkContent } from './parts/LinkContent';
+import type { LinkProps, LinkSize } from './Link.types.js';
+import { LinkContent } from './parts/LinkContent.js';
 
-export type { LinkProps, LinkSize } from './Link.types';
+export type { LinkProps, LinkSize } from './Link.types.js';
 
 const SIZES: Record<LinkSize, string> = {
   large: 'px-3xs py-2xs text-base',

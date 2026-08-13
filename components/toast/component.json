@@ -1,6 +1,8 @@
 {
   "canonical": "Toast",
   "slug": "toast",
+  "exportName": "Toast",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["message"],

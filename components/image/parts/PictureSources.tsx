@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import { buildSrcSet } from '../Image.sources';
-import type { ImageLoader, ImageSource } from '../Image.types';
+import { buildSrcSet } from '../Image.sources.js';
+import type { ImageLoader, ImageSource } from '../Image.types.js';
 
 type PictureSourcesProps = {
   src: string;

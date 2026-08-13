@@ -1,6 +1,8 @@
 {
   "canonical": "Stat",
   "slug": "stat",
+  "exportName": "Stat",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["value", "label", "description"],

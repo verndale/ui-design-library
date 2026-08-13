@@ -17,6 +17,9 @@
     "access": "public",
     "provenance": true
   },
+  "uiDesignLibrary": {
+    "reuseContractVersion": 2
+  },
   "files": [
     "dist",
     "components",
@@ -149,6 +152,8 @@
     "build": "pnpm exports:check && node scripts/clean-dist.cjs && tsc -p tsconfig.build.json && pnpm exports:dist",
     "prepack": "pnpm test && pnpm build",
     "release": "semantic-release",
+    "release:preflight": "node scripts/check-release-commit.cjs",
+    "release:preflight:selftest": "node scripts/check-release-commit.selftest.cjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint components src",
     "architecture": "node scripts/check-component-architecture.cjs",
@@ -166,7 +171,7 @@
     "test:motion": "vitest run -c vitest.motion.config.ts",
     "test:ssr": "vitest run -c vitest.ssr.config.ts",
     "test:next": "node scripts/test-next.cjs",
-    "test": "pnpm typecheck && pnpm lint && pnpm architecture && pnpm architecture:selftest && pnpm contracts && pnpm contracts:selftest && pnpm exports:check && pnpm test:ssr && pnpm test:stories && pnpm test:motion",
+    "test": "pnpm typecheck && pnpm lint && pnpm architecture && pnpm architecture:selftest && pnpm contracts && pnpm contracts:selftest && pnpm release:preflight:selftest && pnpm exports:check && pnpm test:ssr && pnpm test:stories && pnpm test:motion",
     "verify": "pnpm test && pnpm build && pnpm test:next"
   },
   "peerDependencies": {

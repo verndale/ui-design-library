@@ -1,6 +1,8 @@
 {
   "canonical": "Avatar",
   "slug": "avatar",
+  "exportName": "Avatar",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["children"],

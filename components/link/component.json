@@ -1,6 +1,8 @@
 {
   "canonical": "Link",
   "slug": "link",
+  "exportName": "Link",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["children", "startIcon", "endIcon"],

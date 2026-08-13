@@ -1,7 +1,7 @@
-import { ButtonContent } from './parts/ButtonContent';
-import type { ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types';
+import { ButtonContent } from './parts/ButtonContent.js';
+import type { ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types.js';
 
-export type { ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types';
+export type { ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types.js';
 
 const SIZES: Record<ButtonSize, string> = {
   large: 'min-h-[var(--size-touch-large)] gap-2xs px-s py-2xs text-base',

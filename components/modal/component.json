@@ -1,6 +1,8 @@
 {
   "canonical": "Modal",
   "slug": "modal",
+  "exportName": "Modal",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["title", "eyebrow", "description", "children", "footer"],

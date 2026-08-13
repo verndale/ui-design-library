@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { BadgeProps } from '../Badge.types';
+import type { BadgeProps } from '../Badge.types.js';
 
 export function BadgeFrame({
   label,

@@ -1,4 +1,4 @@
-import type { QuoteProps } from '../Quote.types';
+import type { QuoteProps } from '../Quote.types.js';
 
 export function QuoteFrame({ children, className }: QuoteProps) {
   return (

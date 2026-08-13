@@ -11,6 +11,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Storybook review tooling](../../wiki/journal/2026-07-27-storybook-review-tooling.md) → [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md)
 - [Native variant axis](../../wiki/journal/2026-07-30-variant-axis.md) → [Native variant axis for @verndale/ui-design-library](../../wiki/plans/2026-07-30-variant-axis.md)
 - [Publish the UI library as a deterministic npm package](../../wiki/journal/2026-08-05-npm-package-and-ai-reuse.md) → [Validated Plan: npm-Published UI Library + Deterministic AI Reuse](../../wiki/plans/2026-08-05-npm-package-and-ai-reuse.md)
+- [Publish executable ESM and reuse contract v2](../../wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md) → [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md)
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md)
 
 ## Page → topic
@@ -24,6 +25,8 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Native variant axis](../../wiki/journal/2026-07-30-variant-axis.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 - [Publish the UI library as a deterministic npm package](../../wiki/journal/2026-08-05-npm-package-and-ai-reuse.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Add Graphify code mapping](../../wiki/journal/2026-08-12-add-graphify-code-map.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
+- [Publish executable ESM and reuse contract v2](../../wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
+- [Publish executable ESM and reuse contract v2](../../wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Fix wiki sync pagination](../../wiki/journal/2026-08-12-fix-wiki-sync-pagination.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
@@ -33,6 +36,8 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Native variant axis for @verndale/ui-design-library](../../wiki/plans/2026-07-30-variant-axis.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 - [Validated Plan: npm-Published UI Library + Deterministic AI Reuse](../../wiki/plans/2026-08-05-npm-package-and-ai-reuse.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
+- [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 
@@ -70,6 +75,8 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [package.json](../../package.json)
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [release.config.cjs](../../release.config.cjs)
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [build-exports.cjs](../../scripts/build-exports.cjs)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [check-release-commit.cjs](../../scripts/check-release-commit.cjs)
+- [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [test-next.cjs](../../scripts/test-next.cjs)
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [styles.css](../../styles.css)
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [tsconfig.build.json](../../tsconfig.build.json)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [test.yml](../../.github/workflows/test.yml)

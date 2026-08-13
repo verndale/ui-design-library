@@ -1,6 +1,8 @@
 {
   "canonical": "Button",
   "slug": "button",
+  "exportName": "Button",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["children", "startIcon", "endIcon"],

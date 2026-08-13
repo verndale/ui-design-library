@@ -58,6 +58,46 @@ function assertNestedUtilityIsNested() {
     `${nestedUtility} must be sourced only from a nested component part`);
 }
 
+function componentCandidates(consumerRoot, installedManifest) {
+  const packageRoot = path.join(consumerRoot, 'node_modules', '@verndale', 'ui-design-library');
+  return Object.keys(installedManifest.exports)
+    .filter((subpath) => /^\.\/components\/[^/]+$/.test(subpath))
+    .sort()
+    .map((subpath) => {
+      const directory = subpath.slice('./components/'.length);
+      const manifest = JSON.parse(fs.readFileSync(
+        path.join(packageRoot, 'components', directory, 'component.json'),
+        'utf8',
+      ));
+      assert.match(manifest.exportName, /^[A-Za-z_$][\w$]*$/, `${subpath} has no valid exportName`);
+      return {
+        module: `@verndale/ui-design-library/components/${directory}`,
+        exportName: manifest.exportName,
+      };
+    });
+}
+
+function assertNativeImports(consumerRoot, installedManifest) {
+  assert.equal(
+    installedManifest.uiDesignLibrary?.reuseContractVersion,
+    2,
+    'packed package must declare reuse contract version 2',
+  );
+  const candidates = componentCandidates(consumerRoot, installedManifest);
+  assert.equal(candidates.length, 21, 'packed package must expose exactly 21 component candidates');
+  const source = `
+    const candidates = ${JSON.stringify(candidates)};
+    for (const candidate of candidates) {
+      const loaded = await import(candidate.module);
+      if (!(candidate.exportName in loaded)) {
+        throw new Error(candidate.module + ' does not export ' + candidate.exportName);
+      }
+    }
+    process.stdout.write('PASS ' + candidates.length + ' native ESM component imports.\\n');
+  `;
+  run('node', ['--input-type=module', '--eval', source], consumerRoot);
+}
+
 function configureConsumer(consumerRoot, tarball) {
   fs.cpSync(fixtureRoot, consumerRoot, { recursive: true });
   const manifestPath = path.join(consumerRoot, 'package.json');
@@ -96,10 +136,11 @@ function main() {
       'utf8',
     ));
     assert.equal(installedManifest.version, packedManifest.version, 'consumer did not install the packed version');
+    assertNativeImports(consumerRoot, installedManifest);
 
     run('pnpm', ['build'], consumerRoot);
     assertCompiledCss(consumerRoot);
-    process.stdout.write('PASS packed package builds in Next 16 and exposes nested Tailwind utilities.\n');
+    process.stdout.write('PASS packed package loads in native Node, builds in Next 16, and exposes nested Tailwind utilities.\n');
   } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
   }

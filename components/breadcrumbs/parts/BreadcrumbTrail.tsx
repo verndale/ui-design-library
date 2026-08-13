@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
-import { animatedUnderline } from '../../../src/lib/underline';
-import type { BreadcrumbItem } from '../Breadcrumbs.types';
+import { animatedUnderline } from '../../../src/lib/underline.js';
+import type { BreadcrumbItem } from '../Breadcrumbs.types.js';
 
 export function BreadcrumbTrail({
   items,

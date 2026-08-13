@@ -122,15 +122,15 @@ The defaults here are deliberately unbranded. A component shipping a client's re
 Install one exact version. The exact dependency is the orchestration pipeline's package-reuse opt-in; ranges, tags, aliases, workspace links, and `file:` dependencies are deliberately not accepted.
 
 ```bash
-pnpm add --save-exact @verndale/ui-design-library@1.0.0
+pnpm add --save-exact @verndale/ui-design-library@<exact-version>
 ```
 
 Import Tailwind, the library's semantic layer, and one explicit source path in the application's global stylesheet. `@source` paths are relative to the stylesheet containing the directive, so adjust the example's `../` segments for the consuming project.
 
 ```css
-@import 'tailwindcss';
-@import '@verndale/ui-design-library/styles.css';
-@source '../../../node_modules/@verndale/ui-design-library/dist';
+@import "tailwindcss";
+@import "@verndale/ui-design-library/styles.css";
+@source "../../../node_modules/@verndale/ui-design-library/dist";
 ```
 
 ```tsx
@@ -176,13 +176,17 @@ There is no root barrel and no short alias such as `@verndale/ui-design-library/
 
 When upgrading across the server-first architecture release, see [`MIGRATION.md`](MIGRATION.md) for the Button, Alert, Badge, and Carousel API changes.
 
-The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. `reuseFingerprint` is separate from API-level `slots`: it uses the pipeline's governed structural `slots` + `affordance` + `role` triad. `variant` remains the singular structural implementation axis, while `variants` remains the list of prop/style values.
+The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. Package-level `uiDesignLibrary.reuseContractVersion` identifies the metadata contract. Each manifest names one primary AI candidate with `exportName` and its derived `rendering` boundary (`server`, `hybrid`, or `client`). Secondary developer exports remain public but are not separate candidates.
+
+`reuseFingerprint` is separate from API-level `slots`: it describes only the primary export and uses the pipeline's governed structural `slots` + `affordance` + `role` triad. Governed `other` values are valid metadata but intentionally never auto-match. `variant` remains the singular structural implementation axis, while `variants` remains the primary export's list of prop/style values. Entries in `variants` are unique non-empty strings; an empty array means the primary export has no governed style values.
 
 ## Releases
 
 Every merge to `main` runs the full test/build/pack gate and semantic-release. A breaking change publishes a major, `feat` publishes a minor, and every other permitted conventional-commit type publishes a patch. Tags and GitHub releases use `v<version>`; the source `package.json` stays `0.0.0-development`.
 
-The initial `1.0.0` publish uses the repository's `NPM_TOKEN`. After that bootstrap, configure npm trusted publishing for `.github/workflows/release.yml` and remove the long-lived token; subsequent merges publish through GitHub OIDC without a manual command.
+Publishing uses npm trusted publishing for the `verndale/ui-design-library` repository and `.github/workflows/release.yml`. The workflow requests `id-token: write` and carries no long-lived npm token. Configure that trusted publisher before merging a release-producing PR, then remove any obsolete `NPM_TOKEN` repository secret.
+
+GitHub squash merges must use the PR title as the commit subject and a blank commit description. Intentional breaking releases put `!` in that title (`feat(package)!: ...`). The release preflight checks every commit after the latest reachable `v<semver>` tag and rejects `BREAKING CHANGE` text in any body, so a failed release followed by a clean merge cannot hide stale text that semantic-release would still analyze.
 
 ---
 
@@ -208,7 +212,7 @@ pnpm typecheck         # tsc --noEmit
 pnpm lint              # hooks, boundaries, and source linting
 pnpm architecture      # index/types/parts shape, client naming + 120-line ceiling
 pnpm test:ssr          # public components render with no browser globals
-pnpm build             # deterministic ESM + declaration build, then export/dist parity
+pnpm build             # native Node ESM + declaration build, then export/dist parity
 pnpm exports:check     # component directories and committed package exports agree
 pnpm exports:sync      # deliberately update the committed map after adding/removing a component
 pnpm contracts         # slug/canonical agreement, the variant axis, declared tokens exist,
@@ -217,7 +221,7 @@ pnpm contracts:selftest # exercises the contract checker itself against fixtures
 pnpm test:stories      # every story rendered in Chromium: play functions + axe
 pnpm test:stories:watch # the same, in watch mode
 pnpm test:motion       # `motion`-tagged stories re-run under prefers-reduced-motion
-pnpm verify            # pnpm test + package build + development-only Next consumer fixture
+pnpm verify            # test/build + packed native-ESM imports + Next/Tailwind consumer fixture
 ```
 
 `pnpm test:stories` needs a browser binary. Once per machine:

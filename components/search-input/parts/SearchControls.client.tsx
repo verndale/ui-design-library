@@ -1,4 +1,4 @@
-import { ClearGlyph, SearchGlyph } from './SearchIcons';
+import { ClearGlyph, SearchGlyph } from './SearchIcons.js';
 
 const control = [
   'flex cursor-pointer items-center justify-center rounded-pill',

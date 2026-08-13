@@ -23,6 +23,7 @@ function valid(root) {
   write(root, 'Example.tsx', "import { ExampleLabel } from './parts/ExampleLabel';\nexport const Example = () => <ExampleLabel />;\n");
   write(root, 'parts/ExampleLabel.tsx', 'export const ExampleLabel = () => <span>Example</span>;\n');
   write(root, 'Example.stories.tsx', "import { Example } from './index';\nexport default { component: Example };\n");
+  write(root, 'component.json', '{"exportName":"Example","rendering":"server"}\n');
 }
 
 const cases = [
@@ -30,6 +31,73 @@ const cases = [
     name: 'valid server tree passes',
     mutate() {},
     expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'primary export rendering is derived as hybrid',
+    mutate(root) {
+      write(root, 'component.json', '{"exportName":"Example","rendering":"hybrid"}\n');
+      write(
+        root,
+        'Example.tsx',
+        "import { ExampleClient } from './parts/ExampleClient.client';\nexport const Example = () => <ExampleClient />;\n",
+      );
+      write(
+        root,
+        'parts/ExampleClient.client.tsx',
+        "'use client';\nexport const ExampleClient = () => <span />;\n",
+      );
+    },
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'side-effect client imports widen the primary graph',
+    mutate(root) {
+      write(root, 'Example.tsx', "import './parts/ExampleClient.client.js';\nexport const Example = () => <span />;\n");
+      write(
+        root,
+        'parts/ExampleClient.client.tsx',
+        "'use client';\nexport const ExampleClient = () => <span />;\n",
+      );
+    },
+    expect: (failures) => failures.some((failure) => failure.includes('derives as "hybrid"')),
+  },
+  {
+    name: 'static dynamic client imports widen the primary graph',
+    mutate(root) {
+      write(root, 'Example.tsx', "export const Example = () => <span />;\nexport const loadClient = () => import('./parts/ExampleClient.client.js');\n");
+      write(
+        root,
+        'parts/ExampleClient.client.tsx',
+        "'use client';\nexport const ExampleClient = () => <span />;\n",
+      );
+    },
+    expect: (failures) => failures.some((failure) => failure.includes('derives as "hybrid"')),
+  },
+  {
+    name: 'secondary client export does not widen the server primary classification',
+    mutate(root) {
+      write(
+        root,
+        'index.ts',
+        "export { Example } from './Example';\nexport { Secondary } from './Secondary.client';\nexport type { ExampleProps } from './Example.types';\n",
+      );
+      write(root, 'Secondary.client.tsx', "'use client';\nexport const Secondary = () => <span />;\n");
+    },
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'declared primary rendering must match the derived graph',
+    mutate(root) {
+      write(root, 'component.json', '{"exportName":"Example","rendering":"client"}\n');
+    },
+    expect: (failures) => failures.some((failure) => failure.includes('derives as "server"')),
+  },
+  {
+    name: 'primary export must be explicit and named by the manifest',
+    mutate(root) {
+      write(root, 'component.json', '{"exportName":"Missing","rendering":"server"}\n');
+    },
+    expect: (failures) => failures.some((failure) => failure.includes('must explicitly export Missing exactly once')),
   },
   {
     name: '120 physical client lines pass',

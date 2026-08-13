@@ -1,12 +1,14 @@
 {
   "canonical": "Alert",
   "slug": "alert",
+  "exportName": "Alert",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["message", "dismiss"],
   "variants": ["positive", "critical"],
   "reuseFingerprint": {
-    "slots": ["body", "close"],
+    "slots": ["body"],
     "affordance": "feedback",
     "role": "notification"
   },

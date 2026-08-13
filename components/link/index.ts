@@ -1,2 +1,2 @@
-export { Link } from './Link';
-export type { LinkProps, LinkSize } from './Link.types';
+export { Link } from './Link.js';
+export type { LinkProps, LinkSize } from './Link.types.js';

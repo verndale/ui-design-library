@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { CloseButton } from '../../../src/lib/CloseButton';
+import { CloseButton } from '../../../src/lib/CloseButton.js';
 
 type SearchOverlayHeaderProps = {
   titleId: string;

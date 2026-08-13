@@ -1,6 +1,8 @@
 {
   "canonical": "Section header",
   "slug": "section-header",
+  "exportName": "SectionHeader",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["eyebrow", "heading", "description"],

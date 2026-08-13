@@ -1,7 +1,7 @@
-import type { ImageProps } from './Image.types';
-import { buildSrcSet } from './Image.sources';
-import { ImageElement } from './parts/ImageElement';
-import { PictureSources } from './parts/PictureSources';
+import type { ImageProps } from './Image.types.js';
+import { buildSrcSet } from './Image.sources.js';
+import { ImageElement } from './parts/ImageElement.js';
+import { PictureSources } from './parts/PictureSources.js';
 
 /** A responsive image whose source ordering and transform host remain framework-neutral. */
 export function Image({

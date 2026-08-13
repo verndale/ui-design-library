@@ -1,9 +1,9 @@
 import { createPortal } from 'react-dom';
 
-import { usePortalRoot } from '../../src/lib/usePortalRoot.client';
-import { ToastMessage } from './parts/ToastMessage';
-import { useToastDismiss } from './parts/useToastDismiss.client';
-import type { ToastProps } from './Toast.types';
+import { usePortalRoot } from '../../src/lib/usePortalRoot.client.js';
+import { ToastMessage } from './parts/ToastMessage.js';
+import { useToastDismiss } from './parts/useToastDismiss.client.js';
+import type { ToastProps } from './Toast.types.js';
 
 /** An SSR-safe, portaled live-region notification with optional auto-dismiss. */
 export function Toast({

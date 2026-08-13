@@ -1,4 +1,4 @@
 'use client';
 
-export { SearchOverlay } from './SearchOverlay.client';
-export type { SearchOverlayProps } from './SearchOverlay.types';
+export { SearchOverlay } from './SearchOverlay.client.js';
+export type { SearchOverlayProps } from './SearchOverlay.types.js';

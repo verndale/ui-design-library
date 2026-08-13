@@ -1,5 +1,5 @@
-import type { SectionHeaderProps } from './SectionHeader.types';
-import { SectionHeaderContent } from './parts/SectionHeaderContent';
+import type { SectionHeaderProps } from './SectionHeader.types.js';
+import { SectionHeaderContent } from './parts/SectionHeaderContent.js';
 
 /**
  * A section-intro block: an optional eyebrow above an `<h2>`, with an optional

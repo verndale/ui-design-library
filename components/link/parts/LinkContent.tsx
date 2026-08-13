@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
-import { animatedUnderline } from '../../../src/lib/underline';
-import type { LinkSize } from '../Link.types';
+import { animatedUnderline } from '../../../src/lib/underline.js';
+import type { LinkSize } from '../Link.types.js';
 
 function LinkIcon({ children, size, side }: { children: ReactNode; size: LinkSize; side: 'start' | 'end' }) {
   return (

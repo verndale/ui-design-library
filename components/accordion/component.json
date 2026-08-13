@@ -1,6 +1,8 @@
 {
   "canonical": "Accordion",
   "slug": "accordion",
+  "exportName": "Accordion",
+  "rendering": "hybrid",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["heading", "items"],

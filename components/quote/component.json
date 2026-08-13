@@ -1,6 +1,8 @@
 {
   "canonical": "Quote",
   "slug": "quote",
+  "exportName": "Quote",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["children"],

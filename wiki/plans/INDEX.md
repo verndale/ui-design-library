@@ -16,12 +16,13 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 4 implemented, 1 partial (5 plans).
+Totals: 4 implemented, 2 partial (6 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-08-12 | [Coordinated UI Library Contract v2 and AI Reuse Hardening](2026-08-12-executable-esm-reuse-contract-v2.md) | partial | [issue #31](https://github.com/verndale/ui-design-library/issues/31), `pnpm verify`, 21 packed native ESM imports, packed Next 16/Tailwind consumer | package-distribution, component-architecture |
 | 2026-08-12 | [Server-first component architecture and full library migration](2026-08-12-server-first-component-architecture.md) | implemented | [issue #26](https://github.com/verndale/ui-design-library/issues/26), working tree, [PR #29](https://github.com/verndale/ui-design-library/pull/29) | component-architecture, package-distribution |
 | 2026-08-05 | [npm-published UI library and deterministic AI reuse](2026-08-05-npm-package-and-ai-reuse.md) | partial | [issue #18](https://github.com/verndale/ui-design-library/issues/18), working tree, [PR #19](https://github.com/verndale/ui-design-library/pull/19) | package-distribution |
 | 2026-07-30 | [Native variant axis](2026-07-30-variant-axis.md) | implemented | pending, [issue #4](https://github.com/verndale/ui-design-library/issues/4), [PR #5](https://github.com/verndale/ui-design-library/pull/5) | variant-axis |

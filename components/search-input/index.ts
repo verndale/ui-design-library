@@ -1,4 +1,4 @@
 'use client';
 
-export { SearchInput } from './SearchInput.client';
-export type { SearchInputProps } from './SearchInput.types';
+export { SearchInput } from './SearchInput.client.js';
+export type { SearchInputProps } from './SearchInput.types.js';

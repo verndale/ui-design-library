@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { ButtonSize } from '../Button.types';
+import type { ButtonSize } from '../Button.types.js';
 
 function ButtonIcon({ children, size }: { children: ReactNode; size: ButtonSize }) {
   return (

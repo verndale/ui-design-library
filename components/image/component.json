@@ -1,6 +1,8 @@
 {
   "canonical": "Image",
   "slug": "image",
+  "exportName": "Image",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["fallback"],

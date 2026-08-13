@@ -36,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-12 — [Publish executable ESM and reuse contract v2](journal/2026-08-12-executable-esm-reuse-contract-v2.md) — fixed native Node imports, identified one primary reuse export and derived rendering boundary per component, and hardened OIDC semantic releases.
 - 2026-08-12 — [Fix wiki sync pagination](journal/2026-08-12-fix-wiki-sync-pagination.md) — slurps paginated GitHub file and commit responses before building merge context, preventing adjacent page arrays from becoming invalid `jq --argjson` input.
 - 2026-08-12 — [Add Graphify code mapping](journal/2026-08-12-add-graphify-code-map.md) — added Graphify's Codex query-first instructions and a local AST map that complements the curated component/wiki graph with symbol-level component relationships.
 - 2026-08-12 — [Adopt server-first component architecture](journal/2026-08-12-server-first-component-architecture.md) — stable facades and narrow client trees, backed by graph-aware SSR checks, composed overlay ownership, an empty-carousel contract, and packed Next verification.

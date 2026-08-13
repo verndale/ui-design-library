@@ -1,7 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useCarouselInert } from './useCarouselInert.client';
+import { useCarouselInert } from './useCarouselInert.client.js';
 
 /** Own Embla state and expose a small rendering contract to the carousel tree. */
 export function useCarouselController({ loop, slideCount }: { loop: boolean; slideCount: number }) {

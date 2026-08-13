@@ -58,6 +58,9 @@ jobs:
       - name: Install Chromium
         run: pnpm exec playwright install --with-deps chromium
 
+      - name: Reject aggregated breaking-change bodies
+        run: pnpm release:preflight
+
       - name: Verify package and packed Next consumer
         run: pnpm verify
 
@@ -69,5 +72,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm exec semantic-release

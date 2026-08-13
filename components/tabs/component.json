@@ -1,6 +1,8 @@
 {
   "canonical": "Tabs",
   "slug": "tabs",
+  "exportName": "Tabs",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["items"],

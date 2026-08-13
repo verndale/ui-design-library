@@ -1,4 +1,4 @@
-import type { SliderOption } from '../Slider.types';
+import type { SliderOption } from '../Slider.types.js';
 
 type SliderTrackProps = {
   inputId: string;

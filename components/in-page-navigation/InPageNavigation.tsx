@@ -1,7 +1,7 @@
-import type { InPageNavigationProps } from './InPageNavigation.types';
-import { InPageNavigationBranch } from './parts/InPageNavigationBranch.client';
+import type { InPageNavigationProps } from './InPageNavigation.types.js';
+import { InPageNavigationBranch } from './parts/InPageNavigationBranch.client.js';
 
-export type { InPageNavigationItem, InPageNavigationProps } from './InPageNavigation.types';
+export type { InPageNavigationItem, InPageNavigationProps } from './InPageNavigation.types.js';
 
 /** A server-renderable landmark enhanced by scroll-spy and mobile disclosure leaves. */
 export function InPageNavigation({

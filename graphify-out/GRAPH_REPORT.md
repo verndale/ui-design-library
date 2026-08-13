@@ -1,23 +1,23 @@
-# Graph Report - ui-design-library  (2026-08-12)
+# Graph Report - ui-design-library-task-31  (2026-08-13)
 
 ## Corpus Check
-- 259 files · ~83,247 words
+- 262 files · ~87,384 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1353 nodes · 1904 edges · 151 communities (112 shown, 39 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 84 edges (avg confidence: 0.58)
+- 1393 nodes · 1864 edges · 157 communities (117 shown, 40 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 87 edges (avg confidence: 0.58)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `774cb469`
+- Built from commit: `1bb4926d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - build-graph.cjs
 - on-merge-sync.cjs
-- Modal.stories.tsx
+- Toast.client.tsx
 - ModalPanel.client.tsx
 - scripts
 - Breadcrumbs.stories.tsx
@@ -41,7 +41,7 @@
 - RichText.tsx
 - build-exports.cjs
 - test-next.cjs
-- components.ssr.test.tsx
+- SearchOverlay.stories.tsx
 - section-header/index.ts
 - Native variant axis for `@verndale/ui-design-library`
 - Adopt server-first component architecture
@@ -126,13 +126,12 @@
 - Add the In-page navigation component
 - Add the Tabs component
 - Add the Search overlay component
-- connections.md
+- README.md
 - Connections — Wiki wiring
 - Storybook Docs audit
-- Knowledge graph + wiki automation
+- graph-wiki-subsystem.md
 - Reduced-motion coverage
-- Story tests and the a11y gate
-- Storybook review tooling
+- Component architecture — Design History
 - Native variant axis
 - Publish the UI library as a deterministic npm package
 - Add Graphify code mapping
@@ -140,7 +139,6 @@
 - sync-graphify.cjs
 - Story testing — Design History
 - Storybook tooling — Design History
-- Knowledge graph & wiki automation — Design History
 - Plan Audit
 - Variant axis — Design History
 - post-checkout
@@ -156,18 +154,26 @@
 - tailwindcss
 - @tailwindcss/postcss
 - Package distribution — Design History
-- Component architecture — Design History
-- Fix wiki sync pagination
+- Avatar.stories.tsx
+- Quote.stories.tsx
+- Modal.stories.tsx
+- overlayStack.client.ts
+- dialog.client.ts
+- check-release-commit.selftest.cjs
+- Coordinated UI Library Contract v2 and AI Reuse Hardening
+- components.ssr.test.tsx
+- Toast.stories.tsx
+- Publish executable ESM and reuse contract v2
 
 ## God Nodes (most connected - your core abstractions)
 1. `exports` - 45 edges
-2. `scripts` - 32 edges
+2. `scripts` - 34 edges
 3. `compilerOptions` - 15 edges
 4. `ui-design-library` - 15 edges
 5. `build()` - 14 edges
-6. `check()` - 12 edges
-7. `UI Design Library — agent guide` - 12 edges
-8. `check()` - 11 edges
+6. `check()` - 13 edges
+7. `check()` - 12 edges
+8. `UI Design Library — agent guide` - 12 edges
 9. `route()` - 10 edges
 10. `implementationFiles()` - 10 edges
 
@@ -186,7 +192,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (151 total, 39 thin omitted)
+## Communities (157 total, 40 thin omitted)
 
 ### Community 0 - "build-graph.cjs"
 Cohesion: 0.07
@@ -196,20 +202,20 @@ Nodes (51): { build, render, renderConnections, OUT_FILE, REPO_ROOT, CONNECTIONS
 Cohesion: 0.06
 Nodes (44): { classify }, fs, main(), warningForPaths(), config(), draftEntry(), extractText(), parseSections() (+36 more)
 
-### Community 2 - "Modal.stories.tsx"
-Cohesion: 0.07
-Nodes (38): Modal(), ClosesFromButton, ClosesOnBackdrop, Default, Medium, ReturnsFocusToRef, ScrollingBody, StackedOverlays (+30 more)
+### Community 2 - "Toast.client.tsx"
+Cohesion: 0.25
+Nodes (8): ToastIcon(), ToastMessage(), tone, useToastDismiss(), Toast(), ToastProps, ToastVariant, usePortalRoot()
 
 ### Community 3 - "ModalPanel.client.tsx"
-Cohesion: 0.06
+Cohesion: 0.05
 Nodes (30): ModalBody(), ModalFooter(), ModalHeader(), ModalHeaderProps, ModalPanel(), ModalPanelProps, panelSizes, control (+22 more)
 
 ### Community 4 - "scripts"
 Cohesion: 0.06
-Nodes (32): scripts, architecture, architecture:selftest, build, build-storybook, commit, contracts, contracts:selftest (+24 more)
+Nodes (34): scripts, architecture, architecture:selftest, build, build-storybook, commit, contracts, contracts:selftest (+26 more)
 
 ### Community 5 - "Breadcrumbs.stories.tsx"
-Cohesion: 0.08
+Cohesion: 0.07
 Nodes (30): Breadcrumbs(), CollapsedBackLink, CustomLandmarkLabel, DeepTrail, Default, NoAncestors, OnDarkSurface, SingleLevel (+22 more)
 
 ### Community 6 - "compilerOptions"
@@ -217,31 +223,31 @@ Cohesion: 0.09
 Nodes (23): DOM, DOM.Iterable, ES2022, ./src/*, compilerOptions, allowSyntheticDefaultImports, baseUrl, esModuleInterop (+15 more)
 
 ### Community 7 - "Carousel.client.tsx"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (16): Carousel(), Default, Empty, KeyboardTraversal, Looping, SingleSlide, Story, CarouselProps (+8 more)
 
 ### Community 8 - "Image.tsx"
-Cohesion: 0.16
+Cohesion: 0.15
 Nodes (16): Image(), buildSrcSet(), CustomLoader, Decorative, Default, Responsive, Rounded, Story (+8 more)
 
 ### Community 9 - "InPageNavigationBranch.client.tsx"
-Cohesion: 0.17
+Cohesion: 0.15
 Nodes (15): InPageNavigation(), ActiveSection, Default, MobileDrawer, ReducedMotion, sections, Story, InPageNavigationItem (+7 more)
 
 ### Community 10 - "Slider.client.tsx"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (16): SliderScale(), SliderSelectedValue(), SliderTrack(), SliderTrackProps, optionIndex(), Slider(), Default, LongLabels (+8 more)
 
 ### Community 11 - "compilerOptions"
-Cohesion: 0.09
-Nodes (22): components/**/*.ts, components/**/*.tsx, node_modules, **/*.spec.*, src/lib/**/*.ts, src/lib/**/*.tsx, **/*.stories.tsx, **/*.test.* (+14 more)
+Cohesion: 0.08
+Nodes (24): components/**/*.ts, components/**/*.tsx, node_modules, **/*.spec.*, src/lib/**/*.ts, src/lib/**/*.tsx, **/*.stories.tsx, **/*.test.* (+16 more)
 
 ### Community 12 - "exports"
 Cohesion: 0.08
 Nodes (24): exports, ./components/accordion/component.json, ./components/alert/component.json, ./components/avatar/component.json, ./components/badge/component.json, ./components/breadcrumbs/component.json, ./components/button/component.json, ./components/card/component.json (+16 more)
 
 ### Community 13 - "Badge.stories.tsx"
-Cohesion: 0.17
+Cohesion: 0.15
 Nodes (16): Badge(), BadgeStoryArgs, CustomRemoveLabel, Default, Disabled, disabledRemove, Dismissible, Group (+8 more)
 
 ### Community 14 - "viewer.js"
@@ -249,15 +255,15 @@ Cohesion: 0.19
 Nodes (22): applyView(), buildIndexes(), buildLegend(), buildModel(), buildRenderer(), clearFocus(), EDGE_COLORS, edgeReducer() (+14 more)
 
 ### Community 15 - "Alert.stories.tsx"
-Cohesion: 0.18
+Cohesion: 0.16
 Nodes (15): Alert(), AlertStoryArgs, AutoDismiss, Critical, Default, dismiss, Dismissible, LongMessage (+7 more)
 
 ### Community 16 - "Button.tsx"
-Cohesion: 0.16
+Cohesion: 0.15
 Nodes (15): Button(), SIZES, Default, Disabled, OnDarkSurface, Sizes, Story, Variants (+7 more)
 
 ### Community 17 - "Tabs.stories.tsx"
-Cohesion: 0.15
+Cohesion: 0.13
 Nodes (15): base, TabButton, TabButtonProps, TabsList(), TabsListProps, Tabs(), Default, KeyboardWraparound (+7 more)
 
 ### Community 18 - "devDependencies"
@@ -265,28 +271,23 @@ Cohesion: 0.15
 Nodes (13): @commitlint/cli, eslint-plugin-react-hooks, devDependencies, @commitlint/cli, eslint-plugin-react-hooks, @semantic-release/npm, @types/react, @verndale/ai-commit (+5 more)
 
 ### Community 19 - "Accordion.stories.tsx"
-Cohesion: 0.18
+Cohesion: 0.16
 Nodes (13): Accordion(), Default, faq, FocusGating, ReducedMotion, ShowMore, Standalone, Story (+5 more)
 
 ### Community 20 - "card/index.ts"
-Cohesion: 0.25
+Cohesion: 0.22
 Nodes (8): Card(), Default, Story, UnsetBackground, WithMedia, CardMediaProps, CardProps, CardMedia()
 
 ### Community 21 - "check-component-architecture.cjs"
-Cohesion: 0.13
-Nodes (15): analyzeModuleGraph(), BROWSER_GLOBALS, checkIndex(), CLIENT_HOOKS, COMPONENTS, exportedRuntimeSources(), fs, {
-  implementationFiles,
-  implementationTsxFiles,
-  listComponentDirs,
-  storyFiles,
-} (+7 more)
+Cohesion: 0.12
+Nodes (16): analyzeModuleGraph(), BROWSER_GLOBALS, checkPrimaryRendering(), CLIENT_HOOKS, COMPONENTS, explicitExportTargets(), exportedRuntimeSources(), fs (+8 more)
 
 ### Community 22 - "check-contracts.cjs"
-Cohesion: 0.18
-Nodes (17): check(), COMPONENTS, decompose(), fs, { implementationFiles, listComponentDirs, storyFiles }, kebab(), MATURITIES, path (+9 more)
+Cohesion: 0.17
+Nodes (18): check(), COMPONENTS, decompose(), fs, { implementationFiles, listComponentDirs, storyFiles }, kebab(), MATURITIES, path (+10 more)
 
 ### Community 23 - "RichText.tsx"
-Cohesion: 0.20
+Cohesion: 0.18
 Nodes (11): RichTextContent(), RichText(), Checkmark, Default, FullFlow, Story, base, lists (+3 more)
 
 ### Community 24 - "build-exports.cjs"
@@ -294,15 +295,15 @@ Cohesion: 0.17
 Nodes (14): checkDist, componentRecords(), componentsDir, expected, expectedExports(), fail(), fs, { implementationFiles, listComponentDirs } (+6 more)
 
 ### Community 25 - "test-next.cjs"
-Cohesion: 0.24
-Nodes (14): assert, assertCompiledCss(), assertNestedUtilityIsNested(), configureConsumer(), filesBelow(), fixtureRoot, fs, inspectTarball() (+6 more)
+Cohesion: 0.22
+Nodes (16): assert, assertCompiledCss(), assertNativeImports(), assertNestedUtilityIsNested(), componentCandidates(), configureConsumer(), filesBelow(), fixtureRoot (+8 more)
 
-### Community 26 - "components.ssr.test.tsx"
-Cohesion: 0.07
-Nodes (26): Avatar(), CropsWideMedia, Default, Sizes, Story, WithDescribedPortrait, AvatarProps, AvatarFrame() (+18 more)
+### Community 26 - "SearchOverlay.stories.tsx"
+Cohesion: 0.17
+Nodes (9): SearchOverlay(), ActiveShowsResults, ClosesOnBackdrop, Default, IdleShowsQuickLinks, RespectsReducedMotion, Story, TrapsFocus (+1 more)
 
 ### Community 28 - "section-header/index.ts"
-Cohesion: 0.24
+Cohesion: 0.22
 Nodes (9): SectionHeaderContent(), SectionHeader(), Centered, Default, HeadingOnly, Story, WithInlineLink, SectionHeaderAlignment (+1 more)
 
 ### Community 29 - "Native variant axis for `@verndale/ui-design-library`"
@@ -322,8 +323,8 @@ Cohesion: 0.20
 Nodes (10): embla-carousel-react, react, react-dom, embla-carousel-react, react, react-dom, peerDependencies, embla-carousel-react (+2 more)
 
 ### Community 33 - "check"
-Cohesion: 0.44
-Nodes (10): check(), checkSharedClientModules(), checkWorkspaceModuleGraph(), hasUseClient(), isClientPath(), parse(), physicalLines(), useClientIsFirst() (+2 more)
+Cohesion: 0.40
+Nodes (11): check(), checkIndex(), checkSharedClientModules(), checkWorkspaceModuleGraph(), hasUseClient(), isClientPath(), parse(), physicalLines() (+3 more)
 
 ### Community 34 - "check-component-architecture.selftest.cjs"
 Cohesion: 0.29
@@ -458,16 +459,16 @@ Cohesion: 0.18
 Nodes (11): Assumptions and Delivery, Breaking public API changes, Capture workflow, Component architecture, Existing component migration, Implementation Changes, Server-first component architecture and full library migration, Summary (+3 more)
 
 ### Community 99 - "package.json"
-Cohesion: 0.15
-Nodes (12): author, description, engines, node, license, name, packageManager, publishConfig (+4 more)
+Cohesion: 0.13
+Nodes (14): author, description, engines, node, license, name, packageManager, publishConfig (+6 more)
 
 ### Community 100 - "Contributing"
 Cohesion: 0.22
 Nodes (8): Adding a component, Commit messages, Contributing, Quick start, The component architecture, The three contracts, Verify the behaviour, not the markup, What not to do
 
 ### Community 101 - "Server-first component architecture migration"
-Cohesion: 0.25
-Nodes (8): Alert, Badge, Button, Carousel, Next.js status, Server and client use, Server-first component architecture migration, Stable imports
+Cohesion: 0.22
+Nodes (9): Alert, Badge, Button, Carousel, Executable ESM and reuse contract v2, Next.js status, Server and client use, Server-first component architecture migration (+1 more)
 
 ### Community 102 - "files"
 Cohesion: 0.22
@@ -538,39 +539,35 @@ Cohesion: 0.40
 Nodes (5): Connections — Wiki wiring, Cross-area links (seams), Journal → plan, Page → topic, Topic → covered surface
 
 ### Community 120 - "Storybook Docs audit"
-Cohesion: 0.40
-Nodes (5): Files, Follow-ups, Storybook Docs audit, What changed, Why
+Cohesion: 0.11
+Nodes (15): Files, Follow-ups, Storybook Docs audit, What changed, Why, Files, Follow-ups, Story tests and the a11y gate (+7 more)
 
-### Community 121 - "Knowledge graph + wiki automation"
-Cohesion: 0.40
-Nodes (5): Files, Follow-ups, Knowledge graph + wiki automation, What changed, Why
+### Community 121 - "graph-wiki-subsystem.md"
+Cohesion: 0.12
+Nodes (13): Files, Follow-ups, Knowledge graph + wiki automation, What changed, Why, Files, Fix wiki sync pagination, What changed (+5 more)
 
 ### Community 122 - "Reduced-motion coverage"
-Cohesion: 0.40
+Cohesion: 0.33
 Nodes (5): Files, Follow-ups, Reduced-motion coverage, What changed, Why
 
-### Community 123 - "Story tests and the a11y gate"
-Cohesion: 0.40
-Nodes (5): Files, Follow-ups, Story tests and the a11y gate, What changed, Why
-
-### Community 124 - "Storybook review tooling"
-Cohesion: 0.40
-Nodes (5): Files, Follow-ups, Storybook review tooling, What changed, Why
+### Community 123 - "Component architecture — Design History"
+Cohesion: 0.67
+Nodes (3): Component architecture — Design History, Current state, Decisions
 
 ### Community 125 - "Native variant axis"
 Cohesion: 0.40
 Nodes (5): Files, Follow-ups, Native variant axis, What changed, Why
 
 ### Community 126 - "Publish the UI library as a deterministic npm package"
-Cohesion: 0.33
+Cohesion: 0.40
 Nodes (5): Files, Follow-ups, Publish the UI library as a deterministic npm package, What changed, Why
 
 ### Community 127 - "Add Graphify code mapping"
-Cohesion: 0.40
+Cohesion: 0.33
 Nodes (5): Add Graphify code mapping, Files, Follow-ups, What changed, Why
 
 ### Community 128 - "stat/index.ts"
-Cohesion: 0.25
+Cohesion: 0.22
 Nodes (9): StatGroup(), Stat(), Default, GroupColumn, GroupRow, Story, WithDescription, StatGroupProps (+1 more)
 
 ### Community 129 - "sync-graphify.cjs"
@@ -584,10 +581,6 @@ Nodes (5): Assertion rules, Current state, Decisions, Open threads, Story testin
 ### Community 131 - "Storybook tooling — Design History"
 Cohesion: 0.40
 Nodes (5): Current state, Decisions, Open threads, Storybook tooling — Design History, The maturity duplication
-
-### Community 132 - "Knowledge graph & wiki automation — Design History"
-Cohesion: 0.50
-Nodes (4): Current state, Decisions, Knowledge graph & wiki automation — Design History, Open threads
 
 ### Community 133 - "Plan Audit"
 Cohesion: 0.40
@@ -605,33 +598,65 @@ Nodes (3): repository, type, url
 Cohesion: 0.50
 Nodes (4): Current state, Decisions, Open threads, Package distribution — Design History
 
-### Community 149 - "Component architecture — Design History"
-Cohesion: 0.67
-Nodes (3): Component architecture — Design History, Current state, Decisions
+### Community 149 - "Avatar.stories.tsx"
+Cohesion: 0.21
+Nodes (8): Avatar(), CropsWideMedia, Default, Sizes, Story, WithDescribedPortrait, AvatarProps, AvatarFrame()
 
-### Community 150 - "Fix wiki sync pagination"
-Cohesion: 0.50
-Nodes (4): Files, Fix wiki sync pagination, What changed, Why
+### Community 151 - "Quote.stories.tsx"
+Cohesion: 0.23
+Nodes (8): QuoteFrame(), Quote(), Default, LongForm, RightToLeft, Story, WithAttribution, QuoteProps
+
+### Community 152 - "Modal.stories.tsx"
+Cohesion: 0.18
+Nodes (10): ClosesFromButton, ClosesOnBackdrop, Default, Medium, ReturnsFocusToRef, ScrollingBody, StackedOverlays, Story (+2 more)
+
+### Community 153 - "overlayStack.client.ts"
+Cohesion: 0.31
+Nodes (9): acquireScrollLock(), emit(), getTopOverlay(), listeners, overlays, register(), subscribe(), useDocumentScrollLock() (+1 more)
+
+### Community 154 - "dialog.client.ts"
+Cohesion: 0.44
+Nodes (6): Modal(), useDialog(), UseDialogOptions, FOCUSABLE, getFocusableElements(), useFocusTrap()
+
+### Community 155 - "check-release-commit.selftest.cjs"
+Cohesion: 0.20
+Nodes (12): git(), readReleaseCommits(), assert, { execFileSync }, fs, os, path, {
+  readReleaseCommits,
+  validateReleaseCommit,
+  validateReleaseCommits,
+} (+4 more)
+
+### Community 156 - "Coordinated UI Library Contract v2 and AI Reuse Hardening"
+Cohesion: 0.29
+Nodes (7): AI Orchestration, Assumptions, Coordinated UI Library Contract v2 and AI Reuse Hardening, Release hardening, Test and Rollout, Tracking and Branches, UI Design Library
+
+### Community 158 - "Toast.stories.tsx"
+Cohesion: 0.40
+Nodes (4): AutoDismiss, Critical, Default, Story
+
+### Community 159 - "Publish executable ESM and reuse contract v2"
+Cohesion: 0.40
+Nodes (5): Files, Follow-ups, Publish executable ESM and reuse contract v2, What changed, Why
 
 ## Knowledge Gaps
-- **688 isolated node(s):** `config`, `tagBadges`, `preview`, `faq`, `Story` (+683 more)
+- **711 isolated node(s):** `config`, `tagBadges`, `preview`, `faq`, `Story` (+706 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `exports` connect `exports` to `./components/accordion`, `./components/alert`, `./components/avatar`, `./components/badge`, `./components/breadcrumbs`, `./components/button`, `./components/card`, `./components/carousel`, `./components/image`, `./components/in-page-navigation`, `./components/link`, `./components/modal`, `./components/quote`, `./components/rich-text`, `./components/search-input`, `./components/search-overlay`, `./components/section-header`, `./components/slider`, `./components/stat`, `./components/tabs`, `./components/toast`, `package.json`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `husky`, `next`, `playwright`, `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, `storybook`, `@storybook/addon-docs`, `tailwindcss`, `@tailwindcss/postcss`, `peerDependencies`, `eslint`, `semantic-release`, `@semantic-release/github`, `@storybook/addon-a11y`, `storybook-addon-pseudo-states`, `storybook-addon-tag-badges`, `@storybook/addon-vitest`, `@storybook/react-vite`, `@tailwindcss/vite`, `@types/react-dom`, `typescript`, `@typescript-eslint/parser`, `@verndale/ai-pr`, `vite`, `@vitejs/plugin-react`, `@vitest/browser`, `@vitest/browser-playwright`, `package.json`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **Why does `SearchOverlay()` connect `components.ssr.test.tsx` to `Modal.stories.tsx`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `Native variant axis for `@verndale/ui-design-library`` connect `Native variant axis for `@verndale/ui-design-library`` to `wiki/INDEX.md`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **What connects `config`, `tagBadges`, `preview` to the rest of the system?**
-  _688 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _711 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `build-graph.cjs` be split into smaller, more focused modules?**
   _Cohesion score 0.07138047138047138 - nodes in this community are weakly interconnected._
 - **Should `on-merge-sync.cjs` be split into smaller, more focused modules?**
   _Cohesion score 0.06334841628959276 - nodes in this community are weakly interconnected._
-- **Should `Modal.stories.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06821480406386067 - nodes in this community are weakly interconnected._
+- **Should `ModalPanel.client.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.04717853839037928 - nodes in this community are weakly interconnected._

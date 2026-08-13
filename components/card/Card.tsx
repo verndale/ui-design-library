@@ -1,4 +1,4 @@
-import type { CardProps } from './Card.types';
+import type { CardProps } from './Card.types.js';
 
 /** An elevated surface for card layouts. Corner radius is opt-in via `className`. */
 export function Card({ children, className, unsetBackground = false }: CardProps) {

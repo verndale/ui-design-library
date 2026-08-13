@@ -1,4 +1,4 @@
-import type { CardMediaProps } from '../Card.types';
+import type { CardMediaProps } from '../Card.types.js';
 
 /** A clipped media branch with matching pointer, keyboard, and reduced-motion behavior. */
 export function CardMedia({ children, className }: CardMediaProps) {

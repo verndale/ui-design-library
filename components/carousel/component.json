@@ -1,6 +1,8 @@
 {
   "canonical": "Carousel",
   "slug": "carousel",
+  "exportName": "Carousel",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": [

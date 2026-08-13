@@ -1,8 +1,8 @@
 import { useId, useRef, useState } from 'react';
 
-import { SearchForm } from './parts/SearchForm.client';
-import { SearchResults } from './parts/SearchResults';
-import type { SearchInputProps } from './SearchInput.types';
+import { SearchForm } from './parts/SearchForm.client.js';
+import { SearchResults } from './parts/SearchResults.js';
+import type { SearchInputProps } from './SearchInput.types.js';
 
 /** A controlled or uncontrolled search field with clear, submit, and results branches. */
 export function SearchInput({

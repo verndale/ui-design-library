@@ -1,9 +1,9 @@
 import { useId, useState } from 'react';
 
-import { SliderTrack } from './parts/SliderTrack.client';
-import { SliderScale } from './parts/SliderScale';
-import { SliderSelectedValue } from './parts/SliderSelectedValue';
-import type { SliderOption, SliderProps } from './Slider.types';
+import { SliderTrack } from './parts/SliderTrack.client.js';
+import { SliderScale } from './parts/SliderScale.js';
+import { SliderSelectedValue } from './parts/SliderSelectedValue.js';
+import type { SliderOption, SliderProps } from './Slider.types.js';
 
 function optionIndex(options: SliderOption[], value?: string) {
   const found = options.findIndex((option) => option.value === value);

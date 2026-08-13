@@ -1,6 +1,8 @@
 {
   "canonical": "Slider",
   "slug": "slider",
+  "exportName": "Slider",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["label", "hint", "valueDisplay", "description"],

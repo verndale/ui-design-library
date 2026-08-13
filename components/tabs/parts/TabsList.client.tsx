@@ -1,7 +1,7 @@
 import type { KeyboardEventHandler } from 'react';
 
-import type { TabItem } from '../Tabs.types';
-import { TabButton } from './TabButton.client';
+import type { TabItem } from '../Tabs.types.js';
+import { TabButton } from './TabButton.client.js';
 
 type TabsListProps = {
   items: TabItem[];

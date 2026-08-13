@@ -1,3 +1,3 @@
-export { Alert } from './Alert';
-export { DismissibleAlert } from './parts/DismissibleAlert.client';
-export type { AlertProps, AlertVariant, DismissibleAlertProps } from './Alert.types';
+export { Alert } from './Alert.js';
+export { DismissibleAlert } from './parts/DismissibleAlert.client.js';
+export type { AlertProps, AlertVariant, DismissibleAlertProps } from './Alert.types.js';

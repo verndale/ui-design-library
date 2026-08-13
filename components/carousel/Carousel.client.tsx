@@ -1,8 +1,8 @@
-import { useCarouselController } from './hooks/useCarouselController.client';
-import { CarouselControls } from './parts/CarouselControls.client';
-import { CarouselStatus } from './parts/CarouselStatus';
-import { CarouselViewport } from './parts/CarouselViewport';
-import type { CarouselProps } from './Carousel.types';
+import { useCarouselController } from './hooks/useCarouselController.client.js';
+import { CarouselControls } from './parts/CarouselControls.client.js';
+import { CarouselStatus } from './parts/CarouselStatus.js';
+import { CarouselViewport } from './parts/CarouselViewport.js';
+import type { CarouselProps } from './Carousel.types.js';
 
 /** A labelled carousel whose off-screen slides are removed from the tab order. */
 export function Carousel({

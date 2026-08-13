@@ -15,7 +15,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['modal.focus.containment', 'modal.keyboard.escape', 'modal.semantics.relationships', 'modal.background.inert'],
+    realizationEvidence: ['modal.focus.containment', 'modal.focus.restoration', 'modal.keyboard.escape', 'modal.semantics.relationships', 'modal.background.inert'],
     layout: 'centered',
     docs: {
       description: {
@@ -69,18 +69,13 @@ export const Default: Story = {
         </button>
         <Modal {...args} open={open} onClose={() => setOpen(false)}>
           <p className="text-text-secondary">
-            Opening from a trigger is the case worth testing: focus moves into the dialog, is trapped while it is
+            Opening from a trigger verifies that focus moves into the dialog, remains contained while it is
             open, and returns to this button on close.
           </p>
         </Modal>
       </>
     );
   },
-  /**
-   * The full round trip, which is the only way the focus contract is provable:
-   * a dialog that takes focus but never gives it back strands keyboard users at
-   * the top of the document.
-   */
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const body = within(document.body);
@@ -96,8 +91,32 @@ export const Default: Story = {
       await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
     });
 
-    await step('closes on Escape and returns focus to the trigger', async () => {
-      await userEvent.keyboard('{Escape}');
+    await step('modal.background.inert', async () => {
+      const dialog = body.getByRole('dialog');
+      await waitFor(() => expect(canvasElement.inert).toBe(true));
+      trigger.focus();
+      await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
+      await expect(trigger).not.toHaveFocus();
+    });
+
+    await step('modal.focus.restoration', async () => {
+      await step('modal.keyboard.escape', async () => {
+        await userEvent.keyboard('{Escape}');
+        await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+        await waitFor(() => expect(trigger).toHaveFocus());
+        await expect(canvasElement.inert).toBe(false);
+      });
+
+      await userEvent.click(trigger);
+      await userEvent.click(await body.findByRole('button', { name: 'Close dialog' }));
+      await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+      await waitFor(() => expect(trigger).toHaveFocus());
+
+      await userEvent.click(trigger);
+      await body.findByRole('dialog');
+      const backdrop = document.querySelector<HTMLElement>('[data-ui-overlay-layer][aria-hidden]');
+      await expect(backdrop).toBeTruthy();
+      await userEvent.click(backdrop!);
       await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
       await waitFor(() => expect(trigger).toHaveFocus());
     });
@@ -132,10 +151,7 @@ export const ClosesFromButton: Story = {
   },
 };
 
-/**
- * Tab cycles within the dialog rather than escaping to the page behind it. The
- * trap is the reason this component exists rather than a positioned div.
- */
+/** Tab cycles within the dialog rather than escaping to the page behind it. */
 export const TrapsFocus: Story = {
   args: { open: true, description: 'Tab past the last control and focus wraps.' },
   render: (args) => (
@@ -164,7 +180,7 @@ export const TrapsFocus: Story = {
     // the document's tab order rather than the trap's.
     await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
 
-    await step('every Tab stop stays inside the dialog', async () => {
+    await step('modal.focus.containment', async () => {
       // More stops than the dialog has controls, so the wrap is exercised.
       for (let i = 0; i < 6; i += 1) {
         await userEvent.tab();
@@ -295,7 +311,7 @@ export const WithAllSlots: Story = {
     </Modal>
   ),
   /**
-   * `aria-labelledby` and `aria-describedby` are only worth anything if they
+   * `aria-labelledby` and `aria-describedby` must
    * resolve to elements that actually exist — a dangling id reads as no name at
    * all, and nothing in the markup makes that visible.
    */
@@ -307,8 +323,9 @@ export const WithAllSlots: Story = {
       await expect(dialog).toHaveAttribute('aria-modal', 'true');
     });
 
-    await step('aria-labelledby resolves to the title', async () => {
+    await step('modal.semantics.relationships', async () => {
       const labelId = dialog.getAttribute('aria-labelledby');
+      await expect(dialog).toHaveAttribute('aria-modal', 'true');
       await expect(labelId).toBeTruthy();
       await expect(document.getElementById(labelId!)).toHaveTextContent('Delete this component?');
     });
@@ -327,7 +344,7 @@ export const WithAllSlots: Story = {
       const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
       // The panel and scrim both animate via --animate-*, which is built from
       // --duration-base. Nothing here hard-codes a duration, so the media query
-      // is the single switch — that is the property worth pinning.
+      // is the single switch asserted here.
       await expect(getComputedStyle(dialog).animationDuration).toBe(reduced ? '0s' : '0.3s');
       await expect(getComputedStyle(dialog).animationName).not.toBe('none');
     });

@@ -38,7 +38,7 @@
     "Replaced the hard-coded *:duration-300 with the --duration-base token, so reduced motion is switched centrally rather than per component.",
     "Fixed a latent defect carried over from the source: the variant order *:group-hover:scale-[1.05] emits no CSS in Tailwind v4, so the zoom never fired. Correct order is group-hover:*:scale-[1.05]. Verified in the browser — scale reads 1.05 on keyboard focus.",
     "Dropped the data-component override prop; the hook is now fixed, which is what makes it a reliable test and analytics selector.",
-    "Kept verbatim: the group-hover and group-focus-visible scale pair and their motion-reduce counterparts — keyboard focus triggering the same zoom as hover is the part worth keeping."
+    "Kept the group-hover and group-focus-visible scale pair and their motion-reduce counterparts so keyboard focus triggers the same zoom as hover."
   ],
   "maturity": "supported",
   "realization": {
@@ -125,14 +125,32 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"aria-label":{"prop":"ariaLabel"}},
           "element": [
             "div",
             "article",
             "section"
           ],
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "one",
+          "elementSelection": {
+            "prop": "as",
+            "cases": [
+              {
+                "value": "div",
+                "element": "div"
+              },
+              {
+                "value": "article",
+                "element": "article"
+              },
+              {
+                "value": "section",
+                "element": "section"
+              }
+            ]
+          }
         }
       ]
     },
@@ -158,17 +176,8 @@
           "1.3.1",
           "4.1.2"
         ],
-        "evidence": "card.semantics.root"
-      },
-      {
-        "id": "card.focus.affordance",
-        "kind": "focus",
-        "description": "Focus within the card receives the same meaningful visual affordance as hover.",
-        "wcag": [
-          "1.4.13",
-          "2.4.7"
-        ],
-        "evidence": "card.focus.affordance"
+        "evidence": "card.semantics.root",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

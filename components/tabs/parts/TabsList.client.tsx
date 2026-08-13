@@ -1,37 +1,36 @@
 import type { KeyboardEventHandler } from 'react';
 
-import type { TabItem, TabsClassNames } from '../Tabs.types.js';
+import type { TabItem } from '../Tabs.types.js';
 import { TabButton } from './TabButton.client.js';
 
 type TabsListProps = {
   items: TabItem[];
-  activeId?: string;
+  activeIndex: number;
   ariaLabel: string;
   tabIdPrefix: string;
   className?: string;
   onSelect: (id: string) => void;
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
-  registerTab: (id: string, node: HTMLButtonElement | null) => void;
-  classNames?: TabsClassNames;
+  registerTab: (index: number, node: HTMLButtonElement | null) => void;
+  tabClassName?: string;
   orientation: 'horizontal' | 'vertical';
 };
 
 /** Semantic tablist rendering separated from its state and keyboard controller. */
 export function TabsList({
   items,
-  activeId,
+  activeIndex,
   ariaLabel,
   tabIdPrefix,
   className,
   onSelect,
   onKeyDown,
   registerTab,
-  classNames,
+  tabClassName,
   orientation,
 }: TabsListProps) {
   return (
     <div
-      data-component="tabs"
       role="tablist"
       aria-label={ariaLabel}
       aria-orientation={orientation}
@@ -39,19 +38,19 @@ export function TabsList({
       className={[
         'flex items-center justify-center gap-2xs',
         orientation === 'horizontal' ? 'flex-wrap' : 'flex-col',
-        classNames?.root,
         className,
       ].filter(Boolean).join(' ')}
     >
-      {items.map((item) => {
-        const selected = item.id === activeId;
+      {items.map((item, index) => {
+        const selected = index === activeIndex;
         return (
           <TabButton
             key={item.id}
-            ref={(node) => registerTab(item.id, node)}
-            id={`${tabIdPrefix}-${item.id}`}
+            ref={(node) => registerTab(index, node)}
+            id={`${tabIdPrefix}-tab-${index}`}
+            aria-controls={`${tabIdPrefix}-panel-${index}`}
             selected={selected}
-            className={classNames?.tab}
+            className={tabClassName}
             onClick={() => onSelect(item.id)}
           >
             {item.label}

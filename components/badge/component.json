@@ -199,10 +199,15 @@
           "cardinality": "one"
         },
         {
-          "id": "startIcon",
+        "id": "startIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "startIcon",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "label",
@@ -211,16 +216,26 @@
           "cardinality": "one"
         },
         {
-          "id": "endIcon",
+        "id": "endIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "endIcon",
+            "predicate": "truthy"
+          }
         },
         {
-          "id": "removeButton",
+        "id": "removeButton",
+        "attributes": {"type":"button","disabled":{"prop":"disabled"},"aria-label":{"state":"removeAccessibleName"}},
           "element": "button",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "onRemove",
+            "predicate": "present"
+          }
         }
       ]
     },
@@ -234,7 +249,8 @@
           "1.1.1",
           "2.5.3"
         ],
-        "evidence": "badge.semantics.name"
+        "evidence": "badge.semantics.name",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "badge.remove.keyboard",
@@ -245,7 +261,8 @@
           "2.5.8",
           "4.1.2"
         ],
-        "evidence": "badge.remove.keyboard"
+        "evidence": "badge.remove.keyboard",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

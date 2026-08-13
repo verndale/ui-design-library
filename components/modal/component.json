@@ -331,22 +331,32 @@
     "dom": {
       "nodes": [
         {
-          "id": "backdrop",
+        "id": "backdrop",
+        "attributes": {"aria-hidden":true},
           "element": "div",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "portalReadyAndOpen",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "viewport",
           "element": "div",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "portalReadyAndOpen",
+            "predicate": "truthy"
+          }
         },
-      {
+        {
         "id": "dialog",
-        "element": "div",
-        "parent": "viewport",
-        "cardinality": "one"
+        "attributes": {"role":"dialog","aria-modal":{"state":"topmost"},"aria-hidden":{"state":"covered"},"inert":{"state":"covered"},"tabIndex":-1},
+          "element": "div",
+          "parent": "viewport",
+          "cardinality": "one"
         },
         {
           "id": "header",
@@ -354,17 +364,21 @@
           "parent": "dialog",
           "cardinality": "one"
         },
-      {
-        "id": "headerContent",
-        "element": "div",
-        "parent": "header",
-        "cardinality": "one"
-      },
-      {
-        "id": "eyebrow",
-        "element": "div",
-        "parent": "headerContent",
-        "cardinality": "zero-or-one"
+        {
+          "id": "headerContent",
+          "element": "div",
+          "parent": "header",
+          "cardinality": "one"
+        },
+        {
+          "id": "eyebrow",
+          "element": "div",
+          "parent": "headerContent",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "eyebrow",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "title",
@@ -375,38 +389,74 @@
             "h5",
             "h6"
           ],
-        "parent": "headerContent",
-          "cardinality": "one"
+          "parent": "headerContent",
+          "cardinality": "one",
+          "elementSelection": {
+            "prop": "titleHeadingLevel",
+            "cases": [
+              {
+                "value": 2,
+                "element": "h2"
+              },
+              {
+                "value": 3,
+                "element": "h3"
+              },
+              {
+                "value": 4,
+                "element": "h4"
+              },
+              {
+                "value": 5,
+                "element": "h5"
+              },
+              {
+                "value": 6,
+                "element": "h6"
+              }
+            ]
+          }
         },
         {
           "id": "description",
           "element": "div",
-        "parent": "headerContent",
-          "cardinality": "zero-or-one"
+          "parent": "headerContent",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "description",
+            "predicate": "truthy"
+          }
         },
         {
-          "id": "closeButton",
+        "id": "closeButton",
+        "attributes": {"type":"button","aria-label":{"prop":"closeLabel"}},
           "element": "button",
-        "parent": "header",
+          "parent": "header",
           "cardinality": "one"
         },
         {
-          "id": "closeIcon",
+        "id": "closeIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
-        "parent": "closeButton",
-        "cardinality": "one"
+          "parent": "closeButton",
+          "cardinality": "one"
         },
         {
-          "id": "body",
+        "id": "body",
+        "attributes": {"tabIndex":0},
           "element": "div",
           "parent": "dialog",
-        "cardinality": "one"
+          "cardinality": "one"
         },
         {
           "id": "footer",
           "element": "footer",
           "parent": "dialog",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "footer",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -426,24 +476,36 @@
       {
         "id": "modal.focus.containment",
         "kind": "focus",
-        "description": "Opening places focus inside, contains Tab/Shift+Tab, and closing restores focus.",
+        "description": "Opening places focus inside and contains Tab/Shift+Tab while the dialog is open.",
         "wcag": [
           "2.1.2",
           "2.4.3",
           "2.4.11",
           "2.5.8"
         ],
-        "evidence": "modal.focus.containment"
+        "evidence": "modal.focus.containment",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "modal.focus.restoration",
+        "kind": "focus",
+        "description": "Escape, the named close button, and backdrop dismissal restore focus to the trigger or explicit return-focus target.",
+        "wcag": [
+          "2.4.3"
+        ],
+        "evidence": "modal.focus.restoration",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "modal.keyboard.escape",
         "kind": "keyboard",
-        "description": "Escape and the named close button dismiss the dialog while long content remains keyboard-scrollable.",
+        "description": "Escape dismisses the dialog while long content remains keyboard-scrollable.",
         "wcag": [
           "2.1.1",
           "2.1.2"
         ],
-        "evidence": "modal.keyboard.escape"
+        "evidence": "modal.keyboard.escape",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "modal.semantics.relationships",
@@ -453,7 +515,8 @@
           "1.3.1",
           "4.1.2"
         ],
-        "evidence": "modal.semantics.relationships"
+        "evidence": "modal.semantics.relationships",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "modal.background.inert",
@@ -462,7 +525,8 @@
         "wcag": [
           "2.4.3"
         ],
-        "evidence": "modal.background.inert"
+        "evidence": "modal.background.inert",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

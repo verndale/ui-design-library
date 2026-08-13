@@ -20,7 +20,7 @@ export function DismissibleBadge({ onRemove, removeLabel, ...badge }: Dismissibl
       onClick={onRemove}
       className={[
         'ms-3xs inline-flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-pill',
-        'transition-opacity duration-[var(--duration-fast)] ease-standard motion-reduce:transition-none',
+        'transition-opacity duration-(--duration-fast) ease-standard motion-reduce:transition-none',
         'hover:opacity-70 disabled:pointer-events-none',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus',
         badge.classNames?.removeButton,

@@ -281,10 +281,15 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"aria-roledescription":"carousel","aria-label":{"prop":"label"}},
           "element": "section",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "slides",
+            "predicate": "non-empty"
+          }
         },
         {
           "id": "viewport",
@@ -292,53 +297,62 @@
           "parent": "root",
           "cardinality": "one"
         },
-      {
-        "id": "track",
-        "element": "div",
-        "parent": "viewport",
-        "cardinality": "one"
-      },
         {
-          "id": "slide",
+          "id": "track",
           "element": "div",
-        "parent": "track",
-        "cardinality": "one-or-more"
+          "parent": "viewport",
+          "cardinality": "one"
+        },
+        {
+        "id": "slide",
+        "attributes": {"role":"group","aria-roledescription":"slide","aria-label":{"state":"positionLabel"},"inert":{"state":"offscreen"}},
+          "element": "div",
+          "parent": "track",
+          "cardinality": "one-or-more",
+          "repeat": {
+            "prop": "slides"
+          }
         },
         {
           "id": "controls",
           "element": "div",
           "parent": "root",
-        "cardinality": "one"
+          "cardinality": "one"
         },
         {
-          "id": "previousButton",
+        "id": "previousButton",
+        "attributes": {"type":"button","aria-label":{"prop":"previousLabel"},"disabled":{"state":"cannotPrevious"}},
           "element": "button",
-        "parent": "controls",
-        "cardinality": "one"
+          "parent": "controls",
+          "cardinality": "one"
         },
         {
-          "id": "previousIcon",
+        "id": "previousIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
-        "parent": "previousButton",
-        "cardinality": "one"
+          "parent": "previousButton",
+          "cardinality": "one"
         },
         {
-          "id": "nextButton",
+        "id": "nextButton",
+        "attributes": {"type":"button","aria-label":{"prop":"nextLabel"},"disabled":{"state":"cannotNext"}},
           "element": "button",
-        "parent": "controls",
-        "cardinality": "one"
+          "parent": "controls",
+          "cardinality": "one"
         },
         {
-          "id": "nextIcon",
+        "id": "nextIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
-        "parent": "nextButton",
-        "cardinality": "one"
+          "parent": "nextButton",
+          "cardinality": "one"
         },
         {
-          "id": "status",
+        "id": "status",
+        "attributes": {"aria-live":"polite","aria-atomic":"true"},
           "element": "p",
           "parent": "root",
-        "cardinality": "one"
+          "cardinality": "one"
         }
       ]
     },
@@ -353,7 +367,8 @@
           "2.5.7",
           "2.5.8"
         ],
-        "evidence": "carousel.keyboard.controls"
+        "evidence": "carousel.keyboard.controls",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "carousel.state.slides",
@@ -363,7 +378,8 @@
           "1.3.1",
           "4.1.2"
         ],
-        "evidence": "carousel.state.slides"
+        "evidence": "carousel.state.slides",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "carousel.announcement.status",
@@ -372,7 +388,8 @@
         "wcag": [
           "4.1.3"
         ],
-        "evidence": "carousel.announcement.status"
+        "evidence": "carousel.announcement.status",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

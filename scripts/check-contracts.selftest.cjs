@@ -2,10 +2,9 @@
 /**
  * check-contracts.selftest.cjs — tests the contract checker's variant axis.
  *
- * `pnpm contracts` runs the checker against the real components/. That proves
- * the current tree is valid, but not that the checker would *catch* a broken
- * variant axis — a validator nobody exercises is a validator nobody trusts.
- * This builds throwaway fixture trees in a temp dir, runs check() against each,
+ * `pnpm contracts` checks the current components tree. This self-test verifies
+ * that malformed variant axes and realization contracts are rejected. It builds
+ * throwaway fixture trees in a temp dir, runs check() against each,
  * and asserts the exact failures (or clean pass) it should produce.
  *
  * Exit codes: 0 all cases behave · 1 one or more cases misbehave.
@@ -34,6 +33,7 @@ const DEFAULT_REALIZATION = {
       description: 'The owned root remains available to the accessibility tree.',
       wcag: ['1.3.1'],
       evidence: 'semantics.root',
+      evidenceType: 'storybook-step',
     },
   ],
   accessibility: {
@@ -85,7 +85,7 @@ function comp(root, dirName, opts) {
   // checker anchors its title regex to a line-leading `title:`).
   fs.writeFileSync(
     path.join(dir, `${name}.stories.tsx`),
-    `const meta = {\n  title: '${title}',\n  tags: ['maturity:${maturity}'],\n  parameters: { realizationEvidence: ['semantics.root'] },\n};\nexport default meta;\nexport const Default = { play: async () => {} };\n`,
+    `const meta = {\n  title: '${title}',\n  tags: ['maturity:${maturity}'],\n  parameters: { realizationEvidence: ['semantics.root'] },\n};\nexport default meta;\nexport const Default = { play: async ({ step }) => { await step('semantics.root', async () => { await expect(true).toBe(true); }); } };\n`,
   );
   fs.writeFileSync(path.join(dir, 'component.json'), JSON.stringify(contract, null, 2));
 }
@@ -199,7 +199,90 @@ const cases = [
         },
       });
     },
-    expect: (f) => f.some((m) => m.includes('evidence "missing.evidence" is not keyed')),
+    expect: (f) => f.some((m) => m.includes('evidence "missing.evidence" is not a keyed Storybook step')),
+  },
+  {
+    name: 'unasserted realization evidence step fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      fs.writeFileSync(
+        path.join(root, 'button', 'C.stories.tsx'),
+        `const meta = {\n  title: 'Button',\n  tags: ['maturity:candidate'],\n};\nexport default meta;\nexport const Default = { play: async ({ step }) => { await step('semantics.root', async () => { unrelated(); }); } };\n`,
+      );
+    },
+    expect: (f) => f.some((m) => m.includes('evidence step contains no executable assertion')),
+  },
+  {
+    name: 'comments, unused helpers, and unreachable expects do not satisfy evidence',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      fs.writeFileSync(
+        path.join(root, 'button', 'C.stories.tsx'),
+        `const meta = { title: 'Button', tags: ['maturity:candidate'] };\nexport default meta;\nexport const Default = { play: async ({ step }) => { await step('semantics.root', async () => { /* expect(true) */ const text = 'expect('; const helper = () => expect(true).toBe(true); if (false) expect(true).toBe(true); unrelated(text, helper); return; expect(true).toBe(true); }); } };\n`,
+      );
+    },
+    expect: (f) => f.some((m) => m.includes('evidence step contains no executable assertion')),
+  },
+  {
+    name: 'evidence steps after unconditional exits are unreachable',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      fs.writeFileSync(
+        path.join(root, 'button', 'C.stories.tsx'),
+        `const meta = { title: 'Button', tags: ['maturity:candidate'] };\nexport default meta;\nexport const AfterReturn = { play: async ({ step }) => { return; await step('semantics.root', async () => { expect(true).toBe(true); }); } };\nexport const AfterThrow = { play: async ({ step }) => { throw new Error('stop'); await step('semantics.root', async () => { expect(true).toBe(true); }); } };\nexport const AfterBreak = { play: async ({ step }) => { for (;;) { break; await step('semantics.root', async () => { expect(true).toBe(true); }); } } };\nexport const AfterContinue = { play: async ({ step }) => { for (let i = 0; i < 1; i += 1) { continue; await step('semantics.root', async () => { expect(true).toBe(true); }); } } };\n`,
+      );
+    },
+    expect: (f) => f.some((m) => m.includes('evidence "semantics.root" is not a keyed Storybook step')),
+  },
+  {
+    name: 'an unused top-level helper cannot masquerade as exported story evidence',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      fs.writeFileSync(
+        path.join(root, 'button', 'C.stories.tsx'),
+        `const meta = { title: 'Button', tags: ['maturity:candidate'] };\nexport default meta;\nconst unused = async (step) => step('semantics.root', async () => { expect(true).toBe(true); });\nexport const Default = { play: async () => { void unused; } };\n`,
+      );
+    },
+    expect: (f) => f.some((m) => m.includes('evidence "semantics.root" is not a keyed Storybook step')),
+  },
+  {
+    name: 'conditional and repeated nodes require structured realization metadata',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: {
+          ...DEFAULT_REALIZATION,
+          props: [...DEFAULT_REALIZATION.props, { path: 'items', type: 'collection', required: false }],
+          dom: { nodes: [
+            { id: 'root', element: 'div', parent: null, cardinality: 'one' },
+            { id: 'optional', element: 'span', parent: 'root', cardinality: 'zero-or-one' },
+            { id: 'item', element: 'span', parent: 'root', cardinality: 'zero-or-more' },
+          ] },
+        },
+      });
+    },
+    expect: (f) =>
+      f.some((m) => m.includes('requires a structured condition')) &&
+      f.some((m) => m.includes('requires exactly one collection prop or derived state repeat declaration')),
+  },
+  {
+    name: 'owned DOM attributes require governed sources and IDREFs stay relational',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: {
+          ...DEFAULT_REALIZATION,
+          dom: { nodes: [{ id: 'root', element: 'button', parent: null, cardinality: 'one', attributes: { 'aria-controls': 'panel', type: { prop: 'missing' } } }] },
+        },
+      });
+    },
+    expect: (f) =>
+      f.some((m) => m.includes('invalid owned attribute "aria-controls"')) &&
+      f.some((m) => m.includes('references missing prop "missing"')),
   },
   {
     name: 'raw colour in a nested implementation fails',
@@ -210,6 +293,16 @@ const cases = [
       fs.writeFileSync(path.join(parts, 'ButtonLabel.tsx'), "export const ButtonLabel = () => <span className=\"text-[#fff]\" />;\n");
     },
     expect: (f) => f.some((m) => m.includes('parts/ButtonLabel.tsx') && m.includes('raw colour')),
+  },
+  {
+    name: 'legacy Tailwind CSS variable syntax fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      const parts = path.join(root, 'button', 'parts');
+      fs.mkdirSync(parts, { recursive: true });
+      fs.writeFileSync(path.join(parts, 'ButtonLabel.tsx'), "export const ButtonLabel = () => <span className=\"duration-[var(--duration-fast)]\" />;\n");
+    },
+    expect: (f) => f.some((m) => m.includes('parts/ButtonLabel.tsx') && m.includes('legacy [var(--token)] syntax')),
   },
   {
     name: 'Next import in a nested implementation fails',

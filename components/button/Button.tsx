@@ -4,9 +4,9 @@ import type { ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Bu
 export type { ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types.js';
 
 const SIZES: Record<ButtonSize, string> = {
-  large: 'min-h-[var(--size-touch-large)] gap-2xs px-s py-2xs text-base',
-  medium: 'min-h-[var(--size-touch-medium)] min-w-20 gap-2xs px-s py-2xs text-base',
-  small: 'min-h-[var(--size-touch-small)] min-w-20 gap-3xs px-s py-3xs text-sm',
+  large: 'min-h-(--size-touch-large) gap-2xs px-s py-2xs text-base',
+  medium: 'min-h-(--size-touch-medium) min-w-20 gap-2xs px-s py-2xs text-base',
+  small: 'min-h-(--size-touch-small) min-w-20 gap-3xs px-s py-3xs text-sm',
 };
 
 const VARIANTS: Record<ButtonVariant, string> = {
@@ -47,7 +47,7 @@ export function Button({
       data-surface={surface}
       className={[
         'inline-flex cursor-pointer items-center justify-center rounded-pill text-center leading-none',
-        'transition-colors duration-[var(--duration-fast)] ease-standard motion-reduce:transition-none',
+        'transition-colors duration-(--duration-fast) ease-standard motion-reduce:transition-none',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus',
         'disabled:pointer-events-none disabled:border-transparent disabled:bg-control-disabled-bg disabled:text-control-disabled-text',
         SIZES[size],

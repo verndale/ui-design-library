@@ -1,8 +1,27 @@
-import { afterEach, expect } from 'vitest';
+import { afterEach, beforeEach, expect } from 'vitest';
 
 declare const __A11Y_MODES__: boolean;
+const accessibilityModesEnabled = typeof __A11Y_MODES__ !== 'undefined' && __A11Y_MODES__;
 
 const focusable = 'a[href], button, input, select, textarea, [tabindex]';
+const modeStyleId = 'ui-design-library-accessibility-modes';
+
+beforeEach(() => {
+  if (!accessibilityModesEnabled) return;
+  document.getElementById(modeStyleId)?.remove();
+  const style = document.createElement('style');
+  style.id = modeStyleId;
+  style.textContent = `
+    html { font-size: 200% !important; }
+    body, body * {
+      letter-spacing: 0.12em !important;
+      line-height: 1.5 !important;
+      word-spacing: 0.16em !important;
+    }
+    body p { margin-block-end: 2em !important; }
+  `;
+  document.head.append(style);
+});
 
 function visible(element: HTMLElement) {
   const style = getComputedStyle(element);
@@ -11,10 +30,26 @@ function visible(element: HTMLElement) {
 }
 
 afterEach(() => {
-  if (!__A11Y_MODES__) return;
+  if (!accessibilityModesEnabled) return;
 
   const viewportWidth = document.documentElement.clientWidth;
   expect(document.documentElement.scrollWidth, '320px mode must not create page-level horizontal overflow').toBeLessThanOrEqual(viewportWidth + 1);
+
+  expect(parseFloat(getComputedStyle(document.documentElement).fontSize), '200% text resize must apply at the rem root').toBeGreaterThanOrEqual(32);
+  const textElements = document.querySelectorAll<HTMLElement>('body :is(p, li, label, button, a, h1, h2, h3, h4, h5, h6)');
+  for (const element of textElements) {
+    if (!visible(element) || !element.textContent?.trim()) continue;
+    const style = getComputedStyle(element);
+    const fontSize = parseFloat(style.fontSize);
+    expect(parseFloat(style.lineHeight), 'text spacing must allow line height of at least 1.5 times font size').toBeGreaterThanOrEqual(fontSize * 1.5 - 0.5);
+    expect(parseFloat(style.letterSpacing), 'text spacing must allow letter spacing of at least 0.12 times font size').toBeGreaterThanOrEqual(fontSize * 0.12 - 0.5);
+    expect(parseFloat(style.wordSpacing), 'text spacing must allow word spacing of at least 0.16 times font size').toBeGreaterThanOrEqual(fontSize * 0.16 - 0.5);
+  }
+  for (const paragraph of document.querySelectorAll<HTMLElement>('body p')) {
+    if (!visible(paragraph)) continue;
+    const style = getComputedStyle(paragraph);
+    expect(parseFloat(style.marginBlockEnd), 'text spacing must allow paragraph spacing of at least twice font size').toBeGreaterThanOrEqual(parseFloat(style.fontSize) * 2 - 0.5);
+  }
 
   for (const element of document.querySelectorAll<HTMLElement>('[aria-controls], [aria-describedby], [aria-labelledby]')) {
     for (const attribute of ['aria-controls', 'aria-describedby', 'aria-labelledby'] as const) {
@@ -75,4 +110,5 @@ afterEach(() => {
     const hidden = graphic.getAttribute('aria-hidden') === 'true' || graphic.closest('[aria-hidden="true"]');
     expect(hidden, 'decorative component graphics must remain outside the accessibility tree').toBeTruthy();
   }
+  document.getElementById(modeStyleId)?.remove();
 });

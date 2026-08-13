@@ -277,7 +277,8 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"aria-label":{"prop":"ariaLabel"}},
           "element": "nav",
           "parent": null,
           "cardinality": "one"
@@ -288,53 +289,67 @@
           "parent": "root",
           "cardinality": "one"
         },
-      {
-        "id": "trailItem",
-        "element": "li",
-        "parent": "trail",
-        "cardinality": "zero-or-more"
-      },
-      {
-        "id": "trailLink",
-        "element": "a",
-        "parent": "trailItem",
-        "cardinality": "zero-or-more"
-      },
-      {
-        "id": "trailLabel",
-        "element": "span",
-        "parent": "trailLink",
-        "cardinality": "zero-or-more"
-      },
         {
-          "id": "separator",
-          "element": "span",
-        "parent": "trailItem",
-          "cardinality": "zero-or-more"
+          "id": "trailItem",
+          "element": "li",
+          "parent": "trail",
+          "cardinality": "zero-or-more",
+          "repeat": {
+            "prop": "items"
+          }
         },
         {
-          "id": "currentPage",
-        "element": "li",
-        "parent": "trail",
+          "id": "trailLink",
+          "element": "a",
+          "parent": "trailItem",
+          "cardinality": "one"
+        },
+        {
+          "id": "trailLabel",
+          "element": "span",
+          "parent": "trailLink",
+          "cardinality": "one"
+        },
+        {
+        "id": "separator",
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "trailItem",
+          "cardinality": "one"
+        },
+        {
+        "id": "currentPage",
+        "attributes": {"aria-current":"page"},
+          "element": "li",
+          "parent": "trail",
           "cardinality": "one"
         },
         {
           "id": "backLink",
           "element": "a",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "items",
+            "predicate": "non-empty"
+          }
         },
         {
         "id": "backIcon",
-        "element": "span",
-        "parent": "backLink",
-        "cardinality": "zero-or-one"
-      },
-      {
-        "id": "backLabel",
-        "element": "span",
-        "parent": "backLink",
-        "cardinality": "zero-or-one"
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "backLink",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "backIcon",
+            "predicate": "truthy"
+          }
+        },
+        {
+          "id": "backLabel",
+          "element": "span",
+          "parent": "backLink",
+          "cardinality": "one"
         }
       ]
     },
@@ -350,7 +365,8 @@
           "2.5.8",
           "4.1.2"
         ],
-        "evidence": "breadcrumbs.semantics.hierarchy"
+        "evidence": "breadcrumbs.semantics.hierarchy",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "breadcrumbs.responsive.hidden",
@@ -360,7 +376,8 @@
           "2.4.3",
           "4.1.2"
         ],
-        "evidence": "breadcrumbs.responsive.hidden"
+        "evidence": "breadcrumbs.responsive.hidden",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

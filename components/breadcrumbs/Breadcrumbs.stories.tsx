@@ -57,7 +57,7 @@ export const Default: Story = {
       await expect(nav.querySelector('ol')).toBeTruthy();
     });
 
-    await step('ancestors are links carrying their href', async () => {
+    await step('breadcrumbs.semantics.hierarchy', async () => {
       const trail = nav.querySelector('ol') as HTMLElement;
       const links = [...trail.querySelectorAll('a')];
       await expect(links.map((a) => a.textContent?.trim())).toEqual(['Home', 'Services', 'Rail freight']);
@@ -78,7 +78,7 @@ export const Default: Story = {
       await expect(separators.every((s) => s.textContent?.trim() === '/')).toBe(true);
     });
 
-    await step('exactly one presentation is visible at this viewport', async () => {
+    await step('breadcrumbs.responsive.hidden', async () => {
       const trail = nav.querySelector('ol') as HTMLElement;
       const back = nav.querySelector('a.xl\\:hidden') as HTMLElement;
       const shown = [trail, back].filter((el) => el && getComputedStyle(el).display !== 'none');

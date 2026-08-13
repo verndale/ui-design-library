@@ -4,30 +4,24 @@ import { expect, userEvent, within } from 'storybook/test';
 import { Tabs, type TabItem } from './index';
 
 const three: TabItem[] = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'specs', label: 'Specs' },
-  { id: 'reviews', label: 'Reviews' },
+  { id: 'overview', label: 'Overview', panel: <p>Overview panel</p> },
+  { id: 'specs', label: 'Specs', panel: <p>Specifications panel</p> },
+  { id: 'reviews', label: 'Reviews', panel: <p>Reviews panel</p> },
 ];
 
-/**
- * The story file is this component's API contract. The behaviour worth proving
- * is the tablist semantics — `aria-selected`, the roving tab order, and that
- * ArrowLeft/ArrowRight move selection and focus with wraparound. Rendered
- * uncontrolled (`defaultActiveId`); a real consumer may drive it with
- * `activeId` + `onSelect`.
- */
+/** The stories assert tab/panel relationships, roving focus, and orientation-aware keys. */
 const meta = {
   title: 'Tabs',
   component: Tabs,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['tabs.keyboard.roving', 'tabs.state.selection'],
+    realizationEvidence: ['tabs.keyboard.roving', 'tabs.keyboard.vertical', 'tabs.state.selection'],
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A pill tablist of mutually exclusive tabs. The selected tab carries `aria-selected` and is the only one in the tab order; ArrowLeft/ArrowRight move selection and focus with wraparound. Presentation only — the caller owns the panels.',
+          'A panel-owning tab widget. The selected tab carries `aria-selected`, controls its labelled tabpanel, and is the only tab in the tab order. Orientation-aware arrows, Home, and End move selection and focus.',
       },
     },
   },
@@ -51,43 +45,72 @@ type Story = StoryObj<typeof meta>;
 /** The pill variant (the default rendering): one filled segment on an inverse surface. */
 export const Default: Story = {
   args: { defaultActiveId: 'overview' },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const overview = canvas.getByRole('tab', { name: 'Overview' });
     const specs = canvas.getByRole('tab', { name: 'Specs' });
 
-    await expect(overview).toHaveAttribute('aria-selected', 'true');
-    await expect(overview).toHaveAttribute('tabindex', '0');
-    // Only the selected tab is in the tab order.
-    await expect(specs).toHaveAttribute('tabindex', '-1');
+    await step('tabs.state.selection', async () => {
+      const overviewPanel = canvas.getByRole('tabpanel', { name: 'Overview' });
+      await expect(overview).toHaveAttribute('aria-selected', 'true');
+      await expect(overview).toHaveAttribute('tabindex', '0');
+      await expect(specs).toHaveAttribute('tabindex', '-1');
+      await expect(overview).toHaveAttribute('aria-controls', overviewPanel.id);
+      await expect(overviewPanel).toHaveAttribute('aria-labelledby', overview.id);
+      await expect(canvas.queryByRole('tabpanel', { name: 'Specs' })).not.toBeInTheDocument();
 
-    // Selection follows a pointer click.
-    await userEvent.click(specs);
-    await expect(specs).toHaveAttribute('aria-selected', 'true');
-    await expect(overview).toHaveAttribute('aria-selected', 'false');
+      await userEvent.click(specs);
+      await expect(specs).toHaveAttribute('aria-selected', 'true');
+      await expect(overview).toHaveAttribute('aria-selected', 'false');
+      await expect(canvas.getByRole('tabpanel', { name: 'Specs' })).toBeVisible();
+    });
   },
 };
 
 /** ArrowRight/ArrowLeft move selection and focus, wrapping at each end. */
 export const KeyboardWraparound: Story = {
   args: { defaultActiveId: 'overview' },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const overview = canvas.getByRole('tab', { name: 'Overview' });
     const reviews = canvas.getByRole('tab', { name: 'Reviews' });
 
-    overview.focus();
-    await expect(overview).toHaveFocus();
+    await step('tabs.keyboard.roving', async () => {
+      overview.focus();
+      await expect(overview).toHaveFocus();
+      await userEvent.keyboard('{ArrowLeft}');
+      await expect(reviews).toHaveAttribute('aria-selected', 'true');
+      await expect(reviews).toHaveFocus();
+      await userEvent.keyboard('{ArrowRight}');
+      await expect(overview).toHaveAttribute('aria-selected', 'true');
+      await expect(overview).toHaveFocus();
+      await userEvent.keyboard('{End}');
+      await expect(reviews).toHaveFocus();
+      await userEvent.keyboard('{Home}');
+      await expect(overview).toHaveFocus();
+    });
+  },
+};
 
-    // ArrowLeft from the first tab wraps to the last, moving focus with it.
-    await userEvent.keyboard('{ArrowLeft}');
-    await expect(reviews).toHaveAttribute('aria-selected', 'true');
-    await expect(reviews).toHaveFocus();
+/** Vertical orientation uses Up/Down and ignores the horizontal pair. */
+export const VerticalKeyboard: Story = {
+  args: { defaultActiveId: 'overview', orientation: 'vertical' },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const overview = canvas.getByRole('tab', { name: 'Overview' });
+    const specs = canvas.getByRole('tab', { name: 'Specs' });
 
-    // ArrowRight from the last tab wraps back to the first.
-    await userEvent.keyboard('{ArrowRight}');
-    await expect(overview).toHaveAttribute('aria-selected', 'true');
-    await expect(overview).toHaveFocus();
+    await step('tabs.keyboard.vertical', async () => {
+      overview.focus();
+      await userEvent.keyboard('{ArrowDown}');
+      await expect(specs).toHaveFocus();
+      await expect(specs).toHaveAttribute('aria-selected', 'true');
+      await userEvent.keyboard('{ArrowUp}');
+      await expect(overview).toHaveFocus();
+      await userEvent.keyboard('{ArrowRight}');
+      await expect(overview).toHaveFocus();
+      await expect(overview).toHaveAttribute('aria-selected', 'true');
+    });
   },
 };
 
@@ -96,8 +119,8 @@ export const TwoTabs: Story = {
   args: {
     defaultActiveId: 'grid',
     items: [
-      { id: 'grid', label: 'Grid' },
-      { id: 'list', label: 'List' },
+      { id: 'grid', label: 'Grid', panel: <p>Grid panel</p> },
+      { id: 'list', label: 'List', panel: <p>List panel</p> },
     ],
   },
   play: async ({ canvasElement }) => {
@@ -114,7 +137,7 @@ export const TwoTabs: Story = {
 export const ManyTabs: Story = {
   args: {
     defaultActiveId: 't0',
-    items: Array.from({ length: 8 }, (_, i) => ({ id: `t${i}`, label: `Section ${i + 1}` })),
+    items: Array.from({ length: 8 }, (_, i) => ({ id: `t${i}`, label: `Section ${i + 1}`, panel: <p>{`Panel ${i + 1}`}</p> })),
   },
 };
 

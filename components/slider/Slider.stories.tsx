@@ -8,7 +8,7 @@ import { Slider, type SliderOption } from './index';
  *
  * `user-event` does not implement the browser's native default action for arrow
  * keys on `input[type=range]` — it dispatches the key events and the value never
- * moves — so a change event is the honest way to drive this control here. It is
+ * moves — so the story dispatches the resulting change event directly. It is
  * the same event a real drag or keypress delivers to React; the assertions stay
  * on the effect (`aria-valuetext`, the rendered description).
  */
@@ -22,12 +22,7 @@ const sizes: SliderOption[] = [
   { value: 'xl', label: '42' },
 ];
 
-/**
- * The story file is this component's API contract. The behaviour worth proving is
- * the announced value: a range input reports its raw numeric value, so the whole
- * point of this component is that assistive tech hears the option label instead of
- * the index.
- */
+/** The range exposes option labels through `aria-valuetext` rather than raw indices. */
 const meta = {
   title: 'Slider',
   component: Slider,
@@ -69,12 +64,23 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('slider', { name: 'Width' });
 
-    await step('the control is reachable by keyboard', async () => {
+    await step('slider.keyboard.native', async () => {
       await userEvent.tab();
       await expect(input).toHaveFocus();
+      await expect(input).toHaveAttribute('type', 'range');
+      await expect(input).toHaveAttribute('min', '0');
+      await expect(input).toHaveAttribute('max', '3');
+      await expect(input).toHaveAttribute('step', '1');
+      for (const key of ['ArrowRight', 'ArrowLeft', 'End', 'Home', 'PageUp', 'PageDown']) {
+        const keydown = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true });
+        await expect(input.dispatchEvent(keydown)).toBe(true);
+        await expect(keydown.defaultPrevented).toBe(false);
+        await expect(input).toHaveFocus();
+      }
     });
 
-    await step('the announced value tracks the selected option', async () => {
+    await step('slider.value.announced', async () => {
+      moveTo(input, 0);
       await expect(input).toHaveAttribute('aria-valuetext', '24');
       moveTo(input, 1);
       await expect(input).toHaveAttribute('aria-valuetext', '30');
@@ -86,13 +92,10 @@ export const Default: Story = {
   },
 };
 
-/**
- * The reason the component exists. `aria-valuetext` composes the option label with
- * the unit, so the control announces "36 inches" where its raw `value` is "2".
- */
+/** `aria-valuetext` composes the option label with its unit. */
 export const WithUnit: Story = {
   args: { unit: 'inches', defaultValue: 'l' },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('slider', { name: 'Width' }) as HTMLInputElement;
 
@@ -104,15 +107,17 @@ export const WithUnit: Story = {
 /** The hint is wired into the control's description, not left as loose text. */
 export const WithHint: Story = {
   args: { hint: 'Measured at the widest point' },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('slider', { name: 'Width' });
 
-    // Assert the reference resolves, not merely that the attribute is present.
-    const ids = (input.getAttribute('aria-describedby') ?? '').split(' ').filter(Boolean);
-    const described = ids.map((id) => canvasElement.querySelector(`#${CSS.escape(id)}`)?.textContent);
-    await expect(described.join(' ')).toContain('Measured at the widest point');
-    await expect(described.join(' ')).toContain('24');
+    await step('slider.description.valid', async () => {
+      const ids = (input.getAttribute('aria-describedby') ?? '').split(' ').filter(Boolean);
+      const described = ids.map((id) => canvasElement.querySelector(`#${CSS.escape(id)}`)?.textContent);
+      await expect(ids).toHaveLength(2);
+      await expect(described.join(' ')).toContain('Measured at the widest point');
+      await expect(described.join(' ')).toContain('24');
+    });
   },
 };
 

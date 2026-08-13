@@ -41,7 +41,7 @@ export function SearchField({
         autoComplete="off"
         autoFocus={autoFocus}
         className={[
-          'min-h-[var(--size-touch-large)] w-full rounded-pill border-0 bg-surface-raised',
+          'min-h-(--size-touch-large) w-full rounded-pill border-0 bg-surface-raised',
           'pl-s pr-[5.5rem] text-base text-text-primary placeholder:text-text-secondary',
           'outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-border-focus',
           classNames?.input,

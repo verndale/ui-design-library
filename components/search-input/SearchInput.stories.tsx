@@ -52,18 +52,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   /** The baseline: a search landmark, a labelled field, a submit control, and no clear button until there is a query. */
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const root = canvasElement.querySelector('[data-component="search-input"]');
 
-    await expect(root).toBeTruthy();
-    // A search landmark, not a bare form — the reason this is a Search input.
-    await expect(canvasElement.querySelector('form[role="search"]')).toBeTruthy();
-    // The field's accessible name comes from the visually-hidden label, not the placeholder alone.
-    await expect(canvas.getByRole('textbox', { name: 'Search' })).toBeInTheDocument();
-    await expect(canvas.getByRole('button', { name: 'Submit search' })).toBeInTheDocument();
-    // Clear is absent while the field is empty.
-    await expect(canvas.queryByRole('button', { name: 'Clear search' })).not.toBeInTheDocument();
+    await step('search-input.semantics.label', async () => {
+      await expect(root).toBeTruthy();
+      await expect(canvasElement.querySelector('form[role="search"]')).toBeTruthy();
+      const input = canvas.getByRole('textbox', { name: 'Search' });
+      const label = canvas.getByText('Search');
+      await expect(input).toBeInTheDocument();
+      await expect(label).toHaveAttribute('for', input.id);
+      await expect(canvas.getByRole('button', { name: 'Submit search' })).toBeInTheDocument();
+      await expect(canvas.queryByRole('button', { name: 'Clear search' })).not.toBeInTheDocument();
+    });
   },
 };
 
@@ -80,8 +82,9 @@ export const Interactive: Story = {
       await expect(canvas.getByRole('button', { name: 'Clear search' })).toBeInTheDocument();
     });
 
-    await step('submit fires onSearch with the trimmed query', async () => {
-      await userEvent.click(canvas.getByRole('button', { name: 'Submit search' }));
+    await step('search-input.keyboard.submit', async () => {
+      input.focus();
+      await userEvent.keyboard('{Enter}');
       await expect(args.onSearch).toHaveBeenCalledTimes(1);
       await expect(args.onSearch).toHaveBeenLastCalledWith('freight rail');
     });
@@ -117,13 +120,16 @@ export const WithResults: Story = {
     ),
   },
   /** The results slot renders inside a polite live region so a screen reader announces changes. */
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const region = canvas.getByRole('region', { name: 'Search results' });
 
-    await expect(region).toBeInTheDocument();
-    await expect(region).toHaveAttribute('aria-live', 'polite');
-    await expect(within(region).getByRole('link', { name: 'Network map' })).toBeInTheDocument();
+    await step('search-input.announcement.results', async () => {
+      await expect(region).toBeInTheDocument();
+      await expect(region).toHaveAttribute('aria-live', 'polite');
+      await expect(region).toHaveAttribute('aria-atomic', 'true');
+      await expect(within(region).getByRole('link', { name: 'Network map' })).toBeInTheDocument();
+    });
   },
 };
 

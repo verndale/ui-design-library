@@ -42,7 +42,7 @@
     "Dropped the .rtf .rtf--inherit-type rich-text container on the description; it now takes composed content and styles only inline links (color-link), leaving prose rendering to the caller.",
     "Mapped tokens onto the library semantic layer: heading to color-text-primary; eyebrow and description to color-text-secondary; the 24px eyebrow-to-heading gap to spacing-m; the 32px heading-to-description gap to spacing-l.",
     "Dropped client sample copy (the 'Our Handprint' eyebrow and the climate-change heading and body text) — every string is a prop.",
-    "Kept verbatim: the <h2>-heading / <p>-eyebrow semantics, group-level alignment, and collapse-when-empty for both optional parts — the accessibility contract that made it worth capturing."
+    "Retained heading and eyebrow semantics, group-level alignment, and collapse-when-empty behavior for both optional parts."
   ],
   "maturity": "supported",
   "realization": {
@@ -189,13 +189,30 @@
             "header"
           ],
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "one",
+          "elementSelection": {
+            "prop": "as",
+            "cases": [
+              {
+                "value": "div",
+                "element": "div"
+              },
+              {
+                "value": "header",
+                "element": "header"
+              }
+            ]
+          }
         },
         {
           "id": "eyebrow",
           "element": "p",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "eyebrow",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "heading",
@@ -207,13 +224,42 @@
             "h6"
           ],
           "parent": "root",
-          "cardinality": "one"
+          "cardinality": "one",
+          "elementSelection": {
+            "prop": "headingLevel",
+            "cases": [
+              {
+                "value": 2,
+                "element": "h2"
+              },
+              {
+                "value": 3,
+                "element": "h3"
+              },
+              {
+                "value": 4,
+                "element": "h4"
+              },
+              {
+                "value": 5,
+                "element": "h5"
+              },
+              {
+                "value": 6,
+                "element": "h6"
+              }
+            ]
+          }
         },
         {
           "id": "description",
           "element": "div",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "description",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -227,7 +273,8 @@
           "1.3.1",
           "2.4.6"
         ],
-        "evidence": "section-header.heading.logical"
+        "evidence": "section-header.heading.logical",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

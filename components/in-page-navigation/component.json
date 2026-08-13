@@ -41,8 +41,8 @@
     "Reimplemented the scroll-spy dependency-free with a local IntersectionObserver hook (useActiveSection) over the section targets, with an optional controlled activeId override; the client version coupled its active-section logic to the project's heading model.",
     "Mapped the client sticky-bar and pill token utilities onto library semantic tokens: the bar surface to bg-surface-raised, its border to border-border-subtle, the focus ring to outline-border-focus, the active/idle link colours to text-text-primary/text-text-secondary, the pill and drawer radii to rounded-pill/rounded-medium, and the paddings/gaps to the spacing-2xs/xs/s utilities.",
     "Replaced the client SVG chevron asset with an inline currentColor chevron; the library ships no Icon component yet.",
-    "Replaced the fixed reveal transition with grid-template-rows 0fr→1fr on duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
-    "Kept verbatim: the <nav aria-label=\"On this page\"> landmark, aria-current on the active link, native anchor links (Tab reaches them, Enter activates), the mobile trigger's aria-expanded/aria-controls, and the collapsed drawer's inert gating out of the tab order — the accessibility contract that made it worth capturing."
+    "Replaced the fixed reveal transition with grid-template-rows 0fr→1fr on duration-(--duration-base) ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
+    "Retained the labelled nav landmark, aria-current on the active link, native anchor operation, the mobile trigger's aria-expanded/aria-controls, and inert gating for the collapsed drawer."
   ],
   "maturity": "supported",
   "realization": {
@@ -280,7 +280,8 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"aria-label":{"prop":"ariaLabel"}},
           "element": "nav",
           "parent": null,
           "cardinality": "one"
@@ -292,70 +293,81 @@
           "cardinality": "one"
         },
         {
-        "id": "desktopItem",
-        "element": "li",
-        "parent": "desktopList",
-        "cardinality": "one-or-more"
-      },
-      {
+          "id": "desktopItem",
+          "element": "li",
+          "parent": "desktopList",
+          "cardinality": "zero-or-more",
+          "repeat": {
+            "prop": "items"
+          }
+        },
+        {
         "id": "desktopLink",
-        "element": "a",
-        "parent": "desktopItem",
-        "cardinality": "one-or-more"
+        "attributes": {"aria-current":{"state":"active"}},
+          "element": "a",
+          "parent": "desktopItem",
+          "cardinality": "one"
         },
         {
           "id": "mobile",
           "element": "div",
-        "parent": "root",
-        "cardinality": "one"
+          "parent": "root",
+          "cardinality": "one"
         },
         {
-          "id": "trigger",
+        "id": "trigger",
+        "attributes": {"type":"button","aria-expanded":{"state":"expanded"}},
           "element": "button",
-        "parent": "mobile",
-        "cardinality": "one"
+          "parent": "mobile",
+          "cardinality": "one"
         },
         {
           "id": "label",
           "element": "span",
-        "parent": "trigger",
-        "cardinality": "one"
+          "parent": "trigger",
+          "cardinality": "one"
         },
         {
-          "id": "icon",
+        "id": "icon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
-        "parent": "trigger",
-        "cardinality": "one"
+          "parent": "trigger",
+          "cardinality": "one"
         },
         {
           "id": "motion",
           "element": "div",
-        "parent": "mobile",
-        "cardinality": "one"
-      },
-      {
+          "parent": "mobile",
+          "cardinality": "one"
+        },
+        {
         "id": "motionClip",
-        "element": "div",
-        "parent": "motion",
-        "cardinality": "one"
-      },
-      {
-        "id": "mobileList",
-        "element": "ul",
-        "parent": "motionClip",
-        "cardinality": "one"
-      },
-      {
-        "id": "mobileItem",
-        "element": "li",
-        "parent": "mobileList",
-        "cardinality": "one-or-more"
-      },
-      {
+          "element": "div",
+          "parent": "motion",
+          "cardinality": "one"
+        },
+        {
+          "id": "mobileList",
+          "attributes": {"inert":{"state":"collapsed"}},
+          "element": "ul",
+          "parent": "motionClip",
+          "cardinality": "one"
+        },
+        {
+          "id": "mobileItem",
+          "element": "li",
+          "parent": "mobileList",
+          "cardinality": "zero-or-more",
+          "repeat": {
+            "prop": "items"
+          }
+        },
+        {
         "id": "mobileLink",
-        "element": "a",
-        "parent": "mobileItem",
-        "cardinality": "one-or-more"
+        "attributes": {"aria-current":{"state":"active"}},
+          "element": "a",
+          "parent": "mobileItem",
+          "cardinality": "one"
         }
       ]
     },
@@ -376,7 +388,8 @@
           "2.5.8",
           "4.1.2"
         ],
-        "evidence": "in-page-navigation.disclosure.keyboard"
+        "evidence": "in-page-navigation.disclosure.keyboard",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "in-page-navigation.disclosure.state",
@@ -386,7 +399,8 @@
           "1.3.1",
           "4.1.2"
         ],
-        "evidence": "in-page-navigation.disclosure.state"
+        "evidence": "in-page-navigation.disclosure.state",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "in-page-navigation.responsive.hidden",
@@ -395,7 +409,8 @@
         "wcag": [
           "2.4.3"
         ],
-        "evidence": "in-page-navigation.responsive.hidden"
+        "evidence": "in-page-navigation.responsive.hidden",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

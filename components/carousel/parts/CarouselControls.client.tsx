@@ -16,7 +16,7 @@ type CarouselControlsProps = {
 
 const control =
   'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-pill border border-solid ' +
-  'border-border-strong text-text-primary transition-opacity duration-[var(--duration-fast)] ease-standard ' +
+  'border-border-strong text-text-primary transition-opacity duration-(--duration-fast) ease-standard ' +
   'motion-reduce:transition-none disabled:pointer-events-none disabled:opacity-30 ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus';
 

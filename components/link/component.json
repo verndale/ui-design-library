@@ -234,16 +234,22 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"href":{"prop":"href"},"aria-disabled":{"state":"disabled"},"role":{"state":"resolvedRole"},"tabIndex":{"state":"resolvedTabIndex"}},
           "element": "a",
           "parent": null,
           "cardinality": "one"
         },
         {
-          "id": "startIcon",
+        "id": "startIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "startIcon",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "content",
@@ -252,10 +258,15 @@
           "cardinality": "one"
         },
         {
-          "id": "endIcon",
+        "id": "endIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "endIcon",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -269,7 +280,8 @@
           "2.1.1",
           "2.4.4"
         ],
-        "evidence": "link.keyboard.activation"
+        "evidence": "link.keyboard.activation",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "link.state.disabled",
@@ -278,7 +290,8 @@
         "wcag": [
           "4.1.2"
         ],
-        "evidence": "link.state.disabled"
+        "evidence": "link.state.disabled",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "link.target.size",
@@ -288,7 +301,8 @@
           "2.5.8",
           "2.4.7"
         ],
-        "evidence": "link.target.size"
+        "evidence": "link.target.size",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

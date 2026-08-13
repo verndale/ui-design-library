@@ -40,7 +40,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   tags: ['motion'],
-  args: { onClick: fn() },
+  args: { onClick: fn(), startIcon: <span>Start</span>, endIcon: <span>End</span> },
   /** A native button: correct role, an explicit type, and operable by keyboard. */
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -56,10 +56,25 @@ export const Default: Story = {
       await expect(args.onClick).toHaveBeenCalledTimes(1);
     });
 
-    await step('responds to Space, which a div never would', async () => {
+    await step('button.keyboard.activation', async () => {
       button.focus();
-      await userEvent.keyboard(' ');
+      await userEvent.keyboard('{Enter}');
       await expect(args.onClick).toHaveBeenCalledTimes(2);
+      await userEvent.keyboard(' ');
+      await expect(args.onClick).toHaveBeenCalledTimes(3);
+    });
+
+    await step('button.focus.visible', async () => {
+      await expect(button).toHaveFocus();
+      const style = getComputedStyle(button);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(1);
+      await expect(style.outlineStyle).not.toBe('none');
+    });
+
+    await step('button.icons.decorative', async () => {
+      const icons = button.querySelectorAll('[aria-hidden="true"]');
+      await expect(icons).toHaveLength(2);
+      await expect(button).toHaveAccessibleName('Continue');
     });
 
     await step('drops its colour transition under reduced motion', async () => {

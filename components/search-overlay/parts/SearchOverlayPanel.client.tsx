@@ -62,11 +62,12 @@ export function SearchOverlayPanel({
   return (
     <>
       <div
+        data-ui-overlay-layer
         aria-hidden
-        onMouseDown={(event) => event.target === event.currentTarget && onClose()}
+        onMouseDown={(event) => { if (event.target === event.currentTarget) { event.preventDefault(); onClose(); } }}
         className={['fixed inset-0 z-100 bg-surface-scrim animate-fade-in', classNames?.backdrop].filter(Boolean).join(' ')}
       />
-      <div className={['pointer-events-none fixed inset-x-0 top-0 z-100 flex justify-center', classNames?.viewport].filter(Boolean).join(' ')}>
+      <div data-ui-overlay-layer className={['pointer-events-none fixed inset-x-0 top-0 z-100 flex justify-center', classNames?.viewport].filter(Boolean).join(' ')}>
         <div
           id={id}
           ref={dialogRef}

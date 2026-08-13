@@ -21,7 +21,7 @@ export function BreadcrumbBackLink({
       href={parent.href}
       className={[
         'group inline-flex items-center gap-2xs text-sm no-underline xl:hidden',
-        'min-h-[var(--size-touch-medium)]',
+        'min-h-(--size-touch-medium)',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus',
         classNames?.backLink,
       ].filter(Boolean).join(' ')}

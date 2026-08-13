@@ -250,16 +250,22 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"type":{"prop":"type"},"disabled":{"prop":"disabled"}},
           "element": "button",
           "parent": null,
           "cardinality": "one"
         },
         {
-          "id": "startIcon",
+        "id": "startIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "startIcon",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "content",
@@ -268,10 +274,15 @@
           "cardinality": "one"
         },
         {
-          "id": "endIcon",
+        "id": "endIcon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "endIcon",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -286,7 +297,8 @@
           "2.5.8",
           "4.1.2"
         ],
-        "evidence": "button.keyboard.activation"
+        "evidence": "button.keyboard.activation",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "button.focus.visible",
@@ -296,7 +308,8 @@
           "2.4.7",
           "2.4.11"
         ],
-        "evidence": "button.focus.visible"
+        "evidence": "button.focus.visible",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "button.icons.decorative",
@@ -305,7 +318,8 @@
         "wcag": [
           "1.1.1"
         ],
-        "evidence": "button.icons.decorative"
+        "evidence": "button.icons.decorative",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

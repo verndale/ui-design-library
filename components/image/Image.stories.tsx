@@ -5,7 +5,7 @@ import { Image, type ImageLoader } from './index';
 
 /**
  * A stand-in transform host. Real consumers pass one that speaks their DAM's
- * query contract; the point of the story is that the component never knows what
+ * query contract; the story verifies that the component never knows what
  * that contract is.
  */
 const loader: ImageLoader = ({ src, width, height, format }) =>
@@ -13,11 +13,7 @@ const loader: ImageLoader = ({ src, width, height, format }) =>
 
 const SRC = '/placeholder.png';
 
-/**
- * The story file is this component's API contract. The behaviour worth proving is
- * the source ordering inside `<picture>` — browsers take the first source they can
- * decode, so an order that looks cosmetic decides which file is served.
- */
+/** The stories assert alternative text, fallback behavior, and `<picture>` source order. */
 const meta = {
   title: 'Image',
   component: Image,
@@ -54,14 +50,17 @@ type Story = StoryObj<typeof meta>;
 
 /** No loader: a plain `<img>` that still reserves its box and carries its alt. */
 export const Default: Story = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const img = canvas.getByRole('img', { name: 'A short description' }) as HTMLImageElement;
 
-    await expect(img.getAttribute('width')).toBe('640');
-    await expect(img.getAttribute('height')).toBe('360');
-    await expect(img).not.toHaveAttribute('srcset');
-    await expect(canvasElement.querySelector('picture')).toBeNull();
+    await step('image.alternative.text', async () => {
+      await expect(img).toHaveAttribute('alt', 'A short description');
+      await expect(img.getAttribute('width')).toBe('640');
+      await expect(img.getAttribute('height')).toBe('360');
+      await expect(img).not.toHaveAttribute('srcset');
+      await expect(canvasElement.querySelector('picture')).toBeNull();
+    });
   },
 };
 
@@ -94,8 +93,10 @@ export const Responsive: Story = {
       ]);
     });
 
-    await step('the <img> closes the list', async () => {
+    await step('image.fallback.single', async () => {
       await expect(picture!.lastElementChild?.tagName).toBe('IMG');
+      await expect(picture!.querySelectorAll('img')).toHaveLength(1);
+      await expect(within(picture!).getAllByRole('img', { name: 'A short description' })).toHaveLength(1);
     });
 
     await step('every candidate carries a 1x and a 2x descriptor', async () => {

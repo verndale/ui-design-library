@@ -46,7 +46,7 @@ export function MobileNavigation({
       <div
         data-inpage-motion
         className={[
-          'grid transition-[grid-template-rows] duration-[var(--duration-base)] ease-standard',
+          'grid transition-[grid-template-rows] duration-(--duration-base) ease-standard',
           open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
           classNames?.motion,
         ].filter(Boolean).join(' ')}

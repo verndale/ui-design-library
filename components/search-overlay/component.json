@@ -54,7 +54,7 @@
     "Dropped the decorative brand glow asset; the panel surface is a token.",
     "Dropped the client's bespoke suggestion-list arrow-key navigation over a fixed suggestion list; results are a caller-owned slot in a polite live region, so option-level activedescendant is the caller's responsibility. Kept the dialog focus trap, Escape/backdrop dismissal, focus restoration, and the idle-to-active state split."
   ],
-  "maturity": "candidate",
+  "maturity": "supported",
   "realization": {
     "version": 1,
     "props": [
@@ -363,39 +363,51 @@
     "dom": {
       "nodes": [
         {
-          "id": "backdrop",
+        "id": "backdrop",
+        "attributes": {"aria-hidden":true},
           "element": "div",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "portalReadyAndOpen",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "viewport",
           "element": "div",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "portalReadyAndOpen",
+            "predicate": "truthy"
+          }
         },
-      {
+        {
         "id": "dialog",
-        "element": "div",
-        "parent": "viewport",
+        "attributes": {"role":"dialog","aria-modal":{"state":"topmost"},"aria-hidden":{"state":"covered"},"inert":{"state":"covered"},"tabIndex":-1},
+          "element": "div",
+          "parent": "viewport",
           "cardinality": "one"
         },
         {
-          "id": "closeButton",
+        "id": "closeButton",
+        "attributes": {"type":"button","aria-label":{"prop":"closeLabel"}},
           "element": "button",
           "parent": "dialog",
           "cardinality": "one"
         },
-      {
+        {
         "id": "closeIcon",
-        "element": "span",
-        "parent": "closeButton",
-        "cardinality": "one"
-      },
-      {
-        "id": "header",
-        "element": "div",
-        "parent": "dialog",
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "closeButton",
+          "cardinality": "one"
+        },
+        {
+          "id": "header",
+          "element": "div",
+          "parent": "dialog",
           "cardinality": "one"
         },
         {
@@ -407,86 +419,134 @@
             "h5",
             "h6"
           ],
-        "parent": "header",
-          "cardinality": "one"
+          "parent": "header",
+          "cardinality": "one",
+          "elementSelection": {
+            "prop": "titleHeadingLevel",
+            "cases": [
+              {
+                "value": 2,
+                "element": "h2"
+              },
+              {
+                "value": 3,
+                "element": "h3"
+              },
+              {
+                "value": 4,
+                "element": "h4"
+              },
+              {
+                "value": 5,
+                "element": "h5"
+              },
+              {
+                "value": 6,
+                "element": "h6"
+              }
+            ]
+          }
         },
         {
           "id": "description",
           "element": "div",
-        "parent": "header",
-          "cardinality": "zero-or-one"
+          "parent": "header",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "idleSupportingCopy",
+            "predicate": "truthy"
+          }
         },
         {
-        "id": "searchWrapper",
-        "element": "div",
-        "parent": "dialog",
-        "cardinality": "one"
-      },
-      {
-        "id": "searchRoot",
-        "element": "div",
-        "parent": "searchWrapper",
-        "cardinality": "one"
-      },
-      {
+          "id": "searchWrapper",
+          "element": "div",
+          "parent": "dialog",
+          "cardinality": "one"
+        },
+        {
+          "id": "searchRoot",
+          "element": "div",
+          "parent": "searchWrapper",
+          "cardinality": "one"
+        },
+        {
         "id": "searchForm",
-        "element": "form",
-        "parent": "searchRoot",
-        "cardinality": "one"
-      },
-      {
-        "id": "searchLabel",
-        "element": "label",
-        "parent": "searchForm",
-        "cardinality": "one"
-      },
-      {
+        "attributes": {"role":"search"},
+          "element": "form",
+          "parent": "searchRoot",
+          "cardinality": "one"
+        },
+        {
+          "id": "searchLabel",
+          "element": "label",
+          "parent": "searchForm",
+          "cardinality": "one"
+        },
+        {
         "id": "searchInput",
-        "element": "input",
-        "parent": "searchForm",
-        "cardinality": "one"
-      },
-      {
-        "id": "searchControls",
-        "element": "div",
-        "parent": "searchForm",
-        "cardinality": "one"
-      },
-      {
+        "attributes": {"type":"text"},
+          "element": "input",
+          "parent": "searchForm",
+          "cardinality": "one"
+        },
+        {
+          "id": "searchControls",
+          "element": "div",
+          "parent": "searchForm",
+          "cardinality": "one"
+        },
+        {
         "id": "searchClearButton",
-        "element": "button",
-        "parent": "searchControls",
-        "cardinality": "zero-or-one"
-      },
-      {
+        "attributes": {"type":"button","aria-label":{"prop":"clearLabel"}},
+          "element": "button",
+          "parent": "searchControls",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "clearButtonVisible",
+            "predicate": "truthy"
+          }
+        },
+        {
         "id": "searchClearIcon",
-        "element": "span",
-        "parent": "searchClearButton",
-        "cardinality": "zero-or-one"
-      },
-      {
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "searchClearButton",
+          "cardinality": "one"
+        },
+        {
         "id": "searchSubmitButton",
-        "element": "button",
-        "parent": "searchControls",
-        "cardinality": "one"
-      },
-      {
+        "attributes": {"type":"submit","aria-label":{"prop":"submitLabel"}},
+          "element": "button",
+          "parent": "searchControls",
+          "cardinality": "one"
+        },
+        {
         "id": "searchSubmitIcon",
-        "element": "span",
-        "parent": "searchSubmitButton",
-        "cardinality": "one"
-      },
-      {
-        "id": "quickLinks",
-        "element": "div",
-        "parent": "dialog",
-        "cardinality": "zero-or-one"
-      },
-      {
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "searchSubmitButton",
+          "cardinality": "one"
+        },
+        {
+          "id": "quickLinks",
+          "element": "div",
+          "parent": "dialog",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "idleQuickLinks",
+            "predicate": "truthy"
+          }
+        },
+        {
         "id": "searchResults",
-        "element": "div",
-        "parent": "searchRoot",
-        "cardinality": "zero-or-one"
+        "attributes": {"role":"region","aria-live":"polite","aria-atomic":"true","aria-label":{"prop":"resultsLabel"}},
+          "element": "div",
+          "parent": "searchRoot",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "activeResults",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -506,14 +566,36 @@
       {
         "id": "search-overlay.focus.modal",
         "kind": "focus",
-        "description": "Focus enters, remains inside, and restores after Escape, close, or backdrop dismissal.",
+        "description": "Focus enters the dialog and remains contained while it is open.",
         "wcag": [
           "2.1.2",
           "2.4.3",
           "2.4.11",
           "2.5.8"
         ],
-        "evidence": "search-overlay.focus.modal"
+        "evidence": "search-overlay.focus.modal",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "search-overlay.focus.restoration",
+        "kind": "focus",
+        "description": "Escape, close-button, and backdrop dismissal restore focus to the opener.",
+        "wcag": [
+          "2.4.3"
+        ],
+        "evidence": "search-overlay.focus.restoration",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "search-overlay.focus.background-inert",
+        "kind": "focus",
+        "description": "Open overlays make non-overlay body content inert.",
+        "wcag": [
+          "2.1.2",
+          "2.4.3"
+        ],
+        "evidence": "search-overlay.focus.background-inert",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "search-overlay.semantics.dialog",
@@ -523,7 +605,8 @@
           "1.3.1",
           "4.1.2"
         ],
-        "evidence": "search-overlay.semantics.dialog"
+        "evidence": "search-overlay.semantics.dialog",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "search-overlay.announcement.results",
@@ -532,7 +615,8 @@
         "wcag": [
           "4.1.3"
         ],
-        "evidence": "search-overlay.announcement.results"
+        "evidence": "search-overlay.announcement.results",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

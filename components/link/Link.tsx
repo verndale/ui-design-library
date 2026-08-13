@@ -10,9 +10,9 @@ const SIZES: Record<LinkSize, string> = {
 };
 
 const TOUCH: Record<LinkSize, string> = {
-  large: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-[var(--size-touch-large)]",
-  medium: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-[var(--size-touch-medium)]",
-  small: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-[var(--size-touch-small)]",
+  large: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-(--size-touch-large)",
+  medium: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-(--size-touch-medium)",
+  small: "relative before:absolute before:inset-x-0 before:top-1/2 before:-translate-y-1/2 before:w-full before:content-[''] before:min-h-(--size-touch-small)",
 };
 
 /** A framework-neutral text link with a multiline animated underline. */
@@ -46,7 +46,7 @@ export function Link({
       onKeyDown={disabled ? undefined : onKeyDown}
       className={[
         'group inline-block max-w-full min-w-0 align-middle leading-none text-link no-underline',
-        'transition-opacity duration-[var(--duration-fast)] ease-standard hover:opacity-90 motion-reduce:transition-none',
+        'transition-opacity duration-(--duration-fast) ease-standard hover:opacity-90 motion-reduce:transition-none',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus',
         'aria-disabled:pointer-events-none aria-disabled:opacity-40',
         SIZES[size],

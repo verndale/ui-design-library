@@ -10,7 +10,7 @@ const { spawnSync } = require('node:child_process');
 
 const repoRoot = path.resolve(__dirname, '..');
 const fixtureRoot = path.join(repoRoot, 'tests', 'fixtures', 'next-consumer');
-const nestedUtility = 'right-[var(--spacing-3xs)]';
+const nestedUtility = 'right-(--spacing-3xs)';
 
 function run(command, args, cwd, capture = false) {
   const result = spawnSync(command, args, {

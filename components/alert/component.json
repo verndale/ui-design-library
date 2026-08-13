@@ -191,22 +191,38 @@
     "dom": {
       "nodes": [
         {
-          "id": "root",
+        "id": "root",
+        "attributes": {"role":{"state":"role"},"aria-live":{"state":"livePriority"},"aria-atomic":"true"},
           "element": "div",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "open",
+            "predicate": "truthy"
+          }
         },
         {
-          "id": "accent",
+        "id": "accent",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "showAccent",
+            "predicate": "truthy"
+          }
         },
         {
-          "id": "icon",
+        "id": "icon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "icon",
+            "predicate": "not-equals",
+            "value": null
+          }
         },
         {
           "id": "content",
@@ -215,10 +231,15 @@
           "cardinality": "one"
         },
         {
-          "id": "dismiss",
+        "id": "dismiss",
+        "attributes": {"type":"button","aria-label":{"prop":"dismissLabel"}},
           "element": "button",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "onDismiss",
+            "predicate": "present"
+          }
         }
       ]
     },
@@ -232,7 +253,8 @@
           "1.3.1",
           "4.1.3"
         ],
-        "evidence": "alert.announcement.priority"
+        "evidence": "alert.announcement.priority",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "alert.dismiss.keyboard",
@@ -244,7 +266,18 @@
           "2.5.8",
           "4.1.2"
         ],
-        "evidence": "alert.dismiss.keyboard"
+        "evidence": "alert.dismiss.keyboard",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "alert.timing.opt-out",
+        "kind": "state",
+        "description": "Omitting dismissMs or setting it to zero leaves the alert persistent even when dismissal is available.",
+        "wcag": [
+          "2.2.1"
+        ],
+        "evidence": "alert.timing.opt-out",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {
@@ -253,6 +286,7 @@
       "consumerResponsibilities": [
         "accessible-copy",
         "dynamic-content",
+        "timed-content",
         "token-contrast",
         "safe-class-overrides",
         "complete-page-assistive-technology-testing"

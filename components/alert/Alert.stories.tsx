@@ -6,18 +6,14 @@ import { Alert, type AlertProps } from './index';
 
 type AlertStoryArgs = AlertProps;
 
-/**
- * The story file is this component's API contract. What is worth proving is the
- * live-region semantics per severity, the dismiss control, and that auto-dismiss
- * actually removes it.
- */
+/** The stories assert live-region priority, dismissal, and timer behavior. */
 const meta = {
   title: 'Alert',
   component: Alert,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['alert.announcement.priority', 'alert.dismiss.keyboard'],
+    realizationEvidence: ['alert.announcement.priority', 'alert.dismiss.keyboard', 'alert.timing.opt-out'],
     layout: 'padded',
     docs: {
       description: {
@@ -46,14 +42,15 @@ type Story = StoryObj<typeof meta>;
 
 /** A positive notification is server-renderable and announces politely. */
 export const Default: Story = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const alert = canvas.getByRole('status');
 
-    await expect(alert).toHaveAttribute('aria-live', 'polite');
-    await expect(alert).toHaveTextContent('Your changes have been saved.');
-
-    await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
+    await step('alert.announcement.priority', async () => {
+      await expect(alert).toHaveAttribute('aria-live', 'polite');
+      await expect(alert).toHaveTextContent('Your changes have been saved.');
+      await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
+    });
   },
 };
 
@@ -74,12 +71,16 @@ export const Dismissible: Story = {
       />
     );
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     dismiss.mockClear();
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole('button', { name: 'Dismiss' }));
-    await expect(dismiss).toHaveBeenCalledTimes(1);
-    await expect(canvas.queryByRole('status')).not.toBeInTheDocument();
+    await step('alert.dismiss.keyboard', async () => {
+      const button = canvas.getByRole('button', { name: 'Dismiss' });
+      button.focus();
+      await userEvent.keyboard('{Enter}');
+      await expect(dismiss).toHaveBeenCalledTimes(1);
+      await expect(canvas.queryByRole('status')).not.toBeInTheDocument();
+    });
   },
 };
 
@@ -102,10 +103,7 @@ export const LongMessage: Story = {
   },
 };
 
-/**
- * Auto-dismiss removes the alert after `dismissMs` — proven by the alert being
- * gone, not merely by the callback firing.
- */
+/** Auto-dismiss removes the alert after `dismissMs`. */
 export const AutoDismiss: Story = {
   render: function Render(args) {
     const [open, setOpen] = useState(true);
@@ -122,5 +120,21 @@ export const AutoDismiss: Story = {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole('status')).toBeInTheDocument();
     await waitFor(() => expect(canvas.queryByRole('status')).not.toBeInTheDocument());
+  },
+};
+
+const persistentDismiss = fn();
+
+/** A zero duration is the explicit persistent opt-out for timed content. */
+export const PersistentDismissible: Story = {
+  args: { dismissMs: 0, onDismiss: persistentDismiss },
+  play: async ({ canvasElement, step }) => {
+    persistentDismiss.mockClear();
+    const canvas = within(canvasElement);
+    await step('alert.timing.opt-out', async () => {
+      await new Promise((resolve) => setTimeout(resolve, 120));
+      await expect(persistentDismiss).not.toHaveBeenCalled();
+      await expect(canvas.getByRole('status')).toBeInTheDocument();
+    });
   },
 };

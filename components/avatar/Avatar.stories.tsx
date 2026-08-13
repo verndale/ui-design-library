@@ -31,17 +31,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const Portrait = () => <div className="size-full bg-surface-sunken" />;
+const Portrait = () => (
+  <img
+    alt="Portrait of Jane"
+    src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><rect width='200' height='200' fill='%23b9bfc8'/></svg>"
+    className="size-full object-cover"
+  />
+);
 
 export const Default: Story = {
   render: (args) => <Avatar {...args}><Portrait /></Avatar>,
-  /** Figure semantics are the whole reason this is a component and not a div. */
-  play: async ({ canvasElement }) => {
+  /** The root retains native figure semantics. */
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const figure = canvas.getByRole('figure');
 
-    await expect(figure).toHaveAttribute('data-component', 'avatar');
-    await expect(figure.tagName.toLowerCase()).toBe('figure');
+    await step('avatar.semantics.content', async () => {
+      await expect(figure).toHaveAttribute('data-component', 'avatar');
+      await expect(figure.tagName.toLowerCase()).toBe('figure');
+      await expect(figure).not.toHaveAttribute('role');
+      await expect(canvas.getAllByRole('img')).toHaveLength(1);
+      await expect(canvas.getByRole('img', { name: 'Portrait of Jane' })).toBeInTheDocument();
+    });
   },
 };
 
@@ -87,7 +98,7 @@ export const CropsWideMedia: Story = {
   /**
    * The de-clienting stripped the source's fixed min-width/height, leaving the
    * 1:1 crop as the only thing the frame still guarantees. That is now the
-   * contract, so it is worth measuring rather than trusting the class list.
+   * contract, so the story measures it directly.
    */
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

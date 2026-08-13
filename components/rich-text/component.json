@@ -115,7 +115,20 @@
             "article"
           ],
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "one",
+          "elementSelection": {
+            "prop": "as",
+            "cases": [
+              {
+                "value": "div",
+                "element": "div"
+              },
+              {
+                "value": "article",
+                "element": "article"
+              }
+            ]
+          }
         }
       ]
     },
@@ -130,7 +143,8 @@
           "2.4.6",
           "3.1.2"
         ],
-        "evidence": "rich-text.semantics.authored"
+        "evidence": "rich-text.semantics.authored",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

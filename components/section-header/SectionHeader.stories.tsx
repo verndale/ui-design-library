@@ -42,13 +42,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   /** The eyebrow is a <p> accent; the block's only heading is the <h2>. */
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const heading = canvas.getByRole('heading', { level: 2 });
-    await expect(heading).toHaveTextContent('Building the infrastructure of the future');
-    // The eyebrow must not register as a heading — no phantom outline level.
-    await expect(canvas.getAllByRole('heading')).toHaveLength(1);
-    await expect(canvas.getByText('Our vision')).toBeVisible();
+    await step('section-header.heading.logical', async () => {
+      await expect(heading).toHaveTextContent('Building the infrastructure of the future');
+      await expect(canvas.getAllByRole('heading')).toHaveLength(1);
+      await expect(canvas.getByText('Our vision')).toBeVisible();
+    });
   },
 };
 

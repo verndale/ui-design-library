@@ -2,7 +2,7 @@
 date: 2026-08-13
 topics: [package-distribution]
 plan: plans/2026-08-12-executable-esm-reuse-contract-v2.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/35
 ---
 # Stat metadata stops advertising StatGroup variants
 

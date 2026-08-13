@@ -86,15 +86,17 @@ export const Default: Story = {
       await expect(await body.findByRole('dialog')).toBeInTheDocument();
     });
 
-    await step('modal.background.inert', async () => {
-      await waitFor(() => expect(canvasElement.inert).toBe(true));
-      trigger.focus();
-      await expect(trigger).not.toHaveFocus();
-    });
-
     await step('moves focus into the dialog', async () => {
       const dialog = body.getByRole('dialog');
       await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
+    });
+
+    await step('modal.background.inert', async () => {
+      const dialog = body.getByRole('dialog');
+      await waitFor(() => expect(canvasElement.inert).toBe(true));
+      trigger.focus();
+      await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
+      await expect(trigger).not.toHaveFocus();
     });
 
     await step('modal.focus.restoration', async () => {

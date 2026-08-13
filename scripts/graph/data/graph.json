@@ -198,7 +198,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 736,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -750,7 +750,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 96,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -929,9 +929,11 @@
       "dir": "wiki/journal",
       "topics": [],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "29"
+      ],
       "issues": [],
-      "bytes": 2126,
+      "bytes": 2172,
       "degree": 1
     },
     {
@@ -1089,9 +1091,11 @@
         "graph-wiki-subsystem"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "29"
+      ],
       "issues": [],
-      "bytes": 4228,
+      "bytes": 4274,
       "degree": 3
     },
     {
@@ -1103,9 +1107,11 @@
         "graph-wiki-subsystem"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "29"
+      ],
       "issues": [],
-      "bytes": 1081,
+      "bytes": 1127,
       "degree": 3
     },
     {
@@ -1118,11 +1124,13 @@
         "package-distribution"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "29"
+      ],
       "issues": [
         "26"
       ],
-      "bytes": 2641,
+      "bytes": 2687,
       "degree": 6
     },
     {
@@ -1213,11 +1221,13 @@
         "package-distribution"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "29"
+      ],
       "issues": [
         "26"
       ],
-      "bytes": 9613,
+      "bytes": 9700,
       "degree": 6
     },
     {
@@ -1228,6 +1238,7 @@
       "topics": [],
       "aliases": [],
       "prs": [
+        "29",
         "19",
         "5",
         "2"
@@ -1237,7 +1248,7 @@
         "18",
         "4"
       ],
-      "bytes": 2892,
+      "bytes": 2957,
       "degree": 8
     },
     {
@@ -1278,6 +1289,7 @@
         "graph freshness"
       ],
       "prs": [
+        "29",
         "24",
         "19",
         "16",
@@ -1288,7 +1300,7 @@
         "2"
       ],
       "issues": [],
-      "bytes": 9203,
+      "bytes": 9339,
       "degree": 29
     },
     {

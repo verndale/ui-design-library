@@ -2,7 +2,7 @@
 date: 2026-08-12
 topics: [component-architecture, package-distribution]
 plan: plans/2026-08-12-server-first-component-architecture.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/29
 ---
 # Adopt server-first component architecture
 

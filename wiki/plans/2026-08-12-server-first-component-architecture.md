@@ -4,6 +4,7 @@ executed: 2026-08-12
 evidence:
   - "issue #26 https://github.com/verndale/ui-design-library/issues/26"
   - "working tree"
+  - "PR #29 https://github.com/verndale/ui-design-library/pull/29 (merged 2026-08-13)"
 source_tool: codex
 source: current Codex task
 topics: [component-architecture, package-distribution]

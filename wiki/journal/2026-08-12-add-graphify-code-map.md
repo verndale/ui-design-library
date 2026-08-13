@@ -2,7 +2,7 @@
 date: 2026-08-12
 topics: [graph-wiki-subsystem]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/29
 ---
 # Add Graphify code mapping
 

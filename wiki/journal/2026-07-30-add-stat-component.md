@@ -2,7 +2,7 @@
 date: 2026-07-30
 topics: []
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/29
 ---
 # Add the Stat component
 

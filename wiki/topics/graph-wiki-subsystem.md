@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-13 — chore(ci): Update wiki sync workflow for API changes ([PR #29](https://github.com/verndale/ui-design-library/pull/29))
 - 2026-08-12 — Made wiki-sync PR context construction pagination-safe after PR #27's 186 changed files produced two adjacent JSON arrays and failed `jq --argjson`; `gh api --slurp` now creates one outer page array and the filters flatten it for both files and commits ([journal](../journal/2026-08-12-fix-wiki-sync-pagination.md)).
 - 2026-08-12 — Added Graphify as a symbol-level complement to the existing curated graph, using Graphify's generated Codex rules and standard `graphify-out/` artifacts. Kept the installer-owned `## graphify` block verbatim and moved repository extensions under a separate H2 so future installs preserve local policy. Freshness is enforced separately by a blocking pre-commit refresh plus post-merge and branch-switch post-checkout refreshes, all routed through one deterministic sync wrapper. Excluded vendored minified viewer code after the first run made its single-letter functions false architectural hubs, and retained the full graph instead of a misleading `tree --root components` draft because that option re-anchors rather than filters ([journal](../journal/2026-08-12-add-graphify-code-map.md)).
 - 2026-08-06 — feat(ci): Update workflows and enhance modal component ([PR #24](https://github.com/verndale/ui-design-library/pull/24))

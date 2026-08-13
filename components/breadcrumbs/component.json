@@ -5,14 +5,30 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["items", "currentPageTitle", "backLinkLabel", "separator", "backIcon"],
-  "variants": ["light", "dark"],
+  "slots": [
+    "items",
+    "currentPageTitle",
+    "backLinkLabel",
+    "separator",
+    "backIcon"
+  ],
+  "variants": [
+    "light",
+    "dark"
+  ],
   "reuseFingerprint": {
-    "slots": ["action"],
+    "slots": [
+      "action"
+    ],
     "affordance": "navigate",
     "role": "action-group"
   },
-  "tokens": ["color-text-primary", "color-text-inverse", "color-border-focus", "size-touch-medium"],
+  "tokens": [
+    "color-text-primary",
+    "color-text-inverse",
+    "color-border-focus",
+    "size-touch-medium"
+  ],
   "provenance": {
     "project": "canadian-national",
     "run": "runs/canadian-national/2026-07-26/",
@@ -26,5 +42,337 @@
     "Replaced the hard-coded 44px mobile tap target with the --size-touch-medium token.",
     "Kept verbatim: the nav landmark with an aria-label, aria-current on the current page, the current page rendered as text rather than a link, and the xl breakpoint collapse to a single back link."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "items",
+        "type": "collection",
+        "required": true
+      },
+      {
+        "path": "items[].label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "items[].href",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "currentPageTitle",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "backLinkLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "surface",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "light",
+          "dark"
+        ],
+        "default": "light"
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "default": "Breadcrumb"
+      },
+      {
+        "path": "separator",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "backIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.trail",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.item",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.link",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.separator",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.currentPage",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.backLink",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.backIcon",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "items[].label",
+        "nodes": [
+          "trailLabel",
+          "backLabel"
+        ]
+      },
+      {
+        "prop": "backLinkLabel",
+        "node": "backLabel"
+      },
+      {
+        "prop": "currentPageTitle",
+        "node": "currentPage"
+      },
+      {
+        "prop": "separator",
+        "node": "separator"
+      },
+      {
+        "prop": "backIcon",
+        "node": "backIcon"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.trail",
+        "node": "trail",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.item",
+        "node": "trailItem",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.link",
+        "node": "trailLink",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "nodes": [
+          "trailLabel",
+          "backLabel"
+        ],
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.separator",
+        "node": "separator",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.currentPage",
+        "node": "currentPage",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.backLink",
+        "node": "backLink",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.backIcon",
+        "node": "backIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "nav",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "trail",
+          "element": "ol",
+          "parent": "root",
+          "cardinality": "one"
+        },
+      {
+        "id": "trailItem",
+        "element": "li",
+        "parent": "trail",
+        "cardinality": "zero-or-more"
+      },
+      {
+        "id": "trailLink",
+        "element": "a",
+        "parent": "trailItem",
+        "cardinality": "zero-or-more"
+      },
+      {
+        "id": "trailLabel",
+        "element": "span",
+        "parent": "trailLink",
+        "cardinality": "zero-or-more"
+      },
+        {
+          "id": "separator",
+          "element": "span",
+        "parent": "trailItem",
+          "cardinality": "zero-or-more"
+        },
+        {
+          "id": "currentPage",
+        "element": "li",
+        "parent": "trail",
+          "cardinality": "one"
+        },
+        {
+          "id": "backLink",
+          "element": "a",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "backIcon",
+        "element": "span",
+        "parent": "backLink",
+        "cardinality": "zero-or-one"
+      },
+      {
+        "id": "backLabel",
+        "element": "span",
+        "parent": "backLink",
+        "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "breadcrumbs.semantics.hierarchy",
+        "kind": "semantics",
+        "description": "A named navigation landmark contains an ordered trail and aria-current page.",
+        "wcag": [
+          "1.3.1",
+          "2.4.8",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "breadcrumbs.semantics.hierarchy"
+      },
+      {
+        "id": "breadcrumbs.responsive.hidden",
+        "kind": "focus",
+        "description": "Inactive responsive copies are hidden from both focus order and the accessibility tree.",
+        "wcag": [
+          "2.4.3",
+          "4.1.2"
+        ],
+        "evidence": "breadcrumbs.responsive.hidden"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "breadcrumb",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "landmark-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

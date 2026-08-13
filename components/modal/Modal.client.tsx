@@ -18,6 +18,11 @@ export function Modal({
   footer,
   size = 'large',
   returnFocusRef,
+  id,
+  className,
+  classNames,
+  titleHeadingLevel = 2,
+  closeIcon,
 }: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -45,6 +50,11 @@ export function Modal({
       size={size}
       isTopmost={isTopmost}
       onClose={onClose}
+      id={id}
+      className={className}
+      classNames={classNames}
+      titleHeadingLevel={titleHeadingLevel}
+      closeIcon={closeIcon}
     >
       {children}
     </ModalPanel>,

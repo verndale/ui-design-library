@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['breadcrumbs.semantics.hierarchy', 'breadcrumbs.responsive.hidden'],
     layout: 'centered',
     docs: {
       description: {
@@ -18,9 +19,15 @@ const meta = {
     },
   },
   argTypes: {
-    surface: { control: 'radio', options: ['light', 'dark'] },
-    currentPageTitle: { control: 'text' },
-    ariaLabel: { control: 'text', description: 'Change it when a page has more than one trail.' },
+    "items": { control: 'object', description: "Required. Public `items` realization prop." },
+    "currentPageTitle": { control: 'text', description: "Required. Public `currentPageTitle` realization prop." },
+    "backLinkLabel": { control: 'text', description: "Optional. Public `backLinkLabel` realization prop." },
+    "surface": { control: 'radio', options: ["light","dark"], description: "Optional. Public `surface` realization prop. Defaults to \"light\"." },
+    "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop. Defaults to \"Breadcrumb\"." },
+    "separator": { control: false, description: "Optional. Public `separator` realization prop." },
+    "backIcon": { control: false, description: "Optional. Public `backIcon` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: {
     items: [

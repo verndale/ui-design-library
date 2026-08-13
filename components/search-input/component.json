@@ -5,10 +5,16 @@
   "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["results"],
+  "slots": [
+    "results"
+  ],
   "variants": [],
   "reuseFingerprint": {
-    "slots": ["field", "panel", "action"],
+    "slots": [
+      "field",
+      "panel",
+      "action"
+    ],
     "affordance": "input",
     "role": "container"
   },
@@ -41,5 +47,386 @@
     "Restored a visible keyboard focus indicator on the input — CN removed every focus outline and ring; the library field uses focus-visible:outline-2 outline-offset-2 outline-border-focus.",
     "Kept verbatim: the role=search landmark, the sr-only bound label, aria-labels on submit/clear, aria-hidden icons, the live results region, the controlled/uncontrolled duality, inputMode/enterKeyHint/autoComplete/autoFocus, clear-then-refocus, and the submit trimming an empty query before firing onSearch."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "placeholder",
+        "type": "string",
+        "required": false,
+        "default": "Search"
+      },
+      {
+        "path": "label",
+        "type": "string",
+        "required": false,
+        "default": "Search"
+      },
+      {
+        "path": "onSearch",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "value",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "onChange",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "autoFocus",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "results",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "inputId",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "clearLabel",
+        "type": "string",
+        "required": false,
+        "default": "Clear search"
+      },
+      {
+        "path": "submitLabel",
+        "type": "string",
+        "required": false,
+        "default": "Submit search"
+      },
+      {
+        "path": "resultsLabel",
+        "type": "string",
+        "required": false,
+        "default": "Search results"
+      },
+      {
+        "path": "clearIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "submitIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "showClearButton",
+        "type": "boolean",
+        "required": false,
+        "default": true
+      },
+      {
+        "path": "showSubmitButton",
+        "type": "boolean",
+        "required": false,
+        "default": true
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.form",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.input",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.controls",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.clearButton",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.clearIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.submitButton",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.submitIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.results",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "label",
+        "node": "label"
+      },
+      {
+        "prop": "results",
+        "node": "results"
+      },
+      {
+        "prop": "clearIcon",
+        "node": "clearIcon"
+      },
+      {
+        "prop": "submitIcon",
+        "node": "submitIcon"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "inputId",
+        "node": "input",
+        "attribute": "id"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.form",
+        "node": "form",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.input",
+        "node": "input",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.controls",
+        "node": "controls",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.clearButton",
+        "node": "clearButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.clearIcon",
+        "node": "clearIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.submitButton",
+        "node": "submitButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.submitIcon",
+        "node": "submitIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.results",
+        "node": "results",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+      {
+        "id": "root",
+        "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+      {
+        "id": "form",
+        "element": "form",
+        "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "label",
+          "element": "label",
+        "parent": "form",
+          "cardinality": "one"
+        },
+        {
+          "id": "input",
+          "element": "input",
+        "parent": "form",
+          "cardinality": "one"
+        },
+      {
+        "id": "controls",
+        "element": "div",
+        "parent": "form",
+          "cardinality": "one"
+        },
+      {
+        "id": "clearButton",
+        "element": "button",
+        "parent": "controls",
+          "cardinality": "zero-or-one"
+        },
+      {
+        "id": "clearIcon",
+        "element": "span",
+        "parent": "clearButton",
+        "cardinality": "zero-or-one"
+        },
+        {
+        "id": "submitButton",
+        "element": "button",
+        "parent": "controls",
+        "cardinality": "zero-or-one"
+        },
+        {
+        "id": "submitIcon",
+        "element": "span",
+        "parent": "submitButton",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "results",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "search-input.keyboard.submit",
+        "kind": "keyboard",
+        "description": "The labelled search input submits by keyboard and clear returns focus to the input.",
+        "wcag": [
+          "2.1.1",
+          "2.4.3",
+          "2.4.11",
+          "2.5.8"
+        ],
+        "evidence": "search-input.keyboard.submit"
+      },
+      {
+        "id": "search-input.semantics.label",
+        "kind": "semantics",
+        "description": "A visible label is bound to the input independently of placeholder text.",
+        "wcag": [
+          "1.3.1",
+          "2.4.6",
+          "3.3.2"
+        ],
+        "evidence": "search-input.semantics.label"
+      },
+      {
+        "id": "search-input.announcement.results",
+        "kind": "announcement",
+        "description": "An atomic polite region announces result changes once.",
+        "wcag": [
+          "4.1.3"
+        ],
+        "evidence": "search-input.announcement.results"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "search",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "dynamic-content",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

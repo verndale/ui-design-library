@@ -36,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-13 — [Publish accessible realization contracts](journal/2026-08-13-accessible-realization-contracts.md) — all 21 primary components now publish checked DOM, behavior, WCAG, APG, style-protection, and caller-responsibility metadata backed by Chromium/WebKit story evidence.
 - 2026-08-12 — [Publish executable ESM and reuse contract v2](journal/2026-08-12-executable-esm-reuse-contract-v2.md) — fixed native Node imports, identified one primary reuse export and derived rendering boundary per component, and hardened OIDC semantic releases.
 - 2026-08-12 — [Fix wiki sync pagination](journal/2026-08-12-fix-wiki-sync-pagination.md) — slurps paginated GitHub file and commit responses before building merge context, preventing adjacent page arrays from becoming invalid `jq --argjson` input.
 - 2026-08-12 — [Add Graphify code mapping](journal/2026-08-12-add-graphify-code-map.md) — added Graphify's Codex query-first instructions and a local AST map that complements the curated component/wiki graph with symbol-level component relationships.

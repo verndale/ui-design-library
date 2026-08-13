@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['section-header.heading.logical'],
     layout: 'padded',
     docs: {
       description: {
@@ -16,6 +17,16 @@ const meta = {
           'A section-intro block: an optional eyebrow above an h2, with optional supporting copy, aligned as one unit. The heading is an h2 (a section header never owns the page h1) and the eyebrow a p (no phantom outline level); each optional part collapses when omitted.',
       },
     },
+  },
+  argTypes: {
+    "eyebrow": { control: false, description: "Optional. Public `eyebrow` realization prop." },
+    "heading": { control: false, description: "Required. Public `heading` realization prop." },
+    "description": { control: false, description: "Optional. Public `description` realization prop." },
+    "alignment": { control: 'radio', options: ["left","center"], description: "Optional. Public `alignment` realization prop. Defaults to \"left\"." },
+    "headingLevel": { control: 'radio', options: [2,3,4,5,6], description: "Optional. Public `headingLevel` realization prop. Defaults to 2." },
+    "as": { control: 'radio', options: ["div","header"], description: "Optional. Public `as` realization prop. Defaults to \"div\"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: {
     eyebrow: 'Our vision',

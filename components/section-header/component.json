@@ -5,14 +5,32 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["eyebrow", "heading", "description"],
-  "variants": ["left", "center"],
+  "slots": [
+    "eyebrow",
+    "heading",
+    "description"
+  ],
+  "variants": [
+    "left",
+    "center"
+  ],
   "reuseFingerprint": {
-    "slots": ["meta", "heading", "body", "action"],
+    "slots": [
+      "meta",
+      "heading",
+      "body",
+      "action"
+    ],
     "affordance": "display",
     "role": "editorial"
   },
-  "tokens": ["color-text-primary", "color-text-secondary", "color-link", "spacing-m", "spacing-l"],
+  "tokens": [
+    "color-text-primary",
+    "color-text-secondary",
+    "color-link",
+    "spacing-m",
+    "spacing-l"
+  ],
   "provenance": {
     "project": "bentley",
     "run": "runs/bentley/2026-07-30/",
@@ -26,5 +44,202 @@
     "Dropped client sample copy (the 'Our Handprint' eyebrow and the climate-change heading and body text) — every string is a prop.",
     "Kept verbatim: the <h2>-heading / <p>-eyebrow semantics, group-level alignment, and collapse-when-empty for both optional parts — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "eyebrow",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "heading",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "description",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "alignment",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "left",
+          "center"
+        ],
+        "default": "left"
+      },
+      {
+        "path": "headingLevel",
+        "type": "enum",
+        "required": false,
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "default": 2
+      },
+      {
+        "path": "as",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "div",
+          "header"
+        ],
+        "default": "div"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.eyebrow",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.heading",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.description",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "eyebrow",
+        "node": "eyebrow"
+      },
+      {
+        "prop": "heading",
+        "node": "heading"
+      },
+      {
+        "prop": "description",
+        "node": "description"
+      }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.eyebrow",
+        "node": "eyebrow",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.heading",
+        "node": "heading",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.description",
+        "node": "description",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": [
+            "div",
+            "header"
+          ],
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "eyebrow",
+          "element": "p",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "heading",
+          "element": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "description",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "section-header.heading.logical",
+        "kind": "semantics",
+        "description": "The selected h2-h6 preserves logical page hierarchy and visible text supplies its name.",
+        "wcag": [
+          "1.3.1",
+          "2.4.6"
+        ],
+        "evidence": "section-header.heading.logical"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "heading-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

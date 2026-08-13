@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['button.keyboard.activation', 'button.focus.visible', 'button.icons.decorative'],
     layout: 'centered',
     docs: {
       description: {
@@ -18,10 +19,18 @@ const meta = {
     },
   },
   argTypes: {
-    variant: { control: 'radio', options: ['primary', 'secondary', 'ghost'] },
-    size: { control: 'radio', options: ['large', 'medium', 'small'] },
-    surface: { control: 'radio', options: ['light', 'dark'] },
-    disabled: { control: 'boolean' },
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "variant": { control: 'radio', options: ["primary","secondary","ghost"], description: "Optional. Public `variant` realization prop. Defaults to \"primary\"." },
+    "size": { control: 'radio', options: ["large","medium","small"], description: "Optional. Public `size` realization prop. Defaults to \"large\"." },
+    "surface": { control: 'radio', options: ["light","dark"], description: "Optional. Public `surface` realization prop. Defaults to \"light\"." },
+    "startIcon": { control: false, description: "Optional. Public `startIcon` realization prop." },
+    "endIcon": { control: false, description: "Optional. Public `endIcon` realization prop." },
+    "type": { control: 'radio', options: ["button","submit","reset"], description: "Optional. Native button type. Defaults to \"button\"." },
+    "disabled": { control: 'boolean', description: "Optional. Native disabled state. Defaults to false." },
+    "onClick": { control: false, description: "Optional. Native activation callback." },
+    "aria-label": { control: 'text', description: "Optional. Native accessible-name override." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { children: 'Continue', variant: 'primary', size: 'large' },
 } satisfies Meta<typeof Button>;

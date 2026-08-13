@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 
-export function RichTextContent({ children, className }: { children: ReactNode; className: string }) {
+export function RichTextContent({ children, className, as: Element = 'div' }: { children: ReactNode; className: string; as?: 'div' | 'article' }) {
   return (
-    <div data-component="rich-text" className={className}>
+    <Element data-component="rich-text" className={className}>
       {children}
-    </div>
+    </Element>
   );
 }

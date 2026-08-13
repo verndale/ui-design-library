@@ -5,10 +5,18 @@
   "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["message"],
-  "variants": ["neutral", "critical"],
+  "slots": [
+    "message"
+  ],
+  "variants": [
+    "neutral",
+    "critical"
+  ],
   "reuseFingerprint": {
-    "slots": ["body", "close"],
+    "slots": [
+      "body",
+      "close"
+    ],
     "affordance": "feedback",
     "role": "notification"
   },
@@ -36,5 +44,199 @@
     "Drove the entrance animation through the --animate-fade-in / --duration-base tokens, so the reduced-motion media query is the single switch that collapses it, rather than a bespoke component keyframe.",
     "Kept verbatim: the role/aria-live pairing per variant (neutral → status/polite, critical → alert/assertive) and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Alert rather than merged."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "open",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "variant",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "neutral",
+          "critical"
+        ],
+        "default": "neutral"
+      },
+      {
+        "path": "dismissMs",
+        "type": "number",
+        "required": false,
+        "default": 3000
+      },
+      {
+        "path": "onDismiss",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "icon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "position",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "top-start",
+          "top-center",
+          "top-end",
+          "bottom-start",
+          "bottom-center",
+          "bottom-end"
+        ],
+        "default": "bottom-center"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.portal",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.icon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.message",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "message"
+      },
+      {
+        "prop": "icon",
+        "node": "icon"
+      }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      {
+        "path": "classNames.portal",
+        "node": "portal",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.icon",
+        "node": "icon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.message",
+        "node": "message",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+      {
+        "id": "portal",
+        "element": "div",
+        "parent": null,
+        "cardinality": "one"
+        },
+        {
+        "id": "root",
+        "element": "div",
+        "parent": "portal",
+          "cardinality": "one"
+        },
+        {
+          "id": "icon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "message",
+        "element": "span",
+          "parent": "root",
+          "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "toast.announcement.priority",
+        "kind": "announcement",
+        "description": "Neutral status and critical alert messages are atomic and announced at the intended priority.",
+        "wcag": [
+          "4.1.3"
+        ],
+        "evidence": "toast.announcement.priority"
+      },
+      {
+        "id": "toast.icon.decorative",
+        "kind": "semantics",
+        "description": "Default and caller icons are hidden from the accessibility tree.",
+        "wcag": [
+          "1.1.1"
+        ],
+        "evidence": "toast.icon.decorative"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "dynamic-content",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

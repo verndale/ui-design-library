@@ -37,8 +37,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # The story tests run in a real Chromium via Vitest browser mode, so the
-      # browser binary has to be present. Cached separately from the pnpm store
+      # The story tests run in Chromium and WebKit via Vitest browser mode, so
+      # both browser binaries have to be present. Cached separately from the pnpm store
       # because it lives outside it.
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -48,8 +48,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-
 
-      - name: Install Chromium
-        run: pnpm exec playwright install --with-deps chromium
+      - name: Install Chromium and WebKit
+        run: pnpm exec playwright install --with-deps chromium webkit
 
       - name: Run tests
         run: pnpm verify

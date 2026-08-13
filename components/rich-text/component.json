@@ -5,14 +5,30 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["content"],
-  "variants": ["default", "checkmark"],
+  "slots": [
+    "content"
+  ],
+  "variants": [
+    "default",
+    "checkmark"
+  ],
   "reuseFingerprint": {
-    "slots": ["body"],
+    "slots": [
+      "body"
+    ],
     "affordance": "display",
     "role": "editorial"
   },
-  "tokens": ["color-text-primary", "color-text-secondary", "color-link", "spacing-l", "spacing-m", "spacing-s", "spacing-xs", "spacing-2xs"],
+  "tokens": [
+    "color-text-primary",
+    "color-text-secondary",
+    "color-link",
+    "spacing-l",
+    "spacing-m",
+    "spacing-s",
+    "spacing-xs",
+    "spacing-2xs"
+  ],
   "provenance": {
     "project": "bentley",
     "run": "runs/bentley/2026-07-30/",
@@ -26,5 +42,108 @@
     "Dropped client sample copy (press-contacts / portfolio text) and the temporary inline CTA/Media button mocks the story carried — content is caller-provided.",
     "Kept verbatim: authored headings render at their real level with no forced re-leveling, ordered/unordered lists stay real ol/ul/li, and link text is its own accessible name — the prose-semantics contract."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "listStyle",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "default",
+          "checkmark"
+        ],
+        "default": "default"
+      },
+      {
+        "path": "as",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "div",
+          "article"
+        ],
+        "default": "div"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "root"
+      }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": [
+            "div",
+            "article"
+          ],
+          "parent": null,
+          "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "rich-text.semantics.authored",
+        "kind": "semantics",
+        "description": "Authored headings, lists, links, language, and reading order pass through without semantic rewriting.",
+        "wcag": [
+          "1.3.1",
+          "2.4.6",
+          "3.1.2"
+        ],
+        "evidence": "rich-text.semantics.authored"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "heading-context",
+        "text-alternatives",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

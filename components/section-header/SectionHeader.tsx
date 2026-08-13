@@ -18,6 +18,9 @@ export function SectionHeader({
   description,
   alignment = 'left',
   className,
+  classNames,
+  headingLevel,
+  as,
 }: SectionHeaderProps) {
   return (
     <SectionHeaderContent
@@ -26,6 +29,9 @@ export function SectionHeader({
       description={description}
       alignment={alignment}
       className={className}
+      classNames={classNames}
+      headingLevel={headingLevel}
+      as={as}
     />
   );
 }

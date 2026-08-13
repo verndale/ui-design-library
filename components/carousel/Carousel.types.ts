@@ -1,5 +1,11 @@
 import type { ReactNode } from 'react';
 
+import type { SlotClassNames } from '../../src/lib/classNames.js';
+
+export type CarouselClassNames = SlotClassNames<
+  'root' | 'viewport' | 'track' | 'slide' | 'controls' | 'previousButton' | 'previousIcon' | 'nextButton' | 'nextIcon' | 'status'
+>;
+
 export type CarouselProps = {
   /** One node per slide. */
   slides: ReactNode[];
@@ -15,4 +21,6 @@ export type CarouselProps = {
   previousIcon?: ReactNode;
   /** Decorative content for the next control. */
   nextIcon?: ReactNode;
+  classNames?: CarouselClassNames;
+  statusSeparator?: string;
 };

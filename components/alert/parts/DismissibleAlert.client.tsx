@@ -16,6 +16,9 @@ export function DismissibleAlert({
   onDismiss,
   dismissLabel = 'Dismiss',
   dismissMs,
+  classNames,
+  icon,
+  showAccent,
 }: DismissibleAlertProps) {
   useEffect(() => {
     if (!open || !dismissMs) return;
@@ -34,7 +37,8 @@ export function DismissibleAlert({
         '-mt-2xs -me-2xs inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-pill text-text-primary',
         'transition-colors duration-[var(--duration-fast)] ease-standard hover:bg-surface-sunken',
         focusRing,
-      ].join(' ')}
+        classNames?.dismiss,
+      ].filter(Boolean).join(' ')}
     >
       <svg aria-hidden viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M3 3l10 10M13 3L3 13" strokeLinecap="round" />
@@ -43,7 +47,7 @@ export function DismissibleAlert({
   );
 
   return (
-    <AlertFrame variant={variant} className={className} action={action}>
+    <AlertFrame variant={variant} className={className} classNames={classNames} icon={icon} showAccent={showAccent} action={action}>
       {children}
     </AlertFrame>
   );

@@ -22,6 +22,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['tabs.keyboard.roving', 'tabs.state.selection'],
     layout: 'padded',
     docs: {
       description: {
@@ -31,8 +32,15 @@ const meta = {
     },
   },
   argTypes: {
-    ariaLabel: { control: 'text', description: 'Accessible name for the tablist. Required.' },
-    defaultActiveId: { control: 'text', description: 'Initial selected id (uncontrolled). Defaults to the first item.' },
+    "items": { control: 'object', description: "Required. Public `items` realization prop." },
+    "ariaLabel": { control: 'text', description: "Required. Public `ariaLabel` realization prop." },
+    "activeId": { control: 'text', description: "Optional. Public `activeId` realization prop." },
+    "defaultActiveId": { control: 'text', description: "Optional. Public `defaultActiveId` realization prop." },
+    "onSelect": { control: false, description: "Optional. Public `onSelect` realization prop." },
+    "tabIdPrefix": { control: 'text', description: "Optional. Public `tabIdPrefix` realization prop. Defaults to \"tab\"." },
+    "orientation": { control: 'radio', options: ["horizontal","vertical"], description: "Optional. Public `orientation` realization prop. Defaults to \"horizontal\"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { items: three, ariaLabel: 'Product sections' },
 } satisfies Meta<typeof Tabs>;

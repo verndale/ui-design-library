@@ -74,7 +74,7 @@ Note there are **two** mechanisms and they fail independently: the token collaps
 
 ## Environment
 
-Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs typecheck, lint, architecture and contract self-tests, SSR rendering, export checks, story tests, and reduced-motion tests. `pnpm build` emits native Node ESM and declarations and verifies every public export. `pnpm verify` packs and installs the artifact, dynamically imports every component and verifies its declared `exportName`, then runs the development-only Next/Tailwind consumer fixture. `pnpm storybook` browses the source stories.
+Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium webkit` once for the story tests. `pnpm test` runs typecheck, lint, architecture and contract self-tests, SSR rendering, export checks, Chromium/WebKit accessibility and mode coverage, and reduced-motion tests. `pnpm build` emits native Node ESM and declarations and verifies every public export. `pnpm verify` packs and installs the artifact, dynamically imports every component and verifies its declared `exportName`, then runs the development-only Next/Tailwind consumer fixture. `pnpm storybook` browses the source stories.
 
 ## Context wiki
 

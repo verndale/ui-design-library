@@ -5,14 +5,24 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["children"],
+  "slots": [
+    "children"
+  ],
   "variants": [],
   "reuseFingerprint": {
-    "slots": ["body", "meta"],
+    "slots": [
+      "body",
+      "meta"
+    ],
     "affordance": "display",
     "role": "editorial"
   },
-  "tokens": ["color-border-accent", "spacing-m", "spacing-s", "spacing-2xs"],
+  "tokens": [
+    "color-border-accent",
+    "spacing-m",
+    "spacing-s",
+    "spacing-2xs"
+  ],
   "provenance": {
     "project": "canadian-national",
     "run": "runs/canadian-national/2026-07-26/",
@@ -26,5 +36,92 @@
     "Added my-0 to drop the user-agent blockquote margin.",
     "Kept verbatim: the blockquote element and the accent-rule treatment."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "cite",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "root"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "cite",
+        "node": "root",
+        "attribute": "cite"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "blockquote",
+          "parent": null,
+          "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "quote.semantics.blockquote",
+        "kind": "semantics",
+        "description": "Native blockquote structure and visible attribution remain in reading order.",
+        "wcag": [
+          "1.3.1"
+        ],
+        "evidence": "quote.semantics.blockquote"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

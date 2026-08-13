@@ -5,10 +5,24 @@
   "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["title", "eyebrow", "description", "children", "footer"],
-  "variants": ["medium", "large"],
+  "slots": [
+    "title",
+    "eyebrow",
+    "description",
+    "children",
+    "footer"
+  ],
+  "variants": [
+    "medium",
+    "large"
+  ],
   "reuseFingerprint": {
-    "slots": ["heading", "body", "footer", "close"],
+    "slots": [
+      "heading",
+      "body",
+      "footer",
+      "close"
+    ],
     "affordance": "contain",
     "role": "container"
   },
@@ -42,5 +56,425 @@
     "Fixed a defect introduced by the rewrite: the SSR-safe portal gate meant dialogRef was still null on the first render of a dialog mounted already open, so useFocusTrap ran once against a null ref and never re-ran — no trap at all. Trigger-opened dialogs were unaffected, which is why it survived manual checking. The trap is now gated on `open && portalRoot`.",
     "Added tabIndex to the scrolling body. It was scrollable by pointer only, so keyboard users could not reach long content (WCAG 2.1.1). Found by axe once story tests made the a11y check a gate."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "open",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "path": "onClose",
+        "type": "callback",
+        "required": true
+      },
+      {
+        "path": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "closeLabel",
+        "type": "string",
+        "required": false,
+        "default": "Close dialog"
+      },
+      {
+        "path": "eyebrow",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "description",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "children",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "footer",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "size",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "medium",
+          "large"
+        ],
+        "default": "large"
+      },
+      {
+        "path": "returnFocusRef",
+        "type": "ref",
+        "required": false
+      },
+      {
+        "path": "id",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "titleHeadingLevel",
+        "type": "enum",
+        "required": false,
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "default": 2
+      },
+      {
+        "path": "closeIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.backdrop",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.viewport",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.dialog",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.header",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.eyebrow",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.title",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.description",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.closeButton",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.closeIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.body",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.footer",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "title",
+        "node": "title"
+      },
+      {
+        "prop": "description",
+        "node": "description"
+      },
+      {
+        "prop": "children",
+        "node": "body"
+      },
+      {
+        "prop": "footer",
+        "node": "footer"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "id",
+        "node": "dialog",
+        "attribute": "id"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.backdrop",
+        "node": "backdrop",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.viewport",
+        "node": "viewport",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.dialog",
+        "node": "dialog",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.header",
+        "node": "header",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.eyebrow",
+        "node": "eyebrow",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.title",
+        "node": "title",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.description",
+        "node": "description",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.closeButton",
+        "node": "closeButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.closeIcon",
+        "node": "closeIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.body",
+        "node": "body",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.footer",
+        "node": "footer",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "backdrop",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "viewport",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+      {
+        "id": "dialog",
+        "element": "div",
+        "parent": "viewport",
+        "cardinality": "one"
+        },
+        {
+          "id": "header",
+          "element": "header",
+          "parent": "dialog",
+          "cardinality": "one"
+        },
+      {
+        "id": "headerContent",
+        "element": "div",
+        "parent": "header",
+        "cardinality": "one"
+      },
+      {
+        "id": "eyebrow",
+        "element": "div",
+        "parent": "headerContent",
+        "cardinality": "zero-or-one"
+        },
+        {
+          "id": "title",
+          "element": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+        "parent": "headerContent",
+          "cardinality": "one"
+        },
+        {
+          "id": "description",
+          "element": "div",
+        "parent": "headerContent",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "closeButton",
+          "element": "button",
+        "parent": "header",
+          "cardinality": "one"
+        },
+        {
+          "id": "closeIcon",
+          "element": "span",
+        "parent": "closeButton",
+        "cardinality": "one"
+        },
+        {
+          "id": "body",
+          "element": "div",
+          "parent": "dialog",
+        "cardinality": "one"
+        },
+        {
+          "id": "footer",
+          "element": "footer",
+          "parent": "dialog",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "from": "dialog",
+        "attribute": "aria-labelledby",
+        "to": "title"
+      },
+      {
+        "from": "dialog",
+        "attribute": "aria-describedby",
+        "to": "description"
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "modal.focus.containment",
+        "kind": "focus",
+        "description": "Opening places focus inside, contains Tab/Shift+Tab, and closing restores focus.",
+        "wcag": [
+          "2.1.2",
+          "2.4.3",
+          "2.4.11",
+          "2.5.8"
+        ],
+        "evidence": "modal.focus.containment"
+      },
+      {
+        "id": "modal.keyboard.escape",
+        "kind": "keyboard",
+        "description": "Escape and the named close button dismiss the dialog while long content remains keyboard-scrollable.",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "evidence": "modal.keyboard.escape"
+      },
+      {
+        "id": "modal.semantics.relationships",
+        "kind": "semantics",
+        "description": "The modal dialog has aria-modal and resolved title and optional description relationships.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "modal.semantics.relationships"
+      },
+      {
+        "id": "modal.background.inert",
+        "kind": "focus",
+        "description": "Background content is inert while the modal is open.",
+        "wcag": [
+          "2.4.3"
+        ],
+        "evidence": "modal.background.inert"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "modal-dialog",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "heading-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

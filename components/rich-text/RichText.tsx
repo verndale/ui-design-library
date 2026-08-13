@@ -12,6 +12,6 @@ import { richTextRecipe } from './RichText.styles.js';
  * concern, not this component's. The checkmark list style recolours the list
  * marker via `::marker`, so the list keeps its semantics.
  */
-export function RichText({ children, listStyle = 'default', className }: RichTextProps) {
-  return <RichTextContent className={richTextRecipe(listStyle, className)}>{children}</RichTextContent>;
+export function RichText({ children, listStyle = 'default', className, classNames, as }: RichTextProps) {
+  return <RichTextContent as={as} className={richTextRecipe(listStyle, [classNames?.root, className].filter(Boolean).join(' '))}>{children}</RichTextContent>;
 }

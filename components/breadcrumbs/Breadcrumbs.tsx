@@ -14,6 +14,7 @@ export function Breadcrumbs({
   className,
   separator = '/',
   backIcon,
+  classNames,
 }: BreadcrumbsProps) {
   const text = surface === 'dark' ? 'text-text-inverse' : 'text-text-primary';
 
@@ -22,10 +23,10 @@ export function Breadcrumbs({
       aria-label={ariaLabel}
       data-component="breadcrumbs"
       data-surface={surface}
-      className={[text, className].filter(Boolean).join(' ')}
+      className={[text, classNames?.root, className].filter(Boolean).join(' ')}
     >
-      <BreadcrumbTrail items={items} currentPageTitle={currentPageTitle} separator={separator} />
-      <BreadcrumbBackLink parent={items[items.length - 1]} label={backLinkLabel} icon={backIcon} />
+      <BreadcrumbTrail items={items} currentPageTitle={currentPageTitle} separator={separator} classNames={classNames} />
+      <BreadcrumbBackLink parent={items[items.length - 1]} label={backLinkLabel} icon={backIcon} classNames={classNames} />
     </nav>
   );
 }

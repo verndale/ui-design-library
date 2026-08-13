@@ -1,5 +1,9 @@
 import type { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 
+import type { SlotClassNames } from '../../src/lib/classNames.js';
+
+export type LinkClassNames = SlotClassNames<'root' | 'startIcon' | 'content' | 'endIcon'>;
+
 export type LinkSize = 'large' | 'medium' | 'small';
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> & {
@@ -13,4 +17,5 @@ export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   disabled?: boolean;
+  classNames?: LinkClassNames;
 };

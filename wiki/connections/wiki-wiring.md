@@ -13,6 +13,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Publish the UI library as a deterministic npm package](../../wiki/journal/2026-08-05-npm-package-and-ai-reuse.md) → [Validated Plan: npm-Published UI Library + Deterministic AI Reuse](../../wiki/plans/2026-08-05-npm-package-and-ai-reuse.md)
 - [Publish executable ESM and reuse contract v2](../../wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md) → [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md)
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md)
+- [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md)
 - [Stat metadata stops advertising StatGroup variants](../../wiki/journal/2026-08-13-stat-primary-variant-contract.md) → [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md)
 
 ## Page → topic
@@ -31,6 +32,9 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Fix wiki sync pagination](../../wiki/journal/2026-08-12-fix-wiki-sync-pagination.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
+- [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Stat metadata stops advertising StatGroup variants](../../wiki/journal/2026-08-13-stat-primary-variant-contract.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
@@ -42,6 +46,9 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
+- [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 
 ## Topic → covered surface
 

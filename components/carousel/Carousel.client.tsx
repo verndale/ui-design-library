@@ -15,17 +15,20 @@ export function Carousel({
   slideClassName,
   previousIcon,
   nextIcon,
+  classNames,
+  statusSeparator = '/',
 }: CarouselProps) {
   const controller = useCarouselController({ loop, slideCount: slides.length });
   if (slides.length === 0) return null;
 
   return (
-    <section aria-roledescription="carousel" aria-label={label} data-component="carousel" className={className}>
+    <section aria-roledescription="carousel" aria-label={label} data-component="carousel" className={[classNames?.root, className].filter(Boolean).join(' ')}>
       <CarouselViewport
         slides={slides}
         slideClassName={slideClassName}
         trackRef={controller.trackRef}
         viewportRef={controller.viewportRef}
+        classNames={classNames}
       />
       <CarouselControls
         canPrevious={controller.canPrevious}
@@ -36,8 +39,9 @@ export function Carousel({
         nextIcon={nextIcon}
         onPrevious={controller.previous}
         onNext={controller.next}
+        classNames={classNames}
       />
-      <CarouselStatus selected={controller.selected} slideCount={slides.length} />
+      <CarouselStatus selected={controller.selected} slideCount={slides.length} separator={statusSeparator} className={classNames?.status} />
     </section>
   );
 }

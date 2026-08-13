@@ -15,6 +15,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['modal.focus.containment', 'modal.keyboard.escape', 'modal.semantics.relationships', 'modal.background.inert'],
     layout: 'centered',
     docs: {
       description: {
@@ -28,12 +29,21 @@ const meta = {
     },
   },
   argTypes: {
-    open: { control: 'boolean', description: 'Whether the dialog is open. The consumer owns this state.' },
-    title: { control: 'text', description: 'Accessible name for the dialog. Required.' },
-    closeLabel: { control: 'text', description: 'Accessible label for the close control.' },
-    description: { control: 'text', description: 'Supporting copy; also becomes the dialog description.' },
-    size: { control: 'radio', options: ['medium', 'large'], description: 'Panel width at desktop.' },
-    onClose: { action: 'close', description: 'Called on Escape, backdrop click, and the close button.' },
+    "open": { control: 'boolean', description: "Required. Public `open` realization prop." },
+    "onClose": { control: false, description: "Required. Public `onClose` realization prop." },
+    "title": { control: 'text', description: "Required. Public `title` realization prop." },
+    "closeLabel": { control: 'text', description: "Optional. Public `closeLabel` realization prop. Defaults to \"Close dialog\"." },
+    "eyebrow": { control: false, description: "Optional. Public `eyebrow` realization prop." },
+    "description": { control: false, description: "Optional. Public `description` realization prop." },
+    "children": { control: false, description: "Optional. Public `children` realization prop." },
+    "footer": { control: false, description: "Optional. Public `footer` realization prop." },
+    "size": { control: 'radio', options: ["medium","large"], description: "Optional. Public `size` realization prop. Defaults to \"large\"." },
+    "returnFocusRef": { control: false, description: "Optional. Public `returnFocusRef` realization prop." },
+    "id": { control: 'text', description: "Optional. Public `id` realization prop." },
+    "titleHeadingLevel": { control: 'radio', options: [2,3,4,5,6], description: "Optional. Public `titleHeadingLevel` realization prop. Defaults to 2." },
+    "closeIcon": { control: false, description: "Optional. Public `closeIcon` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   // Required props belong here so every story satisfies the component's type
   // without repeating them. Stories that need real behaviour override onClose.

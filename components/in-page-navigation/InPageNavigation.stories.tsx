@@ -23,6 +23,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['in-page-navigation.disclosure.keyboard', 'in-page-navigation.disclosure.state', 'in-page-navigation.responsive.hidden'],
     layout: 'padded',
     docs: {
       description: {
@@ -32,8 +33,13 @@ const meta = {
     },
   },
   argTypes: {
-    ariaLabel: { control: 'text', description: 'Accessible name for the landmark. Defaults to "On this page".' },
-    activeId: { control: 'text', description: 'Active section id (controlled). Omit to let scroll position drive it.' },
+    "items": { control: 'object', description: "Required. Public `items` realization prop." },
+    "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop. Defaults to \"On this page\"." },
+    "activeId": { control: 'text', description: "Optional. Public `activeId` realization prop." },
+    "collapsedIcon": { control: false, description: "Optional. Public `collapsedIcon` realization prop." },
+    "expandedIcon": { control: false, description: "Optional. Public `expandedIcon` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { items: sections },
 } satisfies Meta<typeof InPageNavigation>;

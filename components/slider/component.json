@@ -5,10 +5,21 @@
   "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["label", "hint", "valueDisplay", "description"],
-  "variants": ["default", "with-description"],
+  "slots": [
+    "label",
+    "hint",
+    "valueDisplay",
+    "description"
+  ],
+  "variants": [
+    "default",
+    "with-description"
+  ],
   "reuseFingerprint": {
-    "slots": ["field", "meta"],
+    "slots": [
+      "field",
+      "meta"
+    ],
     "affordance": "input",
     "role": "container"
   },
@@ -36,5 +47,492 @@
     "--range-field-progress custom property replaced with a React-owned inline progress width, scoped to the painted track",
     "server-supplied max attribute removed; max is derived from options.length and the index is clamped against it"
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "label",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "options",
+        "type": "collection",
+        "required": true
+      },
+      {
+        "path": "options[].value",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "options[].label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "options[].description",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "value",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "defaultValue",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "onChange",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "hint",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "unit",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "inputId",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "showScale",
+        "type": "boolean",
+        "required": false,
+        "default": true
+      },
+      {
+        "path": "showSelectedValue",
+        "type": "boolean",
+        "required": false,
+        "default": true
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.header",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.hint",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.track",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.trackBase",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.trackFill",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.input",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.ticks",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.tick",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.scale",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.scaleStart",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.scaleEnd",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.selectedValue",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.unit",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.description",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "label",
+        "node": "label"
+      },
+      {
+        "prop": "options[].description",
+        "node": "description"
+      },
+      {
+        "prop": "unit",
+        "node": "unit"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "inputId",
+        "node": "input",
+        "attribute": "id"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.header",
+        "node": "header",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.hint",
+        "node": "hint",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.track",
+        "node": "track",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.trackBase",
+        "node": "trackBase",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.trackFill",
+        "node": "trackFill",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.input",
+        "node": "input",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.ticks",
+        "node": "ticks",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.tick",
+        "node": "tick",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.scale",
+        "node": "scale",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.scaleStart",
+        "node": "scaleStart",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.scaleEnd",
+        "node": "scaleEnd",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.selectedValue",
+        "node": "selectedValue",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.unit",
+        "node": "unit",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.description",
+        "node": "description",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "header",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+        "id": "label",
+        "element": "label",
+        "parent": "header",
+          "cardinality": "one"
+        },
+        {
+        "id": "hint",
+        "element": "span",
+        "parent": "header",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "track",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+        "id": "trackBase",
+        "element": "span",
+        "parent": "track",
+          "cardinality": "one"
+        },
+        {
+        "id": "trackFill",
+        "element": "span",
+        "parent": "track",
+          "cardinality": "one"
+        },
+        {
+          "id": "input",
+          "element": "input",
+        "parent": "track",
+          "cardinality": "one"
+        },
+        {
+        "id": "ticks",
+        "element": "span",
+        "parent": "track",
+          "cardinality": "one"
+        },
+        {
+          "id": "tick",
+          "element": "span",
+        "parent": "ticks",
+          "cardinality": "one-or-more"
+        },
+        {
+        "id": "scale",
+        "element": "div",
+        "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "scaleStart",
+          "element": "span",
+        "parent": "scale",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "scaleEnd",
+        "element": "span",
+        "parent": "scale",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "selectedValue",
+        "element": "p",
+        "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "unit",
+        "element": "span",
+        "parent": "selectedValue",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "description",
+        "element": "p",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "from": "input",
+        "attribute": "aria-describedby",
+        "to": "selectedValue"
+      },
+      {
+        "from": "input",
+        "attribute": "aria-describedby",
+        "to": "hint"
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "slider.keyboard.native",
+        "kind": "keyboard",
+        "description": "Native range semantics support arrows, Home, End, Page Up, and Page Down.",
+        "wcag": [
+          "2.1.1",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "slider.keyboard.native"
+      },
+      {
+        "id": "slider.value.announced",
+        "kind": "state",
+        "description": "aria-valuetext exposes the selected label and optional unit.",
+        "wcag": [
+          "4.1.2"
+        ],
+        "evidence": "slider.value.announced"
+      },
+      {
+        "id": "slider.description.valid",
+        "kind": "semantics",
+        "description": "aria-describedby is emitted only when the selected description exists.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "slider.description.valid"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "slider",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

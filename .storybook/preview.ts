@@ -3,12 +3,13 @@ import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import '../src/tokens/index.css';
 import { withDirection } from './withDirection';
+import { withA11yModes } from './withA11yModes';
 
 const preview: Preview = {
   // Generate a Docs page for every component. Without this, addon-docs is
   // installed but produces nothing.
   tags: ['autodocs'],
-  decorators: [withDirection],
+  decorators: [withA11yModes, withDirection],
   globalTypes: {
     // Every component uses logical properties (ps/pe, ms/me, border-s) so that
     // it works in both directions. That only holds if somebody can actually see
@@ -37,6 +38,12 @@ const preview: Preview = {
       // a runner behind it now — `pnpm test:stories` runs axe against every
       // story in a real browser. See vitest.config.ts.
       test: 'error',
+      config: {
+        runOnly: {
+          type: 'tag',
+          values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'],
+        },
+      },
     },
     viewport: {
       // Breadcrumbs collapses to a single back link below `xl`, and Modal goes

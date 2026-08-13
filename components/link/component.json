@@ -5,14 +5,32 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["children", "startIcon", "endIcon"],
-  "variants": ["large", "medium", "small"],
+  "slots": [
+    "children",
+    "startIcon",
+    "endIcon"
+  ],
+  "variants": [
+    "large",
+    "medium",
+    "small"
+  ],
   "reuseFingerprint": {
-    "slots": ["action", "icon"],
+    "slots": [
+      "action",
+      "icon"
+    ],
     "affordance": "navigate",
     "role": "action-group"
   },
-  "tokens": ["color-link", "color-border-focus", "size-touch-large", "size-touch-medium", "size-touch-small", "ease-standard"],
+  "tokens": [
+    "color-link",
+    "color-border-focus",
+    "size-touch-large",
+    "size-touch-medium",
+    "size-touch-small",
+    "ease-standard"
+  ],
   "provenance": {
     "project": "canadian-national",
     "run": "runs/canadian-national/2026-07-26/",
@@ -27,5 +45,261 @@
     "Dropped the five card-specific underline exports (event card, podcast card, search-result card); those are project compositions, not link behaviour.",
     "Kept verbatim: the background-size underline with box-decoration-break clone, its motion-reduce path, the touch-target pseudo-element technique, and aria-disabled semantics."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "size",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "large",
+          "medium",
+          "small"
+        ],
+        "default": "large"
+      },
+      {
+        "path": "as",
+        "type": "element",
+        "required": false,
+        "values": [
+          "a"
+        ]
+      },
+      {
+        "path": "touchTarget",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "startIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "endIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "disabled",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "href",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "target",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "_self",
+          "_blank",
+          "_parent",
+          "_top"
+        ]
+      },
+      {
+        "path": "rel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "onClick",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "aria-label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.startIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.content",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.endIcon",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "content"
+      },
+      {
+        "prop": "startIcon",
+        "node": "startIcon"
+      },
+      {
+        "prop": "endIcon",
+        "node": "endIcon"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "href",
+        "node": "root",
+        "attribute": "href"
+      },
+      {
+        "prop": "target",
+        "node": "root",
+        "attribute": "target"
+      },
+      {
+        "prop": "rel",
+        "node": "root",
+        "attribute": "rel"
+      },
+      {
+        "prop": "aria-label",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.startIcon",
+        "node": "startIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.content",
+        "node": "content",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.endIcon",
+        "node": "endIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "a",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "startIcon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "content",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "endIcon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "link.keyboard.activation",
+        "kind": "keyboard",
+        "description": "Supported element paths preserve real link semantics and keyboard activation.",
+        "wcag": [
+          "2.1.1",
+          "2.4.4"
+        ],
+        "evidence": "link.keyboard.activation"
+      },
+      {
+        "id": "link.state.disabled",
+        "kind": "state",
+        "description": "Disabled links are removed from activation and expose disabled state.",
+        "wcag": [
+          "4.1.2"
+        ],
+        "evidence": "link.state.disabled"
+      },
+      {
+        "id": "link.target.size",
+        "kind": "pointer-alternative",
+        "description": "The optional touch target enlarges pointer reach without hiding keyboard focus.",
+        "wcag": [
+          "2.5.8",
+          "2.4.7"
+        ],
+        "evidence": "link.target.size"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "link",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

@@ -2,13 +2,21 @@
   "canonical": "Alert",
   "slug": "alert",
   "exportName": "Alert",
-  "rendering": "server",
+  "rendering": "hybrid",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["message", "dismiss"],
-  "variants": ["positive", "critical"],
+  "slots": [
+    "message",
+    "dismiss"
+  ],
+  "variants": [
+    "positive",
+    "critical"
+  ],
   "reuseFingerprint": {
-    "slots": ["body"],
+    "slots": [
+      "body"
+    ],
     "affordance": "feedback",
     "role": "notification"
   },
@@ -35,5 +43,220 @@
     "Mapped banner.css surface/text classes onto library semantic tokens: the surface to color-surface-raised, text to color-text-primary, and the positive/critical variants to color-tone-positive / color-tone-critical — new status tokens added to src/tokens/semantic.css, since the library had no tone layer; plus border color-border-subtle, box radius-medium, and rhythm spacing-m / spacing-s.",
     "Kept verbatim: the icon + message + dismiss layout, the role/aria-live pairing per variant (positive → status/polite, critical → alert/assertive), and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Toast rather than merged."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "variant",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "positive",
+          "critical"
+        ],
+        "default": "positive"
+      },
+      {
+        "path": "open",
+        "type": "boolean",
+        "required": false,
+        "default": true
+      },
+      {
+        "path": "icon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "showAccent",
+        "type": "boolean",
+        "required": false,
+        "default": true
+      },
+      {
+        "path": "onDismiss",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "dismissLabel",
+        "type": "string",
+        "required": false,
+        "default": "Dismiss"
+      },
+      {
+        "path": "dismissMs",
+        "type": "number",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.accent",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.icon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.content",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.dismiss",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "content"
+      }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.accent",
+        "node": "accent",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.icon",
+        "node": "icon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.content",
+        "node": "content",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.dismiss",
+        "node": "dismiss",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "accent",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "icon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "content",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "dismiss",
+          "element": "button",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "alert.announcement.priority",
+        "kind": "announcement",
+        "description": "Severity selects polite status or assertive alert live behavior without duplicate icon text.",
+        "wcag": [
+          "1.3.1",
+          "4.1.3"
+        ],
+        "evidence": "alert.announcement.priority"
+      },
+      {
+        "id": "alert.dismiss.keyboard",
+        "kind": "keyboard",
+        "description": "The optional dismiss action is a named native button.",
+        "wcag": [
+          "2.1.1",
+          "2.5.3",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "alert.dismiss.keyboard"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "alert",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "dynamic-content",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

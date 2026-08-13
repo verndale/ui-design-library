@@ -1,5 +1,11 @@
 import type { ReactNode } from 'react';
 
+import type { SlotClassNames } from '../../src/lib/classNames.js';
+
+export type BreadcrumbsClassNames = SlotClassNames<
+  'root' | 'trail' | 'item' | 'link' | 'label' | 'separator' | 'currentPage' | 'backLink' | 'backIcon'
+>;
+
 export type BreadcrumbItem = {
   label: string;
   href: string;
@@ -20,4 +26,5 @@ export type BreadcrumbsProps = {
   separator?: ReactNode;
   /** Icon for the mobile back link. */
   backIcon?: ReactNode;
+  classNames?: BreadcrumbsClassNames;
 };

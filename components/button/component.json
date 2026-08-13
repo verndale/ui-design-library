@@ -5,22 +5,54 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["children", "startIcon", "endIcon"],
-  "variants": ["primary", "secondary", "ghost", "light", "dark", "large", "medium", "small"],
+  "slots": [
+    "children",
+    "startIcon",
+    "endIcon"
+  ],
+  "variants": [
+    "primary",
+    "secondary",
+    "ghost",
+    "light",
+    "dark",
+    "large",
+    "medium",
+    "small"
+  ],
   "reuseFingerprint": {
-    "slots": ["action", "icon"],
+    "slots": [
+      "action",
+      "icon"
+    ],
     "affordance": "trigger",
     "role": "action-group"
   },
   "tokens": [
-    "color-control-primary-bg", "color-control-primary-text", "color-control-primary-bg-hover",
-    "color-control-secondary-bg", "color-control-secondary-text", "color-control-secondary-border",
-    "color-control-secondary-bg-hover", "color-control-secondary-text-hover",
-    "color-control-ghost-bg", "color-control-ghost-text", "color-control-ghost-border", "color-control-ghost-bg-hover",
-    "color-control-disabled-bg", "color-control-disabled-text",
-    "color-surface-base", "color-surface-sunken", "color-text-primary", "color-text-inverse",
-    "color-border-focus", "radius-pill", "ease-standard",
-    "size-touch-large", "size-touch-medium", "size-touch-small"
+    "color-control-primary-bg",
+    "color-control-primary-text",
+    "color-control-primary-bg-hover",
+    "color-control-secondary-bg",
+    "color-control-secondary-text",
+    "color-control-secondary-border",
+    "color-control-secondary-bg-hover",
+    "color-control-secondary-text-hover",
+    "color-control-ghost-bg",
+    "color-control-ghost-text",
+    "color-control-ghost-border",
+    "color-control-ghost-bg-hover",
+    "color-control-disabled-bg",
+    "color-control-disabled-text",
+    "color-surface-base",
+    "color-surface-sunken",
+    "color-text-primary",
+    "color-text-inverse",
+    "color-border-focus",
+    "radius-pill",
+    "ease-standard",
+    "size-touch-large",
+    "size-touch-medium",
+    "size-touch-small"
   ],
   "provenance": {
     "project": "canadian-national",
@@ -37,5 +69,254 @@
     "Narrowed the polymorphic control to a native button, so native type and disabled semantics no longer require an element-type guard.",
     "Kept verbatim: the icon slots and disabled styling; the server-first rewrite made surface explicit and moved navigation to Link."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "variant",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "primary",
+          "secondary",
+          "ghost"
+        ],
+        "default": "primary"
+      },
+      {
+        "path": "size",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "large",
+          "medium",
+          "small"
+        ],
+        "default": "large"
+      },
+      {
+        "path": "surface",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "light",
+          "dark"
+        ],
+        "default": "light"
+      },
+      {
+        "path": "startIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "endIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "type",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "button",
+          "submit",
+          "reset"
+        ],
+        "default": "button"
+      },
+      {
+        "path": "disabled",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "onClick",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "aria-label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.startIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.content",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.endIcon",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "content"
+      },
+      {
+        "prop": "startIcon",
+        "node": "startIcon"
+      },
+      {
+        "prop": "endIcon",
+        "node": "endIcon"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "type",
+        "node": "root",
+        "attribute": "type"
+      },
+      {
+        "prop": "disabled",
+        "node": "root",
+        "attribute": "disabled"
+      },
+      {
+        "prop": "aria-label",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.startIcon",
+        "node": "startIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.content",
+        "node": "content",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.endIcon",
+        "node": "endIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "button",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "startIcon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "content",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "endIcon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "button.keyboard.activation",
+        "kind": "keyboard",
+        "description": "A native button with explicit type supports Enter and Space and native disabled behavior.",
+        "wcag": [
+          "2.1.1",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "button.keyboard.activation"
+      },
+      {
+        "id": "button.focus.visible",
+        "kind": "focus",
+        "description": "Keyboard focus retains a visible, unobscured semantic focus indicator.",
+        "wcag": [
+          "2.4.7",
+          "2.4.11"
+        ],
+        "evidence": "button.focus.visible"
+      },
+      {
+        "id": "button.icons.decorative",
+        "kind": "semantics",
+        "description": "Decorative icon slots remain outside the accessibility tree.",
+        "wcag": [
+          "1.1.1"
+        ],
+        "evidence": "button.icons.decorative"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "button",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

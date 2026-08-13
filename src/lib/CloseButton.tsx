@@ -11,12 +11,16 @@ export function CloseButton({
   label,
   onClick,
   className,
+  icon,
+  iconClassName,
 }: {
   /** Accessible name for the control. */
   label: string;
   onClick: () => void;
   /** Positioning utilities from the consumer, e.g. absolute placement. */
   className?: string;
+  icon?: ReactNode;
+  iconClassName?: string;
 }) {
   return (
     <button
@@ -34,9 +38,14 @@ export function CloseButton({
         .filter(Boolean)
         .join(' ')}
     >
-      <svg aria-hidden viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M3 3l10 10M13 3L3 13" strokeLinecap="round" />
-      </svg>
+      <span aria-hidden className={['inline-flex size-4', iconClassName].filter(Boolean).join(' ')}>
+        {icon ?? (
+          <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M3 3l10 10M13 3L3 13" strokeLinecap="round" />
+          </svg>
+        )}
+      </span>
     </button>
   );
 }
+import type { ReactNode } from 'react';

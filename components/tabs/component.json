@@ -5,10 +5,17 @@
   "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["items"],
-  "variants": ["pill"],
+  "slots": [
+    "items"
+  ],
+  "variants": [
+    "pill"
+  ],
   "reuseFingerprint": {
-    "slots": ["action", "panel"],
+    "slots": [
+      "action",
+      "panel"
+    ],
     "affordance": "select",
     "role": "container"
   },
@@ -35,5 +42,168 @@
     "Replaced the fixed duration-200 ease-out + motion-reduce:transition-none transition with duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
     "Kept verbatim: role=tablist/role=tab, aria-selected, the roving tabIndex (0 on the selected tab, -1 on the rest), the ArrowLeft/ArrowRight selection-and-focus loop with wraparound, and the items.length < 2 keyboard guard — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "items",
+        "type": "collection",
+        "required": true
+      },
+      {
+        "path": "items[].id",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "items[].label",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "activeId",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "defaultActiveId",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "onSelect",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "tabIdPrefix",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "orientation",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "horizontal",
+          "vertical"
+        ],
+        "default": "horizontal"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.tab",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "items[].label",
+        "node": "tab"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.tab",
+        "node": "tab",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "tab",
+          "element": "button",
+          "parent": "root",
+          "cardinality": "one-or-more"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "tabs.keyboard.roving",
+        "kind": "keyboard",
+        "description": "One tab is tabbable; orientation-aware arrows plus Home and End move focus and selection.",
+        "wcag": [
+          "2.1.1",
+          "2.4.3",
+          "2.4.11",
+          "2.5.8"
+        ],
+        "evidence": "tabs.keyboard.roving"
+      },
+      {
+        "id": "tabs.state.selection",
+        "kind": "state",
+        "description": "tablist/tab roles, aria-selected, and focus remain consistent.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "tabs.state.selection"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "tabs",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

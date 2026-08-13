@@ -13,8 +13,19 @@ export function SearchInput({
   onChange,
   autoFocus = false,
   results,
+  inputId: suppliedInputId,
+  label = 'Search',
+  clearLabel = 'Clear search',
+  submitLabel = 'Submit search',
+  resultsLabel = 'Search results',
+  clearIcon,
+  submitIcon,
+  showClearButton = true,
+  showSubmitButton = true,
+  classNames,
 }: SearchInputProps) {
-  const inputId = useId();
+  const generatedInputId = useId();
+  const inputId = suppliedInputId ?? generatedInputId;
   const inputRef = useRef<HTMLInputElement>(null);
   const [internalValue, setInternalValue] = useState('');
   const controlled = controlledValue !== undefined;
@@ -31,18 +42,26 @@ export function SearchInput({
   };
 
   return (
-    <div data-component="search-input" className={['flex flex-col gap-2xs', className].filter(Boolean).join(' ')}>
+    <div data-component="search-input" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
       <SearchForm
         inputId={inputId}
         inputRef={inputRef}
         query={query}
         placeholder={placeholder}
+        label={label}
         autoFocus={autoFocus}
         onQueryChange={updateQuery}
         onClear={clear}
         onSearch={onSearch}
+        clearLabel={clearLabel}
+        submitLabel={submitLabel}
+        clearIcon={clearIcon}
+        submitIcon={submitIcon}
+        showClearButton={showClearButton}
+        showSubmitButton={showSubmitButton}
+        classNames={classNames}
       />
-      <SearchResults>{results}</SearchResults>
+      <SearchResults label={resultsLabel} className={classNames?.results}>{results}</SearchResults>
     </div>
   );
 }

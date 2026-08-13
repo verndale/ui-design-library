@@ -41,6 +41,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { implementationFiles, listComponentDirs, storyFiles } = require('./lib/component-files.cjs');
+const { validateRealization } = require('./lib/validate-realization.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const COMPONENTS = path.join(ROOT, 'components');
@@ -194,6 +195,9 @@ function check(options = {}) {
     if (pkg.uiDesignLibrary?.reuseContractVersion !== 2) {
       fail('[package] package.json uiDesignLibrary.reuseContractVersion must equal 2');
     }
+    if (pkg.uiDesignLibrary?.realizationContractVersion !== 1) {
+      fail('[package] package.json uiDesignLibrary.realizationContractVersion must equal 1');
+    }
   }
 
   // Collected for the cross-canonical pass after the per-dir loop.
@@ -309,8 +313,10 @@ function check(options = {}) {
     if (!stories) fail(`[files] components/${dirName} has no stories file — the story is the API contract`);
 
     let title = null;
+    let storySource = null;
     if (stories) {
       const source = fs.readFileSync(path.join(dir, stories), 'utf8');
+      storySource = source;
 
       // The sidebar maturity badge reads a story tag, but maturity is declared in
       // component.json. Two sources for one fact drift silently, so they must agree.
@@ -347,6 +353,8 @@ function check(options = {}) {
         }
       }
     }
+
+    validateRealization(contract, dirName, storySource, fail);
 
     for (const impl of implementations) {
       scanImplementation(

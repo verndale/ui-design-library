@@ -207,7 +207,7 @@ A capture that is a *structurally distinct* take on a canonical the library alre
 ## Quality gates
 
 ```bash
-pnpm test              # typecheck + lint + architecture/contracts + SSR + story/motion tests
+pnpm test              # typecheck + lint + contracts + SSR + Chromium/WebKit/mode/motion tests
 pnpm typecheck         # tsc --noEmit
 pnpm lint              # hooks, boundaries, and source linting
 pnpm architecture      # index/types/parts shape, client naming + 120-line ceiling
@@ -218,7 +218,10 @@ pnpm exports:sync      # deliberately update the committed map after adding/remo
 pnpm contracts         # slug/canonical agreement, the variant axis, declared tokens exist,
                        # no raw colours, provenance/stories/maturity, reuse fingerprint
 pnpm contracts:selftest # exercises the contract checker itself against fixtures
-pnpm test:stories      # every story rendered in Chromium: play functions + axe
+pnpm accessibility    # every story rendered in Chromium: play functions + WCAG 2.2 A/AA axe
+pnpm test:a11y:webkit # the same stories in WebKit (a Safari-engine proxy)
+pnpm test:a11y:modes  # 320px, 200% text, WCAG text spacing, and forced colors
+pnpm test:stories      # compatibility alias for the Chromium accessibility suite
 pnpm test:stories:watch # the same, in watch mode
 pnpm test:motion       # `motion`-tagged stories re-run under prefers-reduced-motion
 pnpm verify            # test/build + packed native-ESM imports + Next/Tailwind consumer fixture
@@ -227,7 +230,7 @@ pnpm verify            # test/build + packed native-ESM imports + Next/Tailwind 
 `pnpm test:stories` needs a browser binary. Once per machine:
 
 ```bash
-pnpm exec playwright install chromium
+pnpm exec playwright install chromium webkit
 ```
 
 ---

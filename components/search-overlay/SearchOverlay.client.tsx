@@ -19,6 +19,15 @@ export function SearchOverlay({
   resultsPanel,
   closeLabel = 'Close search',
   returnFocusRef,
+  id,
+  className,
+  classNames,
+  titleHeadingLevel = 2,
+  closeIcon,
+  inputLabel = 'Search',
+  clearLabel = 'Clear search',
+  submitLabel = 'Submit search',
+  resultsLabel = 'Search results',
 }: SearchOverlayProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -51,6 +60,15 @@ export function SearchOverlay({
       active={active}
       isTopmost={isTopmost}
       onClose={onClose}
+      id={id}
+      className={className}
+      classNames={classNames}
+      titleHeadingLevel={titleHeadingLevel}
+      closeIcon={closeIcon}
+      inputLabel={inputLabel}
+      clearLabel={clearLabel}
+      submitLabel={submitLabel}
+      resultsLabel={resultsLabel}
     />,
     portalRoot,
   );

@@ -18,7 +18,8 @@
     "provenance": true
   },
   "uiDesignLibrary": {
-    "reuseContractVersion": 2
+    "reuseContractVersion": 2,
+    "realizationContractVersion": 1
   },
   "files": [
     "dist",
@@ -158,8 +159,9 @@
     "lint": "eslint components src",
     "architecture": "node scripts/check-component-architecture.cjs",
     "architecture:selftest": "node scripts/check-component-architecture.selftest.cjs",
-    "contracts": "node scripts/check-contracts.cjs",
+    "contracts": "node scripts/check-contracts.cjs && node scripts/build-accessibility-report.cjs",
     "contracts:selftest": "node scripts/check-contracts.selftest.cjs",
+    "accessibility:report": "node scripts/build-accessibility-report.cjs",
     "graph:build": "node scripts/graph/build-graph.cjs",
     "graph:view": "node scripts/graph/serve.cjs",
     "graph:navigate": "node scripts/wiki/navigate.cjs",
@@ -168,10 +170,13 @@
     "wiki:issue-sync": "node scripts/wiki/refresh-issue-state.cjs",
     "test:stories": "vitest run -c vitest.config.ts",
     "test:stories:watch": "vitest -c vitest.config.ts",
+    "accessibility": "vitest run -c vitest.config.ts",
+    "test:a11y:webkit": "vitest run -c vitest.webkit.config.ts",
+    "test:a11y:modes": "vitest run -c vitest.a11y.config.ts",
     "test:motion": "vitest run -c vitest.motion.config.ts",
     "test:ssr": "vitest run -c vitest.ssr.config.ts",
     "test:next": "node scripts/test-next.cjs",
-    "test": "pnpm typecheck && pnpm lint && pnpm architecture && pnpm architecture:selftest && pnpm contracts && pnpm contracts:selftest && pnpm release:preflight:selftest && pnpm exports:check && pnpm test:ssr && pnpm test:stories && pnpm test:motion",
+    "test": "pnpm typecheck && pnpm lint && pnpm architecture && pnpm architecture:selftest && pnpm contracts && pnpm contracts:selftest && pnpm accessibility:report && pnpm release:preflight:selftest && pnpm exports:check && pnpm test:ssr && pnpm accessibility && pnpm test:a11y:webkit && pnpm test:a11y:modes && pnpm test:motion",
     "verify": "pnpm test && pnpm build && pnpm test:next"
   },
   "peerDependencies": {

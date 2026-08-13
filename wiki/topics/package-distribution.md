@@ -16,7 +16,8 @@ How the source component library becomes a deterministic public npm contract.
 - `tsc` uses NodeNext-compatible resolution and emits per-component ESM, declarations, and explicit `.js` relative specifiers that load in native Node. Story and test files are excluded from `dist`, while source stories remain in the package for inspection.
 - The committed export map is derived by `pnpm exports:sync`; test, build, and prepack only check it and fail on drift.
 - `styles.css` contains semantic tokens but does not import Tailwind. Consumers own the Tailwind import and register package `dist` with one explicit `@source`.
-- Package metadata declares reuse contract v2. Every manifest separates API `slots`, structural `variant`, primary-export style `variants`, and the governed primary `reuseFingerprint`, and names the primary candidate through `exportName` plus derived `rendering`.
+- Package metadata declares reuse contract v2 and realization contract v1. Every manifest separates API `slots`, structural `variant`, primary-export style `variants`, and the governed primary `reuseFingerprint`, names the primary candidate through `exportName` plus derived `rendering`, and publishes a digestible exact realization.
+- `ACCESSIBILITY.md` is generated from the shipped manifests and checked for byte drift. It distinguishes component-owned reference-fixture guarantees from consuming-page obligations and does not claim whole-page conformance or VoiceOver certification.
 - Primary style metadata cannot borrow prop literals from a secondary facade export. The architecture gate rejects values found only on a secondary `<ExportName>Props` contract; this closed the discovered `Stat`/`StatGroup.orientation` leak.
 - Packed verification dynamically imports all 21 component subpaths and checks each primary named export before building the Next/Tailwind fixture.
 - Every merge to `main` is queued through one release workflow and maps the squash commit to a major, minor, or patch publication.
@@ -25,6 +26,7 @@ How the source component library becomes a deterministic public npm contract.
 
 ## Decisions
 
+- 2026-08-13 — Shipped accessibility metadata with the executable package instead of keeping it in prose, so orchestration can hash and replay the exact public invocation, DOM, and ownership contract. Browser engines remain library CI dependencies rather than consumer setup dependencies ([plan](../plans/2026-08-13-realization-first-reuse-wcag-22-aa.md), [journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-12 — Introduced reuse contract v2 and packed native-import verification because the `4.0.1` export map resolved to ESM files whose extensionless internal specifiers did not execute in Node ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).
 - 2026-08-12 — Removed the npm-token fallback and semantic-release issue mutation in favor of one OIDC publisher and immutable npm/GitHub release outputs ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).
 - 2026-08-12 — Rejected body-form `BREAKING CHANGE` notes during release preflight because GitHub squash descriptions can aggregate stale commit bodies; an intentional major is expressed once with `!` in the PR title ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).

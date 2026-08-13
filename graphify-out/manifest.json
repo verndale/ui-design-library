@@ -725,8 +725,8 @@
     "semantic_hash": "76fa3fed586f10f86246c7b126ac5020"
   },
   "components/stat/component.json": {
-    "mtime": 1786585384.175713,
-    "ast_hash": "9eaef4c126fb4fffaf698adeab3dfdf8",
+    "mtime": 1786625640.4361186,
+    "ast_hash": "52532716c87f2fc44aa5d7cf4f4c5900",
     "semantic_hash": ""
   },
   "components/stat/index.ts": {
@@ -835,13 +835,13 @@
     "semantic_hash": "a4417c44a2e0954e3805809a09eec71d"
   },
   "scripts/check-component-architecture.cjs": {
-    "mtime": 1786616026.1305459,
-    "ast_hash": "5e838b35336bbc175b0e1aa3c4e5faba",
+    "mtime": 1786625640.5623357,
+    "ast_hash": "dc29fa4815026b22a39c142f601ff541",
     "semantic_hash": ""
   },
   "scripts/check-component-architecture.selftest.cjs": {
-    "mtime": 1786616026.264046,
-    "ast_hash": "7864d7aa81805629665d9d7547e5be13",
+    "mtime": 1786625640.6904225,
+    "ast_hash": "2cf0ed752043dadcaafcb95d3d680a6b",
     "semantic_hash": ""
   },
   "scripts/check-contracts.cjs": {
@@ -870,8 +870,8 @@
     "semantic_hash": "0c21bf17286722549730c72354c12a4b"
   },
   "scripts/graph/data/graph.json": {
-    "mtime": 1786618117.9066086,
-    "ast_hash": "f280a053a63bb07fd64162edd507233a",
+    "mtime": 1786626303.8057916,
+    "ast_hash": "7bfc50091a98e2b6e00db293f03ffe9a",
     "semantic_hash": ""
   },
   "scripts/graph/routing-policy.json": {
@@ -1130,18 +1130,18 @@
     "semantic_hash": ""
   },
   "wiki/connections.md": {
-    "mtime": 1786618117.9088767,
+    "mtime": 1786626303.8074899,
     "ast_hash": "2d884c96e1414dd1fa8b312a7637a053",
     "semantic_hash": ""
   },
   "wiki/connections/components.md": {
-    "mtime": 1786618117.9097292,
+    "mtime": 1786626303.807921,
     "ast_hash": "a40cf676a18747b8d1d518a70634ef3d",
     "semantic_hash": ""
   },
   "wiki/connections/wiki-wiring.md": {
-    "mtime": 1786618117.9107106,
-    "ast_hash": "d1103edd92eb3ce5fc904b6a937708a9",
+    "mtime": 1786626303.808573,
+    "ast_hash": "773a2a053b6bf6c24ce187680e99e9ad",
     "semantic_hash": ""
   },
   "wiki/journal/2026-07-26-storybook-docs-audit.md": {
@@ -1285,8 +1285,8 @@
     "semantic_hash": ""
   },
   "wiki/topics/package-distribution.md": {
-    "mtime": 1786616412.352157,
-    "ast_hash": "77cd33596db2fe8dcb5af7ef022f96a1",
+    "mtime": 1786625640.9429712,
+    "ast_hash": "8c581b4aa880b5e0f110b08a73c3cf0c",
     "semantic_hash": ""
   },
   "wiki/topics/story-testing.md": {
@@ -1342,6 +1342,11 @@
   "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md": {
     "mtime": 1786616412.704385,
     "ast_hash": "6d82a4e011c9a5e51be61cd7e5b5cb0e",
+    "semantic_hash": ""
+  },
+  "wiki/journal/2026-08-13-stat-primary-variant-contract.md": {
+    "mtime": 1786625640.8179004,
+    "ast_hash": "9be727c3206da021cbc2bd74dff2f8bb",
     "semantic_hash": ""
   }
 }

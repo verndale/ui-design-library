@@ -17,6 +17,7 @@ How the source component library becomes a deterministic public npm contract.
 - The committed export map is derived by `pnpm exports:sync`; test, build, and prepack only check it and fail on drift.
 - `styles.css` contains semantic tokens but does not import Tailwind. Consumers own the Tailwind import and register package `dist` with one explicit `@source`.
 - Package metadata declares reuse contract v2. Every manifest separates API `slots`, structural `variant`, primary-export style `variants`, and the governed primary `reuseFingerprint`, and names the primary candidate through `exportName` plus derived `rendering`.
+- Primary style metadata cannot borrow prop literals from a secondary facade export. The architecture gate rejects values found only on a secondary `<ExportName>Props` contract; this closed the discovered `Stat`/`StatGroup.orientation` leak.
 - Packed verification dynamically imports all 21 component subpaths and checks each primary named export before building the Next/Tailwind fixture.
 - Every merge to `main` is queued through one release workflow and maps the squash commit to a major, minor, or patch publication.
 - npm publishing uses trusted publishing through GitHub OIDC; the workflow carries no long-lived npm token.

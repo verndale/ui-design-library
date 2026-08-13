@@ -36,6 +36,8 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-12 — [Fix wiki sync pagination](journal/2026-08-12-fix-wiki-sync-pagination.md) — slurps paginated GitHub file and commit responses before building merge context, preventing adjacent page arrays from becoming invalid `jq --argjson` input.
+- 2026-08-12 — [Add Graphify code mapping](journal/2026-08-12-add-graphify-code-map.md) — added Graphify's Codex query-first instructions and a local AST map that complements the curated component/wiki graph with symbol-level component relationships.
 - 2026-08-12 — [Adopt server-first component architecture](journal/2026-08-12-server-first-component-architecture.md) — stable facades and narrow client trees, backed by graph-aware SSR checks, composed overlay ownership, an empty-carousel contract, and packed Next verification.
 - 2026-08-05 — [Add the Search overlay component](journal/2026-08-05-add-search-overlay-component.md) — a de-cliented full-screen search surface: a dialog shell (focus trap, Escape/backdrop dismiss, focus restoration) with an idle↔active split; reuses the library's SearchInput for the field, and shares a new `useDialog` hook and `CloseButton` primitive with Modal.
 - 2026-08-05 — [Publish the UI library as a deterministic npm package](journal/2026-08-05-npm-package-and-ai-reuse.md) — compiled component subpaths, governed reuse fingerprints, explicit Tailwind consumption, and queued automatic semantic releases.

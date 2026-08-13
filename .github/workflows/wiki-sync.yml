@@ -68,8 +68,8 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           PR_MERGED_AT: ${{ github.event.pull_request.merged_at }}
         run: |
-          files=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/files" --paginate --jq '[.[].filename]')
-          commits=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/commits" --paginate --jq '[.[] | {hash: .sha, subject: (.commit.message | split("\n")[0])}]')
+          files=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/files" --paginate --slurp --jq '[.[][] | .filename]')
+          commits=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/commits" --paginate --slurp --jq '[.[][] | {hash: .sha, subject: (.commit.message | split("\n")[0])}]')
           jq -n \
             --arg n "$PR_NUMBER" --arg t "$PR_TITLE" --arg b "$PR_BODY" \
             --arg u "$PR_URL" --arg m "$PR_MERGED_AT" \

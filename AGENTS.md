@@ -87,3 +87,29 @@ Two things worth knowing before you read it. A pre-commit hook rebuilds the know
 **Permission boundary:** edit under `components/` and `src/` freely. Everything below is the maintainer's.
 
 **Do not commit, push, merge, tag, or publish.** Make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. The maintainer commits with `pnpm commit` and pushes; a merge to `main` is the only release trigger.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- Dirty graphify-out/ files are expected after hooks or incremental updates; dirty graph files are not a reason to skip graphify. Only skip graphify if the task is about stale or incorrect graph output, or the user explicitly says not to use it.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+
+## Graphify repository workflow
+
+The `## graphify` section above is the upstream block managed by `graphify codex install`; keep it verbatim so a Graphify upgrade can replace it cleanly. These repository-specific rules extend it:
+
+- Use Graphify before broad source discovery for architecture, dependency, impact, or cross-file questions. After Graphify identifies the relevant subgraph, inspect the cited source files for exact implementation details and edits.
+- Treat confidence tags as evidence boundaries: `EXTRACTED` edges come from deterministic parsing; verify `INFERRED` and `AMBIGUOUS` relationships in cited source before relying on them for a change.
+- If a query is truncated or too broad, narrow it with a more specific question, `graphify path`, `graphify explain`, `--context <relation>`, or `--dfs` before raising `--budget` or reading the full report.
+- If explicit delegation is requested for code exploration, include this query-first rule in the delegated task. Do not assume another agent inherited the repository's Graphify context.
+- This repository commits the shareable `graphify-out/` map. Local cache, cost, and dated safety-backup artifacts stay ignored; a dirty tracked graph remains usable for orientation.
+- Git events, not agent compliance, are the freshness authority: pre-commit refreshes and stages the graph, post-merge covers pulls/merges, and branch-switch post-checkout covers incoming history changes. `GRAPHIFY_SKIP_HOOK=1` is the explicit emergency bypass.
+- For code changes in this repository, use `pnpm graphify:sync` instead of the raw upstream update command. It wraps `graphify update .` with deterministic clustering and a single AST worker, and is also the recovery command after hook failures or Git operations that do not fire these hooks.
+- When non-code sources such as documentation, PDFs, or images are intentionally part of the semantic graph, use the installed Graphify skill's `--update` flow; the Git sync path is AST-only and does not perform model-backed semantic extraction.

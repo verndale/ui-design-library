@@ -12,3 +12,13 @@ if [ -z "$CI" ]; then
     echo "warning: knowledge graph rebuild failed; committed graph.json may be stale (run pnpm graph:build)" >&2
   fi
 fi
+
+# Refresh Graphify before the commit and stage its shareable artifacts. Unlike the
+# agent instruction, this is a Git-event guarantee: a failed refresh stops the
+# commit instead of silently recording a stale graph.
+if [ -z "$CI" ]; then
+  if ! node scripts/graph/sync-graphify.cjs --stage; then
+    echo "error: Graphify refresh failed; run pnpm graphify:sync and retry the commit" >&2
+    exit 1
+  fi
+fi

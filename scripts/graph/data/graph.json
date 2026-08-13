@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 91,
-    "edges": 144,
+    "nodes": 100,
+    "edges": 158,
     "byType": {
-      "surface": 32,
+      "surface": 39,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 19,
+      "wiki-journal": 21,
       "wiki-plan": 5,
       "wiki-topic": 6
     },
     "byEdgeType": {
-      "covers": 37,
-      "links-to": 62,
+      "covers": 45,
+      "links-to": 66,
       "plan": 6,
-      "topic": 18,
+      "topic": 20,
       "uses-tokens": 21
     }
   },
@@ -66,7 +66,43 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4973,
+      "bytes": 4996,
+      "degree": 1
+    },
+    {
+      "id": ".graphifyignore",
+      "label": ".graphifyignore",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 43,
+      "degree": 1
+    },
+    {
+      "id": ".husky/post-checkout",
+      "label": "post-checkout",
+      "type": "surface",
+      "dir": ".husky",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 388,
+      "degree": 1
+    },
+    {
+      "id": ".husky/post-merge",
+      "label": "post-merge",
+      "type": "surface",
+      "dir": ".husky",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 288,
       "degree": 1
     },
     {
@@ -78,7 +114,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 688,
+      "bytes": 1095,
       "degree": 1
     },
     {
@@ -138,8 +174,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9236,
-      "degree": 4
+      "bytes": 12406,
+      "degree": 5
     },
     {
       "id": "CLAUDE.md",
@@ -430,6 +466,42 @@
       "degree": 0
     },
     {
+      "id": "graphify-out/GRAPH_REPORT.md",
+      "label": "GRAPH_REPORT.md",
+      "type": "surface",
+      "dir": "graphify-out",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 25190,
+      "degree": 1
+    },
+    {
+      "id": "graphify-out/graph.html",
+      "label": "graph.html",
+      "type": "surface",
+      "dir": "graphify-out",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1053983,
+      "degree": 1
+    },
+    {
+      "id": "graphify-out/graph.json",
+      "label": "graph.json",
+      "type": "surface",
+      "dir": "graphify-out",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1187337,
+      "degree": 1
+    },
+    {
       "id": "MIGRATION.md",
       "label": "MIGRATION.md",
       "type": "surface",
@@ -450,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8816,
+      "bytes": 8877,
       "degree": 1
     },
     {
@@ -571,6 +643,18 @@
       "prs": [],
       "issues": [],
       "bytes": 1871,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/sync-graphify.cjs",
+      "label": "sync-graphify.cjs",
+      "type": "surface",
+      "dir": "scripts/graph",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2259,
       "degree": 1
     },
     {
@@ -726,8 +810,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9769,
-      "degree": 30
+      "bytes": 10277,
+      "degree": 32
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -997,6 +1081,34 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-08-12-add-graphify-code-map.md",
+      "label": "Add Graphify code mapping",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4228,
+      "degree": 3
+    },
+    {
+      "id": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
+      "label": "Fix wiki sync pagination",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1081,
+      "degree": 3
+    },
+    {
       "id": "wiki/journal/2026-08-12-server-first-component-architecture.md",
       "label": "Adopt server-first component architecture",
       "type": "wiki-journal",
@@ -1156,6 +1268,8 @@
       "aliases": [
         "knowledge graph",
         "graph viewer",
+        "graphify",
+        "code knowledge graph",
         "sigma.js viewer",
         "wiki automation",
         "wiki-sync bot",
@@ -1174,8 +1288,8 @@
         "2"
       ],
       "issues": [],
-      "bytes": 6706,
-      "degree": 17
+      "bytes": 9203,
+      "degree": 29
     },
     {
       "id": "wiki/topics/package-distribution.md",
@@ -1316,7 +1430,42 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".graphifyignore",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".husky/post-checkout",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".husky/post-merge",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": ".husky/pre-commit",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "AGENTS.md",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "graphify-out/GRAPH_REPORT.md",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "graphify-out/graph.html",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "graphify-out/graph.json",
       "type": "covers"
     },
     {
@@ -1342,6 +1491,11 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "scripts/graph/serve.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/sync-graphify.cjs",
       "type": "covers"
     },
     {
@@ -1624,6 +1778,20 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-12-add-graphify-code-map.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-08-12-server-first-component-architecture.md",
       "type": "links-to",
       "count": 1,
@@ -1788,6 +1956,20 @@
       "target": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
       "type": "links-to",
       "count": 5,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-08-12-add-graphify-code-map.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -1956,6 +2138,16 @@
     {
       "source": "wiki/journal/2026-08-05-npm-package-and-ai-reuse.md",
       "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-12-add-graphify-code-map.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
       "type": "topic"
     },
     {

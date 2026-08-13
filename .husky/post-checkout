@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Git passes 1 for a branch/tag/commit switch and 0 for a path checkout. Only a
+# history switch can make the whole code graph stale.
+if [ "${3:-0}" != "1" ]; then
+  exit 0
+fi
+
+if [ -z "$CI" ]; then
+  if ! node scripts/graph/sync-graphify.cjs; then
+    echo "error: the checkout completed, but Graphify could not refresh; run pnpm graphify:sync" >&2
+    exit 1
+  fi
+fi

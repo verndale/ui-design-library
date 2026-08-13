@@ -1,16 +1,16 @@
-# Graph Report - ui-design-library-task-31  (2026-08-13)
+# Graph Report - ui-design-library  (2026-08-13)
 
 ## Corpus Check
-- 262 files · ~87,384 words
+- 264 files · ~88,014 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1393 nodes · 1864 edges · 157 communities (117 shown, 40 thin omitted)
+- 1401 nodes · 1875 edges · 160 communities (120 shown, 40 thin omitted)
 - Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 87 edges (avg confidence: 0.58)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1bb4926d`
+- Built from commit: `b3165842`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -44,7 +44,7 @@
 - SearchOverlay.stories.tsx
 - section-header/index.ts
 - Native variant axis for `@verndale/ui-design-library`
-- Adopt server-first component architecture
+- journal/2026-08-12-server-first-component-architecture.md
 - dependencies
 - peerDependencies
 - check
@@ -126,19 +126,21 @@
 - Add the In-page navigation component
 - Add the Tabs component
 - Add the Search overlay component
-- README.md
+- Story tests and the a11y gate
 - Connections — Wiki wiring
 - Storybook Docs audit
-- graph-wiki-subsystem.md
+- Knowledge graph + wiki automation
 - Reduced-motion coverage
-- Component architecture — Design History
+- Storybook review tooling
+- Stat metadata stops advertising StatGroup variants
 - Native variant axis
-- Publish the UI library as a deterministic npm package
+- connections.md
 - Add Graphify code mapping
 - stat/index.ts
 - sync-graphify.cjs
-- Story testing — Design History
+- Fix wiki sync pagination
 - Storybook tooling — Design History
+- Knowledge graph & wiki automation — Design History
 - Plan Audit
 - Variant axis — Design History
 - post-checkout
@@ -153,8 +155,9 @@
 - @storybook/addon-docs
 - tailwindcss
 - @tailwindcss/postcss
-- Package distribution — Design History
+- plans/INDEX.md
 - Avatar.stories.tsx
+- Story testing — Design History
 - Quote.stories.tsx
 - Modal.stories.tsx
 - overlayStack.client.ts
@@ -163,15 +166,15 @@
 - Coordinated UI Library Contract v2 and AI Reuse Hardening
 - components.ssr.test.tsx
 - Toast.stories.tsx
-- Publish executable ESM and reuse contract v2
+- journal/2026-08-12-executable-esm-reuse-contract-v2.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `exports` - 45 edges
 2. `scripts` - 34 edges
 3. `compilerOptions` - 15 edges
 4. `ui-design-library` - 15 edges
-5. `build()` - 14 edges
-6. `check()` - 13 edges
+5. `check()` - 14 edges
+6. `build()` - 14 edges
 7. `check()` - 12 edges
 8. `UI Design Library — agent guide` - 12 edges
 9. `route()` - 10 edges
@@ -192,7 +195,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (157 total, 40 thin omitted)
+## Communities (160 total, 40 thin omitted)
 
 ### Community 0 - "build-graph.cjs"
 Cohesion: 0.07
@@ -279,8 +282,8 @@ Cohesion: 0.22
 Nodes (8): Card(), Default, Story, UnsetBackground, WithMedia, CardMediaProps, CardProps, CardMedia()
 
 ### Community 21 - "check-component-architecture.cjs"
-Cohesion: 0.12
-Nodes (16): analyzeModuleGraph(), BROWSER_GLOBALS, checkPrimaryRendering(), CLIENT_HOOKS, COMPONENTS, explicitExportTargets(), exportedRuntimeSources(), fs (+8 more)
+Cohesion: 0.11
+Nodes (19): analyzeModuleGraph(), BROWSER_GLOBALS, checkPrimaryRendering(), checkPrimaryVariantOwnership(), CLIENT_HOOKS, COMPONENTS, explicitExportTargets(), explicitRuntimeExportNames() (+11 more)
 
 ### Community 22 - "check-contracts.cjs"
 Cohesion: 0.17
@@ -310,8 +313,8 @@ Nodes (9): SectionHeaderContent(), SectionHeader(), Centered, Default, HeadingOn
 Cohesion: 0.12
 Nodes (17): 1. `scripts/check-contracts.cjs` (the sole enforcement point), 2. New failure messages (existing `[category] components/<path> …` style), 3. Self-test + fixtures (new `scripts/check-contracts.selftest.cjs`), 4. `scripts/graph/build-graph.cjs` — label de-dup (optional but included), 5. Docs (paste-ready deltas — additive, nothing implies the 9 changed), 6. Wiki capture (MECHANICS same-delivery protocol; slug `variant-axis`, date `2026-07-30`), 7. Storybook title convention (documented alongside the enforced check), Assumptions & blast radius (+9 more)
 
-### Community 30 - "Adopt server-first component architecture"
-Cohesion: 0.40
+### Community 30 - "journal/2026-08-12-server-first-component-architecture.md"
+Cohesion: 0.33
 Nodes (5): Adopt server-first component architecture, Files, Follow-ups, What changed, Why
 
 ### Community 31 - "dependencies"
@@ -534,36 +537,40 @@ Nodes (5): Add the Tabs component, Files, Follow-ups, What changed, Why
 Cohesion: 0.33
 Nodes (5): Add the Search overlay component, Files, Follow-ups, What changed, Why
 
+### Community 118 - "Story tests and the a11y gate"
+Cohesion: 0.40
+Nodes (5): Files, Follow-ups, Story tests and the a11y gate, What changed, Why
+
 ### Community 119 - "Connections — Wiki wiring"
 Cohesion: 0.40
 Nodes (5): Connections — Wiki wiring, Cross-area links (seams), Journal → plan, Page → topic, Topic → covered surface
 
 ### Community 120 - "Storybook Docs audit"
-Cohesion: 0.11
-Nodes (15): Files, Follow-ups, Storybook Docs audit, What changed, Why, Files, Follow-ups, Story tests and the a11y gate (+7 more)
+Cohesion: 0.40
+Nodes (5): Files, Follow-ups, Storybook Docs audit, What changed, Why
 
-### Community 121 - "graph-wiki-subsystem.md"
-Cohesion: 0.12
-Nodes (13): Files, Follow-ups, Knowledge graph + wiki automation, What changed, Why, Files, Fix wiki sync pagination, What changed (+5 more)
+### Community 121 - "Knowledge graph + wiki automation"
+Cohesion: 0.40
+Nodes (5): Files, Follow-ups, Knowledge graph + wiki automation, What changed, Why
 
 ### Community 122 - "Reduced-motion coverage"
-Cohesion: 0.33
+Cohesion: 0.40
 Nodes (5): Files, Follow-ups, Reduced-motion coverage, What changed, Why
 
-### Community 123 - "Component architecture — Design History"
-Cohesion: 0.67
-Nodes (3): Component architecture — Design History, Current state, Decisions
+### Community 123 - "Storybook review tooling"
+Cohesion: 0.40
+Nodes (5): Files, Follow-ups, Storybook review tooling, What changed, Why
+
+### Community 124 - "Stat metadata stops advertising StatGroup variants"
+Cohesion: 0.40
+Nodes (4): Evidence, Stat metadata stops advertising StatGroup variants, What changed, Why
 
 ### Community 125 - "Native variant axis"
 Cohesion: 0.40
 Nodes (5): Files, Follow-ups, Native variant axis, What changed, Why
 
-### Community 126 - "Publish the UI library as a deterministic npm package"
-Cohesion: 0.40
-Nodes (5): Files, Follow-ups, Publish the UI library as a deterministic npm package, What changed, Why
-
 ### Community 127 - "Add Graphify code mapping"
-Cohesion: 0.33
+Cohesion: 0.40
 Nodes (5): Add Graphify code mapping, Files, Follow-ups, What changed, Why
 
 ### Community 128 - "stat/index.ts"
@@ -574,13 +581,17 @@ Nodes (9): StatGroup(), Stat(), Default, GroupColumn, GroupRow, Story, WithDescr
 Cohesion: 0.20
 Nodes (8): candidates, env, fs, graphPath, path, root, shouldStage, { spawnSync }
 
-### Community 130 - "Story testing — Design History"
-Cohesion: 0.40
-Nodes (5): Assertion rules, Current state, Decisions, Open threads, Story testing — Design History
+### Community 130 - "Fix wiki sync pagination"
+Cohesion: 0.50
+Nodes (4): Files, Fix wiki sync pagination, What changed, Why
 
 ### Community 131 - "Storybook tooling — Design History"
 Cohesion: 0.40
 Nodes (5): Current state, Decisions, Open threads, Storybook tooling — Design History, The maturity duplication
+
+### Community 132 - "Knowledge graph & wiki automation — Design History"
+Cohesion: 0.50
+Nodes (4): Current state, Decisions, Knowledge graph & wiki automation — Design History, Open threads
 
 ### Community 133 - "Plan Audit"
 Cohesion: 0.40
@@ -594,13 +605,17 @@ Nodes (4): Current state, Decisions, Open threads, Variant axis — Design Histo
 Cohesion: 0.67
 Nodes (3): repository, type, url
 
-### Community 148 - "Package distribution — Design History"
-Cohesion: 0.50
-Nodes (4): Current state, Decisions, Open threads, Package distribution — Design History
+### Community 148 - "plans/INDEX.md"
+Cohesion: 0.12
+Nodes (12): Files, Follow-ups, Publish the UI library as a deterministic npm package, What changed, Why, Component architecture — Design History, Current state, Decisions (+4 more)
 
 ### Community 149 - "Avatar.stories.tsx"
 Cohesion: 0.21
 Nodes (8): Avatar(), CropsWideMedia, Default, Sizes, Story, WithDescribedPortrait, AvatarProps, AvatarFrame()
+
+### Community 150 - "Story testing — Design History"
+Cohesion: 0.40
+Nodes (5): Assertion rules, Current state, Decisions, Open threads, Story testing — Design History
 
 ### Community 151 - "Quote.stories.tsx"
 Cohesion: 0.23
@@ -634,12 +649,12 @@ Nodes (7): AI Orchestration, Assumptions, Coordinated UI Library Contract v2 and
 Cohesion: 0.40
 Nodes (4): AutoDismiss, Critical, Default, Story
 
-### Community 159 - "Publish executable ESM and reuse contract v2"
-Cohesion: 0.40
+### Community 159 - "journal/2026-08-12-executable-esm-reuse-contract-v2.md"
+Cohesion: 0.33
 Nodes (5): Files, Follow-ups, Publish executable ESM and reuse contract v2, What changed, Why
 
 ## Knowledge Gaps
-- **711 isolated node(s):** `config`, `tagBadges`, `preview`, `faq`, `Story` (+706 more)
+- **714 isolated node(s):** `config`, `tagBadges`, `preview`, `faq`, `Story` (+709 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -650,10 +665,10 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `husky`, `next`, `playwright`, `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, `storybook`, `@storybook/addon-docs`, `tailwindcss`, `@tailwindcss/postcss`, `peerDependencies`, `eslint`, `semantic-release`, `@semantic-release/github`, `@storybook/addon-a11y`, `storybook-addon-pseudo-states`, `storybook-addon-tag-badges`, `@storybook/addon-vitest`, `@storybook/react-vite`, `@tailwindcss/vite`, `@types/react-dom`, `typescript`, `@typescript-eslint/parser`, `@verndale/ai-pr`, `vite`, `@vitejs/plugin-react`, `@vitest/browser`, `@vitest/browser-playwright`, `package.json`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `Native variant axis for `@verndale/ui-design-library`` connect `Native variant axis for `@verndale/ui-design-library`` to `wiki/INDEX.md`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `scripts` connect `scripts` to `package.json`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **What connects `config`, `tagBadges`, `preview` to the rest of the system?**
-  _711 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _714 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `build-graph.cjs` be split into smaller, more focused modules?**
   _Cohesion score 0.07138047138047138 - nodes in this community are weakly interconnected._
 - **Should `on-merge-sync.cjs` be split into smaller, more focused modules?**

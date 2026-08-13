@@ -361,6 +361,68 @@ function explicitExportTargets(sourceFile, exportName) {
   return targets;
 }
 
+function explicitRuntimeExportNames(sourceFile) {
+  const names = [];
+  for (const statement of sourceFile.statements) {
+    if (
+      !ts.isExportDeclaration(statement) ||
+      statement.isTypeOnly ||
+      !statement.exportClause ||
+      !ts.isNamedExports(statement.exportClause)
+    ) continue;
+    for (const element of statement.exportClause.elements) {
+      if (!element.isTypeOnly) names.push(element.name.text);
+    }
+  }
+  return names;
+}
+
+function propStringLiteralValues(sourceFile, exportName) {
+  const declarationName = `${exportName}Props`;
+  const values = new Set();
+  for (const statement of sourceFile.statements) {
+    const namedDeclaration =
+      (ts.isInterfaceDeclaration(statement) || ts.isTypeAliasDeclaration(statement)) &&
+      statement.name.text === declarationName;
+    if (!namedDeclaration) continue;
+    function visit(node) {
+      if (ts.isLiteralTypeNode(node) && ts.isStringLiteral(node.literal)) values.add(node.literal.text);
+      ts.forEachChild(node, visit);
+    }
+    visit(statement);
+  }
+  return values;
+}
+
+function checkPrimaryVariantOwnership(dirName, contract, records, fail) {
+  if (!Array.isArray(contract.variants) || contract.variants.length === 0) return;
+  const indexFile = `components/${dirName}/index.ts`;
+  const indexRecord = records.get(indexFile);
+  const typesRecord = [...records.entries()].find(
+    ([file]) => file.startsWith(`components/${dirName}/`) && /^[^/]+\.types\.ts$/.test(file.slice(`components/${dirName}/`.length)),
+  )?.[1];
+  if (!indexRecord || !typesRecord) return;
+
+  const primaryValues = propStringLiteralValues(typesRecord.sourceFile, contract.exportName);
+  const secondaryValues = new Map();
+  for (const exportName of explicitRuntimeExportNames(indexRecord.sourceFile)) {
+    if (exportName === contract.exportName) continue;
+    for (const value of propStringLiteralValues(typesRecord.sourceFile, exportName)) {
+      if (!secondaryValues.has(value)) secondaryValues.set(value, []);
+      secondaryValues.get(value).push(exportName);
+    }
+  }
+
+  for (const variant of contract.variants) {
+    const owners = secondaryValues.get(variant) || [];
+    if (!primaryValues.has(variant) && owners.length > 0) {
+      fail(
+        `[variants] components/${dirName} declares primary variant "${variant}" but that literal belongs only to secondary export ${owners.join(', ')}`,
+      );
+    }
+  }
+}
+
 function checkPrimaryRendering(dirName, contract, records, adjacency, fail) {
   if (typeof contract.exportName !== 'string' || contract.exportName.length === 0) {
     fail(`[rendering] components/${dirName}/component.json must declare exportName`);
@@ -539,6 +601,7 @@ function check({ componentsDir = COMPONENTS, root = path.dirname(componentsDir) 
     try {
       const contract = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
       checkPrimaryRendering(dirName, contract, graph.records, graph.adjacency, fail);
+      checkPrimaryVariantOwnership(dirName, contract, graph.records, fail);
     } catch (error) {
       fail(`[rendering] components/${dirName}/component.json is not valid JSON: ${error.message}`);
     }

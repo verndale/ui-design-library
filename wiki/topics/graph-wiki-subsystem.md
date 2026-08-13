@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-13 — fix(package): keep Stat variants on the primary export ([PR #35](https://github.com/verndale/ui-design-library/pull/35))
 - 2026-08-13 — feat(package): publish executable ESM reuse contract v2 ([PR #32](https://github.com/verndale/ui-design-library/pull/32))
 - 2026-08-13 — chore(ci): Update wiki sync workflow for API changes ([PR #29](https://github.com/verndale/ui-design-library/pull/29))
 - 2026-08-12 — Made wiki-sync PR context construction pagination-safe after PR #27's 186 changed files produced two adjacent JSON arrays and failed `jq --argjson`; `gh api --slurp` now creates one outer page array and the filters flatten it for both files and commits ([journal](../journal/2026-08-12-fix-wiki-sync-pagination.md)).

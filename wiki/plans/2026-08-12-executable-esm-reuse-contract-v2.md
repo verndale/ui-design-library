@@ -8,6 +8,7 @@ evidence:
   - "packed Next 16/Tailwind consumer"
   - "adversarial rendering-graph and release-range fixtures"
   - "PR #32 https://github.com/verndale/ui-design-library/pull/32 (merged 2026-08-13)"
+  - "PR #35 https://github.com/verndale/ui-design-library/pull/35 (merged 2026-08-13)"
 source_tool: codex
 source: approved task conversation
 topics: [package-distribution, component-architecture]

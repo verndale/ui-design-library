@@ -6,7 +6,7 @@
   "framework": "react",
   "styling": "tailwind",
   "slots": ["value", "label", "description"],
-  "variants": ["row", "column"],
+  "variants": [],
   "reuseFingerprint": {
     "slots": ["stat", "heading", "body"],
     "affordance": "display",

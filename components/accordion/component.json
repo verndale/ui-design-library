@@ -5,10 +5,20 @@
   "rendering": "hybrid",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["heading", "items"],
-  "variants": ["default", "standalone", "show-more"],
+  "slots": [
+    "heading",
+    "items"
+  ],
+  "variants": [
+    "default",
+    "standalone",
+    "show-more"
+  ],
   "reuseFingerprint": {
-    "slots": ["heading", "panel"],
+    "slots": [
+      "heading",
+      "panel"
+    ],
     "affordance": "expand",
     "role": "container"
   },
@@ -35,5 +45,483 @@
     "Mapped the BEM classes (accordion__item / __toggle / __panel / --standalone) and design-system utilities onto library semantic tokens: labels color-text-primary, panel body color-text-secondary, dividers color-border-subtle, the focus ring color-border-focus, the vertical rhythm spacing-m / spacing-s / spacing-2xs, and the standalone box radius-medium.",
     "Kept verbatim: aria-expanded on each toggle, aria-controls linking each button to its panel, headers wrapped in an h3 for heading navigation, the collapsed-panel focus gating, and the reduced-motion short-circuit — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "items",
+        "type": "collection",
+        "required": true
+      },
+      {
+        "path": "items[].label",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "items[].children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "items[].id",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "items[].defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "heading",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "standalone",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "initialItemCount",
+        "type": "number",
+        "required": false
+      },
+      {
+        "path": "moreLabel",
+        "type": "string",
+        "required": false,
+        "default": "See more"
+      },
+      {
+        "path": "lessLabel",
+        "type": "string",
+        "required": false,
+        "default": "See less"
+      },
+      {
+        "path": "id",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "role",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "region",
+          "group"
+        ]
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "ariaLabelledBy",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "ariaDescribedBy",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "headingLevel",
+        "type": "enum",
+        "required": false,
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "default": 2
+      },
+      {
+        "path": "itemHeadingLevel",
+        "type": "enum",
+        "required": false,
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "default": 3
+      },
+      {
+        "path": "collapsedIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "expandedIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.heading",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.list",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.item",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.itemHeading",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.trigger",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.icon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.motion",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.panel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.reveal",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "heading",
+        "node": "heading"
+      },
+      {
+        "prop": "items[].label",
+        "node": "label"
+      },
+      {
+        "prop": "items[].children",
+        "node": "panel"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "id",
+        "node": "root",
+        "attribute": "id"
+      },
+      {
+        "prop": "role",
+        "node": "root",
+        "attribute": "role"
+      },
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      },
+      {
+        "prop": "ariaLabelledBy",
+        "node": "root",
+        "attribute": "aria-labelledby"
+      },
+      {
+        "prop": "ariaDescribedBy",
+        "node": "root",
+        "attribute": "aria-describedby"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.heading",
+        "node": "heading",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.list",
+        "node": "list",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.item",
+        "node": "item",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.itemHeading",
+        "node": "itemHeading",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.trigger",
+        "node": "trigger",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.icon",
+        "node": "icon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.motion",
+        "node": "motion",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.panel",
+        "node": "panel",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.reveal",
+        "node": "reveal",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+        "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "heading",
+          "element": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "list",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "one"
+        },
+      {
+        "id": "item",
+        "element": "div",
+        "parent": "list",
+        "cardinality": "zero-or-more"
+      },
+        {
+          "id": "itemHeading",
+          "element": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+        "parent": "item",
+        "cardinality": "zero-or-more"
+        },
+        {
+          "id": "trigger",
+          "element": "button",
+        "parent": "itemHeading",
+        "cardinality": "zero-or-more"
+        },
+        {
+          "id": "label",
+          "element": "span",
+        "parent": "trigger",
+        "cardinality": "zero-or-more"
+        },
+        {
+          "id": "icon",
+          "element": "span",
+        "parent": "trigger",
+        "cardinality": "zero-or-more"
+        },
+        {
+          "id": "motion",
+          "element": "div",
+        "parent": "item",
+        "cardinality": "zero-or-more"
+      },
+      {
+        "id": "motionClip",
+        "element": "div",
+        "parent": "motion",
+        "cardinality": "zero-or-more"
+      },
+        {
+          "id": "panel",
+          "element": "div",
+        "parent": "motionClip",
+        "cardinality": "zero-or-more"
+        },
+        {
+          "id": "reveal",
+          "element": "button",
+        "parent": "list",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "from": "trigger",
+        "attribute": "aria-controls",
+        "to": "panel"
+      },
+      {
+        "from": "panel",
+        "attribute": "aria-labelledby",
+        "to": "trigger"
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "accordion.keyboard.toggle",
+        "kind": "keyboard",
+        "description": "Native buttons toggle each independent panel with Enter or Space.",
+        "wcag": [
+          "2.1.1",
+          "2.1.2",
+          "2.5.8"
+        ],
+        "evidence": "accordion.keyboard.toggle"
+      },
+      {
+        "id": "accordion.state.relationships",
+        "kind": "state",
+        "description": "Each trigger exposes aria-expanded and resolves aria-controls to its labelled panel.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "accordion.state.relationships"
+      },
+      {
+        "id": "accordion.focus.collapsed",
+        "kind": "focus",
+        "description": "Collapsed panel descendants are inert while normal Tab order is preserved.",
+        "wcag": [
+          "2.4.3",
+          "2.4.11"
+        ],
+        "evidence": "accordion.focus.collapsed"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "accordion",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "heading-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

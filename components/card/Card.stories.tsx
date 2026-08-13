@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['card.semantics.root', 'card.focus.affordance'],
     layout: 'centered',
     docs: {
       description: {
@@ -18,8 +19,13 @@ const meta = {
     },
   },
   argTypes: {
-    unsetBackground: { control: 'boolean', description: "Drop the default surface so a caller's own background applies." },
-    className: { control: 'text', description: 'Layout, radius, and width belong to the caller.' },
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "unsetBackground": { control: 'boolean', description: "Optional. Public `unsetBackground` realization prop. Defaults to false." },
+    "as": { control: 'radio', options: ["div","article","section"], description: "Optional. Public `as` realization prop. Defaults to \"div\"." },
+    "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop." },
+    "ariaLabelledBy": { control: 'text', description: "Optional. Public `ariaLabelledBy` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   // render() supplies children; this satisfies the required prop for the type.
   args: { className: 'w-[320px] rounded-medium', children: null },

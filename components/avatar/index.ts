@@ -1,2 +1,2 @@
 export { Avatar } from './Avatar.js';
-export type { AvatarProps } from './Avatar.types.js';
+export type { AvatarClassNames, AvatarProps } from './Avatar.types.js';

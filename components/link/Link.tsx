@@ -25,12 +25,25 @@ export function Link({
   startIcon,
   endIcon,
   disabled = false,
+  classNames,
+  href,
+  role,
+  tabIndex,
+  onClick,
+  onKeyDown,
   ...rest
 }: LinkProps) {
+  const ResolvedComponent = disabled ? 'a' : Component;
+
   return (
-    <Component
+    <ResolvedComponent
       data-component="link"
       aria-disabled={disabled || undefined}
+      href={disabled ? undefined : href}
+      role={disabled ? 'link' : role}
+      tabIndex={disabled ? (tabIndex ?? 0) : tabIndex}
+      onClick={disabled ? undefined : onClick}
+      onKeyDown={disabled ? undefined : onKeyDown}
       className={[
         'group inline-block max-w-full min-w-0 align-middle leading-none text-link no-underline',
         'transition-opacity duration-[var(--duration-fast)] ease-standard hover:opacity-90 motion-reduce:transition-none',
@@ -38,15 +51,16 @@ export function Link({
         'aria-disabled:pointer-events-none aria-disabled:opacity-40',
         SIZES[size],
         touchTarget ? TOUCH[size] : undefined,
+        classNames?.root,
         className,
       ]
         .filter(Boolean)
         .join(' ')}
       {...rest}
     >
-      <LinkContent size={size} startIcon={startIcon} endIcon={endIcon}>
+      <LinkContent size={size} startIcon={startIcon} endIcon={endIcon} classNames={classNames}>
         {children}
       </LinkContent>
-    </Component>
+    </ResolvedComponent>
   );
 }

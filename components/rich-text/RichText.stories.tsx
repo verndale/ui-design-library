@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['rich-text.semantics.authored'],
     layout: 'padded',
     docs: {
       description: {
@@ -18,6 +19,13 @@ const meta = {
     },
   },
   // Required `children` is supplied per story via `render`; this satisfies the type.
+  argTypes: {
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "listStyle": { control: 'radio', options: ["default","checkmark"], description: "Optional. Public `listStyle` realization prop. Defaults to \"default\"." },
+    "as": { control: 'radio', options: ["div","article"], description: "Optional. Public `as` realization prop. Defaults to \"div\"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
+  },
   args: { children: null },
 } satisfies Meta<typeof RichText>;
 

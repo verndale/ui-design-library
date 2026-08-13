@@ -19,6 +19,30 @@ const path = require('node:path');
 
 const { check } = require('./check-contracts.cjs');
 
+const DEFAULT_REALIZATION = {
+  version: 1,
+  props: [{ path: 'children', type: 'node', required: true }],
+  contentBindings: [{ prop: 'children', node: 'root' }],
+  safeAttributes: [],
+  styleSlots: [],
+  dom: { nodes: [{ id: 'root', element: 'div', parent: null, cardinality: 'one' }] },
+  relationships: [],
+  behaviors: [
+    {
+      id: 'semantics.root',
+      kind: 'semantics',
+      description: 'The owned root remains available to the accessibility tree.',
+      wcag: ['1.3.1'],
+      evidence: 'semantics.root',
+    },
+  ],
+  accessibility: {
+    standard: 'WCAG-2.2-AA',
+    apgPattern: null,
+    consumerResponsibilities: ['accessible-copy'],
+  },
+};
+
 // A minimal, valid-by-default component. Override fields per case to break it.
 function comp(root, dirName, opts) {
   const dir = path.join(root, dirName);
@@ -37,6 +61,7 @@ function comp(root, dirName, opts) {
     exportName = name,
     rendering = 'server',
     variants = [],
+    realization = DEFAULT_REALIZATION,
   } = opts;
   const contract = {
     canonical,
@@ -48,6 +73,7 @@ function comp(root, dirName, opts) {
     exportName,
     rendering,
     reuseFingerprint,
+    realization,
     tokens,
     provenance: { project: 'x', source: 'y' },
     maturity,
@@ -59,7 +85,7 @@ function comp(root, dirName, opts) {
   // checker anchors its title regex to a line-leading `title:`).
   fs.writeFileSync(
     path.join(dir, `${name}.stories.tsx`),
-    `const meta = {\n  title: '${title}',\n  tags: ['maturity:${maturity}'],\n};\nexport default meta;\n`,
+    `const meta = {\n  title: '${title}',\n  tags: ['maturity:${maturity}'],\n  parameters: { realizationEvidence: ['semantics.root'] },\n};\nexport default meta;\nexport const Default = { play: async () => {} };\n`,
   );
   fs.writeFileSync(path.join(dir, 'component.json'), JSON.stringify(contract, null, 2));
 }
@@ -82,6 +108,98 @@ const cases = [
       comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
     },
     expect: (f) => f.length === 0,
+  },
+  {
+    name: 'missing realization contract fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button', realization: null });
+    },
+    expect: (f) => f.some((m) => m.includes('components/button is missing realization')),
+  },
+  {
+    name: 'unresolved realization node reference fails',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: {
+          ...DEFAULT_REALIZATION,
+          relationships: [{ from: 'root', attribute: 'aria-controls', to: 'missing' }],
+        },
+      });
+    },
+    expect: (f) => f.some((m) => m.includes('relationship references missing target node "missing"')),
+  },
+  {
+    name: 'cyclic realization ancestry fails',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: {
+          ...DEFAULT_REALIZATION,
+          dom: { nodes: [
+            { id: 'root', element: 'div', parent: 'child', cardinality: 'one' },
+            { id: 'child', element: 'span', parent: 'root', cardinality: 'one' },
+          ] },
+        },
+      });
+    },
+    expect: (f) => f.some((m) => m.includes('contains a cycle')),
+  },
+  {
+    name: 'multi-node bindings and style slots resolve every node',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: {
+          ...DEFAULT_REALIZATION,
+          props: [
+            ...DEFAULT_REALIZATION.props,
+            { path: 'classNames', type: 'collection', required: false },
+            { path: 'classNames.copy', type: 'string', required: false },
+          ],
+          contentBindings: [{ prop: 'children', nodes: ['root', 'copy'] }],
+          styleSlots: [{ path: 'classNames.copy', nodes: ['root', 'copy'], protectedProperties: ['visibility'] }],
+          dom: { nodes: [
+            { id: 'root', element: 'div', parent: null, cardinality: 'one' },
+            { id: 'copy', element: 'span', parent: 'root', cardinality: 'one' },
+          ] },
+        },
+      });
+    },
+    expect: (f) => f.length === 0,
+  },
+  {
+    name: 'safe-element constraints require public prop references',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: { ...DEFAULT_REALIZATION, constraints: [{ when: { prop: 'missing', equals: 'section' }, requireAny: ['children'] }] },
+      });
+    },
+    expect: (f) => f.some((m) => m.includes('constraint 0 references missing condition prop')),
+  },
+  {
+    name: 'unkeyed realization evidence fails',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        realization: {
+          ...DEFAULT_REALIZATION,
+          behaviors: [{ ...DEFAULT_REALIZATION.behaviors[0], id: 'missing.evidence', evidence: 'missing.evidence' }],
+        },
+      });
+    },
+    expect: (f) => f.some((m) => m.includes('evidence "missing.evidence" is not keyed')),
   },
   {
     name: 'raw colour in a nested implementation fails',

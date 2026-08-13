@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['search-input.keyboard.submit', 'search-input.semantics.label', 'search-input.announcement.results'],
     layout: 'centered',
     docs: {
       description: {
@@ -18,9 +19,23 @@ const meta = {
     },
   },
   argTypes: {
-    placeholder: { control: 'text', description: 'Accessible name and placeholder for the field.' },
-    autoFocus: { control: 'boolean', description: 'Focus the input on mount.' },
-    results: { table: { disable: true } },
+    "placeholder": { control: 'text', description: "Optional. Public `placeholder` realization prop. Defaults to \"Search\"." },
+    "label": { control: 'text', description: "Optional. Public `label` realization prop. Defaults to \"Search\"." },
+    "onSearch": { control: false, description: "Optional. Public `onSearch` realization prop." },
+    "value": { control: 'text', description: "Optional. Public `value` realization prop." },
+    "onChange": { control: false, description: "Optional. Public `onChange` realization prop." },
+    "autoFocus": { control: 'boolean', description: "Optional. Public `autoFocus` realization prop. Defaults to false." },
+    "results": { control: false, description: "Optional. Public `results` realization prop." },
+    "inputId": { control: 'text', description: "Optional. Public `inputId` realization prop." },
+    "clearLabel": { control: 'text', description: "Optional. Public `clearLabel` realization prop. Defaults to \"Clear search\"." },
+    "submitLabel": { control: 'text', description: "Optional. Public `submitLabel` realization prop. Defaults to \"Submit search\"." },
+    "resultsLabel": { control: 'text', description: "Optional. Public `resultsLabel` realization prop. Defaults to \"Search results\"." },
+    "clearIcon": { control: false, description: "Optional. Public `clearIcon` realization prop." },
+    "submitIcon": { control: false, description: "Optional. Public `submitIcon` realization prop." },
+    "showClearButton": { control: 'boolean', description: "Optional. Public `showClearButton` realization prop. Defaults to true." },
+    "showSubmitButton": { control: 'boolean', description: "Optional. Public `showSubmitButton` realization prop. Defaults to true." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { placeholder: 'Search' },
   decorators: [

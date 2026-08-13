@@ -1,15 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import {
-  Badge,
-  DismissibleBadge,
-  type BadgeProps,
-  type DismissibleBadgeProps,
-} from './index';
+import { Badge, type BadgeProps } from './index';
 
-type BadgeStoryArgs = BadgeProps &
-  Partial<Pick<DismissibleBadgeProps, 'onRemove' | 'removeLabel'>>;
+type BadgeStoryArgs = BadgeProps;
 
 const meta = {
   title: 'Badge',
@@ -17,32 +11,25 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['badge.semantics.name', 'badge.remove.keyboard'],
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A server-safe short label for status or categorisation. Use `DismissibleBadge` for an interactive filter chip with a keyboard-operable remove control.',
+          'A short label for status or categorisation. Supplying `onRemove` adds the client-side, keyboard-operable remove control.',
       },
     },
   },
   argTypes: {
-    label: { control: 'text', description: 'The short badge label.' },
-    surface: {
-      control: 'radio',
-      options: ['light', 'dark'],
-      description: 'The surface palette beneath the badge.',
-    },
-    disabled: { control: 'boolean', description: 'Dims the badge and disables its remove control.' },
-    className: { control: 'text', description: 'Optional class names for the badge frame.' },
-    startIcon: { control: false, description: 'Optional decorative leading icon.' },
-    onRemove: {
-      control: false,
-      description: 'DismissibleBadge only: called when the remove control is activated.',
-    },
-    removeLabel: {
-      control: 'text',
-      description: 'DismissibleBadge only: accessible label for the remove control.',
-    },
+    "label": { control: 'text', description: "Required. Public `label` realization prop." },
+    "disabled": { control: 'boolean', description: "Optional. Public `disabled` realization prop. Defaults to false." },
+    "surface": { control: 'radio', options: ["light","dark"], description: "Optional. Public `surface` realization prop. Defaults to \"light\"." },
+    "startIcon": { control: false, description: "Optional. Public `startIcon` realization prop." },
+    "endIcon": { control: false, description: "Optional. Public `endIcon` realization prop." },
+    "onRemove": { control: false, description: "Optional. Public `onRemove` realization prop." },
+    "removeLabel": { control: 'text', description: "Optional. Public `removeLabel` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { label: 'Rail freight' },
 } satisfies Meta<BadgeStoryArgs>;
@@ -64,7 +51,7 @@ const remove = fn();
 
 /** The filter-chip case. The dismiss button is keyboard operable and self-labelling. */
 export const Dismissible: Story = {
-  render: (args) => <DismissibleBadge {...args} onRemove={remove} />,
+  render: (args) => <Badge {...args} onRemove={remove} />,
   /**
    * The dismiss control deriving its own name from the label is the part of the
    * capture worth keeping: a row of chips all labelled "Remove" is unusable by
@@ -93,7 +80,7 @@ export const Dismissible: Story = {
 export const CustomRemoveLabel: Story = {
   args: { label: '2024' },
   render: (args) => (
-    <DismissibleBadge {...args} removeLabel="Remove the 2024 filter" onRemove={() => {}} />
+    <Badge {...args} removeLabel="Remove the 2024 filter" onRemove={() => {}} />
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -116,7 +103,7 @@ const disabledRemove = fn();
 
 export const Disabled: Story = {
   args: { disabled: true },
-  render: (args) => <DismissibleBadge {...args} onRemove={disabledRemove} />,
+  render: (args) => <Badge {...args} onRemove={disabledRemove} />,
   parameters: {
     a11y: {
       // WCAG 1.4.3 exempts inactive components from the contrast minimum, and
@@ -146,7 +133,7 @@ export const Group: Story = {
   render: (args) => (
     <div className="flex flex-wrap gap-2xs">
       {['Rail freight', 'Intermodal', 'Supply chain', 'Sustainability'].map((label) => (
-        <DismissibleBadge key={label} {...args} label={label} onRemove={() => {}} />
+        <Badge key={label} {...args} label={label} onRemove={() => {}} />
       ))}
     </div>
   ),

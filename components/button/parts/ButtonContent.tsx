@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 
-import type { ButtonSize } from '../Button.types.js';
+import type { ButtonClassNames, ButtonSize } from '../Button.types.js';
 
-function ButtonIcon({ children, size }: { children: ReactNode; size: ButtonSize }) {
+function ButtonIcon({ children, size, className }: { children: ReactNode; size: ButtonSize; className?: string }) {
   return (
-    <span aria-hidden className={['inline-flex shrink-0', size === 'small' ? '[&_svg]:size-4' : '[&_svg]:size-5'].join(' ')}>
+    <span aria-hidden className={['inline-flex shrink-0', size === 'small' ? '[&_svg]:size-4' : '[&_svg]:size-5', className].filter(Boolean).join(' ')}>
       {children}
     </span>
   );
@@ -15,17 +15,19 @@ export function ButtonContent({
   startIcon,
   endIcon,
   size,
+  classNames,
 }: {
   children: ReactNode;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   size: ButtonSize;
+  classNames?: ButtonClassNames;
 }) {
   return (
     <>
-      {startIcon ? <ButtonIcon size={size}>{startIcon}</ButtonIcon> : null}
-      {children}
-      {endIcon ? <ButtonIcon size={size}>{endIcon}</ButtonIcon> : null}
+      {startIcon ? <ButtonIcon size={size} className={classNames?.startIcon}>{startIcon}</ButtonIcon> : null}
+      <span className={classNames?.content}>{children}</span>
+      {endIcon ? <ButtonIcon size={size} className={classNames?.endIcon}>{endIcon}</ButtonIcon> : null}
     </>
   );
 }

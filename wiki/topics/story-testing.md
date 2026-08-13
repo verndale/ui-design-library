@@ -8,13 +8,14 @@ Stories are the test suite. Every story renders in a real Chromium, runs its `pl
 
 ## Current state
 
-- `pnpm test` is typecheck + contracts + `test:stories` + `test:motion`. All four must pass; the story tests are a gate, not a report.
-- `pnpm test:stories` runs every story through `@storybook/addon-vitest` in Vitest browser mode over Chromium. A story with no `play` function still counts as a passing test — Storybook generates a smoke render. That is a floor, not coverage.
+- `pnpm test` includes contract/architecture/SSR checks plus Chromium accessibility, WebKit accessibility, accessibility modes, and reduced motion. Every invocation is a gate, not a report.
+- `pnpm accessibility` and `pnpm test:a11y:webkit` run every story through `@storybook/addon-vitest` in real browser engines. WebKit is a Safari-engine regression proxy; it is not a substitute for a human VoiceOver session.
+- `pnpm test:a11y:modes` applies deterministic checks for IDREF resolution, live-region shape, inert focus reachability, target size, 320px reflow/text spacing, forced-colors control/focus visibility, and decorative SVG exclusion.
 - `pnpm test:motion` re-runs only `motion`-tagged stories with Playwright emulating `prefers-reduced-motion: reduce`. Those stories branch on `matchMedia` inside one `play` function so a single story asserts the correct outcome under both preferences.
 - `a11y: { test: 'error' }` in `.storybook/preview.ts` makes an axe violation fail the story test. Where a rule is genuinely wrong for one story, it is scoped off **on that story** with a reason — never loosened globally. Badge's disabled state is the worked example: WCAG 1.4.3 exempts inactive components from contrast, and axe cannot tell a disabled control from low-contrast text.
 - The Interactions panel is core in Storybook 10 — `play` functions get a replayable step-by-step view with no addon involved. addon-vitest adds the runner, the sidebar Testing widget, and the a11y gate on top.
 - Two Vitest configs share a factory in `vitest.shared.ts`. They must be separate invocations, not two projects in one config.
-- CI installs Chromium with its own cache, since the browser lives outside the pnpm store.
+- Library CI installs Chromium and WebKit with its own cache, since browsers live outside the pnpm store. Consuming repositories do not inherit this dependency; they own their own browser and assistive-technology test plans.
 
 ## Assertion rules
 
@@ -28,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-13 — Expanded the executable evidence surface across Chromium, WebKit, forced colors, reflow/text-spacing, IDREF/live-region integrity, focus reachability, target size, and reduced motion. Kept browser installation in library CI and whole-page/VoiceOver acceptance with consumers ([plan](../plans/2026-08-13-realization-first-reuse-wcag-22-aa.md), [journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-06 — feat(ci): Update workflows and enhance modal component ([PR #24](https://github.com/verndale/ui-design-library/pull/24))
 - 2026-08-05 — chore(ci): Update documentation and workflows for npm release ([PR #19](https://github.com/verndale/ui-design-library/pull/19))
 - 2026-07-27 — Covered reduced motion with a second Vitest **config**, not a second project in one config: the `storybookTest` plugin caches generated setup under a path derived from `configDir`, so two projects sharing one race on it and every story file fails to import. Scoped by `motion` tag rather than the whole suite, since re-running axe everywhere to check durations is a poor trade ([plan](../plans/2026-07-27-storybook-review-addons-and-reduced-motion.md), [journal](../journal/2026-07-27-reduced-motion-coverage.md)).

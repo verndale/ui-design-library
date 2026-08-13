@@ -1,8 +1,15 @@
 import type { ReactNode } from 'react';
 
+import type { SlotClassNames } from '../../src/lib/classNames.js';
+
+export type SearchInputClassNames = SlotClassNames<
+  'root' | 'form' | 'label' | 'input' | 'controls' | 'clearButton' | 'clearIcon' | 'submitButton' | 'submitIcon' | 'results'
+>;
+
 export type SearchInputProps = {
-  /** Accessible name and placeholder for the field. */
+  /** Visual placeholder. The accessible name comes from `label`. */
   placeholder?: string;
+  label?: string;
   /** Fired with the trimmed query on submit; a blank query does not fire. */
   onSearch?: (query: string) => void;
   className?: string;
@@ -13,4 +20,13 @@ export type SearchInputProps = {
   autoFocus?: boolean;
   /** Results or suggestions announced in a polite live region. */
   results?: ReactNode;
+  inputId?: string;
+  clearLabel?: string;
+  submitLabel?: string;
+  resultsLabel?: string;
+  clearIcon?: ReactNode;
+  submitIcon?: ReactNode;
+  showClearButton?: boolean;
+  showSubmitButton?: boolean;
+  classNames?: SearchInputClassNames;
 };

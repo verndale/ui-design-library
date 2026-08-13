@@ -28,20 +28,31 @@ export const storybookProject = ({
   name,
   reducedMotion,
   tags,
+  browser = 'chromium',
+  a11yModes = false,
 }: {
   name: string;
   reducedMotion: 'reduce' | 'no-preference';
   tags?: { include?: string[]; exclude?: string[] };
+  browser?: 'chromium' | 'webkit';
+  a11yModes?: boolean;
 }) => ({
   plugins: [tailwindcss(), storybookTest({ configDir: '.storybook', tags })],
+  define: { __A11Y_MODES__: JSON.stringify(a11yModes) },
   optimizeDeps: { include: ['storybook/test', 'storybook/viewport'] },
   test: {
     name,
+    setupFiles: ['.storybook/a11y-modes.setup.ts'],
     browser: {
       enabled: true,
       headless: true,
-      provider: playwright({ contextOptions: { reducedMotion } }),
-      instances: [{ browser: 'chromium' }],
+      provider: playwright({
+        contextOptions: {
+          reducedMotion,
+          ...(a11yModes ? { forcedColors: 'active' as const, viewport: { width: 320, height: 900 } } : {}),
+        },
+      }),
+      instances: [{ browser }],
     },
   },
 });

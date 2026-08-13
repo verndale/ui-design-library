@@ -2,15 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 import { useState } from 'react';
 
-import {
-  Alert,
-  DismissibleAlert,
-  type AlertProps,
-  type DismissibleAlertProps,
-} from './index';
+import { Alert, type AlertProps } from './index';
 
-type AlertStoryArgs = AlertProps &
-  Partial<Pick<DismissibleAlertProps, 'onDismiss' | 'dismissLabel' | 'dismissMs'>>;
+type AlertStoryArgs = AlertProps;
 
 /**
  * The story file is this component's API contract. What is worth proving is the
@@ -23,31 +17,26 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['alert.announcement.priority', 'alert.dismiss.keyboard'],
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A server-safe page-level notification on a raised surface with a tone accent. `positive` announces politely and `critical` assertively. Use `DismissibleAlert` when dismissal or a timer is required.',
+          'A page-level notification on a raised surface with a tone accent. `positive` announces politely and `critical` assertively. Supplying `onDismiss` adds the client-side dismiss control and optional timer.',
       },
     },
   },
   argTypes: {
-    variant: { control: 'radio', options: ['positive', 'critical'], description: 'Severity — drives politeness, icon, and tone.' },
-    open: { control: 'boolean', description: 'Whether the alert is shown.' },
-    children: { control: 'text', description: 'The notification message.' },
-    className: { control: 'text', description: 'Optional class names for the alert frame.' },
-    onDismiss: {
-      control: false,
-      description: 'DismissibleAlert only: called by the dismiss control or auto-dismiss timer.',
-    },
-    dismissLabel: {
-      control: 'text',
-      description: 'DismissibleAlert only: accessible label for the dismiss control.',
-    },
-    dismissMs: {
-      control: 'number',
-      description: 'DismissibleAlert only: auto-dismiss delay in milliseconds; omit or use 0 to disable.',
-    },
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "variant": { control: 'radio', options: ["positive","critical"], description: "Optional. Public `variant` realization prop. Defaults to \"positive\"." },
+    "open": { control: 'boolean', description: "Optional. Public `open` realization prop. Defaults to true." },
+    "icon": { control: false, description: "Optional. Public `icon` realization prop." },
+    "showAccent": { control: 'boolean', description: "Optional. Public `showAccent` realization prop. Defaults to true." },
+    "onDismiss": { control: false, description: "Optional. Public `onDismiss` realization prop." },
+    "dismissLabel": { control: 'text', description: "Optional. Public `dismissLabel` realization prop. Defaults to \"Dismiss\"." },
+    "dismissMs": { control: 'number', description: "Optional. Public `dismissMs` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { variant: 'positive', children: 'Your changes have been saved.', open: true },
 } satisfies Meta<AlertStoryArgs>;
@@ -75,7 +64,7 @@ export const Dismissible: Story = {
   render: function Render(args) {
     const [open, setOpen] = useState(true);
     return (
-      <DismissibleAlert
+      <Alert
         {...args}
         open={open}
         onDismiss={() => {
@@ -121,7 +110,7 @@ export const AutoDismiss: Story = {
   render: function Render(args) {
     const [open, setOpen] = useState(true);
     return (
-      <DismissibleAlert
+      <Alert
         {...args}
         open={open}
         dismissMs={80}

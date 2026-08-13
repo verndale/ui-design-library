@@ -35,6 +35,7 @@ export function Button({
   startIcon,
   endIcon,
   type = 'button',
+  classNames,
   ...rest
 }: ButtonProps) {
   const palette = surface === 'dark' ? VARIANTS_DARK : VARIANTS;
@@ -51,13 +52,14 @@ export function Button({
         'disabled:pointer-events-none disabled:border-transparent disabled:bg-control-disabled-bg disabled:text-control-disabled-text',
         SIZES[size],
         palette[variant],
+        classNames?.root,
         className,
       ]
         .filter(Boolean)
         .join(' ')}
       {...rest}
     >
-      <ButtonContent size={size} startIcon={startIcon} endIcon={endIcon}>
+      <ButtonContent size={size} startIcon={startIcon} endIcon={endIcon} classNames={classNames}>
         {children}
       </ButtonContent>
     </button>

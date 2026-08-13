@@ -17,6 +17,8 @@ How public component facades preserve stable imports while implementation trees 
 - Accordion and In-page navigation are hybrid: their public landmarks/containers are server-compatible and their disclosure, observer, and state branches hydrate independently.
 - Alert and Badge expose server-safe base components beside explicitly interactive dismissible exports.
 - Every manifest names one primary value export and declares its `server`, `hybrid`, or `client` rendering boundary. The architecture gate follows only that export's runtime graph, including relative side-effect imports and statically named dynamic imports, so secondary facade exports do not widen a server primary while hidden client dependencies do.
+- Every primary manifest also publishes realization contract v1: its public prop types/defaults, exact owned semantic tree, conditional branches, IDREF relationships, owned behavior evidence, safe style slots, and governed caller responsibilities. The contract checker rejects unresolved references, ancestry cycles, and unsafe semantic alternatives.
+- All primary components expose typed `classNames` slot maps. Accessibility-owned nodes protect focus, visibility, semantics, and interaction properties instead of transferring those invariants to consumers.
 - Stories import only `./index`, so tests exercise the same facade as package consumers.
 - `pnpm architecture` enforces shape and boundaries; `pnpm test:ssr` checks DOM-free rendering.
 - Modal and Search overlay share a document-level overlay stack. Only its top entry traps focus, handles Escape, and exposes modal semantics; scroll locking is reference-counted across the stack.
@@ -25,6 +27,7 @@ How public component facades preserve stable imports while implementation trees 
 
 ## Decisions
 
+- 2026-08-13 — Made package-owned DOM and accessibility behavior an executable manifest contract before consumer authoring. Unsafe semantic alternatives are excluded or constrained by required naming props, and component-owned invariants cannot be waived through style slots ([plan](../plans/2026-08-13-realization-first-reuse-wcag-22-aa.md), [journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-12 — Made the primary named export and its derived rendering graph explicit reuse metadata, keeping secondary developer exports public without multiplying AI candidates ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).
 - 2026-08-13 — Closed rendering-graph omissions for relative side-effect and static dynamic imports after an adversarial server-to-client fixture passed the original classifier ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).
 - 2026-08-12 — Kept directory-shaped public imports stable through per-component `index.ts` facades, allowing internal tree/branch/leaf files to evolve without exposing their names ([plan](../plans/2026-08-12-server-first-component-architecture.md), [journal](../journal/2026-08-12-server-first-component-architecture.md)).

@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['quote.semantics.blockquote'],
     layout: 'centered',
     docs: {
       description: {
@@ -17,7 +18,12 @@ const meta = {
       },
     },
   },
-  argTypes: { className: { control: 'text', description: 'Typography scale belongs to the caller.' } },
+  argTypes: {
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "cite": { control: 'text', description: "Optional. Public `cite` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
+  },
   args: { className: 'max-w-[46ch] text-xl', children: null },
 } satisfies Meta<typeof Quote>;
 

@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['stat.reading.order'],
     layout: 'centered',
     docs: {
       description: {
@@ -16,6 +17,14 @@ const meta = {
           'A single statistic: a prominent value paired with a describing label, value-then-label in reading order. The surface is the caller’s — wrap in a Card for the boxed treatment. Group several with StatGroup, which names a native list with a visually-hidden heading.',
       },
     },
+  },
+  argTypes: {
+    "value": { control: false, description: "Required. Public `value` realization prop." },
+    "label": { control: false, description: "Required. Public `label` realization prop." },
+    "description": { control: false, description: "Optional. Public `description` realization prop." },
+    "contentOrder": { control: 'radio', options: ["value-first","label-first"], description: "Optional. Public `contentOrder` realization prop. Defaults to \"value-first\"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { value: '98%', label: 'customer satisfaction' },
 } satisfies Meta<typeof Stat>;

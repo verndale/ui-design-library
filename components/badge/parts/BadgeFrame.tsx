@@ -8,6 +8,8 @@ export function BadgeFrame({
   surface = 'light',
   className,
   startIcon,
+  endIcon,
+  classNames,
   action,
 }: BadgeProps & { action?: ReactNode }) {
   const inverse = surface === 'dark';
@@ -20,17 +22,19 @@ export function BadgeFrame({
         'inline-flex items-center gap-3xs rounded-pill border border-solid px-2xs py-3xs text-sm leading-none',
         inverse ? 'border-text-inverse text-text-inverse' : 'border-border-strong text-text-primary',
         disabled ? 'opacity-40' : undefined,
+        classNames?.root,
         className,
       ]
         .filter(Boolean)
         .join(' ')}
     >
       {startIcon ? (
-        <span aria-hidden className="inline-flex shrink-0 [&_svg]:size-4">
+        <span aria-hidden className={['inline-flex shrink-0 [&_svg]:size-4', classNames?.startIcon].filter(Boolean).join(' ')}>
           {startIcon}
         </span>
       ) : null}
-      <span>{label}</span>
+      <span className={classNames?.label}>{label}</span>
+      {endIcon ? <span aria-hidden className={['inline-flex shrink-0 [&_svg]:size-4', classNames?.endIcon].filter(Boolean).join(' ')}>{endIcon}</span> : null}
       {action}
     </span>
   );

@@ -5,12 +5,25 @@
   "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["heading", "supportingCopy", "input", "quickLinks", "resultsPanel"],
-  "variants": ["default"],
+  "slots": [
+    "heading",
+    "supportingCopy",
+    "input",
+    "quickLinks",
+    "resultsPanel"
+  ],
+  "variants": [
+    "default"
+  ],
   "reuseFingerprint": {
     "affordance": "contain",
     "role": "container",
-    "slots": ["heading", "field", "panel", "close"]
+    "slots": [
+      "heading",
+      "field",
+      "panel",
+      "close"
+    ]
   },
   "tokens": [
     "color-surface-scrim",
@@ -41,5 +54,498 @@
     "Dropped the decorative brand glow asset; the panel surface is a token.",
     "Dropped the client's bespoke suggestion-list arrow-key navigation over a fixed suggestion list; results are a caller-owned slot in a polite live region, so option-level activedescendant is the caller's responsibility. Kept the dialog focus trap, Escape/backdrop dismissal, focus restoration, and the idle-to-active state split."
   ],
-  "maturity": "candidate"
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "open",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "path": "onClose",
+        "type": "callback",
+        "required": true
+      },
+      {
+        "path": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "supportingCopy",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "query",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "onQueryChange",
+        "type": "callback",
+        "required": true
+      },
+      {
+        "path": "onSubmit",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "inputPlaceholder",
+        "type": "string",
+        "required": false,
+        "default": "Search"
+      },
+      {
+        "path": "quickLinks",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "resultsPanel",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "closeLabel",
+        "type": "string",
+        "required": false,
+        "default": "Close search"
+      },
+      {
+        "path": "returnFocusRef",
+        "type": "ref",
+        "required": false
+      },
+      {
+        "path": "id",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "titleHeadingLevel",
+        "type": "enum",
+        "required": false,
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "default": 2
+      },
+      {
+        "path": "closeIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "inputLabel",
+        "type": "string",
+        "required": false,
+        "default": "Search"
+      },
+      {
+        "path": "clearLabel",
+        "type": "string",
+        "required": false,
+        "default": "Clear search"
+      },
+      {
+        "path": "submitLabel",
+        "type": "string",
+        "required": false,
+        "default": "Submit search"
+      },
+      {
+        "path": "resultsLabel",
+        "type": "string",
+        "required": false,
+        "default": "Search results"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.backdrop",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.viewport",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.dialog",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.closeButton",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.closeIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.header",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.title",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.description",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.search",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.quickLinks",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.results",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "title",
+        "node": "title"
+      },
+      {
+        "prop": "supportingCopy",
+        "node": "description"
+      },
+      {
+        "prop": "quickLinks",
+        "node": "quickLinks"
+      },
+      {
+        "prop": "resultsPanel",
+        "node": "searchResults"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "id",
+        "node": "dialog",
+        "attribute": "id"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.backdrop",
+        "node": "backdrop",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.viewport",
+        "node": "viewport",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.dialog",
+        "node": "dialog",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.closeButton",
+        "node": "closeButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.closeIcon",
+        "node": "closeIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.header",
+        "node": "header",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.title",
+        "node": "title",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.description",
+        "node": "description",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.search",
+        "node": "searchWrapper",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.quickLinks",
+        "node": "quickLinks",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.results",
+        "node": "searchResults",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "backdrop",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "viewport",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+      {
+        "id": "dialog",
+        "element": "div",
+        "parent": "viewport",
+          "cardinality": "one"
+        },
+        {
+          "id": "closeButton",
+          "element": "button",
+          "parent": "dialog",
+          "cardinality": "one"
+        },
+      {
+        "id": "closeIcon",
+        "element": "span",
+        "parent": "closeButton",
+        "cardinality": "one"
+      },
+      {
+        "id": "header",
+        "element": "div",
+        "parent": "dialog",
+          "cardinality": "one"
+        },
+        {
+          "id": "title",
+          "element": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+        "parent": "header",
+          "cardinality": "one"
+        },
+        {
+          "id": "description",
+          "element": "div",
+        "parent": "header",
+          "cardinality": "zero-or-one"
+        },
+        {
+        "id": "searchWrapper",
+        "element": "div",
+        "parent": "dialog",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchRoot",
+        "element": "div",
+        "parent": "searchWrapper",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchForm",
+        "element": "form",
+        "parent": "searchRoot",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchLabel",
+        "element": "label",
+        "parent": "searchForm",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchInput",
+        "element": "input",
+        "parent": "searchForm",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchControls",
+        "element": "div",
+        "parent": "searchForm",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchClearButton",
+        "element": "button",
+        "parent": "searchControls",
+        "cardinality": "zero-or-one"
+      },
+      {
+        "id": "searchClearIcon",
+        "element": "span",
+        "parent": "searchClearButton",
+        "cardinality": "zero-or-one"
+      },
+      {
+        "id": "searchSubmitButton",
+        "element": "button",
+        "parent": "searchControls",
+        "cardinality": "one"
+      },
+      {
+        "id": "searchSubmitIcon",
+        "element": "span",
+        "parent": "searchSubmitButton",
+        "cardinality": "one"
+      },
+      {
+        "id": "quickLinks",
+        "element": "div",
+        "parent": "dialog",
+        "cardinality": "zero-or-one"
+      },
+      {
+        "id": "searchResults",
+        "element": "div",
+        "parent": "searchRoot",
+        "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "from": "dialog",
+        "attribute": "aria-labelledby",
+        "to": "title"
+      },
+      {
+        "from": "dialog",
+        "attribute": "aria-describedby",
+        "to": "description"
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "search-overlay.focus.modal",
+        "kind": "focus",
+        "description": "Focus enters, remains inside, and restores after Escape, close, or backdrop dismissal.",
+        "wcag": [
+          "2.1.2",
+          "2.4.3",
+          "2.4.11",
+          "2.5.8"
+        ],
+        "evidence": "search-overlay.focus.modal"
+      },
+      {
+        "id": "search-overlay.semantics.dialog",
+        "kind": "semantics",
+        "description": "Modal naming resolves to one heading while SearchInput keeps its separate label.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "search-overlay.semantics.dialog"
+      },
+      {
+        "id": "search-overlay.announcement.results",
+        "kind": "announcement",
+        "description": "Search changes use one polite atomic announcement path.",
+        "wcag": [
+          "4.1.3"
+        ],
+        "evidence": "search-overlay.announcement.results"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "modal-dialog",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "dynamic-content",
+        "heading-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

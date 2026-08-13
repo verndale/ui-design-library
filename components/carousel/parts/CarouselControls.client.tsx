@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import type { CarouselClassNames } from '../Carousel.types.js';
+
 type CarouselControlsProps = {
   canPrevious: boolean;
   canNext: boolean;
@@ -9,6 +11,7 @@ type CarouselControlsProps = {
   nextIcon?: ReactNode;
   onPrevious: () => void;
   onNext: () => void;
+  classNames?: CarouselClassNames;
 };
 
 const control =
@@ -27,14 +30,15 @@ export function CarouselControls({
   nextIcon,
   onPrevious,
   onNext,
+  classNames,
 }: CarouselControlsProps) {
   return (
-    <div className="mt-s flex items-center gap-2xs">
-      <button type="button" aria-label={previousLabel} disabled={!canPrevious} onClick={onPrevious} className={control}>
-        <span aria-hidden>{previousIcon ?? '‹'}</span>
+    <div className={['mt-s flex items-center gap-2xs', classNames?.controls].filter(Boolean).join(' ')}>
+      <button type="button" aria-label={previousLabel} disabled={!canPrevious} onClick={onPrevious} className={[control, classNames?.previousButton].filter(Boolean).join(' ')}>
+        <span aria-hidden className={classNames?.previousIcon}>{previousIcon ?? '‹'}</span>
       </button>
-      <button type="button" aria-label={nextLabel} disabled={!canNext} onClick={onNext} className={control}>
-        <span aria-hidden>{nextIcon ?? '›'}</span>
+      <button type="button" aria-label={nextLabel} disabled={!canNext} onClick={onNext} className={[control, classNames?.nextButton].filter(Boolean).join(' ')}>
+        <span aria-hidden className={classNames?.nextIcon}>{nextIcon ?? '›'}</span>
       </button>
     </div>
   );

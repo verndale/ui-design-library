@@ -20,8 +20,13 @@ export function Slider({
   hint,
   unit,
   className,
+  classNames,
+  inputId: suppliedInputId,
+  showScale = true,
+  showSelectedValue = true,
 }: SliderProps) {
-  const inputId = useId();
+  const generatedInputId = useId();
+  const inputId = suppliedInputId ?? generatedInputId;
   const displayId = useId();
   const hintId = useId();
   const [internalIndex, setInternalIndex] = useState(() => optionIndex(options, defaultValue));
@@ -42,10 +47,10 @@ export function Slider({
   };
 
   return (
-    <div data-component="slider" className={['flex flex-col gap-2xs', className].filter(Boolean).join(' ')}>
-      <div className="flex items-baseline justify-between gap-s">
-        <label htmlFor={inputId} className="text-base font-semibold text-text-primary">{label}</label>
-        {hint ? <span id={hintId} className="text-sm text-text-secondary">{hint}</span> : null}
+    <div data-component="slider" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
+      <div className={['flex items-baseline justify-between gap-s', classNames?.header].filter(Boolean).join(' ')}>
+        <label htmlFor={inputId} className={['text-base font-semibold text-text-primary', classNames?.label].filter(Boolean).join(' ')}>{label}</label>
+        {hint ? <span id={hintId} className={['text-sm text-text-secondary', classNames?.hint].filter(Boolean).join(' ')}>{hint}</span> : null}
       </div>
       <SliderTrack
         inputId={inputId}
@@ -53,15 +58,17 @@ export function Slider({
         lastIndex={lastIndex}
         options={options}
         valueText={valueText}
-        describedBy={[displayId, hint ? hintId : null].filter(Boolean).join(' ')}
+        describedBy={[showSelectedValue ? displayId : null, hint ? hintId : null].filter(Boolean).join(' ')}
         progress={`${progress}%`}
         onChange={selectIndex}
+        classNames={classNames}
       />
-      <SliderScale
+      {showScale ? <SliderScale
         firstLabel={options[0]?.label}
         lastLabel={lastIndex > 0 ? options[lastIndex]?.label : undefined}
-      />
-      <SliderSelectedValue displayId={displayId} selected={selected} unit={unit} />
+        classNames={classNames}
+      /> : null}
+      {showSelectedValue ? <SliderSelectedValue displayId={displayId} selected={selected} unit={unit} classNames={classNames} /> : null}
     </div>
   );
 }

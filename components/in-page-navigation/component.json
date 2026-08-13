@@ -5,10 +5,17 @@
   "rendering": "hybrid",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["item"],
-  "variants": ["default", "mobile-collapsed"],
+  "slots": [
+    "item"
+  ],
+  "variants": [
+    "default",
+    "mobile-collapsed"
+  ],
   "reuseFingerprint": {
-    "slots": ["action"],
+    "slots": [
+      "action"
+    ],
     "affordance": "navigate",
     "role": "action-group"
   },
@@ -37,5 +44,370 @@
     "Replaced the fixed reveal transition with grid-template-rows 0fr→1fr on duration-[var(--duration-base)] ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
     "Kept verbatim: the <nav aria-label=\"On this page\"> landmark, aria-current on the active link, native anchor links (Tab reaches them, Enter activates), the mobile trigger's aria-expanded/aria-controls, and the collapsed drawer's inert gating out of the tab order — the accessibility contract that made it worth capturing."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "items",
+        "type": "collection",
+        "required": true
+      },
+      {
+        "path": "items[].id",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "items[].label",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "default": "On this page"
+      },
+      {
+        "path": "activeId",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "collapsedIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "expandedIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.desktopList",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.item",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.link",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.mobile",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.trigger",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.icon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.motion",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.panel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.mobileList",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "items[].label",
+        "nodes": [
+          "desktopLink",
+          "mobileLink",
+          "label"
+        ]
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.desktopList",
+        "node": "desktopList",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.item",
+        "nodes": [
+          "desktopItem",
+          "mobileItem"
+        ],
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.link",
+        "nodes": [
+          "desktopLink",
+          "mobileLink"
+        ],
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.mobile",
+        "node": "mobile",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.trigger",
+        "node": "trigger",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.icon",
+        "node": "icon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.motion",
+        "node": "motion",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.panel",
+        "node": "mobileList",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.mobileList",
+        "node": "mobileList",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "nav",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "desktopList",
+          "element": "ul",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+        "id": "desktopItem",
+        "element": "li",
+        "parent": "desktopList",
+        "cardinality": "one-or-more"
+      },
+      {
+        "id": "desktopLink",
+        "element": "a",
+        "parent": "desktopItem",
+        "cardinality": "one-or-more"
+        },
+        {
+          "id": "mobile",
+          "element": "div",
+        "parent": "root",
+        "cardinality": "one"
+        },
+        {
+          "id": "trigger",
+          "element": "button",
+        "parent": "mobile",
+        "cardinality": "one"
+        },
+        {
+          "id": "label",
+          "element": "span",
+        "parent": "trigger",
+        "cardinality": "one"
+        },
+        {
+          "id": "icon",
+          "element": "span",
+        "parent": "trigger",
+        "cardinality": "one"
+        },
+        {
+          "id": "motion",
+          "element": "div",
+        "parent": "mobile",
+        "cardinality": "one"
+      },
+      {
+        "id": "motionClip",
+        "element": "div",
+        "parent": "motion",
+        "cardinality": "one"
+      },
+      {
+        "id": "mobileList",
+        "element": "ul",
+        "parent": "motionClip",
+        "cardinality": "one"
+      },
+      {
+        "id": "mobileItem",
+        "element": "li",
+        "parent": "mobileList",
+        "cardinality": "one-or-more"
+      },
+      {
+        "id": "mobileLink",
+        "element": "a",
+        "parent": "mobileItem",
+        "cardinality": "one-or-more"
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "from": "trigger",
+        "attribute": "aria-controls",
+        "to": "mobileList"
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "in-page-navigation.disclosure.keyboard",
+        "kind": "keyboard",
+        "description": "The mobile disclosure is a named native button operable by Enter and Space.",
+        "wcag": [
+          "2.1.1",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "in-page-navigation.disclosure.keyboard"
+      },
+      {
+        "id": "in-page-navigation.disclosure.state",
+        "kind": "state",
+        "description": "aria-expanded and aria-controls resolve to the mobile panel.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "in-page-navigation.disclosure.state"
+      },
+      {
+        "id": "in-page-navigation.responsive.hidden",
+        "kind": "focus",
+        "description": "Inactive responsive copies contain no reachable focus targets.",
+        "wcag": [
+          "2.4.3"
+        ],
+        "evidence": "in-page-navigation.responsive.hidden"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "disclosure-navigation",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "landmark-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

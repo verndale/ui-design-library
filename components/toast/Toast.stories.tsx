@@ -15,6 +15,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['toast.announcement.priority', 'toast.icon.decorative'],
     layout: 'centered',
     docs: {
       description: {
@@ -27,9 +28,15 @@ const meta = {
     },
   },
   argTypes: {
-    variant: { control: 'radio', options: ['neutral', 'critical'], description: 'Severity — drives politeness and icon tone.' },
-    dismissMs: { control: 'number', description: 'Auto-dismiss delay in ms; 0 keeps it up. Requires onDismiss.' },
-    onDismiss: { action: 'dismiss', description: 'Called when the auto-dismiss timer elapses.' },
+    "open": { control: 'boolean', description: "Required. Public `open` realization prop." },
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "variant": { control: 'radio', options: ["neutral","critical"], description: "Optional. Public `variant` realization prop. Defaults to \"neutral\"." },
+    "dismissMs": { control: 'number', description: "Optional. Public `dismissMs` realization prop." },
+    "onDismiss": { control: false, description: "Optional. Public `onDismiss` realization prop." },
+    "icon": { control: false, description: "Optional. Public `icon` realization prop." },
+    "position": { control: 'radio', options: ["top-start","top-center","top-end","bottom-start","bottom-center","bottom-end"], description: "Optional. Public `position` realization prop. Defaults to \"bottom-center\"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { open: true, variant: 'neutral', children: 'Link copied' },
 } satisfies Meta<typeof Toast>;

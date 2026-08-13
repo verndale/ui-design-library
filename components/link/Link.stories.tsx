@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, within } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { Link } from './index';
 
@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['link.keyboard.activation', 'link.state.disabled', 'link.target.size'],
     layout: 'centered',
     docs: {
       description: {
@@ -18,10 +19,20 @@ const meta = {
     },
   },
   argTypes: {
-    size: { control: 'radio', options: ['large', 'medium', 'small'] },
-    touchTarget: { control: 'boolean', description: 'Adds an invisible hit pad so the tap target meets the minimum height.' },
-    disabled: { control: 'boolean' },
-    as: { table: { disable: true } },
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "size": { control: 'radio', options: ["large","medium","small"], description: "Optional. Public `size` realization prop. Defaults to \"large\"." },
+    "as": { control: false, description: "Optional. Public `as` realization prop." },
+    "touchTarget": { control: 'boolean', description: "Optional. Public `touchTarget` realization prop. Defaults to false." },
+    "startIcon": { control: false, description: "Optional. Public `startIcon` realization prop." },
+    "endIcon": { control: false, description: "Optional. Public `endIcon` realization prop." },
+    "disabled": { control: 'boolean', description: "Optional. Public `disabled` realization prop. Defaults to false." },
+    "href": { control: 'text', description: "Required for automated reuse. Native link destination." },
+    "target": { control: 'radio', options: ["_self","_blank","_parent","_top"], description: "Optional. Native browsing context." },
+    "rel": { control: 'text', description: "Optional. Native link relationship." },
+    "onClick": { control: false, description: "Optional. Native activation callback." },
+    "aria-label": { control: 'text', description: "Optional. Native accessible-name override." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { children: 'Read the documentation', href: '#top', size: 'large' },
 } satisfies Meta<typeof Link>;
@@ -111,12 +122,15 @@ export const WithTouchTarget: Story = {
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, children: 'Unavailable' },
-  play: async ({ canvasElement }) => {
+  args: { disabled: true, children: 'Unavailable', onClick: fn() },
+  play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByRole('link', { name: 'Unavailable' });
 
     await expect(link).toHaveAttribute('aria-disabled', 'true');
     await expect(getComputedStyle(link).pointerEvents).toBe('none');
+    link.focus();
+    await userEvent.keyboard('{Enter}');
+    await expect(args.onClick).not.toHaveBeenCalled();
   },
 };

@@ -9,6 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['avatar.semantics.content'],
     layout: 'centered',
     docs: {
       description: {
@@ -17,7 +18,13 @@ const meta = {
       },
     },
   },
-  argTypes: { className: { control: 'text', description: 'Sizing belongs to the caller.' } },
+  argTypes: {
+    "children": { control: false, description: "Required. Public `children` realization prop." },
+    "id": { control: 'text', description: "Optional. Public `id` realization prop." },
+    "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
+  },
   args: { className: 'w-[200px]', children: null },
 } satisfies Meta<typeof Avatar>;
 

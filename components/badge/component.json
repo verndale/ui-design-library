@@ -2,19 +2,33 @@
   "canonical": "Badge",
   "slug": "badge",
   "exportName": "Badge",
-  "rendering": "server",
+  "rendering": "hybrid",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["label", "startIcon"],
-  "variants": ["light", "dark", "disabled"],
+  "slots": [
+    "label",
+    "startIcon"
+  ],
+  "variants": [
+    "light",
+    "dark",
+    "disabled"
+  ],
   "reuseFingerprint": {
-    "slots": ["badge", "icon"],
+    "slots": [
+      "badge",
+      "icon"
+    ],
     "affordance": "display",
     "role": "entity-summary"
   },
   "tokens": [
-    "color-border-strong", "color-text-primary", "color-text-inverse",
-    "color-border-focus", "radius-pill", "ease-standard"
+    "color-border-strong",
+    "color-text-primary",
+    "color-text-inverse",
+    "color-border-focus",
+    "radius-pill",
+    "ease-standard"
   ],
   "provenance": {
     "project": "canadian-national",
@@ -30,5 +44,219 @@
     "Renamed colorScheme to surface and RemovableTag to Badge, matching the canonical.",
     "Kept verbatim: the dismiss affordance, the `Remove ${label}` default accessible name, and the disabled handling."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "disabled",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "surface",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "light",
+          "dark"
+        ],
+        "default": "light"
+      },
+      {
+        "path": "startIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "endIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "onRemove",
+        "type": "callback",
+        "required": false
+      },
+      {
+        "path": "removeLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.startIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.endIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.removeButton",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "label",
+        "node": "label"
+      },
+      {
+        "prop": "startIcon",
+        "node": "startIcon"
+      },
+      {
+        "prop": "endIcon",
+        "node": "endIcon"
+      }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.startIcon",
+        "node": "startIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.endIcon",
+        "node": "endIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.removeButton",
+        "node": "removeButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "span",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "startIcon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "label",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "endIcon",
+          "element": "span",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        },
+        {
+          "id": "removeButton",
+          "element": "button",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "badge.semantics.name",
+        "kind": "semantics",
+        "description": "Text supplies the badge name while decorative icons remain hidden.",
+        "wcag": [
+          "1.1.1",
+          "2.5.3"
+        ],
+        "evidence": "badge.semantics.name"
+      },
+      {
+        "id": "badge.remove.keyboard",
+        "kind": "keyboard",
+        "description": "Dismissible badges expose a named native remove button with disabled semantics.",
+        "wcag": [
+          "2.1.1",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "badge.remove.keyboard"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

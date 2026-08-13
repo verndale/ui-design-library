@@ -14,8 +14,10 @@ export function Image({
   loading = 'lazy',
   rounded = false,
   className,
+  classNames,
+  wrapper = 'auto',
 }: ImageProps) {
-  const shell = [rounded ? 'overflow-hidden rounded-medium' : '', className].filter(Boolean).join(' ');
+  const shell = [rounded ? 'overflow-hidden rounded-medium' : '', classNames?.root, className].filter(Boolean).join(' ');
   const image = (
     <ImageElement
       src={loader ? loader({ src, width, height }) : src}
@@ -24,10 +26,12 @@ export function Image({
       height={height}
       alt={alt}
       loading={loading}
+      className={classNames?.image}
     />
   );
 
   if (!loader) {
+    if (wrapper === 'none') return image;
     return (
       <div data-component="image" className={shell || undefined}>
         {image}

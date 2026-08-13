@@ -24,6 +24,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['image.alternative.text', 'image.fallback.single'],
     layout: 'padded',
     docs: {
       description: {
@@ -33,9 +34,17 @@ const meta = {
     },
   },
   argTypes: {
-    alt: { control: 'text', description: 'Required; pass "" for a decorative image.' },
-    rounded: { control: 'boolean', description: 'Clips to the medium radius. Purely visual.' },
-    loading: { control: 'radio', options: ['lazy', 'eager'] },
+    "src": { control: 'text', description: "Required. Public `src` realization prop." },
+    "alt": { control: 'text', description: "Required. Public `alt` realization prop." },
+    "width": { control: 'number', description: "Required. Public `width` realization prop." },
+    "height": { control: 'number', description: "Required. Public `height` realization prop." },
+    "responsive": { control: 'object', description: "Optional. Public `responsive` realization prop." },
+    "loader": { control: false, description: "Optional. Public `loader` realization prop." },
+    "loading": { control: 'radio', options: ["lazy","eager"], description: "Optional. Public `loading` realization prop. Defaults to \"lazy\"." },
+    "rounded": { control: 'boolean', description: "Optional. Public `rounded` realization prop. Defaults to false." },
+    "wrapper": { control: 'radio', options: ["auto","none"], description: "Optional. Public `wrapper` realization prop. Defaults to \"auto\"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { src: SRC, alt: 'A short description', width: 640, height: 360 },
 } satisfies Meta<typeof Image>;

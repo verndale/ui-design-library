@@ -34,6 +34,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['slider.keyboard.native', 'slider.value.announced', 'slider.description.valid'],
     layout: 'padded',
     docs: {
       description: {
@@ -43,9 +44,18 @@ const meta = {
     },
   },
   argTypes: {
-    label: { control: 'text', description: "The control's visible label. Required." },
-    unit: { control: 'text', description: 'Appended to the announced and displayed value.' },
-    hint: { control: 'text', description: 'Guidance, associated via `aria-describedby`.' },
+    "label": { control: false, description: "Required. Public `label` realization prop." },
+    "options": { control: 'object', description: "Required. Public `options` realization prop." },
+    "value": { control: 'text', description: "Optional. Public `value` realization prop." },
+    "defaultValue": { control: 'text', description: "Optional. Public `defaultValue` realization prop." },
+    "onChange": { control: false, description: "Optional. Public `onChange` realization prop." },
+    "hint": { control: false, description: "Optional. Public `hint` realization prop." },
+    "unit": { control: 'text', description: "Optional. Public `unit` realization prop." },
+    "inputId": { control: 'text', description: "Optional. Public `inputId` realization prop." },
+    "showScale": { control: 'boolean', description: "Optional. Public `showScale` realization prop. Defaults to true." },
+    "showSelectedValue": { control: 'boolean', description: "Optional. Public `showSelectedValue` realization prop. Defaults to true." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { label: 'Width', options: sizes },
 } satisfies Meta<typeof Slider>;

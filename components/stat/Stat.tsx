@@ -8,12 +8,14 @@ import type { StatProps } from './Stat.types.js';
  * A lone stat is content, not a widget, so it carries no role of its own; a
  * group of stats gets its accessible name from StatGroup.
  */
-export function Stat({ value, label, description, className }: StatProps) {
+export function Stat({ value, label, description, className, classNames, contentOrder = 'value-first' }: StatProps) {
+  const valueNode = <p className={['m-0 text-6xl font-extrabold text-text-primary', classNames?.value].filter(Boolean).join(' ')}>{value}</p>;
+  const labelNode = <p className={['m-0 text-base font-semibold text-text-primary', classNames?.label].filter(Boolean).join(' ')}>{label}</p>;
   return (
-    <div data-component="stat" className={['flex flex-col gap-2xs', className].filter(Boolean).join(' ')}>
-      <p className="m-0 text-6xl font-extrabold text-text-primary">{value}</p>
-      <p className="m-0 text-base font-semibold text-text-primary">{label}</p>
-      {description ? <p className="m-0 mt-3xs text-base text-text-secondary">{description}</p> : null}
+    <div data-component="stat" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
+      {contentOrder === 'label-first' ? labelNode : valueNode}
+      {contentOrder === 'label-first' ? valueNode : labelNode}
+      {description ? <p className={['m-0 mt-3xs text-base text-text-secondary', classNames?.description].filter(Boolean).join(' ')}>{description}</p> : null}
     </div>
   );
 }

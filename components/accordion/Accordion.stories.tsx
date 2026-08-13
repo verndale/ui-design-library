@@ -20,6 +20,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['accordion.keyboard.toggle', 'accordion.state.relationships', 'accordion.focus.collapsed'],
     layout: 'padded',
     docs: {
       description: {
@@ -29,9 +30,23 @@ const meta = {
     },
   },
   argTypes: {
-    heading: { control: 'text', description: 'Optional section heading rendered above the items (an `h2`).' },
-    standalone: { control: 'boolean', description: 'Boxed treatment — bordered, rounded, padded. Purely visual.' },
-    initialItemCount: { control: 'number', description: 'When set and exceeded, collapses the list behind "See more".' },
+    "items": { control: 'object', description: "Required. Public `items` realization prop." },
+    "heading": { control: false, description: "Optional. Public `heading` realization prop." },
+    "standalone": { control: 'boolean', description: "Optional. Public `standalone` realization prop. Defaults to false." },
+    "initialItemCount": { control: 'number', description: "Optional. Public `initialItemCount` realization prop." },
+    "moreLabel": { control: 'text', description: "Optional. Public `moreLabel` realization prop. Defaults to \"Show more\"." },
+    "lessLabel": { control: 'text', description: "Optional. Public `lessLabel` realization prop. Defaults to \"Show less\"." },
+    "id": { control: 'text', description: "Optional. Public `id` realization prop." },
+    "role": { control: 'radio', options: ["region","group"], description: "Optional. Public `role` realization prop." },
+    "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop." },
+    "ariaLabelledBy": { control: 'text', description: "Optional. Public `ariaLabelledBy` realization prop." },
+    "ariaDescribedBy": { control: 'text', description: "Optional. Public `ariaDescribedBy` realization prop." },
+    "headingLevel": { control: 'radio', options: [2,3,4,5,6], description: "Optional. Public `headingLevel` realization prop. Defaults to 2." },
+    "itemHeadingLevel": { control: 'radio', options: [2,3,4,5,6], description: "Optional. Public `itemHeadingLevel` realization prop. Defaults to 3." },
+    "collapsedIcon": { control: false, description: "Optional. Public `collapsedIcon` realization prop." },
+    "expandedIcon": { control: false, description: "Optional. Public `expandedIcon` realization prop." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: { items: faq },
 } satisfies Meta<typeof Accordion>;

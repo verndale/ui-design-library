@@ -14,7 +14,11 @@
     "loop"
   ],
   "reuseFingerprint": {
-    "slots": ["media", "panel", "action"],
+    "slots": [
+      "media",
+      "panel",
+      "action"
+    ],
     "affordance": "select",
     "role": "media-showcase"
   },
@@ -39,5 +43,347 @@
     "Kept verbatim: inert applied via setAttribute rather than a React prop, so Tab skips off-screen slides; arrow controls disabling at the ends; the labelled carousel region; and per-slide role=group with an announced position.",
     "Replaced the engine's slidesInView() reporting for inert gating with direct geometry. slidesInView() returned empty before the engine measured, which marked every slide inert and made the whole carousel unreachable by keyboard — strictly worse than no gating. IntersectionObserver was tried and rejected: it only delivers callbacks while the page paints, so the state is undefined in a background tab and unverifiable headless. Comparing each slide box to the viewport box is true whenever it is asked, and fails open when the viewport has no width."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "slides",
+        "type": "collection",
+        "required": true
+      },
+      {
+        "path": "label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "previousLabel",
+        "type": "string",
+        "required": false,
+        "default": "Previous slide"
+      },
+      {
+        "path": "nextLabel",
+        "type": "string",
+        "required": false,
+        "default": "Next slide"
+      },
+      {
+        "path": "loop",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "slideClassName",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "previousIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "nextIcon",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "statusSeparator",
+        "type": "string",
+        "required": false,
+        "default": "/"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.viewport",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.track",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.slide",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.controls",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.previousButton",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.previousIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.nextButton",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.nextIcon",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.status",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "slides",
+        "node": "slide"
+      },
+      {
+        "prop": "label",
+        "node": "root"
+      },
+      {
+        "prop": "previousIcon",
+        "node": "previousIcon"
+      },
+      {
+        "prop": "nextIcon",
+        "node": "nextIcon"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "label",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.viewport",
+        "node": "viewport",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.track",
+        "node": "track",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.slide",
+        "node": "slide",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.controls",
+        "node": "controls",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.previousButton",
+        "node": "previousButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.previousIcon",
+        "node": "previousIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.nextButton",
+        "node": "nextButton",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "pointer-events",
+          "focus-indicator",
+          "semantics",
+          "target-size"
+        ]
+      },
+      {
+        "path": "classNames.nextIcon",
+        "node": "nextIcon",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.status",
+        "node": "status",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "section",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "viewport",
+          "element": "div",
+          "parent": "root",
+          "cardinality": "one"
+        },
+      {
+        "id": "track",
+        "element": "div",
+        "parent": "viewport",
+        "cardinality": "one"
+      },
+        {
+          "id": "slide",
+          "element": "div",
+        "parent": "track",
+        "cardinality": "one-or-more"
+        },
+        {
+          "id": "controls",
+          "element": "div",
+          "parent": "root",
+        "cardinality": "one"
+        },
+        {
+          "id": "previousButton",
+          "element": "button",
+        "parent": "controls",
+        "cardinality": "one"
+        },
+        {
+          "id": "previousIcon",
+          "element": "span",
+        "parent": "previousButton",
+        "cardinality": "one"
+        },
+        {
+          "id": "nextButton",
+          "element": "button",
+        "parent": "controls",
+        "cardinality": "one"
+        },
+        {
+          "id": "nextIcon",
+          "element": "span",
+        "parent": "nextButton",
+        "cardinality": "one"
+        },
+        {
+          "id": "status",
+          "element": "p",
+          "parent": "root",
+        "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "carousel.keyboard.controls",
+        "kind": "keyboard",
+        "description": "Named native controls provide a non-drag pointer alternative and stable keyboard focus.",
+        "wcag": [
+          "2.1.1",
+          "2.5.7",
+          "2.5.8"
+        ],
+        "evidence": "carousel.keyboard.controls"
+      },
+      {
+        "id": "carousel.state.slides",
+        "kind": "state",
+        "description": "Slides expose carousel/slide semantics and off-screen content is inert.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "carousel.state.slides"
+      },
+      {
+        "id": "carousel.announcement.status",
+        "kind": "announcement",
+        "description": "An atomic polite status announces the active slide once.",
+        "wcag": [
+          "4.1.3"
+        ],
+        "evidence": "carousel.announcement.status"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "carousel",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

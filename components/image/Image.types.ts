@@ -23,4 +23,10 @@ export type ImageProps = {
   loading?: 'lazy' | 'eager';
   rounded?: boolean;
   className?: string;
+  classNames?: ImageClassNames;
+  /** Remove the non-semantic wrapper only when no loader/picture is required. */
+  wrapper?: 'auto' | 'none';
 };
+import type { SlotClassNames } from '../../src/lib/classNames.js';
+
+export type ImageClassNames = SlotClassNames<'root' | 'image'>;

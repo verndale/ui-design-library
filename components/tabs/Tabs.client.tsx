@@ -12,6 +12,8 @@ export function Tabs({
   onSelect,
   tabIdPrefix,
   className,
+  classNames,
+  orientation = 'horizontal',
 }: TabsProps) {
   const generatedPrefix = useId();
   const resolvedPrefix = tabIdPrefix ?? `tabs-${generatedPrefix}`;
@@ -29,15 +31,19 @@ export function Tabs({
     const current = items.findIndex((item) => item.id === active);
     const last = items.length - 1;
     let nextIndex: number | null = null;
-    if (event.key === 'ArrowRight') nextIndex = current >= last ? 0 : current + 1;
-    else if (event.key === 'ArrowLeft') nextIndex = current <= 0 ? last : current - 1;
+    const nextKey = orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';
+    const previousKey = orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';
+    if (event.key === nextKey) nextIndex = current >= last ? 0 : current + 1;
+    else if (event.key === previousKey) nextIndex = current <= 0 ? last : current - 1;
+    else if (event.key === 'Home') nextIndex = 0;
+    else if (event.key === 'End') nextIndex = last;
     if (nextIndex === null) return;
 
     event.preventDefault();
     const next = items[nextIndex]!;
     select(next.id);
     tabRefs.current.get(next.id)?.focus();
-  }, [active, items, select]);
+  }, [active, items, orientation, select]);
 
   if (items.length === 0) return null;
 
@@ -48,6 +54,8 @@ export function Tabs({
       ariaLabel={ariaLabel}
       tabIdPrefix={resolvedPrefix}
       className={className}
+      classNames={classNames}
+      orientation={orientation}
       onSelect={select}
       onKeyDown={handleKeyDown}
       registerTab={(id, node) => {

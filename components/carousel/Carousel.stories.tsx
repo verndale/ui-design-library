@@ -18,6 +18,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    realizationEvidence: ['carousel.keyboard.controls', 'carousel.state.slides', 'carousel.announcement.status'],
     layout: 'padded',
     docs: {
       description: {
@@ -27,8 +28,17 @@ const meta = {
     },
   },
   argTypes: {
-    label: { control: 'text', description: 'Accessible name for the carousel region.' },
-    loop: { control: 'boolean' },
+    "slides": { control: 'object', description: "Required. Public `slides` realization prop." },
+    "label": { control: 'text', description: "Required. Public `label` realization prop." },
+    "previousLabel": { control: 'text', description: "Optional. Public `previousLabel` realization prop. Defaults to \"Previous slide\"." },
+    "nextLabel": { control: 'text', description: "Optional. Public `nextLabel` realization prop. Defaults to \"Next slide\"." },
+    "loop": { control: 'boolean', description: "Optional. Public `loop` realization prop. Defaults to false." },
+    "slideClassName": { control: 'text', description: "Optional. Public `slideClassName` realization prop." },
+    "previousIcon": { control: false, description: "Optional. Public `previousIcon` realization prop." },
+    "nextIcon": { control: false, description: "Optional. Public `nextIcon` realization prop." },
+    "statusSeparator": { control: 'text', description: "Optional. Public `statusSeparator` realization prop. Defaults to \" of \"." },
+    "className": { control: 'text', description: "Optional. Public `className` realization prop." },
+    "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
   args: {
     label: 'Featured stories',

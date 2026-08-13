@@ -5,14 +5,28 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["value", "label", "description"],
+  "slots": [
+    "value",
+    "label",
+    "description"
+  ],
   "variants": [],
   "reuseFingerprint": {
-    "slots": ["stat", "heading", "body"],
+    "slots": [
+      "stat",
+      "heading",
+      "body"
+    ],
     "affordance": "display",
     "role": "metric"
   },
-  "tokens": ["color-text-primary", "color-text-secondary", "spacing-3xs", "spacing-2xs", "spacing-s"],
+  "tokens": [
+    "color-text-primary",
+    "color-text-secondary",
+    "spacing-3xs",
+    "spacing-2xs",
+    "spacing-s"
+  ],
   "provenance": {
     "project": "mimecast",
     "run": "runs/mimecast/2026-07-30/",
@@ -30,5 +44,169 @@
     "Renamed the data-component hooks stat-card/detail-stats to stat/stat-group; stripped client ticket/Figma/Confluence references from comments (no client copy existed in code — it was content-driven).",
     "Kept verbatim: the sr-only <h2> + <ul aria-labelledby> group naming and the native <ul>/<li> structure — the accessible-name contract is the reason this was worth capturing."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "value",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "label",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "description",
+        "type": "node",
+        "required": false
+      },
+      {
+        "path": "contentOrder",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "value-first",
+          "label-first"
+        ],
+        "default": "value-first"
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.value",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.label",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames.description",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "value",
+        "node": "value"
+      },
+      {
+        "prop": "label",
+        "node": "label"
+      },
+      {
+        "prop": "description",
+        "node": "description"
+      }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.value",
+        "node": "value",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      },
+      {
+        "path": "classNames.description",
+        "node": "description",
+        "protectedProperties": [
+          "display",
+          "visibility"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "div",
+          "parent": null,
+          "cardinality": "one"
+        },
+        {
+          "id": "value",
+          "element": "p",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "label",
+          "element": "p",
+          "parent": "root",
+          "cardinality": "one"
+        },
+        {
+          "id": "description",
+          "element": "p",
+          "parent": "root",
+          "cardinality": "zero-or-one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "stat.reading.order",
+        "kind": "semantics",
+        "description": "Value and label stay adjacent in the selected coherent reading order.",
+        "wcag": [
+          "1.3.1",
+          "1.3.2"
+        ],
+        "evidence": "stat.reading.order"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 104,
-    "edges": 173,
+    "nodes": 106,
+    "edges": 188,
     "byType": {
       "surface": 40,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 23,
-      "wiki-plan": 6,
+      "wiki-journal": 24,
+      "wiki-plan": 7,
       "wiki-topic": 6
     },
     "byEdgeType": {
       "covers": 47,
-      "links-to": 72,
-      "plan": 8,
-      "topic": 25,
+      "links-to": 80,
+      "plan": 9,
+      "topic": 31,
       "uses-tokens": 21
     }
   },
@@ -30,7 +30,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2010,
+      "bytes": 2028,
       "degree": 1
     },
     {
@@ -42,7 +42,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1630,
+      "bytes": 1656,
       "degree": 1
     },
     {
@@ -150,7 +150,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2583,
+      "bytes": 2812,
       "degree": 2
     },
     {
@@ -174,7 +174,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13536,
+      "bytes": 13579,
       "degree": 5
     },
     {
@@ -210,7 +210,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2512,
+      "bytes": 12709,
       "degree": 1
     },
     {
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2264,
+      "bytes": 6971,
       "degree": 1
     },
     {
@@ -234,7 +234,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 987,
+      "bytes": 3068,
       "degree": 1
     },
     {
@@ -246,7 +246,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1832,
+      "bytes": 6512,
       "degree": 1
     },
     {
@@ -258,7 +258,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1697,
+      "bytes": 8964,
       "degree": 1
     },
     {
@@ -270,7 +270,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2416,
+      "bytes": 7863,
       "degree": 1
     },
     {
@@ -282,7 +282,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1485,
+      "bytes": 4492,
       "degree": 1
     },
     {
@@ -294,7 +294,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2328,
+      "bytes": 9889,
       "degree": 1
     },
     {
@@ -306,7 +306,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1303,
+      "bytes": 5818,
       "degree": 1
     },
     {
@@ -318,7 +318,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2509,
+      "bytes": 10563,
       "degree": 1
     },
     {
@@ -330,7 +330,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1745,
+      "bytes": 7226,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2333,
+      "bytes": 11493,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1479,
+      "bytes": 3331,
       "degree": 1
     },
     {
@@ -366,7 +366,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2042,
+      "bytes": 4274,
       "degree": 1
     },
     {
@@ -378,7 +378,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2993,
+      "bytes": 11402,
       "degree": 1
     },
     {
@@ -390,7 +390,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2562,
+      "bytes": 13428,
       "degree": 1
     },
     {
@@ -402,7 +402,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1909,
+      "bytes": 6053,
       "degree": 1
     },
     {
@@ -414,7 +414,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1640,
+      "bytes": 12253,
       "degree": 1
     },
     {
@@ -426,7 +426,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2574,
+      "bytes": 6069,
       "degree": 1
     },
     {
@@ -438,7 +438,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2242,
+      "bytes": 5750,
       "degree": 1
     },
     {
@@ -450,7 +450,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2032,
+      "bytes": 6231,
       "degree": 1
     },
     {
@@ -474,7 +474,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 27042,
+      "bytes": 28178,
       "degree": 1
     },
     {
@@ -486,7 +486,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1072497,
+      "bytes": 1166829,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1196606,
+      "bytes": 1318593,
       "degree": 1
     },
     {
@@ -522,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9120,
+      "bytes": 9540,
       "degree": 1
     },
     {
@@ -534,7 +534,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 17833,
+      "bytes": 18091,
       "degree": 3
     },
     {
@@ -582,7 +582,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 18616,
+      "bytes": 18976,
       "degree": 3
     },
     {
@@ -810,7 +810,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2025,
+      "bytes": 2367,
       "degree": 1
     },
     {
@@ -822,8 +822,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10547,
-      "degree": 33
+      "bytes": 10834,
+      "degree": 34
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1163,6 +1163,22 @@
       "degree": 6
     },
     {
+      "id": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "label": "Publish accessible realization contracts",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "component-architecture",
+        "package-distribution",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2669,
+      "degree": 8
+    },
+    {
       "id": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
       "label": "Stat metadata stops advertising StatGroup variants",
       "type": "wiki-journal",
@@ -1294,6 +1310,22 @@
       "degree": 6
     },
     {
+      "id": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "label": "Realization-First Reuse with WCAG 2.2 AA Accessibility",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "component-architecture",
+        "package-distribution",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 6696,
+      "degree": 8
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -1309,13 +1341,14 @@
         "2"
       ],
       "issues": [
+        "37",
         "31",
         "26",
         "18",
         "4"
       ],
-      "bytes": 3419,
-      "degree": 9
+      "bytes": 3718,
+      "degree": 10
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -1333,8 +1366,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 5371,
-      "degree": 16
+      "bytes": 6346,
+      "degree": 20
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -1385,8 +1418,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 5523,
-      "degree": 23
+      "bytes": 6275,
+      "degree": 27
     },
     {
       "id": "wiki/topics/story-testing.md",
@@ -1410,8 +1443,8 @@
         "19"
       ],
       "issues": [],
-      "bytes": 6536,
-      "degree": 14
+      "bytes": 7366,
+      "degree": 18
     },
     {
       "id": "wiki/topics/storybook-tooling.md",
@@ -1897,6 +1930,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2043,6 +2083,13 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
@@ -2058,6 +2105,13 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
       "count": 2,
@@ -2068,6 +2122,13 @@
       "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
       "type": "links-to",
       "count": 5,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -2114,6 +2175,13 @@
     },
     {
       "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 2,
@@ -2134,6 +2202,13 @@
       "anchors": []
     },
     {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/story-testing.md",
       "target": "wiki/journal/2026-07-27-reduced-motion-coverage.md",
       "type": "links-to",
@@ -2149,6 +2224,13 @@
     },
     {
       "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "type": "links-to",
       "count": 3,
@@ -2157,6 +2239,13 @@
     {
       "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -2239,6 +2328,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
       "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "plan"
@@ -2314,6 +2408,21 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-13-accessible-realization-contracts.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
       "target": "wiki/topics/package-distribution.md",
       "type": "topic"
@@ -2366,6 +2475,21 @@
     {
       "source": "wiki/plans/2026-08-12-server-first-component-architecture.md",
       "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "target": "wiki/topics/story-testing.md",
       "type": "topic"
     },
     {

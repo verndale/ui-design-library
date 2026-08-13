@@ -1,4 +1,4 @@
-import type { SliderOption } from '../Slider.types.js';
+import type { SliderClassNames, SliderOption } from '../Slider.types.js';
 
 type SliderTrackProps = {
   inputId: string;
@@ -9,6 +9,7 @@ type SliderTrackProps = {
   describedBy: string;
   progress: string;
   onChange: (index: number) => void;
+  classNames?: SliderClassNames;
 };
 
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus';
@@ -23,13 +24,14 @@ export function SliderTrack({
   describedBy,
   progress,
   onChange,
+  classNames,
 }: SliderTrackProps) {
   return (
-    <div className="relative flex items-center py-2xs">
-      <span aria-hidden className="pointer-events-none absolute inset-x-0 h-1 rounded-pill bg-border-subtle" />
+    <div className={['relative flex items-center py-2xs', classNames?.track].filter(Boolean).join(' ')}>
+      <span aria-hidden className={['pointer-events-none absolute inset-x-0 h-1 rounded-pill bg-border-subtle', classNames?.trackBase].filter(Boolean).join(' ')} />
       <span
         aria-hidden
-        className="pointer-events-none absolute start-0 h-1 rounded-pill bg-action-base"
+        className={['pointer-events-none absolute start-0 h-1 rounded-pill bg-action-base', classNames?.trackFill].filter(Boolean).join(' ')}
         style={{ width: progress }}
       />
       <input
@@ -41,15 +43,16 @@ export function SliderTrack({
         value={index}
         onChange={(event) => onChange(Number(event.target.value))}
         aria-valuetext={valueText}
-        aria-describedby={describedBy}
+        aria-describedby={describedBy || undefined}
         className={[
           'relative w-full cursor-pointer appearance-none bg-transparent',
           'min-h-[var(--size-touch-medium)]',
           focusRing,
-        ].join(' ')}
+          classNames?.input,
+        ].filter(Boolean).join(' ')}
       />
-      <span aria-hidden className="pointer-events-none absolute inset-x-0 flex justify-between">
-        {options.map((option) => <span key={option.value} className="size-1 rounded-pill bg-border-subtle" />)}
+      <span aria-hidden className={['pointer-events-none absolute inset-x-0 flex justify-between', classNames?.ticks].filter(Boolean).join(' ')}>
+        {options.map((option) => <span key={option.value} className={['size-1 rounded-pill bg-border-subtle', classNames?.tick].filter(Boolean).join(' ')} />)}
       </span>
     </div>
   );

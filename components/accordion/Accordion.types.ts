@@ -1,5 +1,12 @@
 import type { ReactNode } from 'react';
 
+import type { SlotClassNames } from '../../src/lib/classNames.js';
+
+export type AccordionClassNames = SlotClassNames<
+  'root' | 'heading' | 'list' | 'item' | 'itemHeading' | 'trigger' | 'label' | 'icon' | 'motion' | 'panel' | 'reveal'
+>;
+export type AccordionHeadingLevel = 2 | 3 | 4 | 5 | 6;
+
 export type AccordionItem = {
   /** The visible toggle label. */
   label: ReactNode;
@@ -22,4 +29,14 @@ export type AccordionProps = {
   moreLabel?: string;
   lessLabel?: string;
   className?: string;
+  classNames?: AccordionClassNames;
+  id?: string;
+  role?: 'region' | 'group';
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  ariaDescribedBy?: string;
+  headingLevel?: AccordionHeadingLevel;
+  itemHeadingLevel?: AccordionHeadingLevel;
+  collapsedIcon?: ReactNode;
+  expandedIcon?: ReactNode;
 };

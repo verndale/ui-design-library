@@ -13,7 +13,14 @@
     "unsetBackground"
   ],
   "reuseFingerprint": {
-    "slots": ["media", "heading", "body", "meta", "action", "badge"],
+    "slots": [
+      "media",
+      "heading",
+      "body",
+      "meta",
+      "action",
+      "badge"
+    ],
     "affordance": "contain",
     "role": "entity-summary"
   },
@@ -33,5 +40,146 @@
     "Dropped the data-component override prop; the hook is now fixed, which is what makes it a reliable test and analytics selector.",
     "Kept verbatim: the group-hover and group-focus-visible scale pair and their motion-reduce counterparts — keyboard focus triggering the same zoom as hover is the part worth keeping."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "unsetBackground",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "as",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "div",
+          "article",
+          "section"
+        ],
+        "default": "div"
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "ariaLabelledBy",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "root"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      },
+      {
+        "prop": "ariaLabelledBy",
+        "node": "root",
+        "attribute": "aria-labelledby"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": [
+            "div",
+            "article",
+            "section"
+          ],
+          "parent": null,
+          "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [],
+    "constraints": [
+      {
+        "when": {
+          "prop": "as",
+          "equals": "section"
+        },
+        "requireAny": [
+          "ariaLabel",
+          "ariaLabelledBy"
+        ]
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "card.semantics.root",
+        "kind": "semantics",
+        "description": "The root is a div, article, or named section without manufacturing interaction semantics.",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "evidence": "card.semantics.root"
+      },
+      {
+        "id": "card.focus.affordance",
+        "kind": "focus",
+        "description": "Focus within the card receives the same meaningful visual affordance as hover.",
+        "wcag": [
+          "1.4.13",
+          "2.4.7"
+        ],
+        "evidence": "card.focus.affordance"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

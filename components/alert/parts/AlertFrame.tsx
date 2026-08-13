@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
-import type { AlertVariant } from '../Alert.types.js';
+import { classes } from '../../../src/lib/classNames.js';
+import type { AlertClassNames, AlertVariant } from '../Alert.types.js';
 
 const TONE = {
   positive: { role: 'status', live: 'polite', accent: 'text-tone-positive', bar: 'bg-tone-positive' },
@@ -27,11 +28,17 @@ export function AlertFrame({
   variant,
   className,
   action,
+  classNames,
+  icon,
+  showAccent = true,
 }: {
   children: ReactNode;
   variant: AlertVariant;
   className?: string;
   action?: ReactNode;
+  classNames?: AlertClassNames;
+  icon?: ReactNode | null;
+  showAccent?: boolean;
 }) {
   const tone = TONE[variant];
 
@@ -39,19 +46,21 @@ export function AlertFrame({
     <div
       role={tone.role}
       aria-live={tone.live}
+      aria-atomic="true"
       data-component="alert"
-      className={[
+      className={classes(
         'flex w-full items-start gap-s rounded-medium border border-border-subtle bg-surface-raised p-m text-text-primary',
+        classNames?.root,
         className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      )}
     >
-      <span aria-hidden className={['w-1 shrink-0 self-stretch rounded-pill', tone.bar].join(' ')} />
-      <span aria-hidden className={['inline-flex shrink-0', tone.accent].join(' ')}>
-        <ToneIcon variant={variant} />
-      </span>
-      <div className="min-w-0 flex-1 text-sm">{children}</div>
+      {showAccent ? <span aria-hidden className={classes('w-1 shrink-0 self-stretch rounded-pill', tone.bar, classNames?.accent)} /> : null}
+      {icon !== null ? (
+        <span aria-hidden className={classes('inline-flex shrink-0', tone.accent, classNames?.icon)}>
+          {icon ?? <ToneIcon variant={variant} />}
+        </span>
+      ) : null}
+      <div className={classes('min-w-0 flex-1 text-sm', classNames?.content)}>{children}</div>
       {action}
     </div>
   );

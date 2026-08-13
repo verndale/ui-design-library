@@ -5,14 +5,20 @@
   "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
-  "slots": ["children"],
+  "slots": [
+    "children"
+  ],
   "variants": [],
   "reuseFingerprint": {
-    "slots": ["media"],
+    "slots": [
+      "media"
+    ],
     "affordance": "display",
     "role": "entity-summary"
   },
-  "tokens": ["radius-small"],
+  "tokens": [
+    "radius-small"
+  ],
   "provenance": {
     "project": "canadian-national",
     "run": "runs/canadian-national/2026-07-26/",
@@ -24,5 +30,104 @@
     "Added m-0 because a bare figure carries a user-agent margin that CN's layout happened to absorb.",
     "Kept verbatim: the figure element and the aspect-square overflow-hidden frame."
   ],
-  "maturity": "supported"
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      {
+        "path": "children",
+        "type": "node",
+        "required": true
+      },
+      {
+        "path": "id",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "className",
+        "type": "string",
+        "required": false
+      },
+      {
+        "path": "classNames",
+        "type": "collection",
+        "required": false
+      },
+      {
+        "path": "classNames.root",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "contentBindings": [
+      {
+        "prop": "children",
+        "node": "root"
+      }
+    ],
+    "safeAttributes": [
+      {
+        "prop": "id",
+        "node": "root",
+        "attribute": "id"
+      },
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": [
+          "display",
+          "visibility",
+          "semantics",
+          "reading-order"
+        ]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "element": "figure",
+          "parent": null,
+          "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "avatar.semantics.content",
+        "kind": "semantics",
+        "description": "The figure preserves child image alternatives and adds no duplicate image announcement.",
+        "wcag": [
+          "1.1.1",
+          "1.3.1"
+        ],
+        "evidence": "avatar.semantics.content"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": [
+        "text-alternatives",
+        "accessible-copy",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
 }

@@ -198,7 +198,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 736,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -762,7 +762,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 96,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -1395,6 +1395,7 @@
         "graph freshness"
       ],
       "prs": [
+        "41",
         "38",
         "35",
         "32",
@@ -1409,7 +1410,7 @@
         "2"
       ],
       "issues": [],
-      "bytes": 9750,
+      "bytes": 9884,
       "degree": 29
     },
     {
@@ -1476,13 +1477,14 @@
         "toolbar"
       ],
       "prs": [
+        "41",
         "38",
         "32",
         "19",
         "5"
       ],
       "issues": [],
-      "bytes": 5363,
+      "bytes": 5497,
       "degree": 15
     },
     {

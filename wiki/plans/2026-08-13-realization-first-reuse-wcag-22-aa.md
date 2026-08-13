@@ -1,7 +1,15 @@
 ---
 status: implemented
 executed: 2026-08-13
-evidence: ["issue #37", "pnpm contracts", "pnpm architecture", "pnpm accessibility", "pnpm test", "pnpm build", "pnpm verify"]
+evidence:
+  - "issue #37"
+  - "pnpm contracts"
+  - "pnpm architecture"
+  - "pnpm accessibility"
+  - "pnpm test"
+  - "pnpm build"
+  - "pnpm verify"
+  - "PR #38 https://github.com/verndale/ui-design-library/pull/38 (merged 2026-08-13)"
 source_tool: codex
 source: approved task conversation
 topics: [component-architecture, package-distribution, story-testing]

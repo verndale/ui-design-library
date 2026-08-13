@@ -29,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-13 — feat(contracts): add accessible realizations (#37) ([PR #38](https://github.com/verndale/ui-design-library/pull/38))
 - 2026-08-13 — Expanded the executable evidence surface across Chromium, WebKit, forced colors, reflow/text-spacing, IDREF/live-region integrity, focus reachability, target size, and reduced motion. Kept browser installation in library CI and whole-page/VoiceOver acceptance with consumers ([plan](../plans/2026-08-13-realization-first-reuse-wcag-22-aa.md), [journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-06 — feat(ci): Update workflows and enhance modal component ([PR #24](https://github.com/verndale/ui-design-library/pull/24))
 - 2026-08-05 — chore(ci): Update documentation and workflows for npm release ([PR #19](https://github.com/verndale/ui-design-library/pull/19))

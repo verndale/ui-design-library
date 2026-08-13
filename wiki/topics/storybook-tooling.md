@@ -23,6 +23,7 @@ All nine components are `candidate`. Promotion is a deliberate human decision, n
 
 ## Decisions
 
+- 2026-08-13 — feat(contracts): add accessible realizations (#37) ([PR #38](https://github.com/verndale/ui-design-library/pull/38))
 - 2026-08-13 — feat(package): publish executable ESM reuse contract v2 ([PR #32](https://github.com/verndale/ui-design-library/pull/32))
 - 2026-08-05 — chore(ci): Update documentation and workflows for npm release ([PR #19](https://github.com/verndale/ui-design-library/pull/19))
 - 2026-07-31 — feat(ui-design-library): Enhance documentation on structural variants ([PR #5](https://github.com/verndale/ui-design-library/pull/5))

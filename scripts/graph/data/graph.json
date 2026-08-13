@@ -198,7 +198,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 736,
       "degree": 1
     },
     {
@@ -762,7 +762,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -1120,9 +1120,11 @@
         "component-architecture"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "32"
+      ],
       "issues": [],
-      "bytes": 2341,
+      "bytes": 2387,
       "degree": 6
     },
     {
@@ -1265,10 +1267,11 @@
       ],
       "aliases": [],
       "prs": [
+        "32",
         "35"
       ],
       "issues": [],
-      "bytes": 8753,
+      "bytes": 8840,
       "degree": 7
     },
     {
@@ -1298,6 +1301,7 @@
       "topics": [],
       "aliases": [],
       "prs": [
+        "32",
         "35",
         "29",
         "19",
@@ -1310,7 +1314,7 @@
         "18",
         "4"
       ],
-      "bytes": 3354,
+      "bytes": 3419,
       "degree": 9
     },
     {
@@ -1352,6 +1356,7 @@
       ],
       "prs": [
         "35",
+        "32",
         "29",
         "24",
         "19",
@@ -1363,7 +1368,7 @@
         "2"
       ],
       "issues": [],
-      "bytes": 9477,
+      "bytes": 9616,
       "degree": 29
     },
     {
@@ -1429,11 +1434,12 @@
         "toolbar"
       ],
       "prs": [
+        "32",
         "19",
         "5"
       ],
       "issues": [],
-      "bytes": 5090,
+      "bytes": 5229,
       "degree": 15
     },
     {

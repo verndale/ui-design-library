@@ -2,7 +2,7 @@
 date: 2026-08-12
 topics: [package-distribution, component-architecture]
 plan: plans/2026-08-12-executable-esm-reuse-contract-v2.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/32
 ---
 # Publish executable ESM and reuse contract v2
 

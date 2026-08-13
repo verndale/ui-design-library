@@ -34,6 +34,9 @@ function comp(root, dirName, opts) {
     slots = ['children'],
     reuseFingerprint = { slots: ['body'], affordance: 'display', role: 'container' },
     name = 'C',
+    exportName = name,
+    rendering = 'server',
+    variants = [],
   } = opts;
   const contract = {
     canonical,
@@ -41,6 +44,9 @@ function comp(root, dirName, opts) {
     framework: 'react',
     styling: 'tailwind',
     slots,
+    variants,
+    exportName,
+    rendering,
     reuseFingerprint,
     tokens,
     provenance: { project: 'x', source: 'y' },
@@ -130,6 +136,46 @@ const cases = [
       });
     },
     expect: (f) => f.some((m) => m.includes('reuseFingerprint slot "children" is not governed')),
+  },
+  {
+    name: 'governed other fingerprint values pass contract validation',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        reuseFingerprint: { slots: ['other'], affordance: 'other', role: 'other' },
+      });
+    },
+    expect: (f) => f.length === 0,
+  },
+  {
+    name: 'missing primary export name fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button', exportName: '' });
+    },
+    expect: (f) => f.some((m) => m.includes('exportName must be a non-empty JavaScript identifier')),
+  },
+  {
+    name: 'unknown rendering classification fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button', rendering: 'edge' });
+    },
+    expect: (f) => f.some((m) => m.includes('rendering "edge" is not one of')),
+  },
+  {
+    name: 'duplicate and empty style variants fail',
+    build(root) {
+      comp(root, 'button', {
+        canonical: 'Button',
+        slug: 'button',
+        title: 'Button',
+        variants: ['primary', '', 'primary'],
+      });
+    },
+    expect: (f) =>
+      f.some((m) => m.includes('variants entries must be non-empty strings')) &&
+      f.some((m) => m.includes('variants value "primary" is duplicated')),
   },
   {
     name: 'orphan alternate (no default dir) fails',
@@ -226,7 +272,10 @@ const cases = [
           {
             canonical: 'Guard',
             slug: 'guard',
+            exportName: 'C',
+            rendering: 'server',
             slots: ['children'],
+            variants: [],
             reuseFingerprint: { slots: ['body'], affordance: 'display', role: 'container' },
             tokens: [],
             provenance: { project: 'x', source: 'y' },

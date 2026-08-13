@@ -1,6 +1,8 @@
 {
   "canonical": "Rich text",
   "slug": "rich-text",
+  "exportName": "RichText",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["content"],

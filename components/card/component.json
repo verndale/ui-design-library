@@ -1,6 +1,8 @@
 {
   "canonical": "Card",
   "slug": "card",
+  "exportName": "Card",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": [

@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react';
 
-import type { DismissibleAlertProps } from '../Alert.types';
-import { AlertFrame } from './AlertFrame';
+import type { DismissibleAlertProps } from '../Alert.types.js';
+import { AlertFrame } from './AlertFrame.js';
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus';

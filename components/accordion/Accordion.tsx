@@ -1,7 +1,7 @@
-import type { AccordionProps } from './Accordion.types';
-import { AccordionList } from './parts/AccordionList.client';
+import type { AccordionProps } from './Accordion.types.js';
+import { AccordionList } from './parts/AccordionList.client.js';
 
-export type { AccordionItem, AccordionProps } from './Accordion.types';
+export type { AccordionItem, AccordionProps } from './Accordion.types.js';
 
 /** A server-renderable tree whose disclosure controls hydrate as narrow client leaves. */
 export function Accordion({

@@ -2,8 +2,8 @@
 
 import { useId, useState } from 'react';
 
-import type { AccordionItem as AccordionItemData } from '../Accordion.types';
-import { AccordionToggleIcon } from './AccordionToggleIcon';
+import type { AccordionItem as AccordionItemData } from '../Accordion.types.js';
+import { AccordionToggleIcon } from './AccordionToggleIcon.js';
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus';

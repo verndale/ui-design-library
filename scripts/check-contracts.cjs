@@ -23,12 +23,15 @@
  *   8. Variant stories do not collide: the default's title is the canonical, an
  *      alternate's nests under it as "<Canonical> / <label>", and titles within
  *      a canonical are distinct.
- *   9. Each component carries the AI reuse compatibility triad using the shared
+ *   9. Each component identifies one primary value export and its derived
+ *      server/hybrid/client rendering boundary for deterministic AI reuse.
+ *  10. Each component carries the AI reuse compatibility triad using the shared
  *      governed slot, affordance, and role vocabulary.
  *
  * `variant` (singular) is the structural axis checked here. The free-form
- * `variants` array (a component's prop-value options) is a different thing and
- * is intentionally not validated.
+ * `variants` array (a component's prop-value options) is a different thing. Its
+ * entries are validated as unique, non-empty strings but carry no structural
+ * meaning.
  *
  * Exit codes: 0 pass · 1 one or more failures.
  */
@@ -45,6 +48,7 @@ const TOKENS = path.join(ROOT, 'src/tokens/semantic.css');
 const SHARED = path.join(ROOT, 'src/lib');
 
 const MATURITIES = ['candidate', 'supported', 'deprecated'];
+const RENDERING_MODES = ['server', 'hybrid', 'client'];
 const REUSE_SLOTS = [
   'media',
   'heading',
@@ -185,6 +189,12 @@ function check(options = {}) {
 
   const dirs = listComponentDirs(componentsDir);
   if (dirs.length === 0) fail('[components] no components found');
+  if (componentsDir === COMPONENTS) {
+    const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+    if (pkg.uiDesignLibrary?.reuseContractVersion !== 2) {
+      fail('[package] package.json uiDesignLibrary.reuseContractVersion must equal 2');
+    }
+  }
 
   // Collected for the cross-canonical pass after the per-dir loop.
   const seen = [];
@@ -253,6 +263,27 @@ function check(options = {}) {
 
     if (!MATURITIES.includes(contract.maturity)) {
       fail(`[contract] components/${dirName} maturity "${contract.maturity}" is not one of ${MATURITIES.join(', ')}`);
+    }
+    if (typeof contract.exportName !== 'string' || !/^[A-Za-z_$][\w$]*$/.test(contract.exportName)) {
+      fail(`[reuse] components/${dirName} exportName must be a non-empty JavaScript identifier`);
+    }
+    if (!RENDERING_MODES.includes(contract.rendering)) {
+      fail(`[reuse] components/${dirName} rendering "${contract.rendering}" is not one of ${RENDERING_MODES.join(', ')}`);
+    }
+    if (!Array.isArray(contract.variants)) {
+      fail(`[reuse] components/${dirName} variants must be an array`);
+    } else {
+      const seenVariants = new Set();
+      for (const variantValue of contract.variants) {
+        if (typeof variantValue !== 'string' || variantValue.trim().length === 0) {
+          fail(`[reuse] components/${dirName} variants entries must be non-empty strings`);
+          continue;
+        }
+        if (seenVariants.has(variantValue)) {
+          fail(`[reuse] components/${dirName} variants value "${variantValue}" is duplicated`);
+        }
+        seenVariants.add(variantValue);
+      }
     }
     for (const key of ['project', 'source']) {
       if (!contract.provenance || !contract.provenance[key]) {

@@ -1,12 +1,14 @@
 {
   "canonical": "Badge",
   "slug": "badge",
+  "exportName": "Badge",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["label", "startIcon"],
-  "variants": ["light", "dark", "dismissible", "disabled"],
+  "variants": ["light", "dark", "disabled"],
   "reuseFingerprint": {
-    "slots": ["badge", "icon", "close"],
+    "slots": ["badge", "icon"],
     "affordance": "display",
     "role": "entity-summary"
   },

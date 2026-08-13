@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import type { InPageNavigationItem } from '../InPageNavigation.types';
+import type { InPageNavigationItem } from '../InPageNavigation.types.js';
 
 export function useActiveSection(
   items: InPageNavigationItem[],

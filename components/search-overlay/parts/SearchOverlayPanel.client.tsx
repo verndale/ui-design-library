@@ -1,7 +1,7 @@
 import type { ReactNode, RefObject } from 'react';
 
-import { SearchOverlayContent } from './SearchOverlayContent.client';
-import { SearchOverlayHeader } from './SearchOverlayHeader.client';
+import { SearchOverlayContent } from './SearchOverlayContent.client.js';
+import { SearchOverlayHeader } from './SearchOverlayHeader.client.js';
 
 type SearchOverlayPanelProps = {
   dialogRef: RefObject<HTMLDivElement | null>;

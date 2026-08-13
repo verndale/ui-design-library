@@ -16,7 +16,7 @@ Everything here exists to keep these true. `pnpm contracts` enforces them.
 2. **The story file is the API contract.** Every prop declared in `argTypes` with a control and a description. A component without stories is not reusable, because nobody can see its surface.
 3. **Semantic tokens only.** Components reference `bg-surface-raised`, never a hex value and never a client's brand token. A raw colour in a component fails the check. Values live in `src/tokens/semantic.css`; consuming projects override them.
 
-Every manifest also carries `reuseFingerprint`: the AI pipeline's governed structural slots, primary affordance, and content role. It is not the existing API-level `slots` list. `pnpm contracts` rejects missing, malformed, ungoverned, or duplicate fingerprint values.
+Every manifest identifies exactly one primary AI candidate with `exportName` and `rendering` (`server`, `hybrid`, or `client`). `pnpm architecture` derives that rendering value from the primary export graph and rejects drift, including relative side-effect imports and statically named dynamic imports. `reuseFingerprint` and `variants[]` describe only that primary export; secondary facade exports remain developer APIs, not additional AI candidates. The fingerprint is the AI pipeline's governed structural slots, primary affordance, and content role, not the existing API-level `slots` list. Governed `other` values are valid metadata but never automatically compatible. `pnpm contracts` rejects missing, malformed, ungoverned, or duplicate values.
 
 ## Component architecture
 
@@ -36,6 +36,8 @@ components/<slug>/
 `pnpm architecture` enforces the shape. Each directory has exactly one root `index.ts`, exactly one root `*.types.ts`, and at least two meaningful non-story TSX modules. Stories import component code only from `./index`; consumers use only the directory-shaped package subpath.
 
 Server-compatible is the default. Put `'use client'` at the narrowest boundary that owns browser state, an effect, a portal, focus management, or DOM observation. Every directive-bearing implementation is named `*.client.ts(x)` and is no more than 120 physical lines. A client-only facade declares `'use client'`; a server or mixed facade does not. Do not access browser globals at module evaluation or render time, and do not import `next/*` into component core. Next exists here only as a development consumer test.
+
+Published implementation code is native Node ESM. Every relative import and re-export in emitted source uses an explicit `.js` specifier, including type-only imports; TypeScript resolves those specifiers back to source under the NodeNext build. Stories remain source-only and continue importing `./index` as required by the story contract.
 
 ## Adding a component
 
@@ -72,7 +74,7 @@ Note there are **two** mechanisms and they fail independently: the token collaps
 
 ## Environment
 
-Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs typecheck, lint, architecture and contract self-tests, SSR rendering, export checks, story tests, and reduced-motion tests. `pnpm build` emits compiled ESM and declarations and verifies every public export. `pnpm verify` adds the development-only Next consumer fixture after test and build. `pnpm storybook` browses the source stories.
+Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs typecheck, lint, architecture and contract self-tests, SSR rendering, export checks, story tests, and reduced-motion tests. `pnpm build` emits native Node ESM and declarations and verifies every public export. `pnpm verify` packs and installs the artifact, dynamically imports every component and verifies its declared `exportName`, then runs the development-only Next/Tailwind consumer fixture. `pnpm storybook` browses the source stories.
 
 ## Context wiki
 
@@ -86,7 +88,7 @@ Two things worth knowing before you read it. A pre-commit hook rebuilds the know
 
 **Permission boundary:** edit under `components/` and `src/` freely. Everything below is the maintainer's.
 
-**Do not commit, push, merge, tag, or publish.** Make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. The maintainer commits with `pnpm commit` and pushes; a merge to `main` is the only release trigger.
+**Do not commit, push, merge, tag, or publish.** Make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. The maintainer commits with `pnpm commit` and pushes; a merge to `main` is the only release trigger. Before a release-producing merge, the maintainer must confirm npm trusted publishing names this repository and `.github/workflows/release.yml`; the workflow intentionally has no `NPM_TOKEN` fallback.
 
 ## graphify
 

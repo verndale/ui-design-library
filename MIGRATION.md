@@ -2,6 +2,12 @@
 
 The package keeps its existing public component subpaths, but its implementation architecture and four APIs have changed. This guide covers the consumer work required when upgrading across that breaking release.
 
+## Executable ESM and reuse contract v2
+
+Package versions before `4.1.0` emitted extensionless relative specifiers that bundlers accepted but native Node ESM could not load. Version `4.1.0` and later emits explicit `.js` specifiers and verifies every packed component subpath with native dynamic import. Public directory-shaped imports do not change.
+
+Orchestration consumers must use an exact `4.1.0` or newer dependency and require `package.json#uiDesignLibrary.reuseContractVersion === 2`. Every `component.json` now declares the primary AI candidate through `exportName` and `rendering`; secondary named exports remain available to application developers but are not separately inventoried for automatic reuse.
+
 ## Stable imports
 
 Continue importing from the directory-shaped package subpath:

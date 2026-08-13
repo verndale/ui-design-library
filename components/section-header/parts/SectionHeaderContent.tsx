@@ -1,4 +1,4 @@
-import type { SectionHeaderProps } from '../SectionHeader.types';
+import type { SectionHeaderProps } from '../SectionHeader.types.js';
 
 export function SectionHeaderContent({
   eyebrow,

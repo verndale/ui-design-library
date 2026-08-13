@@ -1,6 +1,8 @@
 {
   "canonical": "Breadcrumbs",
   "slug": "breadcrumbs",
+  "exportName": "Breadcrumbs",
+  "rendering": "server",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["items", "currentPageTitle", "backLinkLabel", "separator", "backIcon"],

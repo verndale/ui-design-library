@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { SearchInput } from '../../search-input/index';
+import { SearchInput } from '../../search-input/index.js';
 
 type SearchOverlayContentProps = {
   query: string;

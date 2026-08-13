@@ -1,4 +1,4 @@
-import type { StatProps } from './Stat.types';
+import type { StatProps } from './Stat.types.js';
 
 /**
  * A single statistic: a prominent value paired with a describing label.

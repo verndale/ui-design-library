@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, type RefObject } from 'react';
 
-import { useFocusTrap } from './focus.client';
+import { useFocusTrap } from './focus.client.js';
 import {
   getTopOverlay,
   useDocumentScrollLock,
   useOverlayStack,
-} from './overlayStack.client';
-import { usePortalRoot } from './usePortalRoot.client';
+} from './overlayStack.client.js';
+import { usePortalRoot } from './usePortalRoot.client.js';
 
 type UseDialogOptions = {
   open: boolean;

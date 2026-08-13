@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 100,
-    "edges": 158,
+    "nodes": 103,
+    "edges": 171,
     "byType": {
-      "surface": 39,
+      "surface": 40,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 21,
-      "wiki-plan": 5,
+      "wiki-journal": 22,
+      "wiki-plan": 6,
       "wiki-topic": 6
     },
     "byEdgeType": {
-      "covers": 45,
-      "links-to": 66,
-      "plan": 6,
-      "topic": 20,
+      "covers": 47,
+      "links-to": 72,
+      "plan": 7,
+      "topic": 24,
       "uses-tokens": 21
     }
   },
@@ -30,7 +30,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1964,
+      "bytes": 2010,
       "degree": 1
     },
     {
@@ -174,7 +174,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 12406,
+      "bytes": 13536,
       "degree": 5
     },
     {
@@ -198,7 +198,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 736,
       "degree": 1
     },
     {
@@ -210,7 +210,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2458,
+      "bytes": 2512,
       "degree": 1
     },
     {
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2223,
+      "bytes": 2264,
       "degree": 1
     },
     {
@@ -234,7 +234,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 936,
+      "bytes": 987,
       "degree": 1
     },
     {
@@ -246,7 +246,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1806,
+      "bytes": 1832,
       "degree": 1
     },
     {
@@ -258,7 +258,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1641,
+      "bytes": 1697,
       "degree": 1
     },
     {
@@ -270,7 +270,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2365,
+      "bytes": 2416,
       "degree": 1
     },
     {
@@ -282,7 +282,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1436,
+      "bytes": 1485,
       "degree": 1
     },
     {
@@ -294,7 +294,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2275,
+      "bytes": 2328,
       "degree": 1
     },
     {
@@ -306,7 +306,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1253,
+      "bytes": 1303,
       "degree": 1
     },
     {
@@ -318,7 +318,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2448,
+      "bytes": 2509,
       "degree": 1
     },
     {
@@ -330,7 +330,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1696,
+      "bytes": 1745,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2283,
+      "bytes": 2333,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1429,
+      "bytes": 1479,
       "degree": 1
     },
     {
@@ -366,7 +366,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1989,
+      "bytes": 2042,
       "degree": 1
     },
     {
@@ -378,7 +378,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2937,
+      "bytes": 2993,
       "degree": 1
     },
     {
@@ -390,7 +390,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2504,
+      "bytes": 2562,
       "degree": 1
     },
     {
@@ -402,7 +402,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1851,
+      "bytes": 1909,
       "degree": 1
     },
     {
@@ -414,7 +414,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1589,
+      "bytes": 1640,
       "degree": 1
     },
     {
@@ -426,7 +426,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2540,
+      "bytes": 2589,
       "degree": 1
     },
     {
@@ -438,7 +438,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2193,
+      "bytes": 2242,
       "degree": 1
     },
     {
@@ -450,7 +450,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1982,
+      "bytes": 2032,
       "degree": 1
     },
     {
@@ -474,7 +474,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 25190,
+      "bytes": 26578,
       "degree": 1
     },
     {
@@ -486,7 +486,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1053983,
+      "bytes": 1064922,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1187337,
+      "bytes": 1188279,
       "degree": 1
     },
     {
@@ -510,7 +510,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5750,
+      "bytes": 6466,
       "degree": 2
     },
     {
@@ -522,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8877,
+      "bytes": 9120,
       "degree": 1
     },
     {
@@ -534,7 +534,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 16776,
+      "bytes": 17833,
       "degree": 3
     },
     {
@@ -546,7 +546,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 883,
+      "bytes": 1023,
       "degree": 1
     },
     {
@@ -570,7 +570,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 18404,
+      "bytes": 22041,
       "degree": 1
     },
     {
@@ -582,8 +582,20 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 17047,
+      "bytes": 18616,
       "degree": 3
+    },
+    {
+      "id": "scripts/check-release-commit.cjs",
+      "label": "check-release-commit.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2709,
+      "degree": 1
     },
     {
       "id": "scripts/evals/graph-check.cjs",
@@ -666,8 +678,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4730,
-      "degree": 1
+      "bytes": 6464,
+      "degree": 2
     },
     {
       "id": "scripts/wiki/ci-journal-warn.cjs",
@@ -750,7 +762,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -762,7 +774,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 432,
+      "bytes": 494,
       "degree": 2
     },
     {
@@ -810,8 +822,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10277,
-      "degree": 32
+      "bytes": 10547,
+      "degree": 33
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1099,6 +1111,21 @@
       "degree": 3
     },
     {
+      "id": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "label": "Publish executable ESM and reuse contract v2",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "package-distribution",
+        "component-architecture"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2341,
+      "degree": 6
+    },
+    {
       "id": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
       "label": "Fix wiki sync pagination",
       "type": "wiki-journal",
@@ -1212,6 +1239,21 @@
       "degree": 4
     },
     {
+      "id": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "label": "Coordinated UI Library Contract v2 and AI Reuse Hardening",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "package-distribution",
+        "component-architecture"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 8652,
+      "degree": 6
+    },
+    {
       "id": "wiki/plans/2026-08-12-server-first-component-architecture.md",
       "label": "Server-first component architecture and full library migration",
       "type": "wiki-plan",
@@ -1244,12 +1286,13 @@
         "2"
       ],
       "issues": [
+        "31",
         "26",
         "18",
         "4"
       ],
-      "bytes": 2957,
-      "degree": 8
+      "bytes": 3289,
+      "degree": 9
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -1267,8 +1310,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 4384,
-      "degree": 12
+      "bytes": 5371,
+      "degree": 16
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -1317,8 +1360,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 2961,
-      "degree": 16
+      "bytes": 5281,
+      "degree": 22
     },
     {
       "id": "wiki/topics/story-testing.md",
@@ -1553,6 +1596,16 @@
     {
       "source": "wiki/topics/package-distribution.md",
       "target": "scripts/build-exports.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "scripts/check-release-commit.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "scripts/test-next.cjs",
       "type": "covers"
     },
     {
@@ -1797,6 +1850,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
       "type": "links-to",
       "count": 1,
@@ -1944,6 +2004,13 @@
     },
     {
       "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
       "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
       "type": "links-to",
       "count": 1,
@@ -1951,9 +2018,23 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
       "target": "wiki/journal/2026-08-12-server-first-component-architecture.md",
       "type": "links-to",
       "count": 6,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "links-to",
+      "count": 2,
       "anchors": []
     },
     {
@@ -1993,6 +2074,13 @@
     },
     {
       "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "links-to",
+      "count": 4,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
       "target": "wiki/journal/2026-08-12-server-first-component-architecture.md",
       "type": "links-to",
       "count": 1,
@@ -2003,6 +2091,13 @@
       "target": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "links-to",
+      "count": 4,
       "anchors": []
     },
     {
@@ -2108,6 +2203,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-08-12-server-first-component-architecture.md",
       "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
       "type": "plan"
@@ -2158,6 +2258,16 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/journal/2026-08-12-fix-wiki-sync-pagination.md",
       "target": "wiki/topics/graph-wiki-subsystem.md",
       "type": "topic"
@@ -2199,6 +2309,16 @@
     },
     {
       "source": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "target": "wiki/topics/package-distribution.md",
       "type": "topic"
     },

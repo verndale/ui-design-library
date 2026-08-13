@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import type { StatGroupProps } from '../Stat.types';
+import type { StatGroupProps } from '../Stat.types.js';
 
 /** A labelled native list of statistics. */
 export function StatGroup({ heading, orientation = 'column', children, className }: StatGroupProps) {

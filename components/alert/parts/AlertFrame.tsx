@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { AlertVariant } from '../Alert.types';
+import type { AlertVariant } from '../Alert.types.js';
 
 const TONE = {
   positive: { role: 'status', live: 'polite', accent: 'text-tone-positive', bar: 'bg-tone-positive' },

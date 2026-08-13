@@ -1,9 +1,9 @@
 'use client';
 
-import type { InPageNavigationItem } from '../InPageNavigation.types';
-import { MobileNavigation } from './MobileNavigation.client';
-import { NavigationLinks } from './NavigationLinks';
-import { useActiveSection } from './useActiveSection.client';
+import type { InPageNavigationItem } from '../InPageNavigation.types.js';
+import { MobileNavigation } from './MobileNavigation.client.js';
+import { NavigationLinks } from './NavigationLinks.js';
+import { useActiveSection } from './useActiveSection.client.js';
 
 export function InPageNavigationBranch({
   items,

@@ -1,10 +1,10 @@
 import { useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useDialog } from '../../src/lib/dialog.client';
-import { getFocusableElements } from '../../src/lib/focus.client';
-import { ModalPanel } from './parts/ModalPanel.client';
-import type { ModalProps } from './Modal.types';
+import { useDialog } from '../../src/lib/dialog.client.js';
+import { getFocusableElements } from '../../src/lib/focus.client.js';
+import { ModalPanel } from './parts/ModalPanel.client.js';
+import type { ModalProps } from './Modal.types.js';
 
 /** A modal dialog with an SSR-safe portal, focus trap, and focus restoration. */
 export function Modal({

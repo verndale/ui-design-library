@@ -138,9 +138,13 @@ function runtimeImports(sourceFile) {
   const namespaces = new Set();
   for (const statement of sourceFile.statements) {
     if (!ts.isImportDeclaration(statement) || !ts.isStringLiteral(statement.moduleSpecifier)) continue;
-    const clause = statement.importClause;
-    if (!clause || clause.isTypeOnly) continue;
     const source = statement.moduleSpecifier.text;
+    const clause = statement.importClause;
+    if (!clause) {
+      sources.push(source);
+      continue;
+    }
+    if (clause.isTypeOnly) continue;
     let runtime = Boolean(clause.name);
     if (clause.name) bindings.set(clause.name.text, { source, imported: 'default' });
     if (clause.namedBindings && ts.isNamespaceImport(clause.namedBindings)) {
@@ -159,13 +163,35 @@ function runtimeImports(sourceFile) {
     }
     if (runtime) sources.push(source);
   }
+
+  function collectDynamicImports(node) {
+    if (
+      ts.isCallExpression(node) &&
+      node.expression.kind === ts.SyntaxKind.ImportKeyword &&
+      node.arguments.length === 1 &&
+      (ts.isStringLiteral(node.arguments[0]) || ts.isNoSubstitutionTemplateLiteral(node.arguments[0]))
+    ) {
+      sources.push(node.arguments[0].text);
+    }
+    ts.forEachChild(node, collectDynamicImports);
+  }
+  collectDynamicImports(sourceFile);
+
   return { sources: [...new Set(sources)], bindings, namespaces };
 }
 
 function resolveRelativeModule(file, specifier, records) {
   if (!specifier.startsWith('.')) return null;
   const base = path.posix.normalize(path.posix.join(path.posix.dirname(file), specifier));
-  for (const candidate of [base, `${base}.ts`, `${base}.tsx`, `${base}/index.ts`, `${base}/index.tsx`]) {
+  const sourceBase = base.endsWith('.js') ? base.slice(0, -3) : base;
+  for (const candidate of [
+    base,
+    sourceBase,
+    `${sourceBase}.ts`,
+    `${sourceBase}.tsx`,
+    `${sourceBase}/index.ts`,
+    `${sourceBase}/index.tsx`,
+  ]) {
     if (records.has(candidate)) return candidate;
   }
   return null;
@@ -311,6 +337,76 @@ function analyzeModuleGraph(records, prefix, fail) {
     }
     visit(record.sourceFile);
   }
+
+  return adjacency;
+}
+
+function explicitExportTargets(sourceFile, exportName) {
+  const targets = [];
+  for (const statement of sourceFile.statements) {
+    if (
+      !ts.isExportDeclaration(statement) ||
+      !statement.moduleSpecifier ||
+      !ts.isStringLiteral(statement.moduleSpecifier) ||
+      statement.isTypeOnly ||
+      !statement.exportClause ||
+      !ts.isNamedExports(statement.exportClause)
+    ) continue;
+    for (const element of statement.exportClause.elements) {
+      if (!element.isTypeOnly && element.name.text === exportName) {
+        targets.push(statement.moduleSpecifier.text);
+      }
+    }
+  }
+  return targets;
+}
+
+function checkPrimaryRendering(dirName, contract, records, adjacency, fail) {
+  if (typeof contract.exportName !== 'string' || contract.exportName.length === 0) {
+    fail(`[rendering] components/${dirName}/component.json must declare exportName`);
+    return;
+  }
+  const indexFile = `components/${dirName}/index.ts`;
+  const indexRecord = records.get(indexFile);
+  if (!indexRecord) return;
+  const sources = explicitExportTargets(indexRecord.sourceFile, contract.exportName);
+  if (sources.length !== 1) {
+    fail(
+      `[rendering] components/${dirName}/index.ts must explicitly export ${contract.exportName} exactly once (found ${sources.length})`,
+    );
+    return;
+  }
+  const primaryFile = resolveRelativeModule(indexFile, sources[0], records);
+  if (!primaryFile) {
+    fail(
+      `[rendering] components/${dirName}/index.ts export ${contract.exportName} does not resolve to a source module`,
+    );
+    return;
+  }
+
+  const primaryRecord = records.get(primaryFile);
+  let derived = primaryRecord.directive || primaryRecord.clientPath ? 'client' : 'server';
+  if (derived === 'server') {
+    const seen = new Set([primaryFile]);
+    const queue = [...(adjacency.get(primaryFile) ?? [])];
+    while (queue.length > 0) {
+      const file = queue.shift();
+      if (seen.has(file)) continue;
+      seen.add(file);
+      const record = records.get(file);
+      if (record?.directive || record?.clientPath) {
+        derived = 'hybrid';
+        break;
+      }
+      queue.push(...(adjacency.get(file) ?? []));
+    }
+  }
+
+  if (contract.rendering !== derived) {
+    fail(
+      `[rendering] components/${dirName} declares rendering "${contract.rendering}" but primary export ${contract.exportName} derives as "${derived}"`,
+    );
+  }
 }
 
 function checkIndex(dirName, dir, sourceFile, directive, fail) {
@@ -376,7 +472,8 @@ function checkWorkspaceModuleGraph({ root, componentsDir }, fail) {
       });
     }
   }
-  analyzeModuleGraph(records, 'workspace', fail);
+  const adjacency = analyzeModuleGraph(records, 'workspace', fail);
+  return { records, adjacency };
 }
 
 function check({ componentsDir = COMPONENTS, root = path.dirname(componentsDir) } = {}) {
@@ -432,7 +529,20 @@ function check({ componentsDir = COMPONENTS, root = path.dirname(componentsDir) 
       visit(sourceFile);
     }
   }
-  checkWorkspaceModuleGraph({ root, componentsDir }, fail);
+  const graph = checkWorkspaceModuleGraph({ root, componentsDir }, fail);
+  for (const dirName of dirs) {
+    const manifestPath = path.join(componentsDir, dirName, 'component.json');
+    if (!fs.existsSync(manifestPath)) {
+      fail(`[rendering] components/${dirName}/component.json is missing`);
+      continue;
+    }
+    try {
+      const contract = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      checkPrimaryRendering(dirName, contract, graph.records, graph.adjacency, fail);
+    } catch (error) {
+      fail(`[rendering] components/${dirName}/component.json is not valid JSON: ${error.message}`);
+    }
+  }
 
   return [...new Set(failures)];
 }

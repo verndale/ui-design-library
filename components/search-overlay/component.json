@@ -1,6 +1,8 @@
 {
   "canonical": "Search overlay",
   "slug": "search-overlay",
+  "exportName": "SearchOverlay",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["heading", "supportingCopy", "input", "quickLinks", "resultsPanel"],

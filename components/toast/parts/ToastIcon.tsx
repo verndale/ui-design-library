@@ -1,4 +1,4 @@
-import type { ToastVariant } from '../Toast.types';
+import type { ToastVariant } from '../Toast.types.js';
 
 /** Decorative tone icon; live-region semantics carry the actual severity. */
 export function ToastIcon({ variant }: { variant: ToastVariant }) {

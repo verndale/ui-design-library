@@ -1,7 +1,7 @@
 'use client';
 
-import type { DismissibleBadgeProps } from '../Badge.types';
-import { BadgeFrame } from './BadgeFrame';
+import type { DismissibleBadgeProps } from '../Badge.types.js';
+import { BadgeFrame } from './BadgeFrame.js';
 
 function DismissIcon() {
   return (

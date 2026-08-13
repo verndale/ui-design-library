@@ -1,7 +1,7 @@
 import type { FormEvent, RefObject } from 'react';
 
-import { SearchControls } from './SearchControls.client';
-import { SearchField } from './SearchField.client';
+import { SearchControls } from './SearchControls.client.js';
+import { SearchField } from './SearchField.client.js';
 
 type SearchFormProps = {
   inputId: string;

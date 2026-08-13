@@ -1,4 +1,4 @@
-import type { ImageLoader } from './Image.types';
+import type { ImageLoader } from './Image.types.js';
 
 /** Builds the ordered density candidates shared by the image and source leaves. */
 export function buildSrcSet(

@@ -25,6 +25,13 @@ module.exports = {
     ],
     '@semantic-release/release-notes-generator',
     '@semantic-release/npm',
-    '@semantic-release/github',
+    [
+      '@semantic-release/github',
+      {
+        successCommentCondition: false,
+        failCommentCondition: false,
+        releasedLabels: false,
+      },
+    ],
   ],
 };

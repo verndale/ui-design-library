@@ -1,8 +1,8 @@
-import type { BreadcrumbsProps } from './Breadcrumbs.types';
-import { BreadcrumbBackLink } from './parts/BreadcrumbBackLink';
-import { BreadcrumbTrail } from './parts/BreadcrumbTrail';
+import type { BreadcrumbsProps } from './Breadcrumbs.types.js';
+import { BreadcrumbBackLink } from './parts/BreadcrumbBackLink.js';
+import { BreadcrumbTrail } from './parts/BreadcrumbTrail.js';
 
-export type { BreadcrumbItem, BreadcrumbsProps } from './Breadcrumbs.types';
+export type { BreadcrumbItem, BreadcrumbsProps } from './Breadcrumbs.types.js';
 
 /** A responsive trail of ancestor links ending in the current page. */
 export function Breadcrumbs({

@@ -1,6 +1,6 @@
-import type { RichTextProps } from './RichText.types';
-import { RichTextContent } from './parts/RichTextContent';
-import { richTextRecipe } from './RichText.styles';
+import type { RichTextProps } from './RichText.types.js';
+import { RichTextContent } from './parts/RichTextContent.js';
+import { richTextRecipe } from './RichText.styles.js';
 
 /**
  * Renders already-authored formatted content as one flowing block styled by the

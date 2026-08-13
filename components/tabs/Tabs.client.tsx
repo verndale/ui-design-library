@@ -1,7 +1,7 @@
 import { useCallback, useId, useRef, useState, type KeyboardEvent } from 'react';
 
-import { TabsList } from './parts/TabsList.client';
-import type { TabsProps } from './Tabs.types';
+import { TabsList } from './parts/TabsList.client.js';
+import type { TabsProps } from './Tabs.types.js';
 
 /** A pill tablist with controlled/uncontrolled selection and roving keyboard focus. */
 export function Tabs({

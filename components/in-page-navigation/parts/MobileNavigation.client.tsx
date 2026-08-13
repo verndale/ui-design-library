@@ -2,9 +2,9 @@
 
 import { useId, useState } from 'react';
 
-import type { InPageNavigationItem } from '../InPageNavigation.types';
-import { NavigationChevron } from './NavigationChevron';
-import { NavigationLinks } from './NavigationLinks';
+import type { InPageNavigationItem } from '../InPageNavigation.types.js';
+import { NavigationChevron } from './NavigationChevron.js';
+import { NavigationLinks } from './NavigationLinks.js';
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus';

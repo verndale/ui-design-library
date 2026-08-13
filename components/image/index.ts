@@ -1,2 +1,2 @@
-export { Image } from './Image';
-export type { ImageLoader, ImageLoaderArgs, ImageProps, ImageSource } from './Image.types';
+export { Image } from './Image.js';
+export type { ImageLoader, ImageLoaderArgs, ImageProps, ImageSource } from './Image.types.js';

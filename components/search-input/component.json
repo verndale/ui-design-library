@@ -1,6 +1,8 @@
 {
   "canonical": "Search input",
   "slug": "search-input",
+  "exportName": "SearchInput",
+  "rendering": "client",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["results"],

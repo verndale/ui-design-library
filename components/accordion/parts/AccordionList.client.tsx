@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import type { AccordionItem as AccordionItemData } from '../Accordion.types';
-import { AccordionItem } from './AccordionItem.client';
+import type { AccordionItem as AccordionItemData } from '../Accordion.types.js';
+import { AccordionItem } from './AccordionItem.client.js';
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus';

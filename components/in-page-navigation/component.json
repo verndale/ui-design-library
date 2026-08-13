@@ -1,6 +1,8 @@
 {
   "canonical": "In-page navigation",
   "slug": "in-page-navigation",
+  "exportName": "InPageNavigation",
+  "rendering": "hybrid",
   "framework": "react",
   "styling": "tailwind",
   "slots": ["item"],

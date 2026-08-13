@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
-import { ToastIcon } from './ToastIcon';
-import type { ToastVariant } from '../Toast.types';
+import { ToastIcon } from './ToastIcon.js';
+import type { ToastVariant } from '../Toast.types.js';
 
 const tone = {
   neutral: { role: 'status', live: 'polite', accent: 'text-text-primary' },

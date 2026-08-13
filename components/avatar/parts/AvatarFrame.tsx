@@ -1,4 +1,4 @@
-import type { AvatarProps } from '../Avatar.types';
+import type { AvatarProps } from '../Avatar.types.js';
 
 export function AvatarFrame({ children, className }: AvatarProps) {
   return (

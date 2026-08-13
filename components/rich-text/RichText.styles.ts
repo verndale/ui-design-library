@@ -1,4 +1,4 @@
-import type { RichTextListStyle } from './RichText.types';
+import type { RichTextListStyle } from './RichText.types.js';
 
 const base = [
   'text-base text-text-secondary',

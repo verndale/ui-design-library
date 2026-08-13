@@ -1,4 +1,4 @@
-import type { SliderOption } from '../Slider.types';
+import type { SliderOption } from '../Slider.types.js';
 
 /** Selected option detail associated with the native range control. */
 export function SliderSelectedValue({

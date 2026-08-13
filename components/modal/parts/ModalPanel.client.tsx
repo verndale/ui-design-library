@@ -1,8 +1,8 @@
 import type { ReactNode, RefObject } from 'react';
 
-import { ModalBody } from './ModalBody';
-import { ModalFooter } from './ModalFooter';
-import { ModalHeader } from './ModalHeader.client';
+import { ModalBody } from './ModalBody.js';
+import { ModalFooter } from './ModalFooter.js';
+import { ModalHeader } from './ModalHeader.client.js';
 
 type ModalPanelProps = {
   dialogRef: RefObject<HTMLDivElement | null>;

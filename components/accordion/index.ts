@@ -1,2 +1,2 @@
-export { Accordion } from './Accordion';
-export type { AccordionItem, AccordionProps } from './Accordion.types';
+export { Accordion } from './Accordion.js';
+export type { AccordionItem, AccordionProps } from './Accordion.types.js';

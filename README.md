@@ -25,19 +25,33 @@ That is the whole mechanism. Because both sides key on the same slug, a build pi
 
 ```
 components/<slug>/                    a canonical's default implementation
-├── <Component>.tsx                   the implementation
+├── index.ts                          stable public facade for the package subpath
+├── <Component>.types.ts              public prop and supporting types
+├── <Component>.tsx |                 server-compatible tree, or
+│   <Component>.client.tsx            client-only tree when wholly interactive
+├── parts/                             private branches, leaves, and narrow client islands
 ├── <Component>.stories.tsx           the API contract — see below
 └── component.json                    canonical, API slots, reuse fingerprint, variants,
                                       tokens, provenance
 
 components/<slug>--<variant>/         a structurally-distinct implementation of the same
-                                      canonical (optional) — same three files
+                                      canonical (optional) — the same internal contract
 
 src/tokens/                           the semantic token layer (the styling contract)
 src/lib/                              shared, dependency-free primitives (focus, scroll)
 ```
 
 A canonical resolves to a directory. In the common case that is one implementation — `components/<slug>/`, `<slug> == kebab(canonical)`, matching the catalog. When a canonical needs more than one *structurally* distinct implementation (a plain nav bar and a mega menu, both **Navigation**), the default stays the bare `components/<slug>/` and each alternate is a sibling `components/<slug>--<variant>/`. Both carry `slug == kebab(canonical)`; `variant` (singular — the structural axis, not the prop-value `variants` array) distinguishes them, and one is the `default`. The key is `(canonical, variant)`. Single-variant components need neither field. `pnpm contracts` enforces all of it.
+
+## Server-first component boundaries
+
+Every public subpath resolves through `components/<slug>/index.ts`. That facade is stable; the tree/branch/leaf files behind it can change without changing the consumer import. Stories also import only `./index`, so Storybook exercises the same API consumers receive.
+
+Components are server-compatible by default. Browser state, effects, portals, focus management, and DOM observers belong in files named `*.client.tsx` or `*.client.ts`, with `'use client'` at the narrowest useful boundary. Every client module is limited to 120 physical lines. A hybrid component such as Accordion keeps its outer tree server-compatible and hydrates its disclosure leaves; a wholly interactive component such as Modal exposes a client facade.
+
+The architecture gate also requires a separate types module and at least two meaningful non-story TSX modules per component. It rejects client hooks or browser globals in neutral modules, render-time browser access, misplaced client directives, and story imports that bypass the facade. `pnpm test:ssr` renders public components without browser globals.
+
+The core stays React- and Tailwind-based rather than Next-specific. No component may import `next/*`. Next is a development-only consumer fixture exercised by `pnpm test:next`, not a runtime or peer dependency.
 
 ---
 
@@ -123,6 +137,34 @@ Import Tailwind, the library's semantic layer, and one explicit source path in t
 import { Modal } from '@verndale/ui-design-library/components/modal';
 ```
 
+The import path is the same for a server-compatible component:
+
+```tsx
+import { Alert } from '@verndale/ui-design-library/components/alert';
+import { Button } from '@verndale/ui-design-library/components/button';
+
+export function SaveForm() {
+  return (
+    <form action="/save">
+      <Alert>Ready to save.</Alert>
+      <Button type="submit">Save</Button>
+    </form>
+  );
+}
+```
+
+Interactive callback APIs are used from a Client Component:
+
+```tsx
+'use client';
+
+import { DismissibleAlert } from '@verndale/ui-design-library/components/alert';
+
+export function SavedNotice({ onClose }: { onClose: () => void }) {
+  return <DismissibleAlert onDismiss={onClose}>Saved.</DismissibleAlert>;
+}
+```
+
 A structural variant lives in its own directory; both satisfy the same catalog canonical — import the structure the design resolved to:
 
 ```tsx
@@ -131,6 +173,8 @@ import { MegaMenu } from '@verndale/ui-design-library/components/navigation--meg
 ```
 
 There is no root barrel and no short alias such as `@verndale/ui-design-library/modal`. The directory-shaped subpath is the public identity. Override semantic tokens in the consuming project's own layer; never edit the installed package.
+
+When upgrading across the server-first architecture release, see [`MIGRATION.md`](MIGRATION.md) for the Button, Alert, Badge, and Carousel API changes.
 
 The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. `reuseFingerprint` is separate from API-level `slots`: it uses the pipeline's governed structural `slots` + `affordance` + `role` triad. `variant` remains the singular structural implementation axis, while `variants` remains the list of prop/style values.
 
@@ -159,8 +203,11 @@ A capture that is a *structurally distinct* take on a canonical the library alre
 ## Quality gates
 
 ```bash
-pnpm test              # typecheck + contracts + contract self-test + story tests + reduced-motion tests
+pnpm test              # typecheck + lint + architecture/contracts + SSR + story/motion tests
 pnpm typecheck         # tsc --noEmit
+pnpm lint              # hooks, boundaries, and source linting
+pnpm architecture      # index/types/parts shape, client naming + 120-line ceiling
+pnpm test:ssr          # public components render with no browser globals
 pnpm build             # deterministic ESM + declaration build, then export/dist parity
 pnpm exports:check     # component directories and committed package exports agree
 pnpm exports:sync      # deliberately update the committed map after adding/removing a component
@@ -170,6 +217,7 @@ pnpm contracts:selftest # exercises the contract checker itself against fixtures
 pnpm test:stories      # every story rendered in Chromium: play functions + axe
 pnpm test:stories:watch # the same, in watch mode
 pnpm test:motion       # `motion`-tagged stories re-run under prefers-reduced-motion
+pnpm verify            # pnpm test + package build + development-only Next consumer fixture
 ```
 
 `pnpm test:stories` needs a browser binary. Once per machine:

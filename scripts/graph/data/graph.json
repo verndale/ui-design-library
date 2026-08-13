@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 83,
-    "edges": 124,
+    "nodes": 91,
+    "edges": 144,
     "byType": {
-      "surface": 27,
+      "surface": 32,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 18,
-      "wiki-plan": 4,
-      "wiki-topic": 5
+      "wiki-journal": 19,
+      "wiki-plan": 5,
+      "wiki-topic": 6
     },
     "byEdgeType": {
-      "covers": 29,
-      "links-to": 55,
-      "plan": 5,
-      "topic": 14,
+      "covers": 37,
+      "links-to": 62,
+      "plan": 6,
+      "topic": 18,
       "uses-tokens": 21
     }
   },
@@ -30,7 +30,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1980,
+      "bytes": 1964,
       "degree": 1
     },
     {
@@ -42,7 +42,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1628,
+      "bytes": 1630,
       "degree": 1
     },
     {
@@ -138,7 +138,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7366,
+      "bytes": 9236,
       "degree": 4
     },
     {
@@ -152,6 +152,18 @@
       "issues": [],
       "bytes": 310,
       "degree": 0
+    },
+    {
+      "id": "components",
+      "label": "components",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 736,
+      "degree": 1
     },
     {
       "id": "components/accordion/component.json",
@@ -222,7 +234,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2247,
+      "bytes": 2365,
       "degree": 1
     },
     {
@@ -246,7 +258,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2283,
+      "bytes": 2275,
       "degree": 1
     },
     {
@@ -294,7 +306,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2264,
+      "bytes": 2283,
       "degree": 1
     },
     {
@@ -342,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2497,
+      "bytes": 2504,
       "degree": 1
     },
     {
@@ -366,7 +378,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1569,
+      "bytes": 1589,
       "degree": 1
     },
     {
@@ -414,8 +426,20 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5420,
+      "bytes": 6836,
       "degree": 0
+    },
+    {
+      "id": "MIGRATION.md",
+      "label": "MIGRATION.md",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 5750,
+      "degree": 2
     },
     {
       "id": "package.json",
@@ -426,7 +450,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8285,
+      "bytes": 8816,
       "degree": 1
     },
     {
@@ -438,7 +462,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13930,
+      "bytes": 16776,
       "degree": 3
     },
     {
@@ -462,7 +486,19 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2825,
+      "bytes": 3333,
+      "degree": 1
+    },
+    {
+      "id": "scripts/check-component-architecture.cjs",
+      "label": "check-component-architecture.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 18404,
       "degree": 1
     },
     {
@@ -474,8 +510,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 15381,
-      "degree": 2
+      "bytes": 17047,
+      "degree": 3
     },
     {
       "id": "scripts/evals/graph-check.cjs",
@@ -535,6 +571,18 @@
       "prs": [],
       "issues": [],
       "bytes": 1871,
+      "degree": 1
+    },
+    {
+      "id": "scripts/test-next.cjs",
+      "label": "test-next.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4730,
       "degree": 1
     },
     {
@@ -610,6 +658,18 @@
       "degree": 1
     },
     {
+      "id": "tests/ssr",
+      "label": "ssr",
+      "type": "surface",
+      "dir": "tests",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 96,
+      "degree": 1
+    },
+    {
       "id": "tsconfig.build.json",
       "label": "tsconfig.build.json",
       "type": "surface",
@@ -618,8 +678,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 410,
-      "degree": 1
+      "bytes": 432,
+      "degree": 2
     },
     {
       "id": "vitest.config.ts",
@@ -666,8 +726,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9298,
-      "degree": 28
+      "bytes": 9769,
+      "degree": 30
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -937,6 +997,23 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "label": "Adopt server-first component architecture",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "component-architecture",
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "26"
+      ],
+      "bytes": 2641,
+      "degree": 6
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1015,6 +1092,23 @@
       "degree": 4
     },
     {
+      "id": "wiki/plans/2026-08-12-server-first-component-architecture.md",
+      "label": "Server-first component architecture and full library migration",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "component-architecture",
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "26"
+      ],
+      "bytes": 9613,
+      "degree": 6
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -1027,11 +1121,31 @@
         "2"
       ],
       "issues": [
+        "26",
         "18",
         "4"
       ],
-      "bytes": 2487,
-      "degree": 7
+      "bytes": 2892,
+      "degree": 8
+    },
+    {
+      "id": "wiki/topics/component-architecture.md",
+      "label": "Component architecture — Design History",
+      "type": "wiki-topic",
+      "dir": "wiki/topics",
+      "topics": [],
+      "aliases": [
+        "component architecture",
+        "server-first components",
+        "use client boundaries",
+        "React Server Components",
+        "SSR safety",
+        "tree branch leaf"
+      ],
+      "prs": [],
+      "issues": [],
+      "bytes": 4384,
+      "degree": 12
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -1077,8 +1191,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 2328,
-      "degree": 11
+      "bytes": 2961,
+      "degree": 16
     },
     {
       "id": "wiki/topics/story-testing.md",
@@ -1156,6 +1270,41 @@
   ],
   "edges": [
     {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "components",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "MIGRATION.md",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "scripts/check-component-architecture.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "scripts/check-contracts.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "scripts/test-next.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "tests/ssr",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "tsconfig.build.json",
+      "type": "covers"
+    },
+    {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": ".github/workflows/wiki-issue-sync.yml",
       "type": "covers"
@@ -1218,6 +1367,11 @@
     {
       "source": "wiki/topics/package-distribution.md",
       "target": ".github/workflows/release.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "MIGRATION.md",
       "type": "covers"
     },
     {
@@ -1470,6 +1624,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -1480,6 +1641,13 @@
       "target": "wiki/plans/INDEX.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -1595,6 +1763,27 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "type": "links-to",
+      "count": 6,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
+      "type": "links-to",
+      "count": 5,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
       "type": "links-to",
@@ -1610,9 +1799,23 @@
     },
     {
       "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -1711,6 +1914,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "target": "wiki/plans/2026-08-12-server-first-component-architecture.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -1751,6 +1959,16 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-12-server-first-component-architecture.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -1777,6 +1995,16 @@
     },
     {
       "source": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-12-server-first-component-architecture.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-12-server-first-component-architecture.md",
       "target": "wiki/topics/package-distribution.md",
       "type": "topic"
     },

@@ -31,13 +31,13 @@
     "source": "cn-website/src/components/ui/modal/ModalShellDialog.client.tsx"
   },
   "declienting": [
-    "Replaced the focus trap imported from components/renderings/navigation/main-navigation/useFocusTrap with the library-owned src/lib/focus.ts.",
+    "Replaced the focus trap imported from components/renderings/navigation/main-navigation/useFocusTrap with the library-owned src/lib/focus.client.ts.",
     "Removed the motion/react dependency; entrance and transitions are CSS driven by --duration-* and --ease-standard.",
     "Mapped CN tokens to library semantic tokens: background-primary to surface-raised, border-light to border-subtle, layout-page-margin to spacing-page-margin, alpha-gray-18 to surface-scrim.",
     "Dropped the brand hover colour (--color-surface-accent-red) for the neutral action-hover token.",
     "Replaced the multiplication-sign close glyph with an inline SVG so the control has no text content to be announced.",
     "Added a footer slot and a size variant; CN passed layout in through titleClassName and bodyClassName overrides instead.",
-    "Fixed a defect introduced by the rewrite: the SSR-safe `mounted` gate meant dialogRef was still null on the first render of a dialog mounted already open, so useFocusTrap ran once against a null ref and never re-ran — no trap at all. Trigger-opened dialogs were unaffected, which is why it survived manual checking. Now gated on `open && mounted`.",
+    "Fixed a defect introduced by the rewrite: the SSR-safe portal gate meant dialogRef was still null on the first render of a dialog mounted already open, so useFocusTrap ran once against a null ref and never re-ran — no trap at all. Trigger-opened dialogs were unaffected, which is why it survived manual checking. The trap is now gated on `open && portalRoot`.",
     "Added tabIndex to the scrolling body. It was scrollable by pointer only, so keyboard users could not reach long content (WCAG 2.1.1). Found by axe once story tests made the a11y check a gate."
   ],
   "maturity": "supported"

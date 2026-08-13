@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { SectionHeader } from './SectionHeader';
+import { SectionHeader } from './index';
 
 const meta = {
   title: 'Section header',

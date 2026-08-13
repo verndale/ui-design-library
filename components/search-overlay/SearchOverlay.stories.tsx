@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 import { useState } from 'react';
 
-import { SearchOverlay } from './SearchOverlay';
+import { SearchOverlay } from './index';
 
 /** A small quick-links grid for the idle state. */
 function QuickLinks() {

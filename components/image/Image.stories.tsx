@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { Image, type ImageLoader } from './Image';
+import { Image, type ImageLoader } from './index';
 
 /**
  * A stand-in transform host. Real consumers pass one that speaks their DAM's

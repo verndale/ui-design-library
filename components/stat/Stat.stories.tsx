@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { Stat, StatGroup } from './Stat';
+import { Stat, StatGroup } from './index';
 
 const meta = {
   title: 'Stat',
@@ -55,11 +55,8 @@ export const GroupRow: Story = {
     const canvas = within(canvasElement);
     const list = canvas.getByRole('list');
 
-    // aria-labelledby resolves to the visually-hidden heading — the accessible name.
-    const labelId = list.getAttribute('aria-labelledby');
-    await expect(labelId).toBeTruthy();
-    const heading = canvasElement.querySelector(`[id="${labelId}"]`);
-    await expect(heading).toHaveTextContent('By the numbers');
+    await expect(list).toHaveAccessibleName('By the numbers');
+    await expect(canvas.getByRole('heading', { level: 2, name: 'By the numbers' })).toBeInTheDocument();
 
     await expect(canvas.getAllByRole('listitem')).toHaveLength(3);
     // Row lays the stats out horizontally at md+ (asserted on the class so it holds
@@ -80,9 +77,8 @@ export const GroupColumn: Story = {
     const canvas = within(canvasElement);
     const list = canvas.getByRole('list');
 
-    const labelId = list.getAttribute('aria-labelledby');
-    const heading = canvasElement.querySelector(`[id="${labelId}"]`);
-    await expect(heading).toHaveTextContent('Highlights');
+    await expect(list).toHaveAccessibleName('Highlights');
+    await expect(canvas.getByRole('heading', { level: 2, name: 'Highlights' })).toBeInTheDocument();
 
     await expect(canvas.getAllByRole('listitem')).toHaveLength(2);
     await expect(list.className).not.toContain('md:flex-row');

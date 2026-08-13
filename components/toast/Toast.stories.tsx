@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, waitFor, within } from 'storybook/test';
 import { useState } from 'react';
 
-import { Toast } from './Toast';
+import { Toast } from './index';
 
 /**
  * The story file is this component's API contract. What is worth proving is the

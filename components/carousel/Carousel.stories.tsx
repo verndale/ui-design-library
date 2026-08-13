@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 
-import { Carousel } from './Carousel';
+import { Carousel } from './index';
 
 const Slide = ({ n }: { n: number }) => (
   <div className="me-s flex h-48 flex-col justify-between rounded-medium bg-surface-sunken p-s">
@@ -144,5 +144,16 @@ export const SingleSlide: Story = {
     // The only slide must stay reachable — a lone inert slide is the failure
     // mode that made this carousel unusable by keyboard in the source.
     await expect(within(canvas.getByRole('region')).getByRole('group')).not.toHaveAttribute('inert');
+  },
+};
+
+/** An empty data set has no carousel semantics, controls, or impossible `1 / 0` status. */
+export const Empty: Story = {
+  args: { slides: [] },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.queryByRole('region', { name: 'Featured stories' })).not.toBeInTheDocument();
+    await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
+    await expect(canvas.queryByText('1 / 0')).not.toBeInTheDocument();
   },
 };

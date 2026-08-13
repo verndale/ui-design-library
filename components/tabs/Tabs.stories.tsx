@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
 
-import { Tabs, type TabItem } from './Tabs';
+import { Tabs, type TabItem } from './index';
 
 const three: TabItem[] = [
   { id: 'overview', label: 'Overview' },

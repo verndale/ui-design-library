@@ -78,6 +78,41 @@ const cases = [
     expect: (f) => f.length === 0,
   },
   {
+    name: 'raw colour in a nested implementation fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      const parts = path.join(root, 'button', 'parts');
+      fs.mkdirSync(parts, { recursive: true });
+      fs.writeFileSync(path.join(parts, 'ButtonLabel.tsx'), "export const ButtonLabel = () => <span className=\"text-[#fff]\" />;\n");
+    },
+    expect: (f) => f.some((m) => m.includes('parts/ButtonLabel.tsx') && m.includes('raw colour')),
+  },
+  {
+    name: 'Next import in a nested implementation fails',
+    build(root) {
+      comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button' });
+      const parts = path.join(root, 'button', 'parts');
+      fs.mkdirSync(parts, { recursive: true });
+      fs.writeFileSync(path.join(parts, 'ButtonLabel.tsx'), "import Link from 'next/link';\nexport const ButtonLabel = Link;\n");
+    },
+    expect: (f) => f.some((m) => m.includes('parts/ButtonLabel.tsx') && m.includes('imports next/*')),
+  },
+  {
+    name: 'shared nested implementation is scanned for framework and colour violations',
+    build(root) {
+      comp(root, 'card', { canonical: 'Card', slug: 'card', title: 'Card' });
+      const shared = path.join(path.dirname(root), 'src/lib/nested');
+      fs.mkdirSync(shared, { recursive: true });
+      fs.writeFileSync(
+        path.join(shared, 'Bad.ts'),
+        "import Link from 'next/link';\nexport const raw = 'hsl(0 100% 50%)';\n",
+      );
+    },
+    expect: (f) =>
+      f.some((m) => m.includes('src/lib/nested/Bad.ts imports next/*')) &&
+      f.some((m) => m.includes('src/lib/nested/Bad.ts:2 uses a raw colour')),
+  },
+  {
     name: 'missing reuse fingerprint fails',
     build(root) {
       comp(root, 'button', { canonical: 'Button', slug: 'button', title: 'Button', reuseFingerprint: null });
@@ -211,7 +246,11 @@ for (const c of cases) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'contracts-selftest-'));
   try {
     c.build(path.join(root, 'components'));
-    const failures = check({ componentsDir: path.join(root, 'components'), tokenCss: TOKEN_CSS });
+    const failures = check({
+      componentsDir: path.join(root, 'components'),
+      tokenCss: TOKEN_CSS,
+      sharedDir: path.join(root, 'src/lib'),
+    });
     if (c.expect(failures)) {
       process.stdout.write(`ok   ${c.name}\n`);
     } else {

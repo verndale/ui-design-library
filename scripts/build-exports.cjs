@@ -4,6 +4,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { implementationFiles, listComponentDirs } = require('./lib/component-files.cjs');
 
 const root = path.resolve(__dirname, '..');
 const componentsDir = path.join(root, 'components');
@@ -17,21 +18,13 @@ function fail(message) {
 }
 
 function componentRecords() {
-  return fs
-    .readdirSync(componentsDir, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
-    .map((entry) => {
-      const dir = path.join(componentsDir, entry.name);
+  return listComponentDirs(componentsDir)
+    .map((directory) => {
+      const dir = path.join(componentsDir, directory);
       const manifestPath = path.join(dir, 'component.json');
-      if (!fs.existsSync(manifestPath)) fail(`components/${entry.name}/component.json is missing`);
-      const implementationFiles = fs
-        .readdirSync(dir)
-        .filter((file) => file.endsWith('.tsx') && !file.endsWith('.stories.tsx'))
-        .sort();
-      if (implementationFiles.length !== 1) {
-        fail(`components/${entry.name} must contain exactly one implementation .tsx file`);
-      }
-      return { directory: entry.name, implementation: implementationFiles[0].slice(0, -4) };
+      if (!fs.existsSync(manifestPath)) fail(`components/${directory}/component.json is missing`);
+      if (!fs.existsSync(path.join(dir, 'index.ts'))) fail(`components/${directory}/index.ts is missing`);
+      return { directory };
     })
     .sort((a, b) => a.directory.localeCompare(b.directory));
 }
@@ -40,7 +33,7 @@ function expectedExports() {
   const exportsMap = {};
   for (const record of componentRecords()) {
     const publicBase = `./components/${record.directory}`;
-    const distBase = `./dist/components/${record.directory}/${record.implementation}`;
+    const distBase = `./dist/components/${record.directory}/index`;
     exportsMap[publicBase] = {
       types: `${distBase}.d.ts`,
       import: `${distBase}.js`,
@@ -72,6 +65,24 @@ if (checkDist) {
     for (const kind of ['types', 'import']) {
       const absolute = path.join(root, target[kind]);
       if (!fs.existsSync(absolute)) fail(`${subpath} ${kind} target is missing: ${target[kind]}`);
+    }
+  }
+  for (const record of componentRecords()) {
+    const componentDir = path.join(componentsDir, record.directory);
+    for (const file of implementationFiles(componentDir)) {
+      const source = fs.readFileSync(path.join(componentDir, file), 'utf8');
+      if (!/^\s*['"]use client['"];?/.test(source)) continue;
+      const builtPath = path.join(
+        root,
+        'dist/components',
+        record.directory,
+        file.replace(/\.(?:ts|tsx)$/, '.js'),
+      );
+      if (!fs.existsSync(builtPath)) fail(`components/${record.directory}/${file} was not emitted to dist`);
+      const built = fs.readFileSync(builtPath, 'utf8');
+      if (!/^\s*['"]use client['"];?/.test(built)) {
+        fail(`components/${record.directory}/${file} client directive was not preserved in dist`);
+      }
     }
   }
 }

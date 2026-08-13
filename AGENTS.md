@@ -18,6 +18,25 @@ Everything here exists to keep these true. `pnpm contracts` enforces them.
 
 Every manifest also carries `reuseFingerprint`: the AI pipeline's governed structural slots, primary affordance, and content role. It is not the existing API-level `slots` list. `pnpm contracts` rejects missing, malformed, ungoverned, or duplicate fingerprint values.
 
+## Component architecture
+
+Every component has one stable public facade and a tree/branch/leaf implementation:
+
+```text
+components/<slug>/
+├── index.ts                     public package facade
+├── <Component>.types.ts         public types
+├── <Component>.tsx |            server-compatible tree, or
+│   <Component>.client.tsx       client-only tree when wholly interactive
+├── parts/                        private branches, leaves, and client islands
+├── <Component>.stories.tsx
+└── component.json
+```
+
+`pnpm architecture` enforces the shape. Each directory has exactly one root `index.ts`, exactly one root `*.types.ts`, and at least two meaningful non-story TSX modules. Stories import component code only from `./index`; consumers use only the directory-shaped package subpath.
+
+Server-compatible is the default. Put `'use client'` at the narrowest boundary that owns browser state, an effect, a portal, focus management, or DOM observation. Every directive-bearing implementation is named `*.client.ts(x)` and is no more than 120 physical lines. A client-only facade declares `'use client'`; a server or mixed facade does not. Do not access browser globals at module evaluation or render time, and do not import `next/*` into component core. Next exists here only as a development consumer test.
+
 ## Adding a component
 
 Components arrive as **captures** from a `project-retrospective` run, and executing a capture is a rewrite, not a copy. What comes out:
@@ -30,6 +49,8 @@ Components arrive as **captures** from a `project-retrospective` run, and execut
 Record every removal in `component.json`'s `declienting` array. That list is the honest cost of the rewrite, and the next person reads it to estimate the one after.
 
 New components land as `maturity: "candidate"`. Promoting to `supported` is a deliberate human decision, not a side effect of editing. After adding or removing a component, run `pnpm exports:sync`; normal test/build/prepack paths only check the committed export map and never rewrite it.
+
+Before implementing the tree, decide whether the public component is server-compatible, hybrid, or wholly client-only. Keep data mapping and static markup in neutral tree/branch/leaf files. Isolate event state and browser effects in named client leaves, and prefer serializable `ReactNode` slots over render-function props that cannot cross a React Server Component boundary.
 
 ### Structural variants
 
@@ -51,7 +72,7 @@ Note there are **two** mechanisms and they fail independently: the token collaps
 
 ## Environment
 
-Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs the typecheck, contract/export checks, and story tests. `pnpm build` emits compiled ESM and declarations and verifies every public export. `pnpm storybook` browses the source stories.
+Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium` once for the story tests. `pnpm test` runs typecheck, lint, architecture and contract self-tests, SSR rendering, export checks, story tests, and reduced-motion tests. `pnpm build` emits compiled ESM and declarations and verifies every public export. `pnpm verify` adds the development-only Next consumer fixture after test and build. `pnpm storybook` browses the source stories.
 
 ## Context wiki
 

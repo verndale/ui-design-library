@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@import '@verndale/ui-design-library/styles.css';
+
+@source '../node_modules/@verndale/ui-design-library/dist';

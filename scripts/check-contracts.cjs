@@ -37,10 +37,12 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { implementationFiles, listComponentDirs, storyFiles } = require('./lib/component-files.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const COMPONENTS = path.join(ROOT, 'components');
 const TOKENS = path.join(ROOT, 'src/tokens/semantic.css');
+const SHARED = path.join(ROOT, 'src/lib');
 
 const MATURITIES = ['candidate', 'supported', 'deprecated'];
 const REUSE_SLOTS = [
@@ -76,7 +78,10 @@ const REUSE_ROLES = [
   'other',
 ];
 // A hex or rgb() literal in a component means a value escaped the token layer.
-const RAW_COLOR = /(#[0-9a-fA-F]{3,8}\b|\brgba?\()/;
+const RAW_COLOR = /(#[0-9a-fA-F]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\s*\()/;
+const RAW_TAILWIND_COLOR = /\b(?:bg|text|border|outline|ring|fill|stroke)-(?:(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950)|black|white)\b/;
+const NEXT_IMPORT = /(?:from\s*|import\s*(?:\(\s*)?|require\s*\(\s*)['"]next(?:\/|['"])/;
+const CSS_VARIABLE = /var\(\s*--([a-z0-9-]+)/g;
 
 function kebab(input) {
   return String(input)
@@ -104,16 +109,6 @@ function decompose(dirName) {
 
 function readTokenCss() {
   return fs.existsSync(TOKENS) ? fs.readFileSync(TOKENS, 'utf8') : '';
-}
-
-function listComponentDirs(componentsDir) {
-  return fs.existsSync(componentsDir)
-    ? fs
-        .readdirSync(componentsDir, { withFileTypes: true })
-        .filter((e) => e.isDirectory() && !e.name.startsWith('.'))
-        .map((e) => e.name)
-        .sort()
-    : [];
 }
 
 function validateReuseFingerprint(contract, dirName, fail) {
@@ -152,7 +147,36 @@ function validateReuseFingerprint(contract, dirName, fail) {
   }
 }
 
-function check({ componentsDir = COMPONENTS, tokenCss = readTokenCss() } = {}) {
+function scanImplementation(absolute, display, definedTokens, fail) {
+  const source = fs.readFileSync(absolute, 'utf8');
+  const locallyDefinedVariables = new Set([...source.matchAll(/--([a-z0-9-]+)\s*:/g)].map((match) => match[1]));
+  if (NEXT_IMPORT.test(source)) {
+    fail(`[framework] ${display} imports next/*; the package core must stay framework-neutral`);
+  }
+  for (const [index, line] of source.split('\n').entries()) {
+    if (line.trim().startsWith('*') || line.trim().startsWith('//')) continue;
+    if (RAW_COLOR.test(line)) {
+      fail(`[tokens] ${display}:${index + 1} uses a raw colour instead of a semantic token`);
+    }
+    if (RAW_TAILWIND_COLOR.test(line)) {
+      fail(`[tokens] ${display}:${index + 1} uses a Tailwind palette colour instead of a semantic token`);
+    }
+    for (const match of line.matchAll(CSS_VARIABLE)) {
+      if (!definedTokens.has(match[1]) && !locallyDefinedVariables.has(match[1])) {
+        fail(`[tokens] ${display}:${index + 1} references undefined semantic token "${match[1]}"`);
+      }
+    }
+  }
+}
+
+function check(options = {}) {
+  const componentsDir = options.componentsDir ?? COMPONENTS;
+  const tokenCss = options.tokenCss ?? readTokenCss();
+  const sharedDir = Object.hasOwn(options, 'sharedDir')
+    ? options.sharedDir
+    : componentsDir === COMPONENTS
+      ? SHARED
+      : null;
   const failures = [];
   const fail = (msg) => failures.push(msg);
 
@@ -246,10 +270,11 @@ function check({ componentsDir = COMPONENTS, tokenCss = readTokenCss() } = {}) {
       }
     }
 
-    const files = fs.readdirSync(dir);
-    const impl = files.find((f) => /\.tsx$/.test(f) && !/\.stories\.tsx$/.test(f));
-    const stories = files.find((f) => /\.stories\.tsx$/.test(f));
-    if (!impl) fail(`[files] components/${dirName} has no implementation (.tsx)`);
+    const implementations = implementationFiles(dir);
+    const storiesList = storyFiles(dir);
+    const stories = storiesList[0];
+    if (implementations.length === 0) fail(`[files] components/${dirName} has no implementation (.ts/.tsx)`);
+    if (storiesList.length > 1) fail(`[files] components/${dirName} must contain exactly one stories file`);
     if (!stories) fail(`[files] components/${dirName} has no stories file — the story is the API contract`);
 
     let title = null;
@@ -292,14 +317,13 @@ function check({ componentsDir = COMPONENTS, tokenCss = readTokenCss() } = {}) {
       }
     }
 
-    if (impl) {
-      const source = fs.readFileSync(path.join(dir, impl), 'utf8');
-      for (const [index, line] of source.split('\n').entries()) {
-        if (line.trim().startsWith('*') || line.trim().startsWith('//')) continue;
-        if (RAW_COLOR.test(line)) {
-          fail(`[tokens] components/${dirName}/${impl}:${index + 1} uses a raw colour instead of a semantic token`);
-        }
-      }
+    for (const impl of implementations) {
+      scanImplementation(
+        path.join(dir, impl),
+        `components/${dirName}/${impl}`,
+        definedTokens,
+        fail,
+      );
     }
 
     seen.push({
@@ -311,6 +335,12 @@ function check({ componentsDir = COMPONENTS, tokenCss = readTokenCss() } = {}) {
       canonical: contract.canonical,
       title,
     });
+  }
+
+  if (sharedDir && fs.existsSync(sharedDir)) {
+    for (const file of implementationFiles(sharedDir)) {
+      scanImplementation(path.join(sharedDir, file), `src/lib/${file}`, definedTokens, fail);
+    }
   }
 
   // Cross-canonical pass: a canonical's directories must together form one

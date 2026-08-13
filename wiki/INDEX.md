@@ -25,6 +25,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- One line per topic page: [Title](topics/<slug>.md) — hook. Keep alphabetical by slug. -->
 
+- [Component architecture](topics/component-architecture.md) — stable public facades, server-first tree/branch/leaf files, narrow client boundaries, and SSR/Next consumer verification.
 - [Knowledge graph & wiki automation](topics/graph-wiki-subsystem.md) — the deterministic graph + Sigma.js viewer and the wiki-sync / wiki-issue-sync bots, ported from ui-design-brain.
 - [Package distribution](topics/package-distribution.md) — deterministic npm exports, compatibility metadata, Tailwind consumption, and queued semantic releases.
 - [Story testing](topics/story-testing.md) — the story-as-test layer: the runner, what belongs in a `play` function, the a11y gate, and the reduced-motion project.
@@ -35,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-12 — [Adopt server-first component architecture](journal/2026-08-12-server-first-component-architecture.md) — stable facades and narrow client trees, backed by graph-aware SSR checks, composed overlay ownership, an empty-carousel contract, and packed Next verification.
 - 2026-08-05 — [Add the Search overlay component](journal/2026-08-05-add-search-overlay-component.md) — a de-cliented full-screen search surface: a dialog shell (focus trap, Escape/backdrop dismiss, focus restoration) with an idle↔active split; reuses the library's SearchInput for the field, and shares a new `useDialog` hook and `CloseButton` primitive with Modal.
 - 2026-08-05 — [Publish the UI library as a deterministic npm package](journal/2026-08-05-npm-package-and-ai-reuse.md) — compiled component subpaths, governed reuse fingerprints, explicit Tailwind consumption, and queued automatic semantic releases.
 - 2026-08-03 — [Add the Tabs component](journal/2026-08-03-add-tabs-component.md) — a de-cliented pill `tablist`: roving `tabIndex`, `aria-selected`, and an ArrowLeft/ArrowRight selection-and-focus loop with wraparound; controlled or uncontrolled, presentation only.

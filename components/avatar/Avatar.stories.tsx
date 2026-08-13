@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
 
-import { Avatar } from './Avatar';
+import { Avatar } from './index';
 
 const meta = {
   title: 'Avatar',

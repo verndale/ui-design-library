@@ -158,6 +158,7 @@
     "graph:build": "node scripts/graph/build-graph.cjs",
     "graph:view": "node scripts/graph/serve.cjs",
     "graph:navigate": "node scripts/wiki/navigate.cjs",
+    "graphify:sync": "node scripts/graph/sync-graphify.cjs",
     "evals:graph": "node scripts/evals/graph-check.cjs",
     "wiki:issue-sync": "node scripts/wiki/refresh-issue-state.cjs",
     "test:stories": "vitest run -c vitest.config.ts",

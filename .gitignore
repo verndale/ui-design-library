@@ -4,3 +4,6 @@
 /dist
 /*.tgz
 /storybook-static
+/graphify-out/cache/
+/graphify-out/cost.json
+/graphify-out/????-??-??/

@@ -8063,10 +8063,46 @@
       "norm_label": "explicitexporttargets()"
     },
     {
-      "label": "checkPrimaryRendering()",
+      "label": "explicitRuntimeExportNames()",
       "file_type": "code",
       "source_file": "scripts/check-component-architecture.cjs",
       "source_location": "L364",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "scripts_check_component_architecture_explicitruntimeexportnames",
+      "community": 21,
+      "community_name": "check-component-architecture.cjs",
+      "norm_label": "explicitruntimeexportnames()"
+    },
+    {
+      "label": "propStringLiteralValues()",
+      "file_type": "code",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L380",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "scripts_check_component_architecture_propstringliteralvalues",
+      "community": 21,
+      "community_name": "check-component-architecture.cjs",
+      "norm_label": "propstringliteralvalues()"
+    },
+    {
+      "label": "checkPrimaryVariantOwnership()",
+      "file_type": "code",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L397",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "scripts_check_component_architecture_checkprimaryvariantownership",
+      "community": 21,
+      "community_name": "check-component-architecture.cjs",
+      "norm_label": "checkprimaryvariantownership()"
+    },
+    {
+      "label": "checkPrimaryRendering()",
+      "file_type": "code",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L426",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_check_component_architecture_checkprimaryrendering",
@@ -8078,7 +8114,7 @@
       "label": "checkIndex()",
       "file_type": "code",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L412",
+      "source_location": "L474",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_check_component_architecture_checkindex",
@@ -8090,7 +8126,7 @@
       "label": "checkWorkspaceModuleGraph()",
       "file_type": "code",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L447",
+      "source_location": "L509",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -8102,7 +8138,7 @@
       "label": "check()",
       "file_type": "code",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L479",
+      "source_location": "L541",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_check_component_architecture_check",
@@ -8114,7 +8150,7 @@
       "label": "checkSharedClientModules()",
       "file_type": "code",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L550",
+      "source_location": "L613",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_check_component_architecture_checksharedclientmodules",
@@ -12134,8 +12170,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "agents.md"
     },
     {
@@ -12398,8 +12434,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "migration",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "migration.md"
     },
     {
@@ -12508,8 +12544,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "readme",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "readme.md"
     },
     {
@@ -12695,8 +12731,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "scripts_graph_readme",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 126,
+      "community_name": "connections.md",
       "norm_label": "graph/readme.md"
     },
     {
@@ -12904,8 +12940,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_mechanics",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "mechanics.md"
     },
     {
@@ -13047,8 +13083,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_connections",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 126,
+      "community_name": "connections.md",
       "norm_label": "connections.md"
     },
     {
@@ -13058,8 +13094,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_connections_connections_component_wiki_wiring",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 126,
+      "community_name": "connections.md",
       "norm_label": "connections \u2014 component + wiki wiring"
     },
     {
@@ -13069,8 +13105,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_connections_components",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 126,
+      "community_name": "connections.md",
       "norm_label": "components.md"
     },
     {
@@ -13080,8 +13116,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_connections_components_connections_components",
-      "community": 118,
-      "community_name": "README.md",
+      "community": 126,
+      "community_name": "connections.md",
       "norm_label": "connections \u2014 components"
     },
     {
@@ -13121,7 +13157,7 @@
       "label": "Page \u2192 topic",
       "file_type": "document",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L17",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "wiki_connections_wiki_wiring_page_topic",
       "community": 119,
@@ -13132,7 +13168,7 @@
       "label": "Topic \u2192 covered surface",
       "file_type": "document",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L44",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "wiki_connections_wiki_wiring_topic_covered_surface",
       "community": 119,
@@ -13143,7 +13179,7 @@
       "label": "Cross-area links (seams)",
       "file_type": "document",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L94",
+      "source_location": "L96",
       "_origin": "ast",
       "id": "wiki_connections_wiki_wiring_cross_area_links_seams",
       "community": 119,
@@ -13223,8 +13259,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_graph_and_wiki_automation",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "2026-07-27-graph-and-wiki-automation.md"
     },
     {
@@ -13235,7 +13271,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_graph_and_wiki_automation_knowledge_graph_wiki_automation",
       "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community_name": "Knowledge graph + wiki automation",
       "norm_label": "knowledge graph + wiki automation"
     },
     {
@@ -13246,7 +13282,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_graph_and_wiki_automation_why",
       "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community_name": "Knowledge graph + wiki automation",
       "norm_label": "why"
     },
     {
@@ -13257,7 +13293,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_graph_and_wiki_automation_what_changed",
       "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community_name": "Knowledge graph + wiki automation",
       "norm_label": "what changed"
     },
     {
@@ -13268,7 +13304,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_graph_and_wiki_automation_files",
       "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community_name": "Knowledge graph + wiki automation",
       "norm_label": "files"
     },
     {
@@ -13279,7 +13315,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_graph_and_wiki_automation_follow_ups",
       "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community_name": "Knowledge graph + wiki automation",
       "norm_label": "follow-ups"
     },
     {
@@ -13289,8 +13325,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_reduced_motion_coverage",
-      "community": 122,
-      "community_name": "Reduced-motion coverage",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "2026-07-27-reduced-motion-coverage.md"
     },
     {
@@ -13366,8 +13402,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_story_tests_and_a11y_gate_story_tests_and_the_a11y_gate",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 118,
+      "community_name": "Story tests and the a11y gate",
       "norm_label": "story tests and the a11y gate"
     },
     {
@@ -13377,8 +13413,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_story_tests_and_a11y_gate_why",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 118,
+      "community_name": "Story tests and the a11y gate",
       "norm_label": "why"
     },
     {
@@ -13388,8 +13424,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_story_tests_and_a11y_gate_what_changed",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 118,
+      "community_name": "Story tests and the a11y gate",
       "norm_label": "what changed"
     },
     {
@@ -13399,8 +13435,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_story_tests_and_a11y_gate_files",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 118,
+      "community_name": "Story tests and the a11y gate",
       "norm_label": "files"
     },
     {
@@ -13410,8 +13446,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_story_tests_and_a11y_gate_follow_ups",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 118,
+      "community_name": "Story tests and the a11y gate",
       "norm_label": "follow-ups"
     },
     {
@@ -13421,8 +13457,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_storybook_review_tooling",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "2026-07-27-storybook-review-tooling.md"
     },
     {
@@ -13432,8 +13468,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_storybook_review_tooling_storybook_review_tooling",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 123,
+      "community_name": "Storybook review tooling",
       "norm_label": "storybook review tooling"
     },
     {
@@ -13443,8 +13479,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_storybook_review_tooling_why",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 123,
+      "community_name": "Storybook review tooling",
       "norm_label": "why"
     },
     {
@@ -13454,8 +13490,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_storybook_review_tooling_what_changed",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 123,
+      "community_name": "Storybook review tooling",
       "norm_label": "what changed"
     },
     {
@@ -13465,8 +13501,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_storybook_review_tooling_files",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 123,
+      "community_name": "Storybook review tooling",
       "norm_label": "files"
     },
     {
@@ -13476,8 +13512,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "wiki_journal_2026_07_27_storybook_review_tooling_follow_ups",
-      "community": 120,
-      "community_name": "Storybook Docs audit",
+      "community": 123,
+      "community_name": "Storybook review tooling",
       "norm_label": "follow-ups"
     },
     {
@@ -14279,8 +14315,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_05_npm_package_and_ai_reuse",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "journal/2026-08-05-npm-package-and-ai-reuse.md"
     },
     {
@@ -14290,8 +14326,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_05_npm_package_and_ai_reuse_publish_the_ui_library_as_a_deterministic_npm_package",
-      "community": 126,
-      "community_name": "Publish the UI library as a deterministic npm package",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "publish the ui library as a deterministic npm package"
     },
     {
@@ -14301,8 +14337,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_05_npm_package_and_ai_reuse_why",
-      "community": 126,
-      "community_name": "Publish the UI library as a deterministic npm package",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "why"
     },
     {
@@ -14312,8 +14348,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_05_npm_package_and_ai_reuse_what_changed",
-      "community": 126,
-      "community_name": "Publish the UI library as a deterministic npm package",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "what changed"
     },
     {
@@ -14323,8 +14359,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_05_npm_package_and_ai_reuse_files",
-      "community": 126,
-      "community_name": "Publish the UI library as a deterministic npm package",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "files"
     },
     {
@@ -14334,8 +14370,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_05_npm_package_and_ai_reuse_follow_ups",
-      "community": 126,
-      "community_name": "Publish the UI library as a deterministic npm package",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "follow-ups"
     },
     {
@@ -14345,8 +14381,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_add_graphify_code_map",
-      "community": 127,
-      "community_name": "Add Graphify code mapping",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "2026-08-12-add-graphify-code-map.md"
     },
     {
@@ -14411,8 +14447,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_executable_esm_reuse_contract_v2",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 159,
+      "community_name": "journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "norm_label": "journal/2026-08-12-executable-esm-reuse-contract-v2.md"
     },
     {
@@ -14423,7 +14459,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_executable_esm_reuse_contract_v2_publish_executable_esm_and_reuse_contract_v2",
       "community": 159,
-      "community_name": "Publish executable ESM and reuse contract v2",
+      "community_name": "journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "norm_label": "publish executable esm and reuse contract v2"
     },
     {
@@ -14434,7 +14470,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_executable_esm_reuse_contract_v2_why",
       "community": 159,
-      "community_name": "Publish executable ESM and reuse contract v2",
+      "community_name": "journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "norm_label": "why"
     },
     {
@@ -14445,7 +14481,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_executable_esm_reuse_contract_v2_what_changed",
       "community": 159,
-      "community_name": "Publish executable ESM and reuse contract v2",
+      "community_name": "journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "norm_label": "what changed"
     },
     {
@@ -14456,7 +14492,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_executable_esm_reuse_contract_v2_files",
       "community": 159,
-      "community_name": "Publish executable ESM and reuse contract v2",
+      "community_name": "journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "norm_label": "files"
     },
     {
@@ -14467,7 +14503,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_executable_esm_reuse_contract_v2_follow_ups",
       "community": 159,
-      "community_name": "Publish executable ESM and reuse contract v2",
+      "community_name": "journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "norm_label": "follow-ups"
     },
     {
@@ -14477,8 +14513,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_fix_wiki_sync_pagination",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "2026-08-12-fix-wiki-sync-pagination.md"
     },
     {
@@ -14488,8 +14524,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_fix_wiki_sync_pagination_fix_wiki_sync_pagination",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 130,
+      "community_name": "Fix wiki sync pagination",
       "norm_label": "fix wiki sync pagination"
     },
     {
@@ -14499,8 +14535,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_fix_wiki_sync_pagination_why",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 130,
+      "community_name": "Fix wiki sync pagination",
       "norm_label": "why"
     },
     {
@@ -14510,8 +14546,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_fix_wiki_sync_pagination_what_changed",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 130,
+      "community_name": "Fix wiki sync pagination",
       "norm_label": "what changed"
     },
     {
@@ -14521,8 +14557,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_fix_wiki_sync_pagination_files",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 130,
+      "community_name": "Fix wiki sync pagination",
       "norm_label": "files"
     },
     {
@@ -14532,8 +14568,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_server_first_component_architecture",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 30,
+      "community_name": "journal/2026-08-12-server-first-component-architecture.md",
       "norm_label": "journal/2026-08-12-server-first-component-architecture.md"
     },
     {
@@ -14544,7 +14580,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_server_first_component_architecture_adopt_server_first_component_architecture",
       "community": 30,
-      "community_name": "Adopt server-first component architecture",
+      "community_name": "journal/2026-08-12-server-first-component-architecture.md",
       "norm_label": "adopt server-first component architecture"
     },
     {
@@ -14555,7 +14591,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_server_first_component_architecture_why",
       "community": 30,
-      "community_name": "Adopt server-first component architecture",
+      "community_name": "journal/2026-08-12-server-first-component-architecture.md",
       "norm_label": "why"
     },
     {
@@ -14566,7 +14602,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_server_first_component_architecture_what_changed",
       "community": 30,
-      "community_name": "Adopt server-first component architecture",
+      "community_name": "journal/2026-08-12-server-first-component-architecture.md",
       "norm_label": "what changed"
     },
     {
@@ -14577,7 +14613,7 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_server_first_component_architecture_files",
       "community": 30,
-      "community_name": "Adopt server-first component architecture",
+      "community_name": "journal/2026-08-12-server-first-component-architecture.md",
       "norm_label": "files"
     },
     {
@@ -14588,8 +14624,63 @@
       "_origin": "ast",
       "id": "wiki_journal_2026_08_12_server_first_component_architecture_follow_ups",
       "community": 30,
-      "community_name": "Adopt server-first component architecture",
+      "community_name": "journal/2026-08-12-server-first-component-architecture.md",
       "norm_label": "follow-ups"
+    },
+    {
+      "label": "2026-08-13-stat-primary-variant-contract.md",
+      "file_type": "document",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "wiki_journal_2026_08_13_stat_primary_variant_contract",
+      "community": 124,
+      "community_name": "Stat metadata stops advertising StatGroup variants",
+      "norm_label": "2026-08-13-stat-primary-variant-contract.md"
+    },
+    {
+      "label": "Stat metadata stops advertising StatGroup variants",
+      "file_type": "document",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "wiki_journal_2026_08_13_stat_primary_variant_contract_stat_metadata_stops_advertising_statgroup_variants",
+      "community": 124,
+      "community_name": "Stat metadata stops advertising StatGroup variants",
+      "norm_label": "stat metadata stops advertising statgroup variants"
+    },
+    {
+      "label": "Why",
+      "file_type": "document",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "wiki_journal_2026_08_13_stat_primary_variant_contract_why",
+      "community": 124,
+      "community_name": "Stat metadata stops advertising StatGroup variants",
+      "norm_label": "why"
+    },
+    {
+      "label": "What changed",
+      "file_type": "document",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "wiki_journal_2026_08_13_stat_primary_variant_contract_what_changed",
+      "community": 124,
+      "community_name": "Stat metadata stops advertising StatGroup variants",
+      "norm_label": "what changed"
+    },
+    {
+      "label": "Evidence",
+      "file_type": "document",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "wiki_journal_2026_08_13_stat_primary_variant_contract_evidence",
+      "community": 124,
+      "community_name": "Stat metadata stops advertising StatGroup variants",
+      "norm_label": "evidence"
     },
     {
       "label": "2026-07-26-add-story-tests-and-enforce-a11y.md",
@@ -14598,8 +14689,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_plans_2026_07_26_add_story_tests_and_enforce_a11y",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "2026-07-26-add-story-tests-and-enforce-a11y.md"
     },
     {
@@ -14972,8 +15063,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_plans_2026_08_05_npm_package_and_ai_reuse",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "plans/2026-08-05-npm-package-and-ai-reuse.md"
     },
     {
@@ -15148,8 +15239,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_plans_2026_08_12_executable_esm_reuse_contract_v2",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "plans/2026-08-12-executable-esm-reuse-contract-v2.md"
     },
     {
@@ -15236,8 +15327,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_plans_2026_08_12_server_first_component_architecture",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "plans/2026-08-12-server-first-component-architecture.md"
     },
     {
@@ -15368,8 +15459,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_plans_index",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "plans/index.md"
     },
     {
@@ -15434,8 +15525,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_topics_component_architecture",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "component-architecture.md"
     },
     {
@@ -15445,8 +15536,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "wiki_topics_component_architecture_component_architecture_design_history",
-      "community": 123,
-      "community_name": "Component architecture \u2014 Design History",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "component architecture \u2014 design history"
     },
     {
@@ -15456,8 +15547,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_topics_component_architecture_current_state",
-      "community": 123,
-      "community_name": "Component architecture \u2014 Design History",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "current state"
     },
     {
@@ -15467,8 +15558,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "wiki_topics_component_architecture_decisions",
-      "community": 123,
-      "community_name": "Component architecture \u2014 Design History",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "decisions"
     },
     {
@@ -15478,8 +15569,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_topics_graph_wiki_subsystem",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 27,
+      "community_name": "wiki/INDEX.md",
       "norm_label": "graph-wiki-subsystem.md"
     },
     {
@@ -15489,8 +15580,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "wiki_topics_graph_wiki_subsystem_knowledge_graph_wiki_automation_design_history",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 132,
+      "community_name": "Knowledge graph & wiki automation \u2014 Design History",
       "norm_label": "knowledge graph & wiki automation \u2014 design history"
     },
     {
@@ -15500,8 +15591,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_topics_graph_wiki_subsystem_current_state",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 132,
+      "community_name": "Knowledge graph & wiki automation \u2014 Design History",
       "norm_label": "current state"
     },
     {
@@ -15511,8 +15602,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "wiki_topics_graph_wiki_subsystem_decisions",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 132,
+      "community_name": "Knowledge graph & wiki automation \u2014 Design History",
       "norm_label": "decisions"
     },
     {
@@ -15522,8 +15613,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "wiki_topics_graph_wiki_subsystem_open_threads",
-      "community": 121,
-      "community_name": "graph-wiki-subsystem.md",
+      "community": 132,
+      "community_name": "Knowledge graph & wiki automation \u2014 Design History",
       "norm_label": "open threads"
     },
     {
@@ -15533,8 +15624,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "wiki_topics_package_distribution",
-      "community": 27,
-      "community_name": "wiki/INDEX.md",
+      "community": 148,
+      "community_name": "plans/INDEX.md",
       "norm_label": "package-distribution.md"
     },
     {
@@ -15545,7 +15636,7 @@
       "_origin": "ast",
       "id": "wiki_topics_package_distribution_package_distribution_design_history",
       "community": 148,
-      "community_name": "Package distribution \u2014 Design History",
+      "community_name": "plans/INDEX.md",
       "norm_label": "package distribution \u2014 design history"
     },
     {
@@ -15556,29 +15647,29 @@
       "_origin": "ast",
       "id": "wiki_topics_package_distribution_current_state",
       "community": 148,
-      "community_name": "Package distribution \u2014 Design History",
+      "community_name": "plans/INDEX.md",
       "norm_label": "current state"
     },
     {
       "label": "Decisions",
       "file_type": "document",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "wiki_topics_package_distribution_decisions",
       "community": 148,
-      "community_name": "Package distribution \u2014 Design History",
+      "community_name": "plans/INDEX.md",
       "norm_label": "decisions"
     },
     {
       "label": "Open threads",
       "file_type": "document",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L35",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "wiki_topics_package_distribution_open_threads",
       "community": 148,
-      "community_name": "Package distribution \u2014 Design History",
+      "community_name": "plans/INDEX.md",
       "norm_label": "open threads"
     },
     {
@@ -15599,7 +15690,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "wiki_topics_story_testing_story_testing_design_history",
-      "community": 130,
+      "community": 150,
       "community_name": "Story testing \u2014 Design History",
       "norm_label": "story testing \u2014 design history"
     },
@@ -15610,7 +15701,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "wiki_topics_story_testing_current_state",
-      "community": 130,
+      "community": 150,
       "community_name": "Story testing \u2014 Design History",
       "norm_label": "current state"
     },
@@ -15621,7 +15712,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "wiki_topics_story_testing_assertion_rules",
-      "community": 130,
+      "community": 150,
       "community_name": "Story testing \u2014 Design History",
       "norm_label": "assertion rules"
     },
@@ -15632,7 +15723,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "wiki_topics_story_testing_decisions",
-      "community": 130,
+      "community": 150,
       "community_name": "Story testing \u2014 Design History",
       "norm_label": "decisions"
     },
@@ -15643,7 +15734,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "wiki_topics_story_testing_open_threads",
-      "community": 130,
+      "community": 150,
       "community_name": "Story testing \u2014 Design History",
       "norm_label": "open threads"
     },
@@ -26131,7 +26222,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L596",
+      "source_location": "L659",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -26143,7 +26234,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L412",
+      "source_location": "L474",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture",
@@ -26154,7 +26245,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L364",
+      "source_location": "L426",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture",
@@ -26162,10 +26253,21 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L397",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_check_component_architecture",
+      "target": "scripts_check_component_architecture_checkprimaryvariantownership",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L596",
+      "source_location": "L659",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -26177,7 +26279,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L447",
+      "source_location": "L509",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture",
@@ -26226,6 +26328,17 @@
       "_origin": "ast",
       "source": "scripts_check_component_architecture",
       "target": "scripts_check_component_architecture_explicitexporttargets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L364",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_check_component_architecture",
+      "target": "scripts_check_component_architecture_explicitruntimeexportnames",
       "confidence_score": 1.0
     },
     {
@@ -26342,13 +26455,24 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L596",
+      "source_location": "L659",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
       "source": "scripts_check_component_architecture",
       "target": "scripts_check_component_architecture_physicallines",
       "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L380",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_check_component_architecture",
+      "target": "scripts_check_component_architecture_propstringliteralvalues",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -26505,7 +26629,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L504",
+      "source_location": "L566",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26517,7 +26641,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L560",
+      "source_location": "L623",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checksharedclientmodules",
@@ -26541,7 +26665,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L503",
+      "source_location": "L565",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26553,7 +26677,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L559",
+      "source_location": "L622",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checksharedclientmodules",
@@ -26565,7 +26689,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L458",
+      "source_location": "L520",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -26589,7 +26713,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L501",
+      "source_location": "L563",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26601,7 +26725,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L436",
+      "source_location": "L498",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkindex",
@@ -26613,7 +26737,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L557",
+      "source_location": "L620",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checksharedclientmodules",
@@ -26625,7 +26749,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L453",
+      "source_location": "L515",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -26637,7 +26761,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L502",
+      "source_location": "L564",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26649,7 +26773,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L558",
+      "source_location": "L621",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checksharedclientmodules",
@@ -26661,7 +26785,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L457",
+      "source_location": "L519",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -26685,7 +26809,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L510",
+      "source_location": "L572",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26697,7 +26821,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L566",
+      "source_location": "L629",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checksharedclientmodules",
@@ -26709,7 +26833,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L422",
+      "source_location": "L484",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkindex",
@@ -26757,7 +26881,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L379",
+      "source_location": "L441",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkprimaryrendering",
@@ -26769,7 +26893,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L475",
+      "source_location": "L537",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -26781,7 +26905,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L372",
+      "source_location": "L434",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkprimaryrendering",
@@ -26793,7 +26917,43 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L541",
+      "source_location": "L408",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_check_component_architecture_checkprimaryvariantownership",
+      "target": "scripts_check_component_architecture_explicitruntimeexportnames",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L406",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_check_component_architecture_checkprimaryvariantownership",
+      "target": "scripts_check_component_architecture_propstringliteralvalues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L604",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_check_component_architecture_check",
+      "target": "scripts_check_component_architecture_checkprimaryvariantownership",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/check-component-architecture.cjs",
+      "source_location": "L603",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26805,7 +26965,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L513",
+      "source_location": "L575",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26818,7 +26978,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L432",
+      "source_location": "L494",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkindex",
@@ -26829,7 +26989,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L532",
+      "source_location": "L594",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26842,7 +27002,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L451",
+      "source_location": "L513",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -26854,7 +27014,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L449",
+      "source_location": "L511",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checkworkspacemodulegraph",
@@ -26866,7 +27026,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L487",
+      "source_location": "L549",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26878,7 +27038,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L490",
+      "source_location": "L552",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26890,7 +27050,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L482",
+      "source_location": "L544",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_check",
@@ -26914,7 +27074,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/check-component-architecture.cjs",
-      "source_location": "L554",
+      "source_location": "L617",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_check_component_architecture_checksharedclientmodules",
@@ -32787,7 +32947,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L59",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -33040,7 +33200,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -33172,7 +33332,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L99",
+      "source_location": "L101",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -33458,7 +33618,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L96",
+      "source_location": "L98",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -33909,7 +34069,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L97",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34140,7 +34300,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34151,7 +34311,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34217,7 +34377,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34239,7 +34399,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L30",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34255,6 +34415,17 @@
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
       "target": "wiki_journal_2026_08_12_server_first_component_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "wiki/connections/wiki-wiring.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "wiki_connections_wiki_wiring",
+      "target": "wiki_journal_2026_08_13_stat_primary_variant_contract",
       "confidence_score": 1.0
     },
     {
@@ -34327,7 +34498,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34338,7 +34509,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34349,7 +34520,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34360,7 +34531,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34371,7 +34542,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34382,7 +34553,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring",
@@ -34393,7 +34564,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L94",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring_connections_wiki_wiring",
@@ -34415,7 +34586,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring_connections_wiki_wiring",
@@ -34426,7 +34597,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "wiki/connections/wiki-wiring.md",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_connections_wiki_wiring_connections_wiki_wiring",
@@ -35482,7 +35653,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution",
@@ -35625,7 +35796,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution",
@@ -35757,7 +35928,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution",
@@ -35806,6 +35977,50 @@
       "_origin": "ast",
       "source": "wiki_journal_2026_08_12_server_first_component_architecture_adopt_server_first_component_architecture",
       "target": "wiki_journal_2026_08_12_server_first_component_architecture_why",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "wiki_journal_2026_08_13_stat_primary_variant_contract",
+      "target": "wiki_journal_2026_08_13_stat_primary_variant_contract_stat_metadata_stops_advertising_statgroup_variants",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "wiki_journal_2026_08_13_stat_primary_variant_contract_stat_metadata_stops_advertising_statgroup_variants",
+      "target": "wiki_journal_2026_08_13_stat_primary_variant_contract_evidence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "wiki_journal_2026_08_13_stat_primary_variant_contract_stat_metadata_stops_advertising_statgroup_variants",
+      "target": "wiki_journal_2026_08_13_stat_primary_variant_contract_what_changed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wiki/journal/2026-08-13-stat-primary-variant-contract.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "wiki_journal_2026_08_13_stat_primary_variant_contract_stat_metadata_stops_advertising_statgroup_variants",
+      "target": "wiki_journal_2026_08_13_stat_primary_variant_contract_why",
       "confidence_score": 1.0
     },
     {
@@ -36252,7 +36467,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution",
@@ -36450,7 +36665,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution",
@@ -36560,7 +36775,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution",
@@ -36835,7 +37050,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution_package_distribution_design_history",
@@ -36846,7 +37061,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "wiki/topics/package-distribution.md",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "wiki_topics_package_distribution_package_distribution_design_history",
@@ -37009,5 +37224,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1bb4926d8ab1dcb09e261e5301d3a4c1be0b2cca"
+  "built_at_commit": "68e98fe75662a05bd117efb43b012d60b68a3954"
 }

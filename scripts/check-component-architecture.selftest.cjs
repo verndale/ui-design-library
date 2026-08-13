@@ -86,6 +86,25 @@ const cases = [
     expect: (failures) => failures.length === 0,
   },
   {
+    name: 'secondary export prop literals cannot masquerade as primary variants',
+    mutate(root) {
+      write(
+        root,
+        'index.ts',
+        "export { Example } from './Example';\nexport { ExampleGroup } from './parts/ExampleGroup';\nexport type { ExampleGroupProps, ExampleProps } from './Example.types';\n",
+      );
+      write(
+        root,
+        'Example.types.ts',
+        "export interface ExampleProps { tone?: 'quiet' | 'loud' }\nexport interface ExampleGroupProps { orientation?: 'row' | 'column' }\n",
+      );
+      write(root, 'parts/ExampleGroup.tsx', 'export const ExampleGroup = () => <div />;\n');
+      write(root, 'component.json', '{"exportName":"Example","rendering":"server","variants":["row"]}\n');
+    },
+    expect: (failures) =>
+      failures.some((failure) => failure.includes('primary variant "row"') && failure.includes('secondary export ExampleGroup')),
+  },
+  {
     name: 'declared primary rendering must match the derived graph',
     mutate(root) {
       write(root, 'component.json', '{"exportName":"Example","rendering":"client"}\n');

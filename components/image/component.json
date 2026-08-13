@@ -121,14 +121,16 @@
       {
         "prop": "alt",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ]
       },
       {
         "prop": "src",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ]
       }
@@ -137,7 +139,8 @@
       {
         "prop": "alt",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ],
         "attribute": "alt"
@@ -145,7 +148,8 @@
       {
         "prop": "src",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ],
         "attribute": "src"
@@ -153,7 +157,8 @@
       {
         "prop": "width",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ],
         "attribute": "width"
@@ -161,7 +166,8 @@
       {
         "prop": "height",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ],
         "attribute": "height"
@@ -170,18 +176,22 @@
     "styleSlots": [
       {
         "path": "classNames.root",
-        "node": "root",
         "protectedProperties": [
           "display",
           "visibility",
           "semantics",
           "reading-order"
+        ],
+        "nodes": [
+          "pictureRoot",
+          "wrapperRoot"
         ]
       },
       {
         "path": "classNames.image",
         "nodes": [
-          "wrappedImage",
+          "pictureImage",
+          "wrapperImage",
           "unwrappedImage"
         ],
         "protectedProperties": [
@@ -193,31 +203,58 @@
     "dom": {
       "nodes": [
         {
-        "id": "root",
-        "element": [
-          "picture",
-          "div"
-          ],
+          "id": "pictureRoot",
+          "element": "picture",
           "parent": null,
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "loader",
+            "predicate": "present"
+          }
         },
-      {
-        "id": "source",
-        "element": "source",
-        "parent": "root",
-        "cardinality": "zero-or-more"
-      },
-      {
-        "id": "wrappedImage",
-        "element": "img",
-        "parent": "root",
-        "cardinality": "zero-or-one"
-      },
-      {
+        {
+          "id": "source",
+          "element": "source",
+          "parent": "pictureRoot",
+          "cardinality": "zero-or-more",
+          "repeat": {
+            "state": "pictureSources"
+          }
+        },
+        {
+        "id": "pictureImage",
+        "attributes": {"alt":{"prop":"alt"},"width":{"prop":"width"},"height":{"prop":"height"},"loading":{"prop":"loading"},"decoding":"async"},
+          "element": "img",
+          "parent": "pictureRoot",
+          "cardinality": "one"
+        },
+        {
+          "id": "wrapperRoot",
+          "element": "div",
+          "parent": null,
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "staticWrapperEnabled",
+            "predicate": "truthy"
+          }
+        },
+        {
+        "id": "wrapperImage",
+        "attributes": {"alt":{"prop":"alt"},"width":{"prop":"width"},"height":{"prop":"height"},"loading":{"prop":"loading"},"decoding":"async"},
+          "element": "img",
+          "parent": "wrapperRoot",
+          "cardinality": "one"
+        },
+        {
         "id": "unwrappedImage",
-        "element": "img",
-        "parent": null,
-        "cardinality": "zero-or-one"
+        "attributes": {"alt":{"prop":"alt"},"width":{"prop":"width"},"height":{"prop":"height"},"loading":{"prop":"loading"},"decoding":"async"},
+          "element": "img",
+          "parent": null,
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "staticWrapperDisabled",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -230,7 +267,8 @@
         "wcag": [
           "1.1.1"
         ],
-        "evidence": "image.alternative.text"
+        "evidence": "image.alternative.text",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "image.fallback.single",
@@ -240,7 +278,8 @@
           "1.1.1",
           "1.3.1"
         ],
-        "evidence": "image.fallback.single"
+        "evidence": "image.fallback.single",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

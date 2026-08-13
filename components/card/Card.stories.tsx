@@ -9,7 +9,7 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['card.semantics.root', 'card.focus.affordance'],
+    realizationEvidence: ['card.semantics.root'],
     layout: 'centered',
     docs: {
       description: {
@@ -45,15 +45,17 @@ export const Default: Story = {
       </div>
     </Card>
   ),
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const card = canvasElement.querySelector('[data-component="card"]');
 
-    await expect(card).toBeTruthy();
-    await expect(canvas.getByText('Body content sits inside the surface.')).toBeInTheDocument();
-    // The fixed data-component hook is what makes this a reliable test and
-    // analytics selector; the source let callers override it.
-    await expect(getComputedStyle(card as HTMLElement).overflow).toBe('hidden');
+    await step('card.semantics.root', async () => {
+      await expect(card).toBeTruthy();
+      await expect(card?.tagName).toBe('DIV');
+      await expect(card).not.toHaveAttribute('role');
+      await expect(canvas.getByText('Body content sits inside the surface.')).toBeInTheDocument();
+      await expect(getComputedStyle(card as HTMLElement).overflow).toBe('hidden');
+    });
   },
 };
 

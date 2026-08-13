@@ -54,9 +54,9 @@ const meta = {
   title: 'Search overlay',
   component: SearchOverlay,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
-  tags: ['maturity:candidate'],
+  tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['search-overlay.focus.modal', 'search-overlay.semantics.dialog', 'search-overlay.announcement.results'],
+    realizationEvidence: ['search-overlay.focus.modal', 'search-overlay.focus.restoration', 'search-overlay.focus.background-inert', 'search-overlay.semantics.dialog', 'search-overlay.announcement.results'],
     layout: 'fullscreen',
     docs: {
       // The overlay portals into document.body and is fixed-position, so an
@@ -126,26 +126,29 @@ export const Default: Story = {
       </>
     );
   },
-  /**
-   * The full round trip — the only way the focus contract is provable: an
-   * overlay that takes focus but never returns it strands keyboard users.
-   */
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const body = within(document.body);
     const trigger = canvas.getByRole('button', { name: 'Open search' });
 
-    await step('opens from the trigger', async () => {
+    await step('search-overlay.focus.restoration', async () => {
       await userEvent.click(trigger);
-      await expect(await body.findByRole('dialog')).toBeInTheDocument();
-    });
-
-    await step('moves focus to the search field', async () => {
+      await body.findByRole('dialog');
       await waitFor(() => expect(body.getByRole('textbox')).toHaveFocus());
-    });
-
-    await step('closes on Escape and returns focus to the trigger', async () => {
       await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+      await waitFor(() => expect(trigger).toHaveFocus());
+
+      await userEvent.click(trigger);
+      await userEvent.click(await body.findByRole('button', { name: 'Close search' }));
+      await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
+      await waitFor(() => expect(trigger).toHaveFocus());
+
+      await userEvent.click(trigger);
+      const dialog = await body.findByRole('dialog');
+      const scrim = dialog.ownerDocument.querySelector('[aria-hidden].fixed.inset-0');
+      await expect(scrim).toBeTruthy();
+      await userEvent.click(scrim as HTMLElement);
       await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
       await waitFor(() => expect(trigger).toHaveFocus());
     });
@@ -168,11 +171,19 @@ export const IdleShowsQuickLinks: Story = {
       await expect(body.queryByRole('region', { name: 'Search results' })).not.toBeInTheDocument();
     });
 
-    await step('aria-labelledby resolves to the heading', async () => {
+    await step('search-overlay.semantics.dialog', async () => {
       const dialog = body.getByRole('dialog');
       const labelId = dialog.getAttribute('aria-labelledby');
+      await expect(dialog).toHaveAttribute('aria-modal', 'true');
       await expect(labelId).toBeTruthy();
       await expect(document.getElementById(labelId!)).toHaveTextContent('What are you looking for?');
+      await expect(body.getByRole('textbox', { name: 'Search' })).toBeInTheDocument();
+    });
+
+    await step('search-overlay.focus.background-inert', async () => {
+      const background = [...document.body.children].filter((child): child is HTMLElement => child instanceof HTMLElement && !child.matches('[data-ui-overlay-layer]'));
+      await expect(background.length).toBeGreaterThan(0);
+      await expect(background.every((child) => child.inert)).toBe(true);
     });
   },
 };
@@ -185,8 +196,10 @@ export const ActiveShowsResults: Story = {
     const body = within(document.body);
     await body.findByRole('dialog');
 
-    await step('shows the results region', async () => {
-      await expect(await body.findByRole('region', { name: 'Search results' })).toBeInTheDocument();
+    await step('search-overlay.announcement.results', async () => {
+      const results = await body.findByRole('region', { name: 'Search results' });
+      await expect(results).toHaveAttribute('aria-live', 'polite');
+      await expect(results).toHaveAttribute('aria-atomic', 'true');
     });
 
     await step('the quick links are gone', async () => {
@@ -207,14 +220,12 @@ export const TrapsFocus: Story = {
     // tabbing so this tests the trap rather than the document's tab order.
     await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
 
-    await step('every Tab stop stays inside the overlay', async () => {
+    await step('search-overlay.focus.modal', async () => {
+      await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
       for (let i = 0; i < 6; i += 1) {
         await userEvent.tab();
         await expect(dialog.contains(document.activeElement)).toBe(true);
       }
-    });
-
-    await step('Shift+Tab also stays inside', async () => {
       for (let i = 0; i < 4; i += 1) {
         await userEvent.tab({ shift: true });
         await expect(dialog.contains(document.activeElement)).toBe(true);

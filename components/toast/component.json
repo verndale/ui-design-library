@@ -180,27 +180,38 @@
     ],
     "dom": {
       "nodes": [
-      {
-        "id": "portal",
-        "element": "div",
-        "parent": null,
-        "cardinality": "one"
+        {
+          "id": "portal",
+          "element": "div",
+          "parent": null,
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "portalReadyAndOpen",
+            "predicate": "truthy"
+          }
         },
         {
         "id": "root",
-        "element": "div",
-        "parent": "portal",
+        "attributes": {"role":{"state":"role"},"aria-live":{"state":"livePriority"},"aria-atomic":"true"},
+          "element": "div",
+          "parent": "portal",
           "cardinality": "one"
         },
         {
-          "id": "icon",
+        "id": "icon",
+        "attributes": {"aria-hidden":true},
           "element": "span",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "icon",
+            "predicate": "not-equals",
+            "value": null
+          }
         },
         {
-        "id": "message",
-        "element": "span",
+          "id": "message",
+          "element": "span",
           "parent": "root",
           "cardinality": "one"
         }
@@ -215,7 +226,8 @@
         "wcag": [
           "4.1.3"
         ],
-        "evidence": "toast.announcement.priority"
+        "evidence": "toast.announcement.priority",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "toast.icon.decorative",
@@ -224,7 +236,18 @@
         "wcag": [
           "1.1.1"
         ],
-        "evidence": "toast.icon.decorative"
+        "evidence": "toast.icon.decorative",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "toast.timing.opt-out",
+        "kind": "state",
+        "description": "Setting dismissMs to zero leaves the toast persistent even when an onDismiss callback is supplied.",
+        "wcag": [
+          "2.2.1"
+        ],
+        "evidence": "toast.timing.opt-out",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {
@@ -233,6 +256,7 @@
       "consumerResponsibilities": [
         "accessible-copy",
         "dynamic-content",
+        "timed-content",
         "token-contrast",
         "safe-class-overrides",
         "complete-page-assistive-technology-testing"

@@ -93,7 +93,7 @@
      `--ease-*` and `--animate-*` are Tailwind theme namespaces, so these become
      `ease-standard` / `animate-fade-in` utilities. Duration is a plain custom
      property — there is no `--duration-*` namespace — so components reference it
-     as `duration-[var(--duration-fast)]`. */
+     as `duration-(--duration-fast)`. */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --animate-fade-in: fade-in var(--duration-base) var(--ease-standard);
   --animate-scale-in: scale-in var(--duration-base) var(--ease-standard);

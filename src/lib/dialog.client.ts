@@ -3,6 +3,7 @@
 import { useEffect, useRef, type RefObject } from 'react';
 
 import { useFocusTrap } from './focus.client.js';
+import { useBackgroundInert } from './backgroundInert.client.js';
 import {
   getTopOverlay,
   useDocumentScrollLock,
@@ -38,6 +39,7 @@ export function useDialog({
 
   useFocusTrap({ containerRef, enabled: open && portalRoot !== null && overlay.isTopmost });
   useDocumentScrollLock(open && portalRoot !== null);
+  useBackgroundInert(open && portalRoot !== null);
 
   useEffect(() => {
     if (!open || !portalRoot) return;

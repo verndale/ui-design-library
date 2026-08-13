@@ -386,7 +386,11 @@
           "id": "root",
           "element": "div",
           "parent": null,
-          "cardinality": "one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "hasSelectedOption",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "header",
@@ -395,16 +399,20 @@
           "cardinality": "one"
         },
         {
-        "id": "label",
-        "element": "label",
-        "parent": "header",
+          "id": "label",
+          "element": "label",
+          "parent": "header",
           "cardinality": "one"
         },
         {
-        "id": "hint",
-        "element": "span",
-        "parent": "header",
-          "cardinality": "zero-or-one"
+          "id": "hint",
+          "element": "span",
+          "parent": "header",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "hint",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "track",
@@ -414,69 +422,97 @@
         },
         {
         "id": "trackBase",
-        "element": "span",
-        "parent": "track",
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "track",
           "cardinality": "one"
         },
         {
         "id": "trackFill",
-        "element": "span",
-        "parent": "track",
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "track",
           "cardinality": "one"
         },
         {
-          "id": "input",
+        "id": "input",
+        "attributes": {"type":"range","min":0,"max":{"state":"lastIndex"},"step":1,"value":{"state":"selectedIndex"},"aria-valuetext":{"state":"valueText"}},
           "element": "input",
-        "parent": "track",
+          "parent": "track",
           "cardinality": "one"
         },
         {
         "id": "ticks",
-        "element": "span",
-        "parent": "track",
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "track",
           "cardinality": "one"
         },
         {
           "id": "tick",
           "element": "span",
-        "parent": "ticks",
-          "cardinality": "one-or-more"
+          "parent": "ticks",
+          "cardinality": "one-or-more",
+          "repeat": {
+            "prop": "options"
+          }
         },
         {
         "id": "scale",
-        "element": "div",
-        "parent": "root",
-          "cardinality": "zero-or-one"
+        "attributes": {"aria-hidden":true},
+          "element": "div",
+          "parent": "root",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "showScale",
+            "predicate": "truthy"
+          }
         },
         {
           "id": "scaleStart",
           "element": "span",
-        "parent": "scale",
-          "cardinality": "zero-or-one"
+          "parent": "scale",
+          "cardinality": "one"
         },
         {
-        "id": "scaleEnd",
-        "element": "span",
-        "parent": "scale",
-          "cardinality": "zero-or-one"
+          "id": "scaleEnd",
+          "element": "span",
+          "parent": "scale",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "hasDistinctScaleEnd",
+            "predicate": "truthy"
+          }
         },
         {
-        "id": "selectedValue",
-        "element": "p",
-        "parent": "root",
-          "cardinality": "zero-or-one"
-        },
-        {
-        "id": "unit",
-        "element": "span",
-        "parent": "selectedValue",
-          "cardinality": "zero-or-one"
-        },
-        {
-        "id": "description",
-        "element": "p",
+          "id": "selectedValue",
+          "element": "p",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "showSelectedValue",
+            "predicate": "truthy"
+          }
+        },
+        {
+          "id": "unit",
+          "element": "span",
+          "parent": "selectedValue",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "unit",
+            "predicate": "truthy"
+          }
+        },
+        {
+          "id": "description",
+          "element": "p",
+          "parent": "root",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "selectedDescriptionVisible",
+            "predicate": "truthy"
+          }
         }
       ]
     },
@@ -496,13 +532,14 @@
       {
         "id": "slider.keyboard.native",
         "kind": "keyboard",
-        "description": "Native range semantics support arrows, Home, End, Page Up, and Page Down.",
+        "description": "A native range exposes its bounded step model and leaves Arrow, Home, End, Page Up, and Page Down uncancelled while focus remains on the control.",
         "wcag": [
           "2.1.1",
           "2.5.8",
           "4.1.2"
         ],
-        "evidence": "slider.keyboard.native"
+        "evidence": "slider.keyboard.native",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "slider.value.announced",
@@ -511,7 +548,8 @@
         "wcag": [
           "4.1.2"
         ],
-        "evidence": "slider.value.announced"
+        "evidence": "slider.value.announced",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "slider.description.valid",
@@ -521,7 +559,8 @@
           "1.3.1",
           "4.1.2"
         ],
-        "evidence": "slider.description.valid"
+        "evidence": "slider.description.valid",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

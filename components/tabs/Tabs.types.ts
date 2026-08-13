@@ -2,11 +2,12 @@ import type { ReactNode } from 'react';
 
 import type { SlotClassNames } from '../../src/lib/classNames.js';
 
-export type TabsClassNames = SlotClassNames<'root' | 'tab'>;
+export type TabsClassNames = SlotClassNames<'root' | 'list' | 'tab' | 'panels' | 'panel'>;
 
 export type TabItem = {
   id: string;
   label: ReactNode;
+  panel: ReactNode;
 };
 
 export type TabsProps = {

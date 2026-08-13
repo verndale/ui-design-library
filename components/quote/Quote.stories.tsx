@@ -32,13 +32,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => <Quote {...args}>Projects are temporary. Knowledge is permanent.</Quote>,
-  /** A real blockquote, not a styled div — the reason to reach for this. */
-  play: async ({ canvasElement }) => {
+  /** A real blockquote rather than a styled div. */
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const quote = canvas.getByRole('blockquote');
 
-    await expect(quote).toHaveTextContent('Projects are temporary. Knowledge is permanent.');
-    await expect(quote).toHaveAttribute('data-component', 'quote');
+    await step('quote.semantics.blockquote', async () => {
+      await expect(quote).toHaveTextContent('Projects are temporary. Knowledge is permanent.');
+      await expect(quote).toHaveAttribute('data-component', 'quote');
+      await expect(quote.tagName).toBe('BLOCKQUOTE');
+    });
   },
 };
 
@@ -56,9 +59,8 @@ export const WithAttribution: Story = {
 export const LongForm: Story = {
   render: (args) => (
     <Quote {...args}>
-      A label that two independent projects both had to invent is the strongest evidence available that the
-      catalog is missing a word for it. That is the same reasoning the catalog's own growth has used, which is
-      why the retrospective counts unresolved labels rather than scoring components.
+      Repeated unresolved labels can identify vocabulary missing from the catalog. The retrospective records
+      those labels with their project occurrences for later review.
     </Quote>
   ),
 };

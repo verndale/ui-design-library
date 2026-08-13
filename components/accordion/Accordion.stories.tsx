@@ -9,11 +9,7 @@ const faq: AccordionItem[] = [
   { label: 'Do you ship internationally?', children: 'Yes — to most countries, with duties calculated at checkout.' },
 ];
 
-/**
- * The story file is this component's API contract. The behaviour worth proving
- * is the disclosure semantics — `aria-expanded`, that collapsed panels are
- * skipped by Tab, and that motion collapses under `prefers-reduced-motion`.
- */
+/** Disclosure semantics, focus gating, and reduced-motion behavior are asserted by the stories. */
 const meta = {
   title: 'Accordion',
   component: Accordion,
@@ -56,20 +52,27 @@ type Story = StoryObj<typeof meta>;
 
 /** Items open and close independently; opening one leaves the others closed. */
 export const Default: Story = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const first = canvas.getByRole('button', { name: 'What is your return policy?' });
 
-    await expect(first).toHaveAttribute('aria-expanded', 'false');
-    await userEvent.click(first);
-    await expect(first).toHaveAttribute('aria-expanded', 'true');
-    await userEvent.click(first);
-    await expect(first).toHaveAttribute('aria-expanded', 'false');
-
     const second = canvas.getByRole('button', { name: 'How long does shipping take?' });
-    await userEvent.click(second);
-    await expect(second).toHaveAttribute('aria-expanded', 'true');
-    await expect(first).toHaveAttribute('aria-expanded', 'false');
+    await step('accordion.keyboard.toggle', async () => {
+      first.focus();
+      await expect(first).toHaveAttribute('aria-expanded', 'false');
+      await userEvent.keyboard('{Enter}');
+      await expect(first).toHaveAttribute('aria-expanded', 'true');
+      await userEvent.keyboard(' ');
+      await expect(first).toHaveAttribute('aria-expanded', 'false');
+    });
+    await step('accordion.state.relationships', async () => {
+      const panelId = first.getAttribute('aria-controls');
+      await expect(panelId).toBeTruthy();
+      await expect(document.getElementById(panelId!)).toHaveAttribute('aria-labelledby', first.id);
+      await userEvent.click(second);
+      await expect(second).toHaveAttribute('aria-expanded', 'true');
+      await expect(first).toHaveAttribute('aria-expanded', 'false');
+    });
   },
 };
 
@@ -78,12 +81,7 @@ export const Standalone: Story = {
   args: { standalone: true, heading: 'Frequently asked' },
 };
 
-/**
- * A link inside a collapsed panel must be out of the tab order — the reason the
- * panel is `inert` rather than merely visually clipped. Proven two ways: real
- * Tab traversal never lands inside an `inert` subtree, and `inert` blocks even a
- * programmatic `focus()` while closed, then releases it once open.
- */
+/** A collapsed panel is inert, so its links are not reachable until the panel opens. */
 export const FocusGating: Story = {
   render: (args) => (
     <div className="flex flex-col items-start gap-s">
@@ -113,7 +111,7 @@ export const FocusGating: Story = {
     // Queried from the DOM, not the a11y tree, so it resolves while inert too.
     const link = canvasElement.querySelector('a[href="#rates"]') as HTMLAnchorElement;
 
-    await step('the collapsed panel gates its link out of the tab order', async () => {
+    await step('accordion.focus.collapsed', async () => {
       await expect(link.closest('[inert]')).not.toBeNull();
       // inert blocks a programmatic focus too, so this is a real no-op.
       link.focus();

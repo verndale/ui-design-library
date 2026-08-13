@@ -87,6 +87,7 @@ const RAW_COLOR = /(#[0-9a-fA-F]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab
 const RAW_TAILWIND_COLOR = /\b(?:bg|text|border|outline|ring|fill|stroke)-(?:(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950)|black|white)\b/;
 const NEXT_IMPORT = /(?:from\s*|import\s*(?:\(\s*)?|require\s*\(\s*)['"]next(?:\/|['"])/;
 const CSS_VARIABLE = /var\(\s*--([a-z0-9-]+)/g;
+const LEGACY_TAILWIND_VARIABLE = /[a-z0-9-]+-\[var\(--[a-z0-9-]+\)\]/i;
 
 function kebab(input) {
   return String(input)
@@ -165,6 +166,9 @@ function scanImplementation(absolute, display, definedTokens, fail) {
     }
     if (RAW_TAILWIND_COLOR.test(line)) {
       fail(`[tokens] ${display}:${index + 1} uses a Tailwind palette colour instead of a semantic token`);
+    }
+    if (LEGACY_TAILWIND_VARIABLE.test(line)) {
+      fail(`[tailwind] ${display}:${index + 1} uses legacy [var(--token)] syntax; use the canonical (--token) form`);
     }
     for (const match of line.matchAll(CSS_VARIABLE)) {
       if (!definedTokens.has(match[1]) && !locallyDefinedVariables.has(match[1])) {

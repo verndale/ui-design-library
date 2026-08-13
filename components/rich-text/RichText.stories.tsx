@@ -42,10 +42,13 @@ export const Default: Story = {
     </RichText>
   ),
   /** Authored heading renders at its level; the link carries its own accessible name. */
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole('heading', { level: 2 })).toHaveTextContent('Press contacts');
-    await expect(canvas.getByRole('link', { name: 'press@example.com' })).toBeVisible();
+    await step('rich-text.semantics.authored', async () => {
+      await expect(canvas.getByRole('heading', { level: 2 })).toHaveTextContent('Press contacts');
+      await expect(canvas.getByRole('link', { name: 'press@example.com' })).toBeVisible();
+      await expect(canvas.getByRole('heading', { level: 2 }).tagName).toBe('H2');
+    });
   },
 };
 

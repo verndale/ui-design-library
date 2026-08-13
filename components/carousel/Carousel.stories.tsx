@@ -23,7 +23,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Steps through discrete slides using Embla. The accessibility behaviour is the point: off-screen slides are marked `inert` so Tab skips their links, the arrow controls disable at the ends instead of silently doing nothing, and each slide announces its position.',
+          'Steps through discrete slides using Embla. Off-screen slides are marked `inert` so Tab skips their links, the arrow controls disable at the ends, and each slide announces its position.',
       },
     },
   },
@@ -58,7 +58,7 @@ export const Default: Story = {
       await expect(region).toHaveAttribute('aria-roledescription', 'carousel');
     });
 
-    await step('every slide announces its position', async () => {
+    await step('carousel.state.slides', async () => {
       const slides = within(region).getAllByRole('group');
       await expect(slides).toHaveLength(5);
       await expect(slides.map((s) => s.getAttribute('aria-label'))).toEqual([
@@ -78,9 +78,17 @@ export const Default: Story = {
       });
     });
 
-    await step('advancing re-enables the previous control', async () => {
-      await userEvent.click(canvas.getByRole('button', { name: 'Next slide' }));
+    await step('carousel.keyboard.controls', async () => {
+      const next = canvas.getByRole('button', { name: 'Next slide' });
+      next.focus();
+      await userEvent.keyboard('{Enter}');
       await waitFor(async () => expect(canvas.getByRole('button', { name: 'Previous slide' })).toBeEnabled());
+    });
+
+    await step('carousel.announcement.status', async () => {
+      const status = canvasElement.querySelector('[aria-live="polite"]');
+      await expect(status).toHaveAttribute('aria-atomic', 'true');
+      await expect(status).toHaveTextContent('2 / 5');
     });
   },
 };
@@ -96,7 +104,7 @@ export const KeyboardTraversal: Story = {
     </div>
   ),
   /**
-   * The `inert` gating is the highest-risk part of the rewrite: the source's own
+   * The `inert` gating requires direct verification: the source's own
    * in-view reporting returned empty before the engine measured, which marked
    * every slide inert and made the whole carousel unreachable by keyboard. The
    * assertion that matters is therefore that the *first* slide is never inert —

@@ -18,7 +18,12 @@ export type AccordionItem = {
   defaultOpen?: boolean;
 };
 
-export type AccordionProps = {
+type AccordionRootSemantics =
+  | { role?: 'group'; ariaLabel?: string; ariaLabelledBy?: string }
+  | { role: 'region'; ariaLabel: string; ariaLabelledBy?: string }
+  | { role: 'region'; ariaLabel?: string; ariaLabelledBy: string };
+
+export type AccordionProps = AccordionRootSemantics & {
   items: AccordionItem[];
   /** Optional section heading rendered above the items (an `h2`). */
   heading?: ReactNode;
@@ -31,9 +36,6 @@ export type AccordionProps = {
   className?: string;
   classNames?: AccordionClassNames;
   id?: string;
-  role?: 'region' | 'group';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
   ariaDescribedBy?: string;
   headingLevel?: AccordionHeadingLevel;
   itemHeadingLevel?: AccordionHeadingLevel;

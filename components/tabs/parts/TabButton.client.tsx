@@ -5,7 +5,7 @@ type TabButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { selected: bool
 const base = [
   'inline-flex min-h-10 min-w-10 shrink-0 cursor-pointer items-center justify-center',
   'rounded-pill px-m py-2xs',
-  'text-base leading-none transition-[color,background-color] duration-[var(--duration-base)] ease-standard',
+  'text-base leading-none transition-[color,background-color] duration-(--duration-base) ease-standard',
   'focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-border-focus',
 ].join(' ');
 

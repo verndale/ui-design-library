@@ -39,11 +39,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   /** The server-safe badge never introduces an interactive control. */
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await expect(canvas.getByText('Rail freight')).toBeInTheDocument();
-    await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
+    await step('badge.semantics.name', async () => {
+      await expect(canvas.getByText('Rail freight')).toBeInTheDocument();
+      await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
+    });
   },
 };
 
@@ -52,11 +54,7 @@ const remove = fn();
 /** The filter-chip case. The dismiss button is keyboard operable and self-labelling. */
 export const Dismissible: Story = {
   render: (args) => <Badge {...args} onRemove={remove} />,
-  /**
-   * The dismiss control deriving its own name from the label is the part of the
-   * capture worth keeping: a row of chips all labelled "Remove" is unusable by
-   * screen reader, and nothing visual reveals that.
-   */
+  /** The dismiss control includes the badge label in its accessible name. */
   play: async ({ canvasElement, step }) => {
     remove.mockClear();
     const canvas = within(canvasElement);
@@ -67,7 +65,7 @@ export const Dismissible: Story = {
       await expect(remove).toHaveBeenCalledTimes(1);
     });
 
-    await step('activates by keyboard', async () => {
+    await step('badge.remove.keyboard', async () => {
       dismiss.focus();
       await expect(dismiss).toHaveFocus();
       await userEvent.keyboard('{Enter}');
@@ -120,9 +118,7 @@ export const Disabled: Story = {
     const dismiss = canvas.getByRole('button', { name: 'Remove Rail freight' });
 
     await expect(dismiss).toBeDisabled();
-    // pointerEventsCheck is off deliberately: the CSS already blocks the click,
-    // and letting it through proves the `disabled` attribute is what stops the
-    // callback rather than the styling alone.
+    // Ignore CSS pointer blocking here so the disabled attribute is exercised directly.
     await userEvent.setup({ pointerEventsCheck: 0 }).click(dismiss);
     await expect(disabledRemove).not.toHaveBeenCalled();
   },

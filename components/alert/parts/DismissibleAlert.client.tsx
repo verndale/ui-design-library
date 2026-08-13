@@ -35,7 +35,7 @@ export function DismissibleAlert({
       onClick={onDismiss}
       className={[
         '-mt-2xs -me-2xs inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-pill text-text-primary',
-        'transition-colors duration-[var(--duration-fast)] ease-standard hover:bg-surface-sunken',
+        'transition-colors duration-(--duration-fast) ease-standard hover:bg-surface-sunken',
         focusRing,
         classNames?.dismiss,
       ].filter(Boolean).join(' ')}

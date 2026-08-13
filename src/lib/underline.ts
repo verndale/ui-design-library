@@ -3,8 +3,8 @@
  *
  * Drawn with `background-size` rather than `text-decoration` so it can be
  * animated, plus `box-decoration-break: clone` so **every wrapped line gets its
- * own underline** instead of one rule spanning the whole inline box. That detail
- * is the reason this exists as a shared utility rather than a one-line class.
+ * own underline** instead of one rule spanning the whole inline box. The shared
+ * utility keeps that behavior consistent across link-like components.
  *
  * Only `background-size` transitions; the position snaps, so the underline draws
  * left-to-right on the way in and clears left-to-right on the way out without the
@@ -20,7 +20,7 @@ const base = [
   'box-decoration-clone [-webkit-box-decoration-break:clone]',
   'bg-[image:linear-gradient(currentColor,currentColor)] bg-no-repeat',
   'bg-[length:0%_1px] bg-[position:100%_100%]',
-  'transition-[background-size] duration-[var(--duration-base)] ease-standard motion-reduce:transition-none',
+  'transition-[background-size] duration-(--duration-base) ease-standard motion-reduce:transition-none',
 ].join(' ');
 
 const expand = [

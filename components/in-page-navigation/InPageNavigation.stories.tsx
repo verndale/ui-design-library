@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fireEvent, within } from 'storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { InPageNavigation, type InPageNavigationItem } from './index';
 
@@ -10,13 +10,7 @@ const sections: InPageNavigationItem[] = [
   { id: 'faq', label: 'FAQ' },
 ];
 
-/**
- * The story file is this component's API contract. The behaviour worth proving
- * is the landmark and the active-section contract — a labelled `<nav>`, real
- * anchor links, and `aria-current="true"` on exactly one link — plus the mobile
- * drawer's disclosure. The scroll-spy itself is exercised through the
- * `activeId` override, since a non-scrolling story cannot drive the observer.
- */
+/** The stories assert landmark, active-section, and mobile disclosure behavior. */
 const meta = {
   title: 'In-page navigation',
   component: InPageNavigation,
@@ -49,22 +43,19 @@ type Story = StoryObj<typeof meta>;
 
 /** The wide-viewport pill bar. With no scroll context, the first section is active. */
 export const Default: Story = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    const nav = canvas.getByRole('navigation', { name: 'On this page' });
-    await expect(nav).toBeInTheDocument();
-
-    // Only the visible desktop list is in the a11y tree (the mobile drawer is
-    // display:none + inert at this viewport), so exactly the four links show.
-    const links = canvas.getAllByRole('link');
-    await expect(links).toHaveLength(4);
-    await expect(links[0]).toHaveAttribute('href', '#overview');
-
-    // Exactly one link is current, and it is the first by default.
-    const current = links.filter((link) => link.getAttribute('aria-current') === 'true');
-    await expect(current).toHaveLength(1);
-    await expect(current[0]).toHaveAccessibleName('Overview');
+    await step('in-page-navigation.responsive.hidden', async () => {
+      const nav = canvas.getByRole('navigation', { name: 'On this page' });
+      await expect(nav).toBeInTheDocument();
+      const links = canvas.getAllByRole('link');
+      await expect(links).toHaveLength(4);
+      await expect(links[0]).toHaveAttribute('href', '#overview');
+      const current = links.filter((link) => link.getAttribute('aria-current') === 'true');
+      await expect(current).toHaveLength(1);
+      await expect(current[0]).toHaveAccessibleName('Overview');
+    });
   },
 };
 
@@ -86,22 +77,25 @@ export const ActiveSection: Story = {
  * `aria-expanded` + `inert` contract independent of breakpoint.
  */
 export const MobileDrawer: Story = {
-  play: async ({ canvasElement }) => {
+  globals: { viewport: { value: 'mobile1', isRotated: false } },
+  play: async ({ canvasElement, step }) => {
     const trigger = canvasElement.querySelector('button[aria-controls]') as HTMLButtonElement;
     const drawerId = trigger.getAttribute('aria-controls')!;
     const drawer = canvasElement.querySelector(`#${drawerId}`) as HTMLElement;
 
-    // Collapsed: expanded is false and the drawer links are inert.
-    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-    await expect(drawer.hasAttribute('inert')).toBe(true);
-
-    fireEvent.click(trigger);
-    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
-    await expect(drawer.hasAttribute('inert')).toBe(false);
-
-    fireEvent.click(trigger);
-    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-    await expect(drawer.hasAttribute('inert')).toBe(true);
+    await step('in-page-navigation.disclosure.keyboard', async () => {
+      trigger.focus();
+      await expect(trigger).toHaveFocus();
+      await userEvent.keyboard('{Enter}');
+      await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+      await expect(drawer.hasAttribute('inert')).toBe(false);
+    });
+    await step('in-page-navigation.disclosure.state', async () => {
+      await expect(trigger.getAttribute('aria-controls')).toBe(drawer.id);
+      await userEvent.keyboard(' ');
+      await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+      await expect(drawer.hasAttribute('inert')).toBe(true);
+    });
   },
 };
 

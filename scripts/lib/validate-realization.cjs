@@ -1,5 +1,7 @@
 'use strict';
 
+const ts = require('typescript');
+
 const PROP_KINDS = new Set(['string', 'number', 'boolean', 'node', 'callback', 'collection', 'enum', 'ref', 'element']);
 const CARDINALITIES = new Set(['one', 'zero-or-one', 'zero-or-more', 'one-or-more']);
 const BEHAVIOR_KINDS = new Set(['semantics', 'keyboard', 'focus', 'state', 'announcement', 'motion', 'pointer-alternative']);
@@ -9,6 +11,7 @@ const RESPONSIBILITIES = new Set([
   'heading-context',
   'landmark-context',
   'dynamic-content',
+  'timed-content',
   'token-contrast',
   'safe-class-overrides',
   'complete-page-assistive-technology-testing',
@@ -22,7 +25,8 @@ const PROTECTED_PROPERTIES = new Set([
   'reading-order',
   'target-size',
 ]);
-const IDREF_ATTRIBUTES = new Set(['aria-controls', 'aria-describedby', 'aria-labelledby']);
+const IDREF_ATTRIBUTES = new Set(['aria-controls', 'aria-describedby', 'aria-labelledby', 'for']);
+const CONDITION_PREDICATES = new Set(['present', 'truthy', 'equals', 'not-equals', 'non-empty']);
 
 function isObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -54,6 +58,71 @@ function nodeReferences(value, label, prefix, fail) {
     return [];
   }
   return refs;
+}
+
+function evidenceAssertion(storySource, evidenceId) {
+  const source = ts.createSourceFile('component.stories.tsx', storySource || '', ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  let matched = false;
+  let asserted = false;
+  const exportedPlayFunctions = [];
+  for (const statement of source.statements) {
+    if (!ts.isVariableStatement(statement) || !statement.modifiers?.some((modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword)) continue;
+    for (const declaration of statement.declarationList.declarations) {
+      if (!ts.isObjectLiteralExpression(declaration.initializer)) continue;
+      const play = declaration.initializer.properties.find((property) =>
+        ts.isPropertyAssignment(property) &&
+        ((ts.isIdentifier(property.name) && property.name.text === 'play') || (ts.isStringLiteralLike(property.name) && property.name.text === 'play')) &&
+        (ts.isArrowFunction(property.initializer) || ts.isFunctionExpression(property.initializer)),
+      );
+      if (play) exportedPlayFunctions.push(play.initializer);
+    }
+  }
+  const forEachReachableChild = (node, visitor) => {
+    if (ts.isBlock(node)) {
+      for (const statement of node.statements) {
+        visitor(statement);
+        if (ts.isReturnStatement(statement) || ts.isThrowStatement(statement) || ts.isBreakStatement(statement) || ts.isContinueStatement(statement)) break;
+      }
+      return;
+    }
+    if (ts.isIfStatement(node) && node.expression.kind === ts.SyntaxKind.FalseKeyword) {
+      if (node.elseStatement) visitor(node.elseStatement);
+      return;
+    }
+    if (ts.isIfStatement(node) && node.expression.kind === ts.SyntaxKind.TrueKeyword) {
+      visitor(node.thenStatement);
+      return;
+    }
+    ts.forEachChild(node, visitor);
+  };
+  const visit = (node) => {
+    if (
+      (ts.isArrowFunction(node) || ts.isFunctionExpression(node) || ts.isFunctionDeclaration(node)) &&
+      !(ts.isCallExpression(node.parent) && node.parent.arguments.includes(node))
+    ) return;
+    if (
+      ts.isCallExpression(node) &&
+      ts.isIdentifier(node.expression) &&
+      node.expression.text === 'step' &&
+      ts.isStringLiteralLike(node.arguments[0]) &&
+      node.arguments[0].text === evidenceId &&
+      (ts.isArrowFunction(node.arguments[1]) || ts.isFunctionExpression(node.arguments[1]))
+    ) {
+      matched = true;
+      const findExpect = (child) => {
+        if (
+          (ts.isArrowFunction(child) || ts.isFunctionExpression(child) || ts.isFunctionDeclaration(child)) &&
+          !(ts.isCallExpression(child.parent) && child.parent.arguments.includes(child))
+        ) return;
+        if (ts.isCallExpression(child) && ts.isIdentifier(child.expression) && child.expression.text === 'expect') asserted = true;
+        forEachReachableChild(child, findExpect);
+      };
+      findExpect(node.arguments[1].body);
+    }
+    forEachReachableChild(node, visit);
+  };
+  for (const play of exportedPlayFunctions) visit(play.body);
+  return { matched, asserted };
 }
 
 function validateRealization(contract, dirName, storySource, fail) {
@@ -92,11 +161,71 @@ function validateRealization(contract, dirName, storySource, fail) {
     if (!CARDINALITIES.has(node?.cardinality)) {
       fail(`${prefix} DOM node "${node?.id}" has unsupported cardinality "${node?.cardinality}"`);
     }
+    if (Array.isArray(node?.element)) {
+      const selection = node.elementSelection;
+      const selectionProp = props.find((prop) => prop.path === selection?.prop);
+      const cases = Array.isArray(selection?.cases) ? selection.cases : [];
+      const caseValues = cases.map((item) => item?.value);
+      const caseElements = cases.map((item) => item?.element);
+      const sameSet = (left, right) => JSON.stringify([...new Set(left.map((item) => JSON.stringify(item)))].sort()) === JSON.stringify([...new Set(right.map((item) => JSON.stringify(item)))].sort());
+      if (!isObject(selection) || !selectionProp || !Array.isArray(selectionProp.values) || cases.length === 0) {
+        fail(`${prefix} DOM node "${node?.id}" element alternatives require prop-backed elementSelection cases`);
+      } else if (
+        new Set(caseValues.map(JSON.stringify)).size !== caseValues.length ||
+        new Set(caseElements).size !== caseElements.length ||
+        cases.some((item) => !isObject(item) || typeof item.element !== 'string' || item.element.length === 0 || Object.keys(item).some((key) => !['value', 'element'].includes(key))) ||
+        !sameSet(caseValues, selectionProp.values) ||
+        !sameSet(caseElements, elements)
+      ) {
+        fail(`${prefix} DOM node "${node?.id}" elementSelection must exactly cover its prop values and element alternatives`);
+      }
+    } else if (node?.elementSelection !== undefined) {
+      fail(`${prefix} DOM node "${node?.id}" cannot declare elementSelection for one fixed element`);
+    }
+    if (node?.attributes !== undefined && !isObject(node.attributes)) {
+      fail(`${prefix} DOM node "${node?.id}" attributes must be an object`);
+    }
+    for (const [attribute, value] of Object.entries(node?.attributes ?? {})) {
+      if (typeof attribute !== 'string' || attribute.length === 0 || IDREF_ATTRIBUTES.has(attribute)) {
+        fail(`${prefix} DOM node "${node?.id}" has invalid owned attribute "${attribute}"`);
+      }
+      if (isObject(value)) {
+        const keys = Object.keys(value);
+        const hasProp = keys.length === 1 && typeof value.prop === 'string' && value.prop.length > 0;
+        const hasState = keys.length === 1 && typeof value.state === 'string' && value.state.length > 0;
+        if (hasProp === hasState) fail(`${prefix} DOM node "${node?.id}" attribute "${attribute}" requires exactly one prop or state source`);
+        if (hasProp && !propPaths.has(value.prop)) fail(`${prefix} DOM node "${node?.id}" attribute "${attribute}" references missing prop "${value.prop}"`);
+      } else if (!['string', 'boolean', 'number'].includes(typeof value)) {
+        fail(`${prefix} DOM node "${node?.id}" attribute "${attribute}" has an unsupported value`);
+      }
+    }
     if (node?.parent !== null && !nodeIds.has(node?.parent)) {
       fail(`${prefix} DOM node "${node?.id}" references missing parent "${node?.parent}"`);
     }
-    if (node?.whenProp && !propPaths.has(node.whenProp)) {
-      fail(`${prefix} DOM node "${node?.id}" references missing condition prop "${node.whenProp}"`);
+    const condition = node?.condition;
+    const repeat = node?.repeat;
+    if (node?.cardinality === 'zero-or-one' && !isObject(condition)) {
+      fail(`${prefix} DOM node "${node?.id}" requires a structured condition for zero-or-one cardinality`);
+    } else if (node?.cardinality !== 'zero-or-one' && condition !== undefined) {
+      fail(`${prefix} DOM node "${node?.id}" may declare condition only with zero-or-one cardinality`);
+    }
+    if (isObject(condition)) {
+      const hasProp = typeof condition.prop === 'string' && condition.prop.length > 0;
+      const hasState = typeof condition.state === 'string' && condition.state.length > 0;
+      if (hasProp === hasState) fail(`${prefix} DOM node "${node?.id}" condition requires exactly one of prop or state`);
+      if (hasProp && !propPaths.has(condition.prop)) fail(`${prefix} DOM node "${node?.id}" references missing condition prop "${condition.prop}"`);
+      if (!CONDITION_PREDICATES.has(condition.predicate)) fail(`${prefix} DOM node "${node?.id}" has unsupported condition predicate "${condition.predicate}"`);
+      if (['equals', 'not-equals'].includes(condition.predicate) !== Object.hasOwn(condition, 'value')) {
+        fail(`${prefix} DOM node "${node?.id}" condition value does not match predicate "${condition.predicate}"`);
+      }
+    }
+    if (node?.cardinality === 'zero-or-more' || node?.cardinality === 'one-or-more') {
+      const repeatProp = props.find((prop) => prop.path === repeat?.prop);
+      const hasProp = typeof repeat?.prop === 'string' && repeat.prop.length > 0;
+      const hasState = typeof repeat?.state === 'string' && repeat.state.length > 0;
+      if (!isObject(repeat) || hasProp === hasState || (hasProp && repeatProp?.type !== 'collection')) fail(`${prefix} DOM node "${node?.id}" requires exactly one collection prop or derived state repeat declaration`);
+    } else if (repeat !== undefined) {
+      fail(`${prefix} DOM node "${node?.id}" may declare repeat only with repeated cardinality`);
     }
   }
   const nodesById = new Map(nodes.map((node) => [node.id, node]));
@@ -178,10 +307,12 @@ function validateRealization(contract, dirName, storySource, fail) {
       fail(`${prefix} behavior "${behavior?.id}" requires an evidence ID`);
     } else if (behavior.evidence !== behavior.id) {
       fail(`${prefix} behavior "${behavior?.id}" evidence must use the same ID`);
-    } else if (!storySource?.includes(`'${behavior.evidence}'`) && !storySource?.includes(`"${behavior.evidence}"`)) {
-      fail(`${prefix} behavior "${behavior?.id}" evidence "${behavior.evidence}" is not keyed in its story`);
-    } else if (!/\bplay\s*:/.test(storySource)) {
-      fail(`${prefix} behavior "${behavior?.id}" has keyed evidence but its story contains no play assertion`);
+    } else if (behavior.evidenceType !== 'storybook-step') {
+      fail(`${prefix} behavior "${behavior?.id}" evidenceType must equal storybook-step`);
+    } else {
+      const evidence = evidenceAssertion(storySource, behavior.evidence);
+      if (!evidence.matched) fail(`${prefix} behavior "${behavior?.id}" evidence "${behavior.evidence}" is not a keyed Storybook step`);
+      else if (!evidence.asserted) fail(`${prefix} behavior "${behavior?.id}" evidence step contains no executable assertion`);
     }
   }
 

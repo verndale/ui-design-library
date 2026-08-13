@@ -30,7 +30,7 @@ export function CloseButton({
       className={[
         'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-pill',
         'bg-surface-inverse text-text-inverse',
-        'transition-colors duration-[var(--duration-fast)] ease-standard motion-reduce:transition-none',
+        'transition-colors duration-(--duration-fast) ease-standard motion-reduce:transition-none',
         'hover:bg-action-hover',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus',
         className,

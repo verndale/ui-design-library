@@ -46,7 +46,7 @@ export function SliderTrack({
         aria-describedby={describedBy || undefined}
         className={[
           'relative w-full cursor-pointer appearance-none bg-transparent',
-          'min-h-[var(--size-touch-medium)]',
+          'min-h-(--size-touch-medium)',
           focusRing,
           classNames?.input,
         ].filter(Boolean).join(' ')}

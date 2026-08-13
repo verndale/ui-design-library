@@ -4,18 +4,14 @@ import { useState } from 'react';
 
 import { Toast } from './index';
 
-/**
- * The story file is this component's API contract. What is worth proving is the
- * live-region semantics per severity, that auto-dismiss actually removes it, and
- * that the entrance collapses under reduced motion.
- */
+/** The stories assert live-region priority, timer behavior, and reduced motion. */
 const meta = {
   title: 'Toast',
   component: Toast,
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['toast.announcement.priority', 'toast.icon.decorative'],
+    realizationEvidence: ['toast.announcement.priority', 'toast.icon.decorative', 'toast.timing.opt-out'],
     layout: 'centered',
     docs: {
       description: {
@@ -46,11 +42,19 @@ type Story = StoryObj<typeof meta>;
 
 /** A neutral confirmation that announces politely. Persists (no onDismiss armed). */
 export const Default: Story = {
-  play: async () => {
+  play: async ({ step }) => {
     const body = within(document.body);
     const toast = await body.findByRole('status');
-    await expect(toast).toHaveAttribute('aria-live', 'polite');
-    await expect(toast).toHaveTextContent('Link copied');
+    await step('toast.announcement.priority', async () => {
+      await expect(toast).toHaveAttribute('aria-live', 'polite');
+      await expect(toast).toHaveAttribute('aria-atomic', 'true');
+      await expect(toast).toHaveTextContent('Link copied');
+    });
+    await step('toast.icon.decorative', async () => {
+      const icon = toast.querySelector('[aria-hidden="true"]');
+      await expect(icon).toBeInTheDocument();
+      await expect(icon).toHaveAttribute('aria-hidden', 'true');
+    });
   },
 };
 
@@ -73,7 +77,7 @@ export const Critical: Story = {
   },
 };
 
-/** Auto-dismiss removes the toast after `dismissMs` — proven by it being gone. */
+/** Auto-dismiss removes the toast after `dismissMs`. */
 export const AutoDismiss: Story = {
   args: { dismissMs: 80, onDismiss: fn() },
   render: function Render(args) {
@@ -94,5 +98,21 @@ export const AutoDismiss: Story = {
     await expect(await body.findByRole('status')).toBeInTheDocument();
     await waitFor(() => expect(body.queryByRole('status')).not.toBeInTheDocument());
     await expect(args.onDismiss).toHaveBeenCalled();
+  },
+};
+
+const persistentDismiss = fn();
+
+/** A zero duration is the explicit persistent opt-out for timed content. */
+export const Persistent: Story = {
+  args: { dismissMs: 0, onDismiss: persistentDismiss },
+  play: async ({ step }) => {
+    persistentDismiss.mockClear();
+    const body = within(document.body);
+    await step('toast.timing.opt-out', async () => {
+      await new Promise((resolve) => setTimeout(resolve, 120));
+      await expect(persistentDismiss).not.toHaveBeenCalled();
+      await expect(await body.findByRole('status')).toBeInTheDocument();
+    });
   },
 };

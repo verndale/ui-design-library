@@ -1,6 +1,7 @@
 import { useCallback, useId, useRef, useState, type KeyboardEvent } from 'react';
 
 import { TabsList } from './parts/TabsList.client.js';
+import { TabPanels } from './parts/TabPanels.js';
 import type { TabsProps } from './Tabs.types.js';
 
 /** A pill tablist with controlled/uncontrolled selection and roving keyboard focus. */
@@ -17,9 +18,10 @@ export function Tabs({
 }: TabsProps) {
   const generatedPrefix = useId();
   const resolvedPrefix = tabIdPrefix ?? `tabs-${generatedPrefix}`;
-  const tabRefs = useRef(new Map<string, HTMLButtonElement>());
+  const tabRefs = useRef(new Map<number, HTMLButtonElement>());
   const [internalId, setInternalId] = useState(defaultActiveId ?? items[0]?.id);
-  const active = activeId ?? internalId;
+  const requestedActive = activeId ?? internalId;
+  const activeIndex = Math.max(0, items.findIndex((item) => item.id === requestedActive));
 
   const select = useCallback((id: string) => {
     if (activeId === undefined) setInternalId(id);
@@ -28,7 +30,7 @@ export function Tabs({
 
   const handleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
     if (items.length < 2) return;
-    const current = items.findIndex((item) => item.id === active);
+    const current = activeIndex;
     const last = items.length - 1;
     let nextIndex: number | null = null;
     const nextKey = orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';
@@ -42,26 +44,35 @@ export function Tabs({
     event.preventDefault();
     const next = items[nextIndex]!;
     select(next.id);
-    tabRefs.current.get(next.id)?.focus();
-  }, [active, items, orientation, select]);
+    tabRefs.current.get(nextIndex)?.focus();
+  }, [activeIndex, items, orientation, select]);
 
   if (items.length === 0) return null;
 
   return (
-    <TabsList
-      items={items}
-      activeId={active}
-      ariaLabel={ariaLabel}
-      tabIdPrefix={resolvedPrefix}
-      className={className}
-      classNames={classNames}
-      orientation={orientation}
-      onSelect={select}
-      onKeyDown={handleKeyDown}
-      registerTab={(id, node) => {
-        if (node) tabRefs.current.set(id, node);
-        else tabRefs.current.delete(id);
-      }}
-    />
+    <div data-component="tabs" className={[classNames?.root, className].filter(Boolean).join(' ')}>
+      <TabsList
+        items={items}
+        activeIndex={activeIndex}
+        ariaLabel={ariaLabel}
+        tabIdPrefix={resolvedPrefix}
+        className={classNames?.list}
+        tabClassName={classNames?.tab}
+        orientation={orientation}
+        onSelect={select}
+        onKeyDown={handleKeyDown}
+        registerTab={(index, node) => {
+          if (node) tabRefs.current.set(index, node);
+          else tabRefs.current.delete(index);
+        }}
+      />
+      <TabPanels
+        items={items}
+        activeIndex={activeIndex}
+        tabIdPrefix={resolvedPrefix}
+        className={classNames?.panels}
+        panelClassName={classNames?.panel}
+      />
+    </div>
   );
 }

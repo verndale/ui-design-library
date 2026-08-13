@@ -84,11 +84,11 @@ Capturing history is part of a substantive change, in the same delivery: a journ
 
 Two things worth knowing before you read it. A pre-commit hook rebuilds the knowledge graph and warns (never blocks) when a substantive commit adds no journal entry; on merge, a bot fills in `pr:` links, drafts a stub for a substantive PR that added none, and updates the affected topic — see [`wiki/topics/graph-wiki-subsystem.md`](wiki/topics/graph-wiki-subsystem.md). It still needs `secrets.PR_BOT_TOKEN` configured in the repo to actually run. And the capture trigger includes **investigations that found nothing**, because "we already checked that" is exactly the knowledge `git log` cannot hold.
 
-## Commits & release — the maintainer's job, not the agent's
+## Commits & release
 
-**Permission boundary:** edit under `components/` and `src/` freely. Everything below is the maintainer's.
+**Permission boundary:** edit under `components/` and `src/` freely. An agent may commit and push an issue branch only when the maintainer explicitly authorizes those actions.
 
-**Do not commit, push, merge, tag, or publish.** Make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. The maintainer commits with `pnpm commit` and pushes; a merge to `main` is the only release trigger. Before a release-producing merge, the maintainer must confirm npm trusted publishing names this repository and `.github/workflows/release.yml`; the workflow intentionally has no `NPM_TOKEN` fallback.
+Without explicit maintainer authorization, make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. When commit and push are authorized, use `pnpm commit` and push only the issue branch so repository automation can create the draft PR. **Do not merge, tag, release, or publish.** A merge to `main` is the only release trigger. Before a release-producing merge, the maintainer must confirm npm trusted publishing names this repository and `.github/workflows/release.yml`; the workflow intentionally has no `NPM_TOKEN` fallback.
 
 ## graphify
 

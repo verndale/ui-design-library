@@ -43,7 +43,7 @@
     "Mapped the clear button's hover bg-interactive-hover-light to hover:bg-surface-sunken — the ghost-hover token is translucent white and invisible on the raised input surface.",
     "Mapped client spacing utilities gap-padding-s / pl-padding-s / gap-layout-gutter to gap-2xs / pl-s / gap-2xs and dropped pb-padding-xxs; the library exposes --spacing-*, not CN's padding-*/layout-gutter scale.",
     "Mapped the typography utility text-ui-lg to text-base and dropped font-family-body (the field inherits the page family); the library defines no typography tokens.",
-    "Mapped hard-coded control sizes onto touch tokens: input h-[48px] to min-h-[var(--size-touch-large)], submit size-[40px] to size-[var(--size-touch-medium)], clear size-[32px] to size-[var(--size-touch-small)] (raised to the 36px touch floor).",
+    "Mapped hard-coded control sizes onto touch tokens: input h-[48px] to min-h-(--size-touch-large), submit size-[40px] to size-(--size-touch-medium), clear size-[32px] to size-(--size-touch-small) (raised to the 36px touch floor).",
     "Restored a visible keyboard focus indicator on the input — CN removed every focus outline and ring; the library field uses focus-visible:outline-2 outline-offset-2 outline-border-focus.",
     "Kept verbatim: the role=search landmark, the sr-only bound label, aria-labels on submit/clear, aria-hidden icons, the live results region, the controlled/uncontrolled duality, inputMode/enterKeyHint/autoComplete/autoFocus, clear-then-refocus, and the submit trimming an empty query before firing onSearch."
   ],
@@ -201,6 +201,18 @@
         "node": "label"
       },
       {
+        "prop": "clearLabel",
+        "node": "clearButton"
+      },
+      {
+        "prop": "submitLabel",
+        "node": "submitButton"
+      },
+      {
+        "prop": "resultsLabel",
+        "node": "results"
+      },
+      {
         "prop": "results",
         "node": "results"
       },
@@ -320,69 +332,94 @@
     ],
     "dom": {
       "nodes": [
-      {
-        "id": "root",
-        "element": "div",
+        {
+          "id": "root",
+          "element": "div",
           "parent": null,
           "cardinality": "one"
         },
-      {
+        {
         "id": "form",
-        "element": "form",
-        "parent": "root",
+        "attributes": {"role":"search"},
+          "element": "form",
+          "parent": "root",
           "cardinality": "one"
         },
         {
           "id": "label",
           "element": "label",
-        "parent": "form",
+          "parent": "form",
           "cardinality": "one"
         },
         {
-          "id": "input",
+        "id": "input",
+        "attributes": {"type":"text"},
           "element": "input",
-        "parent": "form",
+          "parent": "form",
           "cardinality": "one"
         },
-      {
-        "id": "controls",
-        "element": "div",
-        "parent": "form",
+        {
+          "id": "controls",
+          "element": "div",
+          "parent": "form",
           "cardinality": "one"
         },
-      {
+        {
         "id": "clearButton",
-        "element": "button",
-        "parent": "controls",
-          "cardinality": "zero-or-one"
+        "attributes": {"type":"button","aria-label":{"prop":"clearLabel"}},
+          "element": "button",
+          "parent": "controls",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "state": "clearButtonVisible",
+            "predicate": "truthy"
+          }
         },
-      {
+        {
         "id": "clearIcon",
-        "element": "span",
-        "parent": "clearButton",
-        "cardinality": "zero-or-one"
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "clearButton",
+          "cardinality": "one"
         },
         {
         "id": "submitButton",
-        "element": "button",
-        "parent": "controls",
-        "cardinality": "zero-or-one"
+        "attributes": {"type":"submit","aria-label":{"prop":"submitLabel"}},
+          "element": "button",
+          "parent": "controls",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "showSubmitButton",
+            "predicate": "truthy"
+          }
         },
         {
         "id": "submitIcon",
-        "element": "span",
-        "parent": "submitButton",
-          "cardinality": "zero-or-one"
+        "attributes": {"aria-hidden":true},
+          "element": "span",
+          "parent": "submitButton",
+          "cardinality": "one"
         },
         {
-          "id": "results",
+        "id": "results",
+        "attributes": {"role":"region","aria-live":"polite","aria-atomic":"true","aria-label":{"prop":"resultsLabel"}},
           "element": "div",
           "parent": "root",
-          "cardinality": "zero-or-one"
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "results",
+            "predicate": "present"
+          }
         }
       ]
     },
-    "relationships": [],
+    "relationships": [
+      {
+        "from": "label",
+        "attribute": "for",
+        "to": "input"
+      }
+    ],
     "behaviors": [
       {
         "id": "search-input.keyboard.submit",
@@ -394,7 +431,8 @@
           "2.4.11",
           "2.5.8"
         ],
-        "evidence": "search-input.keyboard.submit"
+        "evidence": "search-input.keyboard.submit",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "search-input.semantics.label",
@@ -405,7 +443,8 @@
           "2.4.6",
           "3.3.2"
         ],
-        "evidence": "search-input.semantics.label"
+        "evidence": "search-input.semantics.label",
+        "evidenceType": "storybook-step"
       },
       {
         "id": "search-input.announcement.results",
@@ -414,7 +453,8 @@
         "wcag": [
           "4.1.3"
         ],
-        "evidence": "search-input.announcement.results"
+        "evidence": "search-input.announcement.results",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

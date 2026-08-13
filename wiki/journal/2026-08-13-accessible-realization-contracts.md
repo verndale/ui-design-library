@@ -35,3 +35,11 @@ Chromium and WebKit are installed only in this library's local/CI environment. W
 
 - Repeat the disposable consumer probes against the exact automatically published package version after issue #37 merges and semantic-release publishes it.
 - Human VoiceOver sessions remain a consuming-project acceptance responsibility.
+
+## Adversarial follow-up
+
+Issue #40 tightened the same contract without adding a consuming-project artifact. Tabs now owns reciprocal tab/tabpanel relationships and panel content. Conditional, repeated, element-alternative, and accessibility-owned attribute data are explicit in manifests. Keyed Storybook evidence is AST-checked for executable assertions; modal overlays inert the background; timed Alert/Toast content carries an explicit caller responsibility; and the display-mode suite covers portals without applying overflow-remediation CSS. Normal Storybook treats the modes flag as optional, Search Overlay is supported, and the contracts gate rejects legacy Tailwind `[var(--token)]` syntax. The generated report describes the executed automated checks without treating them as WCAG or VoiceOver certification.
+
+The post-remediation audit aligned `inert`, `disabled`, and label/control relationships with the rendered nodes and limited evidence discovery to exported story `play` functions. Search Overlay now asserts focus entry, containment, and restoration through Escape, its close button, and its backdrop; preventing the backdrop mousedown default also preserves restoration for Modal. Slider's keyboard evidence is scoped to its native bounded range and uncancelled key path, while value/announcement synchronization remains a separate assertion.
+
+The final audit made evidence discovery control-flow aware so assertions or keyed steps after unconditional exits cannot satisfy the contract. Modal containment and restoration are separate behaviors, and the restoration evidence now closes a live dialog through Escape, the named close button, and the backdrop, verifying trigger focus after every path.

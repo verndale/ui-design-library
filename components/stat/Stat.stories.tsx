@@ -34,10 +34,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   /** The value leads, the label follows — both are plain content, no role. */
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText('98%')).toBeVisible();
-    await expect(canvas.getByText('customer satisfaction')).toBeVisible();
+    await step('stat.reading.order', async () => {
+      const root = canvasElement.querySelector('[data-component="stat"]');
+      await expect(canvas.getByText('98%')).toBeVisible();
+      await expect(canvas.getByText('customer satisfaction')).toBeVisible();
+      await expect(root?.textContent).toMatch(/^98%customer satisfaction/);
+    });
   },
 };
 

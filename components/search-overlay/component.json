@@ -249,6 +249,25 @@
       {
         "prop": "resultsPanel",
         "node": "searchResults"
+      },
+      {
+        "prop": "inputLabel",
+        "nodes": [
+          "searchRoot",
+          "searchLabel"
+        ]
+      },
+      {
+        "prop": "clearLabel",
+        "node": "searchClearButton"
+      },
+      {
+        "prop": "submitLabel",
+        "node": "searchSubmitButton"
+      },
+      {
+        "prop": "resultsLabel",
+        "node": "searchResults"
       }
     ],
     "safeAttributes": [
@@ -465,13 +484,18 @@
         },
         {
           "id": "searchRoot",
-          "element": "div",
+        "attributes": {
+            "role": "search",
+            "aria-label": {
+              "prop": "inputLabel"
+            }
+          },
+          "element": "search",
           "parent": "searchWrapper",
           "cardinality": "one"
         },
         {
-        "id": "searchForm",
-        "attributes": {"role":"search"},
+          "id": "searchForm",
           "element": "form",
           "parent": "searchRoot",
           "cardinality": "one"
@@ -483,8 +507,11 @@
           "cardinality": "one"
         },
         {
-        "id": "searchInput",
-        "attributes": {"type":"text"},
+          "id": "searchInput",
+          "attributes": {
+            "type": "search",
+            "name": "q"
+          },
           "element": "input",
           "parent": "searchForm",
           "cardinality": "one"
@@ -560,6 +587,11 @@
         "from": "dialog",
         "attribute": "aria-describedby",
         "to": "description"
+      },
+      {
+        "from": "searchLabel",
+        "attribute": "for",
+        "to": "searchInput"
       }
     ],
     "behaviors": [

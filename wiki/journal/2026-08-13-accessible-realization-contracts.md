@@ -3,6 +3,7 @@ date: 2026-08-13
 topics: [component-architecture, package-distribution, story-testing]
 plan: plans/2026-08-13-realization-first-reuse-wcag-22-aa.md
 pr: https://github.com/verndale/ui-design-library/pull/38
+follow_up_pr: pending
 ---
 # Publish accessible realization contracts
 
@@ -45,3 +46,11 @@ The post-remediation audit aligned `inert`, `disabled`, and label/control relati
 The final audit made evidence discovery control-flow aware so assertions or keyed steps after unconditional exits cannot satisfy the contract. Modal containment and restoration are separate behaviors, and the restoration evidence now closes a live dialog through Escape, the named close button, and the backdrop, verifying trigger focus after every path.
 
 The PR CI run exposed a WebKit-only ordering race in the Modal background-inert evidence: the background became inert before the topmost focus trap finished attaching. The story now waits for initial dialog focus before challenging the inert background, then waits for focus to be redirected back into the dialog. This keeps the assertion behavioral without depending on effect scheduling.
+
+## Package-boundary follow-up
+
+The first Mimecast package probe treated exact consumer page DOM as a prerequisite for reuse, which incorrectly made an accessible package component lose to a local recreation when the page added a heading or landmark wrapper. Package realization now owns the complete component subtree while the consuming page may compose governed context outside that subtree. Presentation still flows through public props and typed style slots, so acceptance must satisfy the design/token/layout gates as well as the reuse gate.
+
+SearchInput now owns a named native `search` landmark containing its form, bound label, `input type="search"`, and submit control. `ariaLabel` distinguishes multiple search landmarks, `showLabel` exposes the existing input label visually, and `name` controls the native form field name without changing the accessible-name contract. Search Overlay's composed realization replays the same search subtree. Accordion's existing reduced-motion token path is now represented by keyed realization evidence instead of remaining implicit.
+
+Breadcrumbs exposes its existing accessible presentations through one generic `presentation` prop: responsive switching, the full ordered trail, or the nearest-ancestor back link. The default remains unchanged, and each mode keeps inactive markup out of layout and the accessibility tree.

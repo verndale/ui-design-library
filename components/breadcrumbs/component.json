@@ -40,7 +40,7 @@
     "Replaced the import of textLinkAnimatedUnderline from the sibling text-link component with the shared src/lib/underline module.",
     "Replaced the [data-theme='dark'] selector coupling with an explicit surface prop, so the variant does not depend on an ancestor the component cannot see.",
     "Replaced the hard-coded 44px mobile tap target with the --size-touch-medium token.",
-    "Kept verbatim: the nav landmark with an aria-label, aria-current on the current page, the current page rendered as text rather than a link, and the xl breakpoint collapse to a single back link."
+    "Retained the labelled nav landmark, aria-current page text, and default xl switch to a nearest-ancestor back link; the same owned trail and back-link presentations can now be selected independently of viewport."
   ],
   "maturity": "supported",
   "realization": {
@@ -70,6 +70,17 @@
         "path": "backLinkLabel",
         "type": "string",
         "required": false
+      },
+      {
+        "path": "presentation",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "responsive",
+          "trail",
+          "back-link"
+        ],
+        "default": "responsive"
       },
       {
         "path": "surface",
@@ -371,7 +382,7 @@
       {
         "id": "breadcrumbs.responsive.hidden",
         "kind": "focus",
-        "description": "Inactive responsive copies are hidden from both focus order and the accessibility tree.",
+        "description": "Inactive responsive or explicitly unselected presentations are hidden from both focus order and the accessibility tree.",
         "wcag": [
           "2.4.3",
           "4.1.2"

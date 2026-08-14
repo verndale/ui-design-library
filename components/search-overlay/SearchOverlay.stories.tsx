@@ -134,7 +134,7 @@ export const Default: Story = {
     await step('search-overlay.focus.restoration', async () => {
       await userEvent.click(trigger);
       await body.findByRole('dialog');
-      await waitFor(() => expect(body.getByRole('textbox')).toHaveFocus());
+      await waitFor(() => expect(body.getByRole('searchbox')).toHaveFocus());
       await userEvent.keyboard('{Escape}');
       await waitFor(() => expect(body.queryByRole('dialog')).not.toBeInTheDocument());
       await waitFor(() => expect(trigger).toHaveFocus());
@@ -177,7 +177,8 @@ export const IdleShowsQuickLinks: Story = {
       await expect(dialog).toHaveAttribute('aria-modal', 'true');
       await expect(labelId).toBeTruthy();
       await expect(document.getElementById(labelId!)).toHaveTextContent('What are you looking for?');
-      await expect(body.getByRole('textbox', { name: 'Search' })).toBeInTheDocument();
+      await expect(body.getByRole('search', { name: 'Search' })).toBeInTheDocument();
+      await expect(body.getByRole('searchbox', { name: 'Search' })).toBeInTheDocument();
     });
 
     await step('search-overlay.focus.background-inert', async () => {

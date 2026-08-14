@@ -42,6 +42,7 @@ export function SearchOverlayContent({
           placeholder={inputPlaceholder}
           results={active ? resultsPanel : undefined}
           label={inputLabel}
+          ariaLabel={inputLabel}
           clearLabel={clearLabel}
           submitLabel={submitLabel}
           resultsLabel={resultsLabel}

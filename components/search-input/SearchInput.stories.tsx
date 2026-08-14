@@ -14,13 +14,16 @@ const meta = {
     docs: {
       description: {
         component:
-          'A text field for entering a search query, with an inline submit control, a clear affordance that appears once there is a query, and an optional live results region. Controlled or uncontrolled.',
+          'A native search landmark with a bound label, search field, inline submit control, clear affordance, and optional live results region. Controlled or uncontrolled.',
       },
     },
   },
   argTypes: {
     "placeholder": { control: 'text', description: "Optional. Public `placeholder` realization prop. Defaults to \"Search\"." },
     "label": { control: 'text', description: "Optional. Public `label` realization prop. Defaults to \"Search\"." },
+    "ariaLabel": { control: 'text', description: "Optional. Accessible name for the search landmark. Defaults to \"Search\"." },
+    "showLabel": { control: 'boolean', description: "Optional. Shows the bound label visually. Defaults to false." },
+    "name": { control: 'text', description: "Optional. Native form field name. Defaults to \"q\"." },
     "onSearch": { control: false, description: "Optional. Public `onSearch` realization prop." },
     "value": { control: 'text', description: "Optional. Public `value` realization prop." },
     "onChange": { control: false, description: "Optional. Public `onChange` realization prop." },
@@ -58,10 +61,13 @@ export const Default: Story = {
 
     await step('search-input.semantics.label', async () => {
       await expect(root).toBeTruthy();
-      await expect(canvasElement.querySelector('form[role="search"]')).toBeTruthy();
-      const input = canvas.getByRole('textbox', { name: 'Search' });
+      await expect(canvas.getByRole('search', { name: 'Search' })).toBeInTheDocument();
+      await expect(canvasElement.querySelector('form[role="search"]')).toBeNull();
+      const input = canvas.getByRole('searchbox', { name: 'Search' });
       const label = canvas.getByText('Search');
       await expect(input).toBeInTheDocument();
+      await expect(input).toHaveAttribute('type', 'search');
+      await expect(input).toHaveAttribute('name', 'q');
       await expect(label).toHaveAttribute('for', input.id);
       await expect(canvas.getByRole('button', { name: 'Submit search' })).toBeInTheDocument();
       await expect(canvas.queryByRole('button', { name: 'Clear search' })).not.toBeInTheDocument();
@@ -75,7 +81,7 @@ export const Interactive: Story = {
   /** Typing reveals the clear button; submit fires with a trimmed query; clear empties and refocuses. */
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox', { name: 'Search' });
+    const input = canvas.getByRole('searchbox', { name: 'Search' });
 
     await step('clear appears once there is a query', async () => {
       await userEvent.type(input, '  freight rail  ');
@@ -138,6 +144,25 @@ export const AutoFocus: Story = {
   /** Mounts focused — the search-panel-open case. */
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole('textbox', { name: 'Search' })).toHaveFocus();
+    await expect(canvas.getByRole('searchbox', { name: 'Search' })).toHaveFocus();
+  },
+};
+
+export const VisibleLabel: Story = {
+  args: { label: 'Search our site', showLabel: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Search our site');
+    await expect(label).not.toHaveClass('sr-only');
+    await expect(canvas.getByRole('searchbox', { name: 'Search our site' })).toBeInTheDocument();
+  },
+};
+
+export const NamedLandmark: Story = {
+  args: { ariaLabel: 'Product search', label: 'Search products' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole('search', { name: 'Product search' })).toBeInTheDocument();
+    await expect(canvas.getByRole('searchbox', { name: 'Search products' })).toBeInTheDocument();
   },
 };

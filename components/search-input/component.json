@@ -45,7 +45,7 @@
     "Mapped the typography utility text-ui-lg to text-base and dropped font-family-body (the field inherits the page family); the library defines no typography tokens.",
     "Mapped hard-coded control sizes onto touch tokens: input h-[48px] to min-h-(--size-touch-large), submit size-[40px] to size-(--size-touch-medium), clear size-[32px] to size-(--size-touch-small) (raised to the 36px touch floor).",
     "Restored a visible keyboard focus indicator on the input — CN removed every focus outline and ring; the library field uses focus-visible:outline-2 outline-offset-2 outline-border-focus.",
-    "Kept verbatim: the role=search landmark, the sr-only bound label, aria-labels on submit/clear, aria-hidden icons, the live results region, the controlled/uncontrolled duality, inputMode/enterKeyHint/autoComplete/autoFocus, clear-then-refocus, and the submit trimming an empty query before firing onSearch."
+    "Retained the bound label, labelled submit and clear controls, hidden decorative icons, live results region, controlled and uncontrolled modes, mobile keyboard hints, clear-and-refocus behavior, and trimmed non-empty submission. The generic component now uses the native search landmark and search input semantics."
   ],
   "maturity": "supported",
   "realization": {
@@ -62,6 +62,24 @@
         "type": "string",
         "required": false,
         "default": "Search"
+      },
+      {
+        "path": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "default": "Search"
+      },
+      {
+        "path": "showLabel",
+        "type": "boolean",
+        "required": false,
+        "default": false
+      },
+      {
+        "path": "name",
+        "type": "string",
+        "required": false,
+        "default": "q"
       },
       {
         "path": "onSearch",
@@ -201,6 +219,10 @@
         "node": "label"
       },
       {
+        "prop": "ariaLabel",
+        "node": "root"
+      },
+      {
         "prop": "clearLabel",
         "node": "clearButton"
       },
@@ -230,6 +252,16 @@
         "prop": "inputId",
         "node": "input",
         "attribute": "id"
+      },
+      {
+        "prop": "ariaLabel",
+        "node": "root",
+        "attribute": "aria-label"
+      },
+      {
+        "prop": "name",
+        "node": "input",
+        "attribute": "name"
       }
     ],
     "styleSlots": [
@@ -334,13 +366,18 @@
       "nodes": [
         {
           "id": "root",
-          "element": "div",
+          "attributes": {
+            "role": "search",
+            "aria-label": {
+              "prop": "ariaLabel"
+            }
+          },
+          "element": "search",
           "parent": null,
           "cardinality": "one"
         },
         {
-        "id": "form",
-        "attributes": {"role":"search"},
+          "id": "form",
           "element": "form",
           "parent": "root",
           "cardinality": "one"
@@ -352,8 +389,13 @@
           "cardinality": "one"
         },
         {
-        "id": "input",
-        "attributes": {"type":"text"},
+          "id": "input",
+          "attributes": {
+            "type": "search",
+            "name": {
+              "prop": "name"
+            }
+          },
           "element": "input",
           "parent": "form",
           "cardinality": "one"
@@ -437,7 +479,7 @@
       {
         "id": "search-input.semantics.label",
         "kind": "semantics",
-        "description": "A visible label is bound to the input independently of placeholder text.",
+        "description": "A native search landmark contains a bound label and search input; the label remains the accessible name when visually hidden.",
         "wcag": [
           "1.3.1",
           "2.4.6",
@@ -462,6 +504,8 @@
       "apgPattern": "search",
       "consumerResponsibilities": [
         "accessible-copy",
+        "heading-context",
+        "landmark-context",
         "dynamic-content",
         "token-contrast",
         "safe-class-overrides",

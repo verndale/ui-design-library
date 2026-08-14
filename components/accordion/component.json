@@ -590,6 +590,16 @@
         ],
         "evidence": "accordion.focus.collapsed",
         "evidenceType": "storybook-step"
+      },
+      {
+        "id": "accordion.motion.reduced",
+        "kind": "motion",
+        "description": "The panel transition uses the reduced-motion-aware duration token.",
+        "wcag": [
+          "2.3.3"
+        ],
+        "evidence": "accordion.motion.reduced",
+        "evidenceType": "storybook-step"
       }
     ],
     "accessibility": {

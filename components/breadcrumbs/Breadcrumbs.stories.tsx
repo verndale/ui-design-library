@@ -14,7 +14,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A trail of ancestor links ending in the current page. Below `xl` it collapses to a single back link to the nearest ancestor — the responsive behaviour most breadcrumb implementations skip. Resize the viewport to see the switch.',
+          'A trail of ancestor links ending in the current page. The default switches below `xl` to a nearest-ancestor back link; `presentation` can keep either accessible presentation at every viewport.',
       },
     },
   },
@@ -22,6 +22,7 @@ const meta = {
     "items": { control: 'object', description: "Required. Public `items` realization prop." },
     "currentPageTitle": { control: 'text', description: "Required. Public `currentPageTitle` realization prop." },
     "backLinkLabel": { control: 'text', description: "Optional. Public `backLinkLabel` realization prop." },
+    "presentation": { control: 'radio', options: ["responsive","trail","back-link"], description: "Optional. Shows the responsive switch, full trail, or back link. Defaults to \"responsive\"." },
     "surface": { control: 'radio', options: ["light","dark"], description: "Optional. Public `surface` realization prop. Defaults to \"light\"." },
     "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop. Defaults to \"Breadcrumb\"." },
     "separator": { control: false, description: "Optional. Public `separator` realization prop." },
@@ -107,6 +108,44 @@ export const CollapsedBackLink: Story = {
     // WCAG 2.5.8 (AA) floor. Note the token is 40px where the captured source
     // hard-coded 44px — see the note in component.json.
     await expect(parseFloat(getComputedStyle(back).minHeight)).toBeGreaterThanOrEqual(24);
+  },
+};
+
+export const TrailPresentation: Story = {
+  args: { presentation: 'trail' },
+  play: async ({ canvasElement, step }) => {
+    const nav = canvasElement.querySelector('nav[data-component="breadcrumbs"]') as HTMLElement;
+    await step('breadcrumbs.responsive.hidden', async () => {
+      await expect(getComputedStyle(nav.querySelector('ol') as HTMLElement).display).not.toBe('none');
+      const back = [...nav.querySelectorAll('a')].find((link) => link.parentElement === nav) as HTMLElement;
+      await expect(getComputedStyle(back).display).toBe('none');
+    });
+  },
+};
+
+export const BackLinkPresentation: Story = {
+  args: { presentation: 'back-link' },
+  play: async ({ canvasElement, step }) => {
+    const nav = canvasElement.querySelector('nav[data-component="breadcrumbs"]') as HTMLElement;
+    await step('breadcrumbs.responsive.hidden', async () => {
+      await expect(getComputedStyle(nav.querySelector('ol') as HTMLElement).display).toBe('none');
+      const back = [...nav.querySelectorAll('a')].find((link) => link.parentElement === nav) as HTMLElement;
+      await expect(back).toHaveAttribute('href', '#rail');
+      await expect(getComputedStyle(back).display).not.toBe('none');
+    });
+  },
+};
+
+export const BackLinkWithoutAncestor: Story = {
+  args: { presentation: 'back-link', items: [], currentPageTitle: 'Home' },
+  play: async ({ canvasElement, step }) => {
+    const nav = canvasElement.querySelector('nav[data-component="breadcrumbs"]') as HTMLElement;
+    await step('breadcrumbs.responsive.hidden', async () => {
+      await expect(nav.querySelectorAll('a')).toHaveLength(0);
+      const trail = nav.querySelector('ol') as HTMLElement;
+      await expect(getComputedStyle(trail).display).not.toBe('none');
+      await expect(trail.querySelector('[aria-current="page"]')).toHaveTextContent('Home');
+    });
   },
 };
 

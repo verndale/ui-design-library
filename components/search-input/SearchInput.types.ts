@@ -10,6 +10,12 @@ export type SearchInputProps = {
   /** Visual placeholder. The accessible name comes from `label`. */
   placeholder?: string;
   label?: string;
+  /** Accessible name for the search landmark. Change it when a page has multiple search regions. */
+  ariaLabel?: string;
+  /** Show the bound label visually. It remains available to assistive technology when false. */
+  showLabel?: boolean;
+  /** Native form field name. */
+  name?: string;
   /** Fired with the trimmed query on submit; a blank query does not fire. */
   onSearch?: (query: string) => void;
   className?: string;

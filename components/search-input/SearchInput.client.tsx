@@ -15,6 +15,9 @@ export function SearchInput({
   results,
   inputId: suppliedInputId,
   label = 'Search',
+  ariaLabel = 'Search',
+  showLabel = false,
+  name = 'q',
   clearLabel = 'Clear search',
   submitLabel = 'Submit search',
   resultsLabel = 'Search results',
@@ -42,13 +45,15 @@ export function SearchInput({
   };
 
   return (
-    <div data-component="search-input" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
+    <search aria-label={ariaLabel} role="search" data-component="search-input" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
       <SearchForm
         inputId={inputId}
         inputRef={inputRef}
         query={query}
         placeholder={placeholder}
         label={label}
+        showLabel={showLabel}
+        name={name}
         autoFocus={autoFocus}
         onQueryChange={updateQuery}
         onClear={clear}
@@ -62,6 +67,6 @@ export function SearchInput({
         classNames={classNames}
       />
       <SearchResults label={resultsLabel} className={classNames?.results}>{results}</SearchResults>
-    </div>
+    </search>
   );
 }

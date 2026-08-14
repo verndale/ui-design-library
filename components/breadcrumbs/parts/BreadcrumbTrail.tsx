@@ -6,12 +6,14 @@ import type { BreadcrumbItem, BreadcrumbsClassNames, BreadcrumbsPresentation } f
 export function BreadcrumbTrail({
   items,
   currentPageTitle,
+  leadingItem,
   separator,
   presentation,
   classNames,
 }: {
   items: BreadcrumbItem[];
   currentPageTitle: string;
+  leadingItem?: ReactNode;
   separator: ReactNode;
   presentation: BreadcrumbsPresentation;
   classNames?: BreadcrumbsClassNames;
@@ -20,10 +22,16 @@ export function BreadcrumbTrail({
 
   return (
     <ol className={['m-0 list-none flex-wrap items-center gap-2xs p-0 text-sm', visibility, classNames?.trail].filter(Boolean).join(' ')}>
+      {leadingItem ? (
+        <li aria-hidden="true" className="inline-flex items-center">
+          <span>{leadingItem}</span>
+        </li>
+      ) : null}
       {items.map((item) => (
         <li key={item.href} className={['inline-flex items-center gap-2xs', classNames?.item].filter(Boolean).join(' ')}>
           <a
             href={item.href}
+            title={item.title}
             className={['group inline-block no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus', classNames?.link].filter(Boolean).join(' ')}
           >
             <span className={[animatedUnderline, classNames?.label].filter(Boolean).join(' ')}>{item.label}</span>

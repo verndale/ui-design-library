@@ -9,6 +9,7 @@
     "items",
     "currentPageTitle",
     "backLinkLabel",
+    "leadingItem",
     "separator",
     "backIcon"
   ],
@@ -62,6 +63,11 @@
         "required": true
       },
       {
+        "path": "items[].title",
+        "type": "string",
+        "required": false
+      },
+      {
         "path": "currentPageTitle",
         "type": "string",
         "required": true
@@ -69,6 +75,11 @@
       {
         "path": "backLinkLabel",
         "type": "string",
+        "required": false
+      },
+      {
+        "path": "leadingItem",
+        "type": "node",
         "required": false
       },
       {
@@ -181,6 +192,10 @@
         "node": "currentPage"
       },
       {
+        "prop": "leadingItem",
+        "node": "leadingItemContent"
+      },
+      {
         "prop": "separator",
         "node": "separator"
       },
@@ -190,6 +205,14 @@
       }
     ],
     "safeAttributes": [
+      {
+        "prop": "items[].title",
+        "nodes": [
+          "trailLink",
+          "backLink"
+        ],
+        "attribute": "title"
+      },
       {
         "prop": "ariaLabel",
         "node": "root",
@@ -301,6 +324,23 @@
           "cardinality": "one"
         },
         {
+          "id": "leadingItem",
+          "attributes": {"aria-hidden":true},
+          "element": "li",
+          "parent": "trail",
+          "cardinality": "zero-or-one",
+          "condition": {
+            "prop": "leadingItem",
+            "predicate": "truthy"
+          }
+        },
+        {
+          "id": "leadingItemContent",
+          "element": "span",
+          "parent": "leadingItem",
+          "cardinality": "one"
+        },
+        {
           "id": "trailItem",
           "element": "li",
           "parent": "trail",
@@ -311,6 +351,7 @@
         },
         {
           "id": "trailLink",
+          "attributes": {"title":{"prop":"items[].title"}},
           "element": "a",
           "parent": "trailItem",
           "cardinality": "one"
@@ -337,6 +378,7 @@
         },
         {
           "id": "backLink",
+          "attributes": {"title":{"prop":"items[].title"}},
           "element": "a",
           "parent": "root",
           "cardinality": "zero-or-one",

@@ -8,6 +8,8 @@ type SearchFieldProps = {
   query: string;
   placeholder: string;
   label: string;
+  showLabel: boolean;
+  name: string;
   autoFocus: boolean;
   onQueryChange: (value: string) => void;
   classNames?: SearchInputClassNames;
@@ -20,19 +22,22 @@ export function SearchField({
   query,
   placeholder,
   label,
+  showLabel,
+  name,
   autoFocus,
   onQueryChange,
   classNames,
 }: SearchFieldProps) {
   return (
     <>
-      <label htmlFor={inputId} className={['sr-only', classNames?.label].filter(Boolean).join(' ')}>
+      <label htmlFor={inputId} className={[!showLabel && 'sr-only', classNames?.label].filter(Boolean).join(' ')}>
         {label}
       </label>
       <input
         ref={inputRef}
         id={inputId}
-        type="text"
+        type="search"
+        name={name}
         inputMode="search"
         enterKeyHint="search"
         value={query}
@@ -41,7 +46,7 @@ export function SearchField({
         autoComplete="off"
         autoFocus={autoFocus}
         className={[
-          'min-h-(--size-touch-large) w-full rounded-pill border-0 bg-surface-raised',
+          'min-h-(--size-touch-large) w-full appearance-none rounded-pill border-0 bg-surface-raised',
           'pl-s pr-[5.5rem] text-base text-text-primary placeholder:text-text-secondary',
           'outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-border-focus',
           classNames?.input,

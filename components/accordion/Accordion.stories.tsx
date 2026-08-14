@@ -16,7 +16,12 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
-    realizationEvidence: ['accordion.keyboard.toggle', 'accordion.state.relationships', 'accordion.focus.collapsed'],
+    realizationEvidence: [
+      'accordion.keyboard.toggle',
+      'accordion.state.relationships',
+      'accordion.focus.collapsed',
+      'accordion.motion.reduced',
+    ],
     layout: 'padded',
     docs: {
       description: {
@@ -162,10 +167,12 @@ export const ShowMore: Story = {
 export const ReducedMotion: Story = {
   tags: ['motion'],
   args: { items: [faq[0]!] },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const panel = canvasElement.querySelector('[data-accordion-motion]');
-    await expect(panel).toBeTruthy();
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    await expect(getComputedStyle(panel as Element).transitionDuration).toBe(reduced ? '0s' : '0.3s');
+    await step('accordion.motion.reduced', async () => {
+      await expect(panel).toBeTruthy();
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      await expect(getComputedStyle(panel as Element).transitionDuration).toBe(reduced ? '0s' : '0.3s');
+    });
   },
 };

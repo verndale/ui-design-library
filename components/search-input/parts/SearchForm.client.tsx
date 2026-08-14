@@ -11,6 +11,8 @@ type SearchFormProps = {
   query: string;
   placeholder: string;
   label: string;
+  showLabel: boolean;
+  name: string;
   autoFocus: boolean;
   onQueryChange: (value: string) => void;
   onClear: () => void;
@@ -31,6 +33,8 @@ export function SearchForm({
   query,
   placeholder,
   label,
+  showLabel,
+  name,
   autoFocus,
   onQueryChange,
   onClear,
@@ -50,13 +54,15 @@ export function SearchForm({
   };
 
   return (
-    <form role="search" onSubmit={submit} className={['relative flex w-full items-center', classNames?.form].filter(Boolean).join(' ')}>
+    <form onSubmit={submit} className={['relative flex w-full items-center', classNames?.form].filter(Boolean).join(' ')}>
       <SearchField
         inputId={inputId}
         inputRef={inputRef}
         query={query}
         placeholder={placeholder}
         label={label}
+        showLabel={showLabel}
+        name={name}
         autoFocus={autoFocus}
         onQueryChange={onQueryChange}
         classNames={classNames}

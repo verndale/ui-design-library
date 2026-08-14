@@ -1,21 +1,25 @@
 import type { ReactNode } from 'react';
 
 import { animatedUnderline } from '../../../src/lib/underline.js';
-import type { BreadcrumbItem, BreadcrumbsClassNames } from '../Breadcrumbs.types.js';
+import type { BreadcrumbItem, BreadcrumbsClassNames, BreadcrumbsPresentation } from '../Breadcrumbs.types.js';
 
 export function BreadcrumbTrail({
   items,
   currentPageTitle,
   separator,
+  presentation,
   classNames,
 }: {
   items: BreadcrumbItem[];
   currentPageTitle: string;
   separator: ReactNode;
+  presentation: BreadcrumbsPresentation;
   classNames?: BreadcrumbsClassNames;
 }) {
+  const visibility = presentation === 'responsive' ? 'hidden xl:flex' : presentation === 'trail' ? 'flex' : 'hidden';
+
   return (
-    <ol className={['m-0 hidden list-none flex-wrap items-center gap-2xs p-0 text-sm xl:flex', classNames?.trail].filter(Boolean).join(' ')}>
+    <ol className={['m-0 list-none flex-wrap items-center gap-2xs p-0 text-sm', visibility, classNames?.trail].filter(Boolean).join(' ')}>
       {items.map((item) => (
         <li key={item.href} className={['inline-flex items-center gap-2xs', classNames?.item].filter(Boolean).join(' ')}>
           <a

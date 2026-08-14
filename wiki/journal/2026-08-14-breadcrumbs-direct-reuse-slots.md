@@ -2,7 +2,7 @@
 date: 2026-08-14
 topics: [component-architecture]
 plan: plans/2026-08-14-breadcrumbs-direct-reuse-slots.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/47
 ---
 # Add governed Breadcrumbs leading item and ancestor titles
 

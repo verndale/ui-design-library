@@ -5,6 +5,7 @@ evidence:
   - "issue #46"
   - "pnpm test"
   - "pnpm build"
+  - "PR #47 https://github.com/verndale/ui-design-library/pull/47 (merged 2026-08-14)"
 source_tool: cursor
 source: hybrid reuse plan, library slice
 topics: [component-architecture]

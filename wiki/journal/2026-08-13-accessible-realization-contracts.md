@@ -3,7 +3,7 @@ date: 2026-08-13
 topics: [component-architecture, package-distribution, story-testing]
 plan: plans/2026-08-13-realization-first-reuse-wcag-22-aa.md
 pr: https://github.com/verndale/ui-design-library/pull/38
-follow_up_pr: pending
+follow_up_pr: https://github.com/verndale/ui-design-library/pull/44
 ---
 # Publish accessible realization contracts
 

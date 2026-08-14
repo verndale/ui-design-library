@@ -10,6 +10,7 @@ evidence:
   - "pnpm build"
   - "pnpm verify"
   - "PR #38 https://github.com/verndale/ui-design-library/pull/38 (merged 2026-08-13)"
+  - "PR #44 https://github.com/verndale/ui-design-library/pull/44 (merged 2026-08-14)"
 source_tool: codex
 source: approved task conversation
 topics: [component-architecture, package-distribution, story-testing]

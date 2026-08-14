@@ -22,6 +22,7 @@ const meta = {
     "items": { control: 'object', description: "Required. Public `items` realization prop." },
     "currentPageTitle": { control: 'text', description: "Required. Public `currentPageTitle` realization prop." },
     "backLinkLabel": { control: 'text', description: "Optional. Public `backLinkLabel` realization prop." },
+    "leadingItem": { control: false, description: "Optional. Public `leadingItem` realization prop." },
     "presentation": { control: 'radio', options: ["responsive","trail","back-link"], description: "Optional. Shows the responsive switch, full trail, or back link. Defaults to \"responsive\"." },
     "surface": { control: 'radio', options: ["light","dark"], description: "Optional. Public `surface` realization prop. Defaults to \"light\"." },
     "ariaLabel": { control: 'text', description: "Optional. Public `ariaLabel` realization prop. Defaults to \"Breadcrumb\"." },
@@ -108,6 +109,40 @@ export const CollapsedBackLink: Story = {
     // WCAG 2.5.8 (AA) floor. Note the token is 40px where the captured source
     // hard-coded 44px — see the note in component.json.
     await expect(parseFloat(getComputedStyle(back).minHeight)).toBeGreaterThanOrEqual(24);
+  },
+};
+
+export const TruncatedTrail: Story = {
+  args: {
+    presentation: 'trail',
+    leadingItem: '…',
+    items: [
+      { label: 'Services', href: '#services', title: 'Services' },
+      { label: 'Rail freight', href: '#rail', title: 'Rail freight' },
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const nav = canvasElement.querySelector('nav[data-component="breadcrumbs"]') as HTMLElement;
+    const trail = nav.querySelector('ol') as HTMLElement;
+
+    await step('package-owned leading marker is not a link', async () => {
+      const leading = trail.querySelector(':scope > li[aria-hidden="true"]') as HTMLElement;
+      await expect(leading).toHaveTextContent('…');
+      await expect(leading.querySelector('a')).toBeNull();
+    });
+
+    await step('ancestor titles are forwarded', async () => {
+      await expect([...trail.querySelectorAll('a')].map((link) => link.getAttribute('title'))).toEqual([
+        'Services',
+        'Rail freight',
+      ]);
+    });
+
+    await step('breadcrumbs.responsive.hidden', async () => {
+      await expect(getComputedStyle(trail).display).not.toBe('none');
+      const back = [...nav.querySelectorAll('a')].find((link) => link.parentElement === nav) as HTMLElement;
+      await expect(getComputedStyle(back).display).toBe('none');
+    });
   },
 };
 

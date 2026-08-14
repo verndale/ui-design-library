@@ -9,6 +9,7 @@ export function Breadcrumbs({
   items,
   currentPageTitle,
   backLinkLabel,
+  leadingItem,
   presentation = 'responsive',
   surface = 'light',
   ariaLabel = 'Breadcrumb',
@@ -30,6 +31,7 @@ export function Breadcrumbs({
       <BreadcrumbTrail
         items={items}
         currentPageTitle={currentPageTitle}
+        leadingItem={leadingItem}
         separator={separator}
         presentation={resolvedPresentation}
         classNames={classNames}

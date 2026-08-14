@@ -15,6 +15,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Adopt server-first component architecture](../../wiki/journal/2026-08-12-server-first-component-architecture.md) → [Server-first component architecture and full library migration](../../wiki/plans/2026-08-12-server-first-component-architecture.md)
 - [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md)
 - [Stat metadata stops advertising StatGroup variants](../../wiki/journal/2026-08-13-stat-primary-variant-contract.md) → [Coordinated UI Library Contract v2 and AI Reuse Hardening](../../wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md)
+- [Add governed Breadcrumbs leading item and ancestor titles](../../wiki/journal/2026-08-14-breadcrumbs-direct-reuse-slots.md) → [Breadcrumbs direct reuse slots](../../wiki/plans/2026-08-14-breadcrumbs-direct-reuse-slots.md)
 
 ## Page → topic
 
@@ -36,6 +37,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Publish accessible realization contracts](../../wiki/journal/2026-08-13-accessible-realization-contracts.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Stat metadata stops advertising StatGroup variants](../../wiki/journal/2026-08-13-stat-primary-variant-contract.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Add governed Breadcrumbs leading item and ancestor titles](../../wiki/journal/2026-08-14-breadcrumbs-direct-reuse-slots.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
@@ -49,6 +51,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Realization-First Reuse with WCAG 2.2 AA Accessibility](../../wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
+- [Breadcrumbs direct reuse slots](../../wiki/plans/2026-08-14-breadcrumbs-direct-reuse-slots.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 
 ## Topic → covered surface
 

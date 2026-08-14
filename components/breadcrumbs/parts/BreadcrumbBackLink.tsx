@@ -23,6 +23,7 @@ export function BreadcrumbBackLink({
   return (
     <a
       href={parent.href}
+      title={parent.title}
       className={[
         'group items-center gap-2xs text-sm no-underline',
         visibility,

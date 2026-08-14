@@ -1317,7 +1317,7 @@
       "label": "Story",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L44",
+      "source_location": "L45",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -1330,7 +1330,7 @@
       "label": "Default",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_default",
       "community": 3,
@@ -1341,7 +1341,7 @@
       "label": "CollapsedBackLink",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L92",
+      "source_location": "L93",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_collapsedbacklink",
       "community": 3,
@@ -1349,10 +1349,21 @@
       "norm_label": "collapsedbacklink"
     },
     {
+      "label": "TruncatedTrail",
+      "file_type": "code",
+      "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "components_breadcrumbs_breadcrumbs_stories_truncatedtrail",
+      "community": 3,
+      "community_name": "Breadcrumbs.stories.tsx",
+      "norm_label": "truncatedtrail"
+    },
+    {
       "label": "TrailPresentation",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L114",
+      "source_location": "L149",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_trailpresentation",
       "community": 3,
@@ -1363,7 +1374,7 @@
       "label": "BackLinkPresentation",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L126",
+      "source_location": "L161",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_backlinkpresentation",
       "community": 3,
@@ -1374,7 +1385,7 @@
       "label": "BackLinkWithoutAncestor",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L139",
+      "source_location": "L174",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_backlinkwithoutancestor",
       "community": 3,
@@ -1385,7 +1396,7 @@
       "label": "OnDarkSurface",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L152",
+      "source_location": "L187",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_ondarksurface",
       "community": 3,
@@ -1396,7 +1407,7 @@
       "label": "SingleLevel",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L162",
+      "source_location": "L197",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_singlelevel",
       "community": 3,
@@ -1407,7 +1418,7 @@
       "label": "DeepTrail",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L167",
+      "source_location": "L202",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_deeptrail",
       "community": 3,
@@ -1418,7 +1429,7 @@
       "label": "NoAncestors",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L186",
+      "source_location": "L221",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_noancestors",
       "community": 3,
@@ -1429,7 +1440,7 @@
       "label": "CustomLandmarkLabel",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L198",
+      "source_location": "L233",
       "_origin": "ast",
       "id": "components_breadcrumbs_breadcrumbs_stories_customlandmarklabel",
       "community": 3,
@@ -1500,7 +1511,7 @@
       "label": "BreadcrumbsPresentation",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.types.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -1513,7 +1524,7 @@
       "label": "BreadcrumbsProps",
       "file_type": "code",
       "source_file": "components/breadcrumbs/Breadcrumbs.types.ts",
-      "source_location": "L16",
+      "source_location": "L18",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -3164,8 +3175,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_modal_modal_client",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "modal.client.tsx"
     },
     {
@@ -3176,8 +3187,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "components_modal_modal_client_modal",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "modal()"
     },
     {
@@ -3187,8 +3198,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_modal_modal_stories",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "modal.stories.tsx"
     },
     {
@@ -3200,8 +3211,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "components_modal_modal_stories_story",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "story"
     },
     {
@@ -3211,8 +3222,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "components_modal_modal_stories_default",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "default"
     },
     {
@@ -3222,8 +3233,8 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "components_modal_modal_stories_closesfrombutton",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "closesfrombutton"
     },
     {
@@ -3233,8 +3244,8 @@
       "source_location": "L155",
       "_origin": "ast",
       "id": "components_modal_modal_stories_trapsfocus",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "trapsfocus"
     },
     {
@@ -3244,8 +3255,8 @@
       "source_location": "L201",
       "_origin": "ast",
       "id": "components_modal_modal_stories_stackedoverlays",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "stackedoverlays"
     },
     {
@@ -3255,8 +3266,8 @@
       "source_location": "L253",
       "_origin": "ast",
       "id": "components_modal_modal_stories_returnsfocustoref",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "returnsfocustoref"
     },
     {
@@ -3266,8 +3277,8 @@
       "source_location": "L285",
       "_origin": "ast",
       "id": "components_modal_modal_stories_withallslots",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "withallslots"
     },
     {
@@ -3277,8 +3288,8 @@
       "source_location": "L359",
       "_origin": "ast",
       "id": "components_modal_modal_stories_closesonbackdrop",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "closesonbackdrop"
     },
     {
@@ -3288,8 +3299,8 @@
       "source_location": "L385",
       "_origin": "ast",
       "id": "components_modal_modal_stories_medium",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "medium"
     },
     {
@@ -3299,8 +3310,8 @@
       "source_location": "L395",
       "_origin": "ast",
       "id": "components_modal_modal_stories_scrollingbody",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 118,
+      "community_name": "Modal.stories.tsx",
       "norm_label": "scrollingbody"
     },
     {
@@ -3311,7 +3322,7 @@
       "_origin": "ast",
       "id": "components_modal_modal_types",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modal.types.ts"
     },
     {
@@ -3324,7 +3335,7 @@
       "_origin": "ast",
       "id": "components_modal_modal_types_modalclassnames",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalclassnames"
     },
     {
@@ -3337,7 +3348,7 @@
       "_origin": "ast",
       "id": "components_modal_modal_types_modalheadinglevel",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalheadinglevel"
     },
     {
@@ -3350,7 +3361,7 @@
       "_origin": "ast",
       "id": "components_modal_modal_types_modalprops",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalprops"
     },
     {
@@ -3361,7 +3372,7 @@
       "_origin": "ast",
       "id": "components_modal_index",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modal/index.ts"
     },
     {
@@ -3372,7 +3383,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalbody",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalbody.tsx"
     },
     {
@@ -3384,7 +3395,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalbody_modalbody",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalbody()"
     },
     {
@@ -3395,7 +3406,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalfooter",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalfooter.tsx"
     },
     {
@@ -3407,7 +3418,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalfooter_modalfooter",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalfooter()"
     },
     {
@@ -3418,7 +3429,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalheader_client",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalheader.client.tsx"
     },
     {
@@ -3431,7 +3442,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalheader_client_modalheaderprops",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalheaderprops"
     },
     {
@@ -3443,7 +3454,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalheader_client_modalheader",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalheader()"
     },
     {
@@ -3454,7 +3465,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalpanel_client",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalpanel.client.tsx"
     },
     {
@@ -3467,7 +3478,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalpanel_client_modalpanelprops",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "modalpanelprops"
     },
     {
@@ -3478,7 +3489,7 @@
       "_origin": "ast",
       "id": "components_modal_parts_modalpanel_client_panelsizes",
       "community": 0,
-      "community_name": "dialog.client.ts",
+      "community_name": "Modal.types.ts",
       "norm_label": "panelsizes"
     },
     {
@@ -3489,8 +3500,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "components_modal_parts_modalpanel_client_modalpanel",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "modalpanel()"
     },
     {
@@ -4197,7 +4208,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_client",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlay.client.tsx"
     },
     {
@@ -4209,7 +4220,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_client_searchoverlay",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlay()"
     },
     {
@@ -4219,7 +4230,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "searchoverlay.stories.tsx"
     },
@@ -4231,7 +4242,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_quicklinks",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "quicklinks()"
     },
@@ -4243,7 +4254,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_results",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "results()"
     },
@@ -4256,7 +4267,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_story",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "story"
     },
@@ -4267,7 +4278,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_default",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "default"
     },
@@ -4278,7 +4289,7 @@
       "source_location": "L159",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_idleshowsquicklinks",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "idleshowsquicklinks"
     },
@@ -4289,7 +4300,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_activeshowsresults",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "activeshowsresults"
     },
@@ -4300,7 +4311,7 @@
       "source_location": "L213",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_trapsfocus",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "trapsfocus"
     },
@@ -4311,7 +4322,7 @@
       "source_location": "L239",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_closesonbackdrop",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "closesonbackdrop"
     },
@@ -4322,7 +4333,7 @@
       "source_location": "L261",
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_stories_respectsreducedmotion",
-      "community": 9,
+      "community": 119,
       "community_name": "SearchOverlay.stories.tsx",
       "norm_label": "respectsreducedmotion"
     },
@@ -4334,7 +4345,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_types",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlay.types.ts"
     },
     {
@@ -4347,7 +4358,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_types_searchoverlayclassnames",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlayclassnames"
     },
     {
@@ -4360,7 +4371,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_types_searchoverlayheadinglevel",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlayheadinglevel"
     },
     {
@@ -4373,7 +4384,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_searchoverlay_types_searchoverlayprops",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlayprops"
     },
     {
@@ -4384,7 +4395,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_index",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "search-overlay/index.ts"
     },
     {
@@ -4395,7 +4406,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlaycontent_client",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlaycontent.client.tsx"
     },
     {
@@ -4408,7 +4419,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlaycontent_client_searchoverlaycontentprops",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlaycontentprops"
     },
     {
@@ -4420,7 +4431,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlaycontent_client_searchoverlaycontent",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlaycontent()"
     },
     {
@@ -4431,7 +4442,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlayheader_client",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlayheader.client.tsx"
     },
     {
@@ -4444,7 +4455,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlayheader_client_searchoverlayheaderprops",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlayheaderprops"
     },
     {
@@ -4456,7 +4467,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlayheader_client_searchoverlayheader",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlayheader()"
     },
     {
@@ -4467,7 +4478,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlaypanel_client",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlaypanel.client.tsx"
     },
     {
@@ -4480,7 +4491,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlaypanel_client_searchoverlaypanelprops",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlaypanelprops"
     },
     {
@@ -4492,7 +4503,7 @@
       "_origin": "ast",
       "id": "components_search_overlay_parts_searchoverlaypanel_client_searchoverlaypanel",
       "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community_name": "SearchOverlay.types.ts",
       "norm_label": "searchoverlaypanel()"
     },
     {
@@ -11067,8 +11078,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_closebutton",
-      "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community": 0,
+      "community_name": "Modal.types.ts",
       "norm_label": "closebutton.tsx"
     },
     {
@@ -11079,8 +11090,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_closebutton_closebutton",
-      "community": 9,
-      "community_name": "SearchOverlay.stories.tsx",
+      "community": 0,
+      "community_name": "Modal.types.ts",
       "norm_label": "closebutton()"
     },
     {
@@ -11090,8 +11101,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_backgroundinert_client",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 121,
+      "community_name": "backgroundInert.client.ts",
       "norm_label": "backgroundinert.client.ts"
     },
     {
@@ -11101,8 +11112,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_lib_backgroundinert_client_previous",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 121,
+      "community_name": "backgroundInert.client.ts",
       "norm_label": "previous"
     },
     {
@@ -11113,8 +11124,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_backgroundinert_client_syncbackground",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 121,
+      "community_name": "backgroundInert.client.ts",
       "norm_label": "syncbackground()"
     },
     {
@@ -11125,8 +11136,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_backgroundinert_client_restorebackground",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 121,
+      "community_name": "backgroundInert.client.ts",
       "norm_label": "restorebackground()"
     },
     {
@@ -11137,8 +11148,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_backgroundinert_client_usebackgroundinert",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 121,
+      "community_name": "backgroundInert.client.ts",
       "norm_label": "usebackgroundinert()"
     },
     {
@@ -11184,7 +11195,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_dialog_client",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "dialog.client.ts"
     },
@@ -11197,7 +11208,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_lib_dialog_client_usedialogoptions",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "usedialogoptions"
     },
@@ -11209,7 +11220,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_dialog_client_usedialog",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "usedialog()"
     },
@@ -11220,8 +11231,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_focus_client",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "focus.client.ts"
     },
     {
@@ -11231,8 +11242,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_lib_focus_client_focusable",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "focusable"
     },
     {
@@ -11243,8 +11254,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_focus_client_getfocusableelements",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "getfocusableelements()"
     },
     {
@@ -11255,8 +11266,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_focus_client_usefocustrap",
-      "community": 0,
-      "community_name": "dialog.client.ts",
+      "community": 120,
+      "community_name": "Modal.client.tsx",
       "norm_label": "usefocustrap()"
     },
     {
@@ -11266,7 +11277,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_overlaystack_client",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "overlaystack.client.ts"
     },
@@ -11277,7 +11288,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_overlays",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "overlays"
     },
@@ -11288,7 +11299,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_listeners",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "listeners"
     },
@@ -11300,7 +11311,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_emit",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "emit()"
     },
@@ -11312,7 +11323,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_subscribe",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "subscribe()"
     },
@@ -11324,7 +11335,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_register",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "register()"
     },
@@ -11336,7 +11347,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_gettopoverlay",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "gettopoverlay()"
     },
@@ -11348,7 +11359,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_useoverlaystack",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "useoverlaystack()"
     },
@@ -11360,7 +11371,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_acquirescrolllock",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "acquirescrolllock()"
     },
@@ -11372,7 +11383,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_overlaystack_client_usedocumentscrolllock",
-      "community": 0,
+      "community": 117,
       "community_name": "dialog.client.ts",
       "norm_label": "usedocumentscrolllock()"
     },
@@ -11438,8 +11449,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_useportalroot_client",
-      "community": 14,
-      "community_name": "Toast.types.ts",
+      "community": 117,
+      "community_name": "dialog.client.ts",
       "norm_label": "useportalroot.client.ts"
     },
     {
@@ -11450,8 +11461,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_lib_useportalroot_client_useportalroot",
-      "community": 14,
-      "community_name": "Toast.types.ts",
+      "community": 117,
+      "community_name": "dialog.client.ts",
       "norm_label": "useportalroot()"
     },
     {
@@ -15266,7 +15277,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L126",
+      "source_location": "L161",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15277,7 +15288,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L139",
+      "source_location": "L174",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15288,7 +15299,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L92",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15299,7 +15310,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L198",
+      "source_location": "L233",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15310,7 +15321,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L167",
+      "source_location": "L202",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15321,7 +15332,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15332,7 +15343,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L186",
+      "source_location": "L221",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15343,7 +15354,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L152",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15354,7 +15365,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L162",
+      "source_location": "L197",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15365,7 +15376,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
@@ -15376,11 +15387,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
-      "source_location": "L114",
+      "source_location": "L149",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_stories",
       "target": "components_breadcrumbs_breadcrumbs_stories_trailpresentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/breadcrumbs/Breadcrumbs.stories.tsx",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_breadcrumbs_breadcrumbs_stories",
+      "target": "components_breadcrumbs_breadcrumbs_stories_truncatedtrail",
       "confidence_score": 1.0
     },
     {
@@ -15516,7 +15538,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.types.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_types",
@@ -15527,7 +15549,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/breadcrumbs/Breadcrumbs.types.ts",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_breadcrumbs_breadcrumbs_types",
@@ -32375,5 +32397,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "27ff530f0fbf3cd2a5ce23ae516454e79da28f8b"
+  "built_at_commit": "e85bad0296a526951f9103bc5e97420d672f93fd"
 }

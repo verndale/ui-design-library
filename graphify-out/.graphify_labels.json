@@ -1,5 +1,5 @@
 {
-  "0": "dialog.client.ts",
+  "0": "Modal.types.ts",
   "1": "classNames.ts",
   "2": "build-graph.cjs",
   "3": "Breadcrumbs.stories.tsx",
@@ -8,7 +8,7 @@
   "6": "components.ssr.test.tsx",
   "7": "Carousel.stories.tsx",
   "8": "SearchInput.stories.tsx",
-  "9": "SearchOverlay.stories.tsx",
+  "9": "SearchOverlay.types.ts",
   "10": "Image.types.ts",
   "11": "InPageNavigation.types.ts",
   "12": "Slider.stories.tsx",
@@ -115,5 +115,10 @@
   "113": "release.config.cjs",
   "114": "postcss.config.mjs",
   "115": "vite.config.ts",
-  "116": "vitest.ssr.config.ts"
+  "116": "vitest.ssr.config.ts",
+  "117": "dialog.client.ts",
+  "118": "Modal.stories.tsx",
+  "119": "SearchOverlay.stories.tsx",
+  "120": "Modal.client.tsx",
+  "121": "backgroundInert.client.ts"
 }

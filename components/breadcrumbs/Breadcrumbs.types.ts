@@ -9,6 +9,8 @@ export type BreadcrumbsClassNames = SlotClassNames<
 export type BreadcrumbItem = {
   label: string;
   href: string;
+  /** Optional advisory title forwarded to package-owned ancestor links. */
+  title?: string;
 };
 
 export type BreadcrumbsPresentation = 'responsive' | 'trail' | 'back-link';
@@ -20,6 +22,8 @@ export type BreadcrumbsProps = {
   currentPageTitle: string;
   /** Label for the mobile back link. Defaults to the nearest ancestor's label. */
   backLinkLabel?: string;
+  /** Decorative content rendered before ancestor links in a package-owned, aria-hidden list item. */
+  leadingItem?: ReactNode;
   /** Choose the responsive switch, full ordered trail, or nearest-ancestor back link. */
   presentation?: BreadcrumbsPresentation;
   surface?: 'light' | 'dark';

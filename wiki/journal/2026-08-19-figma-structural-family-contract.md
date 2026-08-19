@@ -2,7 +2,7 @@
 date: 2026-08-19
 topics: [variant-axis, figma-code-connect]
 plan: plans/2026-08-19-figma-structural-family-contract.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/52
 ---
 # Govern structural variants as Figma families
 

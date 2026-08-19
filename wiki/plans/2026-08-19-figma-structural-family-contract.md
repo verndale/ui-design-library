@@ -1,7 +1,12 @@
 ---
 status: implemented
 executed: 2026-08-19
-evidence: [working tree, Figma coverage self-tests, Figma contract self-tests, current registry validation]
+evidence:
+  - working tree
+  - Figma coverage self-tests
+  - Figma contract self-tests
+  - current registry validation
+  - "PR #52 https://github.com/verndale/ui-design-library/pull/52 (merged 2026-08-19)"
 source_tool: codex
 source: approved cross-repository implementation plan in the active Codex task
 topics: [variant-axis, figma-code-connect]

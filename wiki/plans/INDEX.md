@@ -22,7 +22,7 @@ Totals: 9 implemented, 4 partial (13 plans).
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
-| 2026-08-19 | [Figma structural family contract](2026-08-19-figma-structural-family-contract.md) | implemented | working tree, Figma coverage/contract self-tests and current registry validation | variant-axis, figma-code-connect |
+| 2026-08-19 | [Figma structural family contract](2026-08-19-figma-structural-family-contract.md) | implemented | working tree, Figma coverage/contract self-tests and current registry validation, [PR #52](https://github.com/verndale/ui-design-library/pull/52) | variant-axis, figma-code-connect |
 | 2026-08-18 | [Governed code-to-Figma capture workflow](2026-08-18-governed-code-to-figma-capture.md) | implemented | project-retrospective issue #69, `pnpm figma:validate`, coverage/contract self-tests, [PR #50](https://github.com/verndale/ui-design-library/pull/50) | figma-code-connect |
 | 2026-08-18 | [Figma adversarial and design-review remediation](2026-08-18-figma-adversarial-remediation.md) | implemented | live Figma adversarial and visual audit, live-audit fixture self-tests, `pnpm figma:validate`, [PR #50](https://github.com/verndale/ui-design-library/pull/50) | figma-code-connect |
 | 2026-08-18 | [Remaining supported Figma library and Code Connect batch](2026-08-18-figma-supported-batch.md) | partial | sixteen additional Ready for Dev nodes, 23 registered nodes, `pnpm figma:validate`; publication and consumer smoke test pending maintainer, [PR #50](https://github.com/verndale/ui-design-library/pull/50) | figma-code-connect |

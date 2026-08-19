@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-19 — chore(ui-design-library): Update documentation for structural variants ([PR #52](https://github.com/verndale/ui-design-library/pull/52))
 - 2026-08-19 — ci(ci): Add Figma library validation workflow ([PR #50](https://github.com/verndale/ui-design-library/pull/50))
 - 2026-08-14 — feat(ui-design-library): Add leading item support to breadcrumbs compone ([PR #47](https://github.com/verndale/ui-design-library/pull/47))
 - 2026-08-14 — feat(ui-design-library): Enhance breadcrumbs component with presentation ([PR #44](https://github.com/verndale/ui-design-library/pull/44))

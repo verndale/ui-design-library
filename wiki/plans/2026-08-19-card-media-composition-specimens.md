@@ -7,6 +7,7 @@ evidence:
   - "Figma composition section 261:72"
   - Figma adversarial and design review
   - repository validation gates
+  - "PR #56 https://github.com/verndale/ui-design-library/pull/56 (merged 2026-08-19)"
 source_tool: codex
 source: confirmed implementation plan in the active Codex task
 topics: [figma-code-connect]

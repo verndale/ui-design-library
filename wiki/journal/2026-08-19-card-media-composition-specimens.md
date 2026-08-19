@@ -2,7 +2,7 @@
 date: 2026-08-19
 topics: [figma-code-connect]
 plan: plans/2026-08-19-card-media-composition-specimens.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/56
 ---
 # Document Card media presence as composition
 

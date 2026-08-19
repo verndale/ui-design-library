@@ -8,6 +8,7 @@ evidence:
   - "pnpm contracts"
   - "pnpm test"
   - "pnpm build"
+  - "PR #50 https://github.com/verndale/ui-design-library/pull/50 (merged 2026-08-19)"
 source_tool: codex
 source: approved Organization-tier Figma Library and Code Connect Pilot task
 topics: [figma-code-connect]

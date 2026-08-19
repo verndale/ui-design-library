@@ -2,7 +2,7 @@
 date: 2026-08-18
 topics: [figma-code-connect]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/50
 ---
 # Harden governed Figma capture after adversarial review
 

@@ -2,7 +2,7 @@
 date: 2026-08-18
 topics: [figma-code-connect]
 plan: plans/2026-08-18-figma-code-connect-pilot.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/50
 ---
 # Promote the first governed Figma and Code Connect component set
 

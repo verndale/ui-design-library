@@ -195,22 +195,22 @@
     "semantic_hash": ""
   },
   "components/breadcrumbs/Breadcrumbs.stories.tsx": {
-    "mtime": 1786709483.5378826,
+    "mtime": 1786713230.77494,
     "ast_hash": "b0b9177051ef305f48499f204cb98e95",
     "semantic_hash": ""
   },
   "components/breadcrumbs/Breadcrumbs.tsx": {
-    "mtime": 1786675337.717135,
+    "mtime": 1786713230.7759347,
     "ast_hash": "276af4677567e69fa6f9e47d2307b4fa",
     "semantic_hash": ""
   },
   "components/breadcrumbs/Breadcrumbs.types.ts": {
-    "mtime": 1786675337.5964165,
+    "mtime": 1786713230.7792876,
     "ast_hash": "ae16b37ac83b9d3ae768c76b95d8d2c8",
     "semantic_hash": ""
   },
   "components/breadcrumbs/component.json": {
-    "mtime": 1786675361.0401876,
+    "mtime": 1786713230.7812667,
     "ast_hash": "beee42e6b592dcfc49f69d7cc7ff6827",
     "semantic_hash": ""
   },
@@ -220,12 +220,12 @@
     "semantic_hash": ""
   },
   "components/breadcrumbs/parts/BreadcrumbBackLink.tsx": {
-    "mtime": 1786675337.9461322,
+    "mtime": 1786713230.7825148,
     "ast_hash": "ec4e122b7369e182f5290511db9d7576",
     "semantic_hash": ""
   },
   "components/breadcrumbs/parts/BreadcrumbTrail.tsx": {
-    "mtime": 1786709489.3494706,
+    "mtime": 1786713230.787078,
     "ast_hash": "b14b4d34bda561936241acaf28e43915",
     "semantic_hash": ""
   },
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "components/carousel/Carousel.stories.tsx": {
-    "mtime": 1786659169.8350294,
-    "ast_hash": "df30c8aa5ebd1dc671f3710185cbf248",
+    "mtime": 1787089461.9398122,
+    "ast_hash": "d67990a64a5460a7bba3e615091ab2eb",
     "semantic_hash": ""
   },
   "components/carousel/Carousel.types.ts": {
@@ -845,8 +845,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1786659169.8948078,
-    "ast_hash": "91778414b08d4b1712bcb16430fd409b",
+    "mtime": 1787104458.343849,
+    "ast_hash": "de5d1cd4a7b7320a50844613963c8a53",
     "semantic_hash": ""
   },
   "release.config.cjs": {
@@ -910,8 +910,8 @@
     "semantic_hash": ""
   },
   "scripts/graph/data/graph.json": {
-    "mtime": 1786711857.8712554,
-    "ast_hash": "af278ab96bc71db7b129072f2d336f79",
+    "mtime": 1787135330.9439144,
+    "ast_hash": "03ed21931fcb37ba0325081b25586de3",
     "semantic_hash": ""
   },
   "scripts/graph/routing-policy.json": {
@@ -1135,8 +1135,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786659169.8097541,
-    "ast_hash": "33ef2b4539ff9dc7d653dbf3123123bc",
+    "mtime": 1787104521.346441,
+    "ast_hash": "424630d51bf592206aa3dcb378563d13",
     "semantic_hash": ""
   },
   "scripts/graph/README.md": {
@@ -1152,6 +1152,56 @@
   ".claude/settings.local.json": {
     "mtime": 1785941782.0440445,
     "ast_hash": "3c6561d84aed48c7d90697122f384dea",
+    "semantic_hash": ""
+  },
+  "figma/library.json": {
+    "mtime": 1787103578.8572972,
+    "ast_hash": "d0a7e3778901112b0307378c7138418d",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-contracts.cjs": {
+    "mtime": 1787104482.335394,
+    "ast_hash": "f19a3e0f01d3b65f3823848acb070e4b",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-contracts.selftest.cjs": {
+    "mtime": 1787104482.4268744,
+    "ast_hash": "78b7f9ffbffe45330eb37a89a3a1675b",
+    "semantic_hash": ""
+  },
+  "figma/README.md": {
+    "mtime": 1787104521.2561643,
+    "ast_hash": "c27a79962cd2d6cba4986b934e94e2f7",
+    "semantic_hash": ""
+  },
+  "figma/PROMOTION-CHECKLIST.md": {
+    "mtime": 1787104521.1583285,
+    "ast_hash": "ae140c4540680321a651c379a92cf4b2",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-live.cjs": {
+    "mtime": 1787103998.347202,
+    "ast_hash": "361405cafd42d47e00b634dfa4184250",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-live.selftest.cjs": {
+    "mtime": 1787103998.4322793,
+    "ast_hash": "238b9cb4070a32b424c3b21406a75aaa",
+    "semantic_hash": ""
+  },
+  ".github/workflows/figma-library-validation.yml": {
+    "mtime": 1787103578.9450011,
+    "ast_hash": "f8191317b8daf71a8d1aa9fc7cb360ec",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-coverage.cjs": {
+    "mtime": 1787103522.772616,
+    "ast_hash": "0925eb4d32f8719ffdb3671f07c09fc7",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-coverage.selftest.cjs": {
+    "mtime": 1787103522.8351312,
+    "ast_hash": "dcc87ae4221b0e6ec31a73726ec1babe",
     "semantic_hash": ""
   }
 }

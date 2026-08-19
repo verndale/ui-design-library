@@ -26,6 +26,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 <!-- One line per topic page: [Title](topics/<slug>.md) — hook. Keep alphabetical by slug. -->
 
 - [Component architecture](topics/component-architecture.md) — stable public facades, server-first tree/branch/leaf files, narrow client boundaries, and SSR/Next consumer verification.
+- [Figma library](topics/figma-code-connect.md) — stable Figma node identity, Ready for Dev organization, recorded design review, and read-only live validation.
 - [Knowledge graph & wiki automation](topics/graph-wiki-subsystem.md) — the deterministic graph + Sigma.js viewer and the wiki-sync / wiki-issue-sync bots, ported from ui-design-brain.
 - [Package distribution](topics/package-distribution.md) — deterministic npm exports, compatibility metadata, Tailwind consumption, and queued semantic releases.
 - [Story testing](topics/story-testing.md) — the story-as-test layer: the runner, what belongs in a `play` function, the a11y gate, and the reduced-motion project.
@@ -36,6 +37,12 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-18 — [Harden governed Figma capture after adversarial review](journal/2026-08-18-adversarial-review-governed-figma-capture.md) — closed canonical, evidence, command-composition, duplicate-property, and hidden Code Connect bypasses.
+- 2026-08-18 — [Make reviewed Figma coverage part of component capture](journal/2026-08-18-governed-code-to-figma-capture.md) — every candidate reaches an unpublished reviewed Figma master; Code Connect is removed and rejected.
+- 2026-08-18 — [Keep Figma CI read-only and REST-only](journal/2026-08-18-figma-rest-only-validation.md) — one read-only live-audit credential, no authenticated Code Connect path, and optional templates retained for local parsing.
+- 2026-08-18 — [Remediate the Figma adversarial and design review](journal/2026-08-18-figma-adversarial-remediation.md) — exact left documentation rails and responsive sizing, governed shared styles/spacing/property bindings, intentional nonvisual metadata, and an authenticated live-node CI guard.
+- 2026-08-18 — [Promote the remaining supported Figma and Code Connect batch](journal/2026-08-18-figma-supported-batch.md) — sixteen additional governed masters, exact public mappings, standardized left documentation/right responsive specimens, and an explicit intrinsic-versus-viewport sizing rule.
+- 2026-08-18 — [Promote the first governed Figma and Code Connect component set](journal/2026-08-18-figma-code-connect-pilot.md) — seven stable Ready for Dev nodes, public parserless mappings, dynamic nesting, and repository/CI contracts.
 - 2026-08-14 — [Add governed Breadcrumbs leading item and ancestor titles](journal/2026-08-14-breadcrumbs-direct-reuse-slots.md) — additive `leadingItem` slot and `items[].title` safe attribute so truncated trails reuse the closed package tree.
 - 2026-08-12 — [Publish executable ESM and reuse contract v2](journal/2026-08-12-executable-esm-reuse-contract-v2.md) — fixed native Node imports, identified one primary reuse export and derived rendering boundary per component, and hardened OIDC semantic releases.
 - 2026-08-12 — [Fix wiki sync pagination](journal/2026-08-12-fix-wiki-sync-pagination.md) — slurps paginated GitHub file and commit responses before building merge context, preventing adjacent page arrays from becoming invalid `jq --argjson` input.

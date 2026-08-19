@@ -36,7 +36,7 @@ const meta = {
     "slideClassName": { control: 'text', description: "Optional. Public `slideClassName` realization prop." },
     "previousIcon": { control: false, description: "Optional. Public `previousIcon` realization prop." },
     "nextIcon": { control: false, description: "Optional. Public `nextIcon` realization prop." },
-    "statusSeparator": { control: 'text', description: "Optional. Public `statusSeparator` realization prop. Defaults to \" of \"." },
+    "statusSeparator": { control: 'text', description: "Optional. Public `statusSeparator` realization prop. Defaults to \"/\"." },
     "className": { control: 'text', description: "Optional. Public `className` realization prop." },
     "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },

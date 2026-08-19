@@ -180,6 +180,18 @@ The package includes each implementation's source, story, and `component.json` f
 
 `reuseFingerprint` is separate from API-level `slots`: it describes only the primary export and uses the pipeline's governed structural `slots` + `affordance` + `role` triad. Governed `other` values are valid metadata but intentionally never auto-match. `variant` remains the singular structural implementation axis, while `variants` remains the primary export's list of prop/style values. Entries in `variants` are unique non-empty strings; an empty array means the primary export has no governed style values.
 
+## Figma library
+
+The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Stable master identity, canonical names, Storybook/API parity, review evidence, and publication state live in [`figma/library.json`](figma/library.json). Cumulative styling is limited to Figma documentation while component visuals use this package's Tailwind semantic tokens. Code consumption remains the canonical-slug npm flow; this repository does not install, configure, generate, or publish Code Connect.
+
+```bash
+pnpm figma:validate           # coverage + governance contracts + optional local live audit
+pnpm figma:live               # authenticated read-only audit of the registered Figma masters
+pnpm test:code                # complete code/story/browser gate that runs before Figma registration
+```
+
+See [`figma/README.md`](figma/README.md) for file organization, node migration, credential, review, and release rules. Every future promotion also follows the enforceable [`Figma component promotion checklist`](figma/PROMOTION-CHECKLIST.md): the direct canonical instance is the component-only handoff target, annotations remain outside it, and responsive specimens use the governed 1440/1024/768/390 widths and code-token bindings. Figma library publication remains an explicit maintainer action.
+
 ## Releases
 
 Every merge to `main` runs the full test/build/pack gate and semantic-release. A breaking change publishes a major, `feat` publishes a minor, and every other permitted conventional-commit type publishes a patch. Tags and GitHub releases use `v<version>`; the source `package.json` stays `0.0.0-development`.
@@ -193,8 +205,9 @@ GitHub squash merges must use the PR title as the commit subject and a blank com
 ## How a component gets here
 
 1. A [`project-retrospective`](https://github.com/verndale/project-retrospective) run produces a **capture** — a mature implementation, its evidence, and an exhaustive list of the client coupling that has to come out.
-2. A human executes the capture: rewrites the component against the library's tokens and primitives, writes the stories, fills in `component.json`.
-3. It lands as `maturity: "candidate"`. Promotion to `supported` is a separate, deliberate decision.
+2. A human executes the capture: rewrites the component against the library's tokens and primitives, writes the stories, fills in `component.json`, and passes the code-only gates.
+3. The same capture creates the unpublished Figma master and left-rail documentation, registers stable identity, fixes adversarial/design-review findings in place, records node-specific evidence, and passes the Figma and full repository gates.
+4. It remains `maturity: "candidate"` and unpublished. Promotion to `supported` and Figma library publication are separate, deliberate maintainer decisions.
 
 Captures usually come from labels that **already resolve** — a mature Card or Modal — not novel ones. Novel labels are typically the least settled code in a project.
 
@@ -216,8 +229,11 @@ pnpm build             # native Node ESM + declaration build, then export/dist p
 pnpm exports:check     # component directories and committed package exports agree
 pnpm exports:sync      # deliberately update the committed map after adding/removing a component
 pnpm contracts         # slug/canonical agreement, the variant axis, declared tokens exist,
-                       # no raw colours, provenance/stories/maturity, reuse fingerprint
+                       # no raw colours, provenance/stories/maturity, reuse fingerprint,
+                       # Figma registry identity/API/mapping/nesting parity
 pnpm contracts:selftest # exercises the contract checker itself against fixtures
+pnpm figma:validate    # type-check, contract-check, locally parse optional templates, and audit live nodes when authenticated
+pnpm figma:live        # require FIGMA_REST_TOKEN and audit registered masters without mutation
 pnpm accessibility    # every story rendered in Chromium: play functions + WCAG 2.2 A/AA axe
 pnpm test:a11y:webkit # the same stories in WebKit (a Safari-engine proxy)
 pnpm test:a11y:modes  # 320px, 200% text, WCAG text spacing, and forced colors

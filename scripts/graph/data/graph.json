@@ -1,26 +1,38 @@
 {
   "counts": {
-    "nodes": 108,
-    "edges": 194,
+    "nodes": 124,
+    "edges": 234,
     "byType": {
-      "surface": 40,
+      "surface": 45,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 25,
-      "wiki-plan": 8,
-      "wiki-topic": 6
+      "wiki-journal": 31,
+      "wiki-plan": 12,
+      "wiki-topic": 7
     },
     "byEdgeType": {
-      "covers": 47,
-      "links-to": 83,
-      "plan": 10,
-      "topic": 33,
+      "covers": 52,
+      "links-to": 104,
+      "plan": 14,
+      "topic": 43,
       "uses-tokens": 21
     }
   },
   "nodes": [
+    {
+      "id": ".github/workflows/figma-library-validation.yml",
+      "label": "figma-library-validation.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1851,
+      "degree": 1
+    },
     {
       "id": ".github/workflows/release.yml",
       "label": "release.yml",
@@ -198,7 +210,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 736,
       "degree": 1
     },
     {
@@ -466,6 +478,18 @@
       "degree": 0
     },
     {
+      "id": "figma",
+      "label": "figma",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 160,
+      "degree": 1
+    },
+    {
       "id": "graphify-out/GRAPH_REPORT.md",
       "label": "GRAPH_REPORT.md",
       "type": "surface",
@@ -474,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 19478,
+      "bytes": 19389,
       "degree": 1
     },
     {
@@ -486,7 +510,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 892576,
+      "bytes": 970998,
       "degree": 1
     },
     {
@@ -498,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1016759,
+      "bytes": 1106510,
       "degree": 1
     },
     {
@@ -522,7 +546,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9540,
+      "bytes": 10728,
       "degree": 1
     },
     {
@@ -534,7 +558,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 18091,
+      "bytes": 20095,
       "degree": 3
     },
     {
@@ -584,6 +608,42 @@
       "issues": [],
       "bytes": 19219,
       "degree": 3
+    },
+    {
+      "id": "scripts/check-figma-contracts.cjs",
+      "label": "check-figma-contracts.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 27912,
+      "degree": 1
+    },
+    {
+      "id": "scripts/check-figma-coverage.cjs",
+      "label": "check-figma-coverage.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3484,
+      "degree": 1
+    },
+    {
+      "id": "scripts/check-figma-live.cjs",
+      "label": "check-figma-live.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 9159,
+      "degree": 1
     },
     {
       "id": "scripts/check-release-commit.cjs",
@@ -762,7 +822,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -822,8 +882,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10796,
-      "degree": 34
+      "bytes": 12522,
+      "degree": 41
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1216,6 +1276,90 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-08-18-adversarial-review-governed-figma-capture.md",
+      "label": "Harden governed Figma capture after adversarial review",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2008,
+      "degree": 3
+    },
+    {
+      "id": "wiki/journal/2026-08-18-figma-adversarial-remediation.md",
+      "label": "Remediate the Figma adversarial and design review",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 4185,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-08-18-figma-code-connect-pilot.md",
+      "label": "Promote the first governed Figma and Code Connect component set",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3040,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-08-18-figma-rest-only-validation.md",
+      "label": "Keep Figma CI read-only and REST-only",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1675,
+      "degree": 3
+    },
+    {
+      "id": "wiki/journal/2026-08-18-figma-supported-batch.md",
+      "label": "Promote the remaining supported Figma and Code Connect batch",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2392,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
+      "label": "Make reviewed Figma coverage part of component capture",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2051,
+      "degree": 4
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1366,6 +1510,62 @@
       "degree": 4
     },
     {
+      "id": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
+      "label": "Figma adversarial and design-review remediation",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1956,
+      "degree": 4
+    },
+    {
+      "id": "wiki/plans/2026-08-18-figma-code-connect-pilot.md",
+      "label": "Organization-tier Figma Library and Code Connect Pilot",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 6970,
+      "degree": 4
+    },
+    {
+      "id": "wiki/plans/2026-08-18-figma-supported-batch.md",
+      "label": "Remaining supported Figma library and Code Connect batch",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2916,
+      "degree": 4
+    },
+    {
+      "id": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
+      "label": "Governed code-to-Figma capture workflow",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2926,
+      "degree": 4
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -1384,6 +1584,7 @@
         "2"
       ],
       "issues": [
+        "49",
         "46",
         "37",
         "31",
@@ -1391,8 +1592,8 @@
         "18",
         "4"
       ],
-      "bytes": 4146,
-      "degree": 11
+      "bytes": 5268,
+      "degree": 15
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -1415,6 +1616,26 @@
       ],
       "bytes": 7397,
       "degree": 24
+    },
+    {
+      "id": "wiki/topics/figma-code-connect.md",
+      "label": "Figma library — Design History",
+      "type": "wiki-topic",
+      "dir": "wiki/topics",
+      "topics": [],
+      "aliases": [
+        "Figma library",
+        "Code Connect history",
+        "Ready for Dev",
+        "design-to-code",
+        "Figma node identity"
+      ],
+      "prs": [],
+      "issues": [
+        "49"
+      ],
+      "bytes": 8391,
+      "degree": 26
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -1584,6 +1805,31 @@
     {
       "source": "wiki/topics/component-architecture.md",
       "target": "tsconfig.build.json",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": ".github/workflows/figma-library-validation.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "figma",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "scripts/check-figma-contracts.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "scripts/check-figma-coverage.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "scripts/check-figma-live.cjs",
       "type": "covers"
     },
     {
@@ -1991,6 +2237,48 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-18-adversarial-review-governed-figma-capture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-18-figma-adversarial-remediation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-18-figma-code-connect-pilot.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-18-figma-rest-only-validation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-18-figma-supported-batch.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2006,6 +2294,13 @@
     {
       "source": "wiki/INDEX.md",
       "target": "wiki/topics/component-architecture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/topics/figma-code-connect.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -2151,6 +2446,34 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-18-figma-code-connect-pilot.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-18-figma-supported-batch.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
@@ -2204,6 +2527,76 @@
       "target": "wiki/plans/2026-08-14-breadcrumbs-direct-reuse-slots.md",
       "type": "links-to",
       "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-18-adversarial-review-governed-figma-capture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-18-figma-adversarial-remediation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-18-figma-code-connect-pilot.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-18-figma-rest-only-validation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-18-figma-supported-batch.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-18-figma-code-connect-pilot.md",
+      "type": "links-to",
+      "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-18-figma-supported-batch.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
+      "type": "links-to",
+      "count": 2,
       "anchors": []
     },
     {
@@ -2418,6 +2811,26 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-18-figma-adversarial-remediation.md",
+      "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-figma-code-connect-pilot.md",
+      "target": "wiki/plans/2026-08-18-figma-code-connect-pilot.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-figma-supported-batch.md",
+      "target": "wiki/plans/2026-08-18-figma-supported-batch.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
+      "target": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -2513,6 +2926,36 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-18-adversarial-review-governed-figma-capture.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-figma-adversarial-remediation.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-figma-code-connect-pilot.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-figma-rest-only-validation.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-figma-supported-batch.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -2580,6 +3023,26 @@
     {
       "source": "wiki/plans/2026-08-14-breadcrumbs-direct-reuse-slots.md",
       "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-18-figma-code-connect-pilot.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-18-figma-supported-batch.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
+      "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },
     {

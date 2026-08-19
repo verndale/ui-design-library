@@ -910,8 +910,8 @@
     "semantic_hash": ""
   },
   "scripts/graph/data/graph.json": {
-    "mtime": 1787152437.8933084,
-    "ast_hash": "4a991569b76049d486bd73f25104ed85",
+    "mtime": 1787166651.3405962,
+    "ast_hash": "69ee8c3b4ecc46aab8315401f706c45e",
     "semantic_hash": ""
   },
   "scripts/graph/routing-policy.json": {
@@ -1115,7 +1115,7 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1787150271.6846106,
+    "mtime": 1787160283.749592,
     "ast_hash": "92b06562798020401098759f20a2a2dc",
     "semantic_hash": ""
   },
@@ -1125,7 +1125,7 @@
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
-    "mtime": 1787150283.712639,
+    "mtime": 1787160283.7506108,
     "ast_hash": "234287bf154c163157008cf3ff44c936",
     "semantic_hash": ""
   },
@@ -1135,7 +1135,7 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1787150305.958548,
+    "mtime": 1787160283.7515082,
     "ast_hash": "888775d455a9abc1c2e3f925e43bdf91",
     "semantic_hash": ""
   },
@@ -1155,27 +1155,27 @@
     "semantic_hash": ""
   },
   "figma/library.json": {
-    "mtime": 1787150107.8051903,
-    "ast_hash": "9652b92a1999db2ed2810370e072b82f",
+    "mtime": 1787165557.6933458,
+    "ast_hash": "8daeb4e2099f67d52d01ec1037a00189",
     "semantic_hash": ""
   },
   "scripts/check-figma-contracts.cjs": {
-    "mtime": 1787150210.0172145,
+    "mtime": 1787160283.7613864,
     "ast_hash": "8ed61f1296779b7cb6eb62ddbeb9b0c1",
     "semantic_hash": ""
   },
   "scripts/check-figma-contracts.selftest.cjs": {
-    "mtime": 1787150162.238472,
+    "mtime": 1787160283.7620654,
     "ast_hash": "4f887d9c8832b2d69f6bbf67d991732f",
     "semantic_hash": ""
   },
   "figma/README.md": {
-    "mtime": 1787150245.0402625,
+    "mtime": 1787160283.7529209,
     "ast_hash": "072a824a7603bb6c1d2e3aa35400e9fe",
     "semantic_hash": ""
   },
   "figma/PROMOTION-CHECKLIST.md": {
-    "mtime": 1787150245.126991,
+    "mtime": 1787160283.7522216,
     "ast_hash": "0decf7ddae46b44bbd7aed2082a35a2d",
     "semantic_hash": ""
   },
@@ -1195,12 +1195,12 @@
     "semantic_hash": ""
   },
   "scripts/check-figma-coverage.cjs": {
-    "mtime": 1787150080.7591207,
+    "mtime": 1787160283.7627873,
     "ast_hash": "83d3ddf95131c1da85ed4413935abaca",
     "semantic_hash": ""
   },
   "scripts/check-figma-coverage.selftest.cjs": {
-    "mtime": 1787150137.6224067,
+    "mtime": 1787160283.763484,
     "ast_hash": "634cef021409e3b3bbbb7b4e149c0de5",
     "semantic_hash": ""
   }

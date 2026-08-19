@@ -348,7 +348,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-card-media-composition-specimens.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",

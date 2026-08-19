@@ -22,7 +22,7 @@ Totals: 10 implemented, 4 partial (14 plans).
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
-| 2026-08-19 | [Card media-presence composition specimens](2026-08-19-card-media-composition-specimens.md) | implemented | [issue #55](https://github.com/verndale/ui-design-library/issues/55), Figma section `261:72`, working branch, Figma adversarial/design review | figma-code-connect |
+| 2026-08-19 | [Card media-presence composition specimens](2026-08-19-card-media-composition-specimens.md) | implemented | [issue #55](https://github.com/verndale/ui-design-library/issues/55), Figma section `261:72`, working branch, Figma adversarial/design review, [PR #56](https://github.com/verndale/ui-design-library/pull/56) | figma-code-connect |
 | 2026-08-19 | [Figma structural family contract](2026-08-19-figma-structural-family-contract.md) | implemented | working tree, Figma coverage/contract self-tests and current registry validation, [PR #52](https://github.com/verndale/ui-design-library/pull/52) | variant-axis, figma-code-connect |
 | 2026-08-18 | [Governed code-to-Figma capture workflow](2026-08-18-governed-code-to-figma-capture.md) | implemented | project-retrospective issue #69, `pnpm figma:validate`, coverage/contract self-tests, [PR #50](https://github.com/verndale/ui-design-library/pull/50) | figma-code-connect |
 | 2026-08-18 | [Figma adversarial and design-review remediation](2026-08-18-figma-adversarial-remediation.md) | implemented | live Figma adversarial and visual audit, live-audit fixture self-tests, `pnpm figma:validate`, [PR #50](https://github.com/verndale/ui-design-library/pull/50) | figma-code-connect |

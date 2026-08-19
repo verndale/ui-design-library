@@ -5,6 +5,7 @@ evidence:
   - "live Figma adversarial and visual audit passed"
   - "live-audit fixture self-tests"
   - "pnpm figma:validate"
+  - "PR #50 https://github.com/verndale/ui-design-library/pull/50 (merged 2026-08-19)"
 source_tool: codex
 source: approved fixes in the active Codex session
 topics: [figma-code-connect]

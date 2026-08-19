@@ -2,7 +2,7 @@
 date: 2026-08-18
 topics: [figma-code-connect]
 plan: plans/2026-08-18-governed-code-to-figma-capture.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/50
 ---
 # Make reviewed Figma coverage part of component capture
 

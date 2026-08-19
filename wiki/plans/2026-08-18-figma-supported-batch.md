@@ -6,6 +6,7 @@ evidence:
   - "twenty-three registered nodes"
   - "pnpm figma:validate"
   - "live Code Connect maps confirmed empty before release"
+  - "PR #50 https://github.com/verndale/ui-design-library/pull/50 (merged 2026-08-19)"
 source_tool: codex
 source: approved continuation task in the Codex session
 topics: [figma-code-connect]

@@ -1,7 +1,11 @@
 ---
 status: implemented
 executed: 2026-08-18
-evidence: ["issue verndale/project-retrospective#69", "pnpm figma:validate", "coverage and contract self-tests"]
+evidence:
+  - "issue verndale/project-retrospective#69"
+  - "pnpm figma:validate"
+  - "coverage and contract self-tests"
+  - "PR #50 https://github.com/verndale/ui-design-library/pull/50 (merged 2026-08-19)"
 source_tool: codex
 source: approved implementation plan in the active Codex task
 topics: [figma-code-connect]

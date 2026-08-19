@@ -20,6 +20,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Promote the first governed Figma and Code Connect component set](../../wiki/journal/2026-08-18-figma-code-connect-pilot.md) → [Organization-tier Figma Library and Code Connect Pilot](../../wiki/plans/2026-08-18-figma-code-connect-pilot.md)
 - [Promote the remaining supported Figma and Code Connect batch](../../wiki/journal/2026-08-18-figma-supported-batch.md) → [Remaining supported Figma library and Code Connect batch](../../wiki/plans/2026-08-18-figma-supported-batch.md)
 - [Make reviewed Figma coverage part of component capture](../../wiki/journal/2026-08-18-governed-code-to-figma-capture.md) → [Governed code-to-Figma capture workflow](../../wiki/plans/2026-08-18-governed-code-to-figma-capture.md)
+- [Document Card media presence as composition](../../wiki/journal/2026-08-19-card-media-composition-specimens.md) → [Card media-presence composition specimens](../../wiki/plans/2026-08-19-card-media-composition-specimens.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md)
 
 ## Page → topic
@@ -49,6 +50,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Keep Figma CI read-only and REST-only](../../wiki/journal/2026-08-18-figma-rest-only-validation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Promote the remaining supported Figma and Code Connect batch](../../wiki/journal/2026-08-18-figma-supported-batch.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Make reviewed Figma coverage part of component capture](../../wiki/journal/2026-08-18-governed-code-to-figma-capture.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Document Card media presence as composition](../../wiki/journal/2026-08-19-card-media-composition-specimens.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Correct Tabs spacing and Search overlay containment](../../wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
@@ -70,6 +72,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Organization-tier Figma Library and Code Connect Pilot](../../wiki/plans/2026-08-18-figma-code-connect-pilot.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Remaining supported Figma library and Code Connect batch](../../wiki/plans/2026-08-18-figma-supported-batch.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Governed code-to-Figma capture workflow](../../wiki/plans/2026-08-18-governed-code-to-figma-capture.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Card media-presence composition specimens](../../wiki/plans/2026-08-19-card-media-composition-specimens.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 

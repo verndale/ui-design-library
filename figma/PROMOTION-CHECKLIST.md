@@ -16,8 +16,17 @@ Use this checklist for every component promoted into the governed UI Design Libr
 - Use strict Auto Layout and semantic layers inside the component. The layout should behave like its code implementation at the governed widths.
 - Use meaningful, production-like content that demonstrates the component's intended role and stress-tests wrapping.
 - Before any Figma write, run `pnpm test:code` and `pnpm build`. This exercises the complete code, SSR, Storybook behavior, Chromium/WebKit accessibility, modes, and reduced-motion surfaces without requiring a Figma registration.
+- Create enum, boolean, text/slot, or instance-swap properties only when they map to the public TypeScript/Storybook contract. Do not expose implementation-only controls for AI convenience.
 
-## 3. Use the direct-canonical handoff pattern
+## 3. Place structural implementations on the canonical family page
+
+- Keep the default Ready for Dev section first. Put qualified structural alternates below in separately labeled Ready for Dev sections on the same page.
+- Keep the default master name and stable identity. Name an alternate `<Canonical> / <Variant label>` and register its distinct `components/<slug>--<variant>` import.
+- Mark exactly one registration `familyPage: true`; structural siblings share its `figma.pageId` and `figma.pageName`.
+- Treat different role, affordance, or interaction semantics as a different brain canonical, not a structural variant.
+- Do not move existing published nodes solely to satisfy page organization. Button Light is the legacy Button family page.
+
+## 4. Use the direct-canonical handoff pattern
 
 - The selectable developer handoff target is the canonical component instance itself—not a zero-padding wrapper, a `Dev frame`, or a `COPY THIS FRAME` container.
 - Keep the handoff target component-only. Put viewport labels, variant labels, usage notes, and presentation backgrounds outside the instance.
@@ -25,7 +34,7 @@ Use this checklist for every component promoted into the governed UI Design Libr
 - Keep the canonical layer name unchanged so library search, inspection, and npm resolution all point to the same identity.
 - Keep the 528px Button-standard documentation rail at x=0. Place Main, responsive specimens, and publish sources to its right; documentation never sits above or between component specimens.
 
-## 4. Present responsive behavior
+## 5. Present responsive behavior
 
 Use the widths registered in `library.promotionPattern.viewportWidths` when the component responds to its container:
 
@@ -44,7 +53,7 @@ Use the widths registered in `library.promotionPattern.viewportWidths` when the 
 - Full-viewport components such as Modal are the exception to specimen padding: the canonical instance is the exact viewport/backdrop. Keep its label outside and preserve the 1440×900, 1024×768, 768×1024, or 390×844 viewport frame.
 - Use the `component-matrix` presentation for compact finite combinations such as Button. Use `responsive-specimens` for container-responsive components and `responsive-full-viewport` for exact viewport/backdrop components.
 
-## 5. Audit before Ready for Dev
+## 6. Audit before Ready for Dev
 
 - Compare the completed page at 100% zoom with Button, Section header, and Alert before accepting a new structure or naming convention.
 
@@ -62,8 +71,8 @@ Use the widths registered in `library.promotionPattern.viewportWidths` when the 
 - Extend the component journal entry with the node identity, findings, fixes, and final result. Only then set `figma.review` to `status: "passed"`, `standard: "button-standard-v1"`, both `adversarial` and `design` passes, and that journal path as evidence.
 - Run `pnpm figma:coverage`, `FIGMA_REST_TOKEN=<read-only-plan-token> pnpm figma:live`, then `pnpm figma:validate`, `pnpm contracts`, `pnpm test`, and `pnpm build`.
 
-If the review exposes a source-contract defect, repair the React implementation, Storybook contract, or manifest first, rerun the code gates, and then update Figma. Without a write-capable Figma session, report the code as complete but the capture as blocked; do not register a passing review.
+If the review exposes a source-contract defect, repair the React implementation, Storybook contract, or manifest first, rerun the code gates, and then update Figma. Without a write-capable Figma session, record the capture as `code-complete`/`figma-pending`; do not create an empty branch or register a passing review.
 
-## 6. Release separately
+## 7. Release separately
 
 Library publication is an explicit maintainer action. AI orchestration resolves components through canonical slugs and npm. CI performs read-only Figma validation and exposes no second code-mapping or publication path.

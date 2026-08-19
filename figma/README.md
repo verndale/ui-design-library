@@ -12,6 +12,14 @@ The governed Figma source is the [UI Design Library](https://www.figma.com/desig
 - Auto Layout, semantic layer names, and Figma variables are required. Generic names such as `Frame 1`, `Group`, or `Vector` are not release-ready.
 - The Organization-tier collection has one `Cumulative` mode and at most 19 centrally maintained client modes. Do not create duplicated client component libraries.
 
+## Canonical family pages and structural variants
+
+- Use one governed page per canonical family. Put the default `✅ Ready for Dev` section first and each structural alternate below in a separately labeled section.
+- Preserve the default master identity and canonical node name. A qualified alternate is named `<Canonical> / <Variant label>` and maps to `components/<slug>--<variant>`; it is a separate master, not a property variant of the default import.
+- Registry fields `variant`, `variantLabel`, `default`, and `familyPage` mirror `component.json`. Every structural implementation has a distinct `componentPath`/`publicImport`; all structural siblings share the designated family page identity.
+- Button Light is the legacy Button `familyPage`. Its published node stays in place, and the existing Button Dark page remains a legacy presentation; this contract governs future structural alternates without rearranging published nodes.
+- Promote a new ui-design-brain canonical when role, affordance, or interaction semantics differ. Structural variants are only for different implementations of the same semantic contract.
+
 The only manual prerequisite before the first release is confirming that the target file is owned by the Verndale Organization and that the releasing account can publish libraries. Record any replacement of a registered node in `nodeMigrations`; never silently change node identity.
 
 ## Promotion presentation pattern
@@ -34,11 +42,12 @@ AI orchestration consumes implementations only through canonical-slug npm subpat
 
 ```tsx
 import { Button } from "@verndale/ui-design-library/components/button";
+import { Navigation } from "@verndale/ui-design-library/components/navigation--mega";
 ```
 
 Private `parts/`, source aliases, and relative implementation imports remain forbidden to consumers. Figma records property-to-code parity and nested component identity, but it does not carry a second code-template surface.
 
-Every visual Figma property must reference a descendant layer. Properties that exist only as HTML, runtime, or accessibility metadata are marked `visualBinding: "nonvisual"` with a reason in `library.json`; an unexplained disconnected property is a contract failure.
+Resolution is deterministic: `canonical + optional variant → componentPath → publicImport → Figma node`. Enum, boolean, text/slot, and instance-swap properties are registered only when they mirror the public TypeScript/Storybook contract. Every visual property must reference a descendant layer. Properties that exist only as HTML, runtime, or accessibility metadata are marked `visualBinding: "nonvisual"` with a reason; an unexplained disconnected property is a contract failure.
 
 ```bash
 pnpm test:code                # complete pre-Figma code, story, browser, accessibility, and motion gate

@@ -41,7 +41,7 @@ src/tokens/                           the semantic token layer (the styling cont
 src/lib/                              shared, dependency-free primitives (focus, scroll)
 ```
 
-A canonical resolves to a directory. In the common case that is one implementation — `components/<slug>/`, `<slug> == kebab(canonical)`, matching the catalog. When a canonical needs more than one *structurally* distinct implementation (a plain nav bar and a mega menu, both **Navigation**), the default stays the bare `components/<slug>/` and each alternate is a sibling `components/<slug>--<variant>/`. Both carry `slug == kebab(canonical)`; `variant` (singular — the structural axis, not the prop-value `variants` array) distinguishes them, and one is the `default`. The key is `(canonical, variant)`. Single-variant components need neither field. `pnpm contracts` enforces all of it.
+A canonical resolves to a directory. In the common case that is `components/<slug>/`, `<slug> == kebab(canonical)`. When the same role, affordance, and interaction semantics need a separate structural import, the default stays bare and each alternate is `components/<slug>--<variant>/`. Different semantics require a different catalog canonical. Both carry the base `slug`; singular `variant` distinguishes structures, and one is `default`. Single-implementation components need neither field.
 
 ## Server-first component boundaries
 
@@ -182,7 +182,7 @@ The package includes each implementation's source, story, and `component.json` f
 
 ## Figma library
 
-The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Stable master identity, canonical names, Storybook/API parity, review evidence, and publication state live in [`figma/library.json`](figma/library.json). Cumulative styling is limited to Figma documentation while component visuals use this package's Tailwind semantic tokens. Code consumption remains the canonical-slug npm flow; this repository does not install, configure, generate, or publish Code Connect.
+The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Stable master identity, canonical/variant names, family-page designation, Storybook/API parity, review evidence, and publication state live in [`figma/library.json`](figma/library.json). One canonical family page keeps the default Ready for Dev section first and qualified structural masters below. Resolution is `canonical + optional variant → componentPath → publicImport → Figma node`; Code Connect remains forbidden.
 
 ```bash
 pnpm figma:validate           # coverage + governance contracts + optional local live audit
@@ -213,7 +213,7 @@ Captures usually come from labels that **already resolve** — a mature Card or 
 
 Step 2 is a rewrite, not a copy. `component.json`'s `declienting` array records exactly what was stripped, so the cost is visible rather than folklore.
 
-A capture that is a *structurally distinct* take on a canonical the library already ships — a mega menu where **Navigation** ships a plain bar — lands as a new `components/<slug>--<variant>/` directory rather than overwriting the incumbent. Its `component.json` shares the `canonical` and `slug` and sets `variant`; the incumbent gains `variant` and `default: true`. This is the one case where a second capture of the same canonical does not replace the first.
+A capture that is structurally distinct but semantically the same lands as `components/<slug>--<variant>/` rather than overwriting the incumbent. Its manifest and Figma registration share the canonical/base slug, set the structural variant, and resolve to their own import/master; the incumbent becomes the default. A role, affordance, or interaction change is promoted as a new canonical instead.
 
 ---
 

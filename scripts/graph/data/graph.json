@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 125,
-    "edges": 237,
+    "nodes": 127,
+    "edges": 248,
     "byType": {
       "surface": 45,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 32,
-      "wiki-plan": 12,
+      "wiki-journal": 33,
+      "wiki-plan": 13,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 52,
-      "links-to": 106,
-      "plan": 14,
-      "topic": 44,
+      "links-to": 112,
+      "plan": 15,
+      "topic": 48,
       "uses-tokens": 21
     }
   },
@@ -186,7 +186,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13726,
+      "bytes": 13729,
       "degree": 5
     },
     {
@@ -474,7 +474,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6836,
+      "bytes": 6766,
       "degree": 0
     },
     {
@@ -558,7 +558,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 20095,
+      "bytes": 19848,
       "degree": 3
     },
     {
@@ -618,7 +618,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 27912,
+      "bytes": 30475,
       "degree": 1
     },
     {
@@ -630,7 +630,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3484,
+      "bytes": 3620,
       "degree": 1
     },
     {
@@ -882,8 +882,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 12840,
-      "degree": 42
+      "bytes": 13076,
+      "degree": 43
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1386,6 +1386,21 @@
       "degree": 3
     },
     {
+      "id": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "label": "Govern structural variants as Figma families",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "variant-axis",
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1621,
+      "degree": 6
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1600,6 +1615,21 @@
       "degree": 4
     },
     {
+      "id": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
+      "label": "Figma structural family contract",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "variant-axis",
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2171,
+      "degree": 6
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -1627,8 +1657,8 @@
         "18",
         "4"
       ],
-      "bytes": 5528,
-      "degree": 15
+      "bytes": 5760,
+      "degree": 16
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -1669,8 +1699,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 8692,
-      "degree": 28
+      "bytes": 9405,
+      "degree": 32
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -1803,8 +1833,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 3532,
-      "degree": 6
+      "bytes": 3489,
+      "degree": 10
     }
   ],
   "edges": [
@@ -2322,6 +2352,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2517,6 +2554,13 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
@@ -2623,6 +2667,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -2647,6 +2698,13 @@
       "target": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -2805,7 +2863,21 @@
     },
     {
       "source": "wiki/topics/variant-axis.md",
+      "target": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/variant-axis.md",
       "target": "wiki/plans/2026-07-30-variant-axis.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/variant-axis.md",
+      "target": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -2878,6 +2950,11 @@
     {
       "source": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
       "target": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "target": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
       "type": "plan"
     },
     {
@@ -3011,6 +3088,16 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
+      "target": "wiki/topics/variant-axis.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -3098,6 +3185,16 @@
     {
       "source": "wiki/plans/2026-08-18-governed-code-to-figma-capture.md",
       "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
+      "target": "wiki/topics/variant-axis.md",
       "type": "topic"
     },
     {

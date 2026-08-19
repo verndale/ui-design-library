@@ -21,6 +21,33 @@ const cases = [
     expect: (failures) => failures.length === 0,
   },
   {
+    name: 'a multi-registration canonical requires one family page',
+    registry: (() => {
+      const registry = clone();
+      delete registry.components.find((component) => component.id === 'button-light').familyPage;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('must designate exactly one familyPage')),
+  },
+  {
+    name: 'a family cannot designate two family pages',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'button-dark').familyPage = true;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('must designate exactly one familyPage')),
+  },
+  {
+    name: 'variant labels cannot exist without structural identity',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'alert').variantLabel = 'Compact';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('variantLabel/default require a structural variant')),
+  },
+  {
     name: 'duplicate stable node identity fails',
     registry: (() => {
       const registry = clone();

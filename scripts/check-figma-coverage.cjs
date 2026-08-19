@@ -38,7 +38,9 @@ function isPrimaryMatch(registration, record) {
     registration.secondaryExport !== true &&
     registration.canonical === manifest.canonical &&
     registration.slug === manifest.slug &&
-    registration.exportName === manifest.exportName
+    registration.exportName === manifest.exportName &&
+    (registration.variant ?? null) === (manifest.variant ?? null) &&
+    Boolean(registration.default) === Boolean(manifest.default)
   );
 }
 

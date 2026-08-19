@@ -9,7 +9,6 @@
     "ownershipStatus": "maintainer-verification-required-before-publish",
     "publishing": {
       "figmaLibrary": "explicit-maintainer-action",
-      "codeConnect": "optional-explicit-maintainer-action",
       "ci": "read-only-validation"
     },
     "tokenPolicy": {
@@ -88,9 +87,10 @@
       "annotations remain outside the component-only handoff frame",
       "responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable",
       "alignment, margins, padding, whitespace, clipping, and containment are audited",
-      "published node identity is registered",
-      "public API Code Connect template is present",
-      "repository contracts and CLI parse pass"
+      "adversarial and design review findings are fixed and recorded",
+      "candidate components remain unpublished pending maintainer action",
+      "stable node identity is registered",
+      "repository contracts pass"
     ]
   },
   "pilot": {
@@ -140,9 +140,14 @@
         "nodeName": "Button",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/button-light.figma.ts",
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary"] },
@@ -196,9 +201,14 @@
         "nodeName": "Button",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/button-dark.figma.ts",
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary", "Ghost"] },
@@ -239,9 +249,14 @@
         "nodeName": "Section header",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/section-header.figma.ts",
         "properties": [
           { "name": "Heading", "type": "TEXT" },
           { "name": "Eyebrow", "type": "TEXT" },
@@ -282,9 +297,14 @@
         "nodeName": "Alert",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/alert.figma.ts",
         "properties": [
           { "name": "Message", "type": "TEXT" },
           { "name": "Variant", "type": "VARIANT", "values": ["Positive", "Critical"] },
@@ -323,9 +343,14 @@
         "nodeName": "Card",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/card.figma.ts",
         "properties": [
           { "name": "Content", "type": "SLOT" },
           { "name": "Surface", "type": "VARIANT", "values": ["Raised", "Unset"] }
@@ -360,9 +385,14 @@
         "nodeName": "CardMedia",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/card-media.figma.ts",
         "properties": [{ "name": "Media", "type": "SLOT" }]
       },
       "mappings": [{ "figmaProperty": "Media", "kind": "slot", "codeProp": "children" }],
@@ -405,9 +435,14 @@
         "nodeName": "Modal",
         "status": "ready-for-dev",
         "publicationStatus": "published",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-full-viewport",
-        "template": "figma/components/modal.figma.ts",
         "properties": [
           { "name": "Title", "type": "TEXT" },
           { "name": "Eyebrow", "type": "TEXT" },
@@ -452,9 +487,14 @@
         "nodeName": "Avatar",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/avatar.figma.ts",
         "properties": [{ "name": "Media", "type": "SLOT" }]
       },
       "mappings": [{ "figmaProperty": "Media", "kind": "slot", "codeProp": "children" }],
@@ -481,9 +521,14 @@
         "nodeName": "Badge",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/badge.figma.ts",
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Start icon", "type": "BOOLEAN" },
@@ -524,9 +569,14 @@
         "nodeName": "Link",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/link.figma.ts",
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Href", "type": "TEXT" },
@@ -569,9 +619,14 @@
         "nodeName": "Image",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/image.figma.ts",
         "properties": [
           { "name": "Source", "type": "TEXT" },
           { "name": "Alternative text", "type": "TEXT" },
@@ -610,9 +665,14 @@
         "nodeName": "Quote",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/quote.figma.ts",
         "properties": [
           { "name": "Quote", "type": "TEXT" },
           { "name": "Citation", "type": "TEXT" }
@@ -645,9 +705,14 @@
         "nodeName": "Rich text",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/rich-text.figma.ts",
         "properties": [
           { "name": "Content", "type": "TEXT" },
           { "name": "List style", "type": "VARIANT", "values": ["Default", "Checkmark"] }
@@ -680,9 +745,14 @@
         "nodeName": "Stat",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
-        "template": "figma/components/stat.figma.ts",
         "properties": [
           { "name": "Value", "type": "TEXT" },
           { "name": "Label", "type": "TEXT" },
@@ -719,9 +789,14 @@
         "nodeName": "Search input",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/search-input.figma.ts",
         "properties": [
           { "name": "Placeholder", "type": "TEXT" },
           { "name": "Label", "type": "TEXT" },
@@ -768,9 +843,14 @@
         "nodeName": "Slider",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/slider.figma.ts",
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Hint", "type": "TEXT" },
@@ -813,9 +893,14 @@
         "nodeName": "Breadcrumbs",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/breadcrumbs.figma.ts",
         "properties": [
           { "name": "Current page", "type": "TEXT" },
           { "name": "Back link label", "type": "TEXT" },
@@ -858,9 +943,14 @@
         "nodeName": "Accordion",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/accordion.figma.ts",
         "properties": [
           { "name": "Heading", "type": "TEXT" },
           { "name": "Show heading", "type": "BOOLEAN" },
@@ -903,9 +993,14 @@
         "nodeName": "Tabs",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/tabs.figma.ts",
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Orientation", "type": "VARIANT", "values": ["Horizontal", "Vertical"] },
@@ -940,9 +1035,14 @@
         "nodeName": "Toast",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/toast.figma.ts",
         "properties": [
           { "name": "Open", "type": "BOOLEAN" },
           { "name": "Message", "type": "TEXT" },
@@ -981,9 +1081,14 @@
         "nodeName": "In-page navigation",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/in-page-navigation.figma.ts",
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Active section", "type": "VARIANT", "values": ["Overview", "Pricing"] }
@@ -1016,9 +1121,14 @@
         "nodeName": "Carousel",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
-        "template": "figma/components/carousel.figma.ts",
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Loop", "type": "BOOLEAN" },
@@ -1059,9 +1169,14 @@
         "nodeName": "Search overlay",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+        },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-full-viewport",
-        "template": "figma/components/search-overlay.figma.ts",
         "properties": [
           { "name": "Title", "type": "TEXT" },
           { "name": "Supporting copy", "type": "TEXT" },

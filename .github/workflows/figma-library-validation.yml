@@ -6,10 +6,10 @@ on:
     paths:
       - ".github/workflows/figma-library-validation.yml"
       - "figma/**"
-      - "figma.config.json"
-      - "tsconfig.figma.json"
       - "scripts/check-figma-contracts.cjs"
       - "scripts/check-figma-contracts.selftest.cjs"
+      - "scripts/check-figma-coverage.cjs"
+      - "scripts/check-figma-coverage.selftest.cjs"
       - "scripts/check-figma-live.cjs"
       - "scripts/check-figma-live.selftest.cjs"
       - "package.json"
@@ -61,5 +61,5 @@ jobs:
       - name: Require read-only Figma credential
         run: test -n "$FIGMA_REST_TOKEN"
 
-      - name: Validate repository templates and live Figma nodes
+      - name: Validate registry and live Figma nodes
         run: pnpm figma:validate

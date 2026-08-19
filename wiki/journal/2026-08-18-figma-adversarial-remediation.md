@@ -33,7 +33,39 @@ pr: pending
 - `figma/README.md`
 - `figma/PROMOTION-CHECKLIST.md`
 
+## Reviewed identities
+
+The adversarial and design review covered these stable registered masters. This list makes the journal usable as machine-checkable review evidence without turning publication into an automated action.
+
+- `button-light` — `22:2`
+- `button-dark` — `53:3`
+- `section-header` — `64:99`
+- `alert` — `66:112`
+- `card` — `71:104`
+- `card-media` — `69:90`
+- `modal` — `75:129`
+- `avatar` — `164:45`
+- `badge` — `167:80`
+- `link` — `169:62`
+- `image` — `171:46`
+- `quote` — `172:39`
+- `rich-text` — `173:62`
+- `stat` — `176:12`
+- `search-input` — `177:30`
+- `slider` — `178:76`
+- `breadcrumbs` — `179:52`
+- `accordion` — `180:82`
+- `tabs` — `181:70`
+- `toast` — `184:40`
+- `in-page-navigation` — `204:58`
+- `carousel` — `211:4`
+- `search-overlay` — `217:52`
+
 ## Follow-ups
 
 - Configure `FIGMA_REST_TOKEN` with read-only `file_content:read` and retain the separate `FIGMA_CODE_CONNECT_TOKEN` secret before CI is expected to pass.
 - Publication and the separate consumer-file Dev Mode smoke test remain explicit maintainer actions.
+
+## Supersession
+
+Later on 2026-08-18, the maintainer removed Code Connect from the system entirely. The template files and second credential described above no longer exist or apply; canonical npm imports are now the only code-consumption path. The node-specific adversarial and design-review findings remain the evidence for the registered masters listed here.

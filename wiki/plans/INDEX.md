@@ -16,12 +16,13 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 7 implemented, 4 partial (11 plans).
+Totals: 8 implemented, 4 partial (12 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-08-18 | [Governed code-to-Figma capture workflow](2026-08-18-governed-code-to-figma-capture.md) | implemented | project-retrospective issue #69, `pnpm figma:validate`, coverage/contract self-tests | figma-code-connect |
 | 2026-08-18 | [Figma adversarial and design-review remediation](2026-08-18-figma-adversarial-remediation.md) | implemented | live Figma adversarial and visual audit, live-audit fixture self-tests, `pnpm figma:validate` | figma-code-connect |
 | 2026-08-18 | [Remaining supported Figma library and Code Connect batch](2026-08-18-figma-supported-batch.md) | partial | sixteen additional Ready for Dev nodes, 23 registered nodes, `pnpm figma:validate`; publication and consumer smoke test pending maintainer | figma-code-connect |
 | 2026-08-18 | [Organization-tier Figma Library and Code Connect Pilot](2026-08-18-figma-code-connect-pilot.md) | partial | [issue #49](https://github.com/verndale/ui-design-library/issues/49), seven stable Figma nodes, `pnpm figma:validate`, `pnpm contracts`, `pnpm test`, `pnpm build`; publication and consumer smoke test pending maintainer | figma-code-connect |

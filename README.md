@@ -180,16 +180,17 @@ The package includes each implementation's source, story, and `component.json` f
 
 `reuseFingerprint` is separate from API-level `slots`: it describes only the primary export and uses the pipeline's governed structural `slots` + `affordance` + `role` triad. Governed `other` values are valid metadata but intentionally never auto-match. `variant` remains the singular structural implementation axis, while `variants` remains the primary export's list of prop/style values. Entries in `variants` are unique non-empty strings; an empty array means the primary export has no governed style values.
 
-## Figma and Code Connect
+## Figma library
 
-The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Promoted master identity, canonical names, Storybook/API parity, and parserless Code Connect mappings live in [`figma/library.json`](figma/library.json). The templates display only the same directory-shaped public imports consumers use; Cumulative styling is limited to Figma documentation while component visuals use this package's Tailwind semantic tokens.
+The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Stable master identity, canonical names, Storybook/API parity, review evidence, and publication state live in [`figma/library.json`](figma/library.json). Cumulative styling is limited to Figma documentation while component visuals use this package's Tailwind semantic tokens. Code consumption remains the canonical-slug npm flow; this repository does not install, configure, generate, or publish Code Connect.
 
 ```bash
-pnpm figma:validate           # types + governance contracts + local template parse + optional live audit
+pnpm figma:validate           # coverage + governance contracts + optional local live audit
 pnpm figma:live               # authenticated read-only audit of the registered Figma masters
+pnpm test:code                # complete code/story/browser gate that runs before Figma registration
 ```
 
-See [`figma/README.md`](figma/README.md) for file organization, node migration, credential, nesting, and release rules. Every future promotion also follows the enforceable [`Figma component promotion checklist`](figma/PROMOTION-CHECKLIST.md): the direct canonical instance is the component-only handoff target, annotations remain outside it, and responsive specimens use the governed 1440/1024/768/390 widths and code-token bindings. Figma library publication remains an explicit maintainer action; Code Connect templates are retained as optional parse-only metadata and are not part of the npm-based AI release path.
+See [`figma/README.md`](figma/README.md) for file organization, node migration, credential, review, and release rules. Every future promotion also follows the enforceable [`Figma component promotion checklist`](figma/PROMOTION-CHECKLIST.md): the direct canonical instance is the component-only handoff target, annotations remain outside it, and responsive specimens use the governed 1440/1024/768/390 widths and code-token bindings. Figma library publication remains an explicit maintainer action.
 
 ## Releases
 
@@ -204,8 +205,9 @@ GitHub squash merges must use the PR title as the commit subject and a blank com
 ## How a component gets here
 
 1. A [`project-retrospective`](https://github.com/verndale/project-retrospective) run produces a **capture** — a mature implementation, its evidence, and an exhaustive list of the client coupling that has to come out.
-2. A human executes the capture: rewrites the component against the library's tokens and primitives, writes the stories, fills in `component.json`.
-3. It lands as `maturity: "candidate"`. Promotion to `supported` is a separate, deliberate decision.
+2. A human executes the capture: rewrites the component against the library's tokens and primitives, writes the stories, fills in `component.json`, and passes the code-only gates.
+3. The same capture creates the unpublished Figma master and left-rail documentation, registers stable identity, fixes adversarial/design-review findings in place, records node-specific evidence, and passes the Figma and full repository gates.
+4. It remains `maturity: "candidate"` and unpublished. Promotion to `supported` and Figma library publication are separate, deliberate maintainer decisions.
 
 Captures usually come from labels that **already resolve** — a mature Card or Modal — not novel ones. Novel labels are typically the least settled code in a project.
 

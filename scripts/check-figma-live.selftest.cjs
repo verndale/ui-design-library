@@ -117,6 +117,18 @@ const cases = [
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('is BOOLEAN, expected TEXT')),
   },
+  {
+    name: 'duplicate live property names fail instead of being collapsed',
+    payload: (() => {
+      const payload = clone();
+      payload.nodes['1:2'].document.componentPropertyDefinitions['Title#1:9'] = {
+        type: 'TEXT',
+        defaultValue: 'Duplicate title',
+      };
+      return payload;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('property names are duplicated: Title')),
+  },
 ];
 
 let failed = 0;

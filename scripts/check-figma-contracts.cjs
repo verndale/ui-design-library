@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 /**
- * check-figma-contracts.cjs — keep Figma nodes, stories, and public code snippets aligned.
+ * check-figma-contracts.cjs — keep Figma nodes, stories, and public code contracts aligned.
  *
  * The registry is the governance boundary for published Figma node identity. This
  * checker intentionally does not publish or mutate Figma. It verifies that the
- * pilot identities remain frozen, every node has one parserless template, templates expose
- * only public package imports, story props are partitioned into mapped/fixed/code-
- * only props, and nested dependencies execute their own Code Connect templates.
+ * pilot identities remain frozen, story props are partitioned into mapped/fixed/code-only
+ * props, candidates remain unpublished, and every registration carries review evidence.
  */
 
 'use strict';
@@ -16,12 +15,6 @@ const path = require('node:path');
 
 const ROOT = path.resolve(__dirname, '..');
 const REGISTRY = path.join(ROOT, 'figma/library.json');
-const ACCESSOR_BY_KIND = {
-  string: 'getString',
-  boolean: 'getBoolean',
-  enum: 'getEnum',
-  slot: 'getSlot',
-};
 const FIGMA_PROPERTY_TYPE_BY_KIND = {
   string: 'TEXT',
   boolean: 'BOOLEAN',
@@ -60,9 +53,27 @@ const REQUIRED_DEFINITION_OF_DONE = [
   'annotations remain outside the component-only handoff frame',
   'responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable',
   'alignment, margins, padding, whitespace, clipping, and containment are audited',
-  'published node identity is registered',
-  'public API Code Connect template is present',
-  'repository contracts and CLI parse pass',
+  'adversarial and design review findings are fixed and recorded',
+  'candidate components remain unpublished pending maintainer action',
+  'stable node identity is registered',
+  'repository contracts pass',
+];
+const CODE_CONNECT_PATTERN = /@figma\/code-connect|figma[\s:_-]*connect|code[\s:_-]*connect/i;
+const REQUIRED_CODE_TEST_STEPS = [
+  'pnpm typecheck',
+  'pnpm lint',
+  'pnpm architecture',
+  'pnpm architecture:selftest',
+  'pnpm contracts:code',
+  'pnpm contracts:code:selftest',
+  'pnpm accessibility:report',
+  'pnpm release:preflight:selftest',
+  'pnpm exports:check',
+  'pnpm test:ssr',
+  'pnpm accessibility',
+  'pnpm test:a11y:webkit',
+  'pnpm test:a11y:modes',
+  'pnpm test:motion',
 ];
 
 function sorted(values) {
@@ -71,6 +82,49 @@ function sorted(values) {
 
 function sameSet(left, right) {
   return JSON.stringify(sorted(left)) === JSON.stringify(sorted(right));
+}
+
+function commandSteps(command) {
+  return String(command ?? '').split('&&').map((step) => step.trim()).filter(Boolean);
+}
+
+function findCodeConnectSurfaces(value, location = 'registry') {
+  const surfaces = [];
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => surfaces.push(...findCodeConnectSurfaces(entry, `${location}[${index}]`)));
+    return surfaces;
+  }
+  if (!value || typeof value !== 'object') {
+    if (typeof value === 'string' && CODE_CONNECT_PATTERN.test(value)) surfaces.push(location);
+    return surfaces;
+  }
+  for (const [key, entry] of Object.entries(value)) {
+    const child = `${location}.${key}`;
+    if (CODE_CONNECT_PATTERN.test(key)) surfaces.push(child);
+    surfaces.push(...findCodeConnectSurfaces(entry, child));
+  }
+  return surfaces;
+}
+
+function findForbiddenCodeConnectFiles(root) {
+  const matches = [];
+  const ignored = new Set(['.git', 'node_modules', 'wiki', 'graphify-out']);
+  const visit = (directory, relative = '') => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (entry.isDirectory() && ignored.has(entry.name)) continue;
+      const childRelative = relative ? `${relative}/${entry.name}` : entry.name;
+      const child = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        if (childRelative === 'figma/components') matches.push(childRelative);
+        else visit(child, childRelative);
+      } else if (/\.figma\.[cm]?[jt]sx?$/i.test(entry.name) || /code[-_.]?connect/i.test(entry.name) ||
+        /^figma\.config\./i.test(entry.name) || /^tsconfig\.figma(?:\.|$)/i.test(entry.name)) {
+        matches.push(childRelative);
+      }
+    }
+  };
+  visit(root);
+  return matches.sort();
 }
 
 function kebab(input) {
@@ -134,15 +188,10 @@ function check(options = {}) {
     }
   }
 
-  const readTemplate = (relative) => {
-    if (options.templateSources && Object.hasOwn(options.templateSources, relative)) {
-      return options.templateSources[relative];
-    }
-    const absolute = path.join(root, relative);
-    return fs.existsSync(absolute) ? fs.readFileSync(absolute, 'utf8') : null;
-  };
-
   if (registry.schemaVersion !== 1) fail('[registry] schemaVersion must equal 1');
+  for (const surface of findCodeConnectSurfaces(registry)) {
+    fail(`[code-connect] ${surface} must not expose Code Connect`);
+  }
   const library = registry.library ?? {};
   if (library.fileKey !== 'gXT4bIDrkgva2uSzY763oG') fail('[ownership] registry must target the governed UI Design Library file key');
   if (library.tier !== 'organization') fail('[ownership] library tier must be organization');
@@ -152,9 +201,6 @@ function check(options = {}) {
   }
   if (library.publishing?.figmaLibrary !== 'explicit-maintainer-action') {
     fail('[publishing] Figma library publication must remain an explicit maintainer action');
-  }
-  if (library.publishing?.codeConnect !== 'optional-explicit-maintainer-action') {
-    fail('[publishing] Code Connect must remain optional and require an explicit maintainer action if adopted later');
   }
   if (library.publishing?.ci !== 'read-only-validation') fail('[publishing] CI must remain read-only validation');
   if (library.tokenPolicy?.componentSource !== 'src/tokens/semantic.css') fail('[tokens] Figma component styling must cite src/tokens/semantic.css');
@@ -204,18 +250,66 @@ function check(options = {}) {
   if (!options.packageJson && !fs.existsSync(packagePath)) fail('[tooling] package.json is missing');
   else {
     const pkg = options.packageJson ?? JSON.parse(fs.readFileSync(packagePath, 'utf8'));
-    if (pkg.devDependencies?.['@figma/code-connect'] !== '2.0.0') fail('[tooling] @figma/code-connect must be pinned to the validated CLI version');
+    for (const surface of findCodeConnectSurfaces(pkg, 'package.json')) {
+      fail(`[code-connect] ${surface} must not expose Code Connect`);
+    }
+    if (pkg.devDependencies?.['@figma/code-connect'] || pkg.dependencies?.['@figma/code-connect']) {
+      fail('[code-connect] @figma/code-connect must not be installed');
+    }
     if (pkg.scripts?.['figma:live'] !== 'node scripts/check-figma-live.cjs') {
       fail('[tooling] figma:live must run the read-only live Figma checker');
     }
-    if (!String(pkg.scripts?.['figma:validate'] ?? '').includes('figma:live:if-token')) {
-      fail('[tooling] figma:validate must include the optional local live Figma audit');
+    if (pkg.scripts?.['contracts:code'] !== 'node scripts/check-contracts.cjs') {
+      fail('[tooling] contracts:code must expose the pre-Figma component contract checker');
+    }
+    if (pkg.scripts?.['contracts:code:selftest'] !== 'node scripts/check-contracts.selftest.cjs') {
+      fail('[tooling] contracts:code:selftest must expose the pre-Figma component contract fixtures');
+    }
+    if (pkg.scripts?.['figma:coverage'] !== 'node scripts/check-figma-coverage.cjs') {
+      fail('[tooling] figma:coverage must run the read-only code-to-Figma coverage checker');
+    }
+    if (pkg.scripts?.['figma:contracts'] !== 'node scripts/check-figma-contracts.cjs') {
+      fail('[tooling] figma:contracts must run the Figma registry contract checker');
+    }
+    if (pkg.scripts?.['figma:live:if-token'] !== 'node scripts/check-figma-live.cjs --if-token') {
+      fail('[tooling] figma:live:if-token must run the read-only live audit in optional-local mode');
+    }
+    const expectedValidation = 'pnpm figma:coverage && pnpm figma:contracts && pnpm figma:live:if-token';
+    if (pkg.scripts?.['figma:validate'] !== expectedValidation) {
+      fail('[tooling] figma:validate must run coverage, registry contracts, and the optional local live audit in order');
+    }
+    const contractSteps = commandSteps(pkg.scripts?.contracts);
+    for (const required of ['pnpm contracts:code', 'pnpm figma:coverage', 'pnpm figma:contracts']) {
+      if (!contractSteps.includes(required)) fail(`[tooling] contracts must include the exact step "${required}"`);
+    }
+    if (!commandSteps(pkg.scripts?.['contracts:selftest']).includes('pnpm figma:coverage:selftest')) {
+      fail('[tooling] contracts:selftest must include the exact step "pnpm figma:coverage:selftest"');
+    }
+    if (!commandSteps(pkg.scripts?.['contracts:selftest']).includes('pnpm contracts:code:selftest')) {
+      fail('[tooling] contracts:selftest must include the exact step "pnpm contracts:code:selftest"');
+    }
+    const codeTestSteps = commandSteps(pkg.scripts?.['test:code']);
+    for (const required of REQUIRED_CODE_TEST_STEPS) {
+      if (!codeTestSteps.includes(required)) fail(`[tooling] test:code must include the exact step "${required}"`);
+    }
+    if (codeTestSteps.some((step) => /\bfigma:/.test(step))) {
+      fail('[tooling] test:code must remain runnable before Figma registration');
+    }
+    const testSteps = commandSteps(pkg.scripts?.test);
+    for (const required of ['pnpm contracts', 'pnpm contracts:selftest']) {
+      if (!testSteps.includes(required)) fail(`[tooling] test must include the exact step "${required}"`);
     }
     for (const [name, command] of Object.entries(pkg.scripts ?? {})) {
-      if (String(command).includes('figma connect publish')) {
-        fail(`[publishing] package script "${name}" invokes optional Code Connect publication`);
+      if (CODE_CONNECT_PATTERN.test(name) || CODE_CONNECT_PATTERN.test(String(command))) {
+        fail(`[code-connect] package script "${name}" exposes Code Connect`);
       }
     }
+  }
+  const lockPath = path.join(root, 'pnpm-lock.yaml');
+  const lockSource = options.lockSource ?? (fs.existsSync(lockPath) ? fs.readFileSync(lockPath, 'utf8') : '');
+  if (CODE_CONNECT_PATTERN.test(lockSource)) fail('[code-connect] pnpm-lock.yaml must not retain Code Connect');
+  for (const forbidden of findForbiddenCodeConnectFiles(root)) {
+    fail(`[code-connect] ${forbidden} must not exist`);
   }
 
   const workflowPath = path.join(root, '.github/workflows/figma-library-validation.yml');
@@ -223,14 +317,14 @@ function check(options = {}) {
   else {
     const workflow = options.workflowSource ?? fs.readFileSync(workflowPath, 'utf8');
     if (!workflow.includes('permissions:\n  contents: read')) fail('[ci] Figma validation workflow must use read-only repository permissions');
-    if (!workflow.includes('secrets.FIGMA_REST_TOKEN')) fail('[ci] live Figma validation must source its read-only REST secret from GitHub Actions');
+    if (!workflow.includes('FIGMA_REST_TOKEN: ${{ secrets.FIGMA_REST_TOKEN }}')) {
+      fail('[ci] live Figma validation must source its read-only REST secret from GitHub Actions');
+    }
+    if (!workflow.includes('run: test -n "$FIGMA_REST_TOKEN"')) {
+      fail('[ci] Figma validation workflow must fail closed when the read-only REST secret is unavailable');
+    }
     if (!workflow.includes('pnpm figma:validate')) fail('[ci] Figma validation workflow must run the governed validation script');
-    if (workflow.includes('FIGMA_CODE_CONNECT_TOKEN') || workflow.includes('FIGMA_ACCESS_TOKEN')) {
-      fail('[ci] Figma validation workflow must not require a Code Connect credential');
-    }
-    for (const line of workflow.split('\n')) {
-      if (line.includes('figma connect publish')) fail('[ci] workflow must not invoke optional Code Connect publication');
-    }
+    if (CODE_CONNECT_PATTERN.test(workflow)) fail('[code-connect] CI must not reference Code Connect');
   }
 
   const components = Array.isArray(registry.components) ? registry.components : [];
@@ -252,7 +346,6 @@ function check(options = {}) {
     ['component id', componentIds],
     ['Figma node id', components.map((component) => component.figma?.nodeId)],
     ['Figma node key', components.map((component) => component.figma?.nodeKey)],
-    ['template path', components.map((component) => component.figma?.template)],
   ]) {
     const seen = new Set();
     for (const value of values) {
@@ -261,7 +354,6 @@ function check(options = {}) {
       seen.add(value);
     }
   }
-
   const byId = new Map(components.map((component) => [component.id, component]));
 
   for (const component of components) {
@@ -279,6 +371,27 @@ function check(options = {}) {
     if (!['published', 'unpublished'].includes(figma.publicationStatus)) {
       fail(`${prefix} publicationStatus must be published or unpublished`);
     }
+    const review = figma.review ?? {};
+    if (review.status !== 'passed') fail(`${prefix} review.status must equal "passed"`);
+    if (review.standard !== 'button-standard-v1') {
+      fail(`${prefix} review.standard must equal "button-standard-v1"`);
+    }
+    if (!Array.isArray(review.passes) || review.passes.length !== 2 || !sameSet(review.passes, ['adversarial', 'design'])) {
+      fail(`${prefix} review.passes must equal adversarial and design exactly once each`);
+    }
+    if (!/^wiki\/journal\/[a-z0-9-]+\.md$/.test(review.evidence ?? '')) {
+      fail(`${prefix} review.evidence must reference a repository journal entry`);
+    } else if (!fs.existsSync(path.join(root, review.evidence))) {
+      fail(`${prefix} review.evidence ${review.evidence} is missing`);
+    } else {
+      const evidence = fs.readFileSync(path.join(root, review.evidence), 'utf8');
+      if (!evidence.includes(`\`${figma.nodeId}\``)) {
+        fail(`${prefix} review.evidence must name registered node ${figma.nodeId}`);
+      }
+      if (!/adversarial/i.test(evidence) || !/design review/i.test(evidence)) {
+        fail(`${prefix} review.evidence must record both adversarial and design review`);
+      }
+    }
     if (pilotComponentIds.includes(component.id) && figma.publicationStatus !== 'published') {
       fail(`${prefix} immutable pilot publicationStatus must remain published`);
     }
@@ -288,9 +401,7 @@ function check(options = {}) {
     if (!PRESENTATION_PATTERNS.has(figma.presentationPattern)) {
       fail(`${prefix} presentationPattern must be component-matrix, responsive-specimens, or responsive-full-viewport`);
     }
-    if (!String(figma.template ?? '').endsWith('.figma.ts') || String(figma.template ?? '').endsWith('.figma.tsx')) {
-      fail(`${prefix} template must be a parserless .figma.ts file`);
-    }
+    if (figma.template !== undefined) fail(`${prefix} registry must not contain a Code Connect template`);
 
     if (!fs.existsSync(manifestPath)) {
       fail(`${prefix} component manifest is missing`);
@@ -298,11 +409,19 @@ function check(options = {}) {
       const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
       const expectedCanonical = component.manifestCanonical ?? component.canonical;
       if (manifest.canonical !== expectedCanonical) fail(`${prefix} manifest canonical must be "${expectedCanonical}"`);
+      if (!component.secondaryExport && component.manifestCanonical !== undefined) {
+        fail(`${prefix} primary registration must not override manifest canonical`);
+      }
+      if (!component.secondaryExport && component.canonical !== manifest.canonical) {
+        fail(`${prefix} primary registration canonical must equal component.json canonical`);
+      }
       if (manifest.slug !== component.slug) fail(`${prefix} manifest slug must be "${component.slug}"`);
       if (!component.secondaryExport && manifest.exportName !== component.exportName) {
         fail(`${prefix} primary exportName must agree with component.json`);
       }
-      if (manifest.maturity !== 'supported') fail(`${prefix} promoted node must be backed by a supported component`);
+      if (manifest.maturity === 'candidate' && figma.publicationStatus !== 'unpublished') {
+        fail(`${prefix} candidate component must remain unpublished in Figma`);
+      }
     }
 
     if (!component.secondaryExport && kebab(component.canonical) !== component.slug) {
@@ -323,10 +442,12 @@ function check(options = {}) {
       fail(`${prefix} story contract is missing`);
     } else {
       const actualStoryProps = extractArgTypes(fs.readFileSync(storyPath, 'utf8'));
-      if (component.storyParity === 'exact' && !sameSet(actualStoryProps, component.storyProps ?? [])) {
+      const storyProps = Array.isArray(component.storyProps) ? component.storyProps : [];
+      if (!Array.isArray(component.storyProps)) fail(`${prefix} storyProps must be an array`);
+      if (component.storyParity === 'exact' && !sameSet(actualStoryProps, storyProps)) {
         fail(`${prefix} storyProps drifted from Storybook argTypes`);
       } else if (component.storyParity === 'subset') {
-        for (const prop of component.storyProps ?? []) {
+        for (const prop of storyProps) {
           if (!actualStoryProps.includes(prop)) fail(`${prefix} shared story argTypes are missing "${prop}"`);
         }
       } else if (!['exact', 'subset'].includes(component.storyParity)) {
@@ -337,18 +458,25 @@ function check(options = {}) {
     const mappings = Array.isArray(component.mappings) ? component.mappings : [];
     const fixedProps = Array.isArray(component.fixedProps) ? component.fixedProps : [];
     const codeOnlyProps = Array.isArray(component.codeOnlyProps) ? component.codeOnlyProps : [];
+    const storyProps = Array.isArray(component.storyProps) ? component.storyProps : [];
+    if (new Set(storyProps).size !== storyProps.length) {
+      fail(`${prefix} storyProps must not contain duplicates`);
+    }
+    if (new Set(codeOnlyProps).size !== codeOnlyProps.length) fail(`${prefix} codeOnlyProps must not contain duplicates`);
+    const fixedCodeProps = fixedProps.map((entry) => entry.codeProp);
+    if (new Set(fixedCodeProps).size !== fixedCodeProps.length) fail(`${prefix} fixedProps codeProp values must be unique`);
     const mappedCodeProps = mappings.map((mapping) => mapping.codeProp).filter(Boolean);
-    const partition = [...mappedCodeProps, ...fixedProps.map((entry) => entry.codeProp), ...codeOnlyProps];
-    if (!sameSet(partition, component.storyProps ?? [])) {
+    const partition = [...mappedCodeProps, ...fixedCodeProps, ...codeOnlyProps];
+    if (!sameSet(partition, storyProps)) {
       fail(`${prefix} mapped, fixed, and code-only props must partition storyProps`);
     }
-    const overlap = sorted([...mappedCodeProps, ...fixedProps.map((entry) => entry.codeProp)]).filter((prop) => codeOnlyProps.includes(prop));
+    const overlap = sorted([...mappedCodeProps, ...fixedCodeProps]).filter((prop) => codeOnlyProps.includes(prop));
     if (overlap.length > 0) fail(`${prefix} codeOnlyProps overlap mapped props: ${overlap.join(', ')}`);
 
     const figmaPropertyNames = mappings.map((mapping) => mapping.figmaProperty);
     if (new Set(figmaPropertyNames).size !== figmaPropertyNames.length) fail(`${prefix} Figma property names must be unique`);
     for (const mapping of mappings) {
-      if (!ACCESSOR_BY_KIND[mapping.kind]) fail(`${prefix} mapping "${mapping.figmaProperty}" has unsupported kind "${mapping.kind}"`);
+      if (!FIGMA_PROPERTY_TYPE_BY_KIND[mapping.kind]) fail(`${prefix} mapping "${mapping.figmaProperty}" has unsupported kind "${mapping.kind}"`);
       if (mapping.kind === 'enum' && (!Array.isArray(mapping.values) || mapping.values.length === 0)) {
         fail(`${prefix} enum mapping "${mapping.figmaProperty}" must declare allowed values`);
       }
@@ -365,6 +493,9 @@ function check(options = {}) {
 
     const liveProperties = Array.isArray(figma.properties) ? figma.properties : [];
     const livePropertyNames = liveProperties.map((property) => property.name);
+    if (new Set(livePropertyNames).size !== livePropertyNames.length) {
+      fail(`${prefix} captured live Figma property names must be unique`);
+    }
     if (!sameSet(livePropertyNames, figmaPropertyNames)) {
       fail(`${prefix} captured live Figma properties must exactly match registry mappings`);
     }
@@ -380,58 +511,10 @@ function check(options = {}) {
       }
     }
 
-    const source = readTemplate(figma.template);
-    if (source === null) {
-      fail(`${prefix} template ${figma.template} is missing`);
-      continue;
-    }
-
-    const expectedUrl = `${library.url}?node-id=${String(figma.nodeId).replace(':', '-')}`;
-    if (!source.startsWith(`// url=${expectedUrl}\n`)) fail(`${prefix} template URL must target the registered node`);
-    if (!source.includes(`// source=${component.componentPath}/index.ts\n`)) fail(`${prefix} template source must target the public facade`);
-    if (!source.includes(`// component=${component.exportName}\n`)) fail(`${prefix} template component metadata must equal exportName`);
-    if (!source.includes("import figma from 'figma'")) fail(`${prefix} template must use the parserless figma API`);
-    if (/figma\.connect\s*\(/.test(source)) fail(`${prefix} legacy figma.connect() is forbidden`);
-    if (!source.includes('figma.code`')) fail(`${prefix} template must compose its snippet with figma.code`);
-    if (!source.includes(`id: '${component.id}'`)) fail(`${prefix} Code Connect id must equal registry id`);
-
-    const expectedImport = `import { ${component.exportName} } from "${component.publicImport}";`;
-    if (!source.includes(expectedImport)) fail(`${prefix} displayed import must be exactly ${expectedImport}`);
-    if (/(?:\/parts\/|@library\/|(?:^|["'])\.\.\/|(?:^|["'])\.\/|src\/components)/m.test(source)) {
-      fail(`${prefix} template references a private or relative implementation path`);
-    }
-    for (const match of source.matchAll(/from\s+["']([^"']+)["']/g)) {
-      if (match[1] !== 'figma' && !match[1].startsWith('@verndale/ui-design-library/components/')) {
-        fail(`${prefix} template import "${match[1]}" is not a public package subpath`);
-      }
-    }
-
-    const accessed = [...source.matchAll(/\.(?:getString|getBoolean|getEnum|getSlot)\(\s*["']([^"']+)["']/g)].map((match) => match[1]);
-    if (!sameSet(accessed, figmaPropertyNames)) fail(`${prefix} template property accessors drifted from registry mappings`);
-    for (const mapping of mappings) {
-      const method = ACCESSOR_BY_KIND[mapping.kind];
-      const single = `.${method}('${mapping.figmaProperty}'`;
-      const double = `.${method}("${mapping.figmaProperty}"`;
-      if (!source.includes(single) && !source.includes(double)) {
-        fail(`${prefix} ${mapping.figmaProperty} must use ${method}()`);
-      }
-    }
-    for (const fixed of fixedProps) {
-      const hasRenderedProp = source.includes(`renderProp('${fixed.codeProp}'`) || source.includes(`renderProp("${fixed.codeProp}"`);
-      const hasValue = typeof fixed.value === 'string'
-        ? source.includes(`'${fixed.value}'`) || source.includes(`"${fixed.value}"`)
-        : source.includes(`, ${JSON.stringify(fixed.value)})`);
-      if (!hasRenderedProp || !hasValue) {
-        fail(`${prefix} fixed prop ${fixed.codeProp}=${fixed.value} is not explicit in the template`);
-      }
-    }
-
     const dependencies = Array.isArray(component.nestedDependencies) ? component.nestedDependencies : [];
+    if (new Set(dependencies).size !== dependencies.length) fail(`${prefix} nestedDependencies must not contain duplicates`);
     for (const dependency of dependencies) {
       if (!byId.has(dependency)) fail(`${prefix} nested dependency "${dependency}" is not registered`);
-    }
-    if (dependencies.length > 0 && (!source.includes('.connectedInstances') || !source.includes('.executeTemplate()'))) {
-      fail(`${prefix} nested dependencies must be resolved dynamically with connectedInstances and executeTemplate()`);
     }
   }
 
@@ -458,4 +541,4 @@ function check(options = {}) {
 
 if (require.main === module) process.exitCode = check().length > 0 ? 1 : 0;
 
-module.exports = { check, extractArgTypes, extractCssCustomProperties };
+module.exports = { check, extractArgTypes, extractCssCustomProperties, findForbiddenCodeConnectFiles };

@@ -5,7 +5,7 @@
  * The repository registry remains the contract source. This script compares it
  * with Figma's file-nodes REST response and audits the visual implementation
  * details that a captured JSON snapshot cannot prove. It never mutates or
- * publishes either the Figma library or Code Connect mappings.
+ * publishes the Figma library.
  */
 
 'use strict';
@@ -94,6 +94,17 @@ function definitionsByName(root) {
   return definitions;
 }
 
+function duplicateDefinitionNames(root) {
+  const seen = new Set();
+  const duplicates = new Set();
+  for (const [key, definition] of Object.entries(root.componentPropertyDefinitions ?? {})) {
+    const name = definition.name ?? propertyName(key);
+    if (seen.has(name)) duplicates.add(name);
+    seen.add(name);
+  }
+  return [...duplicates].sort();
+}
+
 function variantValues(root, name, definition) {
   if (Array.isArray(definition.variantOptions)) return definition.variantOptions;
   const values = [];
@@ -163,6 +174,10 @@ function auditLiveNodes({ registry, payload }) {
 
     const mappings = Array.isArray(component.mappings) ? component.mappings : [];
     const definitions = definitionsByName(root);
+    const duplicateNames = duplicateDefinitionNames(root);
+    if (duplicateNames.length > 0) {
+      fail(`${prefix} live component property names are duplicated: ${duplicateNames.join(', ')}`);
+    }
     if (!sameSet(definitions.keys(), mappings.map((mapping) => mapping.figmaProperty))) {
       fail(`${prefix} live component property names drifted from registry mappings`);
     }
@@ -249,6 +264,7 @@ if (require.main === module) {
 
 module.exports = {
   auditLiveNodes,
+  duplicateDefinitionNames,
   fetchLiveNodes,
   hasAlias,
   isSemanticText,

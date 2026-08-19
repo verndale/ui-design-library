@@ -1,4 +1,4 @@
-# Figma library and Code Connect
+# Figma library
 
 The governed Figma source is the [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library). `library.json` owns the file identity, promoted node IDs and keys, public API mapping, Storybook parity, nested dependencies, and pre-publish gates.
 
@@ -26,31 +26,33 @@ Responsive specimens use 1440px Desktop, 1024px Tablet Large, 768px Tablet Small
 
 Follow [`PROMOTION-CHECKLIST.md`](PROMOTION-CHECKLIST.md) for the exact layer, spacing, containment, content, and visual-audit requirements. The checklist is part of promotion definition of done for all future components.
 
-## Code Connect rules
+Every candidate or supported code component must have a reviewed primary registration. Candidates enter this governed file during capture but remain unpublished. `pnpm figma:coverage` enforces that code-to-Figma handoff and rejects published candidate registrations.
 
-Templates are parserless `.figma.ts` files. They use the template API and display only imports from public package subpaths:
+## Code-consumption boundary
+
+AI orchestration consumes implementations only through canonical-slug npm subpaths:
 
 ```tsx
 import { Button } from "@verndale/ui-design-library/components/button";
 ```
 
-Private `parts/`, source aliases, and relative implementation imports are forbidden. `Card` and `Modal` inspect Figma slots and call the nested instance's own template, so CardMedia and footer Buttons stay dynamic.
+Private `parts/`, source aliases, and relative implementation imports remain forbidden to consumers. Figma records property-to-code parity and nested component identity, but it does not carry a second code-template surface.
 
 Every visual Figma property must reference a descendant layer. Properties that exist only as HTML, runtime, or accessibility metadata are marked `visualBinding: "nonvisual"` with a reason in `library.json`; an unexplained disconnected property is a contract failure.
 
 ```bash
-pnpm figma:typecheck          # type-check parserless templates
-pnpm figma:contracts          # registry, story, import, identity, and nesting contracts
-pnpm figma:connect:parse      # parse templates locally; does not publish
+pnpm test:code                # complete pre-Figma code, story, browser, accessibility, and motion gate
+pnpm figma:coverage           # every candidate/supported component has a reviewed primary registration
+pnpm figma:contracts          # registry, story, import, identity, review, and nesting contracts
 pnpm figma:live               # read-only audit of registered live masters; requires FIGMA_REST_TOKEN
 pnpm figma:live:selftest      # fixture tests for property, text-style, color, and spacing drift
 pnpm figma:validate           # local checks plus the live audit when FIGMA_REST_TOKEN is present
 ```
 
-The live audit reads the registered masters through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, semantic color aliases, and spacing aliases. It never mutates the file.
+The live audit reads the registered masters through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, and spacing aliases. The separate design review verifies that those aliases use the intended semantic collection. The audit never mutates the file.
 
-CI requires only `FIGMA_REST_TOKEN` with `file_content:read` for the live node audit. A temporary personal token works but should be replaced with a read-only [Organization Plan Access Token](https://developers.figma.com/docs/rest-api/plan-access-tokens/) when IT provisions one. Parserless Code Connect templates remain locally type-checked and parsed as optional metadata; CI has no Code Connect credential and contains no publication command.
+CI requires only `FIGMA_REST_TOKEN` with `file_content:read` for the live node audit. A temporary personal token works but should be replaced with a read-only [Organization Plan Access Token](https://developers.figma.com/docs/rest-api/plan-access-tokens/) when IT provisions one. The contract checker rejects Code Connect dependencies, scripts, configuration, registry templates, and CI references.
 
 ## Release boundary
 
-Figma library publication remains an explicit maintainer action. Code Connect is not required by the npm-based AI orchestration and remains unpublished optional metadata; adopting it later would require a separate explicit decision and credential. After the library is published, smoke-test instances in a separate consumer Figma file against the orchestration's canonical-slug-to-npm flow.
+Figma library publication remains an explicit maintainer action. After the library is published, smoke-test instances in a separate consumer Figma file against the orchestration's canonical-slug-to-npm flow.

@@ -910,8 +910,8 @@
     "semantic_hash": ""
   },
   "scripts/graph/data/graph.json": {
-    "mtime": 1787141862.7391725,
-    "ast_hash": "418f442425bcf2c7dde8e2e30c22f0ac",
+    "mtime": 1787152437.8933084,
+    "ast_hash": "4a991569b76049d486bd73f25104ed85",
     "semantic_hash": ""
   },
   "scripts/graph/routing-policy.json": {
@@ -1115,8 +1115,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1786659169.8093796,
-    "ast_hash": "6afa3894e3e5487dca03c61047819f62",
+    "mtime": 1787150271.6846106,
+    "ast_hash": "92b06562798020401098759f20a2a2dc",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -1125,8 +1125,8 @@
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
-    "mtime": 1786581074.4949698,
-    "ast_hash": "cba48836feeaa07f8d614a4e82f1c83d",
+    "mtime": 1787150283.712639,
+    "ast_hash": "234287bf154c163157008cf3ff44c936",
     "semantic_hash": ""
   },
   "MIGRATION.md": {
@@ -1135,8 +1135,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1787140710.8578475,
-    "ast_hash": "424630d51bf592206aa3dcb378563d13",
+    "mtime": 1787150305.958548,
+    "ast_hash": "888775d455a9abc1c2e3f925e43bdf91",
     "semantic_hash": ""
   },
   "scripts/graph/README.md": {
@@ -1155,28 +1155,28 @@
     "semantic_hash": ""
   },
   "figma/library.json": {
-    "mtime": 1787140710.861838,
-    "ast_hash": "d0a7e3778901112b0307378c7138418d",
+    "mtime": 1787150107.8051903,
+    "ast_hash": "9652b92a1999db2ed2810370e072b82f",
     "semantic_hash": ""
   },
   "scripts/check-figma-contracts.cjs": {
-    "mtime": 1787140710.874497,
-    "ast_hash": "f19a3e0f01d3b65f3823848acb070e4b",
+    "mtime": 1787150210.0172145,
+    "ast_hash": "8ed61f1296779b7cb6eb62ddbeb9b0c1",
     "semantic_hash": ""
   },
   "scripts/check-figma-contracts.selftest.cjs": {
-    "mtime": 1787140710.8751755,
-    "ast_hash": "78b7f9ffbffe45330eb37a89a3a1675b",
+    "mtime": 1787150162.238472,
+    "ast_hash": "4f887d9c8832b2d69f6bbf67d991732f",
     "semantic_hash": ""
   },
   "figma/README.md": {
-    "mtime": 1787140710.8607972,
-    "ast_hash": "c27a79962cd2d6cba4986b934e94e2f7",
+    "mtime": 1787150245.0402625,
+    "ast_hash": "072a824a7603bb6c1d2e3aa35400e9fe",
     "semantic_hash": ""
   },
   "figma/PROMOTION-CHECKLIST.md": {
-    "mtime": 1787140710.8597333,
-    "ast_hash": "ae140c4540680321a651c379a92cf4b2",
+    "mtime": 1787150245.126991,
+    "ast_hash": "0decf7ddae46b44bbd7aed2082a35a2d",
     "semantic_hash": ""
   },
   "scripts/check-figma-live.cjs": {
@@ -1195,13 +1195,13 @@
     "semantic_hash": ""
   },
   "scripts/check-figma-coverage.cjs": {
-    "mtime": 1787140710.8758807,
-    "ast_hash": "0925eb4d32f8719ffdb3671f07c09fc7",
+    "mtime": 1787150080.7591207,
+    "ast_hash": "83d3ddf95131c1da85ed4413935abaca",
     "semantic_hash": ""
   },
   "scripts/check-figma-coverage.selftest.cjs": {
-    "mtime": 1787140710.8767445,
-    "ast_hash": "dcc87ae4221b0e6ec31a73726ec1babe",
+    "mtime": 1787150137.6224067,
+    "ast_hash": "634cef021409e3b3bbbb7b4e149c0de5",
     "semantic_hash": ""
   }
 }

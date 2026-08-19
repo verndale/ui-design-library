@@ -20,6 +20,7 @@ const FIGMA_PROPERTY_TYPE_BY_KIND = {
   boolean: 'BOOLEAN',
   enum: 'VARIANT',
   slot: 'SLOT',
+  instance: 'INSTANCE_SWAP',
 };
 const PILOT_COMPONENT_IDS = ['button-light', 'button-dark', 'section-header', 'alert', 'card', 'card-media', 'modal'];
 const PRESENTATION_PATTERNS = new Set(['component-matrix', 'responsive-specimens', 'responsive-full-viewport']);
@@ -366,7 +367,10 @@ function check(options = {}) {
     if (!/^[0-9]+:[0-9]+$/.test(figma.nodeId ?? '')) fail(`${prefix} nodeId must use Figma's colon form`);
     if (!/^[0-9a-f]{40}$/.test(figma.nodeKey ?? '')) fail(`${prefix} nodeKey must be a stable 40-character component key`);
     if (!['COMPONENT', 'COMPONENT_SET'].includes(figma.nodeType)) fail(`${prefix} nodeType must be COMPONENT or COMPONENT_SET`);
-    if (figma.nodeName !== component.canonical) fail(`${prefix} Figma node name must equal canonical "${component.canonical}"`);
+    const expectedNodeName = component.variant && component.default !== true
+      ? `${component.canonical} / ${component.variantLabel}`
+      : component.canonical;
+    if (figma.nodeName !== expectedNodeName) fail(`${prefix} Figma node name must equal "${expectedNodeName}"`);
     if (figma.status !== 'ready-for-dev') fail(`${prefix} Figma status must be ready-for-dev`);
     if (!['published', 'unpublished'].includes(figma.publicationStatus)) {
       fail(`${prefix} publicationStatus must be published or unpublished`);
@@ -416,6 +420,12 @@ function check(options = {}) {
         fail(`${prefix} primary registration canonical must equal component.json canonical`);
       }
       if (manifest.slug !== component.slug) fail(`${prefix} manifest slug must be "${component.slug}"`);
+      if (!component.secondaryExport && (component.variant ?? null) !== (manifest.variant ?? null)) {
+        fail(`${prefix} primary structural variant must agree with component.json`);
+      }
+      if (!component.secondaryExport && Boolean(component.default) !== Boolean(manifest.default)) {
+        fail(`${prefix} primary default flag must agree with component.json`);
+      }
       if (!component.secondaryExport && manifest.exportName !== component.exportName) {
         fail(`${prefix} primary exportName must agree with component.json`);
       }
@@ -426,6 +436,22 @@ function check(options = {}) {
 
     if (!component.secondaryExport && kebab(component.canonical) !== component.slug) {
       fail(`${prefix} canonical must kebab-case to its public slug`);
+    }
+    if (component.variant !== undefined) {
+      if (typeof component.variant !== 'string' || kebab(component.variant) !== component.variant) {
+        fail(`${prefix} variant must be a non-empty kebab-case structural identity`);
+      }
+      if (typeof component.variantLabel !== 'string' || !component.variantLabel.trim()) {
+        fail(`${prefix} variantLabel is required when variant is declared`);
+      }
+    } else if (component.variantLabel !== undefined || component.default !== undefined) {
+      fail(`${prefix} variantLabel/default require a structural variant`);
+    }
+    if (component.familyPage !== undefined && typeof component.familyPage !== 'boolean') {
+      fail(`${prefix} familyPage must be boolean when declared`);
+    }
+    if (component.default === true && component.familyPage !== true) {
+      fail(`${prefix} a structural default must designate the family page`);
     }
     const expectedPublicImport = `@verndale/ui-design-library/${component.componentPath}`;
     if (component.publicImport !== expectedPublicImport) fail(`${prefix} publicImport must be ${expectedPublicImport}`);
@@ -515,6 +541,29 @@ function check(options = {}) {
     if (new Set(dependencies).size !== dependencies.length) fail(`${prefix} nestedDependencies must not contain duplicates`);
     for (const dependency of dependencies) {
       if (!byId.has(dependency)) fail(`${prefix} nested dependency "${dependency}" is not registered`);
+    }
+  }
+
+  const byCanonical = new Map();
+  for (const component of components.filter((entry) => !entry.secondaryExport)) {
+    if (!byCanonical.has(component.canonical)) byCanonical.set(component.canonical, []);
+    byCanonical.get(component.canonical).push(component);
+  }
+  for (const [canonical, family] of byCanonical) {
+    const structuralPaths = new Set(family.map((component) => component.componentPath));
+    const needsFamilyPage = family.length > 1 || structuralPaths.size > 1;
+    const designated = family.filter((component) => component.familyPage === true);
+    if (needsFamilyPage && designated.length !== 1) {
+      fail(`[family] ${canonical} must designate exactly one familyPage registration`);
+      continue;
+    }
+    if (structuralPaths.size > 1 && designated.length === 1) {
+      const page = designated[0].figma ?? {};
+      for (const component of family) {
+        if (component.figma?.pageId !== page.pageId || component.figma?.pageName !== page.pageName) {
+          fail(`[family] ${component.id} must share ${canonical}'s family page identity`);
+        }
+      }
     }
   }
 

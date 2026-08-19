@@ -88,17 +88,24 @@ const cases = [
   },
   {
     name: 'structural variant is keyed by its exact directory',
-    manifests: [manifest('components/navigation--mega', { canonical: 'Navigation', slug: 'navigation', exportName: 'Navigation' })],
+    manifests: [manifest('components/navigation--mega', { canonical: 'Navigation', slug: 'navigation', variant: 'mega', exportName: 'Navigation' })],
     components: [
       registration({
         id: 'navigation-mega',
         canonical: 'Navigation',
         slug: 'navigation',
         exportName: 'Navigation',
+        variant: 'mega',
         componentPath: 'components/navigation--mega',
       }),
     ],
     expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'a different structural variant does not satisfy coverage',
+    manifests: [manifest('components/navigation--mega', { canonical: 'Navigation', slug: 'navigation', variant: 'mega', exportName: 'Navigation' })],
+    components: [registration({ canonical: 'Navigation', slug: 'navigation', exportName: 'Navigation', variant: 'drawer', componentPath: 'components/navigation--mega' })],
+    expect: (failures) => failures.some((failure) => failure.includes('no matching primary')),
   },
   {
     name: 'deprecated manifests are outside the capture coverage gate',

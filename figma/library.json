@@ -110,6 +110,7 @@
       "id": "button-light",
       "canonical": "Button",
       "slug": "button",
+      "familyPage": true,
       "exportName": "Button",
       "publicImport": "@verndale/ui-design-library/components/button",
       "componentPath": "components/button",

@@ -42,7 +42,7 @@ Start from a capture in a `project-retrospective` run. Executing it is a rewrite
 5. Fill `component.json`, including the `declienting` array and `reuseFingerprint`. Use only the governed compatibility vocabulary; do not copy API prop names into the structural fingerprint.
 6. Land as `maturity: "candidate"`.
 7. Classify it as server-compatible, hybrid, or client-only; isolate each genuinely interactive branch and prefer serializable node slots over render callbacks.
-8. If the capture is a structurally-distinct implementation of a canonical already in the library (a mega menu where Navigation ships a plain bar), land it as `components/<slug>--<variant>/` rather than overwriting the incumbent: share the `canonical` and `slug`, set `variant`, mark exactly one implementation `default: true`, and title the variant's stories `<Canonical> / <label>`. `pnpm contracts` checks the axis holds. This is separate from the `variants` array, which stays the list of prop-value options within one implementation.
+8. If the capture is structurally distinct but retains the canonical's role, affordance, and interaction semantics, land it as `components/<slug>--<variant>/`: share `canonical`/`slug`, set `variant`, mark one implementation `default: true`, and title the alternate stories `<Canonical> / <label>`. Different semantics require a new brain canonical. Mirror the axis in `figma/library.json`; structural siblings share one family page and expose distinct public imports.
 9. Run `pnpm exports:sync`; the committed map is derived from component directories, and all read-only build/test gates fail if it drifts.
 
 ## Verify the behaviour, not the markup

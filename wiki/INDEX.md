@@ -37,6 +37,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-19 — [Govern structural variants as Figma families](journal/2026-08-19-figma-structural-family-contract.md) — registry and validators now resolve exact structural imports to qualified masters on one canonical family page.
 - 2026-08-19 — [Correct Tabs spacing and Search overlay containment](journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md) — bound the Tabs panel gap to `spacing/m` in code and Figma, and restored hug-content Search overlay heights so active and wrapped mobile content remains inside the raised surface.
 - 2026-08-18 — [Harden governed Figma capture after adversarial review](journal/2026-08-18-adversarial-review-governed-figma-capture.md) — closed canonical, evidence, command-composition, duplicate-property, and hidden Code Connect bypasses.
 - 2026-08-18 — [Make reviewed Figma coverage part of component capture](journal/2026-08-18-governed-code-to-figma-capture.md) — every candidate reaches an unpublished reviewed Figma master; Code Connect is removed and rejected.

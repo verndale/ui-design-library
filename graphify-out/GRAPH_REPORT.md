@@ -1,7 +1,7 @@
-# Graph Report - ui-design-library  (2026-08-18)
+# Graph Report - ui-design-library  (2026-08-19)
 
 ## Corpus Check
-- 233 files · ~92,669 words
+- 233 files · ~92,803 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `760f6bf3`
+- Built from commit: `0cf3dcfe`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

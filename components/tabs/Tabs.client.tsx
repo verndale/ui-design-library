@@ -50,7 +50,10 @@ export function Tabs({
   if (items.length === 0) return null;
 
   return (
-    <div data-component="tabs" className={[classNames?.root, className].filter(Boolean).join(' ')}>
+    <div
+      data-component="tabs"
+      className={['flex flex-col gap-m', classNames?.root, className].filter(Boolean).join(' ')}
+    >
       <TabsList
         items={items}
         activeIndex={activeIndex}

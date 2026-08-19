@@ -28,6 +28,7 @@ How stable Figma component identity maps design instances to the package's gover
 
 ## Decisions
 
+- 2026-08-19 — Bound Tabs tablist-to-panel separation to the code `spacing/m` token and made Search overlay masters/instances hug their content, preserving stable node identity while removing active and mobile overflow ([journal](../journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md)).
 - 2026-08-18 — Required exact primary identity, node-specific review proof, exact validation command composition, duplicate-property rejection, and repository-wide Code Connect artifact rejection after adversarial testing demonstrated that looser presence checks could be bypassed ([journal](../journal/2026-08-18-adversarial-review-governed-figma-capture.md)).
 - 2026-08-18 — Removed Code Connect as an option rather than retaining dormant metadata: npm canonical slugs are the sole code-consumption contract, and repository checks reject its reintroduction ([plan](../plans/2026-08-18-governed-code-to-figma-capture.md), [journal](../journal/2026-08-18-governed-code-to-figma-capture.md)).
 - 2026-08-18 — Made unpublished Figma creation and a recorded adversarial/design review part of component capture completion, enforced code-to-Figma coverage for candidates and supported components, and kept publication separate ([plan](../plans/2026-08-18-governed-code-to-figma-capture.md), [journal](../journal/2026-08-18-governed-code-to-figma-capture.md)).

@@ -48,6 +48,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Keep Figma CI read-only and REST-only](../../wiki/journal/2026-08-18-figma-rest-only-validation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Promote the remaining supported Figma and Code Connect batch](../../wiki/journal/2026-08-18-figma-supported-batch.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Make reviewed Figma coverage part of component capture](../../wiki/journal/2026-08-18-governed-code-to-figma-capture.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Correct Tabs spacing and Search overlay containment](../../wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)

@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 124,
-    "edges": 234,
+    "nodes": 125,
+    "edges": 237,
     "byType": {
       "surface": 45,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 31,
+      "wiki-journal": 32,
       "wiki-plan": 12,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 52,
-      "links-to": 104,
+      "links-to": 106,
       "plan": 14,
-      "topic": 43,
+      "topic": 44,
       "uses-tokens": 21
     }
   },
@@ -210,7 +210,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 736,
       "degree": 1
     },
     {
@@ -486,7 +486,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 160,
       "degree": 1
     },
     {
@@ -522,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1106510,
+      "bytes": 1106512,
       "degree": 1
     },
     {
@@ -822,7 +822,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -882,8 +882,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 12522,
-      "degree": 41
+      "bytes": 12840,
+      "degree": 42
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1372,6 +1372,20 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
+      "label": "Correct Tabs spacing and Search overlay containment",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1483,
+      "degree": 3
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1655,8 +1669,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 8391,
-      "degree": 26
+      "bytes": 8692,
+      "degree": 28
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2301,6 +2315,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2591,6 +2612,13 @@
       "target": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -2974,6 +3002,11 @@
     },
     {
       "source": "wiki/journal/2026-08-18-governed-code-to-figma-capture.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },

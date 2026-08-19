@@ -47,8 +47,22 @@ export const Default: Story = {
   args: { defaultActiveId: 'overview' },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
+    const root = canvasElement.querySelector<HTMLElement>('[data-component="tabs"]');
     const overview = canvas.getByRole('tab', { name: 'Overview' });
     const specs = canvas.getByRole('tab', { name: 'Specs' });
+
+    await step('uses the semantic medium gap between tabs and panel', async () => {
+      await expect(root).not.toBeNull();
+      const styles = getComputedStyle(root!);
+      const mediumGap = styles.getPropertyValue('--spacing-m').trim();
+      await expect(mediumGap).not.toBe('');
+      const probe = document.createElement('div');
+      probe.style.width = 'var(--spacing-m)';
+      root!.append(probe);
+      const resolvedMediumGap = getComputedStyle(probe).width;
+      probe.remove();
+      await expect(styles.rowGap).toBe(resolvedMediumGap);
+    });
 
     await step('tabs.state.selection', async () => {
       const overviewPanel = canvas.getByRole('tabpanel', { name: 'Overview' });

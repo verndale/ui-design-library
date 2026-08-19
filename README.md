@@ -180,6 +180,17 @@ The package includes each implementation's source, story, and `component.json` f
 
 `reuseFingerprint` is separate from API-level `slots`: it describes only the primary export and uses the pipeline's governed structural `slots` + `affordance` + `role` triad. Governed `other` values are valid metadata but intentionally never auto-match. `variant` remains the singular structural implementation axis, while `variants` remains the primary export's list of prop/style values. Entries in `variants` are unique non-empty strings; an empty array means the primary export has no governed style values.
 
+## Figma and Code Connect
+
+The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Promoted master identity, canonical names, Storybook/API parity, and parserless Code Connect mappings live in [`figma/library.json`](figma/library.json). The templates display only the same directory-shaped public imports consumers use; Cumulative styling is limited to Figma documentation while component visuals use this package's Tailwind semantic tokens.
+
+```bash
+pnpm figma:validate           # types + governance contracts + local template parse + optional live audit
+pnpm figma:live               # authenticated read-only audit of the registered Figma masters
+```
+
+See [`figma/README.md`](figma/README.md) for file organization, node migration, credential, nesting, and release rules. Every future promotion also follows the enforceable [`Figma component promotion checklist`](figma/PROMOTION-CHECKLIST.md): the direct canonical instance is the component-only handoff target, annotations remain outside it, and responsive specimens use the governed 1440/1024/768/390 widths and code-token bindings. Figma library publication remains an explicit maintainer action; Code Connect templates are retained as optional parse-only metadata and are not part of the npm-based AI release path.
+
 ## Releases
 
 Every merge to `main` runs the full test/build/pack gate and semantic-release. A breaking change publishes a major, `feat` publishes a minor, and every other permitted conventional-commit type publishes a patch. Tags and GitHub releases use `v<version>`; the source `package.json` stays `0.0.0-development`.
@@ -216,8 +227,11 @@ pnpm build             # native Node ESM + declaration build, then export/dist p
 pnpm exports:check     # component directories and committed package exports agree
 pnpm exports:sync      # deliberately update the committed map after adding/removing a component
 pnpm contracts         # slug/canonical agreement, the variant axis, declared tokens exist,
-                       # no raw colours, provenance/stories/maturity, reuse fingerprint
+                       # no raw colours, provenance/stories/maturity, reuse fingerprint,
+                       # Figma registry identity/API/mapping/nesting parity
 pnpm contracts:selftest # exercises the contract checker itself against fixtures
+pnpm figma:validate    # type-check, contract-check, locally parse optional templates, and audit live nodes when authenticated
+pnpm figma:live        # require FIGMA_REST_TOKEN and audit registered masters without mutation
 pnpm accessibility    # every story rendered in Chromium: play functions + WCAG 2.2 A/AA axe
 pnpm test:a11y:webkit # the same stories in WebKit (a Safari-engine proxy)
 pnpm test:a11y:modes  # 320px, 200% text, WCAG text spacing, and forced colors

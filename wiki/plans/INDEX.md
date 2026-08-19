@@ -16,12 +16,15 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 6 implemented, 2 partial (8 plans).
+Totals: 7 implemented, 4 partial (11 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-08-18 | [Figma adversarial and design-review remediation](2026-08-18-figma-adversarial-remediation.md) | implemented | live Figma adversarial and visual audit, live-audit fixture self-tests, `pnpm figma:validate` | figma-code-connect |
+| 2026-08-18 | [Remaining supported Figma library and Code Connect batch](2026-08-18-figma-supported-batch.md) | partial | sixteen additional Ready for Dev nodes, 23 registered nodes, `pnpm figma:validate`; publication and consumer smoke test pending maintainer | figma-code-connect |
+| 2026-08-18 | [Organization-tier Figma Library and Code Connect Pilot](2026-08-18-figma-code-connect-pilot.md) | partial | [issue #49](https://github.com/verndale/ui-design-library/issues/49), seven stable Figma nodes, `pnpm figma:validate`, `pnpm contracts`, `pnpm test`, `pnpm build`; publication and consumer smoke test pending maintainer | figma-code-connect |
 | 2026-08-14 | [Breadcrumbs direct reuse slots](2026-08-14-breadcrumbs-direct-reuse-slots.md) | implemented | [issue #46](https://github.com/verndale/ui-design-library/issues/46), `pnpm test`, `pnpm build`, [PR #47](https://github.com/verndale/ui-design-library/pull/47) | component-architecture |
 | 2026-08-13 | [Realization-First Reuse with WCAG 2.2 AA Accessibility](2026-08-13-realization-first-reuse-wcag-22-aa.md) | implemented | [issue #37](https://github.com/verndale/ui-design-library/issues/37), `pnpm test`, `pnpm verify`, [PR #38](https://github.com/verndale/ui-design-library/pull/38), [PR #44](https://github.com/verndale/ui-design-library/pull/44) | component-architecture, package-distribution, story-testing |
 | 2026-08-12 | [Coordinated UI Library Contract v2 and AI Reuse Hardening](2026-08-12-executable-esm-reuse-contract-v2.md) | partial | [issue #31](https://github.com/verndale/ui-design-library/issues/31), `pnpm verify`, 21 packed native ESM imports, packed Next 16/Tailwind consumer, [PR #32](https://github.com/verndale/ui-design-library/pull/32), [PR #35](https://github.com/verndale/ui-design-library/pull/35) | package-distribution, component-architecture |

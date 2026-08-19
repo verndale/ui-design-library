@@ -1,16 +1,16 @@
-# Graph Report - ui-design-library  (2026-08-14)
+# Graph Report - ui-design-library  (2026-08-18)
 
 ## Corpus Check
-- 224 files · ~79,286 words
+- 256 files · ~92,054 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1154 nodes · 1672 edges · 122 communities (85 shown, 37 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 62 edges (avg confidence: 0.61)
+- 1372 nodes · 1889 edges · 150 communities (107 shown, 43 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 70 edges (avg confidence: 0.6)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e85bad02`
+- Built from commit: `95b7e34e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,7 +55,7 @@
 - sync-graphify.cjs
 - Contributing
 - Server-first component architecture migration
-- files
+- check-figma-contracts.cjs
 - Knowledge graph
 - check-component-architecture.selftest.cjs
 - component-files.cjs
@@ -86,11 +86,11 @@
 - ./components/stat
 - ./components/tabs
 - ./components/toast
-- publishConfig
-- uiDesignLibrary
+- compilerOptions
+- modal.figma.ts
 - routing.js
 - eslint
-- husky
+- button-dark.figma.ts
 - commit-msg
 - post-checkout
 - post-merge
@@ -101,7 +101,7 @@
 - semantic-release
 - @semantic-release/commit-analyzer
 - @semantic-release/github
-- @semantic-release/release-notes-generator
+- button-light.figma.ts
 - storybook
 - @storybook/addon-a11y
 - @storybook/addon-docs
@@ -117,24 +117,52 @@
 - @typescript-eslint/parser
 - @verndale/ai-pr
 - vite
-- @vitejs/plugin-react
-- @vitest/browser
+- section-header.figma.ts
+- alert.figma.ts
 - @vitest/browser-playwright
 - main.ts
 - manager.ts
 - next.config.mjs
+- card.figma.ts
+- eslint-plugin-react-hooks
+- @figma/code-connect
+- card-media.figma.ts
+- @semantic-release/npm
+- @types/react
+- vitest
+- search-overlay.figma.ts
+- search-input.figma.ts
+- check-figma-live.cjs
+- Figma component promotion checklist
+- slider.figma.ts
+- Figma library and Code Connect
+- accordion.figma.ts
+- breadcrumbs.figma.ts
+- image.figma.ts
+- link.figma.ts
+- toast.figma.ts
+- badge.figma.ts
+- carousel.figma.ts
+- tabs.figma.ts
+- in-page-navigation.figma.ts
+- stat.figma.ts
+- rich-text.figma.ts
 - dialog.client.ts
+- avatar.figma.ts
+- quote.figma.ts
 - Modal.stories.tsx
 - SearchOverlay.stories.tsx
 - Modal.client.tsx
 - backgroundInert.client.ts
+- files
+- repository
 
 ## God Nodes (most connected - your core abstractions)
-1. `exports` - 45 edges
-2. `scripts` - 38 edges
+1. `scripts` - 46 edges
+2. `exports` - 45 edges
 3. `SlotClassNames` - 22 edges
-4. `compilerOptions` - 15 edges
-5. `ui-design-library` - 15 edges
+4. `ui-design-library` - 16 edges
+5. `compilerOptions` - 15 edges
 6. `check()` - 14 edges
 7. `validateRealization()` - 14 edges
 8. `check()` - 13 edges
@@ -156,7 +184,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (122 total, 37 thin omitted)
+## Communities (150 total, 43 thin omitted)
 
 ### Community 0 - "Modal.types.ts"
 Cohesion: 0.18
@@ -179,8 +207,8 @@ Cohesion: 0.08
 Nodes (38): check(), COMPONENTS, decompose(), fs, { implementationFiles, listComponentDirs, storyFiles }, kebab(), MATURITIES, path (+30 more)
 
 ### Community 5 - "scripts"
-Cohesion: 0.05
-Nodes (38): scripts, accessibility, accessibility:report, architecture, architecture:selftest, build, build-storybook, commit (+30 more)
+Cohesion: 0.04
+Nodes (46): scripts, accessibility, accessibility:report, architecture, architecture:selftest, build, build-storybook, commit (+38 more)
 
 ### Community 6 - "components.ssr.test.tsx"
 Cohesion: 0.09
@@ -272,7 +300,7 @@ Nodes (11): StatGroup(), Stat(), Default, GroupColumn, GroupRow, Story, WithDesc
 
 ### Community 28 - "ui-design-library"
 Cohesion: 0.12
-Nodes (16): Accessibility is enforced, Consuming it, Context wiki, Environment, How a component gets here, Layout, Quality gates, Related (+8 more)
+Nodes (17): Accessibility is enforced, Consuming it, Context wiki, Environment, Figma and Code Connect, How a component gets here, Layout, Quality gates (+9 more)
 
 ### Community 29 - "build-exports.cjs"
 Cohesion: 0.18
@@ -292,11 +320,11 @@ Nodes (13): Accessibility is the point, Adding a component, Commits & release, C
 
 ### Community 32 - "devDependencies"
 Cohesion: 0.15
-Nodes (13): @commitlint/cli, eslint-plugin-react-hooks, devDependencies, @commitlint/cli, eslint-plugin-react-hooks, @semantic-release/npm, @types/react, @verndale/ai-commit (+5 more)
+Nodes (13): @commitlint/cli, husky, devDependencies, @commitlint/cli, husky, @semantic-release/release-notes-generator, @verndale/ai-commit, @vitejs/plugin-react (+5 more)
 
 ### Community 33 - "package.json"
-Cohesion: 0.15
-Nodes (12): author, description, engines, node, license, name, packageManager, repository (+4 more)
+Cohesion: 0.12
+Nodes (15): author, description, engines, node, license, name, packageManager, publishConfig (+7 more)
 
 ### Community 34 - "peerDependencies"
 Cohesion: 0.20
@@ -322,9 +350,9 @@ Nodes (8): Adding a component, Commit messages, Contributing, Quick start, The c
 Cohesion: 0.22
 Nodes (9): Alert, Badge, Button, Carousel, Executable ESM and reuse contract v2, Next.js status, Server and client use, Server-first component architecture migration (+1 more)
 
-### Community 40 - "files"
-Cohesion: 0.22
-Nodes (9): files, components, dist, LICENSE, MIGRATION.md, README.md, src/lib, src/tokens (+1 more)
+### Community 40 - "check-figma-contracts.cjs"
+Cohesion: 0.08
+Nodes (25): ACCESSOR_BY_KIND, check(), extractArgTypes(), extractCssCustomProperties(), FIGMA_PROPERTY_TYPE_BY_KIND, fs, kebab(), path (+17 more)
 
 ### Community 41 - "Knowledge graph"
 Cohesion: 0.22
@@ -442,50 +470,138 @@ Nodes (3): import, types, ./components/tabs
 Cohesion: 0.67
 Nodes (3): import, types, ./components/toast
 
-### Community 72 - "publishConfig"
-Cohesion: 0.67
-Nodes (3): publishConfig, access, provenance
+### Community 72 - "compilerOptions"
+Cohesion: 0.15
+Nodes (12): @figma/code-connect/figma-types, figma/**/*.figma.ts, compilerOptions, module, moduleResolution, noEmit, noUncheckedIndexedAccess, skipLibCheck (+4 more)
 
-### Community 73 - "uiDesignLibrary"
-Cohesion: 0.67
-Nodes (3): uiDesignLibrary, realizationContractVersion, reuseContractVersion
+### Community 73 - "modal.figma.ts"
+Cohesion: 0.22
+Nodes (8): body, footer, onClose, open, showDescription, showEyebrow, size, title
 
-### Community 117 - "dialog.client.ts"
+### Community 76 - "button-dark.figma.ts"
+Cohesion: 0.40
+Nodes (4): disabled, label, size, variant
+
+### Community 87 - "button-light.figma.ts"
+Cohesion: 0.40
+Nodes (4): disabled, label, size, variant
+
+### Community 103 - "section-header.figma.ts"
+Cohesion: 0.40
+Nodes (4): alignment, heading, showDescription, showEyebrow
+
+### Community 104 - "alert.figma.ts"
+Cohesion: 0.50
+Nodes (3): message, showAccent, variant
+
+### Community 124 - "search-overlay.figma.ts"
+Cohesion: 0.22
+Nodes (8): inputPlaceholder, onClose, onQueryChange, query, queryText, quickLinks, resultsPanel, title
+
+### Community 125 - "search-input.figma.ts"
+Cohesion: 0.20
+Nodes (9): label, placeholder, query, resultsContent, showClearButton, showLabel, showResults, showSubmitButton (+1 more)
+
+### Community 126 - "check-figma-live.cjs"
+Cohesion: 0.10
+Nodes (27): auditLiveNodes(), auditVisualTree(), definitionsByName(), fetchLiveNodes(), FIGMA_TYPE_BY_KIND, fs, hasAlias(), isSemanticText() (+19 more)
+
+### Community 127 - "Figma component promotion checklist"
+Cohesion: 0.29
+Nodes (7): 1. Preserve identity, 2. Build the component from code contracts, 3. Use the direct-canonical handoff pattern, 4. Present responsive behavior, 5. Audit before Ready for Dev, 6. Release separately, Figma component promotion checklist
+
+### Community 128 - "slider.figma.ts"
+Cohesion: 0.25
+Nodes (7): hintText, label, options, showHint, showScale, showSelectedValue, value
+
+### Community 129 - "Figma library and Code Connect"
+Cohesion: 0.40
+Nodes (5): Code Connect rules, Figma library and Code Connect, File rules, Promotion presentation pattern, Release boundary
+
+### Community 130 - "accordion.figma.ts"
+Cohesion: 0.33
+Nodes (5): headingText, items, lessLabel, moreLabel, standalone
+
+### Community 131 - "breadcrumbs.figma.ts"
+Cohesion: 0.33
+Nodes (5): currentPageTitle, items, presentation, separator, surface
+
+### Community 132 - "image.figma.ts"
+Cohesion: 0.33
+Nodes (5): alt, height, rounded, src, width
+
+### Community 133 - "link.figma.ts"
+Cohesion: 0.33
+Nodes (5): disabled, href, label, size, touchTarget
+
+### Community 134 - "toast.figma.ts"
+Cohesion: 0.33
+Nodes (5): message, open, position, showIcon, variant
+
+### Community 135 - "badge.figma.ts"
+Cohesion: 0.40
+Nodes (4): disabled, label, onRemove, surface
+
+### Community 136 - "carousel.figma.ts"
+Cohesion: 0.40
+Nodes (4): label, loop, slides, statusSeparator
+
+### Community 137 - "tabs.figma.ts"
+Cohesion: 0.40
+Nodes (4): activeId, ariaLabel, items, orientation
+
+### Community 138 - "in-page-navigation.figma.ts"
+Cohesion: 0.50
+Nodes (3): activeId, ariaLabel, items
+
+### Community 139 - "stat.figma.ts"
+Cohesion: 0.50
+Nodes (3): contentOrder, label, value
+
+### Community 141 - "dialog.client.ts"
 Cohesion: 0.26
 Nodes (12): useDialog(), UseDialogOptions, acquireScrollLock(), emit(), getTopOverlay(), listeners, overlays, register() (+4 more)
 
-### Community 118 - "Modal.stories.tsx"
+### Community 144 - "Modal.stories.tsx"
 Cohesion: 0.18
 Nodes (10): ClosesFromButton, ClosesOnBackdrop, Default, Medium, ReturnsFocusToRef, ScrollingBody, StackedOverlays, Story (+2 more)
 
-### Community 119 - "SearchOverlay.stories.tsx"
+### Community 145 - "SearchOverlay.stories.tsx"
 Cohesion: 0.20
 Nodes (7): ActiveShowsResults, ClosesOnBackdrop, Default, IdleShowsQuickLinks, RespectsReducedMotion, Story, TrapsFocus
 
-### Community 120 - "Modal.client.tsx"
+### Community 146 - "Modal.client.tsx"
 Cohesion: 0.43
 Nodes (5): Modal(), ModalPanel(), FOCUSABLE, getFocusableElements(), useFocusTrap()
 
-### Community 121 - "backgroundInert.client.ts"
+### Community 147 - "backgroundInert.client.ts"
 Cohesion: 0.60
 Nodes (4): previous, restoreBackground(), syncBackground(), useBackgroundInert()
 
+### Community 148 - "files"
+Cohesion: 0.22
+Nodes (9): files, components, dist, LICENSE, MIGRATION.md, README.md, src/lib, src/tokens (+1 more)
+
+### Community 149 - "repository"
+Cohesion: 0.67
+Nodes (3): repository, type, url
+
 ## Knowledge Gaps
-- **538 isolated node(s):** `config`, `tagBadges`, `preview`, `faq`, `Story` (+533 more)
+- **695 isolated node(s):** `config`, `tagBadges`, `preview`, `faq`, `Story` (+690 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **37 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **43 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `SlotClassNames` connect `classNames.ts` to `Modal.types.ts`, `Breadcrumbs.stories.tsx`, `components.ssr.test.tsx`, `Carousel.stories.tsx`, `SearchInput.stories.tsx`, `SearchOverlay.types.ts`, `Image.types.ts`, `InPageNavigation.types.ts`, `Slider.stories.tsx`, `Tabs.stories.tsx`, `Toast.types.ts`, `Badge.stories.tsx`, `Button.tsx`, `RichText.types.ts`, `Card.types.ts`, `SectionHeader.types.ts`, `stat/index.ts`?**
-  _High betweenness centrality (0.036) - this node is a cross-community bridge._
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Why does `exports` connect `exports` to `package.json`, `./components/accordion`, `./components/alert`, `./components/avatar`, `./components/badge`, `./components/breadcrumbs`, `./components/button`, `./components/card`, `./components/carousel`, `./components/image`, `./components/in-page-navigation`, `./components/link`, `./components/modal`, `./components/quote`, `./components/rich-text`, `./components/search-input`, `./components/search-overlay`, `./components/section-header`, `./components/slider`, `./components/stat`, `./components/tabs`, `./components/toast`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `devDependencies` connect `devDependencies` to `package.json`, `peerDependencies`, `eslint`, `husky`, `next`, `playwright`, `semantic-release`, `@semantic-release/commit-analyzer`, `@semantic-release/github`, `@semantic-release/release-notes-generator`, `storybook`, `@storybook/addon-a11y`, `@storybook/addon-docs`, `storybook-addon-pseudo-states`, `storybook-addon-tag-badges`, `@storybook/addon-vitest`, `@storybook/react-vite`, `tailwindcss`, `@tailwindcss/postcss`, `@tailwindcss/vite`, `@types/react-dom`, `typescript`, `@typescript-eslint/parser`, `@verndale/ai-pr`, `vite`, `@vitejs/plugin-react`, `@vitest/browser`, `@vitest/browser-playwright`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `scripts` connect `scripts` to `package.json`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `config`, `tagBadges`, `preview` to the rest of the system?**
-  _538 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _695 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `classNames.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07686274509803921 - nodes in this community are weakly interconnected._
 - **Should `build-graph.cjs` be split into smaller, more focused modules?**

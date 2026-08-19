@@ -195,22 +195,22 @@
     "semantic_hash": ""
   },
   "components/breadcrumbs/Breadcrumbs.stories.tsx": {
-    "mtime": 1786709483.5378826,
+    "mtime": 1786713230.77494,
     "ast_hash": "b0b9177051ef305f48499f204cb98e95",
     "semantic_hash": ""
   },
   "components/breadcrumbs/Breadcrumbs.tsx": {
-    "mtime": 1786675337.717135,
+    "mtime": 1786713230.7759347,
     "ast_hash": "276af4677567e69fa6f9e47d2307b4fa",
     "semantic_hash": ""
   },
   "components/breadcrumbs/Breadcrumbs.types.ts": {
-    "mtime": 1786675337.5964165,
+    "mtime": 1786713230.7792876,
     "ast_hash": "ae16b37ac83b9d3ae768c76b95d8d2c8",
     "semantic_hash": ""
   },
   "components/breadcrumbs/component.json": {
-    "mtime": 1786675361.0401876,
+    "mtime": 1786713230.7812667,
     "ast_hash": "beee42e6b592dcfc49f69d7cc7ff6827",
     "semantic_hash": ""
   },
@@ -220,12 +220,12 @@
     "semantic_hash": ""
   },
   "components/breadcrumbs/parts/BreadcrumbBackLink.tsx": {
-    "mtime": 1786675337.9461322,
+    "mtime": 1786713230.7825148,
     "ast_hash": "ec4e122b7369e182f5290511db9d7576",
     "semantic_hash": ""
   },
   "components/breadcrumbs/parts/BreadcrumbTrail.tsx": {
-    "mtime": 1786709489.3494706,
+    "mtime": 1786713230.787078,
     "ast_hash": "b14b4d34bda561936241acaf28e43915",
     "semantic_hash": ""
   },
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "components/carousel/Carousel.stories.tsx": {
-    "mtime": 1786659169.8350294,
-    "ast_hash": "df30c8aa5ebd1dc671f3710185cbf248",
+    "mtime": 1787089461.9398122,
+    "ast_hash": "d67990a64a5460a7bba3e615091ab2eb",
     "semantic_hash": ""
   },
   "components/carousel/Carousel.types.ts": {
@@ -845,8 +845,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1786659169.8948078,
-    "ast_hash": "91778414b08d4b1712bcb16430fd409b",
+    "mtime": 1787100692.8973682,
+    "ast_hash": "531e594902393eb2558e03c491b0dca8",
     "semantic_hash": ""
   },
   "release.config.cjs": {
@@ -910,8 +910,8 @@
     "semantic_hash": ""
   },
   "scripts/graph/data/graph.json": {
-    "mtime": 1786711857.8712554,
-    "ast_hash": "af278ab96bc71db7b129072f2d336f79",
+    "mtime": 1787101982.6429808,
+    "ast_hash": "65e1ca57eb5633433abf69700277dbe5",
     "semantic_hash": ""
   },
   "scripts/graph/routing-policy.json": {
@@ -1135,8 +1135,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786659169.8097541,
-    "ast_hash": "33ef2b4539ff9dc7d653dbf3123123bc",
+    "mtime": 1787100750.2129445,
+    "ast_hash": "abd3662404b8759f7bacda42f6b0b93c",
     "semantic_hash": ""
   },
   "scripts/graph/README.md": {
@@ -1152,6 +1152,171 @@
   ".claude/settings.local.json": {
     "mtime": 1785941782.0440445,
     "ast_hash": "3c6561d84aed48c7d90697122f384dea",
+    "semantic_hash": ""
+  },
+  "figma.config.json": {
+    "mtime": 1787068207.319225,
+    "ast_hash": "17d86c4d8cf83a8f6f93e55b42ffbe75",
+    "semantic_hash": ""
+  },
+  "figma/components/alert.figma.ts": {
+    "mtime": 1787068452.1809165,
+    "ast_hash": "f177e748484778825e6311bdc7bdd86f",
+    "semantic_hash": ""
+  },
+  "figma/components/button-dark.figma.ts": {
+    "mtime": 1787078864.9652433,
+    "ast_hash": "1b02bffd9d08c373f4139907f10aa124",
+    "semantic_hash": ""
+  },
+  "figma/components/button-light.figma.ts": {
+    "mtime": 1787078864.8788326,
+    "ast_hash": "89bca352582f8b426ce61ffda2ccc2e4",
+    "semantic_hash": ""
+  },
+  "figma/components/card-media.figma.ts": {
+    "mtime": 1787068452.2811728,
+    "ast_hash": "51f08106f1548be14e40ea45e0e6cc06",
+    "semantic_hash": ""
+  },
+  "figma/components/card.figma.ts": {
+    "mtime": 1787068452.3768563,
+    "ast_hash": "7b2068c2617ccb133b140260c785c40d",
+    "semantic_hash": ""
+  },
+  "figma/components/modal.figma.ts": {
+    "mtime": 1787068452.4694192,
+    "ast_hash": "4e6d5ccd942296a6918d660d7a873ae8",
+    "semantic_hash": ""
+  },
+  "figma/components/section-header.figma.ts": {
+    "mtime": 1787068452.0815544,
+    "ast_hash": "9bd60b2962f7579ac43af798e72d8377",
+    "semantic_hash": ""
+  },
+  "figma/library.json": {
+    "mtime": 1787100692.963403,
+    "ast_hash": "12863f74f8e724808e0e6f6042952240",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-contracts.cjs": {
+    "mtime": 1787100795.587725,
+    "ast_hash": "d492efc9ab35f974c9ea6cc8491697f6",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-contracts.selftest.cjs": {
+    "mtime": 1787100795.6529195,
+    "ast_hash": "ae0bd1c09bfe52d73a556c46aebc9a58",
+    "semantic_hash": ""
+  },
+  "tsconfig.figma.json": {
+    "mtime": 1787068207.4132848,
+    "ast_hash": "1303a40bf2a3e970d6da85fcab8fc1f3",
+    "semantic_hash": ""
+  },
+  "figma/README.md": {
+    "mtime": 1787100736.2731607,
+    "ast_hash": "d0993afd8ae62bd60074a1caf414e6d8",
+    "semantic_hash": ""
+  },
+  "figma/PROMOTION-CHECKLIST.md": {
+    "mtime": 1787100736.424806,
+    "ast_hash": "7332984c75b6147e299c27c7423e9253",
+    "semantic_hash": ""
+  },
+  "figma/components/accordion.figma.ts": {
+    "mtime": 1787081349.5423963,
+    "ast_hash": "fe27abcebb50b6e59fd8a7dc0b77ec3c",
+    "semantic_hash": ""
+  },
+  "figma/components/avatar.figma.ts": {
+    "mtime": 1787079253.9003444,
+    "ast_hash": "8471ce87ac67dec2fd43ec1343adff15",
+    "semantic_hash": ""
+  },
+  "figma/components/badge.figma.ts": {
+    "mtime": 1787079518.854048,
+    "ast_hash": "557edc3c57a70883c0134cb54d8a5e80",
+    "semantic_hash": ""
+  },
+  "figma/components/breadcrumbs.figma.ts": {
+    "mtime": 1787081232.1355608,
+    "ast_hash": "17bbd8295b71b77c6d4d4341fc585cef",
+    "semantic_hash": ""
+  },
+  "figma/components/carousel.figma.ts": {
+    "mtime": 1787086642.7435246,
+    "ast_hash": "c8b3171efcca7de892cc85cdcd6dc01c",
+    "semantic_hash": ""
+  },
+  "figma/components/image.figma.ts": {
+    "mtime": 1787080252.987175,
+    "ast_hash": "976088f261e8787abad3ffb0b159d3ed",
+    "semantic_hash": ""
+  },
+  "figma/components/in-page-navigation.figma.ts": {
+    "mtime": 1787083520.2860885,
+    "ast_hash": "c419b490140d44d9f1c2b7070e4129cf",
+    "semantic_hash": ""
+  },
+  "figma/components/link.figma.ts": {
+    "mtime": 1787079744.05843,
+    "ast_hash": "3e0d778b0d8a4e60eb463f81c8064033",
+    "semantic_hash": ""
+  },
+  "figma/components/quote.figma.ts": {
+    "mtime": 1787080338.8612673,
+    "ast_hash": "bcc0b62b9554689228e0814108b7c32d",
+    "semantic_hash": ""
+  },
+  "figma/components/rich-text.figma.ts": {
+    "mtime": 1787080426.863415,
+    "ast_hash": "413bb7cf13ac8127c233d2c9a9c5f2f9",
+    "semantic_hash": ""
+  },
+  "figma/components/search-input.figma.ts": {
+    "mtime": 1787080968.5106478,
+    "ast_hash": "83578a1eca4015c28bf4ee7bfa4113f4",
+    "semantic_hash": ""
+  },
+  "figma/components/search-overlay.figma.ts": {
+    "mtime": 1787089088.98602,
+    "ast_hash": "16299e253402308b937d50664265e4af",
+    "semantic_hash": ""
+  },
+  "figma/components/slider.figma.ts": {
+    "mtime": 1787081101.7924767,
+    "ast_hash": "ede8deab5397dfa170e1b64f1db25b66",
+    "semantic_hash": ""
+  },
+  "figma/components/stat.figma.ts": {
+    "mtime": 1787080755.7288435,
+    "ast_hash": "de8de746ef9a4c7f2bd3cadb4c13662c",
+    "semantic_hash": ""
+  },
+  "figma/components/tabs.figma.ts": {
+    "mtime": 1787081449.0660284,
+    "ast_hash": "8999fac47028e7eb830f5a2a831f3b8c",
+    "semantic_hash": ""
+  },
+  "figma/components/toast.figma.ts": {
+    "mtime": 1787083520.1866653,
+    "ast_hash": "119c3f4f0345406d29fbd842face4f11",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-live.cjs": {
+    "mtime": 1787089564.6154675,
+    "ast_hash": "e5ca12e7aa19a07018fd587314e5d9fa",
+    "semantic_hash": ""
+  },
+  "scripts/check-figma-live.selftest.cjs": {
+    "mtime": 1787089564.7230184,
+    "ast_hash": "c107104f4b2a29028d134abedbeadd76",
+    "semantic_hash": ""
+  },
+  ".github/workflows/figma-library-validation.yml": {
+    "mtime": 1787100693.1821685,
+    "ast_hash": "aec1d0f5fa01e3192c412786a42c2c96",
     "semantic_hash": ""
   }
 }

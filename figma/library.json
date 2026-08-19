@@ -1,0 +1,1083 @@
+{
+  "schemaVersion": 1,
+  "library": {
+    "name": "UI Design Library",
+    "fileKey": "gXT4bIDrkgva2uSzY763oG",
+    "url": "https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library",
+    "tier": "organization",
+    "expectedOwner": "Verndale Organization",
+    "ownershipStatus": "maintainer-verification-required-before-publish",
+    "publishing": {
+      "figmaLibrary": "explicit-maintainer-action",
+      "codeConnect": "optional-explicit-maintainer-action",
+      "ci": "read-only-validation"
+    },
+    "tokenPolicy": {
+      "componentSource": "src/tokens/semantic.css",
+      "componentVariableCollectionId": "38:3",
+      "documentationPresentation": "Cumulative Foundations",
+      "documentationPresentationOnly": true,
+      "modeLimit": 20,
+      "defaultMode": "Cumulative",
+      "maximumActiveClientModes": 19
+    },
+    "promotionPattern": {
+      "version": "direct-canonical-responsive-v1",
+      "handoffTarget": "direct-canonical-instance",
+      "componentFrameContents": "component-only",
+      "annotationPlacement": "outside-component-instance",
+      "canonicalLayerNaming": "ui-design-brain",
+      "autoLayoutRequired": true,
+      "viewportWidths": {
+        "desktop": 1440,
+        "tabletLarge": 1024,
+        "tabletSmall": 768,
+        "mobile": 390
+      },
+      "tokenBindings": {
+        "canvasSurface": {
+          "figmaVariable": "code/color/surface/base",
+          "cssToken": "--color-surface-base",
+          "resolvedValue": "#ffffff"
+        },
+        "specimenSurface": {
+          "figmaVariable": "code/color/surface/sunken",
+          "cssToken": "--color-surface-sunken",
+          "resolvedValue": "#f4f5f7"
+        },
+        "specimenPadding": {
+          "figmaVariable": "code/spacing/page-margin",
+          "cssToken": "--spacing-page-margin",
+          "resolvedValue": "1.25rem"
+        },
+        "annotationGap": {
+          "figmaVariable": "code/spacing/s",
+          "cssToken": "--spacing-s",
+          "resolvedValue": "1rem"
+        },
+        "variantGap": {
+          "figmaVariable": "code/spacing/xl",
+          "cssToken": "--spacing-xl",
+          "resolvedValue": "3rem"
+        },
+        "viewportRowGap": {
+          "figmaVariable": "code/spacing/xl",
+          "cssToken": "--spacing-xl",
+          "resolvedValue": "3rem"
+        },
+        "sectionInset": {
+          "figmaVariable": "code/spacing/m",
+          "cssToken": "--spacing-m",
+          "resolvedValue": "1.5rem"
+        }
+      },
+      "visualAudit": [
+        "canonical instance is the unambiguous developer handoff target",
+        "variants and viewport rows have token-bound whitespace",
+        "alignment, padding, margins, clipping, and containment pass",
+        "component visuals and dimensions match the public code implementation"
+      ]
+    }
+  },
+  "promotion": {
+    "definitionOfDone": [
+      "ready-for-dev documentation matches the Button Light template",
+      "component visuals use library Tailwind semantic tokens",
+      "canonical component name is unchanged",
+      "developer handoff target is the direct canonical component instance",
+      "annotations remain outside the component-only handoff frame",
+      "responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable",
+      "alignment, margins, padding, whitespace, clipping, and containment are audited",
+      "published node identity is registered",
+      "public API Code Connect template is present",
+      "repository contracts and CLI parse pass"
+    ]
+  },
+  "pilot": {
+    "componentIds": [
+      "button-light",
+      "button-dark",
+      "section-header",
+      "alert",
+      "card",
+      "card-media",
+      "modal"
+    ]
+  },
+  "nodeMigrations": [],
+  "components": [
+    {
+      "id": "button-light",
+      "canonical": "Button",
+      "slug": "button",
+      "exportName": "Button",
+      "publicImport": "@verndale/ui-design-library/components/button",
+      "componentPath": "components/button",
+      "storyPath": "components/button/Button.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": [
+        "children",
+        "variant",
+        "size",
+        "surface",
+        "startIcon",
+        "endIcon",
+        "type",
+        "disabled",
+        "onClick",
+        "aria-label",
+        "className",
+        "classNames"
+      ],
+      "codeOnlyProps": ["type", "onClick", "aria-label", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "surface", "value": "light" }],
+      "figma": {
+        "pageId": "11:5",
+        "pageName": "Button — Light",
+        "nodeId": "22:2",
+        "nodeKey": "a3cd7e509e56e2fbbccc73b120f5538acdd038ec",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Button",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/button-light.figma.ts",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary"] },
+          { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
+          { "name": "Start icon", "type": "BOOLEAN" },
+          { "name": "End icon", "type": "BOOLEAN" },
+          { "name": "Disabled", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "Variant", "kind": "enum", "codeProp": "variant", "values": ["Primary", "Secondary"] },
+        { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Large", "Medium", "Small"] },
+        { "figmaProperty": "Start icon", "kind": "boolean", "codeProp": "startIcon" },
+        { "figmaProperty": "End icon", "kind": "boolean", "codeProp": "endIcon" },
+        { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "button-dark",
+      "canonical": "Button",
+      "slug": "button",
+      "exportName": "Button",
+      "publicImport": "@verndale/ui-design-library/components/button",
+      "componentPath": "components/button",
+      "storyPath": "components/button/Button.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": [
+        "children",
+        "variant",
+        "size",
+        "surface",
+        "startIcon",
+        "endIcon",
+        "type",
+        "disabled",
+        "onClick",
+        "aria-label",
+        "className",
+        "classNames"
+      ],
+      "codeOnlyProps": ["type", "onClick", "aria-label", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "surface", "value": "dark" }],
+      "figma": {
+        "pageId": "11:6",
+        "pageName": "Button — Dark",
+        "nodeId": "53:3",
+        "nodeKey": "8ea0f13b9093a07fee022d1c6f61aa758547f221",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Button",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/button-dark.figma.ts",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary", "Ghost"] },
+          { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
+          { "name": "Start icon", "type": "BOOLEAN" },
+          { "name": "End icon", "type": "BOOLEAN" },
+          { "name": "Disabled", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "Variant", "kind": "enum", "codeProp": "variant", "values": ["Primary", "Secondary", "Ghost"] },
+        { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Large", "Medium", "Small"] },
+        { "figmaProperty": "Start icon", "kind": "boolean", "codeProp": "startIcon" },
+        { "figmaProperty": "End icon", "kind": "boolean", "codeProp": "endIcon" },
+        { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "section-header",
+      "canonical": "Section header",
+      "slug": "section-header",
+      "exportName": "SectionHeader",
+      "publicImport": "@verndale/ui-design-library/components/section-header",
+      "componentPath": "components/section-header",
+      "storyPath": "components/section-header/SectionHeader.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["eyebrow", "heading", "description", "alignment", "headingLevel", "as", "className", "classNames"],
+      "codeOnlyProps": ["headingLevel", "as", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "11:7",
+        "pageName": "Section header",
+        "nodeId": "64:99",
+        "nodeKey": "4124310a7b01bcdc48911f3133571d314b472cc0",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Section header",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/section-header.figma.ts",
+        "properties": [
+          { "name": "Heading", "type": "TEXT" },
+          { "name": "Eyebrow", "type": "TEXT" },
+          { "name": "Show eyebrow", "type": "BOOLEAN" },
+          { "name": "Description", "type": "TEXT" },
+          { "name": "Show description", "type": "BOOLEAN" },
+          { "name": "Alignment", "type": "VARIANT", "values": ["Left", "Center"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Heading", "kind": "string", "codeProp": "heading" },
+        { "figmaProperty": "Eyebrow", "kind": "string", "codeProp": "eyebrow" },
+        { "figmaProperty": "Show eyebrow", "kind": "boolean", "codeProp": "eyebrow", "role": "condition" },
+        { "figmaProperty": "Description", "kind": "string", "codeProp": "description" },
+        { "figmaProperty": "Show description", "kind": "boolean", "codeProp": "description", "role": "condition" },
+        { "figmaProperty": "Alignment", "kind": "enum", "codeProp": "alignment", "values": ["Left", "Center"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "alert",
+      "canonical": "Alert",
+      "slug": "alert",
+      "exportName": "Alert",
+      "publicImport": "@verndale/ui-design-library/components/alert",
+      "componentPath": "components/alert",
+      "storyPath": "components/alert/Alert.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "variant", "open", "icon", "showAccent", "onDismiss", "dismissLabel", "dismissMs", "className", "classNames"],
+      "codeOnlyProps": ["open", "dismissLabel", "dismissMs", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "11:8",
+        "pageName": "Alert",
+        "nodeId": "66:112",
+        "nodeKey": "1483c1c322fc7e63e0329b8888822521cf8eecc2",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Alert",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/alert.figma.ts",
+        "properties": [
+          { "name": "Message", "type": "TEXT" },
+          { "name": "Variant", "type": "VARIANT", "values": ["Positive", "Critical"] },
+          { "name": "Show accent", "type": "BOOLEAN" },
+          { "name": "Show icon", "type": "BOOLEAN" },
+          { "name": "Dismissible", "type": "BOOLEAN" }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Message", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "Variant", "kind": "enum", "codeProp": "variant", "values": ["Positive", "Critical"] },
+        { "figmaProperty": "Show accent", "kind": "boolean", "codeProp": "showAccent" },
+        { "figmaProperty": "Show icon", "kind": "boolean", "codeProp": "icon" },
+        { "figmaProperty": "Dismissible", "kind": "boolean", "codeProp": "onDismiss" }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "card",
+      "canonical": "Card",
+      "slug": "card",
+      "exportName": "Card",
+      "publicImport": "@verndale/ui-design-library/components/card",
+      "componentPath": "components/card",
+      "storyPath": "components/card/Card.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "unsetBackground", "as", "ariaLabel", "ariaLabelledBy", "className", "classNames"],
+      "codeOnlyProps": ["as", "ariaLabel", "ariaLabelledBy", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "11:9",
+        "pageName": "Card",
+        "nodeId": "71:104",
+        "nodeKey": "a8a7b1892ede65a10e9f9322428e3965f69b5b16",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Card",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/card.figma.ts",
+        "properties": [
+          { "name": "Content", "type": "SLOT" },
+          { "name": "Surface", "type": "VARIANT", "values": ["Raised", "Unset"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Content", "kind": "slot", "codeProp": "children" },
+        { "figmaProperty": "Surface", "kind": "enum", "codeProp": "unsetBackground", "values": ["Raised", "Unset"] }
+      ],
+      "nestedDependencies": ["card-media"]
+    },
+    {
+      "id": "card-media",
+      "canonical": "CardMedia",
+      "manifestCanonical": "Card",
+      "secondaryExport": true,
+      "slug": "card",
+      "exportName": "CardMedia",
+      "publicImport": "@verndale/ui-design-library/components/card",
+      "componentPath": "components/card",
+      "storyPath": "components/card/Card.stories.tsx",
+      "storyParity": "subset",
+      "storyProps": ["children", "className"],
+      "codeOnlyProps": ["className"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "11:10",
+        "pageName": "CardMedia",
+        "nodeId": "69:90",
+        "nodeKey": "d53c2f5e99b6d0be47b4205fb56d45f6fbdb0ed2",
+        "nodeType": "COMPONENT",
+        "nodeName": "CardMedia",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/card-media.figma.ts",
+        "properties": [{ "name": "Media", "type": "SLOT" }]
+      },
+      "mappings": [{ "figmaProperty": "Media", "kind": "slot", "codeProp": "children" }],
+      "nestedDependencies": []
+    },
+    {
+      "id": "modal",
+      "canonical": "Modal",
+      "slug": "modal",
+      "exportName": "Modal",
+      "publicImport": "@verndale/ui-design-library/components/modal",
+      "componentPath": "components/modal",
+      "storyPath": "components/modal/Modal.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": [
+        "open",
+        "onClose",
+        "title",
+        "closeLabel",
+        "eyebrow",
+        "description",
+        "children",
+        "footer",
+        "size",
+        "returnFocusRef",
+        "id",
+        "titleHeadingLevel",
+        "closeIcon",
+        "className",
+        "classNames"
+      ],
+      "codeOnlyProps": ["open", "onClose", "closeLabel", "returnFocusRef", "id", "titleHeadingLevel", "closeIcon", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "11:11",
+        "pageName": "Modal",
+        "nodeId": "75:129",
+        "nodeKey": "19603430c929e9035c8bdab786742349a353fb15",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Modal",
+        "status": "ready-for-dev",
+        "publicationStatus": "published",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-full-viewport",
+        "template": "figma/components/modal.figma.ts",
+        "properties": [
+          { "name": "Title", "type": "TEXT" },
+          { "name": "Eyebrow", "type": "TEXT" },
+          { "name": "Show eyebrow", "type": "BOOLEAN" },
+          { "name": "Description", "type": "TEXT" },
+          { "name": "Show description", "type": "BOOLEAN" },
+          { "name": "Body", "type": "SLOT" },
+          { "name": "Footer", "type": "SLOT" },
+          { "name": "Size", "type": "VARIANT", "values": ["Medium", "Large"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Title", "kind": "string", "codeProp": "title" },
+        { "figmaProperty": "Eyebrow", "kind": "string", "codeProp": "eyebrow" },
+        { "figmaProperty": "Show eyebrow", "kind": "boolean", "codeProp": "eyebrow", "role": "condition" },
+        { "figmaProperty": "Description", "kind": "string", "codeProp": "description" },
+        { "figmaProperty": "Show description", "kind": "boolean", "codeProp": "description", "role": "condition" },
+        { "figmaProperty": "Body", "kind": "slot", "codeProp": "children" },
+        { "figmaProperty": "Footer", "kind": "slot", "codeProp": "footer" },
+        { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Medium", "Large"] }
+      ],
+      "nestedDependencies": ["button-light"]
+    },
+    {
+      "id": "avatar",
+      "canonical": "Avatar",
+      "slug": "avatar",
+      "exportName": "Avatar",
+      "publicImport": "@verndale/ui-design-library/components/avatar",
+      "componentPath": "components/avatar",
+      "storyPath": "components/avatar/Avatar.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "id", "ariaLabel", "className", "classNames"],
+      "codeOnlyProps": ["id", "ariaLabel", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "164:3",
+        "pageName": "Avatar",
+        "nodeId": "164:45",
+        "nodeKey": "f3a8b8b211307dd18e28e6da18ff801a92aa7cb5",
+        "nodeType": "COMPONENT",
+        "nodeName": "Avatar",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/avatar.figma.ts",
+        "properties": [{ "name": "Media", "type": "SLOT" }]
+      },
+      "mappings": [{ "figmaProperty": "Media", "kind": "slot", "codeProp": "children" }],
+      "nestedDependencies": []
+    },
+    {
+      "id": "badge",
+      "canonical": "Badge",
+      "slug": "badge",
+      "exportName": "Badge",
+      "publicImport": "@verndale/ui-design-library/components/badge",
+      "componentPath": "components/badge",
+      "storyPath": "components/badge/Badge.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["label", "disabled", "surface", "startIcon", "endIcon", "onRemove", "removeLabel", "className", "classNames"],
+      "codeOnlyProps": ["removeLabel", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "167:4",
+        "pageName": "Badge",
+        "nodeId": "167:80",
+        "nodeKey": "50951d3449894d421e132508d8810eb54a25bbd3",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Badge",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/badge.figma.ts",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Start icon", "type": "BOOLEAN" },
+          { "name": "End icon", "type": "BOOLEAN" },
+          { "name": "Surface", "type": "VARIANT", "values": ["Light", "Dark"] },
+          { "name": "Disabled", "type": "VARIANT", "values": ["False", "True"] },
+          { "name": "Removable", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Start icon", "kind": "boolean", "codeProp": "startIcon" },
+        { "figmaProperty": "End icon", "kind": "boolean", "codeProp": "endIcon" },
+        { "figmaProperty": "Surface", "kind": "enum", "codeProp": "surface", "values": ["Light", "Dark"] },
+        { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] },
+        { "figmaProperty": "Removable", "kind": "enum", "codeProp": "onRemove", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "link",
+      "canonical": "Link",
+      "slug": "link",
+      "exportName": "Link",
+      "publicImport": "@verndale/ui-design-library/components/link",
+      "componentPath": "components/link",
+      "storyPath": "components/link/Link.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "size", "as", "touchTarget", "startIcon", "endIcon", "disabled", "href", "target", "rel", "onClick", "aria-label", "className", "classNames"],
+      "codeOnlyProps": ["as", "target", "rel", "onClick", "aria-label", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "169:2",
+        "pageName": "Link",
+        "nodeId": "169:62",
+        "nodeKey": "acf407d99a28ea27b8dbd7a1504513e6dd30c8c5",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Link",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/link.figma.ts",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Href", "type": "TEXT" },
+          { "name": "Touch target", "type": "BOOLEAN" },
+          { "name": "Start icon", "type": "BOOLEAN" },
+          { "name": "End icon", "type": "BOOLEAN" },
+          { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
+          { "name": "Disabled", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "Href", "kind": "string", "codeProp": "href", "visualBinding": "nonvisual", "nonvisualReason": "HTML destination metadata has no visual layer in the Link master." },
+        { "figmaProperty": "Touch target", "kind": "boolean", "codeProp": "touchTarget", "visualBinding": "nonvisual", "nonvisualReason": "The expanded interaction target is an implementation affordance, not visible Figma content." },
+        { "figmaProperty": "Start icon", "kind": "boolean", "codeProp": "startIcon" },
+        { "figmaProperty": "End icon", "kind": "boolean", "codeProp": "endIcon" },
+        { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Large", "Medium", "Small"] },
+        { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "image",
+      "canonical": "Image",
+      "slug": "image",
+      "exportName": "Image",
+      "publicImport": "@verndale/ui-design-library/components/image",
+      "componentPath": "components/image",
+      "storyPath": "components/image/Image.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["src", "alt", "width", "height", "responsive", "loader", "loading", "rounded", "wrapper", "className", "classNames"],
+      "codeOnlyProps": ["responsive", "loader", "loading", "wrapper", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "171:2",
+        "pageName": "Image",
+        "nodeId": "171:46",
+        "nodeKey": "e026f61a1fa905f1338dbe5b14946572b8531c39",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Image",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/image.figma.ts",
+        "properties": [
+          { "name": "Source", "type": "TEXT" },
+          { "name": "Alternative text", "type": "TEXT" },
+          { "name": "Width", "type": "TEXT" },
+          { "name": "Height", "type": "TEXT" },
+          { "name": "Rounded", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Source", "kind": "string", "codeProp": "src", "visualBinding": "nonvisual", "nonvisualReason": "The image source URL is implementation metadata; designers replace the image fill directly." },
+        { "figmaProperty": "Alternative text", "kind": "string", "codeProp": "alt", "visualBinding": "nonvisual", "nonvisualReason": "Alternative text is accessibility metadata and must not appear as visible component copy." },
+        { "figmaProperty": "Width", "kind": "string", "codeProp": "width", "visualBinding": "nonvisual", "nonvisualReason": "Intrinsic image width is code metadata while the Figma instance is resized geometrically." },
+        { "figmaProperty": "Height", "kind": "string", "codeProp": "height", "visualBinding": "nonvisual", "nonvisualReason": "Intrinsic image height is code metadata while the Figma instance is resized geometrically." },
+        { "figmaProperty": "Rounded", "kind": "enum", "codeProp": "rounded", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "quote",
+      "canonical": "Quote",
+      "slug": "quote",
+      "exportName": "Quote",
+      "publicImport": "@verndale/ui-design-library/components/quote",
+      "componentPath": "components/quote",
+      "storyPath": "components/quote/Quote.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "cite", "className", "classNames"],
+      "codeOnlyProps": ["className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "172:3",
+        "pageName": "Quote",
+        "nodeId": "172:39",
+        "nodeKey": "f2ddd22129bf8840b949d2c9de8f5fcbe43492b3",
+        "nodeType": "COMPONENT",
+        "nodeName": "Quote",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/quote.figma.ts",
+        "properties": [
+          { "name": "Quote", "type": "TEXT" },
+          { "name": "Citation", "type": "TEXT" }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Quote", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "Citation", "kind": "string", "codeProp": "cite", "visualBinding": "nonvisual", "nonvisualReason": "The public cite prop maps to the blockquote cite attribute and is not rendered as visible attribution." }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "rich-text",
+      "canonical": "Rich text",
+      "slug": "rich-text",
+      "exportName": "RichText",
+      "publicImport": "@verndale/ui-design-library/components/rich-text",
+      "componentPath": "components/rich-text",
+      "storyPath": "components/rich-text/RichText.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "listStyle", "as", "className", "classNames"],
+      "codeOnlyProps": ["as", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "173:2",
+        "pageName": "Rich text",
+        "nodeId": "173:62",
+        "nodeKey": "9e52aa590633b61165ea4c47876f98fd5c466349",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Rich text",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/rich-text.figma.ts",
+        "properties": [
+          { "name": "Content", "type": "TEXT" },
+          { "name": "List style", "type": "VARIANT", "values": ["Default", "Checkmark"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Content", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "List style", "kind": "enum", "codeProp": "listStyle", "values": ["Default", "Checkmark"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "stat",
+      "canonical": "Stat",
+      "slug": "stat",
+      "exportName": "Stat",
+      "publicImport": "@verndale/ui-design-library/components/stat",
+      "componentPath": "components/stat",
+      "storyPath": "components/stat/Stat.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["value", "label", "description", "contentOrder", "className", "classNames"],
+      "codeOnlyProps": ["className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "176:2",
+        "pageName": "Stat",
+        "nodeId": "176:12",
+        "nodeKey": "ec8f2e3383c12b7340993d5a2fadb8231d6cc719",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Stat",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "template": "figma/components/stat.figma.ts",
+        "properties": [
+          { "name": "Value", "type": "TEXT" },
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Description", "type": "TEXT" },
+          { "name": "Content order", "type": "VARIANT", "values": ["Value first", "Label first"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Value", "kind": "string", "codeProp": "value" },
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Description", "kind": "string", "codeProp": "description" },
+        { "figmaProperty": "Content order", "kind": "enum", "codeProp": "contentOrder", "values": ["Value first", "Label first"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "search-input",
+      "canonical": "Search input",
+      "slug": "search-input",
+      "exportName": "SearchInput",
+      "publicImport": "@verndale/ui-design-library/components/search-input",
+      "componentPath": "components/search-input",
+      "storyPath": "components/search-input/SearchInput.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["placeholder", "label", "ariaLabel", "showLabel", "name", "onSearch", "value", "onChange", "autoFocus", "results", "inputId", "clearLabel", "submitLabel", "resultsLabel", "clearIcon", "submitIcon", "showClearButton", "showSubmitButton", "className", "classNames"],
+      "codeOnlyProps": ["ariaLabel", "name", "onSearch", "onChange", "autoFocus", "inputId", "clearLabel", "submitLabel", "resultsLabel", "clearIcon", "submitIcon", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "177:2",
+        "pageName": "Search input",
+        "nodeId": "177:30",
+        "nodeKey": "3bf132f32e155535efbe501c5c18f2bd342c9ec7",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Search input",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/search-input.figma.ts",
+        "properties": [
+          { "name": "Placeholder", "type": "TEXT" },
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Query", "type": "TEXT" },
+          { "name": "Results content", "type": "TEXT" },
+          { "name": "Show label", "type": "BOOLEAN" },
+          { "name": "Show clear button", "type": "BOOLEAN" },
+          { "name": "Show submit button", "type": "BOOLEAN" },
+          { "name": "Show results", "type": "BOOLEAN" },
+          { "name": "State", "type": "VARIANT", "values": ["Empty", "Filled"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Placeholder", "kind": "string", "codeProp": "placeholder" },
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Query", "kind": "string", "codeProp": "value" },
+        { "figmaProperty": "Results content", "kind": "string", "codeProp": "results" },
+        { "figmaProperty": "Show label", "kind": "boolean", "codeProp": "showLabel" },
+        { "figmaProperty": "Show clear button", "kind": "boolean", "codeProp": "showClearButton" },
+        { "figmaProperty": "Show submit button", "kind": "boolean", "codeProp": "showSubmitButton" },
+        { "figmaProperty": "Show results", "kind": "boolean", "codeProp": "results", "role": "condition" },
+        { "figmaProperty": "State", "kind": "enum", "codeProp": "value", "role": "condition", "values": ["Empty", "Filled"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "slider",
+      "canonical": "Slider",
+      "slug": "slider",
+      "exportName": "Slider",
+      "publicImport": "@verndale/ui-design-library/components/slider",
+      "componentPath": "components/slider",
+      "storyPath": "components/slider/Slider.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["label", "options", "value", "defaultValue", "onChange", "hint", "unit", "inputId", "showScale", "showSelectedValue", "className", "classNames"],
+      "codeOnlyProps": ["defaultValue", "onChange", "inputId", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "options", "value": "sliderOptions" }],
+      "figma": {
+        "pageId": "178:2",
+        "pageName": "Slider",
+        "nodeId": "178:76",
+        "nodeKey": "61aa39cabced31ef0d4fa8728e36ec1f9da45b4b",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Slider",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/slider.figma.ts",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Hint", "type": "TEXT" },
+          { "name": "Unit", "type": "TEXT" },
+          { "name": "Show hint", "type": "BOOLEAN" },
+          { "name": "Show scale", "type": "BOOLEAN" },
+          { "name": "Show selected value", "type": "BOOLEAN" },
+          { "name": "Selected", "type": "VARIANT", "values": ["Small", "Medium", "Large", "Extra large"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Hint", "kind": "string", "codeProp": "hint" },
+        { "figmaProperty": "Unit", "kind": "string", "codeProp": "unit" },
+        { "figmaProperty": "Show hint", "kind": "boolean", "codeProp": "hint", "role": "condition" },
+        { "figmaProperty": "Show scale", "kind": "boolean", "codeProp": "showScale" },
+        { "figmaProperty": "Show selected value", "kind": "boolean", "codeProp": "showSelectedValue" },
+        { "figmaProperty": "Selected", "kind": "enum", "codeProp": "value", "values": ["Small", "Medium", "Large", "Extra large"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "breadcrumbs",
+      "canonical": "Breadcrumbs",
+      "slug": "breadcrumbs",
+      "exportName": "Breadcrumbs",
+      "publicImport": "@verndale/ui-design-library/components/breadcrumbs",
+      "componentPath": "components/breadcrumbs",
+      "storyPath": "components/breadcrumbs/Breadcrumbs.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["items", "currentPageTitle", "backLinkLabel", "leadingItem", "presentation", "surface", "ariaLabel", "separator", "backIcon", "className", "classNames"],
+      "codeOnlyProps": ["ariaLabel", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "items", "value": "breadcrumbItems" }],
+      "figma": {
+        "pageId": "179:2",
+        "pageName": "Breadcrumbs",
+        "nodeId": "179:52",
+        "nodeKey": "a03fadd76db3190f7766ec0bf75cd3fef7631efb",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Breadcrumbs",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/breadcrumbs.figma.ts",
+        "properties": [
+          { "name": "Current page", "type": "TEXT" },
+          { "name": "Back link label", "type": "TEXT" },
+          { "name": "Show leading item", "type": "BOOLEAN" },
+          { "name": "Separator", "type": "TEXT" },
+          { "name": "Show back icon", "type": "BOOLEAN" },
+          { "name": "Presentation", "type": "VARIANT", "values": ["Responsive desktop", "Responsive below xl", "Trail", "Back link"] },
+          { "name": "Surface", "type": "VARIANT", "values": ["Light", "Dark"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Current page", "kind": "string", "codeProp": "currentPageTitle" },
+        { "figmaProperty": "Back link label", "kind": "string", "codeProp": "backLinkLabel" },
+        { "figmaProperty": "Show leading item", "kind": "boolean", "codeProp": "leadingItem" },
+        { "figmaProperty": "Separator", "kind": "string", "codeProp": "separator" },
+        { "figmaProperty": "Show back icon", "kind": "boolean", "codeProp": "backIcon" },
+        { "figmaProperty": "Presentation", "kind": "enum", "codeProp": "presentation", "values": ["Responsive desktop", "Responsive below xl", "Trail", "Back link"] },
+        { "figmaProperty": "Surface", "kind": "enum", "codeProp": "surface", "values": ["Light", "Dark"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "accordion",
+      "canonical": "Accordion",
+      "slug": "accordion",
+      "exportName": "Accordion",
+      "publicImport": "@verndale/ui-design-library/components/accordion",
+      "componentPath": "components/accordion",
+      "storyPath": "components/accordion/Accordion.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["items", "heading", "standalone", "initialItemCount", "moreLabel", "lessLabel", "id", "role", "ariaLabel", "ariaLabelledBy", "ariaDescribedBy", "headingLevel", "itemHeadingLevel", "collapsedIcon", "expandedIcon", "className", "classNames"],
+      "codeOnlyProps": ["id", "role", "ariaLabel", "ariaLabelledBy", "ariaDescribedBy", "headingLevel", "itemHeadingLevel", "collapsedIcon", "expandedIcon", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "180:2",
+        "pageName": "Accordion",
+        "nodeId": "180:82",
+        "nodeKey": "88d4ef7bf3a132cfe866a629cb3da8ecef420836",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Accordion",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/accordion.figma.ts",
+        "properties": [
+          { "name": "Heading", "type": "TEXT" },
+          { "name": "Show heading", "type": "BOOLEAN" },
+          { "name": "Show reveal control", "type": "BOOLEAN" },
+          { "name": "More label", "type": "TEXT" },
+          { "name": "Less label", "type": "TEXT" },
+          { "name": "First item", "type": "VARIANT", "values": ["Collapsed", "Expanded"] },
+          { "name": "Standalone", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Heading", "kind": "string", "codeProp": "heading" },
+        { "figmaProperty": "Show heading", "kind": "boolean", "codeProp": "heading", "role": "condition" },
+        { "figmaProperty": "Show reveal control", "kind": "boolean", "codeProp": "initialItemCount" },
+        { "figmaProperty": "More label", "kind": "string", "codeProp": "moreLabel" },
+        { "figmaProperty": "Less label", "kind": "string", "codeProp": "lessLabel" },
+        { "figmaProperty": "First item", "kind": "enum", "codeProp": "items", "values": ["Collapsed", "Expanded"] },
+        { "figmaProperty": "Standalone", "kind": "enum", "codeProp": "standalone", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "tabs",
+      "canonical": "Tabs",
+      "slug": "tabs",
+      "exportName": "Tabs",
+      "publicImport": "@verndale/ui-design-library/components/tabs",
+      "componentPath": "components/tabs",
+      "storyPath": "components/tabs/Tabs.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["items", "ariaLabel", "activeId", "defaultActiveId", "onSelect", "tabIdPrefix", "orientation", "className", "classNames"],
+      "codeOnlyProps": ["defaultActiveId", "onSelect", "tabIdPrefix", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "items", "value": "tabItems" }],
+      "figma": {
+        "pageId": "181:2",
+        "pageName": "Tabs",
+        "nodeId": "181:70",
+        "nodeKey": "61cc421f55d05f5b430d5b1f69d9aee38e948eca",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Tabs",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/tabs.figma.ts",
+        "properties": [
+          { "name": "Aria label", "type": "TEXT" },
+          { "name": "Orientation", "type": "VARIANT", "values": ["Horizontal", "Vertical"] },
+          { "name": "Active tab", "type": "VARIANT", "values": ["Overview", "Specs", "Reviews"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Aria label", "kind": "string", "codeProp": "ariaLabel", "visualBinding": "nonvisual", "nonvisualReason": "The tablist accessible name is announced by assistive technology and is not visible copy." },
+        { "figmaProperty": "Orientation", "kind": "enum", "codeProp": "orientation", "values": ["Horizontal", "Vertical"] },
+        { "figmaProperty": "Active tab", "kind": "enum", "codeProp": "activeId", "values": ["Overview", "Specs", "Reviews"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "toast",
+      "canonical": "Toast",
+      "slug": "toast",
+      "exportName": "Toast",
+      "publicImport": "@verndale/ui-design-library/components/toast",
+      "componentPath": "components/toast",
+      "storyPath": "components/toast/Toast.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["open", "children", "variant", "dismissMs", "onDismiss", "icon", "position", "className", "classNames"],
+      "codeOnlyProps": ["dismissMs", "onDismiss", "className", "classNames"],
+      "fixedProps": [],
+      "figma": {
+        "pageId": "184:2",
+        "pageName": "Toast",
+        "nodeId": "184:40",
+        "nodeKey": "d5ff2adc14752e696375d6b750277c57ebba904b",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Toast",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/toast.figma.ts",
+        "properties": [
+          { "name": "Open", "type": "BOOLEAN" },
+          { "name": "Message", "type": "TEXT" },
+          { "name": "Show icon", "type": "BOOLEAN" },
+          { "name": "Variant", "type": "VARIANT", "values": ["Neutral", "Critical"] },
+          { "name": "Position", "type": "VARIANT", "values": ["Top start", "Top center", "Top end", "Bottom start", "Bottom center", "Bottom end"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Open", "kind": "boolean", "codeProp": "open", "visualBinding": "nonvisual", "nonvisualReason": "The registered Toast master depicts the open state; runtime mounting is represented only in code." },
+        { "figmaProperty": "Message", "kind": "string", "codeProp": "children" },
+        { "figmaProperty": "Show icon", "kind": "boolean", "codeProp": "icon" },
+        { "figmaProperty": "Variant", "kind": "enum", "codeProp": "variant", "values": ["Neutral", "Critical"] },
+        { "figmaProperty": "Position", "kind": "enum", "codeProp": "position", "values": ["Top start", "Top center", "Top end", "Bottom start", "Bottom center", "Bottom end"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "in-page-navigation",
+      "canonical": "In-page navigation",
+      "slug": "in-page-navigation",
+      "exportName": "InPageNavigation",
+      "publicImport": "@verndale/ui-design-library/components/in-page-navigation",
+      "componentPath": "components/in-page-navigation",
+      "storyPath": "components/in-page-navigation/InPageNavigation.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["items", "ariaLabel", "activeId", "collapsedIcon", "expandedIcon", "className", "classNames"],
+      "codeOnlyProps": ["collapsedIcon", "expandedIcon", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "items", "value": "inPageNavigationItems" }],
+      "figma": {
+        "pageId": "204:2",
+        "pageName": "In-page navigation",
+        "nodeId": "204:58",
+        "nodeKey": "97563cffd099de4915afabbcffed0ff08d75336e",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "In-page navigation",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/in-page-navigation.figma.ts",
+        "properties": [
+          { "name": "Aria label", "type": "TEXT" },
+          { "name": "Active section", "type": "VARIANT", "values": ["Overview", "Pricing"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Aria label", "kind": "string", "codeProp": "ariaLabel", "visualBinding": "nonvisual", "nonvisualReason": "The navigation landmark accessible name is announced by assistive technology and is not visible copy." },
+        { "figmaProperty": "Active section", "kind": "enum", "codeProp": "activeId", "values": ["Overview", "Pricing"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "carousel",
+      "canonical": "Carousel",
+      "slug": "carousel",
+      "exportName": "Carousel",
+      "publicImport": "@verndale/ui-design-library/components/carousel",
+      "componentPath": "components/carousel",
+      "storyPath": "components/carousel/Carousel.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["slides", "label", "previousLabel", "nextLabel", "loop", "slideClassName", "previousIcon", "nextIcon", "statusSeparator", "className", "classNames"],
+      "codeOnlyProps": ["previousLabel", "nextLabel", "slideClassName", "previousIcon", "nextIcon", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "slides", "value": "carouselSlides" }],
+      "figma": {
+        "pageId": "211:2",
+        "pageName": "Carousel",
+        "nodeId": "211:4",
+        "nodeKey": "588b3183c05d326b75068987d73633162b94f533",
+        "nodeType": "COMPONENT",
+        "nodeName": "Carousel",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "template": "figma/components/carousel.figma.ts",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Loop", "type": "BOOLEAN" },
+          { "name": "Status separator", "type": "TEXT" }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label", "visualBinding": "nonvisual", "nonvisualReason": "The Carousel label names the runtime region for assistive technology and is not visible copy." },
+        { "figmaProperty": "Loop", "kind": "boolean", "codeProp": "loop" },
+        { "figmaProperty": "Status separator", "kind": "string", "codeProp": "statusSeparator" }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "search-overlay",
+      "canonical": "Search overlay",
+      "slug": "search-overlay",
+      "exportName": "SearchOverlay",
+      "publicImport": "@verndale/ui-design-library/components/search-overlay",
+      "componentPath": "components/search-overlay",
+      "storyPath": "components/search-overlay/SearchOverlay.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["open", "onClose", "title", "supportingCopy", "query", "onQueryChange", "onSubmit", "inputPlaceholder", "quickLinks", "resultsPanel", "closeLabel", "returnFocusRef", "id", "titleHeadingLevel", "closeIcon", "inputLabel", "clearLabel", "submitLabel", "resultsLabel", "className", "classNames"],
+      "codeOnlyProps": ["onSubmit", "closeLabel", "returnFocusRef", "id", "titleHeadingLevel", "closeIcon", "inputLabel", "clearLabel", "submitLabel", "resultsLabel", "className", "classNames"],
+      "fixedProps": [
+        { "codeProp": "open", "value": true },
+        { "codeProp": "onClose", "value": "handleClose" },
+        { "codeProp": "onQueryChange", "value": "handleQueryChange" },
+        { "codeProp": "quickLinks", "value": "searchQuickLinks" },
+        { "codeProp": "resultsPanel", "value": "searchResults" }
+      ],
+      "figma": {
+        "pageId": "217:2",
+        "pageName": "Search overlay",
+        "nodeId": "217:52",
+        "nodeKey": "c7f7f87c05439dd086d52c887a0f0de18acc4096",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Search overlay",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-full-viewport",
+        "template": "figma/components/search-overlay.figma.ts",
+        "properties": [
+          { "name": "Title", "type": "TEXT" },
+          { "name": "Supporting copy", "type": "TEXT" },
+          { "name": "Query", "type": "TEXT" },
+          { "name": "Input placeholder", "type": "TEXT" },
+          { "name": "State", "type": "VARIANT", "values": ["Idle", "Active"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Title", "kind": "string", "codeProp": "title" },
+        { "figmaProperty": "Supporting copy", "kind": "string", "codeProp": "supportingCopy" },
+        { "figmaProperty": "Query", "kind": "string", "codeProp": "query" },
+        { "figmaProperty": "Input placeholder", "kind": "string", "codeProp": "inputPlaceholder" },
+        { "figmaProperty": "State", "kind": "enum", "codeProp": "query", "role": "condition", "values": ["Idle", "Active"] }
+      ],
+      "nestedDependencies": []
+    }
+  ]
+}

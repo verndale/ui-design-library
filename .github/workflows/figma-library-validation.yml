@@ -1,0 +1,65 @@
+name: Figma library validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/figma-library-validation.yml"
+      - "figma/**"
+      - "figma.config.json"
+      - "tsconfig.figma.json"
+      - "scripts/check-figma-contracts.cjs"
+      - "scripts/check-figma-contracts.selftest.cjs"
+      - "scripts/check-figma-live.cjs"
+      - "scripts/check-figma-live.selftest.cjs"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: figma-library-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      # Temporary personal token with file_content:read; replace with an
+      # Organization Plan Access Token when IT provisions one.
+      FIGMA_REST_TOKEN: ${{ secrets.FIGMA_REST_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.14.0"
+
+      - name: Enable pnpm via Corepack
+        run: corepack enable && corepack prepare pnpm@10.33.0 --activate
+
+      - name: Get pnpm store path
+        id: pnpm-cache
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Require read-only Figma credential
+        run: test -n "$FIGMA_REST_TOKEN"
+
+      - name: Validate repository templates and live Figma nodes
+        run: pnpm figma:validate

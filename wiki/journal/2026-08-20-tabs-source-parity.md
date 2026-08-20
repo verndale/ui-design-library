@@ -2,7 +2,7 @@
 date: 2026-08-20
 topics: [component-architecture, figma-code-connect, story-testing, variant-axis]
 plan: plans/2026-08-19-source-parity-audit-and-remediation.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/78
 ---
 # Restore Tabs visual and responsive source parity
 

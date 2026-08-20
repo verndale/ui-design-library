@@ -2,7 +2,7 @@
 date: 2026-08-20
 topics: [variant-axis, figma-code-connect, story-testing]
 plan: plans/2026-08-19-source-parity-audit-and-remediation.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/74
 ---
 # Restore In-page navigation modal-drawer source parity
 

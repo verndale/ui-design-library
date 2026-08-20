@@ -118,6 +118,7 @@
       "storyParity": "exact",
       "storyProps": [
         "children",
+        "presentation",
         "variant",
         "size",
         "surface",
@@ -131,48 +132,30 @@
         "classNames"
       ],
       "codeOnlyProps": ["type", "onClick", "aria-label", "className", "classNames"],
-      "fixedProps": [{ "codeProp": "surface", "value": "light" }],
+      "fixedProps": [
+        { "codeProp": "surface", "value": "light" },
+        { "codeProp": "presentation", "value": "label" }
+      ],
       "sourceParity": {
         "contractVersion": 1,
         "auditComponentKey": "button",
-        "auditStatus": "remediation-pending",
+        "auditStatus": "cleared",
         "privateAuditRef": "library-source-parity:2026-08-19/components/button",
         "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
-        "decisionIds": [
-          "sp-button-001",
-          "sp-button-002"
-        ],
+        "decisionIds": ["sp-button-001", "sp-button-002"],
         "representationDecisions": [
           {
             "decisionId": "sp-button-002",
             "implementationKey": "button",
-            "surfaces": [
-              "ai-registry",
-              "code",
-              "figma",
-              "storybook"
-            ]
+            "surfaces": ["ai-registry", "code", "figma", "storybook"]
           }
         ],
-        "requiredRepresentationSurfaces": [
-          "ai-registry",
-          "code",
-          "figma",
-          "storybook"
-        ],
-        "representations": [
-          {
-            "decisionId": "sp-button-002",
-            "kind": "component-property",
-            "masterNodeId": null,
-            "publicProps": [],
-            "specimens": []
-          }
-        ]
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": []
       },
       "figma": {
         "pageId": "11:5",
-        "pageName": "Button — Light",
+        "pageName": "Button \u2014 Light",
         "nodeId": "22:2",
         "nodeKey": "a3cd7e509e56e2fbbccc73b120f5538acdd038ec",
         "nodeType": "COMPONENT_SET",
@@ -182,8 +165,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-button-source-parity.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -207,6 +190,77 @@
       "nestedDependencies": []
     },
     {
+      "id": "button-light-icon-only",
+      "canonical": "Button",
+      "slug": "button",
+      "presentationLabel": "Icon only",
+      "exportName": "Button",
+      "publicImport": "@verndale/ui-design-library/components/button",
+      "componentPath": "components/button",
+      "storyPath": "components/button/Button.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "presentation", "variant", "size", "surface", "startIcon", "endIcon", "type", "disabled", "onClick", "aria-label", "className", "classNames"],
+      "codeOnlyProps": ["children", "startIcon", "endIcon", "type", "onClick", "aria-label", "className", "classNames"],
+      "fixedProps": [
+        { "codeProp": "surface", "value": "light" },
+        { "codeProp": "presentation", "value": "icon-only" }
+      ],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "button",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/button",
+        "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
+        "decisionIds": ["sp-button-001", "sp-button-002"],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-button-002",
+            "implementationKey": "button",
+            "surfaces": ["ai-registry", "code", "figma", "storybook"]
+          }
+        ],
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": [
+          {
+            "decisionId": "sp-button-002",
+            "kind": "component-property",
+            "masterNodeId": "307:2",
+            "publicProps": ["presentation"],
+            "specimens": []
+          }
+        ]
+      },
+      "figma": {
+        "pageId": "11:5",
+        "pageName": "Button \u2014 Light",
+        "nodeId": "307:2",
+        "nodeKey": "3205974927fde36620489da7096785ae7fa4b851",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Button / Icon only",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-button-source-parity.md"
+        },
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "properties": [
+          { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary"] },
+          { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
+          { "name": "Disabled", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Variant", "kind": "enum", "codeProp": "variant", "values": ["Primary", "Secondary"] },
+        { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Large", "Medium", "Small"] },
+        { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
       "id": "button-dark",
       "canonical": "Button",
       "slug": "button",
@@ -215,63 +269,32 @@
       "componentPath": "components/button",
       "storyPath": "components/button/Button.stories.tsx",
       "storyParity": "exact",
-      "storyProps": [
-        "children",
-        "variant",
-        "size",
-        "surface",
-        "startIcon",
-        "endIcon",
-        "type",
-        "disabled",
-        "onClick",
-        "aria-label",
-        "className",
-        "classNames"
-      ],
+      "storyProps": ["children", "presentation", "variant", "size", "surface", "startIcon", "endIcon", "type", "disabled", "onClick", "aria-label", "className", "classNames"],
       "codeOnlyProps": ["type", "onClick", "aria-label", "className", "classNames"],
-      "fixedProps": [{ "codeProp": "surface", "value": "dark" }],
+      "fixedProps": [
+        { "codeProp": "surface", "value": "dark" },
+        { "codeProp": "presentation", "value": "label" }
+      ],
       "sourceParity": {
         "contractVersion": 1,
         "auditComponentKey": "button",
-        "auditStatus": "remediation-pending",
+        "auditStatus": "cleared",
         "privateAuditRef": "library-source-parity:2026-08-19/components/button",
         "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
-        "decisionIds": [
-          "sp-button-001",
-          "sp-button-002"
-        ],
+        "decisionIds": ["sp-button-001", "sp-button-002"],
         "representationDecisions": [
           {
             "decisionId": "sp-button-002",
             "implementationKey": "button",
-            "surfaces": [
-              "ai-registry",
-              "code",
-              "figma",
-              "storybook"
-            ]
+            "surfaces": ["ai-registry", "code", "figma", "storybook"]
           }
         ],
-        "requiredRepresentationSurfaces": [
-          "ai-registry",
-          "code",
-          "figma",
-          "storybook"
-        ],
-        "representations": [
-          {
-            "decisionId": "sp-button-002",
-            "kind": "component-property",
-            "masterNodeId": null,
-            "publicProps": [],
-            "specimens": []
-          }
-        ]
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": []
       },
       "figma": {
         "pageId": "11:6",
-        "pageName": "Button — Dark",
+        "pageName": "Button \u2014 Dark",
         "nodeId": "53:3",
         "nodeKey": "8ea0f13b9093a07fee022d1c6f61aa758547f221",
         "nodeType": "COMPONENT_SET",
@@ -281,8 +304,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-button-source-parity.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -301,6 +324,69 @@
         { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Large", "Medium", "Small"] },
         { "figmaProperty": "Start icon", "kind": "boolean", "codeProp": "startIcon" },
         { "figmaProperty": "End icon", "kind": "boolean", "codeProp": "endIcon" },
+        { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "button-dark-icon-only",
+      "canonical": "Button",
+      "slug": "button",
+      "presentationLabel": "Icon only",
+      "exportName": "Button",
+      "publicImport": "@verndale/ui-design-library/components/button",
+      "componentPath": "components/button",
+      "storyPath": "components/button/Button.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["children", "presentation", "variant", "size", "surface", "startIcon", "endIcon", "type", "disabled", "onClick", "aria-label", "className", "classNames"],
+      "codeOnlyProps": ["children", "startIcon", "endIcon", "type", "onClick", "aria-label", "className", "classNames"],
+      "fixedProps": [
+        { "codeProp": "surface", "value": "dark" },
+        { "codeProp": "presentation", "value": "icon-only" }
+      ],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "button",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/button",
+        "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
+        "decisionIds": ["sp-button-001", "sp-button-002"],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-button-002",
+            "implementationKey": "button",
+            "surfaces": ["ai-registry", "code", "figma", "storybook"]
+          }
+        ],
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": []
+      },
+      "figma": {
+        "pageId": "11:6",
+        "pageName": "Button \u2014 Dark",
+        "nodeId": "308:2",
+        "nodeKey": "a2d7887b9dbe3f976de9d55124b11d965d263208",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Button / Icon only",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-button-source-parity.md"
+        },
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "component-matrix",
+        "properties": [
+          { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary", "Ghost"] },
+          { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
+          { "name": "Disabled", "type": "VARIANT", "values": ["False", "True"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Variant", "kind": "enum", "codeProp": "variant", "values": ["Primary", "Secondary", "Ghost"] },
+        { "figmaProperty": "Size", "kind": "enum", "codeProp": "size", "values": ["Large", "Medium", "Small"] },
         { "figmaProperty": "Disabled", "kind": "enum", "codeProp": "disabled", "values": ["False", "True"] }
       ],
       "nestedDependencies": []

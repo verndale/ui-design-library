@@ -76,6 +76,17 @@ const cases = [
     expect: (failures) => failures.some((failure) => failure.includes('must share Carousel\'s family page identity')),
   },
   {
+    name: 'surface-specific presentations must stay beside their matching base',
+    registry: (() => {
+      const registry = clone();
+      const presentation = registry.components.find((component) => component.id === 'button-dark-icon-only');
+      presentation.figma.pageId = '11:5';
+      presentation.figma.pageName = 'Button   Light';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes("must share Button's family page identity")),
+  },
+  {
     name: 'duplicate presentations cannot both claim one source-parity decision',
     registry: (() => {
       const registry = clone();
@@ -172,7 +183,7 @@ const cases = [
     name: 'a grandfathered remediation cannot claim a completed source-parity review',
     registry: (() => {
       const registry = clone();
-      registry.components.find((component) => component.id === 'button-light').figma.review.passes = [
+      registry.components.find((component) => component.id === 'slider').figma.review.passes = [
         'source-parity',
         'adversarial',
         'design',
@@ -372,11 +383,12 @@ const cases = [
   },
   {
     name: 'an accepted component-property representation cannot leave the baseline without a master',
-    registry: clone(),
-    sourceParityBaseline: {
-      ...baseSourceParityBaseline,
-      remainingKeys: baseSourceParityBaseline.remainingKeys.filter((key) => key !== 'button'),
-    },
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'button-light-icon-only')
+        .sourceParity.representations[0].masterNodeId = null;
+      return registry;
+    })(),
     expect: (failures) => failures.some((failure) => failure.includes('requires a registered master after remediation')),
   },
 ];

@@ -100,6 +100,29 @@ function samePrimaryIdentity(left, right) {
     Boolean(left.default) === Boolean(right.default);
 }
 
+function fixedPropDifferenceCount(left, right) {
+  const leftProps = new Map((left.fixedProps ?? []).map((entry) => [entry.codeProp, entry.value]));
+  const rightProps = new Map((right.fixedProps ?? []).map((entry) => [entry.codeProp, entry.value]));
+  const keys = new Set([...leftProps.keys(), ...rightProps.keys()]);
+  let differences = 0;
+  for (const key of keys) {
+    if (!leftProps.has(key) || !rightProps.has(key) ||
+      JSON.stringify(leftProps.get(key)) !== JSON.stringify(rightProps.get(key))) {
+      differences += 1;
+    }
+  }
+  return differences;
+}
+
+function sharesMatchingBasePresentationPage(component, family) {
+  return family.some((candidate) =>
+    candidate.presentationLabel === undefined &&
+    candidate.componentPath === component.componentPath &&
+    candidate.figma?.pageId === component.figma?.pageId &&
+    candidate.figma?.pageName === component.figma?.pageName &&
+    fixedPropDifferenceCount(component, candidate) === 1);
+}
+
 function commandSteps(command) {
   return String(command ?? '').split('&&').map((step) => step.trim()).filter(Boolean);
 }
@@ -620,11 +643,16 @@ function check(options = {}) {
       fail(`[family] ${canonical} must designate exactly one familyPage registration`);
       continue;
     }
-    const requiresSharedFamilyPage = structuralPaths.size > 1 || family.some((component) => component.presentationLabel !== undefined);
-    if (requiresSharedFamilyPage && designated.length === 1) {
+    if (structuralPaths.size > 1 && designated.length === 1) {
       const page = designated[0].figma ?? {};
       for (const component of family) {
         if (component.figma?.pageId !== page.pageId || component.figma?.pageName !== page.pageName) {
+          fail(`[family] ${component.id} must share ${canonical}'s family page identity`);
+        }
+      }
+    } else if (structuralPaths.size === 1) {
+      for (const component of family.filter((entry) => entry.presentationLabel !== undefined)) {
+        if (!sharesMatchingBasePresentationPage(component, family)) {
           fail(`[family] ${component.id} must share ${canonical}'s family page identity`);
         }
       }

@@ -23,7 +23,7 @@ The registry now distinguishes a fixed-prop presentation from a structural alter
 ## Review results
 
 - Source-parity review passed: `sp-carousel-001` remains preserved, `sp-carousel-002` is represented on code, Storybook, Figma, and AI registry surfaces, and composition-specific consumer widths remain rejected under `sp-carousel-003`.
-- Adversarial review found that the fifth wide Storybook card is partially visible and therefore correctly focusable; the test now supplies a sixth slide so it separately proves partially visible versus fully off-screen focus behavior. Family-level validator fixtures reject missing and duplicate decision ownership.
+- A follow-up governed-Card composition review corrected the initial focus conclusion: the source-derived multi-card layout requires full containment, so a partially clipped Card must be inert. The component and cross-component stories now distinguish partial from fully visible slides and prove the correction; the follow-up is recorded in the 2026-08-20 journal entry. Family-level validator fixtures continue to reject missing and duplicate decision ownership.
 - Contract regression testing found the first family-union rule also captured the grandfathered Button pair. Exact-once family ownership and shared-page enforcement now apply to cleared, explicitly labeled presentation families without changing pending legacy behavior.
 - The 200% accessibility mode found that aliasing the exact gap to rem-based global spacing doubled 8/12px into 16/24px. The Carousel semantic gap is now explicitly pixel-valued, matching its fixed-width source contract at every zoom mode.
 - Public-API review found the new layout union was not re-exported from the stable facade; `CarouselLayout` is now exported with `CarouselProps`.

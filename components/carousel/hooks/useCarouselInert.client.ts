@@ -2,16 +2,21 @@ import type { UseEmblaCarouselType } from 'embla-carousel-react';
 import { useEffect, type RefObject } from 'react';
 
 type CarouselApi = UseEmblaCarouselType[1];
+export type CarouselInertVisibility = 'intersecting' | 'fully-visible';
 
-/** Keep focusable content in off-screen slides out of the tab order. */
+const CLIP_EDGE_EPSILON_PX = 1;
+
+/** Keep focusable content outside the layout's usable visibility threshold out of the tab order. */
 export function useCarouselInert({
   api,
   trackRef,
   slideCount,
+  visibility,
 }: {
   api: CarouselApi;
   trackRef: RefObject<HTMLDivElement | null>;
   slideCount: number;
+  visibility: CarouselInertVisibility;
 }) {
   useEffect(() => {
     const track = trackRef.current;
@@ -23,19 +28,34 @@ export function useCarouselInert({
       const measurable = bounds.width > 0;
       for (const node of [...track.children] as HTMLElement[]) {
         const box = node.getBoundingClientRect();
-        const visible = !measurable || (box.right > bounds.left + 1 && box.left < bounds.right - 1);
+        const intersects = box.right > bounds.left + CLIP_EDGE_EPSILON_PX && box.left < bounds.right - CLIP_EDGE_EPSILON_PX;
+        const fullyVisible =
+          box.left >= bounds.left - CLIP_EDGE_EPSILON_PX &&
+          box.right <= bounds.right + CLIP_EDGE_EPSILON_PX &&
+          box.top >= bounds.top - CLIP_EDGE_EPSILON_PX &&
+          box.bottom <= bounds.bottom + CLIP_EDGE_EPSILON_PX;
+        const visible = !measurable || (visibility === 'fully-visible' ? fullyVisible : intersects);
         if (visible) node.removeAttribute('inert');
         else node.setAttribute('inert', '');
       }
     };
 
-    const frame = requestAnimationFrame(apply);
-    window.addEventListener('resize', apply);
-    api?.on('select', apply).on('reInit', apply).on('settle', apply);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('resize', apply);
-      api?.off('select', apply).off('reInit', apply).off('settle', apply);
+    let frame: number | null = null;
+    const schedule = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        apply();
+      });
     };
-  }, [api, slideCount, trackRef]);
+
+    schedule();
+    window.addEventListener('resize', schedule);
+    api?.on('scroll', schedule).on('select', schedule).on('reInit', schedule).on('settle', schedule);
+    return () => {
+      if (frame !== null) cancelAnimationFrame(frame);
+      window.removeEventListener('resize', schedule);
+      api?.off('scroll', schedule).off('select', schedule).off('reInit', schedule).off('settle', schedule);
+    };
+  }, [api, slideCount, trackRef, visibility]);
 }

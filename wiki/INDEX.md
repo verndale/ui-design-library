@@ -37,6 +37,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-20 — [Compose governed Cards inside Carousel](journal/2026-08-20-carousel-card-composition.md) — added real Card slide specimens and corrected partially clipped multi-card focus behavior without widening the Carousel presentation API.
 - 2026-08-19 — [Restore Carousel multi-card source parity](journal/2026-08-19-carousel-source-parity.md) — kept the default contract stable while adding an exact fixed-prop card-peek presentation across code, Storybook, Figma, and AI registration.
 - 2026-08-19 — [Keep Graphify output local](journal/2026-08-19-keep-graphify-output-local.md) — aligned with ui-design-evidence so Graphify refreshes cannot dirty synchronized branches with generated code-map output.
 - 2026-08-19 — [Add source-parity governance to the library](journal/2026-08-19-source-parity-governance-foundation.md) — linked all 21 component surfaces to immutable private decisions and constrained the legacy baseline to five accepted remediations.

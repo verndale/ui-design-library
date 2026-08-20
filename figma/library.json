@@ -1582,7 +1582,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-carousel-source-parity.md"
+          "evidence": "wiki/journal/2026-08-20-carousel-card-composition.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -1674,7 +1674,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-carousel-source-parity.md"
+          "evidence": "wiki/journal/2026-08-20-carousel-card-composition.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",

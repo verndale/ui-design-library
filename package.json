@@ -157,7 +157,7 @@
     "release:preflight": "node scripts/check-release-commit.cjs",
     "release:preflight:selftest": "node scripts/check-release-commit.selftest.cjs",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint components src",
+    "lint": "eslint components src stories",
     "architecture": "node scripts/check-component-architecture.cjs",
     "architecture:selftest": "node scripts/check-component-architecture.selftest.cjs",
     "contracts:code": "node scripts/check-contracts.cjs",

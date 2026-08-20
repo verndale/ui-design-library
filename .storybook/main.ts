@@ -1,8 +1,9 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  // Stories live beside the component they document, keyed by canonical slug.
-  stories: ['../components/**/*.stories.@(ts|tsx)'],
+  // Component API stories live beside their canonical; cross-component examples
+  // stay in the separate compositions tree so facade-only imports remain honest.
+  stories: ['../components/**/*.stories.@(ts|tsx)', '../stories/compositions/**/*.stories.@(ts|tsx)'],
   addons: [
     // Generates a Docs page per component from its argTypes and TS types.
     '@storybook/addon-docs',

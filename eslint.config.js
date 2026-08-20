@@ -6,7 +6,7 @@ export default [
     ignores: ['dist/**', 'storybook-static/**', 'scripts/graph/viewer/vendor/**'],
   },
   {
-    files: ['components/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}'],
+    files: ['components/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}', 'stories/**/*.{ts,tsx}'],
     languageOptions: {
       parser,
       parserOptions: {

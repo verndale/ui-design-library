@@ -9,10 +9,11 @@ evidence:
   - "PR #64 https://github.com/verndale/ui-design-library/pull/64 (merged 2026-08-20)"
   - "issue #62"
   - "Carousel alternate Figma master 277:71 and responsive specimens"
+  - "Carousel governed Card composition section 293:218"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]
-audit_note: Public redacted execution copy. The governance foundation and complete private audit landed; Carousel remediation is complete in its uncommitted issue worktree and unpublished Figma representation, leaving four component remediations sequenced separately. Client identities, revisions, paths, and cited facts remain in ui-design-evidence.
+audit_note: Public redacted execution copy. The governance foundation and complete private audit landed; Carousel remediation is complete in its issue worktree and unpublished Figma representation, including a follow-up governed Card composition and corrected partial-slide focus threshold. Four component remediations remain sequenced separately. Client identities, revisions, paths, and cited facts remain in ui-design-evidence.
 ---
 # Official Source-Parity Audit and Remediation Plan
 

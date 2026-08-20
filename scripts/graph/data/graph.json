@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 132,
-    "edges": 268,
+    "nodes": 133,
+    "edges": 272,
     "byType": {
       "surface": 44,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 37,
+      "wiki-journal": 38,
       "wiki-plan": 15,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 51,
-      "links-to": 124,
-      "plan": 18,
-      "topic": 54,
+      "links-to": 126,
+      "plan": 19,
+      "topic": 55,
       "uses-tokens": 21
     }
   },
@@ -150,7 +150,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1112,
+      "bytes": 1246,
       "degree": 1
     },
     {
@@ -318,7 +318,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11863,
+      "bytes": 12417,
       "degree": 1
     },
     {
@@ -522,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10870,
+      "bytes": 10878,
       "degree": 1
     },
     {
@@ -870,8 +870,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 14062,
-      "degree": 47
+      "bytes": 14311,
+      "degree": 48
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1388,7 +1388,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4898,
+      "bytes": 5045,
       "degree": 4
     },
     {
@@ -1456,6 +1456,20 @@
         "63"
       ],
       "bytes": 5046,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-08-20-carousel-card-composition.md",
+      "label": "Compose governed Cards inside Carousel",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2669,
       "degree": 4
     },
     {
@@ -1720,8 +1734,8 @@
         "64"
       ],
       "issues": [],
-      "bytes": 10801,
-      "degree": 5
+      "bytes": 10938,
+      "degree": 6
     },
     {
       "id": "wiki/plans/INDEX.md",
@@ -1757,7 +1771,7 @@
         "18",
         "4"
       ],
-      "bytes": 6633,
+      "bytes": 6687,
       "degree": 18
     },
     {
@@ -1799,8 +1813,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 12385,
-      "degree": 43
+      "bytes": 13027,
+      "degree": 45
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2488,6 +2502,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-20-carousel-card-composition.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2838,6 +2859,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-20-carousel-card-composition.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -2882,7 +2910,7 @@
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 2,
+      "count": 3,
       "anchors": []
     },
     {
@@ -3158,6 +3186,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-20-carousel-card-composition.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -3314,6 +3347,11 @@
     },
     {
       "source": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },

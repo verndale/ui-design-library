@@ -36,6 +36,7 @@ async function verifyMultiCardLayout(canvasElement: HTMLElement, expectedSlideWi
   });
   await expect(partialSlide).toBeDefined();
   await expect(slides[0]).not.toHaveAttribute('inert');
+  await waitFor(async () => expect(partialSlide!).toHaveAttribute('inert'));
   await waitFor(async () => expect(slides.at(-1)!).toHaveAttribute('inert'));
 }
 
@@ -80,7 +81,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Steps through discrete slides using Embla. Off-screen slides are marked `inert` so Tab skips their links, the arrow controls disable at the ends, and each slide announces its position.',
+          'Steps through discrete slides using Embla. Slides outside the active layout visibility threshold are marked `inert` so Tab skips clipped links, the arrow controls disable at the ends, and each slide announces its position.',
       },
     },
   },

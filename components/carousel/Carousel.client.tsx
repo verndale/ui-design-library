@@ -19,7 +19,11 @@ export function Carousel({
   classNames,
   statusSeparator = '/',
 }: CarouselProps) {
-  const controller = useCarouselController({ loop, slideCount: slides.length });
+  const controller = useCarouselController({
+    loop,
+    slideCount: slides.length,
+    inertVisibility: layout === 'multi-card-peek' ? 'fully-visible' : 'intersecting',
+  });
   if (slides.length === 0) return null;
 
   return (

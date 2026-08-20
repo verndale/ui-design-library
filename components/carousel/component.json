@@ -43,8 +43,9 @@
     "Removed the import of the project's Button; the arrow controls are now local, with previousIcon and nextIcon slots for a project's own icons.",
     "Collapsed the eight sibling modules (CarouselChevronIcons, CarouselFocusOverlays, carouselA11y.constants, carouselA11y.helpers, carouselA11yContext, useCarouselArrowKeyboardFocus, useCarouselArrowTabOrder) into one component; the context existed to thread state between files that no longer exist separately.",
     "Mapped chevron and focus-overlay colours onto semantic tokens.",
-    "Kept verbatim: inert applied via setAttribute rather than a React prop, so Tab skips off-screen slides; arrow controls disabling at the ends; the labelled carousel region; and per-slide role=group with an announced position.",
-    "Replaced the engine's slidesInView() reporting for inert gating with direct geometry. slidesInView() returned empty before the engine measured, which marked every slide inert and made the whole carousel unreachable by keyboard — strictly worse than no gating. IntersectionObserver was tried and rejected: it only delivers callbacks while the page paints, so the state is undefined in a background tab and unverifiable headless. Comparing each slide box to the viewport box is true whenever it is asked, and fails open when the viewport has no width."
+    "Kept verbatim: inert applied via setAttribute rather than a React prop, so Tab skips slides outside the layout's usable visibility threshold; arrow controls disabling at the ends; the labelled carousel region; and per-slide role=group with an announced position.",
+    "Replaced the engine's slidesInView() reporting for inert gating with direct geometry. slidesInView() returned empty before the engine measured, which marked every slide inert and made the whole carousel unreachable by keyboard — strictly worse than no gating. IntersectionObserver was tried and rejected: it only delivers callbacks while the page paints, so the state is undefined in a background tab and unverifiable headless. Comparing each slide box to the viewport box is true whenever it is asked, fails open when the viewport has no width, retains intersecting-slide gating for the single layout, and requires full containment for the source-derived multi-card peek so a partially clipped Card cannot receive focus.",
+    "Kept slide content presentation outside the Carousel contract: governed Card instances are a supported composition through the existing slides collection, while consumer-specific People and Story card widths remain composition decisions rather than Carousel variants."
   ],
   "sourceParity": {
     "contractVersion": 1,
@@ -348,7 +349,7 @@
         },
         {
         "id": "slide",
-        "attributes": {"role":"group","aria-roledescription":"slide","aria-label":{"state":"positionLabel"},"inert":{"state":"offscreen"}},
+        "attributes": {"role":"group","aria-roledescription":"slide","aria-label":{"state":"positionLabel"},"inert":{"state":"outsideInteractionThreshold"}},
           "element": "div",
           "parent": "track",
           "cardinality": "one-or-more",
@@ -416,7 +417,7 @@
       {
         "id": "carousel.state.slides",
         "kind": "state",
-        "description": "Slides expose carousel/slide semantics and off-screen content is inert.",
+        "description": "Slides expose carousel/slide semantics; clipped content is inert according to the selected layout's interaction threshold.",
         "wcag": [
           "1.3.1",
           "4.1.2"

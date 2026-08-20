@@ -1,10 +1,18 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useCarouselInert } from './useCarouselInert.client.js';
+import { useCarouselInert, type CarouselInertVisibility } from './useCarouselInert.client.js';
 
 /** Own Embla state and expose a small rendering contract to the carousel tree. */
-export function useCarouselController({ loop, slideCount }: { loop: boolean; slideCount: number }) {
+export function useCarouselController({
+  loop,
+  slideCount,
+  inertVisibility,
+}: {
+  loop: boolean;
+  slideCount: number;
+  inertVisibility: CarouselInertVisibility;
+}) {
   const [viewportRef, api] = useEmblaCarousel({ loop, align: 'start' });
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrevious, setCanPrevious] = useState(false);
@@ -28,7 +36,7 @@ export function useCarouselController({ loop, slideCount }: { loop: boolean; sli
     };
   }, [api, sync]);
 
-  useCarouselInert({ api, trackRef, slideCount });
+  useCarouselInert({ api, trackRef, slideCount, visibility: inertVisibility });
 
   return {
     viewportRef,

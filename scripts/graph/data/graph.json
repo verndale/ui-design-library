@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 736,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 192,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -810,7 +810,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 96,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -1471,9 +1471,11 @@
         "figma-code-connect"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "72"
+      ],
       "issues": [],
-      "bytes": 2799,
+      "bytes": 2845,
       "degree": 4
     },
     {
@@ -1752,10 +1754,11 @@
       "aliases": [],
       "prs": [
         "64",
-        "69"
+        "69",
+        "72"
       ],
       "issues": [],
-      "bytes": 11111,
+      "bytes": 11198,
       "degree": 7
     },
     {
@@ -1768,6 +1771,7 @@
       "prs": [
         "64",
         "69",
+        "72",
         "56",
         "52",
         "50",
@@ -1793,7 +1797,7 @@
         "18",
         "4"
       ],
-      "bytes": 6817,
+      "bytes": 6882,
       "degree": 18
     },
     {
@@ -1857,6 +1861,7 @@
         "graph freshness"
       ],
       "prs": [
+        "72",
         "69",
         "67",
         "64",
@@ -1882,7 +1887,7 @@
       "issues": [
         "66"
       ],
-      "bytes": 11819,
+      "bytes": 11968,
       "degree": 29
     },
     {

@@ -13,6 +13,7 @@ evidence:
   - "PR #69 https://github.com/verndale/ui-design-library/pull/69 (merged 2026-08-20)"
   - "issue #59"
   - "Button icon-only Figma masters 307:2 and 308:2"
+  - "PR #72 https://github.com/verndale/ui-design-library/pull/72 (merged 2026-08-20)"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]

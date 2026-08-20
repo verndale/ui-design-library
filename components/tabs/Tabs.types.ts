@@ -10,7 +10,9 @@ export type TabItem = {
   panel: ReactNode;
 };
 
-export type TabsProps = {
+export type TabsPresentation = 'pills' | 'stroke';
+
+type TabsBaseProps = {
   items: TabItem[];
   /** Accessible name for the tablist. */
   ariaLabel: string;
@@ -20,5 +22,18 @@ export type TabsProps = {
   tabIdPrefix?: string;
   className?: string;
   classNames?: TabsClassNames;
-  orientation?: 'horizontal' | 'vertical';
 };
+
+type HorizontalTabsProps = {
+  orientation?: 'horizontal';
+  /** Horizontal visual treatment. The established pills presentation remains the default. */
+  presentation?: TabsPresentation;
+};
+
+type VerticalTabsProps = {
+  orientation: 'vertical';
+  /** Vertical Tabs retain the established pills treatment. */
+  presentation?: 'pills';
+};
+
+export type TabsProps = TabsBaseProps & (HorizontalTabsProps | VerticalTabsProps);

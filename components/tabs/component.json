@@ -1,6 +1,8 @@
 {
   "canonical": "Tabs",
   "slug": "tabs",
+  "variant": "tablist",
+  "default": true,
   "exportName": "Tabs",
   "rendering": "client",
   "framework": "react",
@@ -9,7 +11,8 @@
     "items"
   ],
   "variants": [
-    "pill"
+    "pills",
+    "stroke"
   ],
   "reuseFingerprint": {
     "slots": [
@@ -24,6 +27,9 @@
     "color-text-inverse",
     "color-text-secondary",
     "color-text-primary",
+    "color-border-subtle",
+    "color-border-strong",
+    "color-border-accent",
     "color-border-focus",
     "radius-pill",
     "spacing-2xs",
@@ -40,12 +46,14 @@
     "Mapped the client Tailwind utilities onto library semantic tokens: the selected segment bg-background-inverse/text-links-inverse became bg-surface-inverse/text-text-inverse, the unselected text-text-tertiary became text-text-secondary (the library has no tertiary text token) with hover text-text-primary, the pill radius rounded-(--radius-pill) became rounded-pill, and the client spacing gap-padding-4xs/px-padding-m/py-padding-xxs became gap-2xs/px-m/py-2xs.",
     "Replaced the client font-family-body/text-ui-md typography utilities with the library's text-base — the library ships no client type scale.",
     "Replaced the fixed duration-200 ease-out + motion-reduce:transition-none transition with duration-(--duration-base) ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
-    "Retained role=tablist/role=tab, aria-selected, the roving tabIndex, wraparound arrow-key selection and focus, and the items.length < 2 keyboard guard."
+    "Retained role=tablist/role=tab, aria-selected, the roving tabIndex, wraparound arrow-key selection and focus, and the items.length < 2 keyboard guard.",
+    "Restored horizontal stroke as a semantic presentation prop while retaining pills as the backward-compatible default and preserving the existing vertical pills treatment.",
+    "Extracted one shared selection, ID, roving-focus, and keyboard controller so the default and native-select structural alternate cannot drift into competing interaction engines."
   ],
   "sourceParity": {
     "contractVersion": 1,
     "auditComponentKey": "tabs",
-    "auditStatus": "remediation-pending",
+    "auditStatus": "cleared",
     "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
     "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
     "decisionIds": [
@@ -67,7 +75,7 @@
       },
       {
         "decisionId": "sp-tabs-004",
-        "implementationKey": null,
+        "implementationKey": "tabs--native-select",
         "surfaces": [
           "ai-registry",
           "code",
@@ -141,6 +149,16 @@
           "vertical"
         ],
         "default": "horizontal"
+      },
+      {
+        "path": "presentation",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "pills",
+          "stroke"
+        ],
+        "default": "pills"
       },
       {
         "path": "className",
@@ -253,6 +271,7 @@
       "nodes": [
         {
           "id": "root",
+          "attributes": {"data-presentation":{"prop":"presentation"}},
           "element": "div",
           "parent": null,
           "cardinality": "zero-or-one",
@@ -270,7 +289,7 @@
         },
         {
         "id": "tab",
-        "attributes": {"type":"button","role":"tab","aria-selected":{"state":"selected"},"tabIndex":{"state":"rovingTabIndex"}},
+        "attributes": {"type":"button","role":"tab","aria-selected":{"state":"selected"},"tabIndex":{"state":"rovingTabIndex"},"data-presentation":{"prop":"presentation"}},
           "element": "button",
           "parent": "tablist",
           "cardinality": "one-or-more",
@@ -342,6 +361,27 @@
           "4.1.2"
         ],
         "evidence": "tabs.state.selection",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "tabs.presentation.visual",
+        "kind": "state",
+        "description": "Horizontal Tabs expose governed pills and stroke visual treatments while pills remain the default and vertical presentation remains unchanged.",
+        "wcag": [
+          "1.3.1",
+          "1.4.11"
+        ],
+        "evidence": "tabs.presentation.visual",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "tabs.state.controlled",
+        "kind": "state",
+        "description": "Controlled and uncontrolled selection share one fallback and update path, including invalid initial IDs.",
+        "wcag": [
+          "4.1.2"
+        ],
+        "evidence": "tabs.state.controlled",
         "evidenceType": "storybook-step"
       }
     ],

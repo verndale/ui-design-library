@@ -1,6 +1,6 @@
 import type { KeyboardEventHandler } from 'react';
 
-import type { TabItem } from '../Tabs.types.js';
+import type { TabItem, TabsPresentation } from '../Tabs.types.js';
 import { TabButton } from './TabButton.client.js';
 
 type TabsListProps = {
@@ -14,6 +14,7 @@ type TabsListProps = {
   registerTab: (index: number, node: HTMLButtonElement | null) => void;
   tabClassName?: string;
   orientation: 'horizontal' | 'vertical';
+  presentation: TabsPresentation;
 };
 
 /** Semantic tablist rendering separated from its state and keyboard controller. */
@@ -28,6 +29,7 @@ export function TabsList({
   registerTab,
   tabClassName,
   orientation,
+  presentation,
 }: TabsListProps) {
   return (
     <div
@@ -50,6 +52,7 @@ export function TabsList({
             id={`${tabIdPrefix}-tab-${index}`}
             aria-controls={`${tabIdPrefix}-panel-${index}`}
             selected={selected}
+            presentation={presentation}
             className={tabClassName}
             onClick={() => onSelect(item.id)}
           >

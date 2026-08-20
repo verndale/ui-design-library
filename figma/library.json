@@ -1391,18 +1391,22 @@
       "id": "tabs",
       "canonical": "Tabs",
       "slug": "tabs",
+      "variant": "tablist",
+      "variantLabel": "Tablist",
+      "default": true,
+      "familyPage": true,
       "exportName": "Tabs",
       "publicImport": "@verndale/ui-design-library/components/tabs",
       "componentPath": "components/tabs",
       "storyPath": "components/tabs/Tabs.stories.tsx",
       "storyParity": "exact",
-      "storyProps": ["items", "ariaLabel", "activeId", "defaultActiveId", "onSelect", "tabIdPrefix", "orientation", "className", "classNames"],
+      "storyProps": ["items", "ariaLabel", "activeId", "defaultActiveId", "onSelect", "tabIdPrefix", "orientation", "presentation", "className", "classNames"],
       "codeOnlyProps": ["defaultActiveId", "onSelect", "tabIdPrefix", "className", "classNames"],
       "fixedProps": [{ "codeProp": "items", "value": "tabItems" }],
       "sourceParity": {
         "contractVersion": 1,
         "auditComponentKey": "tabs",
-        "auditStatus": "remediation-pending",
+        "auditStatus": "cleared",
         "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
         "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
         "decisionIds": [
@@ -1424,7 +1428,7 @@
           },
           {
             "decisionId": "sp-tabs-004",
-            "implementationKey": null,
+            "implementationKey": "tabs--native-select",
             "surfaces": [
               "ai-registry",
               "code",
@@ -1443,8 +1447,8 @@
           {
             "decisionId": "sp-tabs-002",
             "kind": "component-property",
-            "masterNodeId": null,
-            "publicProps": [],
+            "masterNodeId": "181:70",
+            "publicProps": ["presentation"],
             "specimens": []
           }
         ]
@@ -1461,20 +1465,121 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-tabs-source-parity.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Orientation", "type": "VARIANT", "values": ["Horizontal", "Vertical"] },
+          { "name": "Presentation", "type": "VARIANT", "values": ["Pills", "Stroke"] },
           { "name": "Active tab", "type": "VARIANT", "values": ["Overview", "Specs", "Reviews"] }
         ]
       },
       "mappings": [
         { "figmaProperty": "Aria label", "kind": "string", "codeProp": "ariaLabel", "visualBinding": "nonvisual", "nonvisualReason": "The tablist accessible name is announced by assistive technology and is not visible copy." },
         { "figmaProperty": "Orientation", "kind": "enum", "codeProp": "orientation", "values": ["Horizontal", "Vertical"] },
+        { "figmaProperty": "Presentation", "kind": "enum", "codeProp": "presentation", "values": ["Pills", "Stroke"] },
+        { "figmaProperty": "Active tab", "kind": "enum", "codeProp": "activeId", "values": ["Overview", "Specs", "Reviews"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "tabs-native-select",
+      "canonical": "Tabs",
+      "slug": "tabs",
+      "variant": "native-select",
+      "variantLabel": "Native select",
+      "exportName": "TabsNativeSelect",
+      "publicImport": "@verndale/ui-design-library/components/tabs--native-select",
+      "componentPath": "components/tabs--native-select",
+      "storyPath": "components/tabs--native-select/TabsNativeSelect.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["items", "ariaLabel", "activeId", "defaultActiveId", "onSelect", "tabIdPrefix", "className", "classNames"],
+      "codeOnlyProps": ["defaultActiveId", "onSelect", "tabIdPrefix", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "items", "value": "tabItems" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "tabs",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
+        "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
+        "decisionIds": [
+          "sp-tabs-001",
+          "sp-tabs-002",
+          "sp-tabs-003",
+          "sp-tabs-004"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-tabs-002",
+            "implementationKey": "tabs",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          },
+          {
+            "decisionId": "sp-tabs-004",
+            "implementationKey": "tabs--native-select",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": [
+          {
+            "decisionId": "sp-tabs-004",
+            "kind": "structural-master-responsive",
+            "masterNodeId": "334:120",
+            "publicProps": [],
+            "specimens": [
+              { "componentNodeId": "334:120", "nodeId": "335:49", "viewportWidth": 1440 },
+              { "componentNodeId": "334:120", "nodeId": "335:57", "viewportWidth": 1024 },
+              { "componentNodeId": "334:120", "nodeId": "335:65", "viewportWidth": 768 },
+              { "componentNodeId": "334:120", "nodeId": "335:73", "viewportWidth": 390 }
+            ]
+          }
+        ]
+      },
+      "figma": {
+        "pageId": "181:2",
+        "pageName": "Tabs",
+        "nodeId": "334:120",
+        "nodeKey": "08ff6adc380811cdad9602d6689b84672f269b0a",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "Tabs / Native select",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-tabs-source-parity.md"
+        },
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "properties": [
+          { "name": "Aria label", "type": "TEXT" },
+          { "name": "Presentation", "type": "VARIANT", "values": ["Desktop", "Mobile"] },
+          { "name": "Active tab", "type": "VARIANT", "values": ["Overview", "Specs", "Reviews"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Aria label", "kind": "string", "codeProp": "ariaLabel", "visualBinding": "nonvisual", "nonvisualReason": "The responsive Tabs group, tablist, and native select share an accessible name that is announced rather than rendered." },
+        { "figmaProperty": "Presentation", "kind": "enum", "values": ["Desktop", "Mobile"] },
         { "figmaProperty": "Active tab", "kind": "enum", "codeProp": "activeId", "values": ["Overview", "Specs", "Reviews"] }
       ],
       "nestedDependencies": []

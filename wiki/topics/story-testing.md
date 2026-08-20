@@ -29,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-20 — Added Tabs browser evidence for horizontal visual presentation, invalid controlled/uncontrolled IDs, CSS-hidden responsive copies, native-select panel control, breakpoint focus transfer, and empty/single-item boundaries over one interaction engine ([journal](../journal/2026-08-20-tabs-source-parity.md)).
 - 2026-08-20 — Exercised Slider source parity through real `FormData`: one semantic name/value pair, controlled and uncontrolled reset, inherited disabled-fieldset omission, and empty-option exclusion are visible Storybook interaction steps rather than implementation-only assertions ([journal](../journal/2026-08-20-slider-source-parity.md)).
 - 2026-08-20 — Added real-browser boundary evidence for the In-page navigation structural alternate: strict 48px pointer swipes, scroll-region isolation, shared modal focus/Escape/backdrop behavior, breakpoint-hidden focus copies, reduced motion, and portaled landmark semantics ([journal](../journal/2026-08-20-in-page-navigation-source-parity.md)).
 - 2026-08-20 — feat(ui-design-library): Enhance carousel inert behavior for better ([PR #69](https://github.com/verndale/ui-design-library/pull/69))

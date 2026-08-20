@@ -37,6 +37,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-20 — [Restore Tabs visual and responsive source parity](journal/2026-08-20-tabs-source-parity.md) — added a governed horizontal presentation prop and responsive native-select structural sibling over one controller/panel model, preserving the default Figma master and adding an unpublished responsive master.
 - 2026-08-20 — [Restore Slider native-form source parity](journal/2026-08-20-slider-source-parity.md) — added a neutral named hidden output across code, Storybook, unpublished Figma metadata, and AI realization while preserving the option-index range and Slider master.
 - 2026-08-20 — [Restore In-page navigation modal-drawer source parity](journal/2026-08-20-in-page-navigation-source-parity.md) — preserved inline disclosure as the default while adding a governed portal-backed structural alternate across code, Storybook, unpublished Figma, and AI metadata.
 - 2026-08-20 — [Restore Button icon-only source parity](journal/2026-08-20-button-source-parity.md) — added one accessible semantic presentation across code, Storybook, unpublished Figma, and AI metadata while preserving the label default and published masters.

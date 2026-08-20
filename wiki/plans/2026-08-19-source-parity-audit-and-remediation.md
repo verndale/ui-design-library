@@ -20,10 +20,12 @@ evidence:
   - "issue #60"
   - "Slider master 178:76 with nonvisual Name#326:0 metadata"
   - "PR #76 https://github.com/verndale/ui-design-library/pull/76 (merged 2026-08-20)"
+  - "issue #61"
+  - "Tabs preserved master 181:70, native-select master 334:120, and responsive specimens"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]
-audit_note: Public redacted execution copy. The governance foundation plus Carousel, Button, and In-page navigation remediations landed; Slider is complete in its issue worktree with a neutral native-form contract and nonvisual unpublished Figma metadata. Tabs remains sequenced separately. Client identities, revisions, paths, and cited facts remain in ui-design-evidence.
+audit_note: Public redacted execution copy. The governance foundation plus Carousel, Button, and In-page navigation remediations landed; Slider and Tabs are complete in their issue worktrees. The plan remains partial until the landed remediations receive their append-only private completion events and closure metadata. Client identities, revisions, paths, and cited facts remain in ui-design-evidence.
 ---
 # Official Source-Parity Audit and Remediation Plan
 

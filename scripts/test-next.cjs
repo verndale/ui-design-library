@@ -84,7 +84,7 @@ function assertNativeImports(consumerRoot, installedManifest) {
     'packed package must declare reuse contract version 2',
   );
   const candidates = componentCandidates(consumerRoot, installedManifest);
-  assert.equal(candidates.length, 22, 'packed package must expose exactly 22 component candidates');
+  assert.equal(candidates.length, 23, 'packed package must expose exactly 23 component candidates');
   const source = `
     const candidates = ${JSON.stringify(candidates)};
     for (const candidate of candidates) {

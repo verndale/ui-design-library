@@ -4,7 +4,7 @@ Every component's declared dependency on the semantic token layer.
 
 Part of the [connections map](../connections.md), generated from the knowledge graph — **do not edit by hand**. Rebuilt on every `pnpm graph:build` and verified fresh by `pnpm evals:graph`.
 
-22 components declare tokens:
+23 components declare tokens:
 
 - [Accordion](../../components/accordion/component.json) — 8 tokens declared
 - [Alert](../../components/alert/component.json) — 8 tokens declared
@@ -26,5 +26,6 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Section header](../../components/section-header/component.json) — 5 tokens declared
 - [Slider](../../components/slider/component.json) — 9 tokens declared
 - [Stat](../../components/stat/component.json) — 5 tokens declared
-- [Tabs](../../components/tabs/component.json) — 8 tokens declared
+- [Tabs (native-select)](../../components/tabs--native-select/component.json) — 13 tokens declared
+- [Tabs](../../components/tabs/component.json) — 11 tokens declared
 - [Toast](../../components/toast/component.json) — 10 tokens declared

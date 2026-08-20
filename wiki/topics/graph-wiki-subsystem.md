@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-20 — feat(ui-design-library): Enhance documentation with source parity detail ([PR #64](https://github.com/verndale/ui-design-library/pull/64))
 - 2026-08-19 — feat(ui-design-library): Update Card media composition documentation ([PR #56](https://github.com/verndale/ui-design-library/pull/56))
 - 2026-08-19 — chore(ui-design-library): Update documentation for structural variants ([PR #52](https://github.com/verndale/ui-design-library/pull/52))
 - 2026-08-19 — ci(ci): Add Figma library validation workflow ([PR #50](https://github.com/verndale/ui-design-library/pull/50))

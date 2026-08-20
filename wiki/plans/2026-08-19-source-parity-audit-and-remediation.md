@@ -1,7 +1,12 @@
 ---
 status: partial
 executed: 2026-08-19
-evidence: ["issue #58", "working tree", "21-component private audit", "source-parity validator self-tests"]
+evidence:
+  - "issue #58"
+  - "working tree"
+  - "21-component private audit"
+  - "source-parity validator self-tests"
+  - "PR #64 https://github.com/verndale/ui-design-library/pull/64 (merged 2026-08-20)"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]

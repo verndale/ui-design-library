@@ -26,6 +26,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Restore Button icon-only source parity](../../wiki/journal/2026-08-20-button-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Compose governed Cards inside Carousel](../../wiki/journal/2026-08-20-carousel-card-composition.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
+- [Restore In-page navigation modal-drawer source parity](../../wiki/journal/2026-08-20-in-page-navigation-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 
 ## Page → topic
 
@@ -63,6 +64,9 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Restore Button icon-only source parity](../../wiki/journal/2026-08-20-button-source-parity.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Compose governed Cards inside Carousel](../../wiki/journal/2026-08-20-carousel-card-composition.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Restore In-page navigation modal-drawer source parity](../../wiki/journal/2026-08-20-in-page-navigation-source-parity.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Restore In-page navigation modal-drawer source parity](../../wiki/journal/2026-08-20-in-page-navigation-source-parity.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
+- [Restore In-page navigation modal-drawer source parity](../../wiki/journal/2026-08-20-in-page-navigation-source-parity.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
@@ -138,6 +142,9 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md) → [preview.ts](../../.storybook/preview.ts)
 - [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md) → [withDirection.tsx](../../.storybook/withDirection.tsx)
 - [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md) → [check-contracts.cjs](../../scripts/check-contracts.cjs)
+- [Variant axis — Design History](../../wiki/topics/variant-axis.md) → [in-page-navigation](../../components/in-page-navigation)
+- [Variant axis — Design History](../../wiki/topics/variant-axis.md) → [in-page-navigation--modal-drawer](../../components/in-page-navigation--modal-drawer)
+- [Variant axis — Design History](../../wiki/topics/variant-axis.md) → [library.json](../../figma/library.json)
 - [Variant axis — Design History](../../wiki/topics/variant-axis.md) → [check-contracts.cjs](../../scripts/check-contracts.cjs)
 
 ## Cross-area links (seams)

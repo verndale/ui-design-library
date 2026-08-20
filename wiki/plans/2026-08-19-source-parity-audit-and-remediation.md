@@ -14,10 +14,12 @@ evidence:
   - "issue #59"
   - "Button icon-only Figma masters 307:2 and 308:2"
   - "PR #72 https://github.com/verndale/ui-design-library/pull/72 (merged 2026-08-20)"
+  - "issue #63"
+  - "In-page navigation modal-drawer Figma master 318:45 and responsive specimens"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]
-audit_note: Public redacted execution copy. The governance foundation and complete private audit landed; Carousel and Button remediations are complete in their issue worktrees and unpublished Figma representations, including Carousel's governed Card composition and Button's surface-matched icon-only sets. Three component remediations remain sequenced separately. Client identities, revisions, paths, and cited facts remain in ui-design-evidence.
+audit_note: Public redacted execution copy. The governance foundation and complete private audit landed; Carousel and Button remediations are landed, and In-page navigation is complete in its issue worktree with a governed structural alternate and unpublished Figma representation. Slider and Tabs remain sequenced separately. Client identities, revisions, paths, and cited facts remain in ui-design-evidence.
 ---
 # Official Source-Parity Audit and Remediation Plan
 

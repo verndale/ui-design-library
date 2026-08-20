@@ -20,7 +20,7 @@ const meta = {
     sourceParityEvidence: {
       "contractVersion": 1,
       "auditComponentKey": "in-page-navigation",
-      "auditStatus": "remediation-pending",
+      "auditStatus": "cleared",
       "privateAuditRef": "library-source-parity:2026-08-19/components/in-page-navigation",
       "privateAuditDigest": "24f12352bf3b1fc547d4f3b4b656851c504b3ae8e29e6548b2885906ddd74ef4",
       "decisionIds": [
@@ -31,7 +31,7 @@ const meta = {
       "representationDecisions": [
         {
           "decisionId": "sp-in-page-navigation-002",
-          "implementationKey": null,
+          "implementationKey": "in-page-navigation--modal-drawer",
           "surfaces": [
             "ai-registry",
             "code",

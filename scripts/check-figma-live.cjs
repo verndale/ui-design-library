@@ -50,10 +50,18 @@ function walk(node, visit) {
   for (const child of node.children ?? []) walk(child, visit);
 }
 
-function containsComponentInstance(root, componentNodeId) {
+function instantiableComponentIds(payload, componentNodeId) {
+  const master = payload.nodes?.[componentNodeId]?.document;
+  if (master?.type !== 'COMPONENT_SET') return new Set([componentNodeId]);
+  return new Set((master.children ?? [])
+    .filter((child) => child.type === 'COMPONENT')
+    .map((child) => child.id));
+}
+
+function containsComponentInstance(root, componentNodeIds) {
   let found = false;
   walk(root, (node) => {
-    if (node.type === 'INSTANCE' && node.componentId === componentNodeId) found = true;
+    if (node.type === 'INSTANCE' && componentNodeIds.has(node.componentId)) found = true;
   });
   return found;
 }
@@ -235,7 +243,8 @@ function auditLiveNodes({ registry, payload }) {
         if (actualWidth !== specimenMapping.viewportWidth) {
           fail(`${prefix} source-parity specimen ${specimenMapping.nodeId} width is ${actualWidth}, expected ${specimenMapping.viewportWidth}`);
         }
-        if (!containsComponentInstance(specimen, specimenMapping.componentNodeId)) {
+        const componentNodeIds = instantiableComponentIds(payload, specimenMapping.componentNodeId);
+        if (!containsComponentInstance(specimen, componentNodeIds)) {
           fail(`${prefix} source-parity specimen ${specimenMapping.nodeId} does not contain an instance of ${specimenMapping.componentNodeId}`);
         }
       }

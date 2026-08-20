@@ -12,6 +12,7 @@ import { Card } from '../../components/card/index';
 import { Carousel } from '../../components/carousel/index';
 import { Image } from '../../components/image/index';
 import { InPageNavigation } from '../../components/in-page-navigation/index';
+import { InPageNavigationModalDrawer } from '../../components/in-page-navigation--modal-drawer/index';
 import { Link } from '../../components/link/index';
 import { Modal } from '../../components/modal/index';
 import { Quote } from '../../components/quote/index';
@@ -35,6 +36,10 @@ const fixtures: Array<[string, ReactElement]> = [
   ['Carousel', <Carousel label="Highlights" slides={[<span key="one">One</span>]} />],
   ['Image', <Image src="/image.png" alt="Example" width={640} height={360} />],
   ['InPageNavigation', <InPageNavigation items={[{ id: 'overview', label: 'Overview' }]} />],
+  [
+    'InPageNavigationModalDrawer',
+    <InPageNavigationModalDrawer items={[{ id: 'overview', label: 'Overview' }]} />,
+  ],
   ['Link', <Link href="/next">Next</Link>],
   ['Modal', <Modal open onClose={() => undefined} title="Dialog">Body</Modal>],
   ['Quote', <Quote>Knowledge lasts.</Quote>],

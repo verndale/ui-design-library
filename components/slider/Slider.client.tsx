@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useReducer, useRef, useState } from 'react';
 
 import { SliderTrack } from './parts/SliderTrack.client.js';
 import { SliderScale } from './parts/SliderScale.js';
@@ -19,6 +19,7 @@ export function Slider({
   onChange,
   hint,
   unit,
+  name,
   className,
   classNames,
   inputId: suppliedInputId,
@@ -29,11 +30,34 @@ export function Slider({
   const inputId = suppliedInputId ?? generatedInputId;
   const displayId = useId();
   const hintId = useId();
-  const [internalIndex, setInternalIndex] = useState(() => optionIndex(options, defaultValue));
+  const defaultIndex = optionIndex(options, defaultValue);
+  const [internalIndex, setInternalIndex] = useState(defaultIndex);
+  const [, syncAfterFormReset] = useReducer((version: number) => version + 1, 0);
+  const rootRef = useRef<HTMLDivElement>(null);
   const controlled = value !== undefined;
   const lastIndex = Math.max(options.length - 1, 0);
   const index = Math.min(controlled ? optionIndex(options, value) : internalIndex, lastIndex);
   const selected = options[index];
+
+  useEffect(() => {
+    const form = rootRef.current?.closest('form');
+    if (!form) return;
+
+    let active = true;
+    const handleReset = () => {
+      queueMicrotask(() => {
+        if (!active) return;
+        if (!controlled) setInternalIndex(defaultIndex);
+        syncAfterFormReset();
+      });
+    };
+
+    form.addEventListener('reset', handleReset);
+    return () => {
+      active = false;
+      form.removeEventListener('reset', handleReset);
+    };
+  }, [controlled, defaultIndex]);
 
   if (!selected) return null;
 
@@ -47,7 +71,7 @@ export function Slider({
   };
 
   return (
-    <div data-component="slider" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
+    <div ref={rootRef} data-component="slider" className={['flex flex-col gap-2xs', classNames?.root, className].filter(Boolean).join(' ')}>
       <div className={['flex items-baseline justify-between gap-s', classNames?.header].filter(Boolean).join(' ')}>
         <label htmlFor={inputId} className={['text-base font-semibold text-text-primary', classNames?.label].filter(Boolean).join(' ')}>{label}</label>
         {hint ? <span id={hintId} className={['text-sm text-text-secondary', classNames?.hint].filter(Boolean).join(' ')}>{hint}</span> : null}
@@ -69,6 +93,7 @@ export function Slider({
         classNames={classNames}
       /> : null}
       {showSelectedValue ? <SliderSelectedValue displayId={displayId} selected={selected} unit={unit} classNames={classNames} /> : null}
+      {name ? <input data-slot="form-output" type="hidden" name={name} value={selected.value} /> : null}
     </div>
   );
 }

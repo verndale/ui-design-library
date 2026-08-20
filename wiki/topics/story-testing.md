@@ -29,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-20 — Exercised Slider source parity through real `FormData`: one semantic name/value pair, controlled and uncontrolled reset, inherited disabled-fieldset omission, and empty-option exclusion are visible Storybook interaction steps rather than implementation-only assertions ([journal](../journal/2026-08-20-slider-source-parity.md)).
 - 2026-08-20 — Added real-browser boundary evidence for the In-page navigation structural alternate: strict 48px pointer swipes, scroll-region isolation, shared modal focus/Escape/backdrop behavior, breakpoint-hidden focus copies, reduced motion, and portaled landmark semantics ([journal](../journal/2026-08-20-in-page-navigation-source-parity.md)).
 - 2026-08-20 — feat(ui-design-library): Enhance carousel inert behavior for better ([PR #69](https://github.com/verndale/ui-design-library/pull/69))
 - 2026-08-13 — Added keyed realization evidence for Accordion's existing reduced-motion-aware transition so the published behavior and executable story assertion remain reciprocal ([journal](../journal/2026-08-13-accessible-realization-contracts.md)).
@@ -46,7 +47,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Open threads
 
-- 36 of 50 stories carry assertions. The thinnest are Quote (2/4), Badge (4/6), Link (4/6), Breadcrumbs (4/7) — mostly presentational variants with little behaviour to assert, but it is not full coverage.
+- 40 of 54 stories carry assertions. The thinnest are Quote (2/4), Badge (4/6), Link (4/6), Breadcrumbs (4/7) — mostly presentational variants with little behaviour to assert, but it is not full coverage.
 - No viewport-pinned test for the Breadcrumbs `xl` collapse. The current test asserts "exactly one presentation is visible", which is viewport-agnostic; pinning needs Vitest-only APIs that would break the same `play` function in the Storybook UI.
 - Chromatic would catch the CSS-level regressions that no assertion anticipates, but sends client-derived code to a hosted service. Undecided.
 - `pnpm test` launches Chromium twice, sequentially. Parallelisable as two CI jobs if the motion set grows.

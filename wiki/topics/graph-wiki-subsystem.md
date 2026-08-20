@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-20 — feat(ui-design-library): Add TabsNativeSelect component for responsive t ([PR #78](https://github.com/verndale/ui-design-library/pull/78))
 - 2026-08-20 — feat(ui-design-library): Enhance slider component with form integration ([PR #76](https://github.com/verndale/ui-design-library/pull/76))
 - 2026-08-20 — feat(ui-design-library): Enhance component instance validation logic ([PR #74](https://github.com/verndale/ui-design-library/pull/74))
 - 2026-08-20 — feat(ui-design-library): Add icon-only button presentation option ([PR #72](https://github.com/verndale/ui-design-library/pull/72))

@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 800,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -510,7 +510,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -570,7 +570,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 192,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -894,7 +894,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 96,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -1626,9 +1626,11 @@
         "variant-axis"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "78"
+      ],
       "issues": [],
-      "bytes": 3226,
+      "bytes": 3272,
       "degree": 10
     },
     {
@@ -1894,10 +1896,11 @@
         "69",
         "72",
         "74",
-        "76"
+        "76",
+        "78"
       ],
       "issues": [],
-      "bytes": 11612,
+      "bytes": 11699,
       "degree": 12
     },
     {
@@ -1913,6 +1916,7 @@
         "72",
         "74",
         "76",
+        "78",
         "56",
         "52",
         "50",
@@ -1938,7 +1942,7 @@
         "18",
         "4"
       ],
-      "bytes": 7345,
+      "bytes": 7410,
       "degree": 18
     },
     {
@@ -2002,6 +2006,7 @@
         "graph freshness"
       ],
       "prs": [
+        "78",
         "76",
         "74",
         "72",
@@ -2030,7 +2035,7 @@
       "issues": [
         "66"
       ],
-      "bytes": 12275,
+      "bytes": 12431,
       "degree": 29
     },
     {

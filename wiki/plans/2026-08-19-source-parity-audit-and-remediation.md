@@ -22,6 +22,7 @@ evidence:
   - "PR #76 https://github.com/verndale/ui-design-library/pull/76 (merged 2026-08-20)"
   - "issue #61"
   - "Tabs preserved master 181:70, native-select master 334:120, and responsive specimens"
+  - "PR #78 https://github.com/verndale/ui-design-library/pull/78 (merged 2026-08-20)"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]

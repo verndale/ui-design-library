@@ -27,6 +27,7 @@ pr: pending
 - Source-parity review passed after confirming every accepted behavior and every explicit rejection against the pinned source decision.
 - Adversarial review found a closed-state `aria-controls` reference before portal hydration and separated it from the closed tree; it also confirmed topmost overlay ownership, focus return, breakpoint cleanup, non-nested landmarks, and scroll/swipe isolation.
 - Design review removed an extra active-item fill that was absent from React and shortened an overflowing specimen badge. The final master and specimens are contained, reachable on the family page, and unpublished.
+- The authenticated live audit exposed a REST identity distinction that local contracts had not modeled: instances of a component-set variant report the child component ID, not the parent set ID. The validator now resolves a registered component-set master to its direct variants and still rejects unrelated instances.
 
 ## Files
 
@@ -34,6 +35,7 @@ pr: pending
 - `components/in-page-navigation--modal-drawer/`
 - `figma/library.json`
 - `figma/source-parity-baseline.json`
+- `scripts/check-figma-live.cjs`
 - `wiki/`
 
 ## Follow-ups

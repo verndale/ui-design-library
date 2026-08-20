@@ -91,6 +91,21 @@ const withSpecimens = () => {
   });
   return { specimenRegistry, payload };
 };
+const withComponentSetSpecimens = () => {
+  const { specimenRegistry, payload } = withSpecimens();
+  specimenRegistry.components[0].figma.nodeType = 'COMPONENT_SET';
+  const master = payload.nodes['1:2'].document;
+  const title = master.children[0];
+  master.type = 'COMPONENT_SET';
+  master.children = [
+    { id: '1:4', type: 'COMPONENT', name: 'State=Default', children: [title] },
+    { id: '1:5', type: 'COMPONENT', name: 'State=Active', children: [] },
+  ];
+  for (const [index, id] of ['2:1', '2:2', '2:3', '2:4'].entries()) {
+    payload.nodes[id].document.children[0].componentId = index % 2 === 0 ? '1:4' : '1:5';
+  }
+  return { specimenRegistry, payload };
+};
 const cases = [
   {
     name: 'fully governed live fixture passes',
@@ -166,6 +181,23 @@ const cases = [
       return { registry: specimenRegistry, payload };
     })(),
     expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'component-set specimens accept instances of governed child variants',
+    ...(() => {
+      const { specimenRegistry, payload } = withComponentSetSpecimens();
+      return { registry: specimenRegistry, payload };
+    })(),
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'component-set specimens reject instances outside the governed set',
+    ...(() => {
+      const { specimenRegistry, payload } = withComponentSetSpecimens();
+      payload.nodes['2:1'].document.children[0].componentId = '9:9';
+      return { registry: specimenRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('does not contain an instance of 1:2')),
   },
   {
     name: 'source-parity specimen width drift fails',

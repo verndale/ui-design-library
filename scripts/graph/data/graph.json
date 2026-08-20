@@ -666,7 +666,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11035,
+      "bytes": 11449,
       "degree": 1
     },
     {
@@ -1555,7 +1555,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3057,
+      "bytes": 3409,
       "degree": 8
     },
     {
@@ -1903,7 +1903,7 @@
       "issues": [
         "49"
       ],
-      "bytes": 13907,
+      "bytes": 14398,
       "degree": 49
     },
     {
@@ -2999,7 +2999,7 @@
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-08-20-in-page-navigation-source-parity.md",
       "type": "links-to",
-      "count": 1,
+      "count": 2,
       "anchors": []
     },
     {

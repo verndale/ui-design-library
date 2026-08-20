@@ -3,7 +3,6 @@
 # A pull/merge brings in source changes without running pre-commit locally.
 if [ -z "$CI" ]; then
   if ! node scripts/graph/sync-graphify.cjs; then
-    echo "error: incoming changes landed, but Graphify could not refresh; run pnpm graphify:sync" >&2
-    exit 1
+    echo "warning: incoming changes landed, but the local Graphify map may be stale (run pnpm graphify:sync)" >&2
   fi
 fi

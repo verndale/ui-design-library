@@ -8,7 +8,6 @@ fi
 
 if [ -z "$CI" ]; then
   if ! node scripts/graph/sync-graphify.cjs; then
-    echo "error: the checkout completed, but Graphify could not refresh; run pnpm graphify:sync" >&2
-    exit 1
+    echo "warning: checkout completed, but the local Graphify map may be stale (run pnpm graphify:sync)" >&2
   fi
 fi

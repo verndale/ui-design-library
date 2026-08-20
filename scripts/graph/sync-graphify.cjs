@@ -6,7 +6,6 @@ const { spawnSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '../..');
 const graphPath = path.join(root, 'graphify-out', 'graph.json');
-const shouldStage = process.argv.includes('--stage');
 
 function run(command, args, options = {}) {
   return spawnSync(command, args, {
@@ -20,28 +19,32 @@ if (process.env.GRAPHIFY_SKIP_HOOK === '1') {
   process.exit(0);
 }
 
-if (!fs.existsSync(graphPath)) {
-  console.log('[graphify sync] graphify-out/graph.json is absent; nothing to refresh.');
-  process.exit(0);
-}
-
 const env = {
   ...process.env,
   GRAPHIFY_MAX_WORKERS: process.env.GRAPHIFY_MAX_WORKERS || '1',
   PYTHONHASHSEED: '0',
 };
 
+const hasGraph = fs.existsSync(graphPath);
+const graphifyArgs = hasGraph
+  ? ['update', '.', '--force']
+  : ['extract', '.', '--code-only', '--max-workers', env.GRAPHIFY_MAX_WORKERS];
+
+if (!hasGraph) {
+  console.log('[graphify sync] No local graph found; bootstrapping an AST-only graph.');
+}
+
 const candidates = [
-  { command: 'graphify', args: ['update', '.'], label: 'graphify' },
+  { command: 'graphify', args: graphifyArgs, label: 'graphify' },
   ...(process.env.GRAPHIFY_PYTHON
     ? [{
         command: process.env.GRAPHIFY_PYTHON,
-        args: ['-m', 'graphify', 'update', '.'],
+        args: ['-m', 'graphify', ...graphifyArgs],
         label: 'GRAPHIFY_PYTHON',
       }]
     : []),
-  { command: 'python3', args: ['-m', 'graphify', 'update', '.'], label: 'python3 -m graphify' },
-  { command: 'python', args: ['-m', 'graphify', 'update', '.'], label: 'python -m graphify' },
+  { command: 'python3', args: ['-m', 'graphify', ...graphifyArgs], label: 'python3 -m graphify' },
+  { command: 'python', args: ['-m', 'graphify', ...graphifyArgs], label: 'python -m graphify' },
 ];
 
 let refreshed = false;
@@ -72,13 +75,4 @@ if (!refreshed) {
     '[graphify sync] Graphify is unavailable. Install the graphifyy package or set GRAPHIFY_PYTHON.',
   );
   process.exit(1);
-}
-
-if (shouldStage) {
-  const staged = run('git', ['add', '-A', '--', 'graphify-out']);
-
-  if (staged.error || staged.status !== 0) {
-    console.error('[graphify sync] Graph refreshed, but its tracked artifacts could not be staged.');
-    process.exit(staged.status || 1);
-  }
 }

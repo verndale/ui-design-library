@@ -37,6 +37,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
+- 2026-08-19 — [Keep Graphify output local](journal/2026-08-19-keep-graphify-output-local.md) — aligned with ui-design-evidence so Graphify refreshes cannot dirty synchronized branches with generated code-map output.
 - 2026-08-19 — [Add source-parity governance to the library](journal/2026-08-19-source-parity-governance-foundation.md) — linked all 21 component surfaces to immutable private decisions and constrained the legacy baseline to five accepted remediations.
 - 2026-08-19 — [Document Card media presence as composition](journal/2026-08-19-card-media-composition-specimens.md) — added direct Card instances with and without connected CardMedia while preserving the published master and public property contract.
 - 2026-08-19 — [Govern structural variants as Figma families](journal/2026-08-19-figma-structural-family-contract.md) — registry and validators now resolve exact structural imports to qualified masters on one canonical family page.

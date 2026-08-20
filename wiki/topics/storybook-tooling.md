@@ -23,6 +23,7 @@ All nine components are `candidate`. Promotion is a deliberate human decision, n
 
 ## Decisions
 
+- 2026-08-20 — feat(ui-design-library): Enhance carousel inert behavior for better ([PR #69](https://github.com/verndale/ui-design-library/pull/69))
 - 2026-08-20 — feat(ui-design-library): Enhance documentation with source parity detail ([PR #64](https://github.com/verndale/ui-design-library/pull/64))
 - 2026-08-13 — feat(accessibility): publish realization contracts ([PR #41](https://github.com/verndale/ui-design-library/pull/41))
 - 2026-08-13 — feat(contracts): add accessible realizations (#37) ([PR #38](https://github.com/verndale/ui-design-library/pull/38))

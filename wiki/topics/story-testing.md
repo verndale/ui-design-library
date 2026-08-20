@@ -29,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-20 — feat(ui-design-library): Enhance carousel inert behavior for better ([PR #69](https://github.com/verndale/ui-design-library/pull/69))
 - 2026-08-13 — Added keyed realization evidence for Accordion's existing reduced-motion-aware transition so the published behavior and executable story assertion remain reciprocal ([journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-13 — feat(contracts): add accessible realizations (#37) ([PR #38](https://github.com/verndale/ui-design-library/pull/38))
 - 2026-08-13 — Expanded the executable evidence surface across Chromium, WebKit, forced colors, reflow/text-spacing, IDREF/live-region integrity, focus reachability, target size, and reduced motion. Kept browser installation in library CI and whole-page/VoiceOver acceptance with consumers ([plan](../plans/2026-08-13-realization-first-reuse-wcag-22-aa.md), [journal](../journal/2026-08-13-accessible-realization-contracts.md)).

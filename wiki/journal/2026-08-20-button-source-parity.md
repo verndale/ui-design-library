@@ -2,7 +2,7 @@
 date: 2026-08-20
 topics: [figma-code-connect]
 plan: plans/2026-08-19-source-parity-audit-and-remediation.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/72
 ---
 # Restore Button icon-only source parity
 

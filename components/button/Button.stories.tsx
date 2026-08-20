@@ -3,6 +3,12 @@ import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { Button } from './index';
 
+const ArrowIcon = () => (
+  <svg aria-hidden viewBox="0 0 20 20" fill="none">
+    <path d="m7 4 6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+  </svg>
+);
+
 const meta = {
   title: 'Button',
   component: Button,
@@ -12,7 +18,7 @@ const meta = {
     sourceParityEvidence: {
       "contractVersion": 1,
       "auditComponentKey": "button",
-      "auditStatus": "remediation-pending",
+      "auditStatus": "cleared",
       "privateAuditRef": "library-source-parity:2026-08-19/components/button",
       "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
       "decisionIds": [
@@ -38,17 +44,18 @@ const meta = {
         "storybook"
       ]
     },
-    realizationEvidence: ['button.keyboard.activation', 'button.focus.visible', 'button.icons.decorative'],
+    realizationEvidence: ['button.keyboard.activation', 'button.focus.visible', 'button.icons.decorative', 'button.icon-only.name'],
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A native control that performs an in-page action. If it navigates, use **Link** instead — the catalog treats those as different components and assistive technology depends on the distinction. Use the explicit `surface` prop to select the semantic palette.',
+          'A native control that performs an in-page action. If it navigates, use **Link** instead — the catalog treats those as different components and assistive technology depends on the distinction. Use the explicit `surface` prop to select the semantic palette. Icon-only buttons require an `aria-label` and use the same semantic appearance and touch-size axes.',
       },
     },
   },
   argTypes: {
     "children": { control: false, description: "Required. Public `children` realization prop." },
+    "presentation": { control: 'radio', options: ["label","icon-only"], description: "Optional. Public `presentation` realization prop. Defaults to \"label\"; icon-only requires `aria-label`." },
     "variant": { control: 'radio', options: ["primary","secondary","ghost"], description: "Optional. Public `variant` realization prop. Defaults to \"primary\"." },
     "size": { control: 'radio', options: ["large","medium","small"], description: "Optional. Public `size` realization prop. Defaults to \"large\"." },
     "surface": { control: 'radio', options: ["light","dark"], description: "Optional. Public `surface` realization prop. Defaults to \"light\"." },
@@ -136,6 +143,75 @@ export const Sizes: Story = {
         <Button key={s} {...args} size={s}>
           {s}
         </Button>
+      ))}
+    </div>
+  ),
+};
+
+
+/** A square icon-only control whose native accessible name is required by its TypeScript branch. */
+export const IconOnly: Story = {
+  tags: ['motion'],
+  args: {
+    presentation: 'icon-only',
+    children: <ArrowIcon />,
+    'aria-label': 'Next item',
+    onClick: fn(),
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Next item' });
+
+    await step('button.icon-only.name', async () => {
+      await expect(button).toHaveAccessibleName('Next item');
+      await expect(button).toHaveAttribute('data-presentation', 'icon-only');
+      await expect(button.querySelector('[aria-hidden="true"]')).toBeInTheDocument();
+    });
+
+    await step('uses the governed large square touch target', async () => {
+      const { width, height } = button.getBoundingClientRect();
+      await expect(Math.round(width)).toBe(48);
+      await expect(Math.round(height)).toBe(48);
+    });
+
+    await step('retains native activation and focus', async () => {
+      button.focus();
+      await expect(button).toHaveFocus();
+      await userEvent.keyboard('{Enter}');
+      await expect(args.onClick).toHaveBeenCalledTimes(1);
+    });
+
+    await step('drops its colour transition under reduced motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const { transitionProperty } = getComputedStyle(button);
+      if (reduced) await expect(transitionProperty).toBe('none');
+      else await expect(transitionProperty).toContain('background-color');
+    });
+  },
+};
+
+/** All governed icon-only combinations. Ghost remains scoped to the dark/imagery surface. */
+export const IconOnlyMatrix: Story = {
+  args: { presentation: 'icon-only', children: <ArrowIcon />, 'aria-label': 'Next item' },
+  render: (args) => (
+    <div className="grid gap-l">
+      {(['light', 'dark'] as const).map((surface) => (
+        <div key={surface} className={surface === 'dark' ? 'grid gap-s bg-surface-inverse p-l' : 'grid gap-s bg-surface-base p-l'}>
+          {(['large', 'medium', 'small'] as const).map((size) => (
+            <div key={size} className="flex items-center gap-2xs">
+              {(surface === 'dark' ? ['primary', 'secondary', 'ghost'] as const : ['primary', 'secondary'] as const).map((variant) => (
+                <Button
+                  {...args}
+                  key={[surface, size, variant].join('-')}
+                  aria-label={[variant, size, 'icon button'].join(' ')}
+                  size={size}
+                  surface={surface}
+                  variant={variant}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       ))}
     </div>
   ),

@@ -24,6 +24,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Restore Carousel multi-card source parity](../../wiki/journal/2026-08-19-carousel-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md)
 - [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
+- [Restore Button icon-only source parity](../../wiki/journal/2026-08-20-button-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Compose governed Cards inside Carousel](../../wiki/journal/2026-08-20-carousel-card-composition.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 
 ## Page → topic
@@ -60,6 +61,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 - [Keep Graphify output local](../../wiki/journal/2026-08-19-keep-graphify-output-local.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Restore Button icon-only source parity](../../wiki/journal/2026-08-20-button-source-parity.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Compose governed Cards inside Carousel](../../wiki/journal/2026-08-20-carousel-card-composition.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)

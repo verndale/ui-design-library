@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 133,
-    "edges": 272,
+    "nodes": 134,
+    "edges": 276,
     "byType": {
       "surface": 44,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 38,
+      "wiki-journal": 39,
       "wiki-plan": 15,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 51,
-      "links-to": 126,
-      "plan": 19,
-      "topic": 55,
+      "links-to": 128,
+      "plan": 20,
+      "topic": 56,
       "uses-tokens": 21
     }
   },
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 736,
       "degree": 1
     },
     {
@@ -294,7 +294,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9094,
+      "bytes": 10170,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 192,
       "degree": 1
     },
     {
@@ -594,7 +594,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 33374,
+      "bytes": 34521,
       "degree": 1
     },
     {
@@ -810,7 +810,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -870,8 +870,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 14311,
-      "degree": 48
+      "bytes": 14577,
+      "degree": 49
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1463,6 +1463,20 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-08-20-button-source-parity.md",
+      "label": "Restore Button icon-only source parity",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2799,
+      "degree": 4
+    },
+    {
       "id": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "label": "Compose governed Cards inside Carousel",
       "type": "wiki-journal",
@@ -1741,8 +1755,8 @@
         "69"
       ],
       "issues": [],
-      "bytes": 11025,
-      "degree": 6
+      "bytes": 11111,
+      "degree": 7
     },
     {
       "id": "wiki/plans/INDEX.md",
@@ -1779,7 +1793,7 @@
         "18",
         "4"
       ],
-      "bytes": 6752,
+      "bytes": 6817,
       "degree": 18
     },
     {
@@ -1821,8 +1835,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 13027,
-      "degree": 45
+      "bytes": 13544,
+      "degree": 47
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2514,6 +2528,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-20-button-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "type": "links-to",
       "count": 1,
@@ -2871,6 +2892,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-20-button-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "type": "links-to",
       "count": 1,
@@ -2922,7 +2950,7 @@
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 3,
+      "count": 4,
       "anchors": []
     },
     {
@@ -3198,6 +3226,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-20-button-source-parity.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "plan"
@@ -3363,6 +3396,11 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-20-button-source-parity.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
@@ -3511,7 +3549,7 @@
       "source": "components/button/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
-      "count": 24
+      "count": 25
     },
     {
       "source": "components/card/component.json",

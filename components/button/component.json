@@ -18,7 +18,9 @@
     "dark",
     "large",
     "medium",
-    "small"
+    "small",
+    "label",
+    "icon-only"
   ],
   "reuseFingerprint": {
     "slots": [
@@ -49,6 +51,7 @@
     "color-text-inverse",
     "color-border-focus",
     "radius-pill",
+    "radius-medium",
     "ease-standard",
     "size-touch-large",
     "size-touch-medium",
@@ -67,12 +70,13 @@
     "Mapped every --sem-button-* and --color-brand-* token onto neutral control-* semantic tokens.",
     "Replaced hard-coded 48/40/36px heights with --size-touch-* tokens.",
     "Narrowed the polymorphic control to a native button, so native type and disabled semantics no longer require an element-type guard.",
-    "Kept verbatim: the icon slots and disabled styling; the server-first rewrite made surface explicit and moved navigation to Link."
+    "Kept verbatim: the icon slots and disabled styling; the server-first rewrite made surface explicit and moved navigation to Link.",
+    "Restored the reusable square icon-only presentation as an orthogonal semantic prop; source tertiary maps to ghost, and source dimensions map to the stronger existing touch-size tokens."
   ],
   "sourceParity": {
     "contractVersion": 1,
     "auditComponentKey": "button",
-    "auditStatus": "remediation-pending",
+    "auditStatus": "cleared",
     "privateAuditRef": "library-source-parity:2026-08-19/components/button",
     "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
     "decisionIds": [
@@ -106,6 +110,16 @@
         "path": "children",
         "type": "node",
         "required": true
+      },
+      {
+        "path": "presentation",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "label",
+          "icon-only"
+        ],
+        "default": "label"
       },
       {
         "path": "variant",
@@ -246,7 +260,8 @@
           "display",
           "visibility",
           "semantics",
-          "reading-order"
+          "reading-order",
+          "target-size"
         ]
       },
       {
@@ -280,7 +295,7 @@
       "nodes": [
         {
         "id": "root",
-        "attributes": {"type":{"prop":"type"},"disabled":{"prop":"disabled"}},
+        "attributes": {"type":{"prop":"type"},"disabled":{"prop":"disabled"},"data-presentation":{"prop":"presentation"}},
           "element": "button",
           "parent": null,
           "cardinality": "one"
@@ -316,6 +331,17 @@
       ]
     },
     "relationships": [],
+    "constraints": [
+      {
+        "when": {
+          "prop": "presentation",
+          "equals": "icon-only"
+        },
+        "requireAny": [
+          "aria-label"
+        ]
+      }
+    ],
     "behaviors": [
       {
         "id": "button.keyboard.activation",
@@ -348,6 +374,18 @@
           "1.1.1"
         ],
         "evidence": "button.icons.decorative",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "button.icon-only.name",
+        "kind": "semantics",
+        "description": "Icon-only presentation requires a native accessible name while its visual icon remains decorative.",
+        "wcag": [
+          "1.1.1",
+          "2.5.8",
+          "4.1.2"
+        ],
+        "evidence": "button.icon-only.name",
         "evidenceType": "storybook-step"
       }
     ],

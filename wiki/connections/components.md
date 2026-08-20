@@ -11,7 +11,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Avatar](../../components/avatar/component.json) — 1 token declared
 - [Badge](../../components/badge/component.json) — 6 tokens declared
 - [Breadcrumbs](../../components/breadcrumbs/component.json) — 4 tokens declared
-- [Button](../../components/button/component.json) — 24 tokens declared
+- [Button](../../components/button/component.json) — 25 tokens declared
 - [Card](../../components/card/component.json) — 2 tokens declared
 - [Carousel](../../components/carousel/component.json) — 8 tokens declared
 - [Image](../../components/image/component.json) — 1 token declared

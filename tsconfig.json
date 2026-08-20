@@ -15,5 +15,5 @@
     "baseUrl": ".",
     "paths": { "@library/*": ["./src/*"] }
   },
-  "include": ["src", "components", ".storybook"]
+  "include": ["src", "components", "stories", ".storybook"]
 }

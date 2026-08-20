@@ -334,7 +334,7 @@ function validateStorySourceParity(source, manifest, componentKey, storyPath, fa
   compareEvidence(parsed, manifest.sourceParity, storyPath, fail);
 }
 
-function validateRegistrationSourceParity(registration, manifest, componentKey, baseline, fail) {
+function validateRegistrationSourceParity(registration, manifest, componentKey, baseline, fail, options = {}) {
   const label = `Figma registration ${registration.id ?? 'unknown'}`;
   const evidence = registration.sourceParity;
   const commonEvidence = evidence && typeof evidence === 'object' && !Array.isArray(evidence)
@@ -349,13 +349,16 @@ function validateRegistrationSourceParity(registration, manifest, componentKey, 
   const figmaDecisionIds = manifest.sourceParity.representationDecisions
     .filter((decision) => decision.surfaces.includes('figma') && decision.implementationKey === componentKey)
     .map((decision) => decision.decisionId);
-  const representationDecisionIds = evidence.representations.map((entry) => entry?.decisionId);
+  const remaining = baseline.remainingKeys.includes(manifest.sourceParity.auditComponentKey);
+  const familyRegistrations = remaining ? [registration] : (options.familyRegistrations ?? [registration]);
+  const familyRepresentations = familyRegistrations.flatMap((entry) =>
+    Array.isArray(entry.sourceParity?.representations) ? entry.sourceParity.representations : []);
+  const representationDecisionIds = familyRepresentations.map((entry) => entry?.decisionId);
   if (representationDecisionIds.length !== new Set(representationDecisionIds).size ||
     representationDecisionIds.length !== figmaDecisionIds.length ||
     !sameSet(representationDecisionIds, figmaDecisionIds)) {
-    fail(`[source-parity] ${label} representations must cover every Figma-targeted decision exactly once`);
+    fail(`[source-parity] ${label} presentation family must cover every Figma-targeted decision exactly once`);
   }
-  const remaining = baseline.remainingKeys.includes(manifest.sourceParity.auditComponentKey);
   const specimenNodeIds = new Set();
   for (const representation of evidence.representations) {
     if (!representation || typeof representation !== 'object' || Array.isArray(representation) ||
@@ -410,6 +413,7 @@ function validateRegistrationSourceParity(registration, manifest, componentKey, 
     const propertyBacked = ['component-property', 'component-property-responsive', 'nonvisual-metadata'].includes(representation.kind);
     const publicProps = new Set((manifest.realization?.props ?? []).map((prop) => String(prop.path).split('.')[0]));
     const mappings = new Map((registration.mappings ?? []).map((mapping) => [mapping.codeProp, mapping]));
+    const fixedProps = new Map((registration.fixedProps ?? []).map((fixedProp) => [fixedProp.codeProp, fixedProp]));
     if (propertyBacked && representation.publicProps.length === 0) {
       fail(`[source-parity] ${label} representation ${representation.decisionId} requires at least one public prop after remediation`);
     }
@@ -420,9 +424,9 @@ function validateRegistrationSourceParity(registration, manifest, componentKey, 
       if (!publicProps.has(prop)) {
         fail(`[source-parity] ${label} public prop "${prop}" is absent from the realization contract`);
       }
-      if (!mappings.has(prop)) {
-        fail(`[source-parity] ${label} public prop "${prop}" has no Figma property mapping`);
-      } else if (representation.kind === 'nonvisual-metadata' && mappings.get(prop).visualBinding !== 'nonvisual') {
+      if (!mappings.has(prop) && !fixedProps.has(prop)) {
+        fail(`[source-parity] ${label} public prop "${prop}" has no Figma property mapping or fixed presentation value`);
+      } else if (representation.kind === 'nonvisual-metadata' && mappings.get(prop)?.visualBinding !== 'nonvisual') {
         fail(`[source-parity] ${label} nonvisual public prop "${prop}" must use a nonvisual Figma mapping`);
       }
     }

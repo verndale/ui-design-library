@@ -55,6 +55,9 @@ const preview: Preview = {
         lgBoundary: { name: 'Breakpoint — lg (1024px)', styles: { width: '1024px', height: '900px' }, type: 'desktop' },
         xlBoundary: { name: 'Breakpoint — xl (1280px)', styles: { width: '1280px', height: '900px' }, type: 'desktop' },
         belowXl: { name: 'Below xl (1279px)', styles: { width: '1279px', height: '900px' }, type: 'desktop' },
+        sourceParity1440: { name: 'Source parity — 1440px', styles: { width: '1440px', height: '900px' }, type: 'desktop' },
+        sourceParity768: { name: 'Source parity — 768px', styles: { width: '768px', height: '900px' }, type: 'tablet' },
+        sourceParity390: { name: 'Source parity — 390px', styles: { width: '390px', height: '844px' }, type: 'mobile' },
       },
     },
     backgrounds: {

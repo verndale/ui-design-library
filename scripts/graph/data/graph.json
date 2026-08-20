@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 131,
-    "edges": 264,
+    "nodes": 133,
+    "edges": 272,
     "byType": {
       "surface": 44,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 36,
+      "wiki-journal": 38,
       "wiki-plan": 15,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 51,
-      "links-to": 122,
-      "plan": 17,
-      "topic": 53,
+      "links-to": 126,
+      "plan": 19,
+      "topic": 55,
       "uses-tokens": 21
     }
   },
@@ -150,7 +150,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1112,
+      "bytes": 1246,
       "degree": 1
     },
     {
@@ -174,7 +174,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2812,
+      "bytes": 3185,
       "degree": 2
     },
     {
@@ -318,7 +318,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11597,
+      "bytes": 12417,
       "degree": 1
     },
     {
@@ -522,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10870,
+      "bytes": 10878,
       "degree": 1
     },
     {
@@ -594,7 +594,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 32183,
+      "bytes": 33374,
       "degree": 1
     },
     {
@@ -606,7 +606,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4563,
+      "bytes": 4607,
       "degree": 1
     },
     {
@@ -714,7 +714,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 21972,
+      "bytes": 22436,
       "degree": 1
     },
     {
@@ -786,7 +786,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4255,
+      "bytes": 4653,
       "degree": 22
     },
     {
@@ -870,8 +870,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13810,
-      "degree": 46
+      "bytes": 14311,
+      "degree": 48
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1378,6 +1378,20 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-08-19-carousel-source-parity.md",
+      "label": "Restore Carousel multi-card source parity",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 5045,
+      "degree": 4
+    },
+    {
       "id": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
       "label": "Correct Tabs spacing and Search overlay containment",
       "type": "wiki-journal",
@@ -1444,6 +1458,20 @@
         "63"
       ],
       "bytes": 5046,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-08-20-carousel-card-composition.md",
+      "label": "Compose governed Cards inside Carousel",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2669,
       "degree": 4
     },
     {
@@ -1708,8 +1736,8 @@
         "64"
       ],
       "issues": [],
-      "bytes": 10706,
-      "degree": 4
+      "bytes": 10938,
+      "degree": 6
     },
     {
       "id": "wiki/plans/INDEX.md",
@@ -1735,6 +1763,7 @@
       ],
       "issues": [
         "58",
+        "62",
         "55",
         "49",
         "46",
@@ -1744,7 +1773,7 @@
         "18",
         "4"
       ],
-      "bytes": 6560,
+      "bytes": 6687,
       "degree": 18
     },
     {
@@ -1786,8 +1815,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 11907,
-      "degree": 41
+      "bytes": 13027,
+      "degree": 45
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2441,6 +2470,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-19-carousel-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
       "type": "links-to",
       "count": 1,
@@ -2463,6 +2499,13 @@
     {
       "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -2791,6 +2834,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-19-carousel-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
       "type": "links-to",
       "count": 1,
@@ -2806,6 +2856,13 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -2856,7 +2913,7 @@
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 1,
+      "count": 3,
       "anchors": []
     },
     {
@@ -3117,12 +3174,22 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-19-carousel-source-parity.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-08-19-figma-structural-family-contract.md",
       "target": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
       "type": "plan"
     },
     {
       "source": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "plan"
     },
@@ -3257,6 +3324,11 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-19-carousel-source-parity.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
@@ -3278,6 +3350,11 @@
     },
     {
       "source": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-carousel-card-composition.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },
@@ -3437,7 +3514,7 @@
       "source": "components/carousel/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
-      "count": 6
+      "count": 8
     },
     {
       "source": "components/image/component.json",

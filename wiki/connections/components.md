@@ -13,7 +13,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Breadcrumbs](../../components/breadcrumbs/component.json) — 4 tokens declared
 - [Button](../../components/button/component.json) — 24 tokens declared
 - [Card](../../components/card/component.json) — 2 tokens declared
-- [Carousel](../../components/carousel/component.json) — 6 tokens declared
+- [Carousel](../../components/carousel/component.json) — 8 tokens declared
 - [Image](../../components/image/component.json) — 1 token declared
 - [In-page navigation](../../components/in-page-navigation/component.json) — 10 tokens declared
 - [Link](../../components/link/component.json) — 6 tokens declared

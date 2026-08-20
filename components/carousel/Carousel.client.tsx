@@ -11,6 +11,7 @@ export function Carousel({
   previousLabel = 'Previous slide',
   nextLabel = 'Next slide',
   loop = false,
+  layout = 'single',
   className,
   slideClassName,
   previousIcon,
@@ -18,13 +19,24 @@ export function Carousel({
   classNames,
   statusSeparator = '/',
 }: CarouselProps) {
-  const controller = useCarouselController({ loop, slideCount: slides.length });
+  const controller = useCarouselController({
+    loop,
+    slideCount: slides.length,
+    inertVisibility: layout === 'multi-card-peek' ? 'fully-visible' : 'intersecting',
+  });
   if (slides.length === 0) return null;
 
   return (
-    <section aria-roledescription="carousel" aria-label={label} data-component="carousel" className={[classNames?.root, className].filter(Boolean).join(' ')}>
+    <section
+      aria-roledescription="carousel"
+      aria-label={label}
+      data-component="carousel"
+      data-layout={layout}
+      className={[classNames?.root, className].filter(Boolean).join(' ')}
+    >
       <CarouselViewport
         slides={slides}
+        layout={layout}
         slideClassName={slideClassName}
         trackRef={controller.trackRef}
         viewportRef={controller.viewportRef}

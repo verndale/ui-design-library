@@ -33,10 +33,11 @@ const storyFor = (evidence, prefix = '') => `${prefix}\nconst meta = {
   },
 } satisfies Record<string, unknown>;
 export default meta;\n`;
-const registrationFor = (evidence, representations, mappings = []) => ({
+const registrationFor = (evidence, representations, mappings = [], fixedProps = []) => ({
   id: evidence.auditComponentKey,
   figma: { nodeId: '1:2' },
   mappings,
+  fixedProps,
   sourceParity: { ...evidence, representations },
 });
 
@@ -236,6 +237,69 @@ const cases = [
       );
     },
     expect: (failures) => failures.some((failure) => failure.includes('1440, 1024, 768, and 390')),
+  },
+  {
+    name: 'duplicate presentations collectively cover one decision and a fixed prop can represent layout',
+    run(fail) {
+      const evidence = {
+        ...baseEvidence,
+        auditComponentKey: 'carousel',
+        auditStatus: 'cleared',
+        privateAuditRef: 'library-source-parity:2026-08-19/components/carousel',
+        decisionIds: ['sp-carousel-001', 'sp-carousel-002'],
+        representationDecisions: [{ decisionId: 'sp-carousel-002', implementationKey: 'carousel', surfaces: allSurfaces }],
+      };
+      const primary = registrationFor(evidence, [], [], [{ codeProp: 'layout', value: 'single' }]);
+      const alternate = registrationFor(evidence, [{
+        decisionId: 'sp-carousel-002',
+        kind: 'component-property-responsive',
+        masterNodeId: '1:3',
+        publicProps: ['layout'],
+        specimens: [1440, 1024, 768, 390].map((viewportWidth, index) => ({
+          componentNodeId: '1:3',
+          nodeId: `2:${index + 1}`,
+          viewportWidth,
+        })),
+      }], [], [{ codeProp: 'layout', value: 'multi-card-peek' }]);
+      alternate.id = 'carousel-multi-card-peek';
+      alternate.figma.nodeId = '1:3';
+      const familyRegistrations = [primary, alternate];
+      for (const registration of familyRegistrations) {
+        validateRegistrationSourceParity(
+          registration,
+          { sourceParity: evidence, realization: { props: [{ path: 'layout' }] } },
+          'carousel',
+          { ...baseBaseline, remainingKeys: [] },
+          fail,
+          { familyRegistrations },
+        );
+      }
+    },
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'duplicate presentations cannot claim the same source-parity decision twice',
+    run(fail) {
+      const evidence = { ...baseEvidence, auditStatus: 'cleared' };
+      const representation = {
+        decisionId: 'sp-button-002',
+        kind: 'component-property',
+        masterNodeId: '1:2',
+        publicProps: ['presentation'],
+        specimens: [],
+      };
+      const first = registrationFor(evidence, [representation], [{ codeProp: 'presentation' }]);
+      const second = registrationFor(evidence, [representation], [{ codeProp: 'presentation' }]);
+      validateRegistrationSourceParity(
+        first,
+        { sourceParity: evidence, realization: { props: [{ path: 'presentation' }] } },
+        'button',
+        { ...baseBaseline, remainingKeys: [] },
+        fail,
+        { familyRegistrations: [first, second] },
+      );
+    },
+    expect: (failures) => failures.some((failure) => failure.includes('exactly once')),
   },
   {
     name: 'a completed visual decision cannot point at an unrelated Figma master',

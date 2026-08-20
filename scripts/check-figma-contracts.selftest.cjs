@@ -49,6 +49,43 @@ const cases = [
     expect: (failures) => failures.some((failure) => failure.includes('variantLabel/default require a structural variant')),
   },
   {
+    name: 'presentation labels must be non-empty',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'carousel-multi-card-peek').presentationLabel = '';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('presentationLabel must be a non-empty string')),
+  },
+  {
+    name: 'presentation labels qualify non-structural master names',
+    registry: (() => {
+      const registry = clone();
+      delete registry.components.find((component) => component.id === 'carousel-multi-card-peek').presentationLabel;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('Figma node name must equal "Carousel"')),
+  },
+  {
+    name: 'duplicate presentations share the canonical family page',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'carousel-multi-card-peek').figma.pageId = '999:1';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('must share Carousel\'s family page identity')),
+  },
+  {
+    name: 'duplicate presentations cannot both claim one source-parity decision',
+    registry: (() => {
+      const registry = clone();
+      const alternate = registry.components.find((component) => component.id === 'carousel-multi-card-peek');
+      registry.components.find((component) => component.id === 'carousel').sourceParity.representations = structuredClone(alternate.sourceParity.representations);
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('exactly once')),
+  },
+  {
     name: 'duplicate stable node identity fails',
     registry: (() => {
       const registry = clone();

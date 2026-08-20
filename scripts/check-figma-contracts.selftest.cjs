@@ -183,7 +183,7 @@ const cases = [
     name: 'a grandfathered remediation cannot claim a completed source-parity review',
     registry: (() => {
       const registry = clone();
-      registry.components.find((component) => component.id === 'slider').figma.review.passes = [
+      registry.components.find((component) => component.id === 'tabs').figma.review.passes = [
         'source-parity',
         'adversarial',
         'design',

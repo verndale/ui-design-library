@@ -56,7 +56,7 @@ const fixtures: Array<[string, ReactElement]> = [
     />,
   ],
   ['SectionHeader', <SectionHeader heading="Section" />],
-  ['Slider', <Slider label="Plan" options={[{ value: 'basic', label: 'Basic' }]} />],
+  ['Slider', <Slider label="Plan" name="plan" options={[{ value: 'basic', label: 'Basic' }]} />],
   ['Stat', <Stat value="98%" label="satisfaction" />],
   ['Tabs', <Tabs ariaLabel="Sections" items={[{ id: 'first', label: 'First' }]} />],
   ['Toast', <Toast open>Saved</Toast>],

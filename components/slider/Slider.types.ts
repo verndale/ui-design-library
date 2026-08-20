@@ -23,6 +23,8 @@ export type SliderProps = {
   hint?: ReactNode;
   /** Unit appended to the announced and displayed value. */
   unit?: string;
+  /** Native form field name. When present, the selected option value is submitted through a hidden input. */
+  name?: string;
   className?: string;
   classNames?: SliderClassNames;
   inputId?: string;

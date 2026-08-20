@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 139,
-    "edges": 289,
+    "nodes": 140,
+    "edges": 298,
     "byType": {
       "surface": 47,
       "root-doc": 4,
       "component": 22,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 40,
+      "wiki-journal": 41,
       "wiki-plan": 15,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 54,
-      "links-to": 133,
-      "plan": 21,
-      "topic": 59,
+      "links-to": 138,
+      "plan": 22,
+      "topic": 62,
       "uses-tokens": 22
     }
   },
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 768,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -474,7 +474,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 14514,
+      "bytes": 16802,
       "degree": 1
     },
     {
@@ -534,7 +534,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 192,
       "degree": 1
     },
     {
@@ -546,7 +546,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 84446,
+      "bytes": 84698,
       "degree": 1
     },
     {
@@ -858,7 +858,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -918,8 +918,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 14872,
-      "degree": 50
+      "bytes": 15146,
+      "degree": 51
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1561,6 +1561,22 @@
       "degree": 8
     },
     {
+      "id": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "label": "Restore Slider native-form source parity",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "component-architecture",
+        "figma-code-connect",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2809,
+      "degree": 8
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1825,8 +1841,8 @@
         "74"
       ],
       "issues": [],
-      "bytes": 11346,
-      "degree": 9
+      "bytes": 11388,
+      "degree": 11
     },
     {
       "id": "wiki/plans/INDEX.md",
@@ -1865,7 +1881,7 @@
         "18",
         "4"
       ],
-      "bytes": 7023,
+      "bytes": 7088,
       "degree": 18
     },
     {
@@ -1887,8 +1903,8 @@
         "46",
         "40"
       ],
-      "bytes": 7397,
-      "degree": 24
+      "bytes": 7768,
+      "degree": 27
     },
     {
       "id": "wiki/topics/figma-code-connect.md",
@@ -1907,8 +1923,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 14398,
-      "degree": 49
+      "bytes": 14736,
+      "degree": 51
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2000,8 +2016,8 @@
         "19"
       ],
       "issues": [],
-      "bytes": 8258,
-      "degree": 20
+      "bytes": 8604,
+      "degree": 22
     },
     {
       "id": "wiki/topics/storybook-tooling.md",
@@ -2638,6 +2654,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2883,6 +2906,13 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
       "count": 2,
@@ -2905,6 +2935,13 @@
     {
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-14-breadcrumbs-direct-reuse-slots.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3009,6 +3046,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -3053,7 +3097,7 @@
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 5,
+      "count": 6,
       "anchors": []
     },
     {
@@ -3164,6 +3208,13 @@
     {
       "source": "wiki/topics/story-testing.md",
       "target": "wiki/journal/2026-08-20-in-page-navigation-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-08-20-slider-source-parity.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3365,6 +3416,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -3547,6 +3603,21 @@
     {
       "source": "wiki/journal/2026-08-20-in-page-navigation-source-parity.md",
       "target": "wiki/topics/variant-axis.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "target": "wiki/topics/story-testing.md",
       "type": "topic"
     },
     {

@@ -44,6 +44,36 @@
     "Replaced the fixed reveal transition with grid-template-rows 0fr→1fr on duration-(--duration-base) ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
     "Retained the labelled nav landmark, aria-current on the active link, native anchor operation, the mobile trigger's aria-expanded/aria-controls, and inert gating for the collapsed drawer."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "in-page-navigation",
+    "auditStatus": "remediation-pending",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/in-page-navigation",
+    "privateAuditDigest": "24f12352bf3b1fc547d4f3b4b656851c504b3ae8e29e6548b2885906ddd74ef4",
+    "decisionIds": [
+      "sp-in-page-navigation-001",
+      "sp-in-page-navigation-002",
+      "sp-in-page-navigation-003"
+    ],
+    "representationDecisions": [
+      {
+        "decisionId": "sp-in-page-navigation-002",
+        "implementationKey": null,
+        "surfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ]
+      }
+    ],
+    "requiredRepresentationSurfaces": [
+      "ai-registry",
+      "code",
+      "figma",
+      "storybook"
+    ]
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

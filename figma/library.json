@@ -87,7 +87,7 @@
       "annotations remain outside the component-only handoff frame",
       "responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable",
       "alignment, margins, padding, whitespace, clipping, and containment are audited",
-      "adversarial and design review findings are fixed and recorded",
+      "source-parity, adversarial, and design review findings are fixed and recorded",
       "candidate components remain unpublished pending maintainer action",
       "stable node identity is registered",
       "repository contracts pass"
@@ -132,6 +132,44 @@
       ],
       "codeOnlyProps": ["type", "onClick", "aria-label", "className", "classNames"],
       "fixedProps": [{ "codeProp": "surface", "value": "light" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "button",
+        "auditStatus": "remediation-pending",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/button",
+        "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
+        "decisionIds": [
+          "sp-button-001",
+          "sp-button-002"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-button-002",
+            "implementationKey": "button",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": [
+          {
+            "decisionId": "sp-button-002",
+            "kind": "component-property",
+            "masterNodeId": null,
+            "publicProps": [],
+            "specimens": []
+          }
+        ]
+      },
       "figma": {
         "pageId": "11:5",
         "pageName": "Button — Light",
@@ -145,7 +183,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -193,6 +231,44 @@
       ],
       "codeOnlyProps": ["type", "onClick", "aria-label", "className", "classNames"],
       "fixedProps": [{ "codeProp": "surface", "value": "dark" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "button",
+        "auditStatus": "remediation-pending",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/button",
+        "privateAuditDigest": "342ee614589966d4979626cfd97cbd12023e3f16766fc113be9ea5063cc34e08",
+        "decisionIds": [
+          "sp-button-001",
+          "sp-button-002"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-button-002",
+            "implementationKey": "button",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": [
+          {
+            "decisionId": "sp-button-002",
+            "kind": "component-property",
+            "masterNodeId": null,
+            "publicProps": [],
+            "specimens": []
+          }
+        ]
+      },
       "figma": {
         "pageId": "11:6",
         "pageName": "Button — Dark",
@@ -206,7 +282,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -241,6 +317,20 @@
       "storyProps": ["eyebrow", "heading", "description", "alignment", "headingLevel", "as", "className", "classNames"],
       "codeOnlyProps": ["headingLevel", "as", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "section-header",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/section-header",
+        "privateAuditDigest": "f2931ae34832019957057cd399b9b581257dd65350a4050d26ecbbf8c0b52be4",
+        "decisionIds": [
+          "sp-section-header-001",
+          "sp-section-header-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "11:7",
         "pageName": "Section header",
@@ -253,8 +343,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -289,6 +379,20 @@
       "storyProps": ["children", "variant", "open", "icon", "showAccent", "onDismiss", "dismissLabel", "dismissMs", "className", "classNames"],
       "codeOnlyProps": ["open", "dismissLabel", "dismissMs", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "alert",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/alert",
+        "privateAuditDigest": "2956e5f44f078e5a94fcc1d4896d101895d1e342e58396fd941dcc907875b3a0",
+        "decisionIds": [
+          "sp-alert-001",
+          "sp-alert-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "11:8",
         "pageName": "Alert",
@@ -301,8 +405,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -335,6 +439,20 @@
       "storyProps": ["children", "unsetBackground", "as", "ariaLabel", "ariaLabelledBy", "className", "classNames"],
       "codeOnlyProps": ["as", "ariaLabel", "ariaLabelledBy", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "card",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/card",
+        "privateAuditDigest": "9b9123adeef6dc98341a03651dc5aa29318ab4a5c62b74b15074e960ad91d13f",
+        "decisionIds": [
+          "sp-card-001",
+          "sp-card-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "11:9",
         "pageName": "Card",
@@ -347,8 +465,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-card-media-composition-specimens.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -377,6 +495,20 @@
       "storyProps": ["children", "className"],
       "codeOnlyProps": ["className"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "card",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/card",
+        "privateAuditDigest": "9b9123adeef6dc98341a03651dc5aa29318ab4a5c62b74b15074e960ad91d13f",
+        "decisionIds": [
+          "sp-card-001",
+          "sp-card-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "11:10",
         "pageName": "CardMedia",
@@ -389,8 +521,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -427,6 +559,20 @@
       ],
       "codeOnlyProps": ["open", "onClose", "closeLabel", "returnFocusRef", "id", "titleHeadingLevel", "closeIcon", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "modal",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/modal",
+        "privateAuditDigest": "8545b0c4df7347af48877b89593474f1911e63527bd015487a5e01aa81c64cba",
+        "decisionIds": [
+          "sp-modal-001",
+          "sp-modal-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "11:11",
         "pageName": "Modal",
@@ -439,8 +585,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-full-viewport",
@@ -479,6 +625,20 @@
       "storyProps": ["children", "id", "ariaLabel", "className", "classNames"],
       "codeOnlyProps": ["id", "ariaLabel", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "avatar",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/avatar",
+        "privateAuditDigest": "15fd1aa4df85c5adc53207ede5bf16b49660eb61b5210622bfe5719530d59d92",
+        "decisionIds": [
+          "sp-avatar-001",
+          "sp-avatar-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "164:3",
         "pageName": "Avatar",
@@ -491,8 +651,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -513,6 +673,20 @@
       "storyProps": ["label", "disabled", "surface", "startIcon", "endIcon", "onRemove", "removeLabel", "className", "classNames"],
       "codeOnlyProps": ["removeLabel", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "badge",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/badge",
+        "privateAuditDigest": "abeea6783d3ae6e97b650766bcc962ebcee52b9884e966c92740b8b058b25d61",
+        "decisionIds": [
+          "sp-badge-001",
+          "sp-badge-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "167:4",
         "pageName": "Badge",
@@ -525,8 +699,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -561,6 +735,20 @@
       "storyProps": ["children", "size", "as", "touchTarget", "startIcon", "endIcon", "disabled", "href", "target", "rel", "onClick", "aria-label", "className", "classNames"],
       "codeOnlyProps": ["as", "target", "rel", "onClick", "aria-label", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "link",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/link",
+        "privateAuditDigest": "7d3802ac82291a8659798275b32331948ee55571493d472fd7dc511354fdabce",
+        "decisionIds": [
+          "sp-link-001",
+          "sp-link-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "169:2",
         "pageName": "Link",
@@ -573,8 +761,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -611,6 +799,20 @@
       "storyProps": ["src", "alt", "width", "height", "responsive", "loader", "loading", "rounded", "wrapper", "className", "classNames"],
       "codeOnlyProps": ["responsive", "loader", "loading", "wrapper", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "image",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/image",
+        "privateAuditDigest": "974b795d61bc97d3dd5a5b345a8b9a2989859fa08ce7a54e82ca3c78557c973d",
+        "decisionIds": [
+          "sp-image-001",
+          "sp-image-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "171:2",
         "pageName": "Image",
@@ -623,8 +825,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -657,6 +859,20 @@
       "storyProps": ["children", "cite", "className", "classNames"],
       "codeOnlyProps": ["className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "quote",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/quote",
+        "privateAuditDigest": "8231f0223ca38887883b576944c99402869bef5d16ce570907c4727f4353b3e3",
+        "decisionIds": [
+          "sp-quote-001",
+          "sp-quote-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "172:3",
         "pageName": "Quote",
@@ -669,8 +885,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -697,6 +913,20 @@
       "storyProps": ["children", "listStyle", "as", "className", "classNames"],
       "codeOnlyProps": ["as", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "rich-text",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/rich-text",
+        "privateAuditDigest": "74a0f0848c853d83fa48fa0a6b5eb99ecb236331c64427be970c0c91d59708cf",
+        "decisionIds": [
+          "sp-rich-text-001",
+          "sp-rich-text-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "173:2",
         "pageName": "Rich text",
@@ -709,8 +939,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -737,6 +967,20 @@
       "storyProps": ["value", "label", "description", "contentOrder", "className", "classNames"],
       "codeOnlyProps": ["className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "stat",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/stat",
+        "privateAuditDigest": "1cadbc6a795c707f87dcae84c61f32b91c938722dd3ec0d36374f38ab6437682",
+        "decisionIds": [
+          "sp-stat-001",
+          "sp-stat-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "176:2",
         "pageName": "Stat",
@@ -749,8 +993,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
@@ -781,6 +1025,20 @@
       "storyProps": ["placeholder", "label", "ariaLabel", "showLabel", "name", "onSearch", "value", "onChange", "autoFocus", "results", "inputId", "clearLabel", "submitLabel", "resultsLabel", "clearIcon", "submitIcon", "showClearButton", "showSubmitButton", "className", "classNames"],
       "codeOnlyProps": ["ariaLabel", "name", "onSearch", "onChange", "autoFocus", "inputId", "clearLabel", "submitLabel", "resultsLabel", "clearIcon", "submitIcon", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "search-input",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/search-input",
+        "privateAuditDigest": "5c401a2468ac081a9c937f9ed7a6eff365fce947daa81808f033310b4c9d829b",
+        "decisionIds": [
+          "sp-search-input-001",
+          "sp-search-input-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "177:2",
         "pageName": "Search input",
@@ -793,8 +1051,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -835,6 +1093,46 @@
       "storyProps": ["label", "options", "value", "defaultValue", "onChange", "hint", "unit", "inputId", "showScale", "showSelectedValue", "className", "classNames"],
       "codeOnlyProps": ["defaultValue", "onChange", "inputId", "className", "classNames"],
       "fixedProps": [{ "codeProp": "options", "value": "sliderOptions" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "slider",
+        "auditStatus": "remediation-pending",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/slider",
+        "privateAuditDigest": "b1d510639b68d3c8fb448c19e0b43e0f5ab626b965b20eb27ed81b2e8fcc0a62",
+        "decisionIds": [
+          "sp-slider-001",
+          "sp-slider-002"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-slider-002",
+            "implementationKey": "slider",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": [
+          {
+            "decisionId": "sp-slider-002",
+            "kind": "nonvisual-metadata",
+            "masterNodeId": null,
+            "publicProps": [
+              "name"
+            ],
+            "specimens": []
+          }
+        ]
+      },
       "figma": {
         "pageId": "178:2",
         "pageName": "Slider",
@@ -848,7 +1146,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -885,6 +1183,20 @@
       "storyProps": ["items", "currentPageTitle", "backLinkLabel", "leadingItem", "presentation", "surface", "ariaLabel", "separator", "backIcon", "className", "classNames"],
       "codeOnlyProps": ["ariaLabel", "className", "classNames"],
       "fixedProps": [{ "codeProp": "items", "value": "breadcrumbItems" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "breadcrumbs",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/breadcrumbs",
+        "privateAuditDigest": "940f6afed71165839978d110e1416b0aa6039e96d8a8571eda4a4aaba3fddd53",
+        "decisionIds": [
+          "sp-breadcrumbs-001",
+          "sp-breadcrumbs-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "179:2",
         "pageName": "Breadcrumbs",
@@ -897,8 +1209,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -935,6 +1247,20 @@
       "storyProps": ["items", "heading", "standalone", "initialItemCount", "moreLabel", "lessLabel", "id", "role", "ariaLabel", "ariaLabelledBy", "ariaDescribedBy", "headingLevel", "itemHeadingLevel", "collapsedIcon", "expandedIcon", "className", "classNames"],
       "codeOnlyProps": ["id", "role", "ariaLabel", "ariaLabelledBy", "ariaDescribedBy", "headingLevel", "itemHeadingLevel", "collapsedIcon", "expandedIcon", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "accordion",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/accordion",
+        "privateAuditDigest": "430750e0037107128f6baa67020521334e65360c192e9ad3cca2ae998d8e1c39",
+        "decisionIds": [
+          "sp-accordion-001",
+          "sp-accordion-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "180:2",
         "pageName": "Accordion",
@@ -947,8 +1273,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -985,6 +1311,56 @@
       "storyProps": ["items", "ariaLabel", "activeId", "defaultActiveId", "onSelect", "tabIdPrefix", "orientation", "className", "classNames"],
       "codeOnlyProps": ["defaultActiveId", "onSelect", "tabIdPrefix", "className", "classNames"],
       "fixedProps": [{ "codeProp": "items", "value": "tabItems" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "tabs",
+        "auditStatus": "remediation-pending",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
+        "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
+        "decisionIds": [
+          "sp-tabs-001",
+          "sp-tabs-002",
+          "sp-tabs-003",
+          "sp-tabs-004"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-tabs-002",
+            "implementationKey": "tabs",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          },
+          {
+            "decisionId": "sp-tabs-004",
+            "implementationKey": null,
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": [
+          {
+            "decisionId": "sp-tabs-002",
+            "kind": "component-property",
+            "masterNodeId": null,
+            "publicProps": [],
+            "specimens": []
+          }
+        ]
+      },
       "figma": {
         "pageId": "181:2",
         "pageName": "Tabs",
@@ -998,7 +1374,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -1027,6 +1403,20 @@
       "storyProps": ["open", "children", "variant", "dismissMs", "onDismiss", "icon", "position", "className", "classNames"],
       "codeOnlyProps": ["dismissMs", "onDismiss", "className", "classNames"],
       "fixedProps": [],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "toast",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/toast",
+        "privateAuditDigest": "388b599954110a19a0ce3bbba13d7d7271bce3344508e65d4e122ad0f17532f0",
+        "decisionIds": [
+          "sp-toast-001",
+          "sp-toast-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "184:2",
         "pageName": "Toast",
@@ -1039,8 +1429,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -1073,6 +1463,37 @@
       "storyProps": ["items", "ariaLabel", "activeId", "collapsedIcon", "expandedIcon", "className", "classNames"],
       "codeOnlyProps": ["collapsedIcon", "expandedIcon", "className", "classNames"],
       "fixedProps": [{ "codeProp": "items", "value": "inPageNavigationItems" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "in-page-navigation",
+        "auditStatus": "remediation-pending",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/in-page-navigation",
+        "privateAuditDigest": "24f12352bf3b1fc547d4f3b4b656851c504b3ae8e29e6548b2885906ddd74ef4",
+        "decisionIds": [
+          "sp-in-page-navigation-001",
+          "sp-in-page-navigation-002",
+          "sp-in-page-navigation-003"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-in-page-navigation-002",
+            "implementationKey": null,
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": []
+      },
       "figma": {
         "pageId": "204:2",
         "pageName": "In-page navigation",
@@ -1086,7 +1507,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -1113,6 +1534,47 @@
       "storyProps": ["slides", "label", "previousLabel", "nextLabel", "loop", "slideClassName", "previousIcon", "nextIcon", "statusSeparator", "className", "classNames"],
       "codeOnlyProps": ["previousLabel", "nextLabel", "slideClassName", "previousIcon", "nextIcon", "className", "classNames"],
       "fixedProps": [{ "codeProp": "slides", "value": "carouselSlides" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "carousel",
+        "auditStatus": "remediation-pending",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/carousel",
+        "privateAuditDigest": "bf4b666fa58b427629052347b87f097caccc676d64d9219c38988b67b627fab4",
+        "decisionIds": [
+          "sp-carousel-001",
+          "sp-carousel-002",
+          "sp-carousel-003"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-carousel-002",
+            "implementationKey": "carousel",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": [
+          {
+            "decisionId": "sp-carousel-002",
+            "kind": "component-property-responsive",
+            "masterNodeId": null,
+            "publicProps": [
+              "layout"
+            ],
+            "specimens": []
+          }
+        ]
+      },
       "figma": {
         "pageId": "211:2",
         "pageName": "Carousel",
@@ -1126,7 +1588,7 @@
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -1161,6 +1623,20 @@
         { "codeProp": "quickLinks", "value": "searchQuickLinks" },
         { "codeProp": "resultsPanel", "value": "searchResults" }
       ],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "search-overlay",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/search-overlay",
+        "privateAuditDigest": "cda45de6673e940dd388c9bdc30498f354570a3f7dafd6e7c2241aec77872ba8",
+        "decisionIds": [
+          "sp-search-overlay-001",
+          "sp-search-overlay-002"
+        ],
+        "representationDecisions": [],
+        "requiredRepresentationSurfaces": [],
+        "representations": []
+      },
       "figma": {
         "pageId": "217:2",
         "pageName": "Search overlay",
@@ -1173,8 +1649,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-18-figma-adversarial-remediation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-full-viewport",

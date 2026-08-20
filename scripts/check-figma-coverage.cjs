@@ -8,6 +8,11 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const {
+  loadBaseline,
+  validateBaseline,
+  validateRegistrationSourceParity,
+} = require('./lib/source-parity.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const COVERED_MATURITIES = new Set(['candidate', 'supported']);
@@ -51,6 +56,20 @@ function checkCoverage(options = {}) {
   const records = options.manifests ?? loadManifests(root);
   const registrations = Array.isArray(registry.components) ? registry.components : [];
   const governed = records.filter(({ manifest }) => COVERED_MATURITIES.has(manifest.maturity));
+  const sourceParityEnabled = options.sourceParityEnabled ?? options.manifests === undefined;
+  let baseline = null;
+  if (sourceParityEnabled) {
+    try {
+      baseline = options.sourceParityBaseline ?? loadBaseline(root);
+      validateBaseline(
+        baseline,
+        governed.map(({ relativePath }) => path.basename(relativePath)),
+        (failure) => failures.push(failure),
+      );
+    } catch (error) {
+      failures.push(`[source-parity] could not load migration baseline: ${error.message}`);
+    }
+  }
 
   for (const record of governed) {
     const { manifest, relativePath } = record;
@@ -60,6 +79,18 @@ function checkCoverage(options = {}) {
         `[coverage] ${relativePath} (${manifest.canonical} / ${manifest.exportName}) has no matching primary Figma registration`,
       );
       continue;
+    }
+
+    if (sourceParityEnabled && baseline) {
+      for (const registration of primary) {
+        validateRegistrationSourceParity(
+          registration,
+          manifest,
+          path.basename(relativePath),
+          baseline,
+          (failure) => failures.push(failure),
+        );
+      }
     }
 
     if (manifest.maturity === 'candidate') {

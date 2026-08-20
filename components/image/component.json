@@ -36,6 +36,19 @@
     "the two duplicated markup branches collapsed to one; with no loader the component renders a plain <img> rather than claiming WebP alternates it cannot generate",
     "added decoding=\"async\" and a block/max-w-full box, which the source markup left to ambient client CSS"
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "image",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/image",
+    "privateAuditDigest": "974b795d61bc97d3dd5a5b345a8b9a2989859fa08ce7a54e82ca3c78557c973d",
+    "decisionIds": [
+      "sp-image-001",
+      "sp-image-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

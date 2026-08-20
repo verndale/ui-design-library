@@ -44,6 +44,19 @@
     "Renamed the data-component hooks stat-card/detail-stats to stat/stat-group; stripped client ticket/Figma/Confluence references from comments (no client copy existed in code — it was content-driven).",
     "Retained the sr-only heading, labelled list group, and native list structure."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "stat",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/stat",
+    "privateAuditDigest": "1cadbc6a795c707f87dcae84c61f32b91c938722dd3ec0d36374f38ab6437682",
+    "decisionIds": [
+      "sp-stat-001",
+      "sp-stat-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

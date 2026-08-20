@@ -44,6 +44,19 @@
     "Renamed colorScheme to surface and RemovableTag to Badge, matching the canonical.",
     "Kept verbatim: the dismiss affordance, the `Remove ${label}` default accessible name, and the disabled handling."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "badge",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/badge",
+    "privateAuditDigest": "abeea6783d3ae6e97b650766bcc962ebcee52b9884e966c92740b8b058b25d61",
+    "decisionIds": [
+      "sp-badge-001",
+      "sp-badge-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

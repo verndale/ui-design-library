@@ -16,6 +16,19 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    sourceParityEvidence: {
+      "contractVersion": 1,
+      "auditComponentKey": "accordion",
+      "auditStatus": "cleared",
+      "privateAuditRef": "library-source-parity:2026-08-19/components/accordion",
+      "privateAuditDigest": "430750e0037107128f6baa67020521334e65360c192e9ad3cca2ae998d8e1c39",
+      "decisionIds": [
+        "sp-accordion-001",
+        "sp-accordion-002"
+      ],
+      "representationDecisions": [],
+      "requiredRepresentationSurfaces": []
+    },
     realizationEvidence: [
       'accordion.keyboard.toggle',
       'accordion.state.relationships',

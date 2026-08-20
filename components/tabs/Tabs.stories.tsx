@@ -16,6 +16,47 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    sourceParityEvidence: {
+      "contractVersion": 1,
+      "auditComponentKey": "tabs",
+      "auditStatus": "remediation-pending",
+      "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
+      "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
+      "decisionIds": [
+        "sp-tabs-001",
+        "sp-tabs-002",
+        "sp-tabs-003",
+        "sp-tabs-004"
+      ],
+      "representationDecisions": [
+        {
+          "decisionId": "sp-tabs-002",
+          "implementationKey": "tabs",
+          "surfaces": [
+            "ai-registry",
+            "code",
+            "figma",
+            "storybook"
+          ]
+        },
+        {
+          "decisionId": "sp-tabs-004",
+          "implementationKey": null,
+          "surfaces": [
+            "ai-registry",
+            "code",
+            "figma",
+            "storybook"
+          ]
+        }
+      ],
+      "requiredRepresentationSurfaces": [
+        "ai-registry",
+        "code",
+        "figma",
+        "storybook"
+      ]
+    },
     realizationEvidence: ['tabs.keyboard.roving', 'tabs.keyboard.vertical', 'tabs.state.selection'],
     layout: 'padded',
     docs: {

@@ -11,6 +11,19 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    sourceParityEvidence: {
+      "contractVersion": 1,
+      "auditComponentKey": "toast",
+      "auditStatus": "cleared",
+      "privateAuditRef": "library-source-parity:2026-08-19/components/toast",
+      "privateAuditDigest": "388b599954110a19a0ce3bbba13d7d7271bce3344508e65d4e122ad0f17532f0",
+      "decisionIds": [
+        "sp-toast-001",
+        "sp-toast-002"
+      ],
+      "representationDecisions": [],
+      "requiredRepresentationSurfaces": []
+    },
     realizationEvidence: ['toast.announcement.priority', 'toast.icon.decorative', 'toast.timing.opt-out'],
     layout: 'centered',
     docs: {

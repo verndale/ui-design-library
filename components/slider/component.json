@@ -42,11 +42,40 @@
   "declienting": [
     "BEM range-field__* classes replaced with library semantic utilities (text-text-primary, text-text-secondary, bg-border-subtle, bg-action-base, outline-border-focus)",
     "data-module=\"range-field\" DOM-scan auto-init replaced with a React controlled/uncontrolled value API (value / defaultValue / onChange)",
-    "hidden form-output input removed; the selected option's value is emitted through onChange and consumers own their own form wiring",
+    "The initial normalization removed the hidden form-output input and made consumers own form wiring; accepted decision sp-slider-002 now tracks a neutral name-based native form contract without restoring project-specific DOM scanning.",
     "per-mark data-value/data-label/data-description attributes removed; the scale is a typed options prop instead of being read back off the DOM",
     "--range-field-progress custom property replaced with a React-owned inline progress width, scoped to the painted track",
     "server-supplied max attribute removed; max is derived from options.length and the index is clamped against it"
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "slider",
+    "auditStatus": "remediation-pending",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/slider",
+    "privateAuditDigest": "b1d510639b68d3c8fb448c19e0b43e0f5ab626b965b20eb27ed81b2e8fcc0a62",
+    "decisionIds": [
+      "sp-slider-001",
+      "sp-slider-002"
+    ],
+    "representationDecisions": [
+      {
+        "decisionId": "sp-slider-002",
+        "implementationKey": "slider",
+        "surfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ]
+      }
+    ],
+    "requiredRepresentationSurfaces": [
+      "ai-registry",
+      "code",
+      "figma",
+      "storybook"
+    ]
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

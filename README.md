@@ -176,13 +176,13 @@ There is no root barrel and no short alias such as `@verndale/ui-design-library/
 
 When upgrading across the server-first architecture release, see [`MIGRATION.md`](MIGRATION.md) for the Button, Alert, Badge, and Carousel API changes.
 
-The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. Package-level `uiDesignLibrary.reuseContractVersion` identifies the metadata contract. Each manifest names one primary AI candidate with `exportName` and its derived `rendering` boundary (`server`, `hybrid`, or `client`). Secondary developer exports remain public but are not separate candidates.
+The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. Package-level `uiDesignLibrary.reuseContractVersion`, `realizationContractVersion`, and `sourceParityContractVersion` identify the metadata contracts. Each manifest names one primary AI candidate with `exportName` and its derived `rendering` boundary (`server`, `hybrid`, or `client`). Its client-neutral `sourceParity` object links the implementation to an immutable private decision through an audited family key, stable decision IDs, a digest, decision-scoped implementation keys, and target surfaces; client identity, paths, and excerpts never enter this public package. Secondary developer exports remain public but are not separate candidates.
 
 `reuseFingerprint` is separate from API-level `slots`: it describes only the primary export and uses the pipeline's governed structural `slots` + `affordance` + `role` triad. Governed `other` values are valid metadata but intentionally never auto-match. `variant` remains the singular structural implementation axis, while `variants` remains the primary export's list of prop/style values. Entries in `variants` are unique non-empty strings; an empty array means the primary export has no governed style values.
 
 ## Figma library
 
-The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Stable master identity, canonical/variant names, family-page designation, Storybook/API parity, review evidence, and publication state live in [`figma/library.json`](figma/library.json). One canonical family page keeps the default Ready for Dev section first and qualified structural masters below. Resolution is `canonical + optional variant → componentPath → publicImport → Figma node`; Code Connect remains forbidden.
+The [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library) is the governed Organization-tier Figma library. Stable master identity, canonical/variant names, family-page designation, Storybook/API/source-parity evidence, review evidence, and publication state live in [`figma/library.json`](figma/library.json). One canonical family page keeps the default Ready for Dev section first and qualified structural masters below. Resolution is `canonical + optional variant → componentPath → publicImport → Figma node`; Code Connect remains forbidden.
 
 ```bash
 pnpm figma:validate           # coverage + governance contracts + optional local live audit
@@ -204,9 +204,9 @@ GitHub squash merges must use the PR title as the commit subject and a blank com
 
 ## How a component gets here
 
-1. A [`project-retrospective`](https://github.com/verndale/project-retrospective) run produces a **capture** — a mature implementation, its evidence, and an exhaustive list of the client coupling that has to come out.
-2. A human executes the capture: rewrites the component against the library's tokens and primitives, writes the stories, fills in `component.json`, and passes the code-only gates.
-3. The same capture creates the unpublished Figma master and left-rail documentation, registers stable identity, fixes adversarial/design-review findings in place, records node-specific evidence, and passes the Figma and full repository gates.
+1. A [`project-retrospective`](https://github.com/verndale/project-retrospective) run produces a **capture** plus one source-parity artifact — a mature implementation, pinned source facts, classified differences, and an exhaustive list of the client coupling that has to come out.
+2. A human executes the capture: rewrites the component against the library's tokens and primitives, writes the stories, fills in `component.json`, represents every accepted source-parity decision, and passes the code-only gates.
+3. The same capture creates the unpublished Figma master and left-rail documentation, registers stable identity and typed decision-scoped source-parity representations, fixes source-parity/adversarial/design-review findings in place, records node-specific evidence, and passes the Figma and full repository gates.
 4. It remains `maturity: "candidate"` and unpublished. Promotion to `supported` and Figma library publication are separate, deliberate maintainer decisions.
 
 Captures usually come from labels that **already resolve** — a mature Card or Modal — not novel ones. Novel labels are typically the least settled code in a project.

@@ -22,6 +22,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Make reviewed Figma coverage part of component capture](../../wiki/journal/2026-08-18-governed-code-to-figma-capture.md) → [Governed code-to-Figma capture workflow](../../wiki/plans/2026-08-18-governed-code-to-figma-capture.md)
 - [Document Card media presence as composition](../../wiki/journal/2026-08-19-card-media-composition-specimens.md) → [Card media-presence composition specimens](../../wiki/plans/2026-08-19-card-media-composition-specimens.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md)
+- [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 
 ## Page → topic
 
@@ -54,6 +55,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Correct Tabs spacing and Search overlay containment](../../wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
+- [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
@@ -75,6 +77,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Card media-presence composition specimens](../../wiki/plans/2026-08-19-card-media-composition-specimens.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
+- [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 
 ## Topic → covered surface
 
@@ -90,6 +93,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Figma library — Design History](../../wiki/topics/figma-code-connect.md) → [check-figma-contracts.cjs](../../scripts/check-figma-contracts.cjs)
 - [Figma library — Design History](../../wiki/topics/figma-code-connect.md) → [check-figma-coverage.cjs](../../scripts/check-figma-coverage.cjs)
 - [Figma library — Design History](../../wiki/topics/figma-code-connect.md) → [check-figma-live.cjs](../../scripts/check-figma-live.cjs)
+- [Figma library — Design History](../../wiki/topics/figma-code-connect.md) → [source-parity.cjs](../../scripts/lib/source-parity.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [wiki-issue-sync.yml](../../.github/workflows/wiki-issue-sync.yml)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [wiki-sync.yml](../../.github/workflows/wiki-sync.yml)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [.graphifyignore](../../.graphifyignore)

@@ -30,6 +30,7 @@ const SPACING_FIELDS = [
   'paddingBottom',
   'paddingLeft',
 ];
+const SOURCE_PARITY_VIEWPORT_WIDTHS = [1440, 1024, 768, 390];
 
 function sorted(values) {
   return [...new Set(values)].sort();
@@ -47,6 +48,14 @@ function walk(node, visit) {
   if (!node || typeof node !== 'object') return;
   visit(node);
   for (const child of node.children ?? []) walk(child, visit);
+}
+
+function containsComponentInstance(root, componentNodeId) {
+  let found = false;
+  walk(root, (node) => {
+    if (node.type === 'INSTANCE' && node.componentId === componentNodeId) found = true;
+  });
+  return found;
 }
 
 function isVisible(node) {
@@ -207,6 +216,30 @@ function auditLiveNodes({ registry, payload }) {
     }
 
     auditVisualTree(component, root, fail);
+
+    const representations = component.sourceParity?.representations ?? [];
+    for (const representation of representations) {
+      if (representation.masterNodeId) {
+        const master = payload.nodes[representation.masterNodeId]?.document;
+        if (!master || !['COMPONENT', 'COMPONENT_SET'].includes(master.type)) {
+          fail(`${prefix} source-parity decision ${representation.decisionId} master ${representation.masterNodeId} is missing or not a component`);
+        }
+      }
+      for (const specimenMapping of representation.specimens ?? []) {
+        const specimen = payload.nodes[specimenMapping.nodeId]?.document;
+        if (!specimen) {
+          fail(`${prefix} registered source-parity specimen ${specimenMapping.nodeId} is missing from the live response`);
+          continue;
+        }
+        const actualWidth = specimen.absoluteBoundingBox?.width;
+        if (actualWidth !== specimenMapping.viewportWidth) {
+          fail(`${prefix} source-parity specimen ${specimenMapping.nodeId} width is ${actualWidth}, expected ${specimenMapping.viewportWidth}`);
+        }
+        if (!containsComponentInstance(specimen, specimenMapping.componentNodeId)) {
+          fail(`${prefix} source-parity specimen ${specimenMapping.nodeId} does not contain an instance of ${specimenMapping.componentNodeId}`);
+        }
+      }
+    }
   }
 
   return failures;
@@ -214,7 +247,13 @@ function auditLiveNodes({ registry, payload }) {
 
 async function fetchLiveNodes({ registry, token, fetchImpl = fetch }) {
   const fileKey = registry.library?.fileKey;
-  const ids = registry.components.map((component) => component.figma.nodeId).join(',');
+  const ids = sorted(registry.components.flatMap((component) => [
+    component.figma.nodeId,
+    ...(component.sourceParity?.representations ?? []).flatMap((representation) => [
+      representation.masterNodeId,
+      ...(representation.specimens ?? []).map((specimen) => specimen.nodeId),
+    ]).filter(Boolean),
+  ])).join(',');
   const url = new URL(`${FIGMA_API}/files/${encodeURIComponent(fileKey)}/nodes`);
   url.searchParams.set('ids', ids);
 

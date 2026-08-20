@@ -45,6 +45,19 @@
     "Mapped the BEM classes (accordion__item / __toggle / __panel / --standalone) and design-system utilities onto library semantic tokens: labels color-text-primary, panel body color-text-secondary, dividers color-border-subtle, the focus ring color-border-focus, the vertical rhythm spacing-m / spacing-s / spacing-2xs, and the standalone box radius-medium.",
     "Retained aria-expanded on each toggle, aria-controls linking each button to its panel, heading-wrapped triggers, collapsed-panel focus gating, and the reduced-motion short-circuit."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "accordion",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/accordion",
+    "privateAuditDigest": "430750e0037107128f6baa67020521334e65360c192e9ad3cca2ae998d8e1c39",
+    "decisionIds": [
+      "sp-accordion-001",
+      "sp-accordion-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

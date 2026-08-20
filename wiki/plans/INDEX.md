@@ -16,12 +16,13 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 10 implemented, 4 partial (14 plans).
+Totals: 10 implemented, 5 partial (15 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-08-19 | [Official source-parity audit and remediation](2026-08-19-source-parity-audit-and-remediation.md) | partial | [issue #58](https://github.com/verndale/ui-design-library/issues/58), 21-component private audit, working tree contract/self-tests; five dedicated remediations pending | figma-code-connect |
 | 2026-08-19 | [Card media-presence composition specimens](2026-08-19-card-media-composition-specimens.md) | implemented | [issue #55](https://github.com/verndale/ui-design-library/issues/55), Figma section `261:72`, working branch, Figma adversarial/design review, [PR #56](https://github.com/verndale/ui-design-library/pull/56) | figma-code-connect |
 | 2026-08-19 | [Figma structural family contract](2026-08-19-figma-structural-family-contract.md) | implemented | working tree, Figma coverage/contract self-tests and current registry validation, [PR #52](https://github.com/verndale/ui-design-library/pull/52) | variant-axis, figma-code-connect |
 | 2026-08-18 | [Governed code-to-Figma capture workflow](2026-08-18-governed-code-to-figma-capture.md) | implemented | project-retrospective issue #69, `pnpm figma:validate`, coverage/contract self-tests, [PR #50](https://github.com/verndale/ui-design-library/pull/50) | figma-code-connect |

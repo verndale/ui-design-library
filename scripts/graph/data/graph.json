@@ -1417,9 +1417,11 @@
         "graph-wiki-subsystem"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "67"
+      ],
       "issues": [],
-      "bytes": 1608,
+      "bytes": 1654,
       "degree": 3
     },
     {
@@ -1806,6 +1808,7 @@
         "graph freshness"
       ],
       "prs": [
+        "67",
         "64",
         "56",
         "52",
@@ -1829,7 +1832,7 @@
       "issues": [
         "66"
       ],
-      "bytes": 11512,
+      "bytes": 11668,
       "degree": 29
     },
     {

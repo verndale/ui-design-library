@@ -139,6 +139,64 @@ const cases = [
     sourceParityBaseline,
     expect: (failures) => failures.some((failure) => failure.includes('decisionIds must match component.json')),
   },
+  {
+    name: 'duplicate primary presentations can collectively satisfy one source-parity decision',
+    manifests: [manifest('components/alert', {
+      sourceParity: {
+        ...sourceParity,
+        decisionIds: ['sp-alert-001', 'sp-alert-002'],
+        representationDecisions: [{
+          decisionId: 'sp-alert-002',
+          implementationKey: 'alert',
+          surfaces: ['ai-registry', 'code', 'figma', 'storybook'],
+        }],
+        requiredRepresentationSurfaces: ['ai-registry', 'code', 'figma', 'storybook'],
+      },
+      realization: { props: [{ path: 'layout' }] },
+    })],
+    components: (() => {
+      const evidence = {
+        ...sourceParity,
+        decisionIds: ['sp-alert-001', 'sp-alert-002'],
+        representationDecisions: [{
+          decisionId: 'sp-alert-002',
+          implementationKey: 'alert',
+          surfaces: ['ai-registry', 'code', 'figma', 'storybook'],
+        }],
+        requiredRepresentationSurfaces: ['ai-registry', 'code', 'figma', 'storybook'],
+      };
+      return [
+        registration({
+          id: 'alert-default',
+          figma: { nodeId: '1:2', publicationStatus: 'unpublished' },
+          fixedProps: [{ codeProp: 'layout', value: 'single' }],
+          sourceParity: { ...evidence, representations: [] },
+        }),
+        registration({
+          id: 'alert-compact',
+          figma: { nodeId: '1:3', publicationStatus: 'unpublished' },
+          fixedProps: [{ codeProp: 'layout', value: 'compact' }],
+          sourceParity: {
+            ...evidence,
+            representations: [{
+              decisionId: 'sp-alert-002',
+              kind: 'component-property-responsive',
+              masterNodeId: '1:3',
+              publicProps: ['layout'],
+              specimens: [1440, 1024, 768, 390].map((viewportWidth, index) => ({
+                componentNodeId: '1:3',
+                nodeId: `2:${index + 1}`,
+                viewportWidth,
+              })),
+            }],
+          },
+        }),
+      ];
+    })(),
+    sourceParityEnabled: true,
+    sourceParityBaseline,
+    expect: (failures) => failures.length === 0,
+  },
 ];
 
 let failed = 0;

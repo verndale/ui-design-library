@@ -1531,13 +1531,94 @@
       "componentPath": "components/carousel",
       "storyPath": "components/carousel/Carousel.stories.tsx",
       "storyParity": "exact",
-      "storyProps": ["slides", "label", "previousLabel", "nextLabel", "loop", "slideClassName", "previousIcon", "nextIcon", "statusSeparator", "className", "classNames"],
+      "storyProps": ["slides", "label", "previousLabel", "nextLabel", "loop", "layout", "slideClassName", "previousIcon", "nextIcon", "statusSeparator", "className", "classNames"],
       "codeOnlyProps": ["previousLabel", "nextLabel", "slideClassName", "previousIcon", "nextIcon", "className", "classNames"],
-      "fixedProps": [{ "codeProp": "slides", "value": "carouselSlides" }],
+      "fixedProps": [
+        { "codeProp": "slides", "value": "carouselSlides" },
+        { "codeProp": "layout", "value": "single" }
+      ],
+      "familyPage": true,
       "sourceParity": {
         "contractVersion": 1,
         "auditComponentKey": "carousel",
-        "auditStatus": "remediation-pending",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/carousel",
+        "privateAuditDigest": "bf4b666fa58b427629052347b87f097caccc676d64d9219c38988b67b627fab4",
+        "decisionIds": [
+          "sp-carousel-001",
+          "sp-carousel-002",
+          "sp-carousel-003"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-carousel-002",
+            "implementationKey": "carousel",
+            "surfaces": [
+              "ai-registry",
+              "code",
+              "figma",
+              "storybook"
+            ]
+          }
+        ],
+        "requiredRepresentationSurfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ],
+        "representations": []
+      },
+      "figma": {
+        "pageId": "211:2",
+        "pageName": "Carousel",
+        "nodeId": "211:4",
+        "nodeKey": "588b3183c05d326b75068987d73633162b94f533",
+        "nodeType": "COMPONENT",
+        "nodeName": "Carousel",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-carousel-source-parity.md"
+        },
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Loop", "type": "BOOLEAN" },
+          { "name": "Status separator", "type": "TEXT" }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label", "visualBinding": "nonvisual", "nonvisualReason": "The Carousel label names the runtime region for assistive technology and is not visible copy." },
+        { "figmaProperty": "Loop", "kind": "boolean", "codeProp": "loop" },
+        { "figmaProperty": "Status separator", "kind": "string", "codeProp": "statusSeparator" }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "carousel-multi-card-peek",
+      "canonical": "Carousel",
+      "presentationLabel": "Multi-card peek",
+      "slug": "carousel",
+      "exportName": "Carousel",
+      "publicImport": "@verndale/ui-design-library/components/carousel",
+      "componentPath": "components/carousel",
+      "storyPath": "components/carousel/Carousel.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["slides", "label", "previousLabel", "nextLabel", "loop", "layout", "slideClassName", "previousIcon", "nextIcon", "statusSeparator", "className", "classNames"],
+      "codeOnlyProps": ["previousLabel", "nextLabel", "slideClassName", "previousIcon", "nextIcon", "className", "classNames"],
+      "fixedProps": [
+        { "codeProp": "slides", "value": "carouselSlides" },
+        { "codeProp": "layout", "value": "multi-card-peek" }
+      ],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "carousel",
+        "auditStatus": "cleared",
         "privateAuditRef": "library-source-parity:2026-08-19/components/carousel",
         "privateAuditDigest": "bf4b666fa58b427629052347b87f097caccc676d64d9219c38988b67b627fab4",
         "decisionIds": [
@@ -1567,28 +1648,33 @@
           {
             "decisionId": "sp-carousel-002",
             "kind": "component-property-responsive",
-            "masterNodeId": null,
+            "masterNodeId": "277:71",
             "publicProps": [
               "layout"
             ],
-            "specimens": []
+            "specimens": [
+              { "componentNodeId": "277:71", "nodeId": "279:80", "viewportWidth": 1440 },
+              { "componentNodeId": "277:71", "nodeId": "279:85", "viewportWidth": 1024 },
+              { "componentNodeId": "277:71", "nodeId": "279:91", "viewportWidth": 768 },
+              { "componentNodeId": "277:71", "nodeId": "279:96", "viewportWidth": 390 }
+            ]
           }
         ]
       },
       "figma": {
         "pageId": "211:2",
         "pageName": "Carousel",
-        "nodeId": "211:4",
-        "nodeKey": "588b3183c05d326b75068987d73633162b94f533",
+        "nodeId": "277:71",
+        "nodeKey": "47cdf88abe044e56e303f4627a2cc14e1c17d769",
         "nodeType": "COMPONENT",
-        "nodeName": "Carousel",
+        "nodeName": "Carousel / Multi-card peek",
         "status": "ready-for-dev",
         "publicationStatus": "unpublished",
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-19-carousel-source-parity.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",

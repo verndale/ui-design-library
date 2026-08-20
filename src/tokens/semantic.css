@@ -77,6 +77,11 @@
   --spacing-l: 2rem;
   --spacing-xl: 3rem;
 
+  /* Carousel multi-card layout. These exact, source-derived values preserve a
+     reusable card-peek rhythm without making it the default Carousel layout. */
+  --spacing-carousel-slide-peek: 299px;
+  --spacing-carousel-gap: 8px;
+
   /* Page gutter — the one value projects most often need to override. */
   --spacing-page-margin: 1.25rem;
 
@@ -102,6 +107,18 @@
 :root {
   --duration-fast: 150ms;
   --duration-base: 300ms;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --spacing-carousel-gap: 12px;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --spacing-carousel-slide-peek: 284px;
+  }
 }
 
 /* One switch turns motion off everywhere: every component's transitions and

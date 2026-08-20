@@ -6,6 +6,8 @@ export type CarouselClassNames = SlotClassNames<
   'root' | 'viewport' | 'track' | 'slide' | 'controls' | 'previousButton' | 'previousIcon' | 'nextButton' | 'nextIcon' | 'status'
 >;
 
+export type CarouselLayout = 'single' | 'multi-card-peek';
+
 export type CarouselProps = {
   /** One node per slide. */
   slides: ReactNode[];
@@ -15,6 +17,8 @@ export type CarouselProps = {
   previousLabel?: string;
   nextLabel?: string;
   loop?: boolean;
+  /** Slide sizing contract. `single` is backward-compatible; `multi-card-peek` exposes the next card at source-derived widths. */
+  layout?: CarouselLayout;
   className?: string;
   slideClassName?: string;
   /** Decorative content for the previous control. */

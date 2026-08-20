@@ -90,6 +90,16 @@ function sameSet(left, right) {
   return JSON.stringify(sorted(left)) === JSON.stringify(sorted(right));
 }
 
+function samePrimaryIdentity(left, right) {
+  return left.secondaryExport !== true && right.secondaryExport !== true &&
+    left.componentPath === right.componentPath &&
+    left.canonical === right.canonical &&
+    left.slug === right.slug &&
+    left.exportName === right.exportName &&
+    (left.variant ?? null) === (right.variant ?? null) &&
+    Boolean(left.default) === Boolean(right.default);
+}
+
 function commandSteps(command) {
   return String(command ?? '').split('&&').map((step) => step.trim()).filter(Boolean);
 }
@@ -393,7 +403,9 @@ function check(options = {}) {
     if (!['COMPONENT', 'COMPONENT_SET'].includes(figma.nodeType)) fail(`${prefix} nodeType must be COMPONENT or COMPONENT_SET`);
     const expectedNodeName = component.variant && component.default !== true
       ? `${component.canonical} / ${component.variantLabel}`
-      : component.canonical;
+      : component.presentationLabel
+        ? `${component.canonical} / ${component.presentationLabel}`
+        : component.canonical;
     if (figma.nodeName !== expectedNodeName) fail(`${prefix} Figma node name must equal "${expectedNodeName}"`);
     if (figma.status !== 'ready-for-dev') fail(`${prefix} Figma status must be ready-for-dev`);
     if (!['published', 'unpublished'].includes(figma.publicationStatus)) {
@@ -473,6 +485,7 @@ function check(options = {}) {
           path.basename(component.componentPath),
           sourceParityBaseline,
           fail,
+          { familyRegistrations: components.filter((candidate) => samePrimaryIdentity(component, candidate)) },
         );
       }
     }
@@ -489,6 +502,13 @@ function check(options = {}) {
       }
     } else if (component.variantLabel !== undefined || component.default !== undefined) {
       fail(`${prefix} variantLabel/default require a structural variant`);
+    }
+    if (component.presentationLabel !== undefined &&
+      (typeof component.presentationLabel !== 'string' || !component.presentationLabel.trim())) {
+      fail(`${prefix} presentationLabel must be a non-empty string when declared`);
+    }
+    if (component.presentationLabel !== undefined && component.variant !== undefined) {
+      fail(`${prefix} presentationLabel cannot replace or accompany structural variant identity`);
     }
     if (component.familyPage !== undefined && typeof component.familyPage !== 'boolean') {
       fail(`${prefix} familyPage must be boolean when declared`);
@@ -600,7 +620,8 @@ function check(options = {}) {
       fail(`[family] ${canonical} must designate exactly one familyPage registration`);
       continue;
     }
-    if (structuralPaths.size > 1 && designated.length === 1) {
+    const requiresSharedFamilyPage = structuralPaths.size > 1 || family.some((component) => component.presentationLabel !== undefined);
+    if (requiresSharedFamilyPage && designated.length === 1) {
       const page = designated[0].figma ?? {};
       for (const component of family) {
         if (component.figma?.pageId !== page.pageId || component.figma?.pageName !== page.pageName) {

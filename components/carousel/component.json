@@ -11,7 +11,8 @@
     "nextIcon"
   ],
   "variants": [
-    "loop"
+    "loop",
+    "layout"
   ],
   "reuseFingerprint": {
     "slots": [
@@ -28,7 +29,9 @@
     "color-text-secondary",
     "color-border-focus",
     "radius-pill",
-    "ease-standard"
+    "ease-standard",
+    "spacing-carousel-slide-peek",
+    "spacing-carousel-gap"
   ],
   "provenance": {
     "project": "canadian-national",
@@ -46,7 +49,7 @@
   "sourceParity": {
     "contractVersion": 1,
     "auditComponentKey": "carousel",
-    "auditStatus": "remediation-pending",
+    "auditStatus": "cleared",
     "privateAuditRef": "library-source-parity:2026-08-19/components/carousel",
     "privateAuditDigest": "bf4b666fa58b427629052347b87f097caccc676d64d9219c38988b67b627fab4",
     "decisionIds": [
@@ -104,6 +107,16 @@
         "type": "boolean",
         "required": false,
         "default": false
+      },
+      {
+        "path": "layout",
+        "type": "enum",
+        "required": false,
+        "values": [
+          "single",
+          "multi-card-peek"
+        ],
+        "default": "single"
       },
       {
         "path": "slideClassName",

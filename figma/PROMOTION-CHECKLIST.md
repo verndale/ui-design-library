@@ -20,12 +20,14 @@ Use this checklist for every component promoted into the governed UI Design Libr
 - Before any Figma write, run `pnpm test:code` and `pnpm build`. This exercises the complete code, SSR, Storybook behavior, Chromium/WebKit accessibility, modes, and reduced-motion surfaces without requiring a Figma registration.
 - Create enum, boolean, text/slot, or instance-swap properties only when they map to the public TypeScript/Storybook contract. Do not expose implementation-only controls for AI convenience.
 
-## 3. Place structural implementations on the canonical family page
+## 3. Place family implementations and presentations on the canonical page
 
 - Keep the default Ready for Dev section first. Put qualified structural alternates below in separately labeled Ready for Dev sections on the same page.
 - Keep the default master name and stable identity. Name an alternate `<Canonical> / <Variant label>` and register its distinct `components/<slug>--<variant>` import.
 - Keep `sourceParity.auditComponentKey` on the audited family key when the alternate lives at `components/<slug>--<variant>`; a structural implementation does not invent a second private audit identity. Set the decision's `implementationKey` to that exact compound directory only when it exists, and carry the identical source-parity projection on every implementation in the family.
-- Mark exactly one registration `familyPage: true`; structural siblings share its `figma.pageId` and `figma.pageName`.
+- When two masters map to the same public import through a fixed semantic prop, keep the default master canonical and give the alternate a client-neutral `presentationLabel`. Register the fixed prop value on each presentation; do not invent a structural variant or visible Figma property.
+- Mark exactly one registration `familyPage: true`; structural siblings and fixed-prop presentations share its `figma.pageId` and `figma.pageName`.
+- Across duplicate presentations, register each Figma-targeted source-parity decision exactly once on the master that represents it. A fixed prop may satisfy the public-prop mapping only when the registration declares its exact value.
 - Treat different role, affordance, or interaction semantics as a different brain canonical, not a structural variant.
 - Do not move existing published nodes solely to satisfy page organization. Button Light is the legacy Button family page.
 

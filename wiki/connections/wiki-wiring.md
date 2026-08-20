@@ -21,6 +21,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Promote the remaining supported Figma and Code Connect batch](../../wiki/journal/2026-08-18-figma-supported-batch.md) → [Remaining supported Figma library and Code Connect batch](../../wiki/plans/2026-08-18-figma-supported-batch.md)
 - [Make reviewed Figma coverage part of component capture](../../wiki/journal/2026-08-18-governed-code-to-figma-capture.md) → [Governed code-to-Figma capture workflow](../../wiki/plans/2026-08-18-governed-code-to-figma-capture.md)
 - [Document Card media presence as composition](../../wiki/journal/2026-08-19-card-media-composition-specimens.md) → [Card media-presence composition specimens](../../wiki/plans/2026-08-19-card-media-composition-specimens.md)
+- [Restore Carousel multi-card source parity](../../wiki/journal/2026-08-19-carousel-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md)
 - [Add source-parity governance to the library](../../wiki/journal/2026-08-19-source-parity-governance-foundation.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 
@@ -52,6 +53,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Promote the remaining supported Figma and Code Connect batch](../../wiki/journal/2026-08-18-figma-supported-batch.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Make reviewed Figma coverage part of component capture](../../wiki/journal/2026-08-18-governed-code-to-figma-capture.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Document Card media presence as composition](../../wiki/journal/2026-08-19-card-media-composition-specimens.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Restore Carousel multi-card source parity](../../wiki/journal/2026-08-19-carousel-source-parity.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Correct Tabs spacing and Search overlay containment](../../wiki/journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Govern structural variants as Figma families](../../wiki/journal/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)

@@ -89,6 +89,7 @@ function checkCoverage(options = {}) {
           path.basename(relativePath),
           baseline,
           (failure) => failures.push(failure),
+          { familyRegistrations: primary },
         );
       }
     }

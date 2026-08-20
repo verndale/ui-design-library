@@ -16,6 +16,7 @@ evidence:
   - "PR #72 https://github.com/verndale/ui-design-library/pull/72 (merged 2026-08-20)"
   - "issue #63"
   - "In-page navigation modal-drawer Figma master 318:45 and responsive specimens"
+  - "PR #74 https://github.com/verndale/ui-design-library/pull/74 (merged 2026-08-20)"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]

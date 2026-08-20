@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 768,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -534,7 +534,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 192,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -858,7 +858,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 96,
+      "bytes": 4096,
       "degree": 1
     },
     {
@@ -1553,9 +1553,11 @@
         "story-testing"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "74"
+      ],
       "issues": [],
-      "bytes": 3409,
+      "bytes": 3455,
       "degree": 8
     },
     {
@@ -1819,10 +1821,11 @@
       "prs": [
         "64",
         "69",
-        "72"
+        "72",
+        "74"
       ],
       "issues": [],
-      "bytes": 11259,
+      "bytes": 11346,
       "degree": 9
     },
     {
@@ -1836,6 +1839,7 @@
         "64",
         "69",
         "72",
+        "74",
         "56",
         "52",
         "50",
@@ -1861,7 +1865,7 @@
         "18",
         "4"
       ],
-      "bytes": 6958,
+      "bytes": 7023,
       "degree": 18
     },
     {
@@ -1925,6 +1929,7 @@
         "graph freshness"
       ],
       "prs": [
+        "74",
         "72",
         "69",
         "67",
@@ -1951,7 +1956,7 @@
       "issues": [
         "66"
       ],
-      "bytes": 11968,
+      "bytes": 12120,
       "degree": 29
     },
     {

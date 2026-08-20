@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-20 — feat(ui-design-library): Enhance component instance validation logic ([PR #74](https://github.com/verndale/ui-design-library/pull/74))
 - 2026-08-20 — feat(ui-design-library): Add icon-only button presentation option ([PR #72](https://github.com/verndale/ui-design-library/pull/72))
 - 2026-08-20 — feat(ui-design-library): Enhance carousel inert behavior for better ([PR #69](https://github.com/verndale/ui-design-library/pull/69))
 - 2026-08-20 — chore(ui-design-library): Update Graphify hooks for better user feedback ([PR #67](https://github.com/verndale/ui-design-library/pull/67))

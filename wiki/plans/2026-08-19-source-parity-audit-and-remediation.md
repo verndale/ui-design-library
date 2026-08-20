@@ -10,6 +10,7 @@ evidence:
   - "issue #62"
   - "Carousel alternate Figma master 277:71 and responsive specimens"
   - "Carousel governed Card composition section 293:218"
+  - "PR #69 https://github.com/verndale/ui-design-library/pull/69 (merged 2026-08-20)"
 source_tool: codex
 source: task 01a01b74-1a24-7151-b8aa-624603e60894
 topics: [figma-code-connect]

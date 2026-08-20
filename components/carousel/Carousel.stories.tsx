@@ -18,6 +18,36 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    sourceParityEvidence: {
+      "contractVersion": 1,
+      "auditComponentKey": "carousel",
+      "auditStatus": "remediation-pending",
+      "privateAuditRef": "library-source-parity:2026-08-19/components/carousel",
+      "privateAuditDigest": "bf4b666fa58b427629052347b87f097caccc676d64d9219c38988b67b627fab4",
+      "decisionIds": [
+        "sp-carousel-001",
+        "sp-carousel-002",
+        "sp-carousel-003"
+      ],
+      "representationDecisions": [
+        {
+          "decisionId": "sp-carousel-002",
+          "implementationKey": "carousel",
+          "surfaces": [
+            "ai-registry",
+            "code",
+            "figma",
+            "storybook"
+          ]
+        }
+      ],
+      "requiredRepresentationSurfaces": [
+        "ai-registry",
+        "code",
+        "figma",
+        "storybook"
+      ]
+    },
     realizationEvidence: ['carousel.keyboard.controls', 'carousel.state.slides', 'carousel.announcement.status'],
     layout: 'padded',
     docs: {

@@ -1,6 +1,6 @@
 # Figma component promotion checklist
 
-Use this checklist for every component promoted into the governed UI Design Library. A captured candidate is not complete until the component, documentation, registry, adversarial review, design review, and validation pass together. Code consumption remains the canonical-slug npm flow; Code Connect is not part of this system.
+Use this checklist for every component promoted into the governed UI Design Library. A captured candidate is not complete until source-parity, component code, documentation, registry, adversarial review, design review, and validation pass together. Code consumption remains the canonical-slug npm flow; Code Connect is not part of this system.
 
 ## 1. Preserve identity
 
@@ -11,6 +11,8 @@ Use this checklist for every component promoted into the governed UI Design Libr
 
 ## 2. Build the component from code contracts
 
+- Begin with the validated private source-parity artifact. Confirm its pinned source facts, classifications, decision IDs, and declared representation surfaces before changing a public contract.
+- Copy only the client-neutral source-parity contract version, audited family key, audit status, private reference/digest, decision IDs, decision-scoped implementation targets and representation surfaces, and their surface union into `component.json`, Storybook `parameters.sourceParityEvidence`, and `figma/library.json`. Never copy client names, private paths, or source excerpts into this repository.
 - Derive properties, allowed values, defaults, and optional content from the public TypeScript types and Storybook `argTypes`.
 - Bind component visuals to the semantic tokens in `src/tokens/semantic.css`. Do not approximate a code token with a Cumulative value or copy a raw color into the component.
 - Use strict Auto Layout and semantic layers inside the component. The layout should behave like its code implementation at the governed widths.
@@ -22,6 +24,7 @@ Use this checklist for every component promoted into the governed UI Design Libr
 
 - Keep the default Ready for Dev section first. Put qualified structural alternates below in separately labeled Ready for Dev sections on the same page.
 - Keep the default master name and stable identity. Name an alternate `<Canonical> / <Variant label>` and register its distinct `components/<slug>--<variant>` import.
+- Keep `sourceParity.auditComponentKey` on the audited family key when the alternate lives at `components/<slug>--<variant>`; a structural implementation does not invent a second private audit identity. Set the decision's `implementationKey` to that exact compound directory only when it exists, and carry the identical source-parity projection on every implementation in the family.
 - Mark exactly one registration `familyPage: true`; structural siblings share its `figma.pageId` and `figma.pageName`.
 - Treat different role, affordance, or interaction semantics as a different brain canonical, not a structural variant.
 - Do not move existing published nodes solely to satisfy page organization. Button Light is the legacy Button family page.
@@ -66,12 +69,16 @@ Use the widths registered in `library.promotionPattern.viewportWidths` when the 
 - Confirm semantic text has an applied Code/Tailwind text style and visible solid fills/strokes use semantic color-variable aliases.
 - Confirm every nonzero Auto Layout gap and padding value inside the canonical component is bound to a spacing variable. Component-set spacing used only to arrange variant masters is not component styling.
 - Confirm `figma/library.json` uses `handoffPattern: "direct-canonical-instance"` and the appropriate `presentationPattern`.
+- Run a post-remediation source-parity pass that confirms every accepted source decision is represented on every declared target surface and every rejection remains evidence-backed. The earlier decision review does not satisfy this pass.
 - Run a separate adversarial pass over identity, properties, aliases, spacing, containment, and breakpoint behavior, then a design pass over hierarchy, alignment, typography, wrapping, intrinsic sizing, and visual consistency.
-- Fix every actionable finding in place without deleting or recreating the canonical master. Repeat both passes until no actionable finding remains.
-- Extend the component journal entry with the node identity, findings, fixes, and final result. Only then set `figma.review` to `status: "passed"`, `standard: "button-standard-v1"`, both `adversarial` and `design` passes, and that journal path as evidence.
+- Fix every actionable finding in place without deleting or recreating the canonical master. Repeat all affected passes until no actionable finding remains.
+- Register each Figma-targeted decision only on its declared `implementationKey`, using `sourceParity.representations` with a representation kind. Property-backed decisions name the exact public props and their Figma mappings; a structural decision names its qualified master; a responsive decision additionally maps 1440, 1024, 768, and 390 specimen frames to the master instance they contain; a nonvisual metadata decision uses a nonvisual Figma mapping and registers no visual nodes. The read-only live validator checks master type, exact width, and actual instance containment, so an empty frame or unrelated master cannot satisfy the contract.
+- Extend the component journal entry with the decision IDs, node identities, findings, fixes, and final result. Only then set `figma.review` to `status: "passed"`, `standard: "button-standard-v1"`, `source-parity`, `adversarial`, and `design` passes, and that journal path as evidence.
 - Run `pnpm figma:coverage`, `FIGMA_REST_TOKEN=<read-only-plan-token> pnpm figma:live`, then `pnpm figma:validate`, `pnpm contracts`, `pnpm test`, and `pnpm build`.
 
 If the review exposes a source-contract defect, repair the React implementation, Storybook contract, or manifest first, rerun the code gates, and then update Figma. Without a write-capable Figma session, record the capture as `code-complete`/`figma-pending`; do not create an empty branch or register a passing review.
+
+The migration file `figma/source-parity-baseline.json` is closed: its `initialKeys` are immutable, no new component may enter `remainingKeys`, and a key leaves only when every accepted decision has a real implementation target and all declared representations pass. A null `implementationKey` is permitted only for unresolved grandfathered structural work. The private decision record and its public digest remain immutable; completion is a separate append-only private event. Delete the baseline mechanism after the final remaining key clears.
 
 ## 7. Release separately
 

@@ -44,6 +44,19 @@
     "Drove the entrance animation through the --animate-fade-in / --duration-base tokens, so the reduced-motion media query is the single switch that collapses it, rather than a bespoke component keyframe.",
     "Kept verbatim: the role/aria-live pairing per variant (neutral → status/polite, critical → alert/assertive) and the auto-dismiss timing — the live-region contract. Kept deliberately distinct from Alert rather than merged."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "toast",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/toast",
+    "privateAuditDigest": "388b599954110a19a0ce3bbba13d7d7271bce3344508e65d4e122ad0f17532f0",
+    "decisionIds": [
+      "sp-toast-001",
+      "sp-toast-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

@@ -56,6 +56,19 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    sourceParityEvidence: {
+      "contractVersion": 1,
+      "auditComponentKey": "search-overlay",
+      "auditStatus": "cleared",
+      "privateAuditRef": "library-source-parity:2026-08-19/components/search-overlay",
+      "privateAuditDigest": "cda45de6673e940dd388c9bdc30498f354570a3f7dafd6e7c2241aec77872ba8",
+      "decisionIds": [
+        "sp-search-overlay-001",
+        "sp-search-overlay-002"
+      ],
+      "representationDecisions": [],
+      "requiredRepresentationSurfaces": []
+    },
     realizationEvidence: ['search-overlay.focus.modal', 'search-overlay.focus.restoration', 'search-overlay.focus.background-inert', 'search-overlay.semantics.dialog', 'search-overlay.announcement.results'],
     layout: 'fullscreen',
     docs: {

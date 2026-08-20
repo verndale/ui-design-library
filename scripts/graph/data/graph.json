@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 129,
-    "edges": 255,
+    "nodes": 132,
+    "edges": 263,
     "byType": {
-      "surface": 45,
+      "surface": 46,
       "root-doc": 4,
       "component": 21,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 34,
-      "wiki-plan": 14,
+      "wiki-journal": 35,
+      "wiki-plan": 15,
       "wiki-topic": 7
     },
     "byEdgeType": {
-      "covers": 52,
-      "links-to": 116,
-      "plan": 16,
-      "topic": 50,
+      "covers": 53,
+      "links-to": 120,
+      "plan": 17,
+      "topic": 52,
       "uses-tokens": 21
     }
   },
@@ -210,7 +210,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 736,
       "degree": 1
     },
     {
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 14938,
+      "bytes": 15386,
       "degree": 1
     },
     {
@@ -234,7 +234,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8137,
+      "bytes": 8569,
       "degree": 1
     },
     {
@@ -246,7 +246,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3167,
+      "bytes": 3603,
       "degree": 1
     },
     {
@@ -258,7 +258,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7109,
+      "bytes": 7541,
       "degree": 1
     },
     {
@@ -270,7 +270,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10840,
+      "bytes": 11296,
       "degree": 1
     },
     {
@@ -282,7 +282,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8358,
+      "bytes": 9094,
       "degree": 1
     },
     {
@@ -294,7 +294,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4672,
+      "bytes": 5100,
       "degree": 1
     },
     {
@@ -306,7 +306,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10824,
+      "bytes": 11597,
       "degree": 1
     },
     {
@@ -318,7 +318,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7284,
+      "bytes": 7716,
       "degree": 1
     },
     {
@@ -330,7 +330,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11090,
+      "bytes": 11917,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7799,
+      "bytes": 8227,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13528,
+      "bytes": 13960,
       "degree": 1
     },
     {
@@ -366,7 +366,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3419,
+      "bytes": 3851,
       "degree": 1
     },
     {
@@ -378,7 +378,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4627,
+      "bytes": 5075,
       "degree": 1
     },
     {
@@ -390,7 +390,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13598,
+      "bytes": 14058,
       "degree": 1
     },
     {
@@ -402,7 +402,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 17031,
+      "bytes": 17499,
       "degree": 1
     },
     {
@@ -414,7 +414,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7128,
+      "bytes": 7596,
       "degree": 1
     },
     {
@@ -426,7 +426,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13675,
+      "bytes": 14514,
       "degree": 1
     },
     {
@@ -438,7 +438,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6120,
+      "bytes": 6548,
       "degree": 1
     },
     {
@@ -450,7 +450,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 8415,
+      "bytes": 9386,
       "degree": 1
     },
     {
@@ -462,7 +462,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 7098,
+      "bytes": 7530,
       "degree": 1
     },
     {
@@ -486,7 +486,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 192,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 20617,
+      "bytes": 20809,
       "degree": 1
     },
     {
@@ -510,7 +510,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 973105,
+      "bytes": 1019447,
       "degree": 1
     },
     {
@@ -522,7 +522,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1108233,
+      "bytes": 1166158,
       "degree": 1
     },
     {
@@ -546,7 +546,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10728,
+      "bytes": 10870,
       "degree": 1
     },
     {
@@ -558,7 +558,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 19848,
+      "bytes": 20400,
       "degree": 3
     },
     {
@@ -606,7 +606,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 19219,
+      "bytes": 20566,
       "degree": 3
     },
     {
@@ -618,7 +618,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 30475,
+      "bytes": 32183,
       "degree": 1
     },
     {
@@ -630,7 +630,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3620,
+      "bytes": 4563,
       "degree": 1
     },
     {
@@ -642,7 +642,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9159,
+      "bytes": 11035,
       "degree": 1
     },
     {
@@ -727,6 +727,18 @@
       "prs": [],
       "issues": [],
       "bytes": 2259,
+      "degree": 1
+    },
+    {
+      "id": "scripts/lib/source-parity.cjs",
+      "label": "source-parity.cjs",
+      "type": "surface",
+      "dir": "scripts/lib",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 21972,
       "degree": 1
     },
     {
@@ -822,7 +834,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -882,8 +894,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13332,
-      "degree": 44
+      "bytes": 13589,
+      "degree": 45
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1421,6 +1433,26 @@
       "degree": 6
     },
     {
+      "id": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "label": "Add source-parity governance to the library",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "59",
+        "60",
+        "61",
+        "62",
+        "63"
+      ],
+      "bytes": 5000,
+      "degree": 4
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1670,6 +1702,20 @@
       "degree": 6
     },
     {
+      "id": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "label": "Official Source-Parity Audit and Remediation Plan",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 10608,
+      "degree": 4
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -1691,6 +1737,7 @@
         "2"
       ],
       "issues": [
+        "58",
         "55",
         "49",
         "46",
@@ -1700,8 +1747,8 @@
         "18",
         "4"
       ],
-      "bytes": 6179,
-      "degree": 17
+      "bytes": 6495,
+      "degree": 18
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -1742,8 +1789,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 10031,
-      "degree": 36
+      "bytes": 11907,
+      "degree": 41
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -1941,6 +1988,11 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "scripts/check-figma-live.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "scripts/lib/source-parity.cjs",
       "type": "covers"
     },
     {
@@ -2411,6 +2463,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2620,6 +2679,13 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
@@ -2740,6 +2806,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -2776,6 +2849,13 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3036,6 +3116,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -3181,6 +3266,11 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -3283,6 +3373,11 @@
     {
       "source": "wiki/plans/2026-08-19-figma-structural-family-contract.md",
       "target": "wiki/topics/variant-axis.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },
     {

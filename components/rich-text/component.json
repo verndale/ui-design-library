@@ -42,6 +42,19 @@
     "Dropped client sample copy (press-contacts / portfolio text) and the temporary inline CTA/Media button mocks the story carried — content is caller-provided.",
     "Kept verbatim: authored headings render at their real level with no forced re-leveling, ordered/unordered lists stay real ol/ul/li, and link text is its own accessible name — the prose-semantics contract."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "rich-text",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/rich-text",
+    "privateAuditDigest": "74a0f0848c853d83fa48fa0a6b5eb99ecb236331c64427be970c0c91d59708cf",
+    "decisionIds": [
+      "sp-rich-text-001",
+      "sp-rich-text-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

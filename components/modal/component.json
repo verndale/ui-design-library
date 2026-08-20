@@ -56,6 +56,19 @@
     "Fixed a defect introduced by the rewrite: the SSR-safe portal gate meant dialogRef was still null on the first render of a dialog mounted already open, so useFocusTrap ran once against a null ref and never re-ran — no trap at all. Trigger-opened dialogs were unaffected, which is why it survived manual checking. The trap is now gated on `open && portalRoot`.",
     "Added tabIndex to the scrolling body. It was scrollable by pointer only, so keyboard users could not reach long content (WCAG 2.1.1). Found by axe once story tests made the a11y check a gate."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "modal",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/modal",
+    "privateAuditDigest": "8545b0c4df7347af48877b89593474f1911e63527bd015487a5e01aa81c64cba",
+    "decisionIds": [
+      "sp-modal-001",
+      "sp-modal-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

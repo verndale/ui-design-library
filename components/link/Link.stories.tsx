@@ -9,6 +9,19 @@ const meta = {
   // Mirrors component.json; `pnpm contracts` fails if the two disagree.
   tags: ['maturity:supported'],
   parameters: {
+    sourceParityEvidence: {
+      "contractVersion": 1,
+      "auditComponentKey": "link",
+      "auditStatus": "cleared",
+      "privateAuditRef": "library-source-parity:2026-08-19/components/link",
+      "privateAuditDigest": "7d3802ac82291a8659798275b32331948ee55571493d472fd7dc511354fdabce",
+      "decisionIds": [
+        "sp-link-001",
+        "sp-link-002"
+      ],
+      "representationDecisions": [],
+      "requiredRepresentationSurfaces": []
+    },
     realizationEvidence: ['link.keyboard.activation', 'link.state.disabled', 'link.target.size'],
     layout: 'centered',
     docs: {

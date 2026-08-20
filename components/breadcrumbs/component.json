@@ -43,6 +43,19 @@
     "Replaced the hard-coded 44px mobile tap target with the --size-touch-medium token.",
     "Retained the labelled nav landmark, aria-current page text, and default xl switch to a nearest-ancestor back link; the same owned trail and back-link presentations can now be selected independently of viewport."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "breadcrumbs",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/breadcrumbs",
+    "privateAuditDigest": "940f6afed71165839978d110e1416b0aa6039e96d8a8571eda4a4aaba3fddd53",
+    "decisionIds": [
+      "sp-breadcrumbs-001",
+      "sp-breadcrumbs-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

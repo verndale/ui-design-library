@@ -12,6 +12,11 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const {
+  loadBaseline,
+  validateBaseline,
+  validateRegistrationSourceParity,
+} = require('./lib/source-parity.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const REGISTRY = path.join(ROOT, 'figma/library.json');
@@ -54,7 +59,7 @@ const REQUIRED_DEFINITION_OF_DONE = [
   'annotations remain outside the component-only handoff frame',
   'responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable',
   'alignment, margins, padding, whitespace, clipping, and containment are audited',
-  'adversarial and design review findings are fixed and recorded',
+  'source-parity, adversarial, and design review findings are fixed and recorded',
   'candidate components remain unpublished pending maintainer action',
   'stable node identity is registered',
   'repository contracts pass',
@@ -275,6 +280,9 @@ function check(options = {}) {
     if (pkg.scripts?.['figma:live:if-token'] !== 'node scripts/check-figma-live.cjs --if-token') {
       fail('[tooling] figma:live:if-token must run the read-only live audit in optional-local mode');
     }
+    if (pkg.uiDesignLibrary?.sourceParityContractVersion !== 1) {
+      fail('[tooling] uiDesignLibrary.sourceParityContractVersion must equal 1');
+    }
     const expectedValidation = 'pnpm figma:coverage && pnpm figma:contracts && pnpm figma:live:if-token';
     if (pkg.scripts?.['figma:validate'] !== expectedValidation) {
       fail('[tooling] figma:validate must run coverage, registry contracts, and the optional local live audit in order');
@@ -288,6 +296,9 @@ function check(options = {}) {
     }
     if (!commandSteps(pkg.scripts?.['contracts:selftest']).includes('pnpm contracts:code:selftest')) {
       fail('[tooling] contracts:selftest must include the exact step "pnpm contracts:code:selftest"');
+    }
+    if (!commandSteps(pkg.scripts?.['contracts:selftest']).includes('pnpm source-parity:selftest')) {
+      fail('[tooling] contracts:selftest must include the exact step "pnpm source-parity:selftest"');
     }
     const codeTestSteps = commandSteps(pkg.scripts?.['test:code']);
     for (const required of REQUIRED_CODE_TEST_STEPS) {
@@ -330,6 +341,19 @@ function check(options = {}) {
 
   const components = Array.isArray(registry.components) ? registry.components : [];
   if (components.length === 0) fail('[registry] components must be a non-empty array');
+  let sourceParityBaseline = null;
+  try {
+    sourceParityBaseline = options.sourceParityBaseline ?? loadBaseline(root);
+    validateBaseline(
+      sourceParityBaseline,
+      components
+        .filter((component) => !component.secondaryExport)
+        .map((component) => path.basename(component.componentPath)),
+      fail,
+    );
+  } catch (error) {
+    fail(`[source-parity] could not load migration baseline: ${error.message}`);
+  }
   const componentIds = components.map((component) => component.id);
   const pilotComponentIds = registry.pilot?.componentIds ?? [];
   if (!sameSet(pilotComponentIds, PILOT_COMPONENT_IDS)) {
@@ -380,8 +404,18 @@ function check(options = {}) {
     if (review.standard !== 'button-standard-v1') {
       fail(`${prefix} review.standard must equal "button-standard-v1"`);
     }
-    if (!Array.isArray(review.passes) || review.passes.length !== 2 || !sameSet(review.passes, ['adversarial', 'design'])) {
-      fail(`${prefix} review.passes must equal adversarial and design exactly once each`);
+    const componentKey = path.basename(component.componentPath ?? '');
+    const isGrandfathered = sourceParityBaseline?.remainingKeys.includes(componentKey) ?? false;
+    const requiredReviewPasses = isGrandfathered ? ['adversarial', 'design'] : ['source-parity', 'adversarial', 'design'];
+    if (
+      !Array.isArray(review.passes) ||
+      review.passes.length !== requiredReviewPasses.length ||
+      !sameSet(review.passes, requiredReviewPasses)
+    ) {
+      fail(
+        `${prefix} review.passes must equal ${requiredReviewPasses.join(', ')} exactly once each` +
+          (isGrandfathered ? ' while the component remains in the source-parity migration baseline' : ''),
+      );
     }
     if (!/^wiki\/journal\/[a-z0-9-]+\.md$/.test(review.evidence ?? '')) {
       fail(`${prefix} review.evidence must reference a repository journal entry`);
@@ -392,8 +426,8 @@ function check(options = {}) {
       if (!evidence.includes(`\`${figma.nodeId}\``)) {
         fail(`${prefix} review.evidence must name registered node ${figma.nodeId}`);
       }
-      if (!/adversarial/i.test(evidence) || !/design review/i.test(evidence)) {
-        fail(`${prefix} review.evidence must record both adversarial and design review`);
+      if (!/source-parity/i.test(evidence) || !/adversarial/i.test(evidence) || !/design review/i.test(evidence)) {
+        fail(`${prefix} review.evidence must record the source-parity state plus adversarial and design review`);
       }
     }
     if (pilotComponentIds.includes(component.id) && figma.publicationStatus !== 'published') {
@@ -431,6 +465,15 @@ function check(options = {}) {
       }
       if (manifest.maturity === 'candidate' && figma.publicationStatus !== 'unpublished') {
         fail(`${prefix} candidate component must remain unpublished in Figma`);
+      }
+      if (sourceParityBaseline) {
+        validateRegistrationSourceParity(
+          component,
+          manifest,
+          path.basename(component.componentPath),
+          sourceParityBaseline,
+          fail,
+        );
       }
     }
 

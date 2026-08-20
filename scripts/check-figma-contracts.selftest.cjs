@@ -11,6 +11,7 @@ const { check, findForbiddenCodeConnectFiles } = require('./check-figma-contract
 
 const ROOT = path.resolve(__dirname, '..');
 const base = JSON.parse(fs.readFileSync(path.join(ROOT, 'figma/library.json'), 'utf8'));
+const baseSourceParityBaseline = JSON.parse(fs.readFileSync(path.join(ROOT, 'figma/source-parity-baseline.json'), 'utf8'));
 const basePackage = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const baseWorkflow = fs.readFileSync(path.join(ROOT, '.github/workflows/figma-library-validation.yml'), 'utf8');
 const clone = () => structuredClone(base);
@@ -129,6 +130,31 @@ const cases = [
       return registry;
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('exactly once each')),
+  },
+  {
+    name: 'a grandfathered remediation cannot claim a completed source-parity review',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'button-light').figma.review.passes = [
+        'source-parity',
+        'adversarial',
+        'design',
+      ];
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('migration baseline')),
+  },
+  {
+    name: 'an audit-cleared registration must carry all three review passes',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'alert').figma.review.passes = [
+        'adversarial',
+        'design',
+      ];
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('source-parity, adversarial, design')),
   },
   {
     name: 'primary registration cannot override manifest canonical',
@@ -298,6 +324,24 @@ const cases = [
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('must not contain a Code Connect template')),
   },
+  {
+    name: 'Figma source-parity decision drift fails',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'alert').sourceParity.decisionIds = ['sp-alert-999'];
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('decisionIds must match component.json')),
+  },
+  {
+    name: 'an accepted component-property representation cannot leave the baseline without a master',
+    registry: clone(),
+    sourceParityBaseline: {
+      ...baseSourceParityBaseline,
+      remainingKeys: baseSourceParityBaseline.remainingKeys.filter((key) => key !== 'button'),
+    },
+    expect: (failures) => failures.some((failure) => failure.includes('requires a registered master after remediation')),
+  },
 ];
 
 let failed = 0;
@@ -307,6 +351,7 @@ for (const testCase of cases) {
     packageJson: testCase.packageJson,
     workflowSource: testCase.workflowSource,
     lockSource: testCase.lockSource,
+    sourceParityBaseline: testCase.sourceParityBaseline,
     report: false,
   });
   if (testCase.expect(failures)) console.log(`✓ ${testCase.name}`);

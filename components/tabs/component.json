@@ -42,6 +42,47 @@
     "Replaced the fixed duration-200 ease-out + motion-reduce:transition-none transition with duration-(--duration-base) ease-standard, so reduced motion is handled by the token layer zeroing the duration rather than a per-component media query.",
     "Retained role=tablist/role=tab, aria-selected, the roving tabIndex, wraparound arrow-key selection and focus, and the items.length < 2 keyboard guard."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "tabs",
+    "auditStatus": "remediation-pending",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
+    "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
+    "decisionIds": [
+      "sp-tabs-001",
+      "sp-tabs-002",
+      "sp-tabs-003",
+      "sp-tabs-004"
+    ],
+    "representationDecisions": [
+      {
+        "decisionId": "sp-tabs-002",
+        "implementationKey": "tabs",
+        "surfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ]
+      },
+      {
+        "decisionId": "sp-tabs-004",
+        "implementationKey": null,
+        "surfaces": [
+          "ai-registry",
+          "code",
+          "figma",
+          "storybook"
+        ]
+      }
+    ],
+    "requiredRepresentationSurfaces": [
+      "ai-registry",
+      "code",
+      "figma",
+      "storybook"
+    ]
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

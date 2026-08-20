@@ -61,6 +61,36 @@ const basePayload = {
 };
 
 const clone = () => structuredClone(basePayload);
+const withSpecimens = () => {
+  const specimenRegistry = structuredClone(registry);
+  specimenRegistry.components[0].sourceParity = {
+    representations: [{
+      decisionId: 'sp-example-001',
+      kind: 'responsive-specimens',
+      masterNodeId: '1:2',
+      publicProps: [],
+      specimens: [1440, 1024, 768, 390].map((viewportWidth, index) => ({
+        componentNodeId: '1:2',
+        nodeId: `2:${index + 1}`,
+        viewportWidth,
+      })),
+    }],
+  };
+  const payload = clone();
+  [1440, 1024, 768, 390].forEach((width, index) => {
+    const id = `2:${index + 1}`;
+    payload.nodes[id] = {
+      document: {
+        id,
+        type: 'FRAME',
+        name: `Specimen ${width}`,
+        absoluteBoundingBox: { width },
+        children: [{ id: `${id}:1`, type: 'INSTANCE', name: 'Example', componentId: '1:2' }],
+      },
+    };
+  });
+  return { specimenRegistry, payload };
+};
 const cases = [
   {
     name: 'fully governed live fixture passes',
@@ -129,11 +159,37 @@ const cases = [
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('property names are duplicated: Title')),
   },
+  {
+    name: 'registered source-parity specimens use the four governed widths',
+    ...(() => {
+      const { specimenRegistry, payload } = withSpecimens();
+      return { registry: specimenRegistry, payload };
+    })(),
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'source-parity specimen width drift fails',
+    ...(() => {
+      const { specimenRegistry, payload } = withSpecimens();
+      payload.nodes['2:4'].document.absoluteBoundingBox.width = 375;
+      return { registry: specimenRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('expected 390')),
+  },
+  {
+    name: 'an empty frame cannot satisfy a source-parity specimen mapping',
+    ...(() => {
+      const { specimenRegistry, payload } = withSpecimens();
+      payload.nodes['2:1'].document.children = [];
+      return { registry: specimenRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('does not contain an instance of 1:2')),
+  },
 ];
 
 let failed = 0;
 for (const testCase of cases) {
-  const failures = auditLiveNodes({ registry, payload: testCase.payload });
+  const failures = auditLiveNodes({ registry: testCase.registry ?? registry, payload: testCase.payload });
   if (testCase.expect(failures)) console.log(`✓ ${testCase.name}`);
   else {
     failed += 1;

@@ -1,6 +1,6 @@
 ---
 aliases: [Figma library, Code Connect history, Ready for Dev, design-to-code, Figma node identity]
-covers: [figma, scripts/check-figma-coverage.cjs, scripts/check-figma-contracts.cjs, scripts/check-figma-live.cjs, .github/workflows/figma-library-validation.yml]
+covers: [figma, scripts/lib/source-parity.cjs, scripts/check-figma-coverage.cjs, scripts/check-figma-contracts.cjs, scripts/check-figma-live.cjs, .github/workflows/figma-library-validation.yml]
 ---
 # Figma library — Design History
 
@@ -19,17 +19,20 @@ How stable Figma component identity maps design instances to the package's gover
 - Presentation layouts use Auto Layout, semantic layer names, and Figma variables. Specimen surfaces, padding, annotation gaps, variant gaps, viewport-row gaps, and Section insets are registered against the code library's Tailwind semantic tokens; Cumulative Foundations supplies documentation presentation only.
 - Organization mode capacity is governed centrally: one `Cumulative` default plus at most 19 active client modes. The library does not depend on Enterprise extended collections or duplicated client component libraries.
 - `figma/library.json` owns target-file policy, stable node identity, story/property partitions, review evidence, and nested dependency references. Replacing a node requires an explicit migration record.
+- Source-parity contract version 1 mirrors one audited family key, private decision digest, stable decision IDs, status, decision-scoped implementation keys and representation surfaces, and their surface union across every `component.json`, Storybook `parameters.sourceParityEvidence`, and Figma registration. Every implementation in a structural family carries the same projection. Private client evidence never enters this repository.
+- `figma/source-parity-baseline.json` freezes the original 21 migration keys and lists only Button, Carousel, In-page navigation, Slider, and Tabs as pending. New components cannot enter the baseline; a null structural implementation target cannot leave it. Figma-targeted decisions are registered only on their target implementation and use typed representations: real public-prop mappings for component properties, exact master-instance specimen mappings at 1440/1024/768/390 for responsive work, and nonvisual mappings without fake nodes for runtime metadata.
 - Registry structural fields mirror `component.json`. Exactly one registration designates each multi-master family page; structural siblings share that page identity, while Button Light designates the legacy Button page without moving published nodes.
-- `pnpm figma:validate` checks code-to-Figma coverage and registry contracts, then runs the read-only live-node audit when `FIGMA_REST_TOKEN` is available. `pnpm figma:live` requires that token; fixture self-tests cover missing visual property references, unstyled semantic text, raw colors, raw spacing, and property-type drift.
+- `pnpm figma:validate` checks code-to-Figma coverage and registry contracts, then runs the read-only live-node audit when `FIGMA_REST_TOKEN` is available. `pnpm figma:live` requires that token; fixture self-tests cover missing visual property references, unstyled semantic text, raw colors, raw spacing, property-type drift, specimen width drift, and empty-frame/incorrect-master bypasses.
 - Visible Figma properties must reference descendant layers. HTML-, runtime-, and accessibility-only values are explicitly marked `visualBinding: "nonvisual"` with a reason so disconnected visible properties cannot hide behind an implicit exception.
 - `figma/PROMOTION-CHECKLIST.md` is the required future-component workflow. The registry and self-tested contract reject wrapper-based handoff targets, breakpoint drift, missing promotion definition-of-done items, and token snapshot drift.
 - `pnpm figma:coverage` requires every candidate or supported manifest to have a primary Figma registration matching its path, canonical, slug, and primary export. Candidates are created and reviewed immediately but must remain unpublished.
 - `pnpm test:code` is the complete pre-Figma gate: types, lint, architecture/contracts and their fixtures, SSR, Storybook behavior, Chromium/WebKit accessibility, modes, and reduced motion without Figma-dependent coverage.
-- Every registration records a passed Button-standard adversarial/design review and a repository journal evidence path that names the registered node. A missing result, duplicate/missing pass type, standard, journal file, or node identity is a contract failure.
+- Audit-cleared registrations record passed Button-standard source-parity, adversarial, and design reviews and a repository journal evidence path that names the registered node. Pending families retain their prior adversarial/design evidence but cannot claim the post-remediation source-parity pass until every declared surface agrees. A missing required result, duplicate/missing pass type, standard, journal file, or node identity is a contract failure.
 - CI requires only `FIGMA_REST_TOKEN` for read-only live file-content validation. Contracts reject Code Connect dependencies, scripts, configuration, registry templates, and CI references because AI orchestration consumes canonical npm subpaths directly.
 
 ## Decisions
 
+- 2026-08-19 — Added source-project parity as a third promotion axis beside code and Figma, linked all 21 components to private immutable decisions through neutral digests/IDs, and constrained the temporary legacy baseline to five accepted remediations ([plan](../plans/2026-08-19-source-parity-audit-and-remediation.md), [journal](../journal/2026-08-19-source-parity-governance-foundation.md)).
 - 2026-08-19 — Documented Card with and without media as two direct Card instances using the same Content slot; kept CardMedia connected only in the media composition and preserved the Card master, key, variants, and public property set ([plan](../plans/2026-08-19-card-media-composition-specimens.md), [journal](../journal/2026-08-19-card-media-composition-specimens.md)).
 - 2026-08-19 — Mirrored `(canonical, variant)` into the Figma registry and validator, preserving default identity while qualifying alternate imports on one family page; retained npm imports as the sole governed AI code path ([plan](../plans/2026-08-19-figma-structural-family-contract.md), [journal](../journal/2026-08-19-figma-structural-family-contract.md)).
 - 2026-08-19 — Bound Tabs tablist-to-panel separation to the code `spacing/m` token and made Search overlay masters/instances hug their content, preserving stable node identity while removing active and mobile overflow ([journal](../journal/2026-08-19-correct-tabs-search-overlay-figma-layout.md)).
@@ -45,6 +48,7 @@ How stable Figma component identity maps design instances to the package's gover
 
 ## Open threads
 
+- Remediate Button, Carousel, In-page navigation, Slider, and Tabs on dedicated issue branches, removing each from the baseline only after all declared representations and fresh reviews pass.
 - Confirm target-file Organization ownership and releasing-account library publish permission before first publication.
 - Configure the repository's read-only `FIGMA_REST_TOKEN` secret and replace the temporary personal token with an Organization Plan Access Token when IT provisions one.
 - After explicit Figma library publication, verify all twenty-three nodes from a separate consumer file and record npm-orchestration smoke-test evidence.

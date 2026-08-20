@@ -1,6 +1,6 @@
 # Figma library
 
-The governed Figma source is the [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library). `library.json` owns the file identity, promoted node IDs and keys, public API mapping, Storybook parity, nested dependencies, and pre-publish gates.
+The governed Figma source is the [UI Design Library](https://www.figma.com/design/gXT4bIDrkgva2uSzY763oG/UI-Design-Library). `library.json` owns the file identity, promoted node IDs and keys, public API mapping, Storybook and source-parity evidence, nested dependencies, and pre-publish gates.
 
 ## File rules
 
@@ -36,6 +36,12 @@ Follow [`PROMOTION-CHECKLIST.md`](PROMOTION-CHECKLIST.md) for the exact layer, s
 
 Every candidate or supported code component must have a reviewed primary registration. Candidates enter this governed file during capture but remain unpublished. `pnpm figma:coverage` enforces that code-to-Figma handoff and rejects published candidate registrations.
 
+## Source-parity contract
+
+Package contract version 1 links every component manifest, Storybook meta, and Figma registration to a private, immutable source decision using only an audited family key, digest, stable decision IDs, decision-scoped implementation keys, and target surfaces. Private client identity, paths, citations, and excerpts remain outside this public repository. Figma-targeted decisions are registered only on their implementation and use typed `representations`: property-backed decisions name real public props and Figma mappings, structural alternates register their qualified master, responsive decisions additionally map 1440/1024/768/390 specimen frames to the exact master instance they contain, and nonvisual metadata uses a nonvisual mapping without inventing visual nodes.
+
+`figma/source-parity-baseline.json` records the immutable 21-key legacy migration set and the still-pending subset. New components cannot enter that baseline. A null structural `implementationKey` is allowed only while its family is grandfathered; leaving the baseline requires a real family implementation, complete target representations, and fresh post-remediation source-parity, adversarial, and design reviews. Completion is recorded privately as an append-only event; the original decision digest is not rewritten. The file and baseline logic are removed after the last key clears.
+
 ## Code-consumption boundary
 
 AI orchestration consumes implementations only through canonical-slug npm subpaths:
@@ -54,11 +60,11 @@ pnpm test:code                # complete pre-Figma code, story, browser, accessi
 pnpm figma:coverage           # every candidate/supported component has a reviewed primary registration
 pnpm figma:contracts          # registry, story, import, identity, review, and nesting contracts
 pnpm figma:live               # read-only audit of registered live masters; requires FIGMA_REST_TOKEN
-pnpm figma:live:selftest      # fixture tests for property, text-style, color, and spacing drift
+pnpm figma:live:selftest      # fixture tests for property, style, token, spacing, and specimen-width drift
 pnpm figma:validate           # local checks plus the live audit when FIGMA_REST_TOKEN is present
 ```
 
-The live audit reads the registered masters through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, and spacing aliases. The separate design review verifies that those aliases use the intended semantic collection. The audit never mutates the file.
+The live audit reads the registered masters and source-parity specimens through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, spacing aliases, representation master type, registered responsive widths, and specimen-to-master instance containment. The separate design review verifies that those aliases use the intended semantic collection. The audit never mutates the file.
 
 CI requires only `FIGMA_REST_TOKEN` with `file_content:read` for the live node audit. A temporary personal token works but should be replaced with a read-only [Organization Plan Access Token](https://developers.figma.com/docs/rest-api/plan-access-tokens/) when IT provisions one. The contract checker rejects Code Connect dependencies, scripts, configuration, registry templates, and CI references.
 

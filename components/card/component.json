@@ -40,6 +40,19 @@
     "Dropped the data-component override prop; the hook is now fixed, which is what makes it a reliable test and analytics selector.",
     "Kept the group-hover and group-focus-visible scale pair and their motion-reduce counterparts so keyboard focus triggers the same zoom as hover."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "card",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/card",
+    "privateAuditDigest": "9b9123adeef6dc98341a03651dc5aa29318ab4a5c62b74b15074e960ad91d13f",
+    "decisionIds": [
+      "sp-card-001",
+      "sp-card-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

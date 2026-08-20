@@ -4,6 +4,24 @@
 'use strict';
 
 const { checkCoverage } = require('./check-figma-coverage.cjs');
+const { INITIAL_COMPONENT_KEYS } = require('./lib/source-parity.cjs');
+
+const sourceParity = {
+  contractVersion: 1,
+  auditComponentKey: 'alert',
+  auditStatus: 'cleared',
+  privateAuditRef: 'library-source-parity:2026-08-19/components/alert',
+  privateAuditDigest: 'a'.repeat(64),
+  decisionIds: ['sp-alert-001'],
+  representationDecisions: [],
+  requiredRepresentationSurfaces: [],
+};
+const sourceParityBaseline = {
+  schemaVersion: 1,
+  contractVersion: 1,
+  initialKeys: [...INITIAL_COMPONENT_KEYS],
+  remainingKeys: [],
+};
 
 function manifest(relativePath, overrides = {}) {
   return {
@@ -113,11 +131,24 @@ const cases = [
     components: [],
     expect: (failures) => failures.length === 0,
   },
+  {
+    name: 'Figma source-parity evidence must match the component manifest',
+    manifests: [manifest('components/alert', { sourceParity })],
+    components: [registration({ sourceParity: { ...sourceParity, decisionIds: ['sp-alert-999'], representations: [] } })],
+    sourceParityEnabled: true,
+    sourceParityBaseline,
+    expect: (failures) => failures.some((failure) => failure.includes('decisionIds must match component.json')),
+  },
 ];
 
 let failed = 0;
 for (const testCase of cases) {
-  const result = checkCoverage({ manifests: testCase.manifests, registry: { components: testCase.components } });
+  const result = checkCoverage({
+    manifests: testCase.manifests,
+    registry: { components: testCase.components },
+    sourceParityEnabled: testCase.sourceParityEnabled,
+    sourceParityBaseline: testCase.sourceParityBaseline,
+  });
   if (testCase.expect(result.failures)) console.log(`✓ ${testCase.name}`);
   else {
     failed += 1;

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "initialKeys": [
+    "accordion",
+    "alert",
+    "avatar",
+    "badge",
+    "breadcrumbs",
+    "button",
+    "card",
+    "carousel",
+    "image",
+    "in-page-navigation",
+    "link",
+    "modal",
+    "quote",
+    "rich-text",
+    "search-input",
+    "search-overlay",
+    "section-header",
+    "slider",
+    "stat",
+    "tabs",
+    "toast"
+  ],
+  "remainingKeys": [
+    "button",
+    "carousel",
+    "in-page-navigation",
+    "slider",
+    "tabs"
+  ]
+}

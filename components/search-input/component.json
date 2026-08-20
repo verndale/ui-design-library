@@ -47,6 +47,19 @@
     "Restored a visible keyboard focus indicator on the input — CN removed every focus outline and ring; the library field uses focus-visible:outline-2 outline-offset-2 outline-border-focus.",
     "Retained the bound label, labelled submit and clear controls, hidden decorative icons, live results region, controlled and uncontrolled modes, mobile keyboard hints, clear-and-refocus behavior, and trimmed non-empty submission. The generic component now uses the native search landmark and search input semantics."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "search-input",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/search-input",
+    "privateAuditDigest": "5c401a2468ac081a9c937f9ed7a6eff365fce947daa81808f033310b4c9d829b",
+    "decisionIds": [
+      "sp-search-input-001",
+      "sp-search-input-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

@@ -41,6 +41,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { implementationFiles, listComponentDirs, storyFiles } = require('./lib/component-files.cjs');
+const {
+  loadBaseline,
+  validateBaseline,
+  validateImplementationTargets,
+  validateManifestSourceParity,
+  validateStorySourceParity,
+} = require('./lib/source-parity.cjs');
 const { validateRealization } = require('./lib/validate-realization.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -188,6 +195,7 @@ function check(options = {}) {
       : null;
   const failures = [];
   const fail = (msg) => failures.push(msg);
+  const sourceParityEnabled = options.sourceParityEnabled ?? componentsDir === COMPONENTS;
 
   if (!tokenCss) fail(`[tokens] ${path.relative(ROOT, TOKENS)} is missing`);
   const definedTokens = new Set([...tokenCss.matchAll(/^\s*--([a-z0-9-]+):/gm)].map((m) => m[1]));
@@ -202,10 +210,24 @@ function check(options = {}) {
     if (pkg.uiDesignLibrary?.realizationContractVersion !== 1) {
       fail('[package] package.json uiDesignLibrary.realizationContractVersion must equal 1');
     }
+    if (pkg.uiDesignLibrary?.sourceParityContractVersion !== 1) {
+      fail('[package] package.json uiDesignLibrary.sourceParityContractVersion must equal 1');
+    }
+  }
+
+  let sourceParityBaseline = null;
+  if (sourceParityEnabled) {
+    try {
+      sourceParityBaseline = options.sourceParityBaseline ?? loadBaseline(ROOT);
+      validateBaseline(sourceParityBaseline, dirs, fail);
+    } catch (error) {
+      fail(`[source-parity] could not load migration baseline: ${error.message}`);
+    }
   }
 
   // Collected for the cross-canonical pass after the per-dir loop.
   const seen = [];
+  const sourceParityRecords = [];
 
   for (const dirName of dirs) {
     const dir = path.join(componentsDir, dirName);
@@ -302,6 +324,10 @@ function check(options = {}) {
       fail(`[contract] components/${dirName} declares no slots`);
     }
     validateReuseFingerprint(contract, dirName, fail);
+    if (sourceParityEnabled && sourceParityBaseline) {
+      validateManifestSourceParity(contract, dirName, sourceParityBaseline, fail);
+      sourceParityRecords.push({ componentKey: dirName, evidence: contract.sourceParity });
+    }
 
     for (const token of contract.tokens || []) {
       if (!definedTokens.has(token)) {
@@ -333,6 +359,10 @@ function check(options = {}) {
             `[maturity] components/${dirName} is "${contract.maturity}" in component.json but tagged "${tagged[1]}" in ${stories}`,
           );
         }
+      }
+
+      if (sourceParityEnabled && sourceParityBaseline) {
+        validateStorySourceParity(source, contract, dirName, `components/${dirName}/${stories}`, fail);
       }
 
       // Variants of one canonical share the Storybook sidebar and story-id
@@ -384,6 +414,10 @@ function check(options = {}) {
     for (const file of implementationFiles(sharedDir)) {
       scanImplementation(path.join(sharedDir, file), `src/lib/${file}`, definedTokens, fail);
     }
+  }
+
+  if (sourceParityEnabled && sourceParityBaseline) {
+    validateImplementationTargets(sourceParityRecords, sourceParityBaseline, fail);
   }
 
   // Cross-canonical pass: a canonical's directories must together form one

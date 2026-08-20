@@ -54,6 +54,19 @@
     "Dropped the decorative brand glow asset; the panel surface is a token.",
     "Dropped the client's bespoke suggestion-list arrow-key navigation over a fixed suggestion list; results are a caller-owned slot in a polite live region, so option-level activedescendant is the caller's responsibility. Kept the dialog focus trap, Escape/backdrop dismissal, focus restoration, and the idle-to-active state split."
   ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "search-overlay",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/search-overlay",
+    "privateAuditDigest": "cda45de6673e940dd388c9bdc30498f354570a3f7dafd6e7c2241aec77872ba8",
+    "decisionIds": [
+      "sp-search-overlay-001",
+      "sp-search-overlay-002"
+    ],
+    "representationDecisions": [],
+    "requiredRepresentationSurfaces": []
+  },
   "maturity": "supported",
   "realization": {
     "version": 1,

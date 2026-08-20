@@ -21,6 +21,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-20 — chore(ui-design-library): Update Graphify hooks for better user feedback ([PR #67](https://github.com/verndale/ui-design-library/pull/67))
 - 2026-08-19 — Aligned with `ui-design-evidence` by treating the entire Graphify code map as ignored local tooling, because its incremental manifest contains machine-specific mtimes and generated orientation output does not belong in the authoritative repository history. The local sync path now bootstraps fresh clones and Git hooks are best-effort so optional orientation tooling cannot block repository operations ([issue #66](https://github.com/verndale/ui-design-library/issues/66), [journal](../journal/2026-08-19-keep-graphify-output-local.md)).
 - 2026-08-20 — feat(ui-design-library): Enhance documentation with source parity detail ([PR #64](https://github.com/verndale/ui-design-library/pull/64))
 - 2026-08-19 — feat(ui-design-library): Update Card media composition documentation ([PR #56](https://github.com/verndale/ui-design-library/pull/56))

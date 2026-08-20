@@ -1,0 +1,427 @@
+{
+  "canonical": "In-page navigation",
+  "slug": "in-page-navigation",
+  "variant": "modal-drawer",
+  "exportName": "InPageNavigationModalDrawer",
+  "rendering": "hybrid",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["item", "collapsedIcon", "expandedIcon"],
+  "variants": ["desktop", "mobile-trigger", "mobile-dialog"],
+  "reuseFingerprint": {
+    "slots": ["action", "icon", "panel"],
+    "affordance": "navigate",
+    "role": "action-group"
+  },
+  "tokens": [
+    "color-surface-raised",
+    "color-surface-inverse",
+    "color-surface-scrim",
+    "color-text-primary",
+    "color-text-secondary",
+    "color-text-inverse",
+    "color-border-subtle",
+    "color-border-focus",
+    "color-action-hover",
+    "radius-medium",
+    "radius-pill",
+    "shadow-overlay",
+    "spacing-2xs",
+    "spacing-3xs",
+    "spacing-s",
+    "spacing-xl",
+    "spacing-page-margin"
+  ],
+  "provenance": {
+    "project": "canadian-national",
+    "run": "runs/canadian-national/2026-08-03/",
+    "source": "cn-website/src/components/renderings/navigation/jumplinks/Jumplinks.client.tsx"
+  },
+  "declienting": [
+    "Kept this as the governed modal-drawer structural alternate while preserving the inline-disclosure implementation as the family default; the alternate is a separate export and directory rather than a presentation prop or a second canonical.",
+    "Composed the existing Modal, which owns the SSR-safe body portal, focus containment and restoration, Escape and backdrop dismissal, background inerting, scroll lock, and overlay stack; the alternate adds no competing overlay engine.",
+    "Restored the source's strict 48px vertical swipe boundary: exactly 48px is below threshold, an upward movement beyond 48px opens from the mobile handle, and a downward movement beyond 48px closes from the drawer handle.",
+    "Isolated dismissal swipes to the dedicated handle and left the navigation list as an independent vertical scroll region, so scrolling content cannot accidentally dismiss the drawer; named close-button and Escape alternatives remain available.",
+    "Retained explicit items, ariaLabel, activeId, collapsedIcon, and expandedIcon contracts. Added only a neutral closeLabel for the shared modal close control; the portal remains document.body with no client-specific anchor.",
+    "Rejected source heading scanning, sticky header-offset pinning, Sitecore editing/CMS wiring, page-content portal anchors, and scroll-close orchestration as application concerns rather than reusable component behavior.",
+    "Closes the mobile dialog when the lg desktop breakpoint becomes active, keeping the hidden responsive copy unfocusable and releasing the shared overlay stack during viewport changes."
+  ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "in-page-navigation",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-08-19/components/in-page-navigation",
+    "privateAuditDigest": "24f12352bf3b1fc547d4f3b4b656851c504b3ae8e29e6548b2885906ddd74ef4",
+    "decisionIds": [
+      "sp-in-page-navigation-001",
+      "sp-in-page-navigation-002",
+      "sp-in-page-navigation-003"
+    ],
+    "representationDecisions": [
+      {
+        "decisionId": "sp-in-page-navigation-002",
+        "implementationKey": "in-page-navigation--modal-drawer",
+        "surfaces": ["ai-registry", "code", "figma", "storybook"]
+      }
+    ],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "supported",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "items", "type": "collection", "required": true },
+      { "path": "items[].id", "type": "string", "required": true },
+      { "path": "items[].label", "type": "node", "required": true },
+      { "path": "ariaLabel", "type": "string", "required": false, "default": "On this page" },
+      { "path": "closeLabel", "type": "string", "required": false, "default": "Close navigation" },
+      { "path": "activeId", "type": "string", "required": false },
+      { "path": "collapsedIcon", "type": "node", "required": false },
+      { "path": "expandedIcon", "type": "node", "required": false },
+      { "path": "className", "type": "string", "required": false },
+      { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false },
+      { "path": "classNames.desktopList", "type": "string", "required": false },
+      { "path": "classNames.item", "type": "string", "required": false },
+      { "path": "classNames.link", "type": "string", "required": false },
+      { "path": "classNames.mobile", "type": "string", "required": false },
+      { "path": "classNames.trigger", "type": "string", "required": false },
+      { "path": "classNames.label", "type": "string", "required": false },
+      { "path": "classNames.icon", "type": "string", "required": false },
+      { "path": "classNames.backdrop", "type": "string", "required": false },
+      { "path": "classNames.viewport", "type": "string", "required": false },
+      { "path": "classNames.dialog", "type": "string", "required": false },
+      { "path": "classNames.header", "type": "string", "required": false },
+      { "path": "classNames.title", "type": "string", "required": false },
+      { "path": "classNames.closeButton", "type": "string", "required": false },
+      { "path": "classNames.panel", "type": "string", "required": false },
+      { "path": "classNames.swipeHandle", "type": "string", "required": false },
+      { "path": "classNames.mobileList", "type": "string", "required": false }
+    ],
+    "contentBindings": [
+      { "prop": "items[].label", "nodes": ["desktopLink", "mobileLink", "label"] },
+      { "prop": "ariaLabel", "node": "title" },
+      { "prop": "collapsedIcon", "node": "triggerIcon" },
+      { "prop": "expandedIcon", "node": "swipeHandle" }
+    ],
+    "safeAttributes": [
+      { "prop": "ariaLabel", "node": "root", "attribute": "aria-label" },
+      { "prop": "ariaLabel", "node": "innerNavigation", "attribute": "aria-label" },
+      { "prop": "closeLabel", "node": "closeButton", "attribute": "aria-label" }
+    ],
+    "styleSlots": [
+      {
+        "path": "classNames.root",
+        "node": "root",
+        "protectedProperties": ["display", "visibility", "semantics", "reading-order"]
+      },
+      {
+        "path": "classNames.desktopList",
+        "node": "desktopList",
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.item",
+        "nodes": ["desktopItem", "mobileItem"],
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.link",
+        "nodes": ["desktopLink", "mobileLink"],
+        "protectedProperties": ["display", "visibility", "pointer-events", "focus-indicator", "semantics", "target-size"]
+      },
+      {
+        "path": "classNames.mobile",
+        "node": "mobile",
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.trigger",
+        "node": "trigger",
+        "protectedProperties": ["display", "visibility", "pointer-events", "focus-indicator", "semantics", "target-size"]
+      },
+      {
+        "path": "classNames.label",
+        "node": "label",
+        "protectedProperties": ["display", "visibility", "semantics", "reading-order"]
+      },
+      {
+        "path": "classNames.icon",
+        "node": "triggerIcon",
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.backdrop",
+        "node": "backdrop",
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.viewport",
+        "node": "viewport",
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.dialog",
+        "node": "dialog",
+        "protectedProperties": ["display", "visibility", "semantics", "reading-order"]
+      },
+      {
+        "path": "classNames.header",
+        "node": "header",
+        "protectedProperties": ["display", "visibility"]
+      },
+      {
+        "path": "classNames.title",
+        "node": "title",
+        "protectedProperties": ["display", "visibility", "semantics", "reading-order"]
+      },
+      {
+        "path": "classNames.closeButton",
+        "node": "closeButton",
+        "protectedProperties": ["display", "visibility", "pointer-events", "focus-indicator", "semantics", "target-size"]
+      },
+      {
+        "path": "classNames.panel",
+        "node": "body",
+        "protectedProperties": ["display", "visibility", "semantics", "reading-order"]
+      },
+      {
+        "path": "classNames.swipeHandle",
+        "node": "swipeHandle",
+        "protectedProperties": ["display", "visibility", "pointer-events"]
+      },
+      {
+        "path": "classNames.mobileList",
+        "node": "mobileList",
+        "protectedProperties": ["display", "visibility"]
+      }
+    ],
+    "dom": {
+      "nodes": [
+        {
+          "id": "root",
+          "attributes": { "aria-label": { "prop": "ariaLabel" } },
+          "element": "nav",
+          "parent": null,
+          "cardinality": "one"
+        },
+        { "id": "desktopList", "element": "ul", "parent": "root", "cardinality": "one" },
+        {
+          "id": "desktopItem",
+          "element": "li",
+          "parent": "desktopList",
+          "cardinality": "zero-or-more",
+          "repeat": { "prop": "items" }
+        },
+        {
+          "id": "desktopLink",
+          "attributes": { "aria-current": { "state": "active" } },
+          "element": "a",
+          "parent": "desktopItem",
+          "cardinality": "one"
+        },
+        { "id": "mobile", "element": "div", "parent": "root", "cardinality": "one" },
+        {
+          "id": "trigger",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": { "state": "expanded" },
+            "aria-hidden": { "state": "expanded" },
+            "tabIndex": { "state": "expanded" }
+          },
+          "element": "button",
+          "parent": "mobile",
+          "cardinality": "one"
+        },
+        {
+          "id": "triggerIcon",
+          "attributes": { "aria-hidden": true },
+          "element": "span",
+          "parent": "trigger",
+          "cardinality": "one"
+        },
+        { "id": "label", "element": "span", "parent": "trigger", "cardinality": "one" },
+        {
+          "id": "backdrop",
+          "attributes": { "aria-hidden": true },
+          "element": "div",
+          "parent": null,
+          "cardinality": "zero-or-one",
+          "condition": { "state": "portalReadyAndOpen", "predicate": "truthy" }
+        },
+        {
+          "id": "viewport",
+          "element": "div",
+          "parent": null,
+          "cardinality": "zero-or-one",
+          "condition": { "state": "portalReadyAndOpen", "predicate": "truthy" }
+        },
+        {
+          "id": "dialog",
+          "attributes": {
+            "role": "dialog",
+            "aria-modal": { "state": "topmost" },
+            "aria-hidden": { "state": "covered" },
+            "inert": { "state": "covered" },
+            "tabIndex": -1
+          },
+          "element": "div",
+          "parent": "viewport",
+          "cardinality": "one"
+        },
+        { "id": "header", "element": "header", "parent": "dialog", "cardinality": "one" },
+        { "id": "headerContent", "element": "div", "parent": "header", "cardinality": "one" },
+        { "id": "title", "element": "h2", "parent": "headerContent", "cardinality": "one" },
+        {
+          "id": "closeButton",
+          "attributes": { "type": "button", "aria-label": { "prop": "closeLabel" } },
+          "element": "button",
+          "parent": "header",
+          "cardinality": "one"
+        },
+        {
+          "id": "closeIcon",
+          "attributes": { "aria-hidden": true },
+          "element": "span",
+          "parent": "closeButton",
+          "cardinality": "one"
+        },
+        {
+          "id": "body",
+          "attributes": { "tabIndex": 0 },
+          "element": "div",
+          "parent": "dialog",
+          "cardinality": "one"
+        },
+        {
+          "id": "swipeHandle",
+          "attributes": { "aria-hidden": true },
+          "element": "div",
+          "parent": "body",
+          "cardinality": "one"
+        },
+        {
+          "id": "innerNavigation",
+          "attributes": { "aria-label": { "prop": "ariaLabel" } },
+          "element": "nav",
+          "parent": "body",
+          "cardinality": "one"
+        },
+        { "id": "mobileList", "element": "ul", "parent": "innerNavigation", "cardinality": "one" },
+        {
+          "id": "mobileItem",
+          "element": "li",
+          "parent": "mobileList",
+          "cardinality": "zero-or-more",
+          "repeat": { "prop": "items" }
+        },
+        {
+          "id": "mobileLink",
+          "attributes": { "aria-current": { "state": "active" } },
+          "element": "a",
+          "parent": "mobileItem",
+          "cardinality": "one"
+        }
+      ]
+    },
+    "relationships": [
+      { "from": "trigger", "attribute": "aria-controls", "to": "dialog" },
+      { "from": "dialog", "attribute": "aria-labelledby", "to": "title" }
+    ],
+    "behaviors": [
+      {
+        "id": "in-page-navigation-modal.open-dismiss",
+        "kind": "state",
+        "description": "The native mobile trigger opens a named modal dialog and its named close button dismisses it.",
+        "wcag": ["2.1.1", "2.5.8", "4.1.2"],
+        "evidence": "in-page-navigation-modal.open-dismiss",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.focus.containment",
+        "kind": "focus",
+        "description": "Opening moves focus into the topmost dialog and Tab or Shift+Tab cannot leave it.",
+        "wcag": ["2.1.2", "2.4.3", "2.4.11"],
+        "evidence": "in-page-navigation-modal.focus.containment",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.focus.restoration",
+        "kind": "focus",
+        "description": "Every governed dismissal path restores focus to the mobile trigger.",
+        "wcag": ["2.4.3"],
+        "evidence": "in-page-navigation-modal.focus.restoration",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.keyboard.escape",
+        "kind": "keyboard",
+        "description": "Escape dismisses only the topmost drawer in the shared overlay stack.",
+        "wcag": ["2.1.1", "2.1.2"],
+        "evidence": "in-page-navigation-modal.keyboard.escape",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.outside-dismiss",
+        "kind": "state",
+        "description": "The shared modal backdrop dismisses while interaction inside the dialog remains contained.",
+        "wcag": ["2.1.1", "2.5.8"],
+        "evidence": "in-page-navigation-modal.outside-dismiss",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.swipe.threshold",
+        "kind": "pointer-alternative",
+        "description": "The optional vertical swipe path uses a strict 48px boundary and retains named button alternatives for opening and closing.",
+        "wcag": ["2.5.1", "2.5.7", "2.5.8"],
+        "evidence": "in-page-navigation-modal.swipe.threshold",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.swipe.scroll",
+        "kind": "state",
+        "description": "Navigation-list scrolling is isolated from the dedicated dismissal-swipe handle.",
+        "wcag": ["2.5.1", "2.5.7"],
+        "evidence": "in-page-navigation-modal.swipe.scroll",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.responsive.hidden",
+        "kind": "focus",
+        "description": "Inactive responsive copies are display-hidden and the dialog closes when the desktop copy becomes active.",
+        "wcag": ["2.4.3"],
+        "evidence": "in-page-navigation-modal.responsive.hidden",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.motion.reduced",
+        "kind": "motion",
+        "description": "The shared modal entrance animation collapses through semantic duration tokens under reduced motion.",
+        "wcag": ["2.3.3"],
+        "evidence": "in-page-navigation-modal.motion.reduced",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "in-page-navigation-modal.semantics",
+        "kind": "semantics",
+        "description": "The body-ported modal dialog is labelled, modal only when topmost, and contains a separate labelled navigation landmark without nesting inside the outer landmark.",
+        "wcag": ["1.3.1", "2.4.1", "4.1.2"],
+        "evidence": "in-page-navigation-modal.semantics",
+        "evidenceType": "storybook-step"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": "modal-dialog",
+      "consumerResponsibilities": [
+        "accessible-copy",
+        "heading-context",
+        "landmark-context",
+        "token-contrast",
+        "safe-class-overrides",
+        "complete-page-assistive-technology-testing"
+      ]
+    }
+  }
+}

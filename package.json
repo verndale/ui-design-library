@@ -83,6 +83,11 @@
       "import": "./dist/components/in-page-navigation/index.js"
     },
     "./components/in-page-navigation/component.json": "./components/in-page-navigation/component.json",
+    "./components/in-page-navigation--modal-drawer": {
+      "types": "./dist/components/in-page-navigation--modal-drawer/index.d.ts",
+      "import": "./dist/components/in-page-navigation--modal-drawer/index.js"
+    },
+    "./components/in-page-navigation--modal-drawer/component.json": "./components/in-page-navigation--modal-drawer/component.json",
     "./components/link": {
       "types": "./dist/components/link/index.d.ts",
       "import": "./dist/components/link/index.js"

@@ -1541,6 +1541,10 @@
       "id": "in-page-navigation",
       "canonical": "In-page navigation",
       "slug": "in-page-navigation",
+      "variant": "inline-disclosure",
+      "variantLabel": "Inline disclosure",
+      "default": true,
+      "familyPage": true,
       "exportName": "InPageNavigation",
       "publicImport": "@verndale/ui-design-library/components/in-page-navigation",
       "componentPath": "components/in-page-navigation",
@@ -1552,7 +1556,7 @@
       "sourceParity": {
         "contractVersion": 1,
         "auditComponentKey": "in-page-navigation",
-        "auditStatus": "remediation-pending",
+        "auditStatus": "cleared",
         "privateAuditRef": "library-source-parity:2026-08-19/components/in-page-navigation",
         "privateAuditDigest": "24f12352bf3b1fc547d4f3b4b656851c504b3ae8e29e6548b2885906ddd74ef4",
         "decisionIds": [
@@ -1563,7 +1567,7 @@
         "representationDecisions": [
           {
             "decisionId": "sp-in-page-navigation-002",
-            "implementationKey": null,
+            "implementationKey": "in-page-navigation--modal-drawer",
             "surfaces": [
               "ai-registry",
               "code",
@@ -1592,8 +1596,8 @@
         "review": {
           "status": "passed",
           "standard": "button-standard-v1",
-          "passes": ["adversarial", "design"],
-          "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-in-page-navigation-source-parity.md"
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
@@ -1604,6 +1608,86 @@
       },
       "mappings": [
         { "figmaProperty": "Aria label", "kind": "string", "codeProp": "ariaLabel", "visualBinding": "nonvisual", "nonvisualReason": "The navigation landmark accessible name is announced by assistive technology and is not visible copy." },
+        { "figmaProperty": "Active section", "kind": "enum", "codeProp": "activeId", "values": ["Overview", "Pricing"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "in-page-navigation-modal-drawer",
+      "canonical": "In-page navigation",
+      "slug": "in-page-navigation",
+      "variant": "modal-drawer",
+      "variantLabel": "Modal drawer",
+      "exportName": "InPageNavigationModalDrawer",
+      "publicImport": "@verndale/ui-design-library/components/in-page-navigation--modal-drawer",
+      "componentPath": "components/in-page-navigation--modal-drawer",
+      "storyPath": "components/in-page-navigation--modal-drawer/InPageNavigationModalDrawer.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["items", "ariaLabel", "closeLabel", "activeId", "collapsedIcon", "expandedIcon", "className", "classNames"],
+      "codeOnlyProps": ["collapsedIcon", "expandedIcon", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "items", "value": "inPageNavigationItems" }],
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "in-page-navigation",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-08-19/components/in-page-navigation",
+        "privateAuditDigest": "24f12352bf3b1fc547d4f3b4b656851c504b3ae8e29e6548b2885906ddd74ef4",
+        "decisionIds": [
+          "sp-in-page-navigation-001",
+          "sp-in-page-navigation-002",
+          "sp-in-page-navigation-003"
+        ],
+        "representationDecisions": [
+          {
+            "decisionId": "sp-in-page-navigation-002",
+            "implementationKey": "in-page-navigation--modal-drawer",
+            "surfaces": ["ai-registry", "code", "figma", "storybook"]
+          }
+        ],
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": [
+          {
+            "decisionId": "sp-in-page-navigation-002",
+            "kind": "structural-master-responsive",
+            "masterNodeId": "318:45",
+            "publicProps": [],
+            "specimens": [
+              { "componentNodeId": "318:45", "nodeId": "321:88", "viewportWidth": 1440 },
+              { "componentNodeId": "318:45", "nodeId": "321:116", "viewportWidth": 1024 },
+              { "componentNodeId": "318:45", "nodeId": "321:144", "viewportWidth": 768 },
+              { "componentNodeId": "318:45", "nodeId": "321:174", "viewportWidth": 390 }
+            ]
+          }
+        ]
+      },
+      "figma": {
+        "pageId": "204:2",
+        "pageName": "In-page navigation",
+        "nodeId": "318:45",
+        "nodeKey": "3e278a05ce7cbb433b08de5e0e98133c0e637af2",
+        "nodeType": "COMPONENT_SET",
+        "nodeName": "In-page navigation / Modal drawer",
+        "status": "ready-for-dev",
+        "publicationStatus": "unpublished",
+        "review": {
+          "status": "passed",
+          "standard": "button-standard-v1",
+          "passes": ["source-parity", "adversarial", "design"],
+          "evidence": "wiki/journal/2026-08-20-in-page-navigation-source-parity.md"
+        },
+        "handoffPattern": "direct-canonical-instance",
+        "presentationPattern": "responsive-specimens",
+        "properties": [
+          { "name": "Aria label", "type": "TEXT" },
+          { "name": "Close label", "type": "TEXT" },
+          { "name": "Presentation", "type": "VARIANT", "values": ["Desktop", "Mobile trigger", "Mobile dialog"] },
+          { "name": "Active section", "type": "VARIANT", "values": ["Overview", "Pricing"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Aria label", "kind": "string", "codeProp": "ariaLabel" },
+        { "figmaProperty": "Close label", "kind": "string", "codeProp": "closeLabel", "visualBinding": "nonvisual", "nonvisualReason": "The close control is represented by its icon; the localized accessible name is announced only by assistive technology." },
+        { "figmaProperty": "Presentation", "kind": "enum", "values": ["Desktop", "Mobile trigger", "Mobile dialog"] },
         { "figmaProperty": "Active section", "kind": "enum", "codeProp": "activeId", "values": ["Overview", "Pricing"] }
       ],
       "nestedDependencies": []

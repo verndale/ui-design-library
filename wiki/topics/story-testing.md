@@ -29,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-20 — Added real-browser boundary evidence for the In-page navigation structural alternate: strict 48px pointer swipes, scroll-region isolation, shared modal focus/Escape/backdrop behavior, breakpoint-hidden focus copies, reduced motion, and portaled landmark semantics ([journal](../journal/2026-08-20-in-page-navigation-source-parity.md)).
 - 2026-08-20 — feat(ui-design-library): Enhance carousel inert behavior for better ([PR #69](https://github.com/verndale/ui-design-library/pull/69))
 - 2026-08-13 — Added keyed realization evidence for Accordion's existing reduced-motion-aware transition so the published behavior and executable story assertion remain reciprocal ([journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-13 — feat(contracts): add accessible realizations (#37) ([PR #38](https://github.com/verndale/ui-design-library/pull/38))

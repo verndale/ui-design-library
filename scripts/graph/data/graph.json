@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 140,
-    "edges": 298,
+    "nodes": 144,
+    "edges": 311,
     "byType": {
-      "surface": 47,
+      "surface": 49,
       "root-doc": 4,
-      "component": 22,
+      "component": 23,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 41,
+      "wiki-journal": 42,
       "wiki-plan": 15,
       "wiki-topic": 7
     },
     "byEdgeType": {
-      "covers": 54,
-      "links-to": 138,
-      "plan": 22,
-      "topic": 62,
-      "uses-tokens": 22
+      "covers": 56,
+      "links-to": 143,
+      "plan": 23,
+      "topic": 66,
+      "uses-tokens": 23
     }
   },
   "nodes": [
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 800,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -490,6 +490,42 @@
       "degree": 1
     },
     {
+      "id": "components/tabs",
+      "label": "tabs",
+      "type": "surface",
+      "dir": "components",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 256,
+      "degree": 1
+    },
+    {
+      "id": "components/tabs--native-select",
+      "label": "tabs--native-select",
+      "type": "surface",
+      "dir": "components",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 256,
+      "degree": 1
+    },
+    {
+      "id": "components/tabs--native-select/component.json",
+      "label": "Tabs (native-select)",
+      "type": "component",
+      "dir": "components/tabs--native-select",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 10366,
+      "degree": 1
+    },
+    {
       "id": "components/tabs/component.json",
       "label": "Tabs",
       "type": "component",
@@ -498,7 +534,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 9386,
+      "bytes": 10956,
       "degree": 1
     },
     {
@@ -534,7 +570,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 192,
       "degree": 1
     },
     {
@@ -546,7 +582,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 84698,
+      "bytes": 89074,
       "degree": 1
     },
     {
@@ -570,7 +606,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11230,
+      "bytes": 11517,
       "degree": 1
     },
     {
@@ -835,7 +871,7 @@
       "prs": [],
       "issues": [],
       "bytes": 4653,
-      "degree": 23
+      "degree": 24
     },
     {
       "id": "styles.css",
@@ -858,7 +894,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -918,8 +954,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 15146,
-      "degree": 51
+      "bytes": 15468,
+      "degree": 52
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1579,6 +1615,23 @@
       "degree": 8
     },
     {
+      "id": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "label": "Restore Tabs visual and responsive source parity",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "component-architecture",
+        "figma-code-connect",
+        "story-testing",
+        "variant-axis"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3226,
+      "degree": 10
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1844,8 +1897,8 @@
         "76"
       ],
       "issues": [],
-      "bytes": 11475,
-      "degree": 11
+      "bytes": 11612,
+      "degree": 12
     },
     {
       "id": "wiki/plans/INDEX.md",
@@ -1885,7 +1938,7 @@
         "18",
         "4"
       ],
-      "bytes": 7153,
+      "bytes": 7345,
       "degree": 18
     },
     {
@@ -1907,8 +1960,8 @@
         "46",
         "40"
       ],
-      "bytes": 7768,
-      "degree": 27
+      "bytes": 8135,
+      "degree": 29
     },
     {
       "id": "wiki/topics/figma-code-connect.md",
@@ -1927,8 +1980,8 @@
       "issues": [
         "49"
       ],
-      "bytes": 14736,
-      "degree": 51
+      "bytes": 14972,
+      "degree": 53
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2021,8 +2074,8 @@
         "19"
       ],
       "issues": [],
-      "bytes": 8604,
-      "degree": 22
+      "bytes": 8927,
+      "degree": 24
     },
     {
       "id": "wiki/topics/storybook-tooling.md",
@@ -2074,8 +2127,8 @@
       ],
       "prs": [],
       "issues": [],
-      "bytes": 4038,
-      "degree": 16
+      "bytes": 4611,
+      "degree": 20
     }
   ],
   "edges": [
@@ -2337,6 +2390,16 @@
     {
       "source": "wiki/topics/variant-axis.md",
       "target": "components/in-page-navigation--modal-drawer",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/variant-axis.md",
+      "target": "components/tabs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/variant-axis.md",
+      "target": "components/tabs--native-select",
       "type": "covers"
     },
     {
@@ -2666,6 +2729,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2918,6 +2988,13 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
       "count": 2,
@@ -2948,7 +3025,7 @@
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 1,
+      "count": 2,
       "anchors": []
     },
     {
@@ -3058,6 +3135,13 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -3102,7 +3186,7 @@
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 6,
+      "count": 7,
       "anchors": []
     },
     {
@@ -3226,6 +3310,13 @@
     },
     {
       "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "type": "links-to",
       "count": 3,
@@ -3296,6 +3387,13 @@
     },
     {
       "source": "wiki/topics/variant-axis.md",
+      "target": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/variant-axis.md",
       "target": "wiki/plans/2026-07-30-variant-axis.md",
       "type": "links-to",
       "count": 1,
@@ -3312,7 +3410,7 @@
       "source": "wiki/topics/variant-axis.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
-      "count": 1,
+      "count": 2,
       "anchors": []
     },
     {
@@ -3422,6 +3520,11 @@
     },
     {
       "source": "wiki/journal/2026-08-20-slider-source-parity.md",
+      "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-tabs-source-parity.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "plan"
     },
@@ -3623,6 +3726,26 @@
     {
       "source": "wiki/journal/2026-08-20-slider-source-parity.md",
       "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-20-tabs-source-parity.md",
+      "target": "wiki/topics/variant-axis.md",
       "type": "topic"
     },
     {
@@ -3856,10 +3979,16 @@
       "count": 5
     },
     {
+      "source": "components/tabs--native-select/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 13
+    },
+    {
       "source": "components/tabs/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
-      "count": 8
+      "count": 11
     },
     {
       "source": "components/toast/component.json",

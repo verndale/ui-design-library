@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 
 import { Tabs, type TabItem } from './index';
@@ -19,7 +20,7 @@ const meta = {
     sourceParityEvidence: {
       "contractVersion": 1,
       "auditComponentKey": "tabs",
-      "auditStatus": "remediation-pending",
+      "auditStatus": "cleared",
       "privateAuditRef": "library-source-parity:2026-08-19/components/tabs",
       "privateAuditDigest": "fa6de7f9fca5107cad01f215e9b29b09ff23118d6473a35e4ceae4e3847b5c3d",
       "decisionIds": [
@@ -41,7 +42,7 @@ const meta = {
         },
         {
           "decisionId": "sp-tabs-004",
-          "implementationKey": null,
+          "implementationKey": "tabs--native-select",
           "surfaces": [
             "ai-registry",
             "code",
@@ -57,7 +58,13 @@ const meta = {
         "storybook"
       ]
     },
-    realizationEvidence: ['tabs.keyboard.roving', 'tabs.keyboard.vertical', 'tabs.state.selection'],
+    realizationEvidence: [
+      'tabs.keyboard.roving',
+      'tabs.keyboard.vertical',
+      'tabs.presentation.visual',
+      'tabs.state.selection',
+      'tabs.state.controlled',
+    ],
     layout: 'padded',
     docs: {
       description: {
@@ -74,6 +81,7 @@ const meta = {
     "onSelect": { control: false, description: "Optional. Public `onSelect` realization prop." },
     "tabIdPrefix": { control: 'text', description: "Optional. Public `tabIdPrefix` realization prop. Defaults to \"tab\"." },
     "orientation": { control: 'radio', options: ["horizontal","vertical"], description: "Optional. Public `orientation` realization prop. Defaults to \"horizontal\"." },
+    "presentation": { control: 'radio', options: ["pills","stroke"], description: "Optional horizontal visual treatment. Defaults to the backward-compatible `pills` presentation." },
     "className": { control: 'text', description: "Optional. Public `className` realization prop." },
     "classNames": { control: 'object', description: "Optional. Public `classNames` realization prop." },
   },
@@ -118,6 +126,26 @@ export const Default: Story = {
       await expect(specs).toHaveAttribute('aria-selected', 'true');
       await expect(overview).toHaveAttribute('aria-selected', 'false');
       await expect(canvas.getByRole('tabpanel', { name: 'Specs' })).toBeVisible();
+    });
+  },
+};
+
+/** Horizontal stroke is the governed visual alternate on the existing implementation. */
+export const HorizontalStroke: Story = {
+  args: { defaultActiveId: 'overview', presentation: 'stroke' },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const root = canvasElement.querySelector<HTMLElement>('[data-component="tabs"]');
+    const overview = canvas.getByRole('tab', { name: 'Overview' });
+    const specs = canvas.getByRole('tab', { name: 'Specs' });
+
+    await step('tabs.presentation.visual', async () => {
+      await expect(root).toHaveAttribute('data-presentation', 'stroke');
+      await expect(overview).toHaveAttribute('data-presentation', 'stroke');
+      await expect(getComputedStyle(overview).borderBottomWidth).toBe('1px');
+      await userEvent.click(specs);
+      await expect(specs).toHaveAttribute('aria-selected', 'true');
+      await expect(getComputedStyle(specs).borderBottomWidth).toBe('1px');
     });
   },
 };
@@ -169,6 +197,38 @@ export const VerticalKeyboard: Story = {
   },
 };
 
+function ControlledTabs({ initialActiveId = 'overview' }: { initialActiveId?: string }) {
+  const [activeId, setActiveId] = useState(initialActiveId);
+  return <Tabs items={three} ariaLabel="Product sections" activeId={activeId} onSelect={setActiveId} />;
+}
+
+/** Controlled selection and invalid IDs use the same first-item fallback without trapping state. */
+export const ControlledAndInvalidActiveId: Story = {
+  render: () => <ControlledTabs initialActiveId="missing" />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const overview = canvas.getByRole('tab', { name: 'Overview' });
+    const specs = canvas.getByRole('tab', { name: 'Specs' });
+    await step('tabs.state.controlled', async () => {
+      await expect(overview).toHaveAttribute('aria-selected', 'true');
+      await userEvent.click(specs);
+      await expect(specs).toHaveAttribute('aria-selected', 'true');
+      await expect(canvas.getByRole('tabpanel', { name: 'Specs' })).toBeVisible();
+    });
+  },
+};
+
+/** An invalid uncontrolled default falls back to the first item and remains selectable. */
+export const InvalidDefaultActiveId: Story = {
+  args: { defaultActiveId: 'missing' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole('tab', { name: 'Overview' })).toHaveAttribute('aria-selected', 'true');
+    await userEvent.click(canvas.getByRole('tab', { name: 'Reviews' }));
+    await expect(canvas.getByRole('tabpanel', { name: 'Reviews' })).toBeVisible();
+  },
+};
+
 /** Two tabs is the minimum that keeps keyboard navigation active. */
 export const TwoTabs: Story = {
   args: {
@@ -185,6 +245,28 @@ export const TwoTabs: Story = {
     grid.focus();
     await userEvent.keyboard('{ArrowRight}');
     await expect(list).toHaveAttribute('aria-selected', 'true');
+  },
+};
+
+/** A single item remains a valid named tab/panel relationship without keyboard movement. */
+export const SingleTab: Story = {
+  args: { items: [three[0]!], defaultActiveId: 'overview' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const tab = canvas.getByRole('tab', { name: 'Overview' });
+    const panel = canvas.getByRole('tabpanel', { name: 'Overview' });
+    tab.focus();
+    await userEvent.keyboard('{ArrowRight}');
+    await expect(tab).toHaveFocus();
+    await expect(tab).toHaveAttribute('aria-controls', panel.id);
+  },
+};
+
+/** Empty items produce no partial tab widget. */
+export const Empty: Story = {
+  args: { items: [] },
+  play: async ({ canvasElement }) => {
+    await expect(canvasElement.querySelector('[data-component="tabs"]')).toBeNull();
   },
 };
 

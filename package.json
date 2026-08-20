@@ -138,6 +138,11 @@
       "import": "./dist/components/tabs/index.js"
     },
     "./components/tabs/component.json": "./components/tabs/component.json",
+    "./components/tabs--native-select": {
+      "types": "./dist/components/tabs--native-select/index.d.ts",
+      "import": "./dist/components/tabs--native-select/index.js"
+    },
+    "./components/tabs--native-select/component.json": "./components/tabs--native-select/component.json",
     "./components/toast": {
       "types": "./dist/components/toast/index.d.ts",
       "import": "./dist/components/toast/index.js"

@@ -23,6 +23,7 @@ import { SectionHeader } from '../../components/section-header/index';
 import { Slider } from '../../components/slider/index';
 import { Stat } from '../../components/stat/index';
 import { Tabs } from '../../components/tabs/index';
+import { TabsNativeSelect } from '../../components/tabs--native-select/index';
 import { Toast } from '../../components/toast/index';
 
 const fixtures: Array<[string, ReactElement]> = [
@@ -59,6 +60,10 @@ const fixtures: Array<[string, ReactElement]> = [
   ['Slider', <Slider label="Plan" name="plan" options={[{ value: 'basic', label: 'Basic' }]} />],
   ['Stat', <Stat value="98%" label="satisfaction" />],
   ['Tabs', <Tabs ariaLabel="Sections" items={[{ id: 'first', label: 'First' }]} />],
+  [
+    'TabsNativeSelect',
+    <TabsNativeSelect ariaLabel="Sections" items={[{ id: 'first', label: 'First', panel: 'Panel' }]} />,
+  ],
   ['Toast', <Toast open>Saved</Toast>],
 ];
 

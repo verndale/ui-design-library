@@ -2,7 +2,7 @@
 date: 2026-08-22
 topics: [graph-wiki-subsystem, component-architecture, story-testing, package-distribution]
 plan: plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/84
 ---
 # Standardize lint, Commitlint, and graph automation
 

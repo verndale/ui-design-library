@@ -28,6 +28,20 @@ const FIGMA_PROPERTY_TYPE_BY_KIND = {
   instance: 'INSTANCE_SWAP',
 };
 const PILOT_COMPONENT_IDS = ['button-light', 'button-dark', 'section-header', 'alert', 'card', 'card-media', 'modal'];
+const STATE_COVERAGE_PILOT_IDS = [
+  'button-light',
+  'button-light-icon-only',
+  'button-dark',
+  'button-dark-icon-only',
+  'link',
+  'search-input',
+  'accordion',
+  'tabs',
+  'tabs-native-select',
+];
+const STATE_CLASSIFICATIONS = new Set(['rendered', 'already-represented', 'runtime-only']);
+const STATE_SOURCE_TRIGGERS = new Set(['pseudo', 'public-prop', 'derived-state', 'behavior']);
+const FIGMA_NODE_ID_PATTERN = /^[0-9]+:[0-9]+$/;
 const PRESENTATION_PATTERNS = new Set(['component-matrix', 'responsive-specimens', 'responsive-full-viewport']);
 const REQUIRED_VIEWPORT_WIDTHS = {
   desktop: 1440,
@@ -42,6 +56,16 @@ const REQUIRED_PROMOTION_RULES = {
   annotationPlacement: 'outside-component-instance',
   canonicalLayerNaming: 'ui-design-brain',
   autoLayoutRequired: true,
+};
+const REQUIRED_INTERACTION_STATE_RULES = {
+  presentationName: 'Interaction states',
+  storyExport: 'InteractionStates',
+  specimenRole: 'documentation',
+  masterProperties: 'unchanged',
+  instanceConnection: 'registered-master',
+  labelPlacement: 'outside-component-instance',
+  visualSource: 'semantic-variables',
+  rasterScreenshots: false,
 };
 const REQUIRED_TOKEN_REFERENCES = {
   canvasSurface: { figmaVariable: 'code/color/surface/base', cssToken: '--color-surface-base' },
@@ -58,6 +82,7 @@ const REQUIRED_DEFINITION_OF_DONE = [
   'developer handoff target is the direct canonical component instance',
   'annotations remain outside the component-only handoff frame',
   'responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable',
+  'storybook and Figma interaction-state coverage is recorded',
   'alignment, margins, padding, whitespace, clipping, and containment are audited',
   'source-parity, adversarial, and design review findings are fixed and recorded',
   'candidate components remain unpublished pending maintainer action',
@@ -211,6 +236,78 @@ function extractCssCustomProperties(source) {
   );
 }
 
+function validateStateCoverage(component, { required, storySource }, fail) {
+  const prefix = `[${component.id ?? 'unknown'}]`;
+  const coverage = component.figma?.stateCoverage;
+  if (!coverage) {
+    if (required) fail(`${prefix} figma.stateCoverage is required for pilot and candidate registrations`);
+    return;
+  }
+  if (!['covered', 'not-applicable'].includes(coverage.status)) {
+    fail(`${prefix} stateCoverage.status must be covered or not-applicable`);
+    return;
+  }
+  if (!Array.isArray(coverage.states)) {
+    fail(`${prefix} stateCoverage.states must be an array`);
+    return;
+  }
+
+  if (coverage.status === 'not-applicable') {
+    if (!String(coverage.reason ?? '').trim()) fail(`${prefix} not-applicable stateCoverage requires a reason`);
+    if (coverage.states.length > 0) fail(`${prefix} not-applicable stateCoverage must have an empty states array`);
+    if (coverage.storyExport !== undefined) fail(`${prefix} not-applicable stateCoverage must not claim a storyExport`);
+    return;
+  }
+
+  if (coverage.reason !== undefined) fail(`${prefix} covered stateCoverage must not declare a component-level reason`);
+  if (coverage.storyExport !== 'InteractionStates') {
+    fail(`${prefix} covered stateCoverage.storyExport must equal "InteractionStates"`);
+  } else if (!new RegExp(`export\\s+const\\s+${coverage.storyExport}\\b`).test(storySource)) {
+    fail(`${prefix} story contract must export ${coverage.storyExport}`);
+  }
+  if (coverage.states.length === 0) fail(`${prefix} covered stateCoverage must declare at least one state`);
+
+  const ids = new Set();
+  const visualFrameIds = new Set();
+  const visualInstanceIds = new Set();
+  for (const [index, state] of coverage.states.entries()) {
+    const statePrefix = `${prefix} stateCoverage.states[${index}]`;
+    if (!/^[a-z0-9]+(?:[.-][a-z0-9]+)*$/.test(state.id ?? '')) {
+      fail(`${statePrefix}.id must be a stable lowercase ID`);
+    } else if (ids.has(state.id)) fail(`${prefix} stateCoverage state IDs must be unique`);
+    ids.add(state.id);
+    if (!String(state.label ?? '').trim()) fail(`${statePrefix}.label is required`);
+    if (!String(state.target ?? '').trim()) fail(`${statePrefix}.target is required`);
+    if (!state.source || !STATE_SOURCE_TRIGGERS.has(state.source.trigger)) {
+      fail(`${statePrefix}.source.trigger must be pseudo, public-prop, derived-state, or behavior`);
+    }
+    if (!String(state.source?.value ?? '').trim()) fail(`${statePrefix}.source.value is required`);
+    if (!STATE_CLASSIFICATIONS.has(state.classification)) {
+      fail(`${statePrefix}.classification must be rendered, already-represented, or runtime-only`);
+      continue;
+    }
+
+    const nodeFields = ['frameNodeId', 'instanceNodeId', 'componentNodeId'];
+    if (state.classification === 'runtime-only') {
+      if (state.source?.trigger !== 'behavior') fail(`${statePrefix} runtime-only state source.trigger must be behavior`);
+      if (!String(state.reason ?? '').trim()) fail(`${statePrefix} runtime-only state requires a reason`);
+      for (const field of nodeFields) {
+        if (state[field] !== undefined) fail(`${statePrefix} runtime-only state must not claim ${field}`);
+      }
+      continue;
+    }
+
+    if (state.reason !== undefined) fail(`${statePrefix} visual state must not declare a runtime-only reason`);
+    for (const field of nodeFields) {
+      if (!FIGMA_NODE_ID_PATTERN.test(state[field] ?? '')) fail(`${statePrefix}.${field} must use Figma's colon form`);
+    }
+    if (visualFrameIds.has(state.frameNodeId)) fail(`${prefix} visual state frameNodeId values must be unique`);
+    if (visualInstanceIds.has(state.instanceNodeId)) fail(`${prefix} visual state instanceNodeId values must be unique`);
+    visualFrameIds.add(state.frameNodeId);
+    visualInstanceIds.add(state.instanceNodeId);
+  }
+}
+
 function check(options = {}) {
   const root = options.root ?? ROOT;
   const registryPath = options.registryPath ?? path.join(root, 'figma/library.json');
@@ -255,6 +352,11 @@ function check(options = {}) {
   }
   if (JSON.stringify(promotionPattern.viewportWidths) !== JSON.stringify(REQUIRED_VIEWPORT_WIDTHS)) {
     fail('[promotion] viewportWidths must remain Desktop 1440, Tablet Large 1024, Tablet Small 768, and Mobile 390');
+  }
+  for (const [field, expected] of Object.entries(REQUIRED_INTERACTION_STATE_RULES)) {
+    if (promotionPattern.interactionStates?.[field] !== expected) {
+      fail(`[promotion] interactionStates.${field} must equal ${JSON.stringify(expected)}`);
+    }
   }
 
   const tokenSourcePath = path.join(root, library.tokenPolicy?.componentSource ?? '');
@@ -421,7 +523,7 @@ function check(options = {}) {
     const facadePath = path.join(root, component.componentPath ?? '', 'index.ts');
     const storyPath = path.join(root, component.storyPath ?? '');
 
-    if (!/^[0-9]+:[0-9]+$/.test(figma.nodeId ?? '')) fail(`${prefix} nodeId must use Figma's colon form`);
+    if (!FIGMA_NODE_ID_PATTERN.test(figma.nodeId ?? '')) fail(`${prefix} nodeId must use Figma's colon form`);
     if (!/^[0-9a-f]{40}$/.test(figma.nodeKey ?? '')) fail(`${prefix} nodeKey must be a stable 40-character component key`);
     if (!['COMPONENT', 'COMPONENT_SET'].includes(figma.nodeType)) fail(`${prefix} nodeType must be COMPONENT or COMPONENT_SET`);
     const expectedNodeName = component.variant && component.default !== true
@@ -476,10 +578,11 @@ function check(options = {}) {
     }
     if (figma.template !== undefined) fail(`${prefix} registry must not contain a Code Connect template`);
 
+    let manifest = null;
     if (!fs.existsSync(manifestPath)) {
       fail(`${prefix} component manifest is missing`);
     } else {
-      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
       const expectedCanonical = component.manifestCanonical ?? component.canonical;
       if (manifest.canonical !== expectedCanonical) fail(`${prefix} manifest canonical must be "${expectedCanonical}"`);
       if (!component.secondaryExport && component.manifestCanonical !== undefined) {
@@ -550,10 +653,12 @@ function check(options = {}) {
       if (!exportPattern.test(facade)) fail(`${prefix} ${component.exportName} is not exported from the public facade`);
     }
 
+    let storySource = '';
     if (!fs.existsSync(storyPath)) {
       fail(`${prefix} story contract is missing`);
     } else {
-      const actualStoryProps = extractArgTypes(fs.readFileSync(storyPath, 'utf8'));
+      storySource = fs.readFileSync(storyPath, 'utf8');
+      const actualStoryProps = extractArgTypes(storySource);
       const storyProps = Array.isArray(component.storyProps) ? component.storyProps : [];
       if (!Array.isArray(component.storyProps)) fail(`${prefix} storyProps must be an array`);
       if (component.storyParity === 'exact' && !sameSet(actualStoryProps, storyProps)) {
@@ -566,6 +671,14 @@ function check(options = {}) {
         fail(`${prefix} storyParity must be exact or subset`);
       }
     }
+    validateStateCoverage(
+      component,
+      {
+        required: STATE_COVERAGE_PILOT_IDS.includes(component.id) || manifest?.maturity === 'candidate',
+        storySource,
+      },
+      fail,
+    );
 
     const mappings = Array.isArray(component.mappings) ? component.mappings : [];
     const fixedProps = Array.isArray(component.fixedProps) ? component.fixedProps : [];
@@ -682,4 +795,4 @@ function check(options = {}) {
 
 if (require.main === module) process.exitCode = check().length > 0 ? 1 : 0;
 
-module.exports = { check, extractArgTypes, extractCssCustomProperties, findForbiddenCodeConnectFiles };
+module.exports = { check, extractArgTypes, extractCssCustomProperties, findForbiddenCodeConnectFiles, validateStateCoverage };

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useLayoutEffect, useRef, useState } from 'react';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 
 import { TabsNativeSelect, type TabsNativeSelectItem } from './index';
 
@@ -243,5 +243,57 @@ export const Empty: Story = {
   args: { items: [] },
   play: async ({ canvasElement }) => {
     await expect(canvasElement.querySelector('[data-component="tabs-native-select"]')).toBeNull();
+  },
+};
+
+/** Code-backed structural and focus specimens used by the governed Figma state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      focusVisible: '.state-native-mobile-focus select',
+    },
+  },
+  render: () => (
+    <div className="grid grid-cols-3 items-start gap-xl">
+      <style>{`
+        .state-native-desktop [data-tabs-responsive="tablist"]{display:block!important}
+        .state-native-desktop [data-tabs-responsive="select"]{display:none!important}
+        .state-native-mobile [data-tabs-responsive="tablist"],.state-native-mobile-focus [data-tabs-responsive="tablist"]{display:none!important}
+        .state-native-mobile [data-tabs-responsive="select"],.state-native-mobile-focus [data-tabs-responsive="select"]{display:block!important}
+      `}</style>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Desktop structure</span>
+        <TabsNativeSelect {...meta.args} tabIdPrefix="state-native-desktop" classNames={{ root: 'state-native-desktop' }} />
+      </div>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Mobile structure</span>
+        <TabsNativeSelect {...meta.args} tabIdPrefix="state-native-mobile" classNames={{ root: 'state-native-mobile' }} />
+      </div>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Mobile focus visible</span>
+        <TabsNativeSelect {...meta.args} tabIdPrefix="state-native-mobile-focus" classNames={{ root: 'state-native-mobile-focus', select: 'border-border-focus outline-2 outline-solid outline-offset-1 outline-border-focus' }} />
+      </div>
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const desktop = canvasElement.querySelector<HTMLElement>('.state-native-desktop')!;
+    const mobile = canvasElement.querySelector<HTMLElement>('.state-native-mobile')!;
+    const focus = canvasElement.querySelector<HTMLElement>('.state-native-mobile-focus')!;
+
+    await step('desktop and mobile structures render their governed native controls', async () => {
+      await expect(within(desktop).getByRole('tablist', { name: 'Product sections' }).offsetParent).not.toBeNull();
+      await expect(desktop.querySelector('select')!.offsetParent).toBeNull();
+      await expect(within(mobile).getByRole('combobox', { name: 'Product sections' }).offsetParent).not.toBeNull();
+      await expect(mobile.querySelector<HTMLElement>('[role="tablist"]')!.offsetParent).toBeNull();
+    });
+
+    await step('forced mobile focus exposes the select focus ring', async () => {
+      const select = within(focus).getByRole('combobox', { name: 'Product sections' });
+      await waitFor(() => expect(select).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(select);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+    });
   },
 };

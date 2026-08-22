@@ -29,6 +29,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-08-22 — Expanded Rich Text `FullFlow` into executable authored-content evidence: every heading level, direct-block rhythm, lists, responsive media, captions, and scoped native table headers are asserted in the browser while CMS ingestion and runtime table behavior stay outside the component ([plan](../plans/2026-08-22-rich-text-authored-content-coverage.md), [journal](../journal/2026-08-22-expand-rich-text-authored-content.md)).
 - 2026-08-20 — Added Tabs browser evidence for horizontal visual presentation, invalid controlled/uncontrolled IDs, CSS-hidden responsive copies, native-select panel control, breakpoint focus transfer, and empty/single-item boundaries over one interaction engine ([journal](../journal/2026-08-20-tabs-source-parity.md)).
 - 2026-08-20 — Exercised Slider source parity through real `FormData`: one semantic name/value pair, controlled and uncontrolled reset, inherited disabled-fieldset omission, and empty-option exclusion are visible Storybook interaction steps rather than implementation-only assertions ([journal](../journal/2026-08-20-slider-source-parity.md)).
 - 2026-08-20 — Added real-browser boundary evidence for the In-page navigation structural alternate: strict 48px pointer swipes, scroll-region isolation, shared modal focus/Escape/backdrop behavior, breakpoint-hidden focus copies, reduced motion, and portaled landmark semantics ([journal](../journal/2026-08-20-in-page-navigation-source-parity.md)).

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, userEvent, within } from 'storybook/test';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 
 import { Button } from './index';
 
@@ -247,5 +247,124 @@ export const Disabled: Story = {
     await expect(button).toBeDisabled();
     await userEvent.setup({ pointerEventsCheck: 0 }).click(button);
     await expect(args.onClick).not.toHaveBeenCalled();
+  },
+};
+
+const INTERACTION_STATES = ['default', 'hover', 'focus-visible', 'disabled'] as const;
+const BUTTON_HOVER_STYLES = {
+  light: {
+    primary: { backgroundColor: 'var(--color-control-primary-bg-hover)' },
+    secondary: {
+      backgroundColor: 'var(--color-control-secondary-bg-hover)',
+      color: 'var(--color-control-secondary-text-hover)',
+    },
+    ghost: {},
+  },
+  dark: {
+    primary: { backgroundColor: 'var(--color-surface-sunken)' },
+    secondary: { backgroundColor: 'var(--color-text-inverse)', color: 'var(--color-text-primary)' },
+    ghost: { backgroundColor: 'var(--color-control-ghost-bg-hover)' },
+  },
+} as const;
+
+/** Code-backed specimens used to govern the unpublished Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: '[data-figma-button-state="hover"]',
+      focusVisible: '[data-figma-button-state="focus-visible"]',
+    },
+  },
+  render: () => (
+    <div className="grid gap-xl">
+      {(['light', 'dark'] as const).map((surface) => {
+        const variants = surface === 'dark' ? (['primary', 'secondary', 'ghost'] as const) : (['primary', 'secondary'] as const);
+        return (['label', 'icon-only'] as const).map((presentation) => (
+          <section
+            key={`${surface}-${presentation}`}
+            aria-label={`${surface} ${presentation} button states`}
+            className={surface === 'dark' ? 'grid gap-s rounded-medium bg-surface-inverse p-l' : 'grid gap-s rounded-medium bg-surface-base p-l'}
+          >
+            <h2 className={surface === 'dark' ? 'm-0 text-base font-semibold text-text-inverse' : 'm-0 text-base font-semibold text-text-primary'}>
+              {surface} / {presentation}
+            </h2>
+            <div className={surface === 'dark' ? 'grid grid-cols-4 gap-s text-sm text-text-inverse' : 'grid grid-cols-4 gap-s text-sm text-text-secondary'} aria-hidden>
+              {INTERACTION_STATES.map((state) => <span key={state}>{state}</span>)}
+            </div>
+            {variants.map((variant) => (
+              <div key={variant} data-figma-button-row={`${surface}-${presentation}-${variant}`} className="grid grid-cols-4 items-center gap-s">
+                {INTERACTION_STATES.map((state) => (
+                  presentation === 'icon-only' ? (
+                    <Button
+                      key={state}
+                      surface={surface}
+                      presentation="icon-only"
+                      variant={variant}
+                      size="medium"
+                      disabled={state === 'disabled'}
+                      data-figma-button-state={state}
+                      aria-label={`${surface} ${variant} ${state} icon button`}
+                      className={state === 'focus-visible' ? 'outline-2 outline-solid outline-offset-2 outline-border-focus' : undefined}
+                      style={state === 'hover' ? BUTTON_HOVER_STYLES[surface][variant] : undefined}
+                    >
+                      <ArrowIcon />
+                    </Button>
+                  ) : (
+                    <Button
+                      key={state}
+                      surface={surface}
+                      presentation="label"
+                      variant={variant}
+                      size="medium"
+                      disabled={state === 'disabled'}
+                      data-figma-button-state={state}
+                      className={state === 'focus-visible' ? 'outline-2 outline-solid outline-offset-2 outline-border-focus' : undefined}
+                      style={state === 'hover' ? BUTTON_HOVER_STYLES[surface][variant] : undefined}
+                    >
+                      {variant}
+                    </Button>
+                  )
+                ))}
+              </div>
+            ))}
+          </section>
+        ));
+      })}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const rows = [...canvasElement.querySelectorAll<HTMLElement>('[data-figma-button-row]')];
+
+    await step('forced hover specimens resolve a different semantic appearance', async () => {
+      await expect(rows).toHaveLength(10);
+      for (const row of rows) {
+        const baseline = row.querySelector<HTMLElement>('[data-figma-button-state="default"]')!;
+        const hover = row.querySelector<HTMLElement>('[data-figma-button-state="hover"]')!;
+        await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+        await waitFor(() => {
+          const before = getComputedStyle(baseline);
+          const after = getComputedStyle(hover);
+          if (matchMedia('(forced-colors: active)').matches) expect(hover.style.backgroundColor).not.toBe('');
+          else expect([after.backgroundColor, after.color]).not.toEqual([before.backgroundColor, before.color]);
+        });
+      }
+    });
+
+    await step('forced focus-visible specimens expose the governed focus ring', async () => {
+      for (const focus of canvasElement.querySelectorAll<HTMLElement>('[data-figma-button-state="focus-visible"]')) {
+        await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+        const style = getComputedStyle(focus);
+        await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+        await expect(style.outlineStyle).not.toBe('none');
+      }
+    });
+
+    await step('disabled specimens remain native disabled controls', async () => {
+      for (const disabled of canvasElement.querySelectorAll<HTMLButtonElement>('[data-figma-button-state="disabled"]')) {
+        await expect(disabled).toBeDisabled();
+        await expect(getComputedStyle(disabled).pointerEvents).toBe('none');
+      }
+    });
   },
 };

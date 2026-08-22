@@ -146,6 +146,78 @@ export const WithMedia: Story = {
   },
 };
 
+const StateMedia = ({ active = false }: { active?: boolean }) => (
+  <div className={[
+    'grid size-full place-items-center bg-surface-sunken',
+    active ? 'scale-[1.05] motion-reduce:scale-100' : undefined,
+  ].filter(Boolean).join(' ')}>
+    <span className="grid size-32 place-items-center rounded-pill border border-border-strong bg-surface-raised text-sm text-text-primary">Media</span>
+  </div>
+);
+
+/** Code-backed specimens used to govern the CardMedia Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: '.state-card-media-hover',
+      focusVisible: '.state-card-media-focus-visible',
+    },
+  },
+  render: () => (
+    <div className="grid grid-cols-3 items-start gap-xl">
+      {(['rest', 'hover', 'focus-visible'] as const).map((state) => (
+        <section key={state} className="grid gap-s">
+          <span className="text-sm text-text-secondary">Group {state}</span>
+          <a
+            href="#card-media-states"
+            aria-label={`Card media ${state}`}
+            className={`state-card-media-${state} group block focus-visible:outline-2 focus-visible:outline-border-focus`}
+          >
+            <Card className="w-[280px] rounded-medium">
+              <CardMedia className="aspect-[3/2]">
+                <StateMedia active={state !== 'rest'} />
+              </CardMedia>
+            </Card>
+          </a>
+        </section>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const group = (state: string) => canvasElement.querySelector<HTMLElement>(`.state-card-media-${state}`)!;
+    const mediaChild = (state: string) => group(state).querySelector<HTMLElement>('[data-component="card"] > div > div')!;
+    const scaleOf = (element: HTMLElement) => {
+      const scale = getComputedStyle(element).scale;
+      return scale === 'none' ? 1 : parseFloat(scale);
+    };
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    await step('CardMedia rests unscaled', async () => {
+      await expect(scaleOf(mediaChild('rest'))).toBe(1);
+    });
+
+    await step('forced group hover exposes the code-backed media scale', async () => {
+      await waitFor(() => expect(group('hover')).toHaveClass('pseudo-hover'));
+      if (reduced) await expect(scaleOf(mediaChild('hover'))).toBe(1);
+      else await waitFor(() => expect(scaleOf(mediaChild('hover'))).toBeCloseTo(1.05, 2));
+    });
+
+    await step('forced group focus-visible exposes the matching media scale', async () => {
+      await waitFor(() => expect(group('focus-visible')).toHaveClass('pseudo-focus-visible'));
+      if (reduced) await expect(scaleOf(mediaChild('focus-visible'))).toBe(1);
+      else await waitFor(() => expect(scaleOf(mediaChild('focus-visible'))).toBeCloseTo(1.05, 2));
+    });
+
+    await step('card-media.motion.reduced', async () => {
+      const duration = getComputedStyle(document.documentElement).getPropertyValue('--duration-base').trim();
+      await expect(duration).toBe(reduced ? '0ms' : '300ms');
+      await expect(getComputedStyle(mediaChild('rest')).transitionDuration).toBe(reduced ? '0s' : '0.3s');
+    });
+  },
+};
+
 /** For a caller that owns the background. */
 export const UnsetBackground: Story = {
   args: { unsetBackground: true, className: 'w-[320px] rounded-medium bg-surface-sunken', children: null },

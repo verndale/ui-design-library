@@ -417,3 +417,110 @@ export const ScrollingBody: Story = {
     </Modal>
   ),
 };
+
+const MODAL_INTERACTION_STATES = [
+  { id: 'medium', label: 'Open medium', size: 'medium', closeState: 'default' },
+  { id: 'large', label: 'Open large', size: 'large', closeState: 'default' },
+  { id: 'close-default', label: 'Close default', size: 'medium', closeState: 'default' },
+  { id: 'close-hover', label: 'Close hover', size: 'medium', closeState: 'hover' },
+  { id: 'close-focus-visible', label: 'Close focus visible', size: 'medium', closeState: 'focus-visible' },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: { story: { inline: false, height: '1900px' } },
+    pseudo: {
+      rootSelector: 'body',
+      hover: '.state-modal-close-hover button[aria-label="Close dialog"]',
+      focusVisible: '.state-modal-close-focus-visible button[aria-label="Close dialog"]',
+    },
+  },
+  render: () => (
+    <div className="min-h-screen bg-surface-sunken p-l text-sm text-text-secondary">
+      Modal state specimens render below as static portal layers for side-by-side design evidence.
+      {MODAL_INTERACTION_STATES.map((state) => (
+        <Modal
+          key={state.id}
+          open
+          onClose={() => {}}
+          title="Delete this component?"
+          eyebrow={<span className="text-sm tracking-wide text-text-secondary uppercase">Confirmation</span>}
+          description="This cannot be undone."
+          size={state.size}
+          className={`state-modal-${state.id} !mx-auto !h-[348px] !max-h-none ${state.size === 'medium' ? '!w-[600px] !max-w-[600px]' : '!w-[900px] !max-w-[900px]'}`}
+          classNames={{
+            backdrop: 'hidden',
+            viewport: '!static !inset-auto !z-auto !block !p-0',
+            closeButton: state.closeState === 'hover'
+              ? '!bg-action-hover'
+              : state.closeState === 'focus-visible'
+                ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                : undefined,
+          }}
+          footer={(
+            <div className="flex justify-end gap-2xs">
+              <button type="button" className="cursor-pointer rounded-small px-s py-2xs text-text-primary">Cancel</button>
+              <button type="button" className="cursor-pointer rounded-small bg-action-base px-s py-2xs text-text-inverse">Confirm</button>
+            </div>
+          )}
+        >
+          <p className="text-text-secondary">Removing this component also removes its stories and contract.</p>
+        </Modal>
+      ))}
+    </div>
+  ),
+  play: async ({ step }) => {
+    const root = (state: string) => document.body.querySelector<HTMLElement>(`.state-modal-${state}`)!;
+    const close = (state: string) => within(root(state)).getByRole('button', { name: 'Close dialog', hidden: true });
+
+    await waitFor(() => expect(document.body.querySelectorAll('[data-component="modal"]')).toHaveLength(5));
+
+    await step('public modal sizes retain their measured desktop widths', async () => {
+      await waitFor(() => {
+        const mediumWidth = root('medium').getBoundingClientRect().width;
+        const largeWidth = root('large').getBoundingClientRect().width;
+        if (matchMedia('(min-width: 64rem)').matches) {
+          expect(mediumWidth).toBeCloseTo(600, 0);
+          expect(largeWidth).toBeCloseTo(900, 0);
+        } else {
+          expect(mediumWidth).toBeCloseTo(largeWidth, 0);
+          expect(largeWidth).toBeLessThanOrEqual(innerWidth);
+        }
+        expect(root('medium').getBoundingClientRect().height).toBeCloseTo(348, 0);
+      });
+    });
+
+    await step('forced close hover resolves the semantic action surface', async () => {
+      const baseline = close('close-default');
+      const hover = close('close-hover');
+      await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+      const probe = document.createElement('span');
+      probe.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-action-hover');
+      document.body.append(probe);
+      const expectedHover = getComputedStyle(probe).backgroundColor;
+      probe.remove();
+      await expect(getComputedStyle(hover).backgroundColor).toBe(expectedHover);
+      if (expectedHover !== getComputedStyle(baseline).backgroundColor) {
+        await expect(getComputedStyle(hover).backgroundColor).not.toBe(getComputedStyle(baseline).backgroundColor);
+      }
+    });
+
+    await step('forced close focus exposes the governed pill focus ring', async () => {
+      const focus = close('close-focus-visible');
+      await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(focus);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+      await expect(style.outlineOffset).toBe('2px');
+    });
+
+    await step('modal.close.motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      await expect(getComputedStyle(close('close-default')).transitionDuration).toBe(reduced ? '0s' : '0.15s');
+      await expect(getComputedStyle(root('large')).animationDuration).toBe(reduced ? '0s' : '0.3s');
+    });
+  },
+};

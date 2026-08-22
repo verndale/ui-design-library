@@ -24,13 +24,17 @@ The only manual prerequisite before the first release is confirming that the tar
 
 ## Promotion presentation pattern
 
-The governed pattern is recorded in `library.promotionPattern` and applied through three presentation types:
+The governed pattern is recorded in `library.promotionPattern` and applied through three master presentation types:
 
 - `component-matrix` for compact, finite combinations such as Button.
 - `responsive-specimens` for components whose layout responds to a container.
 - `responsive-full-viewport` for components such as Modal whose canonical instance includes the exact viewport/backdrop.
 
 Responsive specimens use 1440px Desktop, 1024px Tablet Large, 768px Tablet Small, and 390px Mobile widths. Presentation surfaces, padding, label gaps, variant gaps, viewport-row gaps, and Section insets bind to the registered semantic tokens; the contract checker compares their recorded values with `src/tokens/semantic.css` so token changes require an intentional Figma sync.
+
+Every new candidate capture also resolves interaction-state coverage. A covered registration exports an `InteractionStates` Storybook story and records each code-backed state in `figma.stateCoverage` as `rendered`, `already-represented`, or `runtime-only`; a genuinely stateless component records `not-applicable` with a reason and an empty state list. Untouched supported registrations may remain outside the initial pilot.
+
+The Figma `Interaction states` frame is a documentation and handoff specimen, not a new property axis on the canonical master. It follows Main on the canonical page (after existing structural alternates when necessary), keeps every specimen connected to the registered master, and keeps labels and focus-ring documentation outside the instance. Existing public properties supply `already-represented` states. Pseudo-state appearances use semantic-variable-bound instance overrides and token-bound focus-ring layers; raster screenshots, detached instances, raw colors, and master-property changes are forbidden. Keyboard navigation, focus containment or restoration, inert handling, announcements, and motion timing stay `runtime-only` and are proven in Storybook instead of being misrepresented as static frames.
 
 Follow [`PROMOTION-CHECKLIST.md`](PROMOTION-CHECKLIST.md) for the exact layer, spacing, containment, content, and visual-audit requirements. The checklist is part of promotion definition of done for all future components.
 
@@ -64,7 +68,7 @@ pnpm figma:live:selftest      # fixture tests for property, style, token, spacin
 pnpm figma:validate           # local checks plus the live audit when FIGMA_REST_TOKEN is present
 ```
 
-The live audit reads the registered masters and source-parity specimens through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, spacing aliases, representation master type, registered responsive widths, and specimen-to-master instance containment. The separate design review verifies that those aliases use the intended semantic collection. The audit never mutates the file.
+The live audit reads the registered masters, source-parity specimens, and interaction-state specimens through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, spacing aliases, representation master type, registered responsive widths, state frame/instance/component identity, and connected-instance containment. The separate design review verifies differentiation, focus visibility, disabled treatment, spacing, labels, clipping, and semantic bindings. The audit never mutates the file.
 
 CI requires only `FIGMA_REST_TOKEN` with `file_content:read` for the live node audit. A temporary personal token works but should be replaced with a read-only [Organization Plan Access Token](https://developers.figma.com/docs/rest-api/plan-access-tokens/) when IT provisions one. The contract checker rejects Code Connect dependencies, scripts, configuration, registry templates, and CI references.
 

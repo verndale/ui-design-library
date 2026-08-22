@@ -78,10 +78,21 @@ Use the widths registered in `library.promotionPattern.viewportWidths` when the 
 - Extend the component journal entry with the decision IDs, node identities, findings, fixes, and final result. Only then set `figma.review` to `status: "passed"`, `standard: "button-standard-v1"`, `source-parity`, `adversarial`, and `design` passes, and that journal path as evidence.
 - Run `pnpm figma:coverage`, `FIGMA_REST_TOKEN=<read-only-plan-token> pnpm figma:live`, then `pnpm figma:validate`, `pnpm contracts`, `pnpm test`, and `pnpm build`.
 
+## 7. Present interaction states
+
+- Export one `InteractionStates` Storybook story for every covered registration, or record `figma.stateCoverage.status: "not-applicable"` with a component-level reason and an empty state list. New candidate captures cannot omit this decision.
+- Derive the inventory from public props, derived render state, targeted pseudo-state selectors, and tested runtime behavior. Do not invent Pressed, Loading, Error, or any state absent from code.
+- Use `parameters.pseudo` selectors to force visual hover and focus-visible targets. In the story `play` function, assert the target exists and that a meaningful computed style differs from its baseline. Keep keyboard, focus-management, inert, announcement, and motion assertions in runtime stories.
+- Add one deterministic `Interaction states` documentation frame after Main on the canonical page; when a page already contains a structural alternate, place the state frame after it without moving or renaming existing content.
+- Arrange state columns and variant, presentation, or target rows. Keep every state label outside the component instance and preserve the direct canonical instance as the inspectable handoff target.
+- Reuse existing public properties or variants for `already-represented` states. Recreate code-backed pseudo appearances with semantic-variable-bound instance overrides and documented token-bound focus-ring layers. Do not detach an instance, add a State property, change a canonical master, use a raster screenshot, or apply a raw color.
+- For every visual state, record its stable state ID, label, source trigger, target, classification, state-cell `frameNodeId`, connected `instanceNodeId`, and underlying variant `componentNodeId` in `figma.stateCoverage`. A `runtime-only` state records a reason and no visual node IDs.
+- After each family, validate the component-set metadata and connected-instance containment, then review a screenshot for state differentiation, focus visibility, disabled contrast treatment, spacing, labels, clipping, and token bindings. Fix findings in place without recreating the master.
+
 If the review exposes a source-contract defect, repair the React implementation, Storybook contract, or manifest first, rerun the code gates, and then update Figma. Without a write-capable Figma session, record the capture as `code-complete`/`figma-pending`; do not create an empty branch or register a passing review.
 
 The migration file `figma/source-parity-baseline.json` is closed: its `initialKeys` are immutable, no new component may enter `remainingKeys`, and a key leaves only when every accepted decision has a real implementation target and all declared representations pass. A null `implementationKey` is permitted only for unresolved grandfathered structural work. The private decision record and its public digest remain immutable; completion is a separate append-only private event. Delete the baseline mechanism after the final remaining key clears.
 
-## 7. Release separately
+## 8. Release separately
 
 Library publication is an explicit maintainer action. AI orchestration resolves components through canonical slugs and npm. CI performs read-only Figma validation and exposes no second code-mapping or publication path.

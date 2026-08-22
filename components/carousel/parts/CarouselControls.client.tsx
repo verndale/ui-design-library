@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import type { CarouselClassNames } from '../Carousel.types.js';
+import { CarouselChevronLeft, CarouselChevronRight } from './CarouselChevronIcons.js';
 
 type CarouselControlsProps = {
   canPrevious: boolean;
@@ -35,10 +36,10 @@ export function CarouselControls({
   return (
     <div className={['mt-s flex items-center gap-2xs', classNames?.controls].filter(Boolean).join(' ')}>
       <button type="button" aria-label={previousLabel} disabled={!canPrevious} onClick={onPrevious} className={[control, classNames?.previousButton].filter(Boolean).join(' ')}>
-        <span aria-hidden className={classNames?.previousIcon}>{previousIcon ?? '‹'}</span>
+        <span aria-hidden className={classNames?.previousIcon}>{previousIcon ?? <CarouselChevronLeft />}</span>
       </button>
       <button type="button" aria-label={nextLabel} disabled={!canNext} onClick={onNext} className={[control, classNames?.nextButton].filter(Boolean).join(' ')}>
-        <span aria-hidden className={classNames?.nextIcon}>{nextIcon ?? '›'}</span>
+        <span aria-hidden className={classNames?.nextIcon}>{nextIcon ?? <CarouselChevronRight />}</span>
       </button>
     </div>
   );

@@ -151,3 +151,79 @@ export const PersistentDismissible: Story = {
     });
   },
 };
+
+const ALERT_INTERACTION_STATES = [
+  { id: 'positive', label: 'Positive', variant: 'positive', dismissible: false },
+  { id: 'critical', label: 'Critical', variant: 'critical', dismissible: false },
+  { id: 'dismiss-default', label: 'Dismiss default', variant: 'positive', dismissible: true },
+  { id: 'dismiss-hover', label: 'Dismiss hover', variant: 'positive', dismissible: true },
+  { id: 'dismiss-focus-visible', label: 'Dismiss focus visible', variant: 'positive', dismissible: true },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: '.state-alert-dismiss-hover button',
+      focusVisible: '.state-alert-dismiss-focus-visible button',
+    },
+  },
+  render: () => (
+    <div className="grid w-[720px] gap-l">
+      {ALERT_INTERACTION_STATES.map((state) => (
+        <section key={state.id} className="grid gap-s">
+          <span className="text-sm text-text-secondary">{state.label}</span>
+          <Alert
+            variant={state.variant}
+            onDismiss={state.dismissible ? () => {} : undefined}
+            className={`state-alert-${state.id}`}
+            classNames={{
+              dismiss: state.id === 'dismiss-hover'
+                ? 'bg-surface-sunken'
+                : state.id === 'dismiss-focus-visible'
+                  ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                  : undefined,
+            }}
+          >
+            {state.variant === 'critical' ? 'We could not process your payment.' : 'Your changes have been saved.'}
+          </Alert>
+        </section>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (state: string) => canvasElement.querySelector<HTMLElement>(`.state-alert-${state}`)!;
+
+    await step('public tone and dismissible states stay visibly and semantically distinct', async () => {
+      await expect(root('positive')).toHaveAttribute('role', 'status');
+      await expect(root('critical')).toHaveAttribute('role', 'alert');
+      await expect(within(root('positive')).queryByRole('button')).not.toBeInTheDocument();
+      await expect(within(root('dismiss-default')).getByRole('button', { name: 'Dismiss' })).toBeInTheDocument();
+    });
+
+    await step('forced dismiss hover resolves the semantic hover surface', async () => {
+      const baseline = within(root('dismiss-default')).getByRole('button', { name: 'Dismiss' });
+      const hover = within(root('dismiss-hover')).getByRole('button', { name: 'Dismiss' });
+      await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+      await waitFor(() => expect(getComputedStyle(hover).backgroundColor).not.toBe(getComputedStyle(baseline).backgroundColor));
+    });
+
+    await step('forced dismiss focus exposes the governed focus ring', async () => {
+      const focus = within(root('dismiss-focus-visible')).getByRole('button', { name: 'Dismiss' });
+      await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(focus);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+    });
+
+    await step('alert.dismiss.motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const duration = getComputedStyle(document.documentElement).getPropertyValue('--duration-fast').trim();
+      const dismiss = within(root('dismiss-default')).getByRole('button', { name: 'Dismiss' });
+      await expect(duration).toBe(reduced ? '0ms' : '150ms');
+      await expect(getComputedStyle(dismiss).transitionDuration).toBe(reduced ? '0s' : '0.15s');
+    });
+  },
+};

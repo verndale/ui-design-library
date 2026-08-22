@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, userEvent, within } from 'storybook/test';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 
 import { Badge, type BadgeProps } from './index';
 
@@ -146,4 +146,80 @@ export const Group: Story = {
       ))}
     </div>
   ),
+};
+
+const BADGE_INTERACTION_STATES = [
+  { id: 'default', label: 'Default', removable: false, disabled: false },
+  { id: 'removable', label: 'Removable', removable: true, disabled: false },
+  { id: 'disabled', label: 'Disabled', removable: true, disabled: true },
+  { id: 'remove-hover', label: 'Remove hover', removable: true, disabled: false },
+  { id: 'remove-focus-visible', label: 'Remove focus visible', removable: true, disabled: false },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: '.state-badge-remove-hover button',
+      focusVisible: '.state-badge-remove-focus-visible button',
+    },
+    a11y: {
+      config: { rules: [{ id: 'color-contrast', enabled: false }] },
+    },
+  },
+  render: () => (
+    <div className="flex flex-wrap items-start gap-l">
+      {BADGE_INTERACTION_STATES.map((state) => (
+        <section key={state.id} className={`state-badge-${state.id} grid gap-s`}>
+          <span className="text-sm text-text-secondary">{state.label}</span>
+          <Badge
+            label="Rail freight"
+            disabled={state.disabled}
+            onRemove={state.removable ? () => {} : undefined}
+            classNames={{
+              removeButton: state.id === 'remove-hover'
+                ? 'opacity-70'
+                : state.id === 'remove-focus-visible'
+                  ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                  : undefined,
+            }}
+          />
+        </section>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (state: string) => canvasElement.querySelector<HTMLElement>(`.state-badge-${state}`)!;
+
+    await step('public removable and disabled states stay semantically distinct', async () => {
+      await expect(within(root('default')).queryByRole('button')).not.toBeInTheDocument();
+      await expect(within(root('removable')).getByRole('button', { name: 'Remove Rail freight' })).toBeEnabled();
+      await expect(within(root('disabled')).getByRole('button', { name: 'Remove Rail freight' })).toBeDisabled();
+    });
+
+    await step('forced remove hover changes the code-backed opacity', async () => {
+      const baseline = within(root('removable')).getByRole('button', { name: 'Remove Rail freight' });
+      const hover = within(root('remove-hover')).getByRole('button', { name: 'Remove Rail freight' });
+      await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+      await waitFor(() => expect(parseFloat(getComputedStyle(hover).opacity)).toBeLessThan(parseFloat(getComputedStyle(baseline).opacity)));
+    });
+
+    await step('forced remove focus exposes the governed focus ring', async () => {
+      const focus = within(root('remove-focus-visible')).getByRole('button', { name: 'Remove Rail freight' });
+      await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(focus);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+    });
+
+    await step('badge.remove.motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const duration = getComputedStyle(document.documentElement).getPropertyValue('--duration-fast').trim();
+      const removeButton = within(root('removable')).getByRole('button', { name: 'Remove Rail freight' });
+      await expect(duration).toBe(reduced ? '0ms' : '150ms');
+      await expect(getComputedStyle(removeButton).transitionDuration).toBe(reduced ? '0s' : '0.15s');
+    });
+  },
 };

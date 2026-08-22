@@ -22,6 +22,70 @@ const cases = [
     expect: (failures) => failures.length === 0,
   },
   {
+    name: 'pilot state coverage is required',
+    registry: (() => {
+      const registry = clone();
+      delete registry.components.find((component) => component.id === 'link').figma.stateCoverage;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('figma.stateCoverage is required')),
+  },
+  {
+    name: 'not-applicable state coverage requires a reason and no states',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'link').figma.stateCoverage = {
+        status: 'not-applicable',
+        reason: '',
+        states: [{ id: 'default' }],
+      };
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('not-applicable stateCoverage requires a reason')) &&
+      failures.some((failure) => failure.includes('must have an empty states array')),
+  },
+  {
+    name: 'runtime-only states require behavior evidence and cannot claim visual nodes',
+    registry: (() => {
+      const registry = clone();
+      const state = registry.components.find((component) => component.id === 'link').figma.stateCoverage.states
+        .find((entry) => entry.id === 'navigation-activation');
+      state.source.trigger = 'pseudo';
+      state.frameNodeId = '1:2';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('runtime-only state source.trigger must be behavior')) &&
+      failures.some((failure) => failure.includes('must not claim frameNodeId')),
+  },
+  {
+    name: 'visual states require all three Figma node identities',
+    registry: (() => {
+      const registry = clone();
+      delete registry.components.find((component) => component.id === 'search-input').figma.stateCoverage.states[0].instanceNodeId;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('instanceNodeId must use Figma\'s colon form')),
+  },
+  {
+    name: 'visual state frame identities must be unique per registration',
+    registry: (() => {
+      const registry = clone();
+      const states = registry.components.find((component) => component.id === 'accordion').figma.stateCoverage.states;
+      states[1].frameNodeId = states[0].frameNodeId;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('visual state frameNodeId values must be unique')),
+  },
+  {
+    name: 'covered state contracts must point to the governed story export',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'tabs').figma.stateCoverage.storyExport = 'States';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('storyExport must equal "InteractionStates"')),
+  },
+  {
     name: 'a multi-registration canonical requires one family page',
     registry: (() => {
       const registry = clone();

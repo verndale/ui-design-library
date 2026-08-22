@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 
 import { Accordion, type AccordionItem } from './index';
 
@@ -186,6 +186,70 @@ export const ReducedMotion: Story = {
       await expect(panel).toBeTruthy();
       const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
       await expect(getComputedStyle(panel as Element).transitionDuration).toBe(reduced ? '0s' : '0.3s');
+    });
+  },
+};
+
+const revealItems: AccordionItem[] = [
+  ...faq,
+  { label: 'Can I track my order?', children: 'A tracking link is emailed when the order ships.' },
+];
+
+/** Code-backed specimens used to govern the unpublished Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      focusVisible: '.state-accordion-trigger-focus button[aria-expanded]',
+    },
+  },
+  render: () => (
+    <div className="grid w-[1120px] grid-cols-2 items-start gap-xl">
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Collapsed</span>
+        <Accordion items={[faq[0]!]} classNames={{ root: 'state-accordion-collapsed' }} />
+      </div>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Expanded</span>
+        <Accordion items={[{ ...faq[0]!, defaultOpen: true }]} classNames={{ root: 'state-accordion-expanded' }} />
+      </div>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Trigger focus visible</span>
+        <Accordion items={[faq[0]!]} classNames={{ root: 'state-accordion-trigger-focus', trigger: 'outline-2 outline-solid outline-offset-2 outline-border-focus' }} />
+      </div>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Reveal collapsed</span>
+        <Accordion initialItemCount={2} items={revealItems} classNames={{ root: 'state-accordion-reveal-collapsed' }} />
+      </div>
+      <div className="grid gap-s">
+        <span className="text-sm text-text-secondary">Reveal expanded</span>
+        <Accordion initialItemCount={2} items={revealItems} classNames={{ root: 'state-accordion-reveal-expanded' }} />
+      </div>
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (name: string) => canvasElement.querySelector<HTMLElement>(`.state-accordion-${name}`)!;
+
+    await step('collapsed and expanded public states remain semantically distinct', async () => {
+      await expect(within(root('collapsed')).getByRole('button', { name: 'What is your return policy?' })).toHaveAttribute('aria-expanded', 'false');
+      await expect(within(root('expanded')).getByRole('button', { name: 'What is your return policy?' })).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    await step('forced trigger focus exposes the governed focus ring', async () => {
+      const trigger = within(root('trigger-focus')).getByRole('button', { name: 'What is your return policy?' });
+      await waitFor(() => expect(trigger).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(trigger);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+    });
+
+    await step('reveal specimens show both derived list states', async () => {
+      const collapsed = within(root('reveal-collapsed'));
+      const expanded = within(root('reveal-expanded'));
+      await expect(collapsed.getAllByRole('heading', { level: 3 })).toHaveLength(2);
+      await userEvent.click(expanded.getByRole('button', { name: 'See more' }));
+      await expect(expanded.getAllByRole('heading', { level: 3 })).toHaveLength(4);
+      await expect(expanded.getByRole('button', { name: 'See less' })).toBeVisible();
     });
   },
 };

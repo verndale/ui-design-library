@@ -285,3 +285,129 @@ export const RespectsReducedMotion: Story = {
     await expect(getComputedStyle(dialog).animationName).not.toBe('none');
   },
 };
+
+function StateQuickLinks() {
+  return (
+    <div className="flex flex-col gap-s">
+      <h3 className="m-0 text-base font-semibold text-text-primary">Popular searches</h3>
+      <nav aria-label="State quick links" className="flex flex-wrap gap-2xs">
+        {['Components', 'Accessibility', 'Tokens', 'Code Connect'].map((label) => (
+          <a key={label} href="#" className="rounded-pill bg-surface-sunken px-s py-2xs text-sm font-semibold text-text-primary">{label}</a>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+function StateResults() {
+  return (
+    <>
+      {[
+        ['Component catalog', '23 components'],
+        ['Component architecture', 'Documentation'],
+        ['Component variants', 'Guidance'],
+      ].map(([title, meta]) => (
+        <a key={title} href="#" className="flex items-center justify-between border-b border-border-subtle py-s text-text-primary">
+          <span className="text-xl font-semibold">{title}</span>
+          <span className="text-sm text-text-secondary">{meta}</span>
+        </a>
+      ))}
+    </>
+  );
+}
+
+const SEARCH_OVERLAY_INTERACTION_STATES = [
+  { id: 'idle', label: 'Idle', query: '', closeState: 'default' },
+  { id: 'active', label: 'Active', query: 'component', closeState: 'default' },
+  { id: 'close-default', label: 'Close default', query: '', closeState: 'default' },
+  { id: 'close-hover', label: 'Close hover', query: '', closeState: 'hover' },
+  { id: 'close-focus-visible', label: 'Close focus visible', query: '', closeState: 'focus-visible' },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: { story: { inline: false, height: '2100px' } },
+    pseudo: {
+      rootSelector: 'body',
+      hover: '.state-search-overlay-close-hover button[aria-label="Close search"]',
+      focusVisible: '.state-search-overlay-close-focus-visible button[aria-label="Close search"]',
+    },
+  },
+  render: () => (
+    <div className="min-h-screen bg-surface-sunken p-l text-sm text-text-secondary">
+      Search overlay state specimens render below as static portal layers for design evidence.
+      {SEARCH_OVERLAY_INTERACTION_STATES.map((state) => (
+        <SearchOverlay
+          key={state.id}
+          open
+          onClose={() => {}}
+          title="What are you looking for?"
+          supportingCopy="Search products, support articles, and downloads."
+          query={state.query}
+          onQueryChange={() => {}}
+          inputPlaceholder="Search the library"
+          quickLinks={<StateQuickLinks />}
+          resultsPanel={<StateResults />}
+          className={`state-search-overlay-${state.id} !mx-auto !max-h-none`}
+          classNames={{
+            backdrop: 'hidden',
+            viewport: '!static !inset-auto !z-auto !block',
+            results: 'flex-col',
+            closeButton: state.closeState === 'hover'
+              ? '!bg-action-hover'
+              : state.closeState === 'focus-visible'
+                ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                : undefined,
+          }}
+        />
+      ))}
+    </div>
+  ),
+  play: async ({ step }) => {
+    const root = (state: string) => document.body.querySelector<HTMLElement>(`.state-search-overlay-${state}`)!;
+    const close = (state: string) => within(root(state)).getByRole('button', { name: 'Close search', hidden: true });
+
+    await waitFor(() => expect(document.body.querySelectorAll('[data-component="search-overlay"]')).toHaveLength(5));
+
+    await step('idle and active public query states remain visually distinct', async () => {
+      await expect(root('idle')).toHaveTextContent('Popular searches');
+      await expect(root('idle')).not.toHaveTextContent('Component catalog');
+      await expect(root('active')).toHaveTextContent('Component catalog');
+      await expect(root('active')).not.toHaveTextContent('Popular searches');
+      await expect(within(root('active')).getByRole('searchbox', { name: 'Search', hidden: true })).toHaveValue('component');
+    });
+
+    await step('forced close hover resolves the semantic action surface', async () => {
+      const baseline = close('close-default');
+      const hover = close('close-hover');
+      await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+      const probe = document.createElement('span');
+      probe.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-action-hover');
+      document.body.append(probe);
+      const expectedHover = getComputedStyle(probe).backgroundColor;
+      probe.remove();
+      await expect(getComputedStyle(hover).backgroundColor).toBe(expectedHover);
+      if (expectedHover !== getComputedStyle(baseline).backgroundColor) {
+        await expect(getComputedStyle(hover).backgroundColor).not.toBe(getComputedStyle(baseline).backgroundColor);
+      }
+    });
+
+    await step('forced close focus exposes the governed pill focus ring', async () => {
+      const focus = close('close-focus-visible');
+      await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(focus);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+      await expect(style.outlineOffset).toBe('2px');
+    });
+
+    await step('search-overlay.close.motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      await expect(getComputedStyle(close('close-default')).transitionDuration).toBe(reduced ? '0s' : '0.15s');
+      await expect(getComputedStyle(root('idle')).animationDuration).toBe(reduced ? '0s' : '0.3s');
+    });
+  },
+};

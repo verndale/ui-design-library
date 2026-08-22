@@ -66,6 +66,14 @@ function containsComponentInstance(root, componentNodeIds) {
   return found;
 }
 
+function containsNode(root, nodeId) {
+  let found = false;
+  walk(root, (node) => {
+    if (node.id === nodeId) found = true;
+  });
+  return found;
+}
+
 function isVisible(node) {
   return node.visible !== false && Number(node.opacity ?? 1) > 0;
 }
@@ -249,6 +257,34 @@ function auditLiveNodes({ registry, payload }) {
         }
       }
     }
+
+    const stateCoverage = expected.stateCoverage;
+    if (stateCoverage?.status === 'covered') {
+      for (const state of stateCoverage.states ?? []) {
+        if (state.classification === 'runtime-only') continue;
+        const statePrefix = `${prefix} interaction state ${state.id}`;
+        const frame = payload.nodes[state.frameNodeId]?.document;
+        const instance = payload.nodes[state.instanceNodeId]?.document;
+        const stateComponent = payload.nodes[state.componentNodeId]?.document;
+        if (!frame || frame.type !== 'FRAME') {
+          fail(`${statePrefix} frame ${state.frameNodeId} is missing or not a FRAME`);
+          continue;
+        }
+        if (!instance || instance.type !== 'INSTANCE') {
+          fail(`${statePrefix} instance ${state.instanceNodeId} is missing or not an INSTANCE`);
+          continue;
+        }
+        if (!stateComponent || stateComponent.type !== 'COMPONENT') {
+          fail(`${statePrefix} component ${state.componentNodeId} is missing or not a COMPONENT`);
+        }
+        if (instance.componentId !== state.componentNodeId) {
+          fail(`${statePrefix} instance ${state.instanceNodeId} is connected to ${instance.componentId}, expected ${state.componentNodeId}`);
+        }
+        if (!containsNode(frame, state.instanceNodeId)) {
+          fail(`${statePrefix} frame ${state.frameNodeId} does not contain instance ${state.instanceNodeId}`);
+        }
+      }
+    }
   }
 
   return failures;
@@ -261,6 +297,11 @@ async function fetchLiveNodes({ registry, token, fetchImpl = fetch }) {
     ...(component.sourceParity?.representations ?? []).flatMap((representation) => [
       representation.masterNodeId,
       ...(representation.specimens ?? []).map((specimen) => specimen.nodeId),
+    ]).filter(Boolean),
+    ...(component.figma?.stateCoverage?.states ?? []).flatMap((state) => [
+      state.frameNodeId,
+      state.instanceNodeId,
+      state.componentNodeId,
     ]).filter(Boolean),
   ])).join(',');
   const url = new URL(`${FIGMA_API}/files/${encodeURIComponent(fileKey)}/nodes`);
@@ -312,6 +353,7 @@ if (require.main === module) {
 
 module.exports = {
   auditLiveNodes,
+  containsNode,
   duplicateDefinitionNames,
   fetchLiveNodes,
   hasAlias,

@@ -20,7 +20,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Link](../../components/link/component.json) — 6 tokens declared
 - [Modal](../../components/modal/component.json) — 13 tokens declared
 - [Quote](../../components/quote/component.json) — 4 tokens declared
-- [Rich text](../../components/rich-text/component.json) — 8 tokens declared
+- [Rich text](../../components/rich-text/component.json) — 10 tokens declared
 - [Search input](../../components/search-input/component.json) — 9 tokens declared
 - [Search overlay](../../components/search-overlay/component.json) — 12 tokens declared
 - [Section header](../../components/section-header/component.json) — 5 tokens declared

@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 144,
-    "edges": 311,
+    "nodes": 148,
+    "edges": 330,
     "byType": {
       "surface": 49,
       "root-doc": 4,
       "component": 23,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 42,
-      "wiki-plan": 15,
+      "wiki-journal": 44,
+      "wiki-plan": 17,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 56,
-      "links-to": 143,
-      "plan": 23,
-      "topic": 66,
+      "links-to": 153,
+      "plan": 25,
+      "topic": 73,
       "uses-tokens": 23
     }
   },
@@ -222,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 800,
       "degree": 1
     },
     {
@@ -342,7 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -354,7 +354,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -426,7 +426,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5075,
+      "bytes": 5437,
       "degree": 1
     },
     {
@@ -498,7 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -510,7 +510,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -570,7 +570,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 192,
       "degree": 1
     },
     {
@@ -582,7 +582,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 89074,
+      "bytes": 167661,
       "degree": 1
     },
     {
@@ -678,7 +678,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 34521,
+      "bytes": 39755,
       "degree": 1
     },
     {
@@ -702,7 +702,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11449,
+      "bytes": 13237,
       "degree": 1
     },
     {
@@ -894,7 +894,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -954,8 +954,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 15468,
-      "degree": 52
+      "bytes": 16059,
+      "degree": 54
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1634,6 +1634,35 @@
       "degree": 10
     },
     {
+      "id": "wiki/journal/2026-08-21-governed-figma-interaction-states.md",
+      "label": "Govern Figma interaction-state specimens",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 7510,
+      "degree": 4
+    },
+    {
+      "id": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "label": "Expand Rich Text authored-content coverage",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2166,
+      "degree": 6
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1904,6 +1933,36 @@
       "degree": 12
     },
     {
+      "id": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "label": "Governed Figma Interaction States and Retrospective Capture",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 11052,
+      "degree": 5
+    },
+    {
+      "id": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "label": "Rich Text authored-content coverage",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "figma-code-connect",
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 2231,
+      "degree": 6
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -1931,6 +1990,7 @@
         "2"
       ],
       "issues": [
+        "80",
         "58",
         "62",
         "55",
@@ -1942,8 +2002,8 @@
         "18",
         "4"
       ],
-      "bytes": 7410,
-      "degree": 18
+      "bytes": 8124,
+      "degree": 20
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -1978,14 +2038,16 @@
         "Code Connect history",
         "Ready for Dev",
         "design-to-code",
-        "Figma node identity"
+        "Figma node identity",
+        "interaction states",
+        "state coverage"
       ],
       "prs": [],
       "issues": [
         "49"
       ],
-      "bytes": 14972,
-      "degree": 53
+      "bytes": 19458,
+      "degree": 61
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -2079,8 +2141,8 @@
         "19"
       ],
       "issues": [],
-      "bytes": 8927,
-      "degree": 24
+      "bytes": 9369,
+      "degree": 29
     },
     {
       "id": "wiki/topics/storybook-tooling.md",
@@ -2741,6 +2803,20 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-21-governed-figma-interaction-states.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -2957,6 +3033,20 @@
       "anchors": []
     },
     {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
       "source": "wiki/topics/component-architecture.md",
       "target": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
@@ -3147,6 +3237,20 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-21-governed-figma-interaction-states.md",
+      "type": "links-to",
+      "count": 5,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -3192,6 +3296,20 @@
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
       "count": 7,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "type": "links-to",
+      "count": 5,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -3322,6 +3440,13 @@
     },
     {
       "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "type": "links-to",
       "count": 3,
@@ -3337,6 +3462,13 @@
     {
       "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3531,6 +3663,16 @@
     {
       "source": "wiki/journal/2026-08-20-tabs-source-parity.md",
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-21-governed-figma-interaction-states.md",
+      "target": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
       "type": "plan"
     },
     {
@@ -3754,6 +3896,21 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-21-governed-figma-interaction-states.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -3864,6 +4021,26 @@
       "type": "topic"
     },
     {
+      "source": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
       "source": "components/accordion/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
@@ -3951,7 +4128,7 @@
       "source": "components/rich-text/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
-      "count": 8
+      "count": 10
     },
     {
       "source": "components/search-input/component.json",

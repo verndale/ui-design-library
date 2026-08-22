@@ -19,7 +19,6 @@ const {
 } = require('./lib/source-parity.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
-const REGISTRY = path.join(ROOT, 'figma/library.json');
 const FIGMA_PROPERTY_TYPE_BY_KIND = {
   string: 'TEXT',
   boolean: 'BOOLEAN',

@@ -1,5 +1,5 @@
 import { ButtonContent } from './parts/ButtonContent.js';
-import type { ButtonPresentation, ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types.js';
+import type { ButtonProps, ButtonSize, ButtonVariant } from './Button.types.js';
 
 export type { ButtonPresentation, ButtonProps, ButtonSize, ButtonSurface, ButtonVariant } from './Button.types.js';
 

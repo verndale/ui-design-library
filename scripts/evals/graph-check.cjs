@@ -105,6 +105,6 @@ function run() {
   console.log(`\nPASS Knowledge graph freshness check (${results.length} cases).`);
 }
 
-run();
+if (require.main === module) run();
 
-module.exports = { policyProblems };
+module.exports = { policyProblems, run };

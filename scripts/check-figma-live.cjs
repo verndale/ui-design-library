@@ -30,8 +30,6 @@ const SPACING_FIELDS = [
   'paddingBottom',
   'paddingLeft',
 ];
-const SOURCE_PARITY_VIEWPORT_WIDTHS = [1440, 1024, 768, 390];
-
 function sorted(values) {
   return [...new Set(values)].sort();
 }

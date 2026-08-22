@@ -1,6 +1,6 @@
 ---
 aliases: [npm package, package exports, semantic release, exact-version consumption]
-covers: [package.json, MIGRATION.md, styles.css, tsconfig.build.json, scripts/build-exports.cjs, scripts/test-next.cjs, scripts/check-release-commit.cjs, release.config.cjs, .github/workflows/release.yml]
+covers: [package.json, styles.css, tsconfig.build.json, scripts/build-exports.cjs, scripts/test-next.cjs, scripts/check-release-commit.cjs, release.config.cjs, .github/workflows/release.yml]
 ---
 # Package distribution — Design History
 
@@ -12,7 +12,6 @@ How the source component library becomes a deterministic public npm contract.
 - Public code imports mirror component directories: `@verndale/ui-design-library/components/<directory>`. There is no root barrel or short alias.
 - Each public component subpath targets `dist/components/<directory>/index.js`; the facade keeps imports stable while private implementation files change.
 - `./package.json`, each `component.json`, and `./styles.css` are explicit package exports because the orchestration driver resolves them as contract data.
-- `MIGRATION.md` ships in the package so breaking API changes are available beside the installed code.
 - `tsc` uses NodeNext-compatible resolution and emits per-component ESM, declarations, and explicit `.js` relative specifiers that load in native Node. Story and test files are excluded from `dist`, while source stories remain in the package for inspection.
 - The committed export map is derived by `pnpm exports:sync`; test, build, and prepack only check it and fail on drift.
 - `styles.css` contains semantic tokens but does not import Tailwind. Consumers own the Tailwind import and register package `dist` with one explicit `@source`.
@@ -26,6 +25,7 @@ How the source component library becomes a deterministic public npm contract.
 
 ## Decisions
 
+- 2026-08-22 — Kept package build and the packed Next consumer in the complete CI gate rather than pre-push, made the root Conventional Commit policy authoritative for local messages, the immutable PR title/range, and semantic-release inputs, and removed stale packaging/documentation pointers to the already-absent `MIGRATION.md` rather than publishing a nonexistent file ([issue #83](https://github.com/verndale/ui-design-library/issues/83), [plan](../plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md), [journal](../journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md)).
 - 2026-08-13 — Shipped accessibility metadata with the executable package instead of keeping it in prose, so orchestration can hash and replay the exact public invocation, DOM, and ownership contract. Browser engines remain library CI dependencies rather than consumer setup dependencies ([plan](../plans/2026-08-13-realization-first-reuse-wcag-22-aa.md), [journal](../journal/2026-08-13-accessible-realization-contracts.md)).
 - 2026-08-12 — Introduced reuse contract v2 and packed native-import verification because the `4.0.1` export map resolved to ESM files whose extensionless internal specifiers did not execute in Node ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).
 - 2026-08-12 — Removed the npm-token fallback and semantic-release issue mutation in favor of one OIDC publisher and immutable npm/GitHub release outputs ([plan](../plans/2026-08-12-executable-esm-reuse-contract-v2.md), [journal](../journal/2026-08-12-executable-esm-reuse-contract-v2.md)).

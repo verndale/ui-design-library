@@ -146,7 +146,7 @@ export const Default: Story = {
 /** `aria-valuetext` composes the option label with its unit. */
 export const WithUnit: Story = {
   args: { unit: 'inches', defaultValue: 'l' },
-  play: async ({ canvasElement, step }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('slider', { name: 'Width' }) as HTMLInputElement;
 

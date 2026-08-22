@@ -1,26 +1,50 @@
 {
   "counts": {
-    "nodes": 148,
-    "edges": 330,
+    "nodes": 155,
+    "edges": 353,
     "byType": {
-      "surface": 49,
+      "surface": 54,
       "root-doc": 4,
       "component": 23,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 44,
-      "wiki-plan": 17,
+      "wiki-journal": 45,
+      "wiki-plan": 18,
       "wiki-topic": 7
     },
     "byEdgeType": {
-      "covers": 56,
-      "links-to": 153,
-      "plan": 25,
-      "topic": 73,
+      "covers": 62,
+      "links-to": 161,
+      "plan": 26,
+      "topic": 81,
       "uses-tokens": 23
     }
   },
   "nodes": [
+    {
+      "id": ".gitattributes",
+      "label": ".gitattributes",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 39,
+      "degree": 1
+    },
+    {
+      "id": ".github/workflows/commitlint.yml",
+      "label": "commitlint.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1657,
+      "degree": 1
+    },
     {
       "id": ".github/workflows/figma-library-validation.yml",
       "label": "figma-library-validation.yml",
@@ -54,8 +78,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1656,
-      "degree": 1
+      "bytes": 2247,
+      "degree": 2
     },
     {
       "id": ".github/workflows/wiki-issue-sync.yml",
@@ -90,7 +114,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 75,
+      "bytes": 434,
       "degree": 1
     },
     {
@@ -102,7 +126,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 49,
+      "bytes": 186,
       "degree": 1
     },
     {
@@ -114,19 +138,19 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 385,
+      "bytes": 9340,
       "degree": 1
     },
     {
-      "id": ".husky/post-merge",
-      "label": "post-merge",
+      "id": ".husky/post-commit",
+      "label": "post-commit",
       "type": "surface",
       "dir": ".husky",
       "topics": [],
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 289,
+      "bytes": 9740,
       "degree": 1
     },
     {
@@ -138,7 +162,19 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1101,
+      "bytes": 277,
+      "degree": 1
+    },
+    {
+      "id": ".husky/pre-push",
+      "label": "pre-push",
+      "type": "surface",
+      "dir": ".husky",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 182,
       "degree": 1
     },
     {
@@ -186,7 +222,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1027,
+      "bytes": 1046,
       "degree": 1
     },
     {
@@ -198,7 +234,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13991,
+      "bytes": 14078,
       "degree": 5
     },
     {
@@ -210,8 +246,20 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 310,
-      "degree": 0
+      "bytes": 1083,
+      "degree": 1
+    },
+    {
+      "id": "commitlint.config.cjs",
+      "label": "commitlint.config.cjs",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 64,
+      "degree": 1
     },
     {
       "id": "components",
@@ -222,7 +270,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 800,
       "degree": 1
     },
     {
@@ -342,7 +390,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -354,7 +402,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -498,7 +546,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -510,7 +558,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 256,
       "degree": 1
     },
     {
@@ -558,8 +606,20 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6766,
+      "bytes": 7577,
       "degree": 0
+    },
+    {
+      "id": "eslint.config.js",
+      "label": "eslint.config.js",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 1438,
+      "degree": 1
     },
     {
       "id": "figma",
@@ -570,7 +630,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 192,
       "degree": 1
     },
     {
@@ -586,16 +646,16 @@
       "degree": 1
     },
     {
-      "id": "MIGRATION.md",
-      "label": "MIGRATION.md",
+      "id": "lint-staged.config.mjs",
+      "label": "lint-staged.config.mjs",
       "type": "surface",
       "dir": ".",
       "topics": [],
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6466,
-      "degree": 2
+      "bytes": 114,
+      "degree": 1
     },
     {
       "id": "package.json",
@@ -606,7 +666,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11517,
+      "bytes": 11951,
       "degree": 1
     },
     {
@@ -618,7 +678,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 20400,
+      "bytes": 20663,
       "degree": 3
     },
     {
@@ -678,7 +738,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 39755,
+      "bytes": 39699,
       "degree": 1
     },
     {
@@ -702,7 +762,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 13237,
+      "bytes": 13174,
       "degree": 1
     },
     {
@@ -726,7 +786,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4705,
+      "bytes": 4739,
       "degree": 1
     },
     {
@@ -739,6 +799,18 @@
       "prs": [],
       "issues": [],
       "bytes": 19673,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/pre-commit.cjs",
+      "label": "pre-commit.cjs",
+      "type": "surface",
+      "dir": "scripts/graph",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3022,
       "degree": 1
     },
     {
@@ -774,19 +846,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1871,
-      "degree": 1
-    },
-    {
-      "id": "scripts/graph/sync-graphify.cjs",
-      "label": "sync-graphify.cjs",
-      "type": "surface",
-      "dir": "scripts/graph",
-      "topics": [],
-      "aliases": [],
-      "prs": [],
-      "issues": [],
-      "bytes": 2080,
+      "bytes": 1925,
       "degree": 1
     },
     {
@@ -822,7 +882,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1596,
+      "bytes": 1591,
       "degree": 1
     },
     {
@@ -894,7 +954,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4096,
+      "bytes": 96,
       "degree": 1
     },
     {
@@ -954,8 +1014,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 16059,
-      "degree": 54
+      "bytes": 16259,
+      "degree": 55
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1240,7 +1300,7 @@
       ],
       "issues": [],
       "bytes": 4274,
-      "degree": 3
+      "degree": 2
     },
     {
       "id": "wiki/journal/2026-08-12-executable-esm-reuse-contract-v2.md",
@@ -1522,7 +1582,7 @@
       ],
       "issues": [],
       "bytes": 1654,
-      "degree": 3
+      "degree": 2
     },
     {
       "id": "wiki/journal/2026-08-19-source-parity-governance-foundation.md",
@@ -1667,6 +1727,23 @@
       "degree": 6
     },
     {
+      "id": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "label": "Standardize lint, Commitlint, and graph automation",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem",
+        "component-architecture",
+        "story-testing",
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 3476,
+      "degree": 10
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -1675,7 +1752,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6425,
+      "bytes": 6863,
       "degree": 7
     },
     {
@@ -1954,6 +2031,23 @@
       "degree": 5
     },
     {
+      "id": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "label": "Cross-repository lint, Commitlint, and graph standardization",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "graph-wiki-subsystem",
+        "component-architecture",
+        "story-testing",
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "bytes": 7969,
+      "degree": 10
+    },
+    {
       "id": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
       "label": "Rich Text authored-content coverage",
       "type": "wiki-plan",
@@ -1999,6 +2093,7 @@
         "2"
       ],
       "issues": [
+        "83",
         "80",
         "58",
         "62",
@@ -2011,8 +2106,8 @@
         "18",
         "4"
       ],
-      "bytes": 8254,
-      "degree": 20
+      "bytes": 8644,
+      "degree": 21
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -2030,11 +2125,12 @@
       ],
       "prs": [],
       "issues": [
+        "83",
         "46",
         "40"
       ],
-      "bytes": 8135,
-      "degree": 29
+      "bytes": 8622,
+      "degree": 32
     },
     {
       "id": "wiki/topics/figma-code-connect.md",
@@ -2105,10 +2201,10 @@
         "2"
       ],
       "issues": [
-        "66"
+        "83"
       ],
-      "bytes": 12587,
-      "degree": 29
+      "bytes": 11583,
+      "degree": 39
     },
     {
       "id": "wiki/topics/package-distribution.md",
@@ -2123,9 +2219,11 @@
         "exact-version consumption"
       ],
       "prs": [],
-      "issues": [],
-      "bytes": 6275,
-      "degree": 27
+      "issues": [
+        "83"
+      ],
+      "bytes": 6782,
+      "degree": 30
     },
     {
       "id": "wiki/topics/story-testing.md",
@@ -2150,9 +2248,11 @@
         "24",
         "19"
       ],
-      "issues": [],
-      "bytes": 9369,
-      "degree": 29
+      "issues": [
+        "83"
+      ],
+      "bytes": 9871,
+      "degree": 33
     },
     {
       "id": "wiki/topics/storybook-tooling.md",
@@ -2216,11 +2316,6 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
-      "target": "MIGRATION.md",
-      "type": "covers"
-    },
-    {
-      "source": "wiki/topics/component-architecture.md",
       "target": "scripts/check-component-architecture.cjs",
       "type": "covers"
     },
@@ -2276,6 +2371,21 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".gitattributes",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".github/workflows/commitlint.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".github/workflows/test.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": ".github/workflows/wiki-issue-sync.yml",
       "type": "covers"
     },
@@ -2301,7 +2411,7 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": ".husky/post-merge",
+      "target": ".husky/post-commit",
       "type": "covers"
     },
     {
@@ -2311,7 +2421,32 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".husky/pre-push",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "AGENTS.md",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "CLAUDE.md",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "commitlint.config.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "eslint.config.js",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "lint-staged.config.mjs",
       "type": "covers"
     },
     {
@@ -2322,6 +2457,11 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "scripts/graph/build-graph.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/pre-commit.cjs",
       "type": "covers"
     },
     {
@@ -2337,11 +2477,6 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "scripts/graph/serve.cjs",
-      "type": "covers"
-    },
-    {
-      "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": "scripts/graph/sync-graphify.cjs",
       "type": "covers"
     },
     {
@@ -2367,11 +2502,6 @@
     {
       "source": "wiki/topics/package-distribution.md",
       "target": ".github/workflows/release.yml",
-      "type": "covers"
-    },
-    {
-      "source": "wiki/topics/package-distribution.md",
-      "target": "MIGRATION.md",
       "type": "covers"
     },
     {
@@ -2827,6 +2957,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -3051,6 +3188,13 @@
     },
     {
       "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
       "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
       "type": "links-to",
       "count": 1,
@@ -3100,6 +3244,13 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
       "count": 2,
@@ -3131,6 +3282,13 @@
       "target": "wiki/plans/2026-08-19-source-parity-audit-and-remediation.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -3326,14 +3484,7 @@
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-07-27-graph-and-wiki-automation.md",
       "type": "links-to",
-      "count": 5,
-      "anchors": []
-    },
-    {
-      "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": "wiki/journal/2026-08-12-add-graphify-code-map.md",
-      "type": "links-to",
-      "count": 1,
+      "count": 4,
       "anchors": []
     },
     {
@@ -3345,7 +3496,14 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": "wiki/journal/2026-08-19-keep-graphify-output-local.md",
+      "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3380,6 +3538,13 @@
     },
     {
       "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 2,
@@ -3402,6 +3567,13 @@
     {
       "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3457,6 +3629,13 @@
     },
     {
       "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "type": "links-to",
       "count": 3,
@@ -3472,6 +3651,13 @@
     {
       "source": "wiki/topics/story-testing.md",
       "target": "wiki/plans/2026-08-13-realization-first-reuse-wcag-22-aa.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3683,6 +3869,11 @@
     {
       "source": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
       "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "type": "plan"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
       "type": "plan"
     },
     {
@@ -3921,6 +4112,26 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -4037,6 +4248,26 @@
     },
     {
       "source": "wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md",
+      "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
     },

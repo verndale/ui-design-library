@@ -12,7 +12,7 @@ import type { Decorator } from '@storybook/react-vite';
  * A story that sets its own `dir` still wins for its own subtree, so the
  * Quote RightToLeft story keeps working with the toolbar left on LTR.
  */
-export const withDirection: Decorator = (Story, context) => {
+export const withDirection: Decorator = function WithDirection(Story, context) {
   const direction = (context.globals.direction as 'ltr' | 'rtl') ?? 'ltr';
 
   useEffect(() => {

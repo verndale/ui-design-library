@@ -2,7 +2,7 @@
 date: 2026-08-22
 topics: [figma-code-connect, story-testing]
 plan: plans/2026-08-22-rich-text-authored-content-coverage.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/81
 ---
 # Expand Rich Text authored-content coverage
 

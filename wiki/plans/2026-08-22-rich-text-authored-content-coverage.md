@@ -1,7 +1,13 @@
 ---
 status: implemented
 executed: 2026-08-22
-evidence: ["issue #80", "Rich Text master 173:62", "authored-content section 417:26", "targeted Storybook tests", "authenticated Figma validation"]
+evidence:
+  - "issue #80"
+  - "Rich Text master 173:62"
+  - "authored-content section 417:26"
+  - "targeted Storybook tests"
+  - "authenticated Figma validation"
+  - "PR #81 https://github.com/verndale/ui-design-library/pull/81 (merged 2026-08-22)"
 source_tool: codex
 source: Codex task 01a026d0-a6f3-7420-be54-22d288818738
 topics: [figma-code-connect, story-testing]

@@ -2,7 +2,7 @@
 date: 2026-08-21
 topics: [figma-code-connect]
 plan: plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/81
 ---
 # Govern Figma interaction-state specimens
 

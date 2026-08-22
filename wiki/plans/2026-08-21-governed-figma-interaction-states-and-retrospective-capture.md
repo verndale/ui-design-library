@@ -1,7 +1,14 @@
 ---
 status: implemented
 executed: 2026-08-21
-evidence: ["issue #80", "Figma interaction-state frames 347:2 through 409:939", "Search input and remaining-library Storybook-to-Figma numeric parity audits", "all 28 registrations covered or not-applicable", "authenticated live audit of 28 registered nodes", "working tree tests"]
+evidence:
+  - "issue #80"
+  - "Figma interaction-state frames 347:2 through 409:939"
+  - "Search input and remaining-library Storybook-to-Figma numeric parity audits"
+  - "all 28 registrations covered or not-applicable"
+  - "authenticated live audit of 28 registered nodes"
+  - "working tree tests"
+  - "PR #81 https://github.com/verndale/ui-design-library/pull/81 (merged 2026-08-22)"
 source_tool: file
 source: /tmp/governed-figma-interaction-states-plan.md
 topics: [figma-code-connect, story-testing]

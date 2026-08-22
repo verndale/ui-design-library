@@ -56,13 +56,28 @@ const state = {
 
 const $ = (sel) => document.querySelector(sel);
 
-// Two rAFs guarantee a layout pass has actually committed before Sigma measures
-// its container. `<main id="graph">` gets its width from a flex sibling
-// (`<aside id="controls">`), and constructing Sigma synchronously — right after
-// the fetches resolve, with no guaranteed layout in between — can hit it before
-// that width exists: "Sigma: Container has no width." One rAF is usually enough;
-// two is the documented-safe margin when a resize/reflow is still settling.
-const nextFrame = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+function waitForContainer(element, timeoutMs = 2000) {
+  return new Promise((resolve) => {
+    let settled = false;
+    let observer;
+    let timeout;
+    const finish = (ready) => {
+      if (settled) return;
+      settled = true;
+      observer?.disconnect();
+      clearTimeout(timeout);
+      resolve(ready);
+    };
+    const check = () => {
+      const rect = element.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) finish(true);
+    };
+    observer = new ResizeObserver(check);
+    observer.observe(element);
+    timeout = setTimeout(() => finish(false), timeoutMs);
+    check();
+  });
+}
 
 async function init() {
   try {
@@ -80,8 +95,9 @@ async function init() {
     state.policy = await policyRes.json();
     buildIndexes();
     buildModel();
-    await nextFrame();
-    buildRenderer();
+    const container = $("#graph");
+    const containerReady = await waitForContainer(container);
+    buildRenderer(container, containerReady);
     buildLegend();
     populateRouteSelects();
     wireControls();
@@ -145,8 +161,9 @@ function buildModel() {
   state.model = graph;
 }
 
-function buildRenderer() {
-  state.renderer = new Sigma(state.model, $("#graph"), {
+function buildRenderer(container, containerReady) {
+  state.renderer = new Sigma(state.model, container, {
+    allowInvalidContainer: !containerReady,
     labelColor: { color: "#c9cede" },
     labelSize: 12,
     labelWeight: "500",

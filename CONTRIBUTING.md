@@ -67,7 +67,9 @@ Conventional Commits via `@verndale/ai-commit`, scope required:
     fix(tokens): Correct the scrim opacity
     docs(readme): Clarify exact-version package consumption
 
-Enforced by the `commit-msg` hook and in CI. `pnpm commit` generates a pre-validated message.
+The blocking `commit-msg` hook and the `Commit message lint / commitlint` pull-request check both load the root `commitlint.config.cjs`. CI validates the squash PR title and every commit in the explicit base-to-head range; it does not claim to enforce messages on arbitrary non-PR pushes. `pnpm commit` remains optional authoring assistance.
+
+The shared format is `type(scope): subject`. Allowed types are `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, and `test`. Scope is required, lowercase, and may contain hyphens; there is no repository scope allowlist. Subject casing is unrestricted, but the subject is required, cannot end in a period, and is limited to 50 characters. Headers are limited to 120 characters and body/footer lines to 72. Conventional `!`/`BREAKING CHANGE` and revert parsing and Commitlint's default generated-message ignores remain enabled.
 
 The squash commit on `main` is also the release signal: breaking changes produce majors, `feat` produces minors, and every other allowed type produces a patch. Publishing itself is never run manually.
 

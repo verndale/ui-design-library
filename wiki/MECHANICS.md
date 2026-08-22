@@ -35,7 +35,8 @@ PR number and commit sha are usually unknown at delivery time — the maintainer
 
 Ported from ui-design-brain, adapted to this repo's shape — see [the graph-wiki-subsystem topic](topics/graph-wiki-subsystem.md) for the full picture:
 
-- **Pre-commit** (`.husky/pre-commit`): warns (never blocks) when a staged commit is substantive but adds no `wiki/journal/` entry, and rebuilds + stages the knowledge graph (`scripts/graph/build-graph.cjs`) plus `wiki/connections*` unconditionally. Skipped under `$CI`.
+- **Pre-commit** (`.husky/pre-commit`): after blocking staged ESLint, warns (never blocks) when a staged commit is substantive but adds no `wiki/journal/` entry. The curated graph helper rebuilds + stages `scripts/graph/data/graph.json` and `wiki/connections*` only when indexed inputs have no unstaged or untracked changes; refresh/staging failures remain advisory and the path is skipped under `$CI`.
+- **Pull-request quality** (`.github/workflows/test.yml`): `Quality / quality` runs the complete non-fixing gate, including the blocking curated graph freshness/integrity check. A separate `Commit message lint / commitlint` job validates the squash title and explicit PR commit range with the root policy.
 - **Wiki sync** (`.github/workflows/wiki-sync.yml`): on PR merge, fills `pr: pending` in journal entries; for a substantive PR with no entry, drafts a deterministic stub (`draft: ai` and AI-enriched only if `WIKI_AI=true` is set and the result stays grounded in the actual diff — otherwise the stub's Why is a `TODO` for a human to fill in); appends a topic Decisions bullet; and completes a `plans/INDEX.md` row when the PR references an archived plan. Lands as a `bot/wiki-sync/<pr>` PR — never a direct push to main.
 - **Nightly issue sync** (`.github/workflows/wiki-issue-sync.yml`): marks an issue cited under a topic's `## Open threads` with ` — closed` once it closes.
 

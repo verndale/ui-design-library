@@ -1,23 +1,61 @@
-import parser from '@typescript-eslint/parser';
-import reactHooks from 'eslint-plugin-react-hooks';
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
 
-export default [
+export default tseslint.config(
   {
-    ignores: ['dist/**', 'storybook-static/**', 'scripts/graph/viewer/vendor/**'],
+    ignores: [
+      "node_modules/**",
+      "dist/**",
+      "storybook-static/**",
+      "coverage/**",
+      "test-results/**",
+      "graphify-out/**",
+      ".claude/**",
+      ".codex/**",
+      ".cursor/**",
+      "tests/fixtures/**",
+      "scripts/graph/data/**",
+      "scripts/graph/viewer/vendor/**",
+    ],
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ["**/*.{cjs,cts}"],
+    languageOptions: {
+      globals: globals.node,
+      sourceType: "commonjs",
+    },
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
   },
   {
-    files: ['components/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}', 'stories/**/*.{ts,tsx}'],
+    files: ["**/*.{js,mjs,mts,ts,tsx}"],
+    ignores: ["scripts/graph/viewer/*.js"],
     languageOptions: {
-      parser,
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
+      globals: { ...globals.browser, ...globals.node },
     },
+  },
+  {
+    files: ["components/**/*.tsx", "src/**/*.tsx", "stories/**/*.tsx", ".storybook/**/*.tsx"],
     plugins: {
-      'react-hooks': reactHooks,
+      "react-hooks": reactHooks,
     },
     rules: reactHooks.configs.flat.recommended.rules,
   },
-];
+  {
+    files: ["scripts/graph/viewer/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        Sigma: "readonly",
+        graphology: "readonly",
+        graphologyLibrary: "readonly",
+      },
+      sourceType: "script",
+    },
+  },
+);

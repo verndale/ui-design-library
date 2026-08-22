@@ -35,6 +35,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-08-22 — [Standardize lint, Commitlint, and graph automation](journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) — unified staged/push/CI enforcement, direct Conventional Commit policy, native Graphify ownership, and guarded curated-graph freshness.
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 
 - 2026-08-22 — [Expand Rich Text authored-content coverage](journal/2026-08-22-expand-rich-text-authored-content.md) — restored source-backed H1–H6 and responsive media, added semantic figure/table treatment, and documented the arbitrary authored-child surface without changing the public API or canonical Figma identity.
@@ -94,5 +95,5 @@ This wiki is modelled on [`ui-design-brain`](https://github.com/verndale/ui-desi
 
 - **No catalog manifest, no see-also convention.** This repo has no single file listing every component, and components don't cross-reference each other in markdown the way ui-design-brain's patterns do. The graph's `uses-tokens` edge (component → the token layer) replaces `catalogs`/`see-also`/`references` as the structural spine.
 - **No `archive-plan.cjs` / `find-unarchived-plans.cjs`.** Plans are archived by hand, per the template in [MECHANICS.md](MECHANICS.md) — there is no CLI and no `~/.claude/plans`-scanning backstop.
-- **No CI freshness gate.** `pnpm evals:graph` exists and passes locally, but nothing in `.github/workflows/` currently runs it on a PR — the pre-commit hook's auto-rebuild is the only check today, and it's skippable. See the graph-wiki-subsystem topic's Open threads.
+- **CI freshness is explicit.** `pnpm graph:check` runs inside the required `Quality / quality` PR gate; the guarded pre-commit refresh is convenience rather than the only drift protection.
 - **The bot workflows need configuration.** `wiki-sync.yml` and `wiki-issue-sync.yml` require `secrets.PR_BOT_TOKEN` (and optionally the `WIKI_AI*` vars) set in the GitHub repo before they can run.

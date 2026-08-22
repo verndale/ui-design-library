@@ -1,6 +1,6 @@
 ---
 aliases: [component architecture, server-first components, use client boundaries, React Server Components, SSR safety, tree branch leaf]
-covers: [components, scripts/check-component-architecture.cjs, scripts/check-contracts.cjs, tests/ssr, scripts/test-next.cjs, MIGRATION.md, tsconfig.build.json]
+covers: [components, scripts/check-component-architecture.cjs, scripts/check-contracts.cjs, tests/ssr, scripts/test-next.cjs, tsconfig.build.json]
 ---
 # Component architecture — Design History
 
@@ -27,6 +27,7 @@ How public component facades preserve stable imports while implementation trees 
 
 ## Decisions
 
+- 2026-08-22 — Made TypeScript plus the existing architecture, contract, registry/export, release-preflight, and SSR checks the blocking side-effect-free pre-push gate, leaving browser, build, and packed-consumer verification to the complete CI gate ([issue #83](https://github.com/verndale/ui-design-library/issues/83), [plan](../plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md), [journal](../journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md)).
 - 2026-08-20 — Extracted one Tabs selection/ID/keyboard controller for the default tablist and responsive native-select sibling; CSS owns breakpoint exclusion while one client effect moves focus only when the active control becomes hidden ([plan](../plans/2026-08-19-source-parity-audit-and-remediation.md), [journal](../journal/2026-08-20-tabs-source-parity.md)).
 - 2026-08-20 — Restored Slider native-form submission through one optional hidden output while keeping the index range unnamed; browser reset work stays inside a client effect, SSR remains DOM-free, and controlled state remains owner-driven ([plan](../plans/2026-08-19-source-parity-audit-and-remediation.md), [journal](../journal/2026-08-20-slider-source-parity.md)).
 - 2026-08-14 — Added Breadcrumbs `leadingItem` and `items[].title` as governed public seams for inside-tree trail variation, rather than exposing primitives or copying package source into consumers ([issue #46](https://github.com/verndale/ui-design-library/issues/46), [plan](../plans/2026-08-14-breadcrumbs-direct-reuse-slots.md), [journal](../journal/2026-08-14-breadcrumbs-direct-reuse-slots.md)).

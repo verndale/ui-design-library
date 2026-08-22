@@ -1,23 +1,4 @@
 #!/usr/bin/env sh
-node scripts/wiki/pre-commit-journal.cjs
-
-# Keep the committed knowledge graph in sync with current repo state. The build is
-# deterministic and fast (a no-op diff when nothing indexed changed), so rebuild
-# unconditionally and stage the result. Non-blocking: on build failure, warn and let
-# the commit proceed — `pnpm evals:graph` in CI is the drift backstop. Skipped in CI.
-if [ -z "$CI" ]; then
-  if node scripts/graph/build-graph.cjs >/dev/null 2>&1; then
-    git add scripts/graph/data/graph.json wiki/connections.md wiki/connections
-  else
-    echo "warning: knowledge graph rebuild failed; committed graph.json may be stale (run pnpm graph:build)" >&2
-  fi
-fi
-
-# Best-effort refresh the local, gitignored Graphify map before the commit. This
-# orientation data is not a repository gate, so unavailable local tooling must not
-# block the commit; the manual command remains available for recovery.
-if [ -z "$CI" ]; then
-  if ! node scripts/graph/sync-graphify.cjs; then
-    echo "warning: Graphify refresh failed; local map may be stale (run pnpm graphify:sync)" >&2
-  fi
-fi
+pnpm run lint:staged || exit $?
+node scripts/wiki/pre-commit-journal.cjs || echo "warning: wiki journal advisory failed; commit will continue" >&2
+node scripts/graph/pre-commit.cjs || echo "warning: knowledge graph lifecycle failed; commit will continue" >&2

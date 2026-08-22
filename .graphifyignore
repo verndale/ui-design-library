@@ -1,3 +1,15 @@
 graphify-out/
 wiki/
+*.md
+node_modules/
+dist/
+storybook-static/
+coverage/
+test-results/
+.claude/
+.codex/
+.cursor/
+.husky/
+tests/fixtures/
+scripts/graph/data/
 scripts/graph/viewer/vendor/

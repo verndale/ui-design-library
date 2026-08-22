@@ -174,8 +174,6 @@ import { MegaMenu } from '@verndale/ui-design-library/components/navigation--meg
 
 There is no root barrel and no short alias such as `@verndale/ui-design-library/modal`. The directory-shaped subpath is the public identity. Override semantic tokens in the consuming project's own layer; never edit the installed package.
 
-When upgrading across the server-first architecture release, see [`MIGRATION.md`](MIGRATION.md) for the Button, Alert, Badge, and Carousel API changes.
-
 The package includes each implementation's source, story, and `component.json` for deterministic orchestration inspection. Package-level `uiDesignLibrary.reuseContractVersion`, `realizationContractVersion`, and `sourceParityContractVersion` identify the metadata contracts. Each manifest names one primary AI candidate with `exportName` and its derived `rendering` boundary (`server`, `hybrid`, or `client`). Its client-neutral `sourceParity` object links the implementation to an immutable private decision through an audited family key, stable decision IDs, a digest, decision-scoped implementation keys, and target surfaces; client identity, paths, and excerpts never enter this public package. Secondary developer exports remain public but are not separate candidates.
 
 `reuseFingerprint` is separate from API-level `slots`: it describes only the primary export and uses the pipeline's governed structural `slots` + `affordance` + `role` triad. Governed `other` values are valid metadata but intentionally never auto-match. `variant` remains the singular structural implementation axis, while `variants` remains the primary export's list of prop/style values. Entries in `variants` are unique non-empty strings; an empty array means the primary export has no governed style values.
@@ -221,8 +219,12 @@ A capture that is structurally distinct but semantically the same lands as `comp
 
 ```bash
 pnpm test              # typecheck + lint + contracts + SSR + Chromium/WebKit/mode/motion tests
+pnpm test:fast         # stable architecture/contract/export/SSR subset used before push
+pnpm verify:push       # side-effect-free typecheck + fast tests
+pnpm verify:ci         # full non-fixing PR gate, including graph freshness and packed consumer
 pnpm typecheck         # tsc --noEmit
-pnpm lint              # hooks, boundaries, and source linting
+pnpm lint              # all maintained first-party JS/TS, with warnings treated as failures
+pnpm lint:fix          # explicit whole-repository autofix
 pnpm architecture      # index/types/parts shape, client naming + 120-line ceiling
 pnpm test:ssr          # public components render with no browser globals
 pnpm build             # native Node ESM + declaration build, then export/dist parity
@@ -232,6 +234,7 @@ pnpm contracts         # slug/canonical agreement, the variant axis, declared to
                        # no raw colours, provenance/stories/maturity, reuse fingerprint,
                        # Figma registry identity/API/mapping/nesting parity
 pnpm contracts:selftest # exercises the contract checker itself against fixtures
+pnpm graph:check       # deterministic curated-graph freshness and integrity
 pnpm figma:validate    # type-check, contract-check, locally parse optional templates, and audit live nodes when authenticated
 pnpm figma:live        # require FIGMA_REST_TOKEN and audit registered masters without mutation
 pnpm accessibility    # every story rendered in Chromium: play functions + WCAG 2.2 A/AA axe

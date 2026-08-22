@@ -86,6 +86,19 @@ function run() {
       dangling.length === 0,
       dangling.slice(0, 5).map((d) => `${d.type} ${d.source} -> ${d.target}`),
     );
+    const directorySurfaces = graph.nodes.filter((node) => {
+      if (node.type !== "surface") return false;
+      try {
+        return fs.statSync(path.join(REPO_ROOT, node.id)).isDirectory();
+      } catch {
+        return false;
+      }
+    });
+    check(
+      "directory surface metadata is filesystem-independent",
+      directorySurfaces.every((node) => node.bytes === 0),
+      directorySurfaces.filter((node) => node.bytes !== 0).map((node) => `${node.id} records ${node.bytes} bytes instead of 0`),
+    );
   }
 
   console.log("Knowledge graph freshness check");

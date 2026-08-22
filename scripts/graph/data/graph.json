@@ -270,7 +270,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 800,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -390,7 +390,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -402,7 +402,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -546,7 +546,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -558,7 +558,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 256,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -630,7 +630,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 192,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -786,7 +786,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4739,
+      "bytes": 5256,
       "degree": 1
     },
     {
@@ -798,7 +798,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 19673,
+      "bytes": 19960,
       "degree": 1
     },
     {
@@ -954,7 +954,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 96,
+      "bytes": 0,
       "degree": 1
     },
     {
@@ -1740,7 +1740,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3476,
+      "bytes": 3747,
       "degree": 10
     },
     {
@@ -2203,7 +2203,7 @@
       "issues": [
         "83"
       ],
-      "bytes": 11583,
+      "bytes": 12210,
       "degree": 39
     },
     {
@@ -3498,7 +3498,7 @@
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
       "type": "links-to",
-      "count": 1,
+      "count": 2,
       "anchors": []
     },
     {

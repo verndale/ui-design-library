@@ -24,6 +24,7 @@ pr: pending
 - Kept the graph viewer browser-only in ESLint by excluding it from the Node-global surface, pinned core ESLint exactly to `10.9.0`, and removed the README/package-list residue for the already-deleted `MIGRATION.md`.
 - Kept Oxlint absent. The separately versioned `@eslint/js` package is `10.0.1` because its release line is versioned independently; core ESLint is `10.9.0`.
 - Used pnpm's functional no-separator argument forwarding (`pnpm run lint:commit --edit`) because pnpm 10.33 forwards a standalone `--` literally to Commitlint and can bypass invalid-message failures.
+- The first Linux quality run exposed filesystem-dependent directory sizes in curated `surface` nodes. Directory surfaces now record zero bytes, file surfaces retain their content size, and the graph gate asserts that portable contract before comparing committed output.
 
 ## Files
 

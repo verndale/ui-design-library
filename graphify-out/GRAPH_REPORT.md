@@ -1,7 +1,7 @@
 # Graph Report - library  (2026-08-22)
 
 ## Corpus Check
-- 236 files · ~109,775 words
+- 236 files · ~109,865 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4ee59bc4`
+- Built from commit: `e798572a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -98,7 +98,7 @@
 - ./components/tabs--native-select
 - ./components/toast
 - routing.js
-- @eslint/js
+- next
 - globals
 - husky
 - lint-staged
@@ -225,7 +225,7 @@ Nodes (26): exports, ./components/accordion/component.json, ./components/alert/c
 
 ### Community 16 - "devDependencies"
 Cohesion: 0.15
-Nodes (13): @commitlint/cli, next, devDependencies, @commitlint/cli, next, playwright, @types/react, typescript (+5 more)
+Nodes (13): @commitlint/cli, @eslint/js, devDependencies, @commitlint/cli, @eslint/js, playwright, @types/react, typescript (+5 more)
 
 ### Community 17 - "Image.types.ts"
 Cohesion: 0.14
@@ -520,7 +520,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `exports` connect `exports` to `package.json`, `./components/accordion`, `./components/alert`, `./components/avatar`, `./components/badge`, `./components/breadcrumbs`, `./components/button`, `./components/card`, `./components/carousel`, `./components/image`, `./components/in-page-navigation`, `./components/in-page-navigation--modal-drawer`, `./components/link`, `./components/modal`, `./components/quote`, `./components/rich-text`, `./components/search-input`, `./components/search-overlay`, `./components/section-header`, `./components/slider`, `./components/stat`, `./components/tabs`, `./components/tabs--native-select`, `./components/toast`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `devDependencies` connect `devDependencies` to `package.json`, `peerDependencies`, `storybook`, `eslint-plugin-react-hooks`, `@semantic-release/github`, `@storybook/react-vite`, `@eslint/js`, `globals`, `husky`, `lint-staged`, `semantic-release`, `@semantic-release/commit-analyzer`, `@semantic-release/npm`, `@semantic-release/release-notes-generator`, `@storybook/addon-a11y`, `@storybook/addon-docs`, `storybook-addon-pseudo-states`, `storybook-addon-tag-badges`, `@storybook/addon-vitest`, `tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/postcss`, `@types/react-dom`, `@verndale/ai-commit`, `@verndale/ai-pr`, `typescript-eslint`, `@vitest/browser-playwright`, `vite`, `@vitejs/plugin-react`, `@vitest/browser`, `eslint`?**
+- **Why does `devDependencies` connect `devDependencies` to `package.json`, `peerDependencies`, `storybook`, `eslint-plugin-react-hooks`, `@semantic-release/github`, `@storybook/react-vite`, `next`, `globals`, `husky`, `lint-staged`, `semantic-release`, `@semantic-release/commit-analyzer`, `@semantic-release/npm`, `@semantic-release/release-notes-generator`, `@storybook/addon-a11y`, `@storybook/addon-docs`, `storybook-addon-pseudo-states`, `storybook-addon-tag-badges`, `@storybook/addon-vitest`, `tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/postcss`, `@types/react-dom`, `@verndale/ai-commit`, `@verndale/ai-pr`, `typescript-eslint`, `@vitest/browser-playwright`, `vite`, `@vitejs/plugin-react`, `@vitest/browser`, `eslint`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **What connects `config`, `tagBadges`, `preview` to the rest of the system?**
   _641 weakly-connected nodes found - possible documentation gaps or missing edges._

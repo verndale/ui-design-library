@@ -1010,14 +1010,14 @@
     "semantic_hash": "25f29d289fc9bcaccc1a6da779f54624"
   },
   "scripts/evals/graph-check.cjs": {
-    "mtime": 1787429433.7682197,
-    "ast_hash": "4402b2b19d1beaeaee305a39537e0fb2",
-    "semantic_hash": "4402b2b19d1beaeaee305a39537e0fb2"
+    "mtime": 1787440060.503604,
+    "ast_hash": "990bf56588a999e5f9241288e3ac5f4f",
+    "semantic_hash": ""
   },
   "scripts/graph/build-graph.cjs": {
-    "mtime": 1787427771.4112792,
-    "ast_hash": "0c21bf17286722549730c72354c12a4b",
-    "semantic_hash": "0c21bf17286722549730c72354c12a4b"
+    "mtime": 1787440060.3788838,
+    "ast_hash": "9cf28c38a25898be229906a22c5a7250",
+    "semantic_hash": ""
   },
   "scripts/graph/routing-policy.json": {
     "mtime": 1787427771.412981,

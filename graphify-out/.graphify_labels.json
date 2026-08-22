@@ -82,7 +82,7 @@
   "80": "./components/tabs--native-select",
   "81": "./components/toast",
   "82": "routing.js",
-  "83": "@eslint/js",
+  "83": "next",
   "84": "globals",
   "85": "husky",
   "86": "lint-staged",

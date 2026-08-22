@@ -276,7 +276,11 @@ function build({ repoRoot = REPO_ROOT } = {}) {
           if (fs.existsSync(abs)) {
             let bytes = 0;
             try {
-              bytes = fs.statSync(abs).size;
+              const stat = fs.statSync(abs);
+              // Directory st_size is filesystem metadata (for example, 256 on
+              // macOS and 4096 on Linux), not content. Keep directory surfaces
+              // at zero so a graph built locally is byte-identical in CI.
+              bytes = stat.isFile() ? stat.size : 0;
             } catch {
               /* leave 0 */
             }

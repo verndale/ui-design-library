@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, userEvent, within } from 'storybook/test';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 
 import { SearchInput } from './index';
 
@@ -177,5 +177,77 @@ export const NamedLandmark: Story = {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole('search', { name: 'Product search' })).toBeInTheDocument();
     await expect(canvas.getByRole('searchbox', { name: 'Search products' })).toBeInTheDocument();
+  },
+};
+
+const stateResults = (
+  <>
+    <a href="#network" className="shrink-0 rounded-medium bg-surface-sunken p-s text-text-primary">Network map</a>
+    <a href="#tools" className="shrink-0 rounded-medium bg-surface-sunken p-s text-text-primary">Shipping tools</a>
+  </>
+);
+
+/** Code-backed specimens used to govern the unpublished Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: [
+        '.state-search-clear-hover button[aria-label="Clear search"]',
+        '.state-search-submit-hover button[aria-label="Submit search"]',
+      ],
+      focusVisible: [
+        '.state-search-input-focus input',
+        '.state-search-control-focus button[aria-label="Submit search"]',
+      ],
+    },
+  },
+  render: () => (
+    <div className="grid w-full max-w-[1120px] grid-cols-1 items-start gap-l xl:grid-cols-3">
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Empty</span><SearchInput ariaLabel="Empty search state" classNames={{ root: 'state-search-empty' }} /></div>
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Filled</span><SearchInput ariaLabel="Filled search state" value="Governance" classNames={{ root: 'state-search-filled' }} /></div>
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Results visible</span><SearchInput ariaLabel="Results-visible search state" value="Governance" results={stateResults} classNames={{ root: 'state-search-results' }} /></div>
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Input focus visible</span><SearchInput ariaLabel="Input-focus search state" classNames={{ root: 'state-search-input-focus', input: 'outline-2 outline-solid outline-offset-2 outline-border-focus' }} /></div>
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Clear hover</span><SearchInput ariaLabel="Clear-hover search state" value="Governance" classNames={{ root: 'state-search-clear-hover', clearButton: 'bg-surface-sunken' }} /></div>
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Submit hover</span><SearchInput ariaLabel="Submit-hover search state" classNames={{ root: 'state-search-submit-hover', submitButton: 'bg-control-primary-bg-hover' }} /></div>
+      <div className="grid gap-s"><span className="text-sm text-text-secondary">Control focus visible</span><SearchInput ariaLabel="Control-focus search state" classNames={{ root: 'state-search-control-focus', submitButton: 'outline-2 outline-solid outline-offset-1 outline-border-focus' }} /></div>
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (name: string) => canvasElement.querySelector<HTMLElement>(`.state-search-${name}`)!;
+
+    await step('public and derived states render the expected targets', async () => {
+      await expect(within(root('empty')).getByRole('searchbox')).toHaveValue('');
+      await expect(within(root('filled')).getByRole('searchbox')).toHaveValue('Governance');
+      await expect(within(root('results')).getByRole('region', { name: 'Search results' })).toBeVisible();
+      await expect(within(root('clear-hover')).getByRole('button', { name: 'Clear search' })).toBeVisible();
+    });
+
+    await step('forced input and control focus expose visible semantic rings', async () => {
+      const input = within(root('input-focus')).getByRole('searchbox');
+      const control = within(root('control-focus')).getByRole('button', { name: 'Submit search' });
+      await waitFor(() => expect(input).toHaveClass('pseudo-focus-visible'));
+      await waitFor(() => expect(control).toHaveClass('pseudo-focus-visible'));
+      const inputStyle = getComputedStyle(input);
+      const controlStyle = getComputedStyle(control);
+      await expect(parseFloat(inputStyle.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(parseFloat(controlStyle.outlineWidth)).toBeGreaterThanOrEqual(2);
+    });
+
+    await step('forced control hover changes the targeted semantic background', async () => {
+      const defaultClear = within(root('filled')).getByRole('button', { name: 'Clear search' });
+      const hoverClear = within(root('clear-hover')).getByRole('button', { name: 'Clear search' });
+      const defaultSubmit = within(root('empty')).getByRole('button', { name: 'Submit search' });
+      const hoverSubmit = within(root('submit-hover')).getByRole('button', { name: 'Submit search' });
+      await waitFor(() => expect(hoverClear).toHaveClass('pseudo-hover'));
+      await waitFor(() => expect(hoverSubmit).toHaveClass('pseudo-hover'));
+      if (matchMedia('(forced-colors: active)').matches) {
+        await expect(hoverClear.className).toContain('bg-surface-sunken');
+        await expect(hoverSubmit.className).toContain('bg-control-primary-bg-hover');
+      } else {
+        await waitFor(() => expect(getComputedStyle(hoverClear).backgroundColor).not.toBe(getComputedStyle(defaultClear).backgroundColor));
+        await waitFor(() => expect(getComputedStyle(hoverSubmit).backgroundColor).not.toBe(getComputedStyle(defaultSubmit).backgroundColor));
+      }
+    });
   },
 };

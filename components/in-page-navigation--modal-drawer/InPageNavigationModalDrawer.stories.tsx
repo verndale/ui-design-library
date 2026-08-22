@@ -255,3 +255,159 @@ export const ReducedMotion: Story = {
     });
   },
 };
+
+const MODAL_DRAWER_INTERACTION_STATES = [
+  { id: 'desktop-overview', label: 'Desktop · Overview active', ariaLabel: 'Desktop overview', activeId: 'overview', presentation: 'desktop' },
+  { id: 'desktop-pricing', label: 'Desktop · Pricing active', ariaLabel: 'Desktop pricing', activeId: 'pricing', presentation: 'desktop' },
+  { id: 'link-hover', label: 'Desktop · Inactive link hover', ariaLabel: 'Link hover', activeId: 'overview', presentation: 'desktop' },
+  { id: 'link-focus-visible', label: 'Desktop · Link focus visible', ariaLabel: 'Link focus', activeId: 'overview', presentation: 'desktop' },
+  { id: 'mobile-trigger', label: 'Mobile · Trigger', ariaLabel: 'Mobile trigger', activeId: 'overview', presentation: 'trigger' },
+  { id: 'trigger-focus-visible', label: 'Mobile · Trigger focus visible', ariaLabel: 'Trigger focus', activeId: 'overview', presentation: 'trigger' },
+  { id: 'mobile-dialog', label: 'Mobile · Dialog open', ariaLabel: 'Dialog open', activeId: 'overview', presentation: 'dialog' },
+  { id: 'dialog-link-focus-visible', label: 'Mobile · Dialog link focus visible', ariaLabel: 'Dialog link focus', activeId: 'overview', presentation: 'dialog' },
+  { id: 'close-hover', label: 'Mobile · Close hover', ariaLabel: 'Close hover', activeId: 'overview', presentation: 'dialog' },
+  { id: 'close-focus-visible', label: 'Mobile · Close focus visible', ariaLabel: 'Close focus', activeId: 'overview', presentation: 'dialog' },
+] as const;
+const modalDrawerInteractionItems = sections.slice(0, 4);
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: { story: { inline: false, height: '2800px' } },
+    pseudo: {
+      rootSelector: 'body',
+      hover: [
+        '.state-inpage-modal-link-hover a[href="#features"]',
+      ],
+      focusVisible: [
+        '.state-inpage-modal-link-focus-visible a[href="#features"]',
+        '.state-inpage-modal-trigger-focus-visible button[aria-haspopup="dialog"]',
+      ],
+    },
+  },
+  render: () => (
+    <div className="grid min-h-screen grid-cols-1 gap-l bg-surface-raised p-l text-sm text-text-secondary 2xl:grid-cols-2">
+      {MODAL_DRAWER_INTERACTION_STATES.map((state) => {
+        const desktop = state.presentation === 'desktop';
+        const dialog = state.presentation === 'dialog';
+        return (
+          <section key={state.id} className={`state-inpage-modal-${state.id} rounded-medium bg-surface-sunken p-m`}>
+            <p className="mb-s font-semibold uppercase tracking-wide">{state.label}</p>
+            <div className={desktop ? 'w-full max-w-[680px]' : 'w-full max-w-[360px]'}>
+              <InPageNavigationModalDrawer
+                items={modalDrawerInteractionItems}
+                activeId={state.activeId}
+                ariaLabel={state.ariaLabel}
+                className={[
+                  '!static',
+                  state.id === 'link-hover' ? '[&_li:nth-child(2)_a]:!text-text-primary' : undefined,
+                  state.id === 'link-focus-visible'
+                    ? '[&_li:nth-child(2)_a]:outline-2 [&_li:nth-child(2)_a]:outline-solid [&_li:nth-child(2)_a]:outline-offset-2 [&_li:nth-child(2)_a]:outline-border-focus'
+                    : undefined,
+                ].filter(Boolean).join(' ')}
+                classNames={{
+                  desktopList: desktop ? '!flex' : '!hidden',
+                  mobile: desktop ? '!hidden' : '!block',
+                  backdrop: dialog ? 'hidden' : undefined,
+                  viewport: dialog ? `state-inpage-modal-viewport-${state.id} !static !inset-auto !z-auto !flex !p-0` : undefined,
+                  dialog: dialog ? `state-inpage-modal-dialog-${state.id} !mx-auto !h-auto !max-h-none !w-[360px] !max-w-[360px]` : undefined,
+                  closeButton: state.id === 'close-hover'
+                    ? '!bg-action-hover'
+                    : state.id === 'close-focus-visible'
+                      ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                      : undefined,
+                  trigger: state.id === 'trigger-focus-visible'
+                    ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                    : undefined,
+                  mobileList: state.id === 'dialog-link-focus-visible'
+                    ? '[&_li:nth-child(2)_a]:outline-2 [&_li:nth-child(2)_a]:outline-solid [&_li:nth-child(2)_a]:outline-offset-2 [&_li:nth-child(2)_a]:outline-border-focus'
+                    : undefined,
+                }}
+              />
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  ),
+  play: async ({ step }) => {
+    const root = (state: string) => document.body.querySelector<HTMLElement>(`.state-inpage-modal-${state}`)!;
+    const link = (state: string, name: string) => within(root(state)).getByRole('link', { name });
+    const dialogFor = (state: string) => document.body.querySelector<HTMLElement>(`.state-inpage-modal-dialog-${state}`)!;
+
+    await step('desktop variants expose the controlled current section', async () => {
+      await expect(link('desktop-overview', 'Overview')).toHaveAttribute('aria-current', 'true');
+      await expect(link('desktop-overview', 'Pricing')).not.toHaveAttribute('aria-current');
+      await expect(link('desktop-pricing', 'Pricing')).toHaveAttribute('aria-current', 'true');
+    });
+
+    await step('desktop hover resolves the governed primary text token', async () => {
+      const hover = link('link-hover', 'Features');
+      await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+      const probe = document.createElement('span');
+      probe.style.color = getComputedStyle(document.documentElement).getPropertyValue('--color-text-primary');
+      document.body.append(probe);
+      const expectedColor = getComputedStyle(probe).color;
+      probe.remove();
+      if (!matchMedia('(forced-colors: active)').matches) {
+        await expect(getComputedStyle(hover).color).toBe(expectedColor);
+      }
+    });
+
+    await step('desktop link and mobile trigger expose the governed focus ring', async () => {
+      const targets = [
+        link('link-focus-visible', 'Features'),
+        within(root('trigger-focus-visible')).getByRole('button'),
+      ];
+      for (const target of targets) {
+        await waitFor(() => expect(target).toHaveClass('pseudo-focus-visible'));
+        const style = getComputedStyle(target);
+        await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+        await expect(style.outlineStyle).not.toBe('none');
+        await expect(style.outlineOffset).toBe('2px');
+      }
+    });
+
+    await step('mobile trigger retains the source shell and control geometry', async () => {
+      const trigger = within(root('mobile-trigger')).getByRole('button');
+      await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+      await expect(trigger.parentElement!.getBoundingClientRect().width).toBeCloseTo(360, 0);
+      await expect(trigger.getBoundingClientRect().width).toBeCloseTo(358, 0);
+      const rootFontScale = parseFloat(getComputedStyle(document.documentElement).fontSize) / 16;
+      await expect(trigger.getBoundingClientRect().height).toBeCloseTo(52 * rootFontScale, 0);
+    });
+
+    await step('dialog presentations mount as real public modal drawers', async () => {
+      for (const state of ['mobile-dialog', 'dialog-link-focus-visible', 'close-hover', 'close-focus-visible']) {
+        fireEvent.click(within(root(state)).getByRole('button', { name: 'Overview' }));
+        await waitFor(() => expect(dialogFor(state)).toBeInTheDocument());
+        await expect(dialogFor(state)).toHaveAttribute('aria-modal', 'true');
+        await waitFor(() => expect(dialogFor(state).getBoundingClientRect().width).toBeCloseTo(360, 0));
+      }
+    });
+
+    await step('dialog link and close control expose governed forced states', async () => {
+      const dialogLink = dialogFor('dialog-link-focus-visible').querySelector<HTMLAnchorElement>('a[href="#features"]')!;
+      const closeHover = dialogFor('close-hover').querySelector<HTMLButtonElement>('button[aria-label="Close navigation"]')!;
+      const closeFocus = dialogFor('close-focus-visible').querySelector<HTMLButtonElement>('button[aria-label="Close navigation"]')!;
+      for (const target of [dialogLink, closeFocus]) {
+        const style = getComputedStyle(target);
+        await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+        await expect(style.outlineOffset).toBe('2px');
+      }
+      const probe = document.createElement('span');
+      probe.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-action-hover');
+      document.body.append(probe);
+      const expectedHover = getComputedStyle(probe).backgroundColor;
+      probe.remove();
+      await expect(getComputedStyle(closeHover).backgroundColor).toBe(expectedHover);
+    });
+
+    await step('in-page-navigation-modal.interaction-states.motion', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      await expect(getComputedStyle(dialogFor('mobile-dialog')).animationDuration).toBe(reduced ? '0s' : '0.3s');
+    });
+  },
+};

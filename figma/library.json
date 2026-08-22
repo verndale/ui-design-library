@@ -33,6 +33,16 @@
         "tabletSmall": 768,
         "mobile": 390
       },
+      "interactionStates": {
+        "presentationName": "Interaction states",
+        "storyExport": "InteractionStates",
+        "specimenRole": "documentation",
+        "masterProperties": "unchanged",
+        "instanceConnection": "registered-master",
+        "labelPlacement": "outside-component-instance",
+        "visualSource": "semantic-variables",
+        "rasterScreenshots": false
+      },
       "tokenBindings": {
         "canvasSurface": {
           "figmaVariable": "code/color/surface/base",
@@ -86,6 +96,7 @@
       "developer handoff target is the direct canonical component instance",
       "annotations remain outside the component-only handoff frame",
       "responsive specimens cover 1440, 1024, 768, and 390 pixel viewports when applicable",
+      "storybook and Figma interaction-state coverage is recorded",
       "alignment, margins, padding, whitespace, clipping, and containment are audited",
       "source-parity, adversarial, and design review findings are fixed and recorded",
       "candidate components remain unpublished pending maintainer action",
@@ -170,6 +181,22 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "primary.default", "label": "Primary default", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "variant=primary; size=medium; disabled=false" }, "classification": "already-represented", "frameNodeId": "348:7", "instanceNodeId": "348:8", "componentNodeId": "21:14" },
+            { "id": "primary.hover", "label": "Primary hover", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "348:14", "instanceNodeId": "348:15", "componentNodeId": "21:14" },
+            { "id": "primary.focus-visible", "label": "Primary focus visible", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "348:21", "instanceNodeId": "348:22", "componentNodeId": "21:14" },
+            { "id": "primary.disabled", "label": "Primary disabled", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "348:28", "instanceNodeId": "348:29", "componentNodeId": "21:20" },
+            { "id": "secondary.default", "label": "Secondary default", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "variant=secondary; size=medium; disabled=false" }, "classification": "already-represented", "frameNodeId": "348:38", "instanceNodeId": "348:39", "componentNodeId": "21:50" },
+            { "id": "secondary.hover", "label": "Secondary hover", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "348:45", "instanceNodeId": "348:46", "componentNodeId": "21:50" },
+            { "id": "secondary.focus-visible", "label": "Secondary focus visible", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "348:52", "instanceNodeId": "348:53", "componentNodeId": "21:50" },
+            { "id": "secondary.disabled", "label": "Secondary disabled", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "348:59", "instanceNodeId": "348:60", "componentNodeId": "21:56" },
+            { "id": "keyboard-activation", "label": "Keyboard activation", "target": "Button activation behavior", "source": { "trigger": "behavior", "value": "Enter and Space activation" }, "classification": "runtime-only", "reason": "Activation semantics require executable browser evidence and cannot be represented honestly in a static frame." },
+            { "id": "motion-timing", "label": "Motion timing", "target": "Button color transition", "source": { "trigger": "behavior", "value": "semantic duration and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition timing and reduced-motion behavior require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary"] },
@@ -247,6 +274,22 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "primary.default", "label": "Primary default", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "variant=primary; presentation=icon-only; disabled=false" }, "classification": "already-represented", "frameNodeId": "348:69", "instanceNodeId": "348:70", "componentNodeId": "307:15" },
+            { "id": "primary.hover", "label": "Primary hover", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "348:74", "instanceNodeId": "348:75", "componentNodeId": "307:15" },
+            { "id": "primary.focus-visible", "label": "Primary focus visible", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "348:79", "instanceNodeId": "348:80", "componentNodeId": "307:15" },
+            { "id": "primary.disabled", "label": "Primary disabled", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "348:84", "instanceNodeId": "348:85", "componentNodeId": "307:21" },
+            { "id": "secondary.default", "label": "Secondary default", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "variant=secondary; presentation=icon-only; disabled=false" }, "classification": "already-represented", "frameNodeId": "348:92", "instanceNodeId": "348:93", "componentNodeId": "307:51" },
+            { "id": "secondary.hover", "label": "Secondary hover", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "348:97", "instanceNodeId": "348:98", "componentNodeId": "307:51" },
+            { "id": "secondary.focus-visible", "label": "Secondary focus visible", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "348:102", "instanceNodeId": "348:103", "componentNodeId": "307:51" },
+            { "id": "secondary.disabled", "label": "Secondary disabled", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "348:107", "instanceNodeId": "348:108", "componentNodeId": "307:57" },
+            { "id": "keyboard-activation", "label": "Keyboard activation", "target": "Icon-only button activation behavior", "source": { "trigger": "behavior", "value": "Enter and Space activation" }, "classification": "runtime-only", "reason": "Activation and accessible-name behavior require executable browser evidence." },
+            { "id": "motion-timing", "label": "Motion timing", "target": "Button color transition", "source": { "trigger": "behavior", "value": "semantic duration and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition timing and reduced-motion behavior require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary"] },
           { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
@@ -309,6 +352,26 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "primary.default", "label": "Primary default", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "surface=dark; variant=primary; disabled=false" }, "classification": "already-represented", "frameNodeId": "350:13", "instanceNodeId": "350:14", "componentNodeId": "53:16" },
+            { "id": "primary.hover", "label": "Primary hover", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "350:20", "instanceNodeId": "350:21", "componentNodeId": "53:16" },
+            { "id": "primary.focus-visible", "label": "Primary focus visible", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "350:27", "instanceNodeId": "350:28", "componentNodeId": "53:16" },
+            { "id": "primary.disabled", "label": "Primary disabled", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "350:35", "instanceNodeId": "350:36", "componentNodeId": "53:22" },
+            { "id": "secondary.default", "label": "Secondary default", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "surface=dark; variant=secondary; disabled=false" }, "classification": "already-represented", "frameNodeId": "350:45", "instanceNodeId": "350:46", "componentNodeId": "53:52" },
+            { "id": "secondary.hover", "label": "Secondary hover", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "350:52", "instanceNodeId": "350:53", "componentNodeId": "53:52" },
+            { "id": "secondary.focus-visible", "label": "Secondary focus visible", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "350:59", "instanceNodeId": "350:60", "componentNodeId": "53:52" },
+            { "id": "secondary.disabled", "label": "Secondary disabled", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "350:67", "instanceNodeId": "350:68", "componentNodeId": "53:58" },
+            { "id": "ghost.default", "label": "Ghost default", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "surface=dark; variant=ghost; disabled=false" }, "classification": "already-represented", "frameNodeId": "350:77", "instanceNodeId": "350:78", "componentNodeId": "54:14" },
+            { "id": "ghost.hover", "label": "Ghost hover", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "350:84", "instanceNodeId": "350:85", "componentNodeId": "54:14" },
+            { "id": "ghost.focus-visible", "label": "Ghost focus visible", "target": "Medium label button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "350:91", "instanceNodeId": "350:92", "componentNodeId": "54:14" },
+            { "id": "ghost.disabled", "label": "Ghost disabled", "target": "Medium label button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "350:99", "instanceNodeId": "350:100", "componentNodeId": "54:20" },
+            { "id": "keyboard-activation", "label": "Keyboard activation", "target": "Button activation behavior", "source": { "trigger": "behavior", "value": "Enter and Space activation" }, "classification": "runtime-only", "reason": "Activation semantics require executable browser evidence and cannot be represented honestly in a static frame." },
+            { "id": "motion-timing", "label": "Motion timing", "target": "Button color transition", "source": { "trigger": "behavior", "value": "semantic duration and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition timing and reduced-motion behavior require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary", "Ghost"] },
@@ -378,6 +441,26 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "primary.default", "label": "Primary default", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "surface=dark; variant=primary; disabled=false" }, "classification": "already-represented", "frameNodeId": "350:109", "instanceNodeId": "350:110", "componentNodeId": "308:15" },
+            { "id": "primary.hover", "label": "Primary hover", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "350:114", "instanceNodeId": "350:115", "componentNodeId": "308:15" },
+            { "id": "primary.focus-visible", "label": "Primary focus visible", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "350:119", "instanceNodeId": "350:120", "componentNodeId": "308:15" },
+            { "id": "primary.disabled", "label": "Primary disabled", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "350:125", "instanceNodeId": "350:126", "componentNodeId": "308:21" },
+            { "id": "secondary.default", "label": "Secondary default", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "surface=dark; variant=secondary; disabled=false" }, "classification": "already-represented", "frameNodeId": "350:133", "instanceNodeId": "350:134", "componentNodeId": "308:51" },
+            { "id": "secondary.hover", "label": "Secondary hover", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "350:138", "instanceNodeId": "350:139", "componentNodeId": "308:51" },
+            { "id": "secondary.focus-visible", "label": "Secondary focus visible", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "350:143", "instanceNodeId": "350:144", "componentNodeId": "308:51" },
+            { "id": "secondary.disabled", "label": "Secondary disabled", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "350:149", "instanceNodeId": "350:150", "componentNodeId": "308:57" },
+            { "id": "ghost.default", "label": "Ghost default", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "surface=dark; variant=ghost; disabled=false" }, "classification": "already-represented", "frameNodeId": "350:157", "instanceNodeId": "350:158", "componentNodeId": "308:87" },
+            { "id": "ghost.hover", "label": "Ghost hover", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "350:162", "instanceNodeId": "350:163", "componentNodeId": "308:87" },
+            { "id": "ghost.focus-visible", "label": "Ghost focus visible", "target": "Medium icon-only button", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "350:167", "instanceNodeId": "350:168", "componentNodeId": "308:87" },
+            { "id": "ghost.disabled", "label": "Ghost disabled", "target": "Medium icon-only button", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "350:173", "instanceNodeId": "350:174", "componentNodeId": "308:93" },
+            { "id": "keyboard-activation", "label": "Keyboard activation", "target": "Icon-only button activation behavior", "source": { "trigger": "behavior", "value": "Enter and Space activation" }, "classification": "runtime-only", "reason": "Activation and accessible-name behavior require executable browser evidence." },
+            { "id": "motion-timing", "label": "Motion timing", "target": "Button color transition", "source": { "trigger": "behavior", "value": "semantic duration and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition timing and reduced-motion behavior require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Variant", "type": "VARIANT", "values": ["Primary", "Secondary", "Ghost"] },
           { "name": "Size", "type": "VARIANT", "values": ["Large", "Medium", "Small"] },
@@ -431,10 +514,15 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "responsive-specimens",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "responsive-specimens",
+      "stateCoverage": {
+        "status": "not-applicable",
+        "reason": "The component owns static section-introduction content and no interaction behavior or pseudo-state styling.",
+        "states": []
+      },
+      "properties": [
           { "name": "Heading", "type": "TEXT" },
           { "name": "Eyebrow", "type": "TEXT" },
           { "name": "Show eyebrow", "type": "BOOLEAN" },
@@ -493,10 +581,106 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "responsive-specimens",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "responsive-specimens",
+      "stateCoverage": {
+        "status": "covered",
+        "storyExport": "InteractionStates",
+        "states": [
+          {
+            "id": "positive",
+            "label": "Positive",
+            "target": "Alert frame and positive tone",
+            "source": { "trigger": "public-prop", "value": "variant=positive, open=true, onDismiss omitted" },
+            "classification": "already-represented",
+            "frameNodeId": "375:109",
+            "instanceNodeId": "375:129",
+            "componentNodeId": "66:89"
+          },
+          {
+            "id": "critical",
+            "label": "Critical",
+            "target": "Alert frame and critical tone",
+            "source": { "trigger": "public-prop", "value": "variant=critical, open=true, onDismiss omitted" },
+            "classification": "already-represented",
+            "frameNodeId": "375:143",
+            "instanceNodeId": "375:163",
+            "componentNodeId": "66:99"
+          },
+          {
+            "id": "dismiss-default",
+            "label": "Dismiss default",
+            "target": "Dismiss control",
+            "source": { "trigger": "public-prop", "value": "onDismiss is present" },
+            "classification": "already-represented",
+            "frameNodeId": "375:178",
+            "instanceNodeId": "375:198",
+            "componentNodeId": "66:89"
+          },
+          {
+            "id": "dismiss-hover",
+            "label": "Dismiss hover",
+            "target": "Dismiss control",
+            "source": { "trigger": "pseudo", "value": "dismiss button:hover" },
+            "classification": "rendered",
+            "frameNodeId": "375:214",
+            "instanceNodeId": "375:234",
+            "componentNodeId": "66:89"
+          },
+          {
+            "id": "dismiss-focus-visible",
+            "label": "Dismiss focus visible",
+            "target": "Dismiss control",
+            "source": { "trigger": "pseudo", "value": "dismiss button:focus-visible" },
+            "classification": "rendered",
+            "frameNodeId": "375:250",
+            "instanceNodeId": "375:270",
+            "componentNodeId": "66:89"
+          },
+          {
+            "id": "dismissal-activation",
+            "label": "Dismissal activation",
+            "target": "Alert and dismiss control",
+            "source": { "trigger": "behavior", "value": "alert.dismiss.keyboard" },
+            "classification": "runtime-only",
+            "reason": "Keyboard activation and removal from the live DOM require executable evidence."
+          },
+          {
+            "id": "auto-dismiss-timer",
+            "label": "Auto-dismiss timer",
+            "target": "Alert lifetime",
+            "source": { "trigger": "behavior", "value": "dismissMs greater than zero" },
+            "classification": "runtime-only",
+            "reason": "Elapsed-time dismissal cannot be represented by a static frame."
+          },
+          {
+            "id": "timing-opt-out",
+            "label": "Persistent timing opt-out",
+            "target": "Alert lifetime",
+            "source": { "trigger": "behavior", "value": "alert.timing.opt-out" },
+            "classification": "runtime-only",
+            "reason": "Persistence over time requires executable timer evidence."
+          },
+          {
+            "id": "announcement-priority",
+            "label": "Announcement priority",
+            "target": "Alert live region",
+            "source": { "trigger": "behavior", "value": "alert.announcement.priority" },
+            "classification": "runtime-only",
+            "reason": "Polite versus assertive live-region behavior requires DOM and assistive-technology evidence."
+          },
+          {
+            "id": "dismiss-motion",
+            "label": "Dismiss motion",
+            "target": "Dismiss control transition",
+            "source": { "trigger": "behavior", "value": "alert.dismiss.motion" },
+            "classification": "runtime-only",
+            "reason": "Transition duration and reduced-motion collapse require executable media-query evidence."
+          }
+        ]
+      },
+      "properties": [
           { "name": "Message", "type": "TEXT" },
           { "name": "Variant", "type": "VARIANT", "values": ["Positive", "Critical"] },
           { "name": "Show accent", "type": "BOOLEAN" },
@@ -556,6 +740,11 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "not-applicable",
+          "reason": "The Card container owns structure and surface only; its as prop does not add interaction styling. CardMedia owns the family interaction behavior separately.",
+          "states": []
+        },
         "properties": [
           { "name": "Content", "type": "SLOT" },
           { "name": "Surface", "type": "VARIANT", "values": ["Raised", "Unset"] }
@@ -612,6 +801,50 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            {
+              "id": "rest",
+              "label": "Rest",
+              "target": "CardMedia child",
+              "source": { "trigger": "derived-state", "value": "group is neither hovered nor focus-visible" },
+              "classification": "already-represented",
+              "frameNodeId": "379:49",
+              "instanceNodeId": "379:69",
+              "componentNodeId": "69:90"
+            },
+            {
+              "id": "group-hover",
+              "label": "Group hover",
+              "target": "CardMedia child",
+              "source": { "trigger": "pseudo", "value": "group:hover" },
+              "classification": "rendered",
+              "frameNodeId": "379:75",
+              "instanceNodeId": "379:95",
+              "componentNodeId": "69:90"
+            },
+            {
+              "id": "group-focus-visible",
+              "label": "Group focus visible",
+              "target": "CardMedia child",
+              "source": { "trigger": "pseudo", "value": "group:focus-visible" },
+              "classification": "rendered",
+              "frameNodeId": "379:105",
+              "instanceNodeId": "379:125",
+              "componentNodeId": "69:90"
+            },
+            {
+              "id": "reduced-motion",
+              "label": "Reduced motion",
+              "target": "CardMedia transform transition",
+              "source": { "trigger": "behavior", "value": "card-media.motion.reduced" },
+              "classification": "runtime-only",
+              "reason": "The scale suppression and transition-duration collapse require executable media-query evidence."
+            }
+          ]
+        },
         "properties": [{ "name": "Media", "type": "SLOT" }]
       },
       "mappings": [{ "figmaProperty": "Media", "kind": "slot", "codeProp": "children" }],
@@ -676,6 +909,26 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-full-viewport",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "open-medium", "label": "Open medium", "target": "Modal panel", "source": { "trigger": "public-prop", "value": "open=true; size=medium" }, "classification": "already-represented", "frameNodeId": "394:12", "instanceNodeId": "394:301", "componentNodeId": "75:89" },
+            { "id": "open-large", "label": "Open large", "target": "Modal panel", "source": { "trigger": "public-prop", "value": "open=true; size=large" }, "classification": "already-represented", "frameNodeId": "394:16", "instanceNodeId": "394:325", "componentNodeId": "75:114" },
+            { "id": "close-default", "label": "Close default", "target": "Close dialog button", "source": { "trigger": "public-prop", "value": "open=true; closeLabel=Close dialog" }, "classification": "already-represented", "frameNodeId": "394:26", "instanceNodeId": "394:349", "componentNodeId": "75:89" },
+            { "id": "close-hover", "label": "Close hover", "target": "Close dialog button", "source": { "trigger": "pseudo", "value": "button:hover" }, "classification": "rendered", "frameNodeId": "394:30", "instanceNodeId": "394:373", "componentNodeId": "75:89" },
+            { "id": "close-focus-visible", "label": "Close focus visible", "target": "Close dialog button", "source": { "trigger": "pseudo", "value": "button:focus-visible" }, "classification": "rendered", "frameNodeId": "394:294", "instanceNodeId": "394:414", "componentNodeId": "75:89" },
+            { "id": "closed-unmounted", "label": "Closed and unmounted", "target": "Modal portal", "source": { "trigger": "behavior", "value": "open=false" }, "classification": "runtime-only", "reason": "The absence of the portal and dialog requires executable DOM evidence." },
+            { "id": "focus-containment", "label": "Focus containment", "target": "Modal dialog", "source": { "trigger": "behavior", "value": "modal.focus.containment" }, "classification": "runtime-only", "reason": "Tab and Shift+Tab sequencing must be exercised in a browser." },
+            { "id": "focus-restoration", "label": "Focus restoration", "target": "Trigger or returnFocusRef", "source": { "trigger": "behavior", "value": "modal.focus.restoration" }, "classification": "runtime-only", "reason": "Focus restoration is observable only after the modal closes." },
+            { "id": "keyboard-escape", "label": "Escape dismissal", "target": "Topmost modal", "source": { "trigger": "behavior", "value": "modal.keyboard.escape" }, "classification": "runtime-only", "reason": "Keyboard dismissal and the resulting focus transition require executable evidence." },
+            { "id": "background-inert", "label": "Background inertness", "target": "Page behind the modal", "source": { "trigger": "behavior", "value": "modal.background.inert" }, "classification": "runtime-only", "reason": "Inert background behavior and redirected focus cannot be represented by a static frame." },
+            { "id": "semantic-relationships", "label": "Dialog semantic relationships", "target": "Modal dialog", "source": { "trigger": "behavior", "value": "modal.semantics.relationships" }, "classification": "runtime-only", "reason": "Resolved aria-labelledby and aria-describedby relationships require DOM inspection." },
+            { "id": "backdrop-dismissal", "label": "Backdrop dismissal", "target": "Modal scrim", "source": { "trigger": "behavior", "value": "backdrop click closes; panel click is ignored" }, "classification": "runtime-only", "reason": "The guarded event-target behavior requires pointer interaction." },
+            { "id": "stacked-overlays", "label": "Stacked overlay ownership", "target": "Topmost modal", "source": { "trigger": "behavior", "value": "topmost overlay owns semantics, focus, Escape, and scroll lock" }, "classification": "runtime-only", "reason": "Overlay-stack ownership changes across a multi-step dismissal sequence." },
+            { "id": "close-motion", "label": "Entrance and close-control motion", "target": "Modal panel and close button", "source": { "trigger": "behavior", "value": "modal.close.motion" }, "classification": "runtime-only", "reason": "Animation and transition durations, including reduced-motion collapse, require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Title", "type": "TEXT" },
           { "name": "Eyebrow", "type": "TEXT" },
@@ -742,6 +995,11 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
+        "stateCoverage": {
+          "status": "not-applicable",
+          "reason": "The portrait frame owns no interaction behavior or pseudo-state styling.",
+          "states": []
+        },
         "properties": [{ "name": "Media", "type": "SLOT" }]
       },
       "mappings": [{ "figmaProperty": "Media", "kind": "slot", "codeProp": "children" }],
@@ -787,10 +1045,90 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "component-matrix",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "component-matrix",
+      "stateCoverage": {
+        "status": "covered",
+        "storyExport": "InteractionStates",
+        "states": [
+          {
+            "id": "default",
+            "label": "Default",
+            "target": "Badge frame",
+            "source": { "trigger": "public-prop", "value": "onRemove omitted, disabled=false" },
+            "classification": "already-represented",
+            "frameNodeId": "376:69",
+            "instanceNodeId": "376:89",
+            "componentNodeId": "167:40"
+          },
+          {
+            "id": "removable",
+            "label": "Removable",
+            "target": "Badge remove control",
+            "source": { "trigger": "public-prop", "value": "onRemove is present" },
+            "classification": "already-represented",
+            "frameNodeId": "376:95",
+            "instanceNodeId": "376:115",
+            "componentNodeId": "167:44"
+          },
+          {
+            "id": "disabled",
+            "label": "Disabled",
+            "target": "Badge and remove control",
+            "source": { "trigger": "public-prop", "value": "disabled=true, onRemove is present" },
+            "classification": "already-represented",
+            "frameNodeId": "376:125",
+            "instanceNodeId": "376:145",
+            "componentNodeId": "167:54"
+          },
+          {
+            "id": "remove-hover",
+            "label": "Remove hover",
+            "target": "Badge remove control",
+            "source": { "trigger": "pseudo", "value": "remove button:hover" },
+            "classification": "rendered",
+            "frameNodeId": "376:155",
+            "instanceNodeId": "376:175",
+            "componentNodeId": "167:44"
+          },
+          {
+            "id": "remove-focus-visible",
+            "label": "Remove focus visible",
+            "target": "Badge remove control",
+            "source": { "trigger": "pseudo", "value": "remove button:focus-visible" },
+            "classification": "rendered",
+            "frameNodeId": "376:185",
+            "instanceNodeId": "376:205",
+            "componentNodeId": "167:44"
+          },
+          {
+            "id": "remove-activation",
+            "label": "Remove activation",
+            "target": "Badge remove control",
+            "source": { "trigger": "behavior", "value": "badge.remove.keyboard" },
+            "classification": "runtime-only",
+            "reason": "Click and keyboard callback activation require executable evidence."
+          },
+          {
+            "id": "disabled-activation",
+            "label": "Disabled activation blocked",
+            "target": "Disabled badge remove control",
+            "source": { "trigger": "behavior", "value": "disabled remove callback suppression" },
+            "classification": "runtime-only",
+            "reason": "Callback suppression cannot be proven by a static disabled appearance."
+          },
+          {
+            "id": "remove-motion",
+            "label": "Remove motion",
+            "target": "Badge remove-control transition",
+            "source": { "trigger": "behavior", "value": "badge.remove.motion" },
+            "classification": "runtime-only",
+            "reason": "Transition duration and reduced-motion collapse require executable media-query evidence."
+          }
+        ]
+      },
+      "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Start icon", "type": "BOOLEAN" },
           { "name": "End icon", "type": "BOOLEAN" },
@@ -852,6 +1190,18 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "component-matrix",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "default", "label": "Default", "target": "Medium Link", "source": { "trigger": "public-prop", "value": "size=medium; disabled=false" }, "classification": "already-represented", "frameNodeId": "351:27", "instanceNodeId": "351:28", "componentNodeId": "169:46" },
+            { "id": "hover", "label": "Hover", "target": "Medium Link", "source": { "trigger": "pseudo", "value": ":hover" }, "classification": "rendered", "frameNodeId": "351:34", "instanceNodeId": "351:35", "componentNodeId": "169:46" },
+            { "id": "focus-visible", "label": "Focus visible", "target": "Medium Link", "source": { "trigger": "pseudo", "value": ":focus-visible" }, "classification": "rendered", "frameNodeId": "351:41", "instanceNodeId": "351:42", "componentNodeId": "169:46" },
+            { "id": "disabled", "label": "Disabled", "target": "Medium Link", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "351:49", "instanceNodeId": "351:50", "componentNodeId": "169:50" },
+            { "id": "navigation-activation", "label": "Navigation activation", "target": "Link navigation behavior", "source": { "trigger": "behavior", "value": "Enter activation and destination navigation" }, "classification": "runtime-only", "reason": "Navigation and activation semantics require executable browser evidence." },
+            { "id": "disabled-event-suppression", "label": "Disabled event suppression", "target": "Disabled Link behavior", "source": { "trigger": "behavior", "value": "prevent navigation and click handling" }, "classification": "runtime-only", "reason": "Event suppression cannot be demonstrated by a static visual specimen." }
+          ]
+        },
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Href", "type": "TEXT" },
@@ -913,10 +1263,15 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "component-matrix",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "component-matrix",
+      "stateCoverage": {
+        "status": "not-applicable",
+        "reason": "The responsive image wrapper owns no interactive state, event handler, or pseudo-state styling.",
+        "states": []
+      },
+      "properties": [
           { "name": "Source", "type": "TEXT" },
           { "name": "Alternative text", "type": "TEXT" },
           { "name": "Width", "type": "TEXT" },
@@ -973,10 +1328,15 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "component-matrix",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "component-matrix",
+      "stateCoverage": {
+        "status": "not-applicable",
+        "reason": "The semantic blockquote is static content with no interaction behavior or pseudo-state styling.",
+        "states": []
+      },
+      "properties": [
           { "name": "Quote", "type": "TEXT" },
           { "name": "Citation", "type": "TEXT" }
         ]
@@ -1027,10 +1387,15 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "component-matrix",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "component-matrix",
+      "stateCoverage": {
+        "status": "not-applicable",
+        "reason": "The component styles authored content but does not own nested controls, event handling, or pseudo-state behavior.",
+        "states": []
+      },
+      "properties": [
           { "name": "Content", "type": "TEXT" },
           { "name": "List style", "type": "VARIANT", "values": ["Default", "Checkmark"] }
         ]
@@ -1081,10 +1446,15 @@
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
           "evidence": "wiki/journal/2026-08-19-source-parity-governance-foundation.md"
-        },
-        "handoffPattern": "direct-canonical-instance",
-        "presentationPattern": "component-matrix",
-        "properties": [
+      },
+      "handoffPattern": "direct-canonical-instance",
+      "presentationPattern": "component-matrix",
+      "stateCoverage": {
+        "status": "not-applicable",
+        "reason": "The statistic and group structures are static content with no interaction behavior or pseudo-state styling.",
+        "states": []
+      },
+      "properties": [
           { "name": "Value", "type": "TEXT" },
           { "name": "Label", "type": "TEXT" },
           { "name": "Description", "type": "TEXT" },
@@ -1142,6 +1512,22 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "empty", "label": "Empty", "target": "Search field", "source": { "trigger": "derived-state", "value": "value is empty" }, "classification": "already-represented", "frameNodeId": "353:44", "instanceNodeId": "353:45", "componentNodeId": "177:4" },
+            { "id": "filled", "label": "Filled", "target": "Search field", "source": { "trigger": "derived-state", "value": "value is non-empty" }, "classification": "already-represented", "frameNodeId": "353:56", "instanceNodeId": "353:57", "componentNodeId": "177:17" },
+            { "id": "results-visible", "label": "Results visible", "target": "Search results region", "source": { "trigger": "public-prop", "value": "results supplied" }, "classification": "already-represented", "frameNodeId": "353:68", "instanceNodeId": "353:69", "componentNodeId": "177:17" },
+            { "id": "input-focus-visible", "label": "Input focus visible", "target": "Search input", "source": { "trigger": "pseudo", "value": "input:focus-visible" }, "classification": "rendered", "frameNodeId": "353:84", "instanceNodeId": "353:85", "componentNodeId": "177:4" },
+            { "id": "clear-hover", "label": "Clear hover", "target": "Clear search control", "source": { "trigger": "pseudo", "value": "clear button:hover" }, "classification": "rendered", "frameNodeId": "353:97", "instanceNodeId": "353:98", "componentNodeId": "177:17" },
+            { "id": "submit-hover", "label": "Submit hover", "target": "Submit search control", "source": { "trigger": "pseudo", "value": "submit button:hover" }, "classification": "rendered", "frameNodeId": "353:109", "instanceNodeId": "353:110", "componentNodeId": "177:4" },
+            { "id": "control-focus-visible", "label": "Control focus visible", "target": "Submit search control", "source": { "trigger": "pseudo", "value": "submit button:focus-visible" }, "classification": "rendered", "frameNodeId": "353:121", "instanceNodeId": "353:122", "componentNodeId": "177:4" },
+            { "id": "keyboard-submission", "label": "Keyboard submission", "target": "Search form", "source": { "trigger": "behavior", "value": "Enter submits the current query" }, "classification": "runtime-only", "reason": "Submission requires executable event and value evidence." },
+            { "id": "results-announcement", "label": "Results announcement", "target": "Search results region", "source": { "trigger": "behavior", "value": "accessible results announcement" }, "classification": "runtime-only", "reason": "Assistive-technology announcements are not visible in a static frame." },
+            { "id": "focus-movement", "label": "Focus movement", "target": "Search controls", "source": { "trigger": "behavior", "value": "clear and submit focus behavior" }, "classification": "runtime-only", "reason": "Focus movement and restoration require runtime interaction evidence." }
+          ]
+        },
         "properties": [
           { "name": "Placeholder", "type": "TEXT" },
           { "name": "Label", "type": "TEXT" },
@@ -1236,6 +1622,25 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "selected-small", "label": "Selected small", "target": "Range track, thumb, and selected value", "source": { "trigger": "public-prop", "value": "value=s" }, "classification": "already-represented", "frameNodeId": "386:12", "instanceNodeId": "386:140", "componentNodeId": "178:4" },
+            { "id": "selected-medium", "label": "Selected medium", "target": "Range track, thumb, and selected value", "source": { "trigger": "public-prop", "value": "value=m" }, "classification": "already-represented", "frameNodeId": "386:16", "instanceNodeId": "386:158", "componentNodeId": "178:22" },
+            { "id": "selected-large", "label": "Selected large", "target": "Range track, thumb, and selected value", "source": { "trigger": "public-prop", "value": "value=l" }, "classification": "already-represented", "frameNodeId": "386:21", "instanceNodeId": "386:176", "componentNodeId": "178:40" },
+            { "id": "selected-extra-large", "label": "Selected extra large", "target": "Range track, thumb, and selected value", "source": { "trigger": "public-prop", "value": "value=xl" }, "classification": "already-represented", "frameNodeId": "386:29", "instanceNodeId": "386:194", "componentNodeId": "178:58" },
+            { "id": "focus-visible", "label": "Range focus visible", "target": "Native range input", "source": { "trigger": "pseudo", "value": "input[type=range]:focus-visible" }, "classification": "rendered", "frameNodeId": "386:33", "instanceNodeId": "386:212", "componentNodeId": "178:22" },
+            { "id": "keyboard-navigation", "label": "Native keyboard navigation", "target": "Native range input", "source": { "trigger": "behavior", "value": "slider.keyboard.native" }, "classification": "runtime-only", "reason": "Arrow, Home, End, Page Up, and Page Down sequencing and focus retention require executable browser evidence." },
+            { "id": "value-announcement", "label": "Selected value announcement", "target": "Native range input", "source": { "trigger": "behavior", "value": "slider.value.announced" }, "classification": "runtime-only", "reason": "aria-valuetext updates require live DOM and assistive-technology evidence." },
+            { "id": "description-association", "label": "Hint and value description association", "target": "Native range input", "source": { "trigger": "behavior", "value": "slider.description.valid" }, "classification": "runtime-only", "reason": "Resolving aria-describedby references to live elements requires DOM evidence." },
+            { "id": "native-form-submission", "label": "Native form submission", "target": "Range and semantic hidden output", "source": { "trigger": "behavior", "value": "slider.form.native" }, "classification": "runtime-only", "reason": "Serialized FormData and the unnamed index-bearing range cannot be represented by a static frame." },
+            { "id": "uncontrolled-form-reset", "label": "Uncontrolled native form reset", "target": "Range and semantic hidden output", "source": { "trigger": "behavior", "value": "slider.form.reset" }, "classification": "runtime-only", "reason": "Reset event ordering and synchronized values require executable browser evidence." },
+            { "id": "controlled-form-reset", "label": "Controlled native form reset", "target": "Range and semantic hidden output", "source": { "trigger": "behavior", "value": "slider.form.controlled" }, "classification": "runtime-only", "reason": "Owner-controlled value persistence through a native reset requires executable state evidence." },
+            { "id": "fieldset-disabled", "label": "Inherited fieldset disabled", "target": "Range and semantic hidden output", "source": { "trigger": "behavior", "value": "slider.form.disabled" }, "classification": "runtime-only", "reason": "Inherited native disabled semantics and FormData exclusion require browser evidence." },
+            { "id": "empty-options", "label": "Empty option set", "target": "Slider output", "source": { "trigger": "behavior", "value": "slider.form.empty" }, "classification": "runtime-only", "reason": "The governed result is the absence of both native inputs, which requires DOM evidence rather than a fabricated empty specimen." }
+          ]
+        },
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Hint", "type": "TEXT" },
@@ -1302,6 +1707,88 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            {
+              "id": "trail-default",
+              "label": "Trail default",
+              "target": "Trail ancestor link",
+              "source": { "trigger": "public-prop", "value": "presentation=trail" },
+              "classification": "already-represented",
+              "frameNodeId": "378:74",
+              "instanceNodeId": "378:94",
+              "componentNodeId": "179:28"
+            },
+            {
+              "id": "trail-hover",
+              "label": "Trail link hover",
+              "target": "Trail ancestor link",
+              "source": { "trigger": "pseudo", "value": "trail link:hover" },
+              "classification": "rendered",
+              "frameNodeId": "378:105",
+              "instanceNodeId": "378:125",
+              "componentNodeId": "179:28"
+            },
+            {
+              "id": "trail-focus-visible",
+              "label": "Trail link focus visible",
+              "target": "Trail ancestor link",
+              "source": { "trigger": "pseudo", "value": "trail link:focus-visible" },
+              "classification": "rendered",
+              "frameNodeId": "378:137",
+              "instanceNodeId": "378:157",
+              "componentNodeId": "179:28"
+            },
+            {
+              "id": "back-link-default",
+              "label": "Back link default",
+              "target": "Nearest-ancestor back link",
+              "source": { "trigger": "public-prop", "value": "presentation=back-link" },
+              "classification": "already-represented",
+              "frameNodeId": "378:170",
+              "instanceNodeId": "378:190",
+              "componentNodeId": "179:46"
+            },
+            {
+              "id": "back-link-hover",
+              "label": "Back link hover",
+              "target": "Nearest-ancestor back link",
+              "source": { "trigger": "pseudo", "value": "back link:hover" },
+              "classification": "rendered",
+              "frameNodeId": "378:195",
+              "instanceNodeId": "378:215",
+              "componentNodeId": "179:46"
+            },
+            {
+              "id": "back-link-focus-visible",
+              "label": "Back link focus visible",
+              "target": "Nearest-ancestor back link",
+              "source": { "trigger": "pseudo", "value": "back link:focus-visible" },
+              "classification": "rendered",
+              "frameNodeId": "378:221",
+              "instanceNodeId": "378:241",
+              "componentNodeId": "179:46"
+            },
+            {
+              "id": "responsive-switch",
+              "label": "Responsive presentation switch",
+              "target": "Trail and back-link presentations",
+              "source": { "trigger": "behavior", "value": "breadcrumbs.responsive.hidden" },
+              "classification": "runtime-only",
+              "reason": "Viewport-dependent exclusivity requires computed-layout evidence at runtime."
+            },
+            {
+              "id": "underline-motion",
+              "label": "Underline motion",
+              "target": "Trail and back-link labels",
+              "source": { "trigger": "behavior", "value": "breadcrumbs.motion.reduced" },
+              "classification": "runtime-only",
+              "reason": "Transition duration and reduced-motion collapse require executable media-query evidence."
+            }
+          ]
+        },
         "properties": [
           { "name": "Current page", "type": "TEXT" },
           { "name": "Back link label", "type": "TEXT" },
@@ -1366,6 +1853,20 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "collapsed", "label": "Collapsed", "target": "First accordion item", "source": { "trigger": "derived-state", "value": "first item closed" }, "classification": "already-represented", "frameNodeId": "355:209", "instanceNodeId": "355:210", "componentNodeId": "180:4" },
+            { "id": "expanded", "label": "Expanded", "target": "First accordion item", "source": { "trigger": "derived-state", "value": "first item open" }, "classification": "already-represented", "frameNodeId": "355:231", "instanceNodeId": "355:232", "componentNodeId": "180:42" },
+            { "id": "trigger-focus-visible", "label": "Trigger focus visible", "target": "First accordion trigger", "source": { "trigger": "pseudo", "value": "trigger:focus-visible" }, "classification": "rendered", "frameNodeId": "355:254", "instanceNodeId": "355:255", "componentNodeId": "180:4" },
+            { "id": "reveal-collapsed", "label": "Reveal collapsed", "target": "See more control", "source": { "trigger": "public-prop", "value": "initialItemCount limits a collapsed list" }, "classification": "already-represented", "frameNodeId": "355:277", "instanceNodeId": "355:278", "componentNodeId": "180:4" },
+            { "id": "reveal-expanded", "label": "Reveal expanded", "target": "See less control", "source": { "trigger": "derived-state", "value": "reveal control toggled open" }, "classification": "rendered", "frameNodeId": "355:299", "instanceNodeId": "355:300", "componentNodeId": "180:42" },
+            { "id": "keyboard-activation", "label": "Keyboard activation", "target": "Accordion triggers and reveal control", "source": { "trigger": "behavior", "value": "Enter and Space activation" }, "classification": "runtime-only", "reason": "Activation semantics and expanded-state changes require executable evidence." },
+            { "id": "focus-stability", "label": "Focus stability", "target": "Accordion trigger", "source": { "trigger": "behavior", "value": "focus remains on the controlling trigger" }, "classification": "runtime-only", "reason": "Focus persistence cannot be represented by a static specimen." },
+            { "id": "expanded-announcement", "label": "Expanded announcement", "target": "Accordion trigger", "source": { "trigger": "behavior", "value": "aria-expanded and panel relationship" }, "classification": "runtime-only", "reason": "Accessible state announcements require DOM and assistive-technology evidence." }
+          ]
+        },
         "properties": [
           { "name": "Heading", "type": "TEXT" },
           { "name": "Show heading", "type": "BOOLEAN" },
@@ -1470,6 +1971,23 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "pills.selected", "label": "Pills selected", "target": "Overview tab", "source": { "trigger": "public-prop", "value": "presentation=pills; activeId=overview" }, "classification": "already-represented", "frameNodeId": "357:87", "instanceNodeId": "357:88", "componentNodeId": "181:4" },
+            { "id": "pills.unselected", "label": "Pills unselected", "target": "Overview tab", "source": { "trigger": "public-prop", "value": "presentation=pills; activeId=specs" }, "classification": "already-represented", "frameNodeId": "357:101", "instanceNodeId": "357:102", "componentNodeId": "181:15" },
+            { "id": "pills.unselected-hover", "label": "Pills unselected hover", "target": "Specs tab", "source": { "trigger": "pseudo", "value": "unselected tab:hover" }, "classification": "rendered", "frameNodeId": "357:115", "instanceNodeId": "357:116", "componentNodeId": "181:4" },
+            { "id": "pills.focus-visible", "label": "Pills focus visible", "target": "Selected Overview tab", "source": { "trigger": "pseudo", "value": "selected tab:focus-visible" }, "classification": "rendered", "frameNodeId": "357:129", "instanceNodeId": "357:130", "componentNodeId": "181:4" },
+            { "id": "stroke.selected", "label": "Stroke selected", "target": "Overview tab", "source": { "trigger": "public-prop", "value": "presentation=stroke; activeId=overview" }, "classification": "already-represented", "frameNodeId": "357:147", "instanceNodeId": "357:148", "componentNodeId": "333:42" },
+            { "id": "stroke.unselected", "label": "Stroke unselected", "target": "Overview tab", "source": { "trigger": "public-prop", "value": "presentation=stroke; activeId=specs" }, "classification": "already-represented", "frameNodeId": "357:161", "instanceNodeId": "357:162", "componentNodeId": "333:53" },
+            { "id": "stroke.unselected-hover", "label": "Stroke unselected hover", "target": "Specs tab", "source": { "trigger": "pseudo", "value": "unselected tab:hover" }, "classification": "rendered", "frameNodeId": "357:175", "instanceNodeId": "357:176", "componentNodeId": "333:42" },
+            { "id": "stroke.focus-visible", "label": "Stroke focus visible", "target": "Selected Overview tab", "source": { "trigger": "pseudo", "value": "selected tab:focus-visible" }, "classification": "rendered", "frameNodeId": "357:189", "instanceNodeId": "357:190", "componentNodeId": "333:42" },
+            { "id": "keyboard-navigation", "label": "Keyboard navigation", "target": "Tablist", "source": { "trigger": "behavior", "value": "orientation-aware Arrow, Home, and End navigation" }, "classification": "runtime-only", "reason": "Keyboard sequencing and focus movement require executable browser evidence." },
+            { "id": "selection-focus", "label": "Selection and focus", "target": "Tabs and tabpanel relationship", "source": { "trigger": "behavior", "value": "selection follows focus and updates the panel" }, "classification": "runtime-only", "reason": "The selection/focus event sequence cannot be shown honestly in one static frame." },
+            { "id": "motion-timing", "label": "Motion timing", "target": "Tab color transition", "source": { "trigger": "behavior", "value": "semantic duration and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition timing and reduced-motion behavior require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Orientation", "type": "VARIANT", "values": ["Horizontal", "Vertical"] },
@@ -1571,6 +2089,17 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "desktop-structure", "label": "Desktop structure", "target": "Responsive tablist", "source": { "trigger": "derived-state", "value": "min-width: 64rem" }, "classification": "already-represented", "frameNodeId": "357:207", "instanceNodeId": "357:208", "componentNodeId": "334:42" },
+            { "id": "mobile-structure", "label": "Mobile structure", "target": "Native select", "source": { "trigger": "derived-state", "value": "below 64rem" }, "classification": "already-represented", "frameNodeId": "357:221", "instanceNodeId": "357:222", "componentNodeId": "334:53" },
+            { "id": "mobile-focus-visible", "label": "Mobile focus visible", "target": "Native select", "source": { "trigger": "pseudo", "value": "select:focus-visible" }, "classification": "rendered", "frameNodeId": "357:232", "instanceNodeId": "357:233", "componentNodeId": "334:53" },
+            { "id": "breakpoint-focus-transfer", "label": "Breakpoint focus transfer", "target": "Active desktop tab and mobile select", "source": { "trigger": "behavior", "value": "focus transfers when the active control becomes hidden" }, "classification": "runtime-only", "reason": "Responsive focus restoration requires a live viewport transition and DOM focus evidence." },
+            { "id": "keyboard-selection", "label": "Keyboard selection", "target": "Native select", "source": { "trigger": "behavior", "value": "keyboard change updates active panel" }, "classification": "runtime-only", "reason": "Native select events and panel updates require executable browser evidence." }
+          ]
+        },
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Presentation", "type": "VARIANT", "values": ["Desktop", "Mobile"] },
@@ -1627,6 +2156,24 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "neutral-top-start", "label": "Neutral top start", "target": "Toast viewport position and neutral tone", "source": { "trigger": "public-prop", "value": "variant=neutral; position=top-start; open=true" }, "classification": "already-represented", "frameNodeId": "387:12", "instanceNodeId": "387:80", "componentNodeId": "184:4" },
+            { "id": "neutral-top-center", "label": "Neutral top center", "target": "Toast viewport position and neutral tone", "source": { "trigger": "public-prop", "value": "variant=neutral; position=top-center; open=true" }, "classification": "already-represented", "frameNodeId": "387:16", "instanceNodeId": "387:85", "componentNodeId": "184:7" },
+            { "id": "neutral-top-end", "label": "Neutral top end", "target": "Toast viewport position and neutral tone", "source": { "trigger": "public-prop", "value": "variant=neutral; position=top-end; open=true" }, "classification": "already-represented", "frameNodeId": "387:21", "instanceNodeId": "387:90", "componentNodeId": "184:10" },
+            { "id": "neutral-bottom-start", "label": "Neutral bottom start", "target": "Toast viewport position and neutral tone", "source": { "trigger": "public-prop", "value": "variant=neutral; position=bottom-start; open=true" }, "classification": "already-represented", "frameNodeId": "387:29", "instanceNodeId": "387:95", "componentNodeId": "184:13" },
+            { "id": "critical-bottom-center", "label": "Critical bottom center", "target": "Toast viewport position and critical tone", "source": { "trigger": "public-prop", "value": "variant=critical; position=bottom-center; open=true" }, "classification": "already-represented", "frameNodeId": "387:33", "instanceNodeId": "387:100", "componentNodeId": "184:34" },
+            { "id": "neutral-bottom-end", "label": "Neutral bottom end", "target": "Toast viewport position and neutral tone", "source": { "trigger": "public-prop", "value": "variant=neutral; position=bottom-end; open=true" }, "classification": "already-represented", "frameNodeId": "387:38", "instanceNodeId": "387:106", "componentNodeId": "184:19" },
+            { "id": "announcement-priority", "label": "Announcement priority", "target": "Toast live region", "source": { "trigger": "behavior", "value": "toast.announcement.priority" }, "classification": "runtime-only", "reason": "Polite versus assertive live-region behavior requires DOM and assistive-technology evidence." },
+            { "id": "decorative-icon", "label": "Decorative icon semantics", "target": "Toast icon", "source": { "trigger": "behavior", "value": "toast.icon.decorative" }, "classification": "runtime-only", "reason": "The visual icon is rendered, while its aria-hidden semantics require DOM evidence." },
+            { "id": "auto-dismiss", "label": "Auto-dismiss timer", "target": "Toast lifetime", "source": { "trigger": "behavior", "value": "dismissMs greater than zero with onDismiss" }, "classification": "runtime-only", "reason": "Elapsed-time dismissal and callback delivery cannot be represented by a static frame." },
+            { "id": "timing-opt-out", "label": "Persistent timing opt-out", "target": "Toast lifetime", "source": { "trigger": "behavior", "value": "toast.timing.opt-out" }, "classification": "runtime-only", "reason": "Persistence over time requires executable timer evidence." },
+            { "id": "closed-unmounted", "label": "Closed unmounted state", "target": "Toast portal", "source": { "trigger": "behavior", "value": "open=false prevents portal rendering" }, "classification": "runtime-only", "reason": "The governed closed result is the absence of the portal content, not a visible frame." },
+            { "id": "entrance-motion", "label": "Entrance motion", "target": "Toast surface", "source": { "trigger": "behavior", "value": "toast.entrance.motion" }, "classification": "runtime-only", "reason": "Animation timing and reduced-motion collapse require executable media-query evidence." }
+          ]
+        },
         "properties": [
           { "name": "Open", "type": "BOOLEAN" },
           { "name": "Message", "type": "TEXT" },
@@ -1708,6 +2255,25 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "desktop-overview", "label": "Desktop Overview active", "target": "Desktop navigation links", "source": { "trigger": "public-prop", "value": "activeId=overview" }, "classification": "already-represented", "frameNodeId": "403:142", "instanceNodeId": "403:161", "componentNodeId": "204:3" },
+            { "id": "desktop-pricing", "label": "Desktop Pricing active", "target": "Desktop navigation links", "source": { "trigger": "public-prop", "value": "activeId=pricing" }, "classification": "already-represented", "frameNodeId": "403:190", "instanceNodeId": "403:209", "componentNodeId": "204:13" },
+            { "id": "link-hover", "label": "Inactive desktop link hover", "target": "Features link", "source": { "trigger": "pseudo", "value": "inactive link:hover" }, "classification": "rendered", "frameNodeId": "403:238", "instanceNodeId": "403:257", "componentNodeId": "204:3" },
+            { "id": "link-focus-visible", "label": "Desktop link focus visible", "target": "Features link", "source": { "trigger": "pseudo", "value": "link:focus-visible" }, "classification": "rendered", "frameNodeId": "403:300", "instanceNodeId": "403:319", "componentNodeId": "204:3" },
+            { "id": "mobile-collapsed", "label": "Mobile disclosure collapsed", "target": "Mobile trigger and panel", "source": { "trigger": "behavior", "value": "mobile breakpoint; disclosure closed" }, "classification": "rendered", "frameNodeId": "403:349", "instanceNodeId": "403:368", "componentNodeId": "204:3" },
+            { "id": "mobile-expanded", "label": "Mobile disclosure expanded", "target": "Mobile trigger and panel", "source": { "trigger": "behavior", "value": "mobile breakpoint; disclosure opened" }, "classification": "rendered", "frameNodeId": "403:408", "instanceNodeId": "403:427", "componentNodeId": "204:3" },
+            { "id": "trigger-focus-visible", "label": "Mobile trigger focus visible", "target": "Mobile disclosure trigger", "source": { "trigger": "pseudo", "value": "button:focus-visible" }, "classification": "rendered", "frameNodeId": "403:502", "instanceNodeId": "403:521", "componentNodeId": "204:3" },
+            { "id": "scroll-spy", "label": "IntersectionObserver scroll spy", "target": "Active section", "source": { "trigger": "behavior", "value": "highest-ratio observed section updates aria-current" }, "classification": "runtime-only", "reason": "IntersectionObserver callbacks and document scroll position require executable browser evidence." },
+            { "id": "disclosure-keyboard", "label": "Keyboard disclosure", "target": "Mobile disclosure trigger", "source": { "trigger": "behavior", "value": "in-page-navigation.disclosure.keyboard" }, "classification": "runtime-only", "reason": "Enter and Space activation plus focus retention require keyboard event sequencing." },
+            { "id": "disclosure-state", "label": "Disclosure state contract", "target": "Trigger and mobile list", "source": { "trigger": "behavior", "value": "in-page-navigation.disclosure.state" }, "classification": "runtime-only", "reason": "Synchronized aria-expanded, aria-controls, and inert changes require live DOM evidence." },
+            { "id": "responsive-copies", "label": "Responsive copy visibility", "target": "Desktop list and mobile disclosure", "source": { "trigger": "behavior", "value": "in-page-navigation.responsive.hidden" }, "classification": "runtime-only", "reason": "Breakpoint display and tab-order exclusion require rendered browser layout." },
+            { "id": "motion", "label": "Disclosure motion", "target": "Grid-row reveal", "source": { "trigger": "behavior", "value": "in-page-navigation.interaction-states.motion" }, "classification": "runtime-only", "reason": "Transition duration and reduced-motion collapse require runtime measurement." },
+            { "id": "empty-items", "label": "Empty item set", "target": "Navigation output", "source": { "trigger": "behavior", "value": "items=[]" }, "classification": "runtime-only", "reason": "The governed result is the absence of the navigation landmark, which requires DOM evidence rather than a fabricated frame." }
+          ]
+        },
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Active section", "type": "VARIANT", "values": ["Overview", "Pricing"] }
@@ -1784,6 +2350,35 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "desktop-overview", "label": "Desktop Overview active", "target": "Desktop navigation links", "source": { "trigger": "public-prop", "value": "activeId=overview" }, "classification": "already-represented", "frameNodeId": "403:576", "instanceNodeId": "403:595", "componentNodeId": "317:45" },
+            { "id": "desktop-pricing", "label": "Desktop Pricing active", "target": "Desktop navigation links", "source": { "trigger": "public-prop", "value": "activeId=pricing" }, "classification": "already-represented", "frameNodeId": "403:607", "instanceNodeId": "403:626", "componentNodeId": "317:55" },
+            { "id": "link-hover", "label": "Inactive desktop link hover", "target": "Features link", "source": { "trigger": "pseudo", "value": "inactive link:hover" }, "classification": "rendered", "frameNodeId": "403:638", "instanceNodeId": "403:657", "componentNodeId": "317:45" },
+            { "id": "link-focus-visible", "label": "Desktop link focus visible", "target": "Features link", "source": { "trigger": "pseudo", "value": "link:focus-visible" }, "classification": "rendered", "frameNodeId": "403:683", "instanceNodeId": "403:702", "componentNodeId": "317:45" },
+            { "id": "mobile-trigger", "label": "Mobile drawer trigger", "target": "Mobile trigger", "source": { "trigger": "behavior", "value": "mobile breakpoint; drawer closed" }, "classification": "already-represented", "frameNodeId": "403:715", "instanceNodeId": "403:734", "componentNodeId": "317:65" },
+            { "id": "trigger-focus-visible", "label": "Mobile trigger focus visible", "target": "Mobile drawer trigger", "source": { "trigger": "pseudo", "value": "button:focus-visible" }, "classification": "rendered", "frameNodeId": "403:748", "instanceNodeId": "403:767", "componentNodeId": "317:65" },
+            { "id": "mobile-dialog", "label": "Mobile dialog open", "target": "Portal-backed modal drawer", "source": { "trigger": "behavior", "value": "mobile trigger activated; drawer open" }, "classification": "already-represented", "frameNodeId": "403:796", "instanceNodeId": "403:815", "componentNodeId": "317:80" },
+            { "id": "dialog-link-focus-visible", "label": "Dialog link focus visible", "target": "Features link", "source": { "trigger": "pseudo", "value": "dialog link:focus-visible" }, "classification": "rendered", "frameNodeId": "403:837", "instanceNodeId": "403:856", "componentNodeId": "317:80" },
+            { "id": "close-hover", "label": "Dialog close hover", "target": "Close navigation button", "source": { "trigger": "pseudo", "value": "close button:hover" }, "classification": "rendered", "frameNodeId": "403:879", "instanceNodeId": "403:898", "componentNodeId": "317:80" },
+            { "id": "close-focus-visible", "label": "Dialog close focus visible", "target": "Close navigation button", "source": { "trigger": "pseudo", "value": "close button:focus-visible" }, "classification": "rendered", "frameNodeId": "403:934", "instanceNodeId": "403:953", "componentNodeId": "317:80" },
+            { "id": "open-dismiss", "label": "Open and close-button dismissal", "target": "Mobile trigger and dialog", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.open-dismiss" }, "classification": "runtime-only", "reason": "Mounting, dismissal, and aria-expanded changes require an executable event sequence." },
+            { "id": "focus-containment", "label": "Dialog focus containment", "target": "Modal drawer dialog", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.focus.containment" }, "classification": "runtime-only", "reason": "Tab and Shift+Tab wrapping require executable browser focus evidence." },
+            { "id": "focus-restoration", "label": "Trigger focus restoration", "target": "Mobile drawer trigger", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.focus.restoration" }, "classification": "runtime-only", "reason": "Focus restoration is observable only after the portal closes." },
+            { "id": "keyboard-escape", "label": "Escape dismissal", "target": "Modal drawer dialog", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.keyboard.escape" }, "classification": "runtime-only", "reason": "Escape handling and the resulting focus transition require keyboard sequencing." },
+            { "id": "outside-dismiss", "label": "Outside dismissal", "target": "Modal drawer scrim", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.outside-dismiss" }, "classification": "runtime-only", "reason": "The guarded scrim-versus-panel event target requires pointer interaction." },
+            { "id": "swipe-threshold", "label": "Strict swipe threshold", "target": "Trigger and drawer handle", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.swipe.threshold" }, "classification": "runtime-only", "reason": "Exactly 48px versus 49px gesture outcomes require pointer-coordinate sequencing." },
+            { "id": "swipe-scroll-isolation", "label": "Scroll and swipe isolation", "target": "Drawer scroll region", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.swipe.scroll" }, "classification": "runtime-only", "reason": "Scroll position preservation and handle-only dismissal require executable gesture evidence." },
+            { "id": "responsive-copies", "label": "Responsive copy visibility", "target": "Desktop list and mobile trigger", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.responsive.hidden" }, "classification": "runtime-only", "reason": "Breakpoint display and tab-order exclusion require rendered browser layout." },
+            { "id": "desktop-breakpoint-cleanup", "label": "Desktop breakpoint cleanup", "target": "Open mobile drawer", "source": { "trigger": "behavior", "value": "min-width:64rem closes the drawer" }, "classification": "runtime-only", "reason": "The matchMedia change event and portal teardown require live breakpoint evidence." },
+            { "id": "semantics", "label": "Portal landmark and dialog semantics", "target": "Outer navigation and modal drawer", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.semantics" }, "classification": "runtime-only", "reason": "Non-nested landmarks, modal naming, portal placement, and background inertness require DOM inspection." },
+            { "id": "motion", "label": "Drawer motion", "target": "Modal drawer dialog", "source": { "trigger": "behavior", "value": "in-page-navigation-modal.interaction-states.motion" }, "classification": "runtime-only", "reason": "Animation duration and reduced-motion collapse require runtime measurement." },
+            { "id": "scroll-spy", "label": "IntersectionObserver scroll spy", "target": "Active section", "source": { "trigger": "behavior", "value": "highest-ratio observed section updates aria-current" }, "classification": "runtime-only", "reason": "IntersectionObserver callbacks and document scroll position require executable browser evidence." },
+            { "id": "empty-items", "label": "Empty item set", "target": "Navigation output", "source": { "trigger": "behavior", "value": "items=[]" }, "classification": "runtime-only", "reason": "The governed result is the absence of both landmark and portal trigger, which requires DOM evidence rather than a fabricated frame." }
+          ]
+        },
         "properties": [
           { "name": "Aria label", "type": "TEXT" },
           { "name": "Close label", "type": "TEXT" },
@@ -1863,6 +2458,23 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "start-controls", "label": "Start controls", "target": "Previous and next controls", "source": { "trigger": "public-prop", "value": "loop=false; slides.length=5; selected=0" }, "classification": "already-represented", "frameNodeId": "409:573", "instanceNodeId": "409:586", "componentNodeId": "211:4" },
+            { "id": "next-focus-visible", "label": "Next focus visible", "target": "Next slide button", "source": { "trigger": "pseudo", "value": "next button:focus-visible" }, "classification": "rendered", "frameNodeId": "409:611", "instanceNodeId": "409:624", "componentNodeId": "211:4" },
+            { "id": "advanced", "label": "Advanced to slide 2", "target": "Controls and visible status", "source": { "trigger": "behavior", "value": "next control activated once; selected=1" }, "classification": "rendered", "frameNodeId": "409:650", "instanceNodeId": "409:663", "componentNodeId": "211:4" },
+            { "id": "loop-enabled", "label": "Loop enabled", "target": "Previous and next controls", "source": { "trigger": "public-prop", "value": "loop=true; selected=0" }, "classification": "already-represented", "frameNodeId": "409:690", "instanceNodeId": "409:703", "componentNodeId": "211:4" },
+            { "id": "single-slide-disabled", "label": "One slide, both controls disabled", "target": "Previous and next controls", "source": { "trigger": "public-prop", "value": "slides.length=1" }, "classification": "rendered", "frameNodeId": "409:728", "instanceNodeId": "409:741", "componentNodeId": "211:4" },
+            { "id": "control-activation", "label": "Control keyboard activation", "target": "Previous and next controls", "source": { "trigger": "behavior", "value": "carousel.keyboard.controls" }, "classification": "runtime-only", "reason": "Native focus, Enter activation, and the resulting Embla selection require an executable browser sequence." },
+            { "id": "inert-visibility", "label": "Off-screen slide inertness", "target": "Slide groups", "source": { "trigger": "behavior", "value": "carousel.state.slides; single layout uses intersection visibility" }, "classification": "runtime-only", "reason": "Whether a slide intersects the measured viewport and leaves the tab order requires live geometry and DOM inspection." },
+            { "id": "status-announcement", "label": "Polite status announcement", "target": "Position status", "source": { "trigger": "behavior", "value": "carousel.announcement.status" }, "classification": "runtime-only", "reason": "aria-live and aria-atomic announcement semantics require executable assistive-technology evidence." },
+            { "id": "loop-wrapping", "label": "Loop endpoint wrapping", "target": "Carousel controller", "source": { "trigger": "behavior", "value": "loop=true wraps across both endpoints" }, "classification": "runtime-only", "reason": "Endpoint wrapping is temporal controller behavior and cannot be proven by a static enabled-control specimen." },
+            { "id": "motion", "label": "Control and snap motion", "target": "Controls and viewport", "source": { "trigger": "behavior", "value": "duration-fast and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition duration and reduced-motion collapse require computed runtime styles and carousel movement." },
+            { "id": "empty-slides", "label": "Empty collection unmounts", "target": "Carousel root", "source": { "trigger": "behavior", "value": "slides=[]" }, "classification": "runtime-only", "reason": "The absence of region semantics, controls, and impossible status content requires DOM evidence rather than a blank frame." }
+          ]
+        },
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Loop", "type": "BOOLEAN" },
@@ -1955,6 +2567,21 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-specimens",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "start-controls", "label": "Multi-card start controls", "target": "Previous and next controls", "source": { "trigger": "public-prop", "value": "layout=multi-card-peek; loop=false; slides.length=6; selected=0" }, "classification": "already-represented", "frameNodeId": "409:768", "instanceNodeId": "409:781", "componentNodeId": "277:71" },
+            { "id": "next-focus-visible", "label": "Multi-card next focus visible", "target": "Next slide button", "source": { "trigger": "pseudo", "value": "next button:focus-visible" }, "classification": "rendered", "frameNodeId": "409:826", "instanceNodeId": "409:839", "componentNodeId": "277:71" },
+            { "id": "advanced", "label": "Multi-card advanced to slide 2", "target": "Controls and visible status", "source": { "trigger": "behavior", "value": "next control activated once; selected=1" }, "classification": "rendered", "frameNodeId": "409:885", "instanceNodeId": "409:898", "componentNodeId": "277:71" },
+            { "id": "control-activation", "label": "One-snap control activation", "target": "Previous and next controls", "source": { "trigger": "behavior", "value": "MultiCardPeek advances exactly one slide" }, "classification": "runtime-only", "reason": "The exact one-snap movement and resulting controller selection require an executable pointer or keyboard sequence." },
+            { "id": "partial-slide-inert", "label": "Partial slide inertness", "target": "Partially clipped slide", "source": { "trigger": "behavior", "value": "carousel.state.slides; multi-card-peek requires full containment" }, "classification": "runtime-only", "reason": "Full-containment geometry and tab-order exclusion cannot be proven by a static clipped-card illustration." },
+            { "id": "status-announcement", "label": "Polite status announcement", "target": "Position status", "source": { "trigger": "behavior", "value": "carousel.announcement.status" }, "classification": "runtime-only", "reason": "aria-live and aria-atomic announcement semantics require executable assistive-technology evidence." },
+            { "id": "responsive-layout", "label": "Responsive slide geometry", "target": "Viewport, track, and slides", "source": { "trigger": "behavior", "value": "284px/12px desktop; 299px/12px at 768; 299px/8px at 390" }, "classification": "runtime-only", "reason": "The existing responsive specimens show the layout, but exact slide width, gap, partial clipping, and inert thresholds require live browser measurement." },
+            { "id": "loop-wrapping", "label": "Loop endpoint wrapping", "target": "Carousel controller", "source": { "trigger": "behavior", "value": "loop=true wraps across both endpoints" }, "classification": "runtime-only", "reason": "Endpoint wrapping is temporal controller behavior and cannot be proven by static enabled controls." },
+            { "id": "motion", "label": "Control and snap motion", "target": "Controls and viewport", "source": { "trigger": "behavior", "value": "duration-fast and reduced-motion collapse" }, "classification": "runtime-only", "reason": "Transition duration, reduced-motion collapse, and Embla movement require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Label", "type": "TEXT" },
           { "name": "Loop", "type": "BOOLEAN" },
@@ -2017,6 +2644,26 @@
         },
         "handoffPattern": "direct-canonical-instance",
         "presentationPattern": "responsive-full-viewport",
+        "stateCoverage": {
+          "status": "covered",
+          "storyExport": "InteractionStates",
+          "states": [
+            { "id": "idle", "label": "Idle", "target": "Search overlay content", "source": { "trigger": "public-prop", "value": "open=true; query=''" }, "classification": "already-represented", "frameNodeId": "397:150", "instanceNodeId": "397:169", "componentNodeId": "217:4" },
+            { "id": "active", "label": "Active", "target": "Search overlay content", "source": { "trigger": "public-prop", "value": "open=true; query=component" }, "classification": "already-represented", "frameNodeId": "397:212", "instanceNodeId": "397:231", "componentNodeId": "217:28" },
+            { "id": "close-default", "label": "Close default", "target": "Close search button", "source": { "trigger": "public-prop", "value": "open=true; query=''" }, "classification": "already-represented", "frameNodeId": "397:293", "instanceNodeId": "397:312", "componentNodeId": "217:4" },
+            { "id": "close-hover", "label": "Close hover", "target": "Close search button", "source": { "trigger": "pseudo", "value": "button:hover" }, "classification": "rendered", "frameNodeId": "397:355", "instanceNodeId": "397:374", "componentNodeId": "217:4" },
+            { "id": "close-focus-visible", "label": "Close focus visible", "target": "Close search button", "source": { "trigger": "pseudo", "value": "button:focus-visible" }, "classification": "rendered", "frameNodeId": "397:431", "instanceNodeId": "397:450", "componentNodeId": "217:4" },
+            { "id": "closed-unmounted", "label": "Closed and unmounted", "target": "Search overlay portal", "source": { "trigger": "behavior", "value": "open=false" }, "classification": "runtime-only", "reason": "The absence of the portal and dialog requires executable DOM evidence." },
+            { "id": "focus-containment", "label": "Focus containment", "target": "Search overlay dialog", "source": { "trigger": "behavior", "value": "search-overlay.focus.modal" }, "classification": "runtime-only", "reason": "Tab and Shift+Tab sequencing must be exercised in a browser." },
+            { "id": "focus-restoration", "label": "Focus restoration", "target": "Search trigger", "source": { "trigger": "behavior", "value": "search-overlay.focus.restoration" }, "classification": "runtime-only", "reason": "Focus restoration is observable only after the overlay closes." },
+            { "id": "keyboard-escape", "label": "Escape dismissal", "target": "Search overlay dialog", "source": { "trigger": "behavior", "value": "Escape closes the overlay" }, "classification": "runtime-only", "reason": "Keyboard dismissal and the resulting focus transition require executable evidence." },
+            { "id": "background-inert", "label": "Background inertness", "target": "Page behind the search overlay", "source": { "trigger": "behavior", "value": "search-overlay.focus.background-inert" }, "classification": "runtime-only", "reason": "Inert background behavior cannot be represented by a static frame." },
+            { "id": "semantic-dialog", "label": "Dialog and search semantics", "target": "Search overlay dialog", "source": { "trigger": "behavior", "value": "search-overlay.semantics.dialog" }, "classification": "runtime-only", "reason": "Resolved modal, label, search, and searchbox semantics require DOM inspection." },
+            { "id": "results-announcement", "label": "Results announcement", "target": "Search results region", "source": { "trigger": "behavior", "value": "search-overlay.announcement.results" }, "classification": "runtime-only", "reason": "The live-region role and aria-live/aria-atomic contract require DOM inspection and assistive-technology semantics." },
+            { "id": "backdrop-dismissal", "label": "Backdrop dismissal", "target": "Search overlay scrim", "source": { "trigger": "behavior", "value": "backdrop click closes; panel click is ignored" }, "classification": "runtime-only", "reason": "The guarded event-target behavior requires pointer interaction." },
+            { "id": "close-motion", "label": "Entrance and close-control motion", "target": "Search overlay panel and close button", "source": { "trigger": "behavior", "value": "search-overlay.close.motion" }, "classification": "runtime-only", "reason": "Animation and transition durations, including reduced-motion collapse, require runtime measurement." }
+          ]
+        },
         "properties": [
           { "name": "Title", "type": "TEXT" },
           { "name": "Supporting copy", "type": "TEXT" },

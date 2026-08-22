@@ -319,3 +319,70 @@ export const EmptyOptions: Story = {
     });
   },
 };
+
+const SLIDER_INTERACTION_STATES = [
+  { id: 'small', label: 'Selected small', value: 's', focusVisible: false },
+  { id: 'medium', label: 'Selected medium', value: 'm', focusVisible: false },
+  { id: 'large', label: 'Selected large', value: 'l', focusVisible: false },
+  { id: 'extra-large', label: 'Selected extra large', value: 'xl', focusVisible: false },
+  { id: 'medium-focus-visible', label: 'Medium focus visible', value: 'm', focusVisible: true },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      focusVisible: '.state-slider-medium-focus-visible input[type="range"]',
+    },
+  },
+  render: () => (
+    <div className="grid grid-cols-2 items-start gap-xl">
+      {SLIDER_INTERACTION_STATES.map((state) => (
+        <section key={state.id} className="grid gap-s">
+          <span className="text-sm text-text-secondary">{state.label}</span>
+          <Slider
+            label="Width"
+            options={sizes}
+            defaultValue={state.value}
+            unit="inches"
+            hint="Choose a size"
+            className={`state-slider-${state.id} w-[520px]`}
+            classNames={{
+              input: state.focusVisible
+                ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                : undefined,
+            }}
+          />
+        </section>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (state: string) => canvasElement.querySelector<HTMLElement>(`.state-slider-${state}`)!;
+    const input = (state: string) => within(root(state)).getByRole('slider', { name: 'Width' });
+    const fill = (state: string) => root(state).querySelectorAll<HTMLElement>('span[aria-hidden]')[1]!;
+
+    await step('selected values map to their code-backed range positions', async () => {
+      for (const [state, value, valueText, width] of [
+        ['small', '0', '24 inches', 0],
+        ['medium', '1', '30 inches', 100 / 3],
+        ['large', '2', '36 inches', 200 / 3],
+        ['extra-large', '3', '42 inches', 100],
+      ] as const) {
+        await expect(input(state)).toHaveValue(value);
+        await expect(input(state)).toHaveAttribute('aria-valuetext', valueText);
+        await expect(parseFloat(fill(state).style.width)).toBeCloseTo(width, 3);
+      }
+    });
+
+    await step('forced range focus exposes the governed focus ring', async () => {
+      const focus = input('medium-focus-visible');
+      await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(focus);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+      await expect(style.outlineOffset).toBe('2px');
+    });
+  },
+};

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, within } from 'storybook/test';
+import { expect, waitFor, within } from 'storybook/test';
 
 import { Breadcrumbs } from './index';
 
@@ -248,5 +248,98 @@ export const CustomLandmarkLabel: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole('navigation', { name: 'Secondary breadcrumb' })).toBeInTheDocument();
+  },
+};
+
+const BREADCRUMB_INTERACTION_STATES = [
+  { id: 'trail-default', label: 'Trail default', presentation: 'trail' },
+  { id: 'trail-hover', label: 'Trail link hover', presentation: 'trail' },
+  { id: 'trail-focus-visible', label: 'Trail link focus visible', presentation: 'trail' },
+  { id: 'back-link-default', label: 'Back link default', presentation: 'back-link' },
+  { id: 'back-link-hover', label: 'Back link hover', presentation: 'back-link' },
+  { id: 'back-link-focus-visible', label: 'Back link focus visible', presentation: 'back-link' },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: '.state-breadcrumbs-trail-hover a[href="#home"], .state-breadcrumbs-back-link-hover a',
+      focusVisible: '.state-breadcrumbs-trail-focus-visible a[href="#home"], .state-breadcrumbs-back-link-focus-visible a',
+    },
+  },
+  render: () => (
+    <div className="grid grid-cols-3 items-start gap-xl">
+      {BREADCRUMB_INTERACTION_STATES.map((state) => {
+        const forcedUnderline = state.id.endsWith('hover') || state.id.endsWith('focus-visible');
+        const forcedFocus = state.id.endsWith('focus-visible');
+        return (
+          <section key={state.id} className="grid gap-s">
+            <span className="text-sm text-text-secondary">{state.label}</span>
+            <Breadcrumbs
+              items={[
+                { label: 'Home', href: '#home' },
+                { label: 'Services', href: '#services' },
+                { label: 'Rail freight', href: '#rail' },
+              ]}
+              currentPageTitle="Intermodal"
+              presentation={state.presentation}
+              ariaLabel={state.label}
+              className={`state-breadcrumbs-${state.id}`}
+              classNames={{
+                label: forcedUnderline ? 'bg-[length:100%_1px] bg-[position:0%_100%]' : undefined,
+                link: forcedFocus ? 'outline-2 outline-solid outline-offset-2 outline-border-focus' : undefined,
+                backLink: forcedFocus ? 'outline-2 outline-solid outline-offset-2 outline-border-focus' : undefined,
+              }}
+            />
+          </section>
+        );
+      })}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (state: string) => canvasElement.querySelector<HTMLElement>(`.state-breadcrumbs-${state}`)!;
+    const link = (state: string) => {
+      const stateRoot = root(state);
+      const links = [...stateRoot.querySelectorAll<HTMLAnchorElement>('a')];
+      return state.startsWith('back-link') ? links.find((candidate) => candidate.parentElement === stateRoot)! : links[0]!;
+    };
+    const label = (state: string) => link(state).querySelector<HTMLElement>('span')!;
+
+    await step('trail and back-link public presentations remain distinct', async () => {
+      await expect(root('trail-default').querySelector('ol')).toBeVisible();
+      await expect(link('trail-default')).toHaveAttribute('href', '#home');
+      await expect(root('back-link-default').querySelector('ol')).not.toBeVisible();
+      await expect(link('back-link-default')).toHaveAttribute('href', '#rail');
+    });
+
+    await step('forced link hover draws the code-backed underline', async () => {
+      for (const [baselineState, hoverState] of [
+        ['trail-default', 'trail-hover'],
+        ['back-link-default', 'back-link-hover'],
+      ] as const) {
+        await waitFor(() => expect(link(hoverState)).toHaveClass('pseudo-hover'));
+        await expect(getComputedStyle(label(hoverState)).backgroundSize).not.toBe(getComputedStyle(label(baselineState)).backgroundSize);
+      }
+    });
+
+    await step('forced link focus exposes the governed focus ring and underline', async () => {
+      for (const state of ['trail-focus-visible', 'back-link-focus-visible']) {
+        const target = link(state);
+        await waitFor(() => expect(target).toHaveClass('pseudo-focus-visible'));
+        const style = getComputedStyle(target);
+        await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+        await expect(style.outlineStyle).not.toBe('none');
+      }
+    });
+
+    await step('breadcrumbs.motion.reduced', async () => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const duration = getComputedStyle(document.documentElement).getPropertyValue('--duration-base').trim();
+      await expect(duration).toBe(reduced ? '0ms' : '300ms');
+      await expect(getComputedStyle(label('trail-default')).transitionDuration).toBe(reduced ? '0s' : '0.3s');
+    });
   },
 };

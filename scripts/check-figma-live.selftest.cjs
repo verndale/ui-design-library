@@ -106,6 +106,44 @@ const withComponentSetSpecimens = () => {
   }
   return { specimenRegistry, payload };
 };
+const withInteractionState = () => {
+  const stateRegistry = structuredClone(registry);
+  stateRegistry.components[0].figma.stateCoverage = {
+    status: 'covered',
+    storyExport: 'InteractionStates',
+    states: [
+      {
+        id: 'example.hover',
+        label: 'Hover',
+        source: { trigger: 'pseudo', value: ':hover' },
+        target: 'Example root',
+        classification: 'rendered',
+        frameNodeId: '3:1',
+        instanceNodeId: '3:2',
+        componentNodeId: '1:2',
+      },
+      {
+        id: 'example.keyboard',
+        label: 'Keyboard activation',
+        source: { trigger: 'behavior', value: 'Enter or Space' },
+        target: 'Native control',
+        classification: 'runtime-only',
+        reason: 'Keyboard activation cannot be represented truthfully in a static frame.',
+      },
+    ],
+  };
+  const payload = clone();
+  payload.nodes['3:1'] = {
+    document: {
+      id: '3:1',
+      type: 'FRAME',
+      name: 'Hover',
+      children: [{ id: '3:2', type: 'INSTANCE', name: 'Example', componentId: '1:2' }],
+    },
+  };
+  payload.nodes['3:2'] = { document: payload.nodes['3:1'].document.children[0] };
+  return { stateRegistry, payload };
+};
 const cases = [
   {
     name: 'fully governed live fixture passes',
@@ -216,6 +254,33 @@ const cases = [
       return { registry: specimenRegistry, payload };
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('does not contain an instance of 1:2')),
+  },
+  {
+    name: 'registered interaction-state frames preserve connected instance identity',
+    ...(() => {
+      const { stateRegistry, payload } = withInteractionState();
+      return { registry: stateRegistry, payload };
+    })(),
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'interaction-state instance connection drift fails',
+    ...(() => {
+      const { stateRegistry, payload } = withInteractionState();
+      payload.nodes['3:2'].document.componentId = '9:9';
+      payload.nodes['3:1'].document.children[0].componentId = '9:9';
+      return { registry: stateRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('connected to 9:9')),
+  },
+  {
+    name: 'interaction-state frame must contain the registered instance',
+    ...(() => {
+      const { stateRegistry, payload } = withInteractionState();
+      payload.nodes['3:1'].document.children = [];
+      return { registry: stateRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('does not contain instance 3:2')),
   },
 ];
 

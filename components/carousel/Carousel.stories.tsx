@@ -12,6 +12,18 @@ const Slide = ({ n }: { n: number }) => (
   </div>
 );
 
+const InteractionSlide = () => (
+  <div className="flex h-48 flex-col justify-between rounded-medium bg-surface-sunken p-s">
+    <div className="grid gap-2xs">
+      <p className="m-0 text-xs font-semibold uppercase text-text-secondary">Featured</p>
+      <p className="m-0 text-lg font-semibold text-text-primary">Build calmer, clearer interfaces</p>
+    </div>
+    <a href="#top" className="text-link underline">
+      Read the story →
+    </a>
+  </div>
+);
+
 const multiCardSlides = Array.from({ length: 6 }, (_, index) => <Slide key={index} n={index + 1} />);
 
 async function verifyMultiCardLayout(canvasElement: HTMLElement, expectedSlideWidth: number, expectedGap: number) {
@@ -280,5 +292,114 @@ export const Empty: Story = {
     await expect(canvas.queryByRole('region', { name: 'Featured stories' })).not.toBeInTheDocument();
     await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
     await expect(canvas.queryByText('1 / 0')).not.toBeInTheDocument();
+  },
+};
+
+const CAROUSEL_INTERACTION_STATES = [
+  { id: 'single-start', label: 'Single · Start', layout: 'single', loop: false, slideCount: 5 },
+  { id: 'single-next-focus-visible', label: 'Single · Next focus visible', layout: 'single', loop: false, slideCount: 5 },
+  { id: 'single-advanced', label: 'Single · Advanced', layout: 'single', loop: false, slideCount: 5 },
+  { id: 'single-loop', label: 'Single · Loop enabled', layout: 'single', loop: true, slideCount: 5 },
+  { id: 'single-slide', label: 'Single · One slide', layout: 'single', loop: false, slideCount: 1 },
+  { id: 'multi-start', label: 'Multi-card peek · Start', layout: 'multi-card-peek', loop: false, slideCount: 6 },
+  { id: 'multi-next-focus-visible', label: 'Multi-card peek · Next focus visible', layout: 'multi-card-peek', loop: false, slideCount: 6 },
+  { id: 'multi-advanced', label: 'Multi-card peek · Advanced', layout: 'multi-card-peek', loop: false, slideCount: 6 },
+] as const;
+
+/** Code-backed specimens used to govern the Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  tags: ['motion'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: { story: { inline: false, height: '2400px' } },
+    pseudo: {
+      rootSelector: 'body',
+      focusVisible: [
+        '.state-carousel-single-next-focus-visible button[aria-label="Next slide"]',
+        '.state-carousel-multi-next-focus-visible button[aria-label="Next slide"]',
+      ],
+    },
+  },
+  render: () => (
+    <div className="grid min-h-screen grid-cols-1 gap-l bg-surface-raised p-l text-sm text-text-secondary 2xl:grid-cols-2">
+      {CAROUSEL_INTERACTION_STATES.map((state) => {
+        const slides = Array.from({ length: state.slideCount }, (_, index) => <InteractionSlide key={index} />);
+        const focusVisible = state.id.endsWith('focus-visible');
+
+        return (
+          <section key={state.id} className={`state-carousel-${state.id} min-w-0 rounded-medium bg-surface-sunken p-m`}>
+            <p className="mb-s font-semibold uppercase tracking-wide">{state.label}</p>
+            <Carousel
+              label={state.label}
+              slides={slides}
+              layout={state.layout}
+              loop={state.loop}
+              className="w-full max-w-[760px]"
+              classNames={{
+                nextButton: focusVisible
+                  ? 'outline-2 outline-solid outline-offset-2 outline-border-focus'
+                  : undefined,
+              }}
+            />
+          </section>
+        );
+      })}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (state: string) => canvasElement.querySelector<HTMLElement>(`.state-carousel-${state}`)!;
+    const controls = (state: string) => {
+      const canvas = within(root(state));
+      return {
+        previous: canvas.getByRole('button', { name: 'Previous slide' }),
+        next: canvas.getByRole('button', { name: 'Next slide' }),
+      };
+    };
+
+    await step('start, loop, and one-slide controls expose their code-backed disabled states', async () => {
+      for (const state of ['single-start', 'multi-start'] as const) {
+        const { previous, next } = controls(state);
+        await waitFor(() => expect(previous).toBeDisabled());
+        await expect(next).toBeEnabled();
+      }
+      await waitFor(() => expect(controls('single-loop').previous).toBeEnabled());
+      await expect(controls('single-loop').next).toBeEnabled();
+      await waitFor(() => expect(controls('single-slide').previous).toBeDisabled());
+      await expect(controls('single-slide').next).toBeDisabled();
+    });
+
+    await step('forced next-control focus exposes the governed focus ring', async () => {
+      for (const state of ['single-next-focus-visible', 'multi-next-focus-visible'] as const) {
+        const next = controls(state).next;
+        await waitFor(() => expect(next).toHaveClass('pseudo-focus-visible'));
+        const style = getComputedStyle(next);
+        await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+        await expect(style.outlineStyle).not.toBe('none');
+        await expect(style.outlineOffset).toBe('2px');
+      }
+    });
+
+    await step('advanced specimens move one snap, enable previous, and expose the new visual status', async () => {
+      for (const [state, count] of [['single-advanced', 5], ['multi-advanced', 6]] as const) {
+        const { previous, next } = controls(state);
+        await userEvent.click(next);
+        await waitFor(() => expect(previous).toBeEnabled());
+        await expect(root(state).querySelector('[aria-live="polite"]')).toHaveTextContent(`2 / ${count}`);
+      }
+    });
+
+    await step('default controls use the exact source SVG geometry', async () => {
+      const icons = root('single-start').querySelectorAll('button svg');
+      await expect(icons).toHaveLength(2);
+      await expect(icons[0]!).toHaveAttribute('viewBox', '0 0 20 20');
+      await expect(icons[0]!.querySelector('path')).toHaveAttribute('d', 'M12.5 15.5 7 10l5.5-5.5 1.4 1.4L9.8 10l4.1 4.1-1.4 1.4Z');
+      await expect(icons[1]!.querySelector('path')).toHaveAttribute('d', 'M7.5 4.5 13 10l-5.5 5.5-1.4-1.4L10.2 10 6.1 5.9l1.4-1.4Z');
+    });
+
+    await step('carousel interaction-state motion collapses under reduced motion', async () => {
+      const next = controls('single-start').next;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      await expect(getComputedStyle(next).transitionDuration).toBe(reduced ? '0s' : '0.15s');
+    });
   },
 };

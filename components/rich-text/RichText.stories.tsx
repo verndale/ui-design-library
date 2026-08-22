@@ -27,7 +27,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Renders already-authored formatted content — headings, paragraphs, lists, links, inline emphasis — as one flowing block styled by the design system. The read-only counterpart to a Rich text editor. Pass composed content as children; CMS-string ingestion and sanitization are the caller’s concern.',
+          'Renders already-authored formatted content — h1–h6 headings, paragraphs, lists, links, inline emphasis, responsive media with captions, and semantic tables — as one flowing block styled by the design system. The read-only counterpart to a Rich text editor. Pass composed content as children; CMS-string ingestion and sanitization are the caller’s concern.',
       },
     },
   },
@@ -86,16 +86,20 @@ export const Checkmark: Story = {
   },
 };
 
-/** Every supported element, in valid outline order — the KitchenSink equivalent. */
+/** Every supported authored element, in valid outline order — the KitchenSink equivalent. */
 export const FullFlow: Story = {
   render: (args) => (
     <RichText {...args}>
+      <h1>Heading level 1</h1>
       <h2>Heading level 2</h2>
       <p>
         A paragraph with <strong>bold</strong> and <em>italic</em> emphasis, plus an{' '}
         <a href="https://example.com">inline link</a>.
       </p>
       <h3>Heading level 3</h3>
+      <h4>Heading level 4</h4>
+      <h5>Heading level 5</h5>
+      <h6>Heading level 6</h6>
       <ul>
         <li>Unordered item one</li>
         <li>Unordered item two</li>
@@ -104,13 +108,67 @@ export const FullFlow: Story = {
         <li>Ordered item one</li>
         <li>Ordered item two</li>
       </ol>
+      <figure>
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='lightgray'/%3E%3C/svg%3E"
+          alt="Neutral editorial media placeholder"
+          width="640"
+          height="360"
+        />
+        <figcaption>An authored caption remains associated with its image.</figcaption>
+      </figure>
+      <table>
+        <caption>Quarterly platform adoption</caption>
+        <thead>
+          <tr>
+            <th scope="col">Quarter</th>
+            <th scope="col">Teams</th>
+            <th scope="col">Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Q1</td>
+            <td>24</td>
+            <td>Baseline</td>
+          </tr>
+          <tr>
+            <td>Q2</td>
+            <td>31</td>
+            <td>+29%</td>
+          </tr>
+        </tbody>
+      </table>
     </RichText>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    // Authored headings render at their levels, in valid order (h2 then h3).
-    await expect(canvas.getByRole('heading', { level: 2 })).toBeVisible();
-    await expect(canvas.getByRole('heading', { level: 3 })).toBeVisible();
+    // Authored headings render at all six levels without semantic rewriting.
+    for (const level of [1, 2, 3, 4, 5, 6] as const) {
+      await expect(canvas.getByRole('heading', { level })).toHaveTextContent(`Heading level ${level}`);
+    }
     await expect(canvas.getAllByRole('list')).toHaveLength(2);
+
+    // The restored source rhythm is spacing-m (1.5rem): 24px normally and
+    // proportionally larger when the accessibility harness doubles root text.
+    const rootFontSize = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const blockMargin = Number.parseFloat(getComputedStyle(canvas.getByRole('heading', { level: 2 })).marginTop);
+    await expect(blockMargin).toBeCloseTo(rootFontSize * 1.5);
+
+    const image = canvas.getByRole('img', { name: 'Neutral editorial media placeholder' });
+    await expect(image).toBeVisible();
+    await expect(getComputedStyle(image).display).toBe('block');
+    await expect(getComputedStyle(image).maxWidth).toBe('100%');
+    await expect(canvasElement.querySelector('figure > figcaption')).toHaveTextContent(
+      'An authored caption remains associated with its image.',
+    );
+
+    const table = canvas.getByRole('table', { name: 'Quarterly platform adoption' });
+    await expect(table).toBeVisible();
+    await expect(getComputedStyle(table).display).toBe('block');
+    await expect(getComputedStyle(table).overflowX).toBe('auto');
+    const headers = within(table).getAllByRole('columnheader');
+    await expect(headers).toHaveLength(3);
+    for (const header of headers) await expect(header).toHaveAttribute('scope', 'col');
   },
 };

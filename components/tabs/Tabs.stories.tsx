@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 
 import { Tabs, type TabItem } from './index';
 
@@ -290,5 +290,97 @@ export const ReducedMotion: Story = {
     const tab = within(canvasElement).getByRole('tab', { name: 'Overview' });
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     await expect(getComputedStyle(tab).transitionDuration).toBe(reduced ? '0s' : '0.3s');
+  },
+};
+
+const stateTabs: TabItem[] = [
+  { id: 'selected', label: 'Selected', panel: <p>Selected panel</p> },
+  { id: 'unselected', label: 'Unselected', panel: <p>Unselected panel</p> },
+];
+
+/** Code-backed specimens used to govern the unpublished Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: [
+        '.state-tabs-pills-hover [role="tab"][aria-selected="false"]',
+        '.state-tabs-stroke-hover [role="tab"][aria-selected="false"]',
+      ],
+      focusVisible: [
+        '.state-tabs-pills-focus [role="tab"][aria-selected="true"]',
+        '.state-tabs-stroke-focus [role="tab"][aria-selected="true"]',
+      ],
+    },
+  },
+  render: () => (
+    <div className="grid gap-xl">
+      {(['pills', 'stroke'] as const).map((presentation) => (
+        <section key={presentation} className="grid gap-s">
+          <h2 className="m-0 text-base font-semibold text-text-primary">{presentation}</h2>
+          <div className="grid grid-cols-1 items-start gap-l xl:grid-cols-4">
+            {(['selected', 'unselected', 'hover', 'focus'] as const).map((state) => (
+              <div key={state} className="grid gap-s">
+                <span className="text-sm text-text-secondary">{state}</span>
+                <Tabs
+                  items={stateTabs}
+                  ariaLabel={`${presentation} ${state} states`}
+                  defaultActiveId="selected"
+                  presentation={presentation}
+                  tabIdPrefix={`state-${presentation}-${state}`}
+                  classNames={{
+                    root: `state-tabs-${presentation}-${state}`,
+                    panels: 'sr-only',
+                    tab: state === 'hover'
+                      ? presentation === 'stroke'
+                        ? '[&[aria-selected=false]]:border-border-strong [&[aria-selected=false]]:text-text-primary'
+                        : '[&[aria-selected=false]]:text-text-primary'
+                      : state === 'focus'
+                        ? 'outline-2 outline-solid outline-offset-1 outline-border-focus'
+                        : undefined,
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const root = (presentation: string, state: string) =>
+      canvasElement.querySelector<HTMLElement>(`.state-tabs-${presentation}-${state}`)!;
+
+    await step('selected and unselected targets preserve the public selection state', async () => {
+      for (const presentation of ['pills', 'stroke']) {
+        const specimen = within(root(presentation, 'selected'));
+        await expect(specimen.getByRole('tab', { name: 'Selected' })).toHaveAttribute('aria-selected', 'true');
+        await expect(specimen.getByRole('tab', { name: 'Unselected' })).toHaveAttribute('aria-selected', 'false');
+      }
+    });
+
+    await step('forced unselected hover changes a meaningful visual property', async () => {
+      for (const presentation of ['pills', 'stroke']) {
+        const baseline = within(root(presentation, 'unselected')).getByRole('tab', { name: 'Unselected' });
+        const hover = within(root(presentation, 'hover')).getByRole('tab', { name: 'Unselected' });
+        await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+        await waitFor(() => {
+          const before = getComputedStyle(baseline);
+          const after = getComputedStyle(hover);
+          if (matchMedia('(forced-colors: active)').matches) expect(hover.className).toContain('text-text-primary');
+          else expect([after.color, after.borderBottomColor]).not.toEqual([before.color, before.borderBottomColor]);
+        });
+      }
+    });
+
+    await step('forced focus-visible exposes the governed ring', async () => {
+      for (const presentation of ['pills', 'stroke']) {
+        const focus = within(root(presentation, 'focus')).getByRole('tab', { name: 'Selected' });
+        await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+        const style = getComputedStyle(focus);
+        await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+        await expect(style.outlineStyle).not.toBe('none');
+      }
+    });
   },
 };

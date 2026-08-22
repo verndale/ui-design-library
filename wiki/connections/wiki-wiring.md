@@ -29,6 +29,8 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Restore In-page navigation modal-drawer source parity](../../wiki/journal/2026-08-20-in-page-navigation-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Restore Slider native-form source parity](../../wiki/journal/2026-08-20-slider-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
 - [Restore Tabs visual and responsive source parity](../../wiki/journal/2026-08-20-tabs-source-parity.md) → [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md)
+- [Govern Figma interaction-state specimens](../../wiki/journal/2026-08-21-governed-figma-interaction-states.md) → [Governed Figma Interaction States and Retrospective Capture](../../wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md)
+- [Expand Rich Text authored-content coverage](../../wiki/journal/2026-08-22-expand-rich-text-authored-content.md) → [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md)
 
 ## Page → topic
 
@@ -76,6 +78,9 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Restore Tabs visual and responsive source parity](../../wiki/journal/2026-08-20-tabs-source-parity.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Restore Tabs visual and responsive source parity](../../wiki/journal/2026-08-20-tabs-source-parity.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Restore Tabs visual and responsive source parity](../../wiki/journal/2026-08-20-tabs-source-parity.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
+- [Govern Figma interaction-state specimens](../../wiki/journal/2026-08-21-governed-figma-interaction-states.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Expand Rich Text authored-content coverage](../../wiki/journal/2026-08-22-expand-rich-text-authored-content.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Expand Rich Text authored-content coverage](../../wiki/journal/2026-08-22-expand-rich-text-authored-content.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
@@ -98,6 +103,10 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Figma structural family contract](../../wiki/plans/2026-08-19-figma-structural-family-contract.md) → [Variant axis — Design History](../../wiki/topics/variant-axis.md)
 - [Official Source-Parity Audit and Remediation Plan](../../wiki/plans/2026-08-19-source-parity-audit-and-remediation.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Governed Figma Interaction States and Retrospective Capture](../../wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Governed Figma Interaction States and Retrospective Capture](../../wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
+- [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 
 ## Topic → covered surface
 

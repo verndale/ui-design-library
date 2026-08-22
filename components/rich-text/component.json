@@ -23,6 +23,8 @@
     "color-text-primary",
     "color-text-secondary",
     "color-link",
+    "color-surface-sunken",
+    "color-border-subtle",
     "spacing-l",
     "spacing-m",
     "spacing-s",
@@ -39,7 +41,8 @@
     "Replaced the project's global .rtf flow stylesheet (frontend/src/styles/rich-text.css, element selectors + margin rhythm) with Tailwind descendant utilities on the component itself ([&_h2], [&_p], [&_ul], [&_a], ...), so it carries its own prose contract instead of depending on a global class.",
     "Mapped the flow rhythm and colours onto the library semantic layer: headings and emphasis to color-text-primary, body to color-text-secondary, links to color-link, and the vertical rhythm to spacing-l / spacing-m / spacing-s / spacing-xs / spacing-2xs.",
     "Reimplemented the rtf--checkmark list style as a ::marker recolour + glyph rather than list-none + a ::before pseudo, so the unordered list keeps its list semantics (list-none drops the list role in WebKit).",
-    "Dropped client sample copy (press-contacts / portfolio text) and the temporary inline CTA/Media button mocks the story carried — content is caller-provided.",
+    "Dropped client sample copy (press-contacts / portfolio text) and the temporary inline CTA button mocks the story carried; caller-provided authored media is demonstrated with a neutral local specimen.",
+    "Restored the complete source-backed h1-h6 and img/picture/video/iframe selector coverage, then added neutral figure/figcaption and native table styling for the broader authored-content contract without adding CMS ingestion, media controls, or table behavior.",
     "Kept verbatim: authored headings render at their real level with no forced re-leveling, ordered/unordered lists stay real ol/ul/li, and link text is its own accessible name — the prose-semantics contract."
   ],
   "sourceParity": {

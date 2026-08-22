@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, userEvent, within } from 'storybook/test';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 
 import { Link } from './index';
 
@@ -150,6 +150,67 @@ export const Disabled: Story = {
       link.focus();
       await userEvent.keyboard('{Enter}');
       await expect(args.onClick).not.toHaveBeenCalled();
+    });
+  },
+};
+
+/** Code-backed specimens used to govern the unpublished Figma interaction-state presentation. */
+export const InteractionStates: Story = {
+  parameters: {
+    pseudo: {
+      rootSelector: 'body',
+      hover: '[data-figma-link-state="hover"]',
+      focusVisible: '[data-figma-link-state="focus-visible"]',
+    },
+  },
+  render: () => (
+    <div className="grid grid-cols-1 items-start gap-l xl:grid-cols-4">
+      {(['default', 'hover', 'focus-visible', 'disabled'] as const).map((state) => (
+        <div key={state} className="grid gap-s">
+          <span className="text-sm text-text-secondary">{state}</span>
+          <Link
+            href="#interaction-states"
+            size="medium"
+            disabled={state === 'disabled'}
+            data-figma-link-state={state}
+            className={state === 'hover' ? 'opacity-90' : state === 'focus-visible' ? 'outline-2 outline-solid outline-offset-2 outline-border-focus' : undefined}
+            classNames={{ content: state === 'hover' || state === 'focus-visible' ? 'bg-[length:100%_1px] bg-[position:0%_100%]' : undefined }}
+          >
+            Documentation
+          </Link>
+        </div>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const target = (state: string) => canvasElement.querySelector<HTMLElement>(`[data-figma-link-state="${state}"]`)!;
+
+    await step('forced hover changes opacity and draws the multiline underline', async () => {
+      const baseline = target('default');
+      const hover = target('hover');
+      await waitFor(() => expect(hover).toHaveClass('pseudo-hover'));
+      await waitFor(() => expect(parseFloat(getComputedStyle(hover).opacity)).toBeLessThan(parseFloat(getComputedStyle(baseline).opacity)));
+      const baselineLabel = baseline.querySelector('span')!;
+      const hoverLabel = hover.querySelector('span')!;
+      await expect(getComputedStyle(hoverLabel).backgroundSize).not.toBe(getComputedStyle(baselineLabel).backgroundSize);
+    });
+
+    await step('forced focus-visible exposes the focus ring and underline', async () => {
+      const focus = target('focus-visible');
+      await waitFor(() => expect(focus).toHaveClass('pseudo-focus-visible'));
+      const style = getComputedStyle(focus);
+      await expect(parseFloat(style.outlineWidth)).toBeGreaterThanOrEqual(2);
+      await expect(style.outlineStyle).not.toBe('none');
+      await expect(getComputedStyle(focus.querySelector('span')!).backgroundSize).not.toBe(
+        getComputedStyle(target('default').querySelector('span')!).backgroundSize,
+      );
+    });
+
+    await step('disabled remains a non-activating link state', async () => {
+      const disabled = target('disabled');
+      await expect(disabled).toHaveAttribute('aria-disabled', 'true');
+      await expect(disabled).not.toHaveAttribute('href');
+      await expect(getComputedStyle(disabled).pointerEvents).toBe('none');
     });
   },
 };

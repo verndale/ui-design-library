@@ -90,7 +90,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3216,
+      "bytes": 3242,
       "degree": 1
     },
     {
@@ -102,7 +102,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 4996,
+      "bytes": 5022,
       "degree": 1
     },
     {
@@ -1738,9 +1738,11 @@
         "package-distribution"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "84"
+      ],
       "issues": [],
-      "bytes": 3747,
+      "bytes": 4134,
       "degree": 10
     },
     {
@@ -2203,7 +2205,7 @@
       "issues": [
         "83"
       ],
-      "bytes": 12210,
+      "bytes": 12862,
       "degree": 39
     },
     {
@@ -3498,7 +3500,7 @@
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
       "type": "links-to",
-      "count": 2,
+      "count": 3,
       "anchors": []
     },
     {

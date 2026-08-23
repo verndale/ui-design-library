@@ -2,7 +2,7 @@
 date: 2026-08-22
 topics: [graph-wiki-subsystem, component-architecture, story-testing, package-distribution]
 plan: plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/84
 ---
 # Standardize lint, Commitlint, and graph automation
 
@@ -25,6 +25,7 @@ pr: pending
 - Kept Oxlint absent. The separately versioned `@eslint/js` package is `10.0.1` because its release line is versioned independently; core ESLint is `10.9.0`.
 - Used pnpm's functional no-separator argument forwarding (`pnpm run lint:commit --edit`) because pnpm 10.33 forwards a standalone `--` literally to Commitlint and can bypass invalid-message failures.
 - The first Linux quality run exposed filesystem-dependent directory sizes in curated `surface` nodes. Directory surfaces now record zero bytes, file surfaces retain their content size, and the graph gate asserts that portable contract before comparing committed output.
+- The first merged-PR wiki reconciliation after native hook installation exposed the official post-checkout hook on a GitHub runner where Graphify is intentionally absent. Both wiki bot workflows now set Graphify's supported `GRAPHIFY_SKIP_HOOK=1` opt-out for automated branch switches and commits; developer checkouts keep the native hook.
 
 ## Files
 

@@ -20,6 +20,7 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  GRAPHIFY_SKIP_HOOK: "1"
   PR_NUMBER: ${{ github.event.pull_request.number }}
 
 jobs:

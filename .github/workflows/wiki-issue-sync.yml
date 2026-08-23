@@ -21,6 +21,7 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  GRAPHIFY_SKIP_HOOK: "1"
 
 jobs:
   sync:

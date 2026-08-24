@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #90](https://github.com/verndale/ui-design-library/pull/90))
 - 2026-08-24 — Replaced generic hand-authored traversal prose with the canonical headless managed block while retaining the component graph, Graphify, evidence, authoring, and maintainer boundaries outside it ([plan](../plans/2026-08-24-deterministic-route-first-wiki-guidance.md), [journal](../journal/2026-08-24-deterministic-agent-wiki-guidance.md)).
 - 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #88](https://github.com/verndale/ui-design-library/pull/88))
 - 2026-08-23 — Standardized repo-qualified offline GitHub evidence, compact agent routing, safe Sigma inspection, manual/merged reconciliation, daily issue refresh, the five workflow identities, and the sole Commitlint provider while preserving the curated component/wiki graph, specialized Quality gates, Graphify ownership, and contamination-safe hook ([issue #87](https://github.com/verndale/ui-design-library/issues/87), [plan](../plans/2026-08-23-wiki-parity-and-github-evidence.md), [journal](../journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md)).

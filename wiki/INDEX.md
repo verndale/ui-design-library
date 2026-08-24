@@ -18,8 +18,9 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 3. "Was plan X implemented / what plans exist" → [plans/INDEX.md](plans/INDEX.md) is the audit table; archived plan files sit next to it.
 4. Full plan detail behind a change → follow the plan link inside the journal entry or topic page.
 5. "How does X wire to the rest of the components/wiki" → [connections.md](connections.md), a small index over the generated map; open the section your question needs: [components](connections/components.md), [wiki wiring](connections/wiki-wiring.md).
-6. Cross-system "why", wiring, or impact question → `pnpm graph:navigate --intent why|wiring|impact --query <term>` returns a deterministic, minimal itinerary.
-7. No index hit or no route → grep `wiki/` for the term; then fall back to `git log` / `gh`. Never load the whole wiki.
+6. Cross-system rationale, wiring, or impact question → run `node scripts/wiki/navigate.cjs --intent why|wiring|impact --query "<specific term>"`; open only its byte-budgeted itinerary.
+7. GitHub evidence → query a full URL, `owner/repo PR #N`, `owner/repo issue #N`, or `owner/repo#N`. A bare `#N` is intentionally ambiguous.
+8. No index hit or no route → use one targeted `rg` over `wiki/`, then the exact source path. Never load the whole wiki.
 
 ## Topics
 
@@ -35,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-08-23 — [Standardize wiki navigation and GitHub evidence](journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) — repo-qualified offline evidence, compact routes, safe viewer links, hardened reconciliation, and canonical CI/hook identities for issue #87.
 - 2026-08-22 — [Standardize lint, Commitlint, and graph automation](journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) — unified staged/push/CI enforcement, direct Conventional Commit policy, native Graphify ownership, and guarded curated-graph freshness.
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->
 

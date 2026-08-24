@@ -78,11 +78,16 @@ Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright i
 
 ## Context wiki
 
-`wiki/` records why the repo is the way it is — executed plans, decisions, and the reasoning behind them. Start at [`wiki/INDEX.md`](wiki/INDEX.md), which routes to the one page your question needs; never load the whole wiki.
+[`wiki/`](wiki/INDEX.md) is the committed history of this repo — executed plans, decisions, and notable changes. Never bulk-load it.
 
-Capturing history is part of a substantive change, in the same delivery: a journal entry, the executed plan archived, and the affected topic page's Decisions updated. The protocol is [`wiki/MECHANICS.md`](wiki/MECHANICS.md).
-
-Two things worth knowing before you read it. A pre-commit hook rebuilds the knowledge graph and warns (never blocks) when a substantive commit adds no journal entry; on merge, a bot fills in `pr:` links, drafts a stub for a substantive PR that added none, and updates the affected topic — see [`wiki/topics/graph-wiki-subsystem.md`](wiki/topics/graph-wiki-subsystem.md). It still needs `secrets.PR_BOT_TOKEN` configured in the repo to actually run. And the capture trigger includes **investigations that found nothing**, because "we already checked that" is exactly the knowledge `git log` cannot hold.
+- **Choose the cheapest lookup first**: an exact file, symbol, command, or current-code question goes straight to that file or targeted `rg`; broad code architecture follows the Graphify protocol below. A direct single-topic rationale/history question starts at [`wiki/INDEX.md`](wiki/INDEX.md) and opens only the one page it names.
+- **Route only cross-page history questions**: for rationale spanning subsystems use `--intent why`, dependency/ownership use `--intent wiring`, and change impact use `--intent impact`. Silently run `node scripts/wiki/navigate.cjs --intent <why|wiring|impact> --query "<specific term>"`, read only its itinerary in order, and stop when answered. Each item reports its byte cost; never bulk-load `wiki/`, `scripts/graph/data/graph.json`, or adjacent pages "just in case."
+- **Query GitHub evidence unambiguously**: use a full URL, `owner/repo PR #123`, `owner/repo issue #123`, or `owner/repo#123`. Never query a bare `#123`; PR and issue numbers collide across repositories. Evidence resolves to the existing Markdown page that cites it, not to a live GitHub node.
+- **Handle misses without widening context**: if the router reports candidates, choose only from those grounded paths or ask one focused question. If it reports no route, use one targeted `rg` over `wiki/` and then the exact source path. Never guess a path, scan the whole wiki, or read the raw graph JSON.
+- **Generated wiring map**: [`wiki/connections.md`](wiki/connections.md) is a routed index for component↔token, journal↔plan, topic↔surface, and cross-area seams. Open only the section named by the itinerary. Do not hand-edit it; `pnpm graph:build` rebuilds it and `pnpm run wiki:check` verifies it.
+- **Human graph exploration**: `pnpm graph:view` opens the curated Sigma viewer. Search and click a node to focus its neighborhood, or select Source and Target and choose **Show route** for the weighted shortest route. The CLI navigator is the token-efficient agent path; the viewer is not a second knowledge source.
+- **Write**: capturing history is part of a substantive change in the same delivery: add a journal entry, archive the executed plan, update the affected topic Decisions, and refresh the indexes per [`wiki/MECHANICS.md`](wiki/MECHANICS.md). Investigations that found nothing still qualify.
+- **Automation**: the advisory pre-commit hook skips graph rebuilding when unstaged or untracked graph inputs could contaminate the commit. The merge and issue workflows are a safety net for out-of-session reconciliation; they need `secrets.PR_BOT_TOKEN`, store repo-qualified citations in Markdown, and rebuild offline `githubRefs` metadata. Agents still author the history they create.
 
 ## Commits & release
 

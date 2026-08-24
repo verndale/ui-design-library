@@ -6,6 +6,16 @@ on:
     types: [opened, synchronize, reopened]
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   quality:
     name: quality
@@ -29,7 +39,7 @@ jobs:
 
       - name: Get pnpm store path
         id: pnpm-cache
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
 
       - name: Cache pnpm store
         uses: actions/cache@v4
@@ -58,10 +68,3 @@ jobs:
 
       - name: Run complete non-fixing quality gate
         run: pnpm run verify:ci
-
-      - name: Advisory wiki journal check
-        if: github.event_name == 'pull_request'
-        continue-on-error: true
-        run: |
-          git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > "$RUNNER_TEMP/changed-files.txt"
-          node scripts/wiki/ci-journal-warn.cjs --files "$RUNNER_TEMP/changed-files.txt"

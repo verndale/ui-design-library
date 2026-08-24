@@ -32,6 +32,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Govern Figma interaction-state specimens](../../wiki/journal/2026-08-21-governed-figma-interaction-states.md) → [Governed Figma Interaction States and Retrospective Capture](../../wiki/plans/2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md)
 - [Expand Rich Text authored-content coverage](../../wiki/journal/2026-08-22-expand-rich-text-authored-content.md) → [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md)
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Cross-repository lint, Commitlint, and graph standardization](../../wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md)
+- [Standardize wiki navigation and GitHub evidence](../../wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) → [Wiki parity, GitHub evidence, and CI workflow standard](../../wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md)
 
 ## Page → topic
 
@@ -86,6 +87,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
+- [Standardize wiki navigation and GitHub evidence](../../wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
@@ -116,6 +118,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Cross-repository lint, Commitlint, and graph standardization](../../wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
+- [Wiki parity, GitHub evidence, and CI workflow standard](../../wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 
 ## Topic → covered surface
 
@@ -133,11 +136,14 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Figma library — Design History](../../wiki/topics/figma-code-connect.md) → [source-parity.cjs](../../scripts/lib/source-parity.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [.gitattributes](../../.gitattributes)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [commitlint.yml](../../.github/workflows/commitlint.yml)
-- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [test.yml](../../.github/workflows/test.yml)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [pr.yml](../../.github/workflows/pr.yml)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [quality.yml](../../.github/workflows/quality.yml)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [wiki-check.yml](../../.github/workflows/wiki-check.yml)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [wiki-issue-sync.yml](../../.github/workflows/wiki-issue-sync.yml)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [wiki-sync.yml](../../.github/workflows/wiki-sync.yml)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [.gitignore](../../.gitignore)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [.graphifyignore](../../.graphifyignore)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [commit-msg](../../.husky/commit-msg)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [post-checkout](../../.husky/post-checkout)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [post-commit](../../.husky/post-commit)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [pre-commit](../../.husky/pre-commit)
@@ -147,13 +153,19 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [commitlint.config.cjs](../../commitlint.config.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [eslint.config.js](../../eslint.config.js)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [lint-staged.config.mjs](../../lint-staged.config.mjs)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [package.json](../../package.json)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [pnpm-workspace.yaml](../../pnpm-workspace.yaml)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [graph-check.cjs](../../scripts/evals/graph-check.cjs)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [wiki-parity-check.cjs](../../scripts/evals/wiki-parity-check.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [build-graph.cjs](../../scripts/graph/build-graph.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [pre-commit.cjs](../../scripts/graph/pre-commit.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [routing-policy.json](../../scripts/graph/routing-policy.json)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [routing.cjs](../../scripts/graph/routing.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [serve.cjs](../../scripts/graph/serve.cjs)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [viewer.js](../../scripts/graph/viewer/viewer.js)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [ci-journal-warn.cjs](../../scripts/wiki/ci-journal-warn.cjs)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [github.cjs](../../scripts/wiki/lib/github.cjs)
+- [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [navigate.cjs](../../scripts/wiki/navigate.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [on-merge-sync.cjs](../../scripts/wiki/on-merge-sync.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [pre-commit-journal.cjs](../../scripts/wiki/pre-commit-journal.cjs)
 - [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md) → [refresh-issue-state.cjs](../../scripts/wiki/refresh-issue-state.cjs)
@@ -165,7 +177,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [test-next.cjs](../../scripts/test-next.cjs)
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [styles.css](../../styles.css)
 - [Package distribution — Design History](../../wiki/topics/package-distribution.md) → [tsconfig.build.json](../../tsconfig.build.json)
-- [Story testing — Design History](../../wiki/topics/story-testing.md) → [test.yml](../../.github/workflows/test.yml)
+- [Story testing — Design History](../../wiki/topics/story-testing.md) → [quality.yml](../../.github/workflows/quality.yml)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [preview.ts](../../.storybook/preview.ts)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [vitest.config.ts](../../vitest.config.ts)
 - [Story testing — Design History](../../wiki/topics/story-testing.md) → [vitest.motion.config.ts](../../vitest.motion.config.ts)
@@ -184,8 +196,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 
 ## Cross-area links (seams)
 
-- [UI Design Library — agent guide](../../AGENTS.md) → [Context Wiki](../../wiki/INDEX.md)
+- [UI Design Library — agent guide](../../AGENTS.md) → [Context Wiki](../../wiki/INDEX.md) (×2)
 - [UI Design Library — agent guide](../../AGENTS.md) → [Wiki Mechanics](../../wiki/MECHANICS.md)
-- [UI Design Library — agent guide](../../AGENTS.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [ui-design-library](../../README.md) → [Semantic tokens](../../src/tokens/semantic.css)
 - [ui-design-library](../../README.md) → [Context Wiki](../../wiki/INDEX.md)

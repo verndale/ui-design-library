@@ -38,7 +38,7 @@ const TOPIC_RE = [
   [/^\.husky\//, "graph-wiki-subsystem"],
   [/^vitest(?:\..*)?\.config\.ts$/, "story-testing"],
   [/^vitest\.shared\.ts$/, "story-testing"],
-  [/^\.github\/workflows\/test\.yml$/, "story-testing"],
+  [/^\.github\/workflows\/quality\.yml$/, "story-testing"],
   [/^\.storybook\/preview\.ts$/, "story-testing"],
   [/^\.storybook\/(?:main|manager)\.ts$/, "storybook-tooling"],
   [/^\.storybook\/withDirection\.tsx$/, "storybook-tooling"],

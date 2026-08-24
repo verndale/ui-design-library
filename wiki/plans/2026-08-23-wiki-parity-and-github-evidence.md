@@ -1,7 +1,12 @@
 ---
 status: implemented
 executed: 2026-08-23
-evidence: ["issue #87 https://github.com/verndale/ui-design-library/issues/87", "working tree", "focused and full verification", "PR pending"]
+evidence:
+  - "issue #87 https://github.com/verndale/ui-design-library/issues/87"
+  - "working tree"
+  - "focused and full verification"
+  - "PR pending"
+  - "verndale/ui-design-library PR #88 https://github.com/verndale/ui-design-library/pull/88 (merged 2026-08-24)"
 source_tool: codex
 source: issue #87 implementation task
 topics: [graph-wiki-subsystem]

@@ -2,7 +2,7 @@
 date: 2026-08-23
 topics: [graph-wiki-subsystem]
 plan: plans/2026-08-23-wiki-parity-and-github-evidence.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/88
 issue: https://github.com/verndale/ui-design-library/issues/87
 issues: ["https://github.com/verndale/ui-design-library/issues/87"]
 ---

@@ -259,6 +259,23 @@ async function run() {
   });
   check("merge reconciliation rejects non-string path and commit entries", badPathEntry && badCommitEntry);
   check("merge reconciliation preserves explicit legacy files and commit aliases", legacyContext.changedPaths[0] === "src/index.ts" && legacyContext.commits[0].subject === "fix: legacy alias");
+  const malformedScalars = [
+    { title: 87 },
+    { body: null },
+    { mergedAt: 87 },
+    { merged_at: false },
+  ];
+  check(
+    "merge reconciliation rejects non-string PR text and merge timestamps",
+    malformedScalars.every((override) => {
+      try {
+        merge.normalizeContext({ ...context, ...override });
+        return false;
+      } catch {
+        return true;
+      }
+    }),
+  );
 
   fs.writeFileSync(
     path.join(wiki, "topics", "issue-state.md"),

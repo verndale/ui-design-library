@@ -41,6 +41,13 @@ function today() {
 function normalizeContext(input) {
   const ctx = input && typeof input === "object" ? input : {};
   if (ctx.schemaVersion != null && ctx.schemaVersion !== 1) throw new Error(`unsupported context schemaVersion: ${ctx.schemaVersion}`);
+  for (const key of ["title", "body"]) {
+    if (Object.prototype.hasOwnProperty.call(ctx, key) && typeof ctx[key] !== "string") throw new Error(`context ${key} must be a string when provided`);
+  }
+  for (const key of ["mergedAt", "merged_at"]) {
+    if (!Object.prototype.hasOwnProperty.call(ctx, key)) continue;
+    if (typeof ctx[key] !== "string" || !ctx[key].trim() || Number.isNaN(new Date(ctx[key]).getTime())) throw new Error(`context ${key} must be a valid timestamp string when provided`);
+  }
   const number = Number(ctx.number);
   if (!Number.isSafeInteger(number) || number <= 0) throw new Error("context number must be a positive integer");
   const rawUrl = String(ctx.url || "").trim();
@@ -85,7 +92,7 @@ function normalizeContext(input) {
     title: String(ctx.title || `PR #${number}`),
     body: String(ctx.body || ""),
     url: canonicalUrl,
-    mergedAt: ctx.mergedAt || ctx.merged_at || null,
+    mergedAt: ctx.mergedAt ?? ctx.merged_at ?? null,
     changedPaths,
     commits,
   };

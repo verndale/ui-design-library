@@ -263,7 +263,9 @@ async function run() {
     { title: 87 },
     { body: null },
     { mergedAt: 87 },
+    { mergedAt: "not-a-date" },
     { merged_at: false },
+    { merged_at: "not-a-date" },
   ];
   check(
     "merge reconciliation rejects non-string PR text and merge timestamps",

@@ -1,7 +1,9 @@
 ---
 status: implemented
 executed: 2026-08-24
-evidence: [canonical headless AGENTS.md block installed with zero-drift dry run]
+evidence:
+  - canonical headless AGENTS.md block installed with zero-drift dry run
+  - "verndale/ui-design-library PR #90 https://github.com/verndale/ui-design-library/pull/90 (merged 2026-08-24)"
 source_tool: codex
 source: current user-approved cross-repository plan
 topics: [graph-wiki-subsystem]

@@ -36,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-08-24 — [Make agent wiki guidance deterministic](journal/2026-08-24-deterministic-agent-wiki-guidance.md) — installs the canonical headless route-first contract while preserving component-graph and Graphify ownership.
 - 2026-08-23 — [Standardize wiki navigation and GitHub evidence](journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) — repo-qualified offline evidence, compact routes, safe viewer links, hardened reconciliation, and canonical CI/hook identities for issue #87.
 - 2026-08-22 — [Standardize lint, Commitlint, and graph automation](journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) — unified staged/push/CI enforcement, direct Conventional Commit policy, native Graphify ownership, and guarded curated-graph freshness.
 <!-- Reverse-chronological, one line per entry: YYYY-MM-DD — [Title](journal/<file>.md) — hook. -->

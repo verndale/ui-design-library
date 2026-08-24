@@ -33,6 +33,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Expand Rich Text authored-content coverage](../../wiki/journal/2026-08-22-expand-rich-text-authored-content.md) → [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md)
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Cross-repository lint, Commitlint, and graph standardization](../../wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md)
 - [Standardize wiki navigation and GitHub evidence](../../wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) → [Wiki parity, GitHub evidence, and CI workflow standard](../../wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md)
+- [Make agent wiki guidance deterministic](../../wiki/journal/2026-08-24-deterministic-agent-wiki-guidance.md) → [Deterministic, Route-First Wiki Guidance and PR 127 Recovery](../../wiki/plans/2026-08-24-deterministic-route-first-wiki-guidance.md)
 
 ## Page → topic
 
@@ -88,6 +89,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Standardize lint, Commitlint, and graph automation](../../wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Standardize wiki navigation and GitHub evidence](../../wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
+- [Make agent wiki guidance deterministic](../../wiki/journal/2026-08-24-deterministic-agent-wiki-guidance.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
@@ -119,6 +121,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Rich Text authored-content coverage](../../wiki/plans/2026-08-22-rich-text-authored-content-coverage.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Wiki parity, GitHub evidence, and CI workflow standard](../../wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
+- [Deterministic, Route-First Wiki Guidance and PR 127 Recovery](../../wiki/plans/2026-08-24-deterministic-route-first-wiki-guidance.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 
 ## Topic → covered surface
 
@@ -196,7 +199,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 
 ## Cross-area links (seams)
 
-- [UI Design Library — agent guide](../../AGENTS.md) → [Context Wiki](../../wiki/INDEX.md) (×2)
+- [UI Design Library — agent guide](../../AGENTS.md) → [Context Wiki](../../wiki/INDEX.md)
 - [UI Design Library — agent guide](../../AGENTS.md) → [Wiki Mechanics](../../wiki/MECHANICS.md)
 - [ui-design-library](../../README.md) → [Semantic tokens](../../src/tokens/semantic.css)
 - [ui-design-library](../../README.md) → [Context Wiki](../../wiki/INDEX.md)

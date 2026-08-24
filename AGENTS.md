@@ -76,14 +76,11 @@ Note there are **two** mechanisms and they fail independently: the token collaps
 
 Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright install chromium webkit` once for the story tests. `pnpm test` runs typecheck, lint, architecture and contract self-tests, SSR rendering, export checks, Chromium/WebKit accessibility and mode coverage, and reduced-motion tests. `pnpm build` emits native Node ESM and declarations and verifies every public export. `pnpm verify` packs and installs the artifact, dynamically imports every component and verifies its declared `exportName`, then runs the development-only Next/Tailwind consumer fixture. `pnpm storybook` browses the source stories.
 
-## Context wiki
+## Repository wiki and graph operations
 
-[`wiki/`](wiki/INDEX.md) is the committed history of this repo — executed plans, decisions, and notable changes. Never bulk-load it.
+[`wiki/`](wiki/INDEX.md) is the committed history of this repo — executed plans, decisions, and notable changes.
 
-- **Choose the cheapest lookup first**: an exact file, symbol, command, or current-code question goes straight to that file or targeted `rg`; broad code architecture follows the Graphify protocol below. A direct single-topic rationale/history question starts at [`wiki/INDEX.md`](wiki/INDEX.md) and opens only the one page it names.
-- **Route only cross-page history questions**: for rationale spanning subsystems use `--intent why`, dependency/ownership use `--intent wiring`, and change impact use `--intent impact`. Silently run `node scripts/wiki/navigate.cjs --intent <why|wiring|impact> --query "<specific term>"`, read only its itinerary in order, and stop when answered. Each item reports its byte cost; never bulk-load `wiki/`, `scripts/graph/data/graph.json`, or adjacent pages "just in case."
 - **Query GitHub evidence unambiguously**: use a full URL, `owner/repo PR #123`, `owner/repo issue #123`, or `owner/repo#123`. Never query a bare `#123`; PR and issue numbers collide across repositories. Evidence resolves to the existing Markdown page that cites it, not to a live GitHub node.
-- **Handle misses without widening context**: if the router reports candidates, choose only from those grounded paths or ask one focused question. If it reports no route, use one targeted `rg` over `wiki/` and then the exact source path. Never guess a path, scan the whole wiki, or read the raw graph JSON.
 - **Generated wiring map**: [`wiki/connections.md`](wiki/connections.md) is a routed index for component↔token, journal↔plan, topic↔surface, and cross-area seams. Open only the section named by the itinerary. Do not hand-edit it; `pnpm graph:build` rebuilds it and `pnpm run wiki:check` verifies it.
 - **Human graph exploration**: `pnpm graph:view` opens the curated Sigma viewer. Search and click a node to focus its neighborhood, or select Source and Target and choose **Show route** for the weighted shortest route. The CLI navigator is the token-efficient agent path; the viewer is not a second knowledge source.
 - **Write**: capturing history is part of a substantive change in the same delivery: add a journal entry, archive the executed plan, update the affected topic Decisions, and refresh the indexes per [`wiki/MECHANICS.md`](wiki/MECHANICS.md). Investigations that found nothing still qualify.
@@ -120,3 +117,23 @@ The `## graphify` section above is the upstream block managed by `graphify codex
 - After clone or Graphify upgrade, re-run all three project installers so owned files stay current: `graphify install --project` (root `CLAUDE.md` + `.claude/`), `graphify codex install --project` (`AGENTS.md`), and `graphify cursor install --project` (`.cursor/rules/graphify.mdc`).
 - `.graphifyignore` excludes all Markdown, the wiki, generated graph data, agent/install mechanics, consumer fixtures, and the vendored Sigma viewer runtime so native updates preserve the code-only corpus and stay focused on maintained source and tooling. The separate curated graph under `scripts/graph/data/` remains authoritative for governed component metadata and wiki history.
 - When non-code sources such as documentation, PDFs, or images are intentionally part of the semantic graph, use the installed Graphify skill's `--update` flow; the Git sync path is AST-only and does not perform model-backed semantic extraction.
+
+<!-- wiki-skill:start -->
+## Context wiki navigation
+
+Use `wiki/` as this repository's existing context source. Never bulk-load that directory.
+
+- For an exact current-code, file, symbol, or command question, inspect the named source or use targeted source `rg`; do not load history.
+- For a direct single-topic history or rationale question, start at `wiki/INDEX.md` when it exists and open only the page it routes to.
+- Only for a cross-page why, wiring, ownership, or impact question, run `node scripts/wiki/navigate.cjs --wiki-root "wiki" --intent why --query "<terms>"` before opening wiki pages. Use `wiring` for ownership/dependencies and `impact` for change scope.
+- Query with exact slugs, identifiers, symbols, or repository-qualified GitHub references. Never use a bare issue or PR number such as `#123`.
+- When both endpoints are known, use exact `--from` and `--to` node IDs.
+- Trust the router's deterministic weighted shortest route, which accounts for relationship cost, hubs, and page bytes. Open only its itinerary; never add candidates, neighbors, or adjacent pages.
+- Read itinerary pages sequentially, never speculatively in parallel, and stop as soon as the answer is grounded.
+- If resolution is ambiguous, rerun with one returned exact ID; never open every candidate.
+- Never use `grep`, `find`, or recursive `rg` as initial wiki discovery. After a router miss, run at most one root-scoped exact search: `rg -n --fixed-strings "<exact term>" wiki/`. If it fails, inspect one known source path or ask one focused question; never widen the search.
+- Never read generated graph JSON directly.
+- This installation owns navigation only. Preserve this repository's existing wiki authoring, validation, hooks, workflows, and generated-data conventions.
+
+This managed block is shared by Codex, Cursor, and Claude (via `@AGENTS.md` in `CLAUDE.md`).
+<!-- wiki-skill:end -->

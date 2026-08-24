@@ -16,12 +16,13 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 14 implemented, 5 partial (19 plans).
+Totals: 15 implemented, 5 partial (20 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-08-24 | [Deterministic, Route-First Wiki Guidance and PR 127 Recovery](2026-08-24-deterministic-route-first-wiki-guidance.md) | implemented | canonical headless `AGENTS.md` block installed with zero-drift dry run | graph-wiki-subsystem |
 | 2026-08-23 | [Wiki parity, GitHub evidence, and CI workflow standard](2026-08-23-wiki-parity-and-github-evidence.md) | implemented | [issue #87](https://github.com/verndale/ui-design-library/issues/87), working tree, focused and full verification, PR pending | graph-wiki-subsystem |
 | 2026-08-22 | [Cross-repository lint, Commitlint, and graph standardization](2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md) | implemented | [issue #83](https://github.com/verndale/ui-design-library/issues/83), isolated issue worktree, lint/push/CI/graph/Graphify verification | graph-wiki-subsystem, component-architecture, story-testing, package-distribution |
 | 2026-08-22 | [Rich Text authored-content coverage](2026-08-22-rich-text-authored-content-coverage.md) | implemented | [issue #80](https://github.com/verndale/ui-design-library/issues/80), Rich Text master `173:62`, authored-content section `417:26`, Storybook/code/Figma validation, [PR #81](https://github.com/verndale/ui-design-library/pull/81) | figma-code-connect, story-testing |

@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #88](https://github.com/verndale/ui-design-library/pull/88))
 - 2026-08-23 — Standardized repo-qualified offline GitHub evidence, compact agent routing, safe Sigma inspection, manual/merged reconciliation, daily issue refresh, the five workflow identities, and the sole Commitlint provider while preserving the curated component/wiki graph, specialized Quality gates, Graphify ownership, and contamination-safe hook ([issue #87](https://github.com/verndale/ui-design-library/issues/87), [plan](../plans/2026-08-23-wiki-parity-and-github-evidence.md), [journal](../journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md)).
 - 2026-08-23 — fix(ci): skip graphify hooks in wiki bots ([PR #85](https://github.com/verndale/ui-design-library/pull/85))
 - 2026-08-22 — Made wiki automation use Graphify's supported hook opt-out after the PR #84 reconciliation runner failed during its bot-branch checkout; applied the same guard to scheduled issue-state refreshes before they could hit the identical path ([issue #83](https://github.com/verndale/ui-design-library/issues/83), [journal](../journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md)).

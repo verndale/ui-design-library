@@ -25,7 +25,7 @@
 const fs = require("fs");
 const path = require("path");
 const frontmatter = require("../wiki/lib/frontmatter.cjs");
-const { extractGithubRefs } = require("../wiki/lib/github.cjs");
+const { extractGithubRefs, withoutFencedCode } = require("../wiki/lib/github.cjs");
 
 const REPO_ROOT = path.resolve(__dirname, "..", "..");
 const OUT_FILE = path.join(__dirname, "data", "graph.json");
@@ -46,10 +46,7 @@ const isConnectionsView = (id) => id === CONNECTIONS_INDEX_ID || id.startsWith(`
 const ROOT_DOCS = new Set(["AGENTS.md", "README.md", "CONTRIBUTING.md", "CLAUDE.md"]);
 
 const LINK_RE = /\[[^\]]*\]\(([^)]+)\)/g;
-const FENCE_RE = /^```/;
 const H1_RE = /^#\s+(.+?)\s*$/;
-const PR_RE = /github\.com\/[^/]+\/[^/]+\/pull\/(\d+)/g;
-const ISSUE_RE = /github\.com\/[^/]+\/[^/]+\/issues\/(\d+)/g;
 // NUL joins the (source, target) halves of an internal edge key so a node id that ever
 // contained a space could never mis-split it (matches routing.cjs's edgeKey separator).
 const EDGE_KEY_SEP = String.fromCharCode(0);
@@ -130,14 +127,8 @@ function extractLabel(id, type, text) {
 // fenced code blocks and non-local targets. Markdown nodes only (root docs + wiki).
 function extractLinks(absFile, text) {
   const targets = [];
-  const lines = text.split(/\r?\n/);
-  let fenced = false;
+  const lines = withoutFencedCode(text).split(/\r?\n/);
   for (const line of lines) {
-    if (FENCE_RE.test(line)) {
-      fenced = !fenced;
-      continue;
-    }
-    if (fenced) continue;
     LINK_RE.lastIndex = 0;
     let m;
     while ((m = LINK_RE.exec(line)) !== null) {
@@ -151,12 +142,8 @@ function extractLinks(absFile, text) {
   return targets;
 }
 
-function uniqueMatches(text, re) {
-  const out = [];
-  let m;
-  re.lastIndex = 0;
-  while ((m = re.exec(text)) !== null) if (!out.includes(m[1])) out.push(m[1]);
-  return out;
+function legacyGithubNumbers(refs, kind) {
+  return [...new Set(refs.filter((ref) => ref.kind === kind).map((ref) => String(ref.number)))];
 }
 
 function build({ repoRoot = REPO_ROOT } = {}) {
@@ -192,6 +179,7 @@ function build({ repoRoot = REPO_ROOT } = {}) {
     }
     fileText.set(id, text);
     const isMd = id.endsWith(".md");
+    const githubRefs = isMd ? extractGithubRefs(text) : [];
     nodes.set(id, {
       id,
       label: extractLabel(id, type, text),
@@ -199,9 +187,9 @@ function build({ repoRoot = REPO_ROOT } = {}) {
       dir: toPosix(path.dirname(id)),
       topics: isMd ? frontmatter.readList(text, "topics") : [],
       aliases: isMd ? frontmatter.readList(text, "aliases") : [],
-      prs: isMd ? uniqueMatches(text, PR_RE) : [],
-      issues: isMd ? uniqueMatches(text, ISSUE_RE) : [],
-      githubRefs: isMd ? extractGithubRefs(text) : [],
+      prs: legacyGithubNumbers(githubRefs, "pull-request"),
+      issues: legacyGithubNumbers(githubRefs, "issue"),
+      githubRefs,
       bytes: Buffer.byteLength(text, "utf8"),
       degree: 0,
     });
@@ -475,4 +463,5 @@ module.exports = {
   REPO_ROOT,
   CONNECTIONS_INDEX_ID,
   CONNECTIONS_DIR_ID,
+  legacyGithubNumbers,
 };

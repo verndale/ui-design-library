@@ -5,18 +5,34 @@
 window.KGRouting = (() => {
   const key = (edge) => `${edge.source}\u0000${edge.target}\u0000${edge.type}`;
 
-  function hasSafeNumericPolicy(policy) {
-    return Boolean(
+  function normalizeGithubQuery(value) {
+    const normalized = String(value || "").trim().toLowerCase();
+    const match = normalized.match(/^https:\/\/github\.com\/([a-z0-9_.-]+\/[a-z0-9_.-]+)\/(pull|issues)\/(\d+)\/?(?:[?#][^\s]*)?$/i);
+    const number = Number(match?.[3]);
+    return match && Number.isSafeInteger(number) && number > 0
+      ? `https://github.com/${match[1]}/${match[2]}/${number}`
+      : normalized;
+  }
+
+  function hasSafeNumericPolicy(policy, graph = null) {
+    const structurallySafe = Boolean(
       policy &&
       policy.edgeCosts &&
       Object.values(policy.edgeCosts).every((cost) => Number.isFinite(cost) && cost > 0) &&
       Number.isFinite(policy.hubPenalty) &&
-      policy.hubPenalty >= 0
+      policy.hubPenalty >= 0 &&
+      Number.isFinite(policy.bytePenaltyPerKiB) &&
+      policy.bytePenaltyPerKiB >= 0 &&
+      Array.isArray(policy.excludedIntermediateTypes)
     );
+    if (!structurallySafe || !graph) return structurallySafe;
+    const nodeTypes = new Set(graph.nodes.map((node) => node.type));
+    return graph.edges.every((edge) => Number.isFinite(policy.edgeCosts[edge.type]) && policy.edgeCosts[edge.type] > 0)
+      && policy.excludedIntermediateTypes.every((type) => nodeTypes.has(type));
   }
 
   function shortestPath(graph, source, target, policy) {
-    if (!hasSafeNumericPolicy(policy)) return null;
+    if (!hasSafeNumericPolicy(policy, graph)) return null;
     const byId = new Map(graph.nodes.map((node) => [node.id, node]));
     const adjacency = new Map(graph.nodes.map((node) => [node.id, []]));
     for (const edge of graph.edges) {
@@ -37,7 +53,10 @@ window.KGRouting = (() => {
         if (step.to !== target && step.to !== source && excluded.has(byId.get(step.to)?.type)) continue;
         const base = policy.edgeCosts[step.edge.type];
         if (typeof base !== "number") continue;
-        const cost = base + (policy.hubPenalty || 0) * Math.log2((byId.get(step.to)?.degree || 0) + 1);
+        const destination = byId.get(step.to);
+        const cost = base
+          + policy.hubPenalty * Math.log2((destination?.degree || 0) + 1)
+          + policy.bytePenaltyPerKiB * ((destination?.bytes || 0) / 1024);
         const next = distances.get(current) + cost;
         const known = distances.get(step.to);
         const previousKey = previous.get(step.to) ? key(previous.get(step.to).edge) : "";
@@ -59,8 +78,9 @@ window.KGRouting = (() => {
       current = step.from;
       nodes.unshift(current);
     }
-    return { nodes, steps, cost: Number(distances.get(target).toFixed(3)) };
+    const totalBytes = nodes.reduce((sum, id) => sum + (byId.get(id)?.bytes || 0), 0);
+    return { nodes, steps, cost: Number(distances.get(target).toFixed(3)), totalBytes };
   }
 
-  return { shortestPath, edgeKey: key, hasSafeNumericPolicy };
+  return { shortestPath, edgeKey: key, hasSafeNumericPolicy, normalizeGithubQuery };
 })();

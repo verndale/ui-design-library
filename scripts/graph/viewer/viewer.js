@@ -303,7 +303,7 @@ function showRoute() {
     status.textContent = "Choose a source and target.";
     return;
   }
-  if (!window.KGRouting.hasSafeNumericPolicy(state.policy)) {
+  if (!window.KGRouting.hasSafeNumericPolicy(state.policy, state.graph)) {
     status.textContent = "Routing policy is invalid; rebuild the graph policy before routing.";
     return;
   }
@@ -328,7 +328,7 @@ function showRoute() {
 
 function wireControls() {
   $("#search").addEventListener("input", (e) => {
-    state.query = e.target.value.trim().toLowerCase();
+    state.query = window.KGRouting.normalizeGithubQuery(e.target.value);
     applyView();
   });
   $("#reset").addEventListener("click", () => {

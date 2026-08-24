@@ -38,14 +38,25 @@ function ghState(n, repository = DEFAULT_REPOSITORY) {
   }
 }
 
+function isSafeScanDirectory(directory) {
+  try {
+    const wiki = fs.lstatSync(path.dirname(directory));
+    const target = fs.lstatSync(directory);
+    return wiki.isDirectory() && !wiki.isSymbolicLink() && target.isDirectory() && !target.isSymbolicLink();
+  } catch {
+    return false;
+  }
+}
+
 // Returns list of change descriptions.
 // lookup(number, repository, ref) -> "open"|"closed"|null.
 function refresh(topicsDir, lookup) {
   const changes = [];
   const stateCache = new Map();
-  if (!fs.existsSync(topicsDir)) return changes;
-  for (const name of fs.readdirSync(topicsDir)) {
-    if (!name.endsWith(".md")) continue;
+  if (!isSafeScanDirectory(topicsDir)) return changes;
+  for (const entry of fs.readdirSync(topicsDir, { withFileTypes: true })) {
+    const name = entry.name;
+    if (!entry.isFile() || !name.endsWith(".md")) continue;
     const p = path.join(topicsDir, name);
     const lines = fs.readFileSync(p, "utf8").split("\n");
     let inOpen = false;
@@ -53,11 +64,11 @@ function refresh(topicsDir, lookup) {
     let touched = false;
     for (let i = 0; i < lines.length; i++) {
       const l = lines[i];
-      const marker = l.match(/^\s*(`{3,}|~{3,})/);
+      const marker = l.match(/^\s*(`{3,}|~{3,})(.*)$/);
       if (marker) {
-        const kind = marker[1][0];
-        if (!fence) fence = kind;
-        else if (fence === kind) fence = null;
+        const candidate = { kind: marker[1][0], length: marker[1].length };
+        if (!fence) fence = candidate;
+        else if (fence.kind === candidate.kind && candidate.length >= fence.length && marker[2].trim() === "") fence = null;
         continue;
       }
       if (fence) continue;

@@ -7,12 +7,13 @@
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
+const vm = require("node:vm");
 
 const REPO_ROOT = path.resolve(__dirname, "..", "..");
 const github = require("../wiki/lib/github.cjs");
 const merge = require("../wiki/on-merge-sync.cjs");
 const refresher = require("../wiki/refresh-issue-state.cjs");
-const { build } = require("../graph/build-graph.cjs");
+const { build, extractLinks, legacyGithubNumbers } = require("../graph/build-graph.cjs");
 const { formatRoute, resolveNode, route } = require("../graph/routing.cjs");
 const graphPrecommit = require("../graph/pre-commit.cjs");
 
@@ -67,12 +68,18 @@ async function run() {
     "https://github.com/verndale/ui-design-library/pull/87",
     "https://github.com/Other/Repo/issues/12",
     "https://github.com.evil.example/verndale/ui-design-library/issues/9",
+    "https://evil.example/https://github.com/hostile/repo/issues/14",
     "\x60\x60\x60",
     "https://github.com/verndale/ui-design-library/issues/999",
     "\x60\x60\x60",
     "~~~md",
     "https://github.com/verndale/ui-design-library/pull/998",
     "~~~",
+    "````md",
+    "```",
+    "https://github.com/verndale/ui-design-library/issues/997",
+    "```",
+    "````",
   ].join("\n"));
   check(
     "GitHub URLs normalize, deduplicate, reject hostile hosts, and ignore fenced examples",
@@ -91,14 +98,25 @@ async function run() {
       },
     ]),
   );
+  check(
+    "legacy PR and issue arrays derive only from canonical filtered evidence",
+    JSON.stringify(legacyGithubNumbers(extracted, "pull-request")) === JSON.stringify(["87"])
+      && JSON.stringify(legacyGithubNumbers(extracted, "issue")) === JSON.stringify(["12"]),
+  );
   check("full GitHub URL query resolves", github.parseGithubQuery("https://github.com/verndale/ui-design-library/pull/87")?.kind === "pull-request");
   check("qualified PR query resolves", github.parseGithubQuery("verndale/ui-design-library PR #87")?.number === 87);
   check("qualified issue query resolves", github.parseGithubQuery("verndale/ui-design-library issue 87")?.kind === "issue");
   check("compact repo-qualified query stays kind-neutral", github.parseGithubQuery("verndale/ui-design-library#87")?.kind === null);
   check("bare number query is deliberately rejected", github.parseGithubQuery("#87") === null);
+  check("embedded-host GitHub URLs are rejected", github.parseGithubQuery("https://evil.example/https://github.com/hostile/repo/issues/14") === null);
+  check(
+    "GitHub URL query and fragment normalize to the canonical endpoint",
+    github.parseGithubQuery("https://github.com/verndale/ui-design-library/issues/87?notification=1#issuecomment-2")?.url === "https://github.com/verndale/ui-design-library/issues/87",
+  );
+  check("alphanumeric issue-number suffixes are rejected", github.parseGithubQuery("https://github.com/verndale/ui-design-library/issues/87abc") === null);
 
   const closing = github.extractClosingIssues(
-    "Fixes #87, other/repo#12 and https://github.com/verndale/third/issues/3\n~~~md\nFixes hidden/repo#98\n~~~",
+    "Fixes #87, other/repo#12, and https://github.com/verndale/third/issues/3. Resolves #88 & fourth/repo#4\n~~~md\nFixes hidden/repo#98\n~~~\n```md\nCloses hidden/repo#99\n```\n````md\n```\nFixes hidden/repo#97\n```\n````",
     "verndale/ui-design-library",
   );
   check(
@@ -107,6 +125,8 @@ async function run() {
       "https://github.com/verndale/ui-design-library/issues/87",
       "https://github.com/other/repo/issues/12",
       "https://github.com/verndale/third/issues/3",
+      "https://github.com/verndale/ui-design-library/issues/88",
+      "https://github.com/fourth/repo/issues/4",
     ].join("|"),
   );
 
@@ -143,6 +163,7 @@ async function run() {
   const policy = {
     edgeCosts: { topic: 1 },
     hubPenalty: 0,
+    bytePenaltyPerKiB: 0,
     excludedIntermediateTypes: [],
     intents: {
       why: { preferredSourceTypes: ["wiki-journal"], preferredTargetTypes: ["wiki-topic"] },
@@ -204,6 +225,40 @@ async function run() {
     badSchema = true;
   }
   check("merge reconciliation rejects unsupported context schemas", badSchema);
+  let badIdentity = false;
+  let badTraversal = false;
+  try {
+    merge.normalizeContext({ ...context, repository: "other/repo" });
+  } catch {
+    badIdentity = true;
+  }
+  try {
+    merge.normalizeContext({ ...context, changedPaths: ["wiki/journal/../../other.md"] });
+  } catch {
+    badTraversal = true;
+  }
+  check("merge reconciliation rejects mismatched PR identity", badIdentity);
+  check("merge reconciliation rejects repository path traversal", badTraversal);
+  let badPathEntry = false;
+  let badCommitEntry = false;
+  try {
+    merge.normalizeContext({ ...context, changedPaths: [87] });
+  } catch {
+    badPathEntry = true;
+  }
+  try {
+    merge.normalizeContext({ ...context, commits: [{ hash: "abc", subject: 87 }] });
+  } catch {
+    badCommitEntry = true;
+  }
+  const legacyContext = merge.normalizeContext({
+    ...context,
+    changedPaths: undefined,
+    files: ["src/index.ts"],
+    commits: [{ sha: "abc", message: "fix: legacy alias\nbody" }],
+  });
+  check("merge reconciliation rejects non-string path and commit entries", badPathEntry && badCommitEntry);
+  check("merge reconciliation preserves explicit legacy files and commit aliases", legacyContext.changedPaths[0] === "src/index.ts" && legacyContext.commits[0].subject === "fix: legacy alias");
 
   fs.writeFileSync(
     path.join(wiki, "topics", "issue-state.md"),
@@ -219,6 +274,12 @@ async function run() {
       "~~~txt",
       "- Also fenced [ignored/repo issue #91](https://github.com/ignored/repo/issues/91)",
       "~~~",
+      "````md",
+      "```",
+      "## Decisions",
+      "- Nested fence [ignored/repo issue #92](https://github.com/ignored/repo/issues/92)",
+      "```",
+      "````",
       "- All closed [other/repo issue #12](https://github.com/other/repo/issues/12), [third/repo issue #13](https://github.com/third/repo/issues/13), duplicate [other/repo issue #12](https://github.com/other/repo/issues/12)",
       "- Mixed [other/repo issue #12](https://github.com/other/repo/issues/12) and [third/repo issue #14](https://github.com/third/repo/issues/14) — closed",
       "- Uncertain [third/repo issue #13](https://github.com/third/repo/issues/13) and [third/repo issue #15](https://github.com/third/repo/issues/15) — closed",
@@ -242,11 +303,57 @@ async function run() {
     JSON.stringify(issueCalls.sort()) === JSON.stringify(["other/repo#12", "third/repo#13", "third/repo#14", "third/repo#15"]),
   );
   check("issue refresh caches duplicate repo-qualified lookups", issueCalls.filter((item) => item === "other/repo#12").length === 1);
-  check("issue refresh ignores fenced citations and headings", !issueCalls.some((item) => item.startsWith("ignored/repo#")) && !/ignored\/repo\/issues\/(?:90|91)\) — closed/.test(issueState));
+  check("issue refresh ignores nested fenced citations and headings", !issueCalls.some((item) => item.startsWith("ignored/repo#")) && !/ignored\/repo\/issues\/(?:90|91|92)\) — closed/.test(issueState));
   check("issue refresh closes a line only when all cited issues are closed", /All closed .* — closed$/m.test(issueState));
   check("issue refresh removes a stale annotation when any known citation is open", /- Mixed .*third\/repo\/issues\/14\)$/m.test(issueState));
   check("issue refresh leaves an uncertain multi-citation line unchanged", /- Uncertain .*third\/repo\/issues\/15\) — closed$/m.test(issueState));
   check("issue refresh reports one change per changed line", issueChanges.length === 3);
+  const symlinkRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ui-design-library-symlink-"));
+  const symlinkTopics = path.join(symlinkRoot, "topics");
+  fs.mkdirSync(symlinkTopics);
+  const symlinkTarget = path.join(symlinkRoot, "outside-topic.md");
+  const symlinkBody = "# Outside\n\n## Open threads\n\n- [issue](https://github.com/other/repo/issues/12)\n";
+  fs.writeFileSync(symlinkTarget, symlinkBody);
+  fs.symlinkSync(symlinkTarget, path.join(symlinkTopics, "linked.md"));
+  let symlinkLookups = 0;
+  check(
+    "issue refresh skips Markdown symlinks",
+    refresher.refresh(symlinkTopics, () => { symlinkLookups += 1; return "closed"; }).length === 0
+      && symlinkLookups === 0
+      && fs.readFileSync(symlinkTarget, "utf8") === symlinkBody,
+  );
+  const directorySymlinkRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ui-design-library-dir-symlink-"));
+  const outsideWiki = path.join(directorySymlinkRoot, "outside-wiki");
+  const outsideTopics = path.join(outsideWiki, "topics");
+  fs.mkdirSync(outsideTopics, { recursive: true });
+  const outsideTopic = path.join(outsideTopics, "outside.md");
+  fs.writeFileSync(outsideTopic, symlinkBody);
+  const realWiki = path.join(directorySymlinkRoot, "real-wiki");
+  fs.mkdirSync(realWiki);
+  fs.symlinkSync(outsideTopics, path.join(realWiki, "topics"));
+  fs.symlinkSync(outsideWiki, path.join(directorySymlinkRoot, "wiki-link"));
+  let directorySymlinkLookups = 0;
+  const directoryLookup = () => { directorySymlinkLookups += 1; return "closed"; };
+  check(
+    "issue refresh rejects symlinked topics directories and wiki ancestors",
+    refresher.refresh(path.join(realWiki, "topics"), directoryLookup).length === 0
+      && refresher.refresh(path.join(directorySymlinkRoot, "wiki-link", "topics"), directoryLookup).length === 0
+      && directorySymlinkLookups === 0
+      && fs.readFileSync(outsideTopic, "utf8") === symlinkBody,
+  );
+
+  const extractedLinks = extractLinks(path.join(REPO_ROOT, "wiki", "source.md"), [
+    "[Visible](topics/visible.md)",
+    "````md",
+    "```",
+    "[Hidden](topics/hidden.md)",
+    "```",
+    "````",
+  ].join("\n"));
+  check(
+    "curated graph link extraction honors complete nested fence semantics",
+    JSON.stringify(extractedLinks.map((item) => item.target)) === JSON.stringify(["wiki/topics/visible.md"]),
+  );
 
   const graph = build();
   check("every curated graph node exposes additive githubRefs metadata", graph.nodes.every((node) => Array.isArray(node.githubRefs)));
@@ -256,6 +363,12 @@ async function run() {
       ref.url === github.canonicalRef(ref)?.url && ref.repository === ref.repository.toLowerCase()),
   );
   check("GitHub evidence remains metadata rather than first-class nodes", graph.nodes.every((node) => !/^github-/.test(node.type)));
+  check(
+    "curated graph legacy number arrays cannot diverge from canonical evidence",
+    graph.nodes.every((node) =>
+      JSON.stringify(node.prs) === JSON.stringify(legacyGithubNumbers(node.githubRefs, "pull-request"))
+      && JSON.stringify(node.issues) === JSON.stringify(legacyGithubNumbers(node.githubRefs, "issue"))),
+  );
 
   const workflows = {
     quality: read(".github/workflows/quality.yml"),
@@ -303,6 +416,54 @@ async function run() {
   const viewer = read("scripts/graph/viewer/viewer.js");
   check("viewer searches repo-qualified GitHub evidence", viewer.includes("node.githubRefs") && viewer.includes("ref.repository"));
   check("viewer renders GitHub links with safe DOM APIs", viewer.includes('link.rel = "noopener noreferrer"') && !viewer.includes("meta.insertAdjacentHTML") && !viewer.includes("li.innerHTML"));
+  const browserContext = { window: {} };
+  vm.runInNewContext(read("scripts/graph/viewer/routing.js"), browserContext);
+  check(
+    "viewer search normalizes pasted GitHub query and fragment decoration",
+    browserContext.window.KGRouting.normalizeGithubQuery("https://github.com/verndale/ui-design-library/issues/87?notification=1#issuecomment-2") === "https://github.com/verndale/ui-design-library/issues/87",
+  );
+  check(
+    "viewer search does not canonicalize malformed issue-number suffixes",
+    browserContext.window.KGRouting.normalizeGithubQuery("https://github.com/verndale/ui-design-library/issues/87abc").endsWith("87abc"),
+  );
+  check(
+    "viewer search does not canonicalize unsafe issue numbers",
+    browserContext.window.KGRouting.normalizeGithubQuery("https://github.com/verndale/ui-design-library/issues/9007199254740993").endsWith("9007199254740993"),
+  );
+  const browserGraph = {
+    nodes: [{ id: "a", type: "wiki-journal", bytes: 10 }, { id: "b", type: "wiki-topic", bytes: 10 }],
+    edges: [{ source: "a", target: "b", type: "topic" }],
+  };
+  check(
+    "viewer routing rejects missing and nonpositive costs for live edge kinds",
+    !browserContext.window.KGRouting.hasSafeNumericPolicy({ edgeCosts: {}, hubPenalty: 0, bytePenaltyPerKiB: 0, excludedIntermediateTypes: [] }, browserGraph)
+      && !browserContext.window.KGRouting.hasSafeNumericPolicy({ edgeCosts: { topic: 0 }, hubPenalty: 0, bytePenaltyPerKiB: 0, excludedIntermediateTypes: [] }, browserGraph),
+  );
+  check(
+    "viewer routing rejects exclusions that do not exist in the live graph",
+    !browserContext.window.KGRouting.hasSafeNumericPolicy({ edgeCosts: { topic: 1 }, hubPenalty: 0, bytePenaltyPerKiB: 0, excludedIntermediateTypes: ["missing"] }, browserGraph),
+  );
+  const budgetGraph = {
+    nodes: [
+      { id: "source", label: "Source", type: "wiki-journal", degree: 2, bytes: 10, topics: [], aliases: [] },
+      { id: "large", label: "Large", type: "wiki-topic", degree: 2, bytes: 16384, topics: [], aliases: [] },
+      { id: "small", label: "Small", type: "wiki-topic", degree: 2, bytes: 16, topics: [], aliases: [] },
+      { id: "target", label: "Target", type: "wiki-topic", degree: 2, bytes: 10, topics: [], aliases: [] },
+    ],
+    edges: [
+      { source: "source", target: "large", type: "topic" },
+      { source: "large", target: "target", type: "topic" },
+      { source: "source", target: "small", type: "topic" },
+      { source: "small", target: "target", type: "topic" },
+    ],
+  };
+  const budgetIntent = { preferredSourceTypes: ["wiki-journal", "wiki-topic"], preferredTargetTypes: ["wiki-topic"] };
+  const budgetPolicy = { edgeCosts: { topic: 1 }, hubPenalty: 0, bytePenaltyPerKiB: 0.05, excludedIntermediateTypes: [], intents: { why: budgetIntent, wiring: budgetIntent, impact: budgetIntent } };
+  check(
+    "Node and viewer routing prefer the lower-byte equal-hop itinerary",
+    route(budgetGraph, { intent: "wiring", from: "source", to: "target", policy: budgetPolicy }).itinerary.map((item) => item.id).join("|") === "source|small|target"
+      && browserContext.window.KGRouting.shortestPath(budgetGraph, "source", "target", budgetPolicy).nodes.join("|") === "source|small|target",
+  );
   const graphHook = read("scripts/graph/pre-commit.cjs");
   const preCommit = read(".husky/pre-commit");
   check(

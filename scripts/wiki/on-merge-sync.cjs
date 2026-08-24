@@ -18,7 +18,7 @@ const path = require("node:path");
 const fm = require("./lib/frontmatter.cjs");
 const { classify } = require("./lib/substantive.cjs");
 const { slugify, addJournalLine, addTopicDecision } = require("./lib/wiki-io.cjs");
-const { extractClosingIssues, extractGithubRefs, normalizeRepository, refKey } = require("./lib/github.cjs");
+const { canonicalRef, extractClosingIssues, extractGithubRefs, normalizeRepository, refKey } = require("./lib/github.cjs");
 const ai = require("./lib/ai.cjs");
 
 const DEFAULT_REPOSITORY = "verndale/ui-design-library";
@@ -38,32 +38,55 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function repositoryFromUrl(url) {
-  const match = String(url || "").match(/github\.com\/([^/]+\/[^/]+)\/(?:pull|issues)\/\d+/i);
-  return normalizeRepository(match && match[1]);
-}
-
 function normalizeContext(input) {
   const ctx = input && typeof input === "object" ? input : {};
   if (ctx.schemaVersion != null && ctx.schemaVersion !== 1) throw new Error(`unsupported context schemaVersion: ${ctx.schemaVersion}`);
-  const repository = normalizeRepository(ctx.repository) || repositoryFromUrl(ctx.url) || DEFAULT_REPOSITORY;
   const number = Number(ctx.number);
   if (!Number.isSafeInteger(number) || number <= 0) throw new Error("context number must be a positive integer");
-  if (!String(ctx.url || "").trim()) throw new Error("context url is required");
-  const changedPaths = Array.isArray(ctx.changedPaths) ? ctx.changedPaths : Array.isArray(ctx.files) ? ctx.files : [];
-  const commits = Array.isArray(ctx.commits) ? ctx.commits.map((commit) => ({
-    hash: String(commit.hash || commit.sha || ""),
-    subject: String(commit.subject || commit.message || "").split("\n")[0],
-  })) : [];
+  const rawUrl = String(ctx.url || "").trim();
+  const urlMatch = rawUrl.match(/^https:\/\/github\.com\/([^/]+\/[^/]+)\/pull\/(\d+)(?:[?#].*)?$/i);
+  if (!urlMatch) throw new Error("context url must be a GitHub pull-request URL");
+  if (Number(urlMatch[2]) !== number) throw new Error("context number does not match its URL");
+  const urlRepository = normalizeRepository(urlMatch[1]);
+  const declaredRepository = ctx.repository == null ? null : normalizeRepository(ctx.repository);
+  if (ctx.repository != null && !declaredRepository) throw new Error("context repository must be owner/repo");
+  if (declaredRepository && declaredRepository !== urlRepository) throw new Error("context repository does not match its URL");
+  const repository = declaredRepository || urlRepository || DEFAULT_REPOSITORY;
+  const canonicalUrl = canonicalRef({ kind: "pull-request", repository, number })?.url;
+  if (!canonicalUrl) throw new Error("context PR identity is invalid");
+  let rawChangedPaths = [];
+  if (ctx.changedPaths != null) {
+    if (!Array.isArray(ctx.changedPaths)) throw new Error("context changedPaths must be an array");
+    rawChangedPaths = ctx.changedPaths;
+  } else if (ctx.files != null) {
+    if (!Array.isArray(ctx.files)) throw new Error("legacy context files must be an array");
+    rawChangedPaths = ctx.files;
+  }
+  const changedPaths = rawChangedPaths.map((value) => {
+    if (typeof value !== "string" || !value || path.posix.isAbsolute(value) || value.includes("\\") || path.posix.normalize(value) !== value || value.split("/").some((part) => part === "." || part === "..")) {
+      throw new Error("context changedPaths must be normalized repository-relative string paths without traversal");
+    }
+    return value;
+  });
+  if (ctx.commits != null && !Array.isArray(ctx.commits)) throw new Error("context commits must be an array");
+  const commits = (ctx.commits || []).map((commit) => {
+    if (!commit || typeof commit !== "object" || Array.isArray(commit)) throw new Error("context commits require string hash and subject fields");
+    const hash = commit.hash ?? commit.sha;
+    const subject = commit.subject ?? commit.message;
+    if (typeof hash !== "string" || !hash.trim() || typeof subject !== "string" || !subject.split("\n")[0].trim()) {
+      throw new Error("context commits require string hash and subject fields");
+    }
+    return { hash: hash.trim(), subject: subject.split("\n")[0].trim() };
+  });
   return {
     schemaVersion: 1,
     repository,
     number,
     title: String(ctx.title || `PR #${number}`),
     body: String(ctx.body || ""),
-    url: String(ctx.url),
+    url: canonicalUrl,
     mergedAt: ctx.mergedAt || ctx.merged_at || null,
-    changedPaths: changedPaths.map(String),
+    changedPaths,
     commits,
   };
 }

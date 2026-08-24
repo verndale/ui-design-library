@@ -16,12 +16,13 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 13 implemented, 5 partial (18 plans).
+Totals: 14 implemented, 5 partial (19 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-08-23 | [Wiki parity, GitHub evidence, and CI workflow standard](2026-08-23-wiki-parity-and-github-evidence.md) | implemented | [issue #87](https://github.com/verndale/ui-design-library/issues/87), working tree, focused and full verification, PR pending | graph-wiki-subsystem |
 | 2026-08-22 | [Cross-repository lint, Commitlint, and graph standardization](2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md) | implemented | [issue #83](https://github.com/verndale/ui-design-library/issues/83), isolated issue worktree, lint/push/CI/graph/Graphify verification | graph-wiki-subsystem, component-architecture, story-testing, package-distribution |
 | 2026-08-22 | [Rich Text authored-content coverage](2026-08-22-rich-text-authored-content-coverage.md) | implemented | [issue #80](https://github.com/verndale/ui-design-library/issues/80), Rich Text master `173:62`, authored-content section `417:26`, Storybook/code/Figma validation, [PR #81](https://github.com/verndale/ui-design-library/pull/81) | figma-code-connect, story-testing |
 | 2026-08-21 | [Governed Figma Interaction States and Retrospective Capture](2026-08-21-governed-figma-interaction-states-and-retrospective-capture.md) | implemented | [issue #80](https://github.com/verndale/ui-design-library/issues/80), live state frames/screenshots, contract/browser/build verification, authenticated live audit of 28 registered nodes, [PR #81](https://github.com/verndale/ui-design-library/pull/81) | figma-code-connect, story-testing |

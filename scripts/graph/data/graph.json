@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 155,
-    "edges": 353,
+    "nodes": 165,
+    "edges": 368,
     "byType": {
-      "surface": 54,
+      "surface": 62,
       "root-doc": 4,
       "component": 23,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 45,
-      "wiki-plan": 18,
+      "wiki-journal": 46,
+      "wiki-plan": 19,
       "wiki-topic": 7
     },
     "byEdgeType": {
-      "covers": 62,
-      "links-to": 161,
-      "plan": 26,
-      "topic": 81,
+      "covers": 71,
+      "links-to": 164,
+      "plan": 27,
+      "topic": 83,
       "uses-tokens": 23
     }
   },
@@ -30,6 +30,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 39,
       "degree": 1
     },
@@ -42,7 +43,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 1657,
+      "githubRefs": [],
+      "bytes": 1894,
       "degree": 1
     },
     {
@@ -54,8 +56,35 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1851,
       "degree": 1
+    },
+    {
+      "id": ".github/workflows/pr.yml",
+      "label": "pr.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 2036,
+      "degree": 1
+    },
+    {
+      "id": ".github/workflows/quality.yml",
+      "label": "quality.yml",
+      "type": "surface",
+      "dir": ".github/workflows",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 2060,
+      "degree": 2
     },
     {
       "id": ".github/workflows/release.yml",
@@ -66,20 +95,22 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 2028,
       "degree": 1
     },
     {
-      "id": ".github/workflows/test.yml",
-      "label": "test.yml",
+      "id": ".github/workflows/wiki-check.yml",
+      "label": "wiki-check.yml",
       "type": "surface",
       "dir": ".github/workflows",
       "topics": [],
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 2247,
-      "degree": 2
+      "githubRefs": [],
+      "bytes": 1238,
+      "degree": 1
     },
     {
       "id": ".github/workflows/wiki-issue-sync.yml",
@@ -90,7 +121,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3242,
+      "githubRefs": [],
+      "bytes": 2862,
       "degree": 1
     },
     {
@@ -102,7 +134,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 5022,
+      "githubRefs": [],
+      "bytes": 5463,
       "degree": 1
     },
     {
@@ -114,6 +147,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 434,
       "degree": 1
     },
@@ -126,7 +160,21 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 186,
+      "degree": 1
+    },
+    {
+      "id": ".husky/commit-msg",
+      "label": "commit-msg",
+      "type": "surface",
+      "dir": ".husky",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 55,
       "degree": 1
     },
     {
@@ -138,6 +186,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 9340,
       "degree": 1
     },
@@ -150,6 +199,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 9740,
       "degree": 1
     },
@@ -162,6 +212,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 277,
       "degree": 1
     },
@@ -174,6 +225,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 182,
       "degree": 1
     },
@@ -186,6 +238,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1246,
       "degree": 1
     },
@@ -198,6 +251,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1335,
       "degree": 1
     },
@@ -210,6 +264,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 3185,
       "degree": 2
     },
@@ -222,6 +277,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1046,
       "degree": 1
     },
@@ -234,8 +290,9 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 14078,
-      "degree": 5
+      "githubRefs": [],
+      "bytes": 15859,
+      "degree": 4
     },
     {
       "id": "CLAUDE.md",
@@ -246,6 +303,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1083,
       "degree": 1
     },
@@ -258,7 +316,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 64,
+      "githubRefs": [],
+      "bytes": 49,
       "degree": 1
     },
     {
@@ -270,6 +329,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -282,6 +342,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 15386,
       "degree": 1
     },
@@ -294,6 +355,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 8569,
       "degree": 1
     },
@@ -306,6 +368,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 3603,
       "degree": 1
     },
@@ -318,6 +381,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 7541,
       "degree": 1
     },
@@ -330,6 +394,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 11296,
       "degree": 1
     },
@@ -342,6 +407,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 10170,
       "degree": 1
     },
@@ -354,6 +420,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 5100,
       "degree": 1
     },
@@ -366,6 +433,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 12417,
       "degree": 1
     },
@@ -378,6 +446,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 7716,
       "degree": 1
     },
@@ -390,6 +459,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -402,6 +472,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -414,6 +485,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 17345,
       "degree": 1
     },
@@ -426,6 +498,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 11988,
       "degree": 1
     },
@@ -438,6 +511,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 8227,
       "degree": 1
     },
@@ -450,6 +524,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 13960,
       "degree": 1
     },
@@ -462,6 +537,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 3851,
       "degree": 1
     },
@@ -474,6 +550,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 5437,
       "degree": 1
     },
@@ -486,6 +563,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 14058,
       "degree": 1
     },
@@ -498,6 +576,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 17499,
       "degree": 1
     },
@@ -510,6 +589,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 7596,
       "degree": 1
     },
@@ -522,6 +602,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 16802,
       "degree": 1
     },
@@ -534,6 +615,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 6548,
       "degree": 1
     },
@@ -546,6 +628,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -558,6 +641,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -570,6 +654,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 10366,
       "degree": 1
     },
@@ -582,6 +667,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 10956,
       "degree": 1
     },
@@ -594,6 +680,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 7530,
       "degree": 1
     },
@@ -606,6 +693,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 7577,
       "degree": 0
     },
@@ -618,6 +706,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1438,
       "degree": 1
     },
@@ -630,6 +719,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -642,6 +732,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 167661,
       "degree": 1
     },
@@ -654,6 +745,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 114,
       "degree": 1
     },
@@ -666,7 +758,21 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11951,
+      "githubRefs": [],
+      "bytes": 12098,
+      "degree": 2
+    },
+    {
+      "id": "pnpm-workspace.yaml",
+      "label": "pnpm-workspace.yaml",
+      "type": "surface",
+      "dir": ".",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 60,
       "degree": 1
     },
     {
@@ -678,6 +784,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 20663,
       "degree": 3
     },
@@ -690,6 +797,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1023,
       "degree": 1
     },
@@ -702,6 +810,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 3333,
       "degree": 1
     },
@@ -714,6 +823,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 24507,
       "degree": 1
     },
@@ -726,6 +836,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 20566,
       "degree": 3
     },
@@ -738,6 +849,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 39699,
       "degree": 1
     },
@@ -750,6 +862,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 4607,
       "degree": 1
     },
@@ -762,6 +875,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 13174,
       "degree": 1
     },
@@ -774,6 +888,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 2709,
       "degree": 1
     },
@@ -786,7 +901,21 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 5256,
+      "degree": 1
+    },
+    {
+      "id": "scripts/evals/wiki-parity-check.cjs",
+      "label": "wiki-parity-check.cjs",
+      "type": "surface",
+      "dir": "scripts/evals",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 18090,
       "degree": 1
     },
     {
@@ -798,7 +927,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 19960,
+      "githubRefs": [],
+      "bytes": 20134,
       "degree": 1
     },
     {
@@ -810,7 +940,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3022,
+      "githubRefs": [],
+      "bytes": 3158,
       "degree": 1
     },
     {
@@ -822,6 +953,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 713,
       "degree": 1
     },
@@ -834,7 +966,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 11971,
+      "githubRefs": [],
+      "bytes": 14520,
       "degree": 1
     },
     {
@@ -846,7 +979,21 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1925,
+      "degree": 1
+    },
+    {
+      "id": "scripts/graph/viewer/viewer.js",
+      "label": "viewer.js",
+      "type": "surface",
+      "dir": "scripts/graph/viewer",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 15270,
       "degree": 1
     },
     {
@@ -858,6 +1005,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 22436,
       "degree": 1
     },
@@ -870,6 +1018,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 6459,
       "degree": 2
     },
@@ -882,7 +1031,34 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1591,
+      "degree": 1
+    },
+    {
+      "id": "scripts/wiki/lib/github.cjs",
+      "label": "github.cjs",
+      "type": "surface",
+      "dir": "scripts/wiki/lib",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 4489,
+      "degree": 1
+    },
+    {
+      "id": "scripts/wiki/navigate.cjs",
+      "label": "navigate.cjs",
+      "type": "surface",
+      "dir": "scripts/wiki",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 1292,
       "degree": 1
     },
     {
@@ -894,7 +1070,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 10344,
+      "githubRefs": [],
+      "bytes": 13259,
       "degree": 1
     },
     {
@@ -906,6 +1083,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 2263,
       "degree": 1
     },
@@ -918,7 +1096,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 3506,
+      "githubRefs": [],
+      "bytes": 5044,
       "degree": 1
     },
     {
@@ -930,6 +1109,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 4653,
       "degree": 24
     },
@@ -942,6 +1122,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 193,
       "degree": 1
     },
@@ -954,6 +1135,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 0,
       "degree": 1
     },
@@ -966,6 +1148,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 494,
       "degree": 2
     },
@@ -978,6 +1161,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 260,
       "degree": 1
     },
@@ -990,6 +1174,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 888,
       "degree": 1
     },
@@ -1002,6 +1187,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 2367,
       "degree": 1
     },
@@ -1014,8 +1200,9 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 16259,
-      "degree": 55
+      "githubRefs": [],
+      "bytes": 16712,
+      "degree": 56
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -1030,6 +1217,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 1762,
       "degree": 6
     },
@@ -1046,6 +1241,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 4250,
       "degree": 4
     },
@@ -1062,6 +1265,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 2626,
       "degree": 4
     },
@@ -1079,6 +1290,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 4115,
       "degree": 7
     },
@@ -1095,6 +1314,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 3271,
       "degree": 4
     },
@@ -1109,6 +1336,14 @@
         "8"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 8,
+          "url": "https://github.com/verndale/ui-design-library/pull/8"
+        }
+      ],
       "bytes": 2294,
       "degree": 1
     },
@@ -1123,6 +1358,14 @@
         "8"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 8,
+          "url": "https://github.com/verndale/ui-design-library/pull/8"
+        }
+      ],
       "bytes": 2219,
       "degree": 1
     },
@@ -1137,6 +1380,14 @@
         "29"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        }
+      ],
       "bytes": 2172,
       "degree": 1
     },
@@ -1155,6 +1406,20 @@
       "issues": [
         "4"
       ],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 5,
+          "url": "https://github.com/verndale/ui-design-library/pull/5"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 4,
+          "url": "https://github.com/verndale/ui-design-library/issues/4"
+        }
+      ],
       "bytes": 4382,
       "degree": 4
     },
@@ -1169,6 +1434,14 @@
         "11"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 11,
+          "url": "https://github.com/verndale/ui-design-library/pull/11"
+        }
+      ],
       "bytes": 2214,
       "degree": 1
     },
@@ -1183,6 +1456,14 @@
         "11"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 11,
+          "url": "https://github.com/verndale/ui-design-library/pull/11"
+        }
+      ],
       "bytes": 2097,
       "degree": 1
     },
@@ -1197,6 +1478,14 @@
         "13"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 13,
+          "url": "https://github.com/verndale/ui-design-library/pull/13"
+        }
+      ],
       "bytes": 2856,
       "degree": 1
     },
@@ -1211,6 +1500,14 @@
         "13"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 13,
+          "url": "https://github.com/verndale/ui-design-library/pull/13"
+        }
+      ],
       "bytes": 2951,
       "degree": 1
     },
@@ -1225,6 +1522,14 @@
         "11"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 11,
+          "url": "https://github.com/verndale/ui-design-library/pull/11"
+        }
+      ],
       "bytes": 1747,
       "degree": 1
     },
@@ -1239,6 +1544,14 @@
         "16"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 16,
+          "url": "https://github.com/verndale/ui-design-library/pull/16"
+        }
+      ],
       "bytes": 2343,
       "degree": 1
     },
@@ -1253,6 +1566,14 @@
         "16"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 16,
+          "url": "https://github.com/verndale/ui-design-library/pull/16"
+        }
+      ],
       "bytes": 2127,
       "degree": 1
     },
@@ -1267,6 +1588,14 @@
         "24"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 24,
+          "url": "https://github.com/verndale/ui-design-library/pull/24"
+        }
+      ],
       "bytes": 3592,
       "degree": 1
     },
@@ -1283,6 +1612,14 @@
         "19"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 19,
+          "url": "https://github.com/verndale/ui-design-library/pull/19"
+        }
+      ],
       "bytes": 2028,
       "degree": 4
     },
@@ -1299,6 +1636,14 @@
         "29"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        }
+      ],
       "bytes": 4274,
       "degree": 2
     },
@@ -1316,6 +1661,14 @@
         "32"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 32,
+          "url": "https://github.com/verndale/ui-design-library/pull/32"
+        }
+      ],
       "bytes": 2387,
       "degree": 6
     },
@@ -1332,6 +1685,14 @@
         "29"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        }
+      ],
       "bytes": 1127,
       "degree": 3
     },
@@ -1350,6 +1711,20 @@
       ],
       "issues": [
         "26"
+      ],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 26,
+          "url": "https://github.com/verndale/ui-design-library/issues/26"
+        }
       ],
       "bytes": 2687,
       "degree": 6
@@ -1370,6 +1745,20 @@
         "44"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 38,
+          "url": "https://github.com/verndale/ui-design-library/pull/38"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 44,
+          "url": "https://github.com/verndale/ui-design-library/pull/44"
+        }
+      ],
       "bytes": 6264,
       "degree": 7
     },
@@ -1386,6 +1775,14 @@
         "35"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 35,
+          "url": "https://github.com/verndale/ui-design-library/pull/35"
+        }
+      ],
       "bytes": 1250,
       "degree": 2
     },
@@ -1404,6 +1801,20 @@
       "issues": [
         "579"
       ],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 47,
+          "url": "https://github.com/verndale/ui-design-library/pull/47"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ai-orchestration",
+          "number": 579,
+          "url": "https://github.com/verndale/ai-orchestration/issues/579"
+        }
+      ],
       "bytes": 1436,
       "degree": 4
     },
@@ -1420,6 +1831,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 2054,
       "degree": 3
     },
@@ -1436,6 +1855,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 4231,
       "degree": 4
     },
@@ -1452,6 +1879,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 3086,
       "degree": 4
     },
@@ -1468,6 +1903,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 1721,
       "degree": 3
     },
@@ -1484,6 +1927,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 2438,
       "degree": 4
     },
@@ -1500,6 +1951,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 2097,
       "degree": 4
     },
@@ -1518,6 +1977,20 @@
       "issues": [
         "55"
       ],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 56,
+          "url": "https://github.com/verndale/ui-design-library/pull/56"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 55,
+          "url": "https://github.com/verndale/ui-design-library/issues/55"
+        }
+      ],
       "bytes": 2532,
       "degree": 4
     },
@@ -1534,6 +2007,14 @@
         "69"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        }
+      ],
       "bytes": 5091,
       "degree": 4
     },
@@ -1548,6 +2029,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 1483,
       "degree": 3
     },
@@ -1565,6 +2047,14 @@
         "52"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 52,
+          "url": "https://github.com/verndale/ui-design-library/pull/52"
+        }
+      ],
       "bytes": 1667,
       "degree": 6
     },
@@ -1581,6 +2071,14 @@
         "67"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 67,
+          "url": "https://github.com/verndale/ui-design-library/pull/67"
+        }
+      ],
       "bytes": 1654,
       "degree": 2
     },
@@ -1603,6 +2101,44 @@
         "62",
         "63"
       ],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 64,
+          "url": "https://github.com/verndale/ui-design-library/pull/64"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 59,
+          "url": "https://github.com/verndale/ui-design-library/issues/59"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 60,
+          "url": "https://github.com/verndale/ui-design-library/issues/60"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 61,
+          "url": "https://github.com/verndale/ui-design-library/issues/61"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 62,
+          "url": "https://github.com/verndale/ui-design-library/issues/62"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 63,
+          "url": "https://github.com/verndale/ui-design-library/issues/63"
+        }
+      ],
       "bytes": 5046,
       "degree": 4
     },
@@ -1619,6 +2155,14 @@
         "72"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 72,
+          "url": "https://github.com/verndale/ui-design-library/pull/72"
+        }
+      ],
       "bytes": 2845,
       "degree": 4
     },
@@ -1635,6 +2179,14 @@
         "69"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        }
+      ],
       "bytes": 2715,
       "degree": 4
     },
@@ -1653,6 +2205,14 @@
         "74"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 74,
+          "url": "https://github.com/verndale/ui-design-library/pull/74"
+        }
+      ],
       "bytes": 3455,
       "degree": 8
     },
@@ -1671,6 +2231,14 @@
         "76"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 76,
+          "url": "https://github.com/verndale/ui-design-library/pull/76"
+        }
+      ],
       "bytes": 2855,
       "degree": 8
     },
@@ -1690,6 +2258,14 @@
         "78"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 78,
+          "url": "https://github.com/verndale/ui-design-library/pull/78"
+        }
+      ],
       "bytes": 3272,
       "degree": 10
     },
@@ -1706,6 +2282,14 @@
         "81"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 81,
+          "url": "https://github.com/verndale/ui-design-library/pull/81"
+        }
+      ],
       "bytes": 7556,
       "degree": 4
     },
@@ -1723,6 +2307,14 @@
         "81"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 81,
+          "url": "https://github.com/verndale/ui-design-library/pull/81"
+        }
+      ],
       "bytes": 2212,
       "degree": 6
     },
@@ -1742,8 +2334,40 @@
         "84"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 84,
+          "url": "https://github.com/verndale/ui-design-library/pull/84"
+        }
+      ],
       "bytes": 4134,
       "degree": 10
+    },
+    {
+      "id": "wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md",
+      "label": "Standardize wiki navigation and GitHub evidence",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "87"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 87,
+          "url": "https://github.com/verndale/ui-design-library/issues/87"
+        }
+      ],
+      "bytes": 2223,
+      "degree": 4
     },
     {
       "id": "wiki/MECHANICS.md",
@@ -1754,7 +2378,8 @@
       "aliases": [],
       "prs": [],
       "issues": [],
-      "bytes": 6863,
+      "githubRefs": [],
+      "bytes": 7580,
       "degree": 7
     },
     {
@@ -1771,6 +2396,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 6456,
       "degree": 5
     },
@@ -1788,6 +2421,14 @@
         "2"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
       "bytes": 5346,
       "degree": 7
     },
@@ -1804,6 +2445,14 @@
         "5"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 5,
+          "url": "https://github.com/verndale/ui-design-library/pull/5"
+        }
+      ],
       "bytes": 21169,
       "degree": 4
     },
@@ -1820,6 +2469,14 @@
         "19"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 19,
+          "url": "https://github.com/verndale/ui-design-library/pull/19"
+        }
+      ],
       "bytes": 8872,
       "degree": 4
     },
@@ -1838,6 +2495,20 @@
         "35"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 32,
+          "url": "https://github.com/verndale/ui-design-library/pull/32"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 35,
+          "url": "https://github.com/verndale/ui-design-library/pull/35"
+        }
+      ],
       "bytes": 8840,
       "degree": 7
     },
@@ -1856,6 +2527,20 @@
       ],
       "issues": [
         "26"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 26,
+          "url": "https://github.com/verndale/ui-design-library/issues/26"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        }
       ],
       "bytes": 9700,
       "degree": 6
@@ -1876,6 +2561,20 @@
         "44"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 38,
+          "url": "https://github.com/verndale/ui-design-library/pull/38"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 44,
+          "url": "https://github.com/verndale/ui-design-library/pull/44"
+        }
+      ],
       "bytes": 6890,
       "degree": 8
     },
@@ -1892,6 +2591,14 @@
         "47"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 47,
+          "url": "https://github.com/verndale/ui-design-library/pull/47"
+        }
+      ],
       "bytes": 1248,
       "degree": 4
     },
@@ -1908,6 +2615,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 2043,
       "degree": 4
     },
@@ -1924,6 +2639,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 7057,
       "degree": 4
     },
@@ -1940,6 +2663,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 3003,
       "degree": 4
     },
@@ -1956,6 +2687,14 @@
         "50"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        }
+      ],
       "bytes": 3021,
       "degree": 4
     },
@@ -1974,6 +2713,20 @@
       "issues": [
         "55"
       ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 55,
+          "url": "https://github.com/verndale/ui-design-library/issues/55"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 56,
+          "url": "https://github.com/verndale/ui-design-library/pull/56"
+        }
+      ],
       "bytes": 2707,
       "degree": 4
     },
@@ -1991,6 +2744,14 @@
         "52"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 52,
+          "url": "https://github.com/verndale/ui-design-library/pull/52"
+        }
+      ],
       "bytes": 2269,
       "degree": 6
     },
@@ -2012,6 +2773,44 @@
         "78"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 64,
+          "url": "https://github.com/verndale/ui-design-library/pull/64"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 72,
+          "url": "https://github.com/verndale/ui-design-library/pull/72"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 74,
+          "url": "https://github.com/verndale/ui-design-library/pull/74"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 76,
+          "url": "https://github.com/verndale/ui-design-library/pull/76"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 78,
+          "url": "https://github.com/verndale/ui-design-library/pull/78"
+        }
+      ],
       "bytes": 11699,
       "degree": 12
     },
@@ -2029,6 +2828,14 @@
         "81"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 81,
+          "url": "https://github.com/verndale/ui-design-library/pull/81"
+        }
+      ],
       "bytes": 11156,
       "degree": 5
     },
@@ -2046,6 +2853,7 @@
       "aliases": [],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 7969,
       "degree": 10
     },
@@ -2063,8 +2871,40 @@
         "81"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 81,
+          "url": "https://github.com/verndale/ui-design-library/pull/81"
+        }
+      ],
       "bytes": 2332,
       "degree": 6
+    },
+    {
+      "id": "wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md",
+      "label": "Wiki parity, GitHub evidence, and CI workflow standard",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "87"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 87,
+          "url": "https://github.com/verndale/ui-design-library/issues/87"
+        }
+      ],
+      "bytes": 2693,
+      "degree": 4
     },
     {
       "id": "wiki/plans/INDEX.md",
@@ -2095,6 +2935,7 @@
         "2"
       ],
       "issues": [
+        "87",
         "83",
         "80",
         "58",
@@ -2108,8 +2949,202 @@
         "18",
         "4"
       ],
-      "bytes": 8644,
-      "degree": 21
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 87,
+          "url": "https://github.com/verndale/ui-design-library/issues/87"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 83,
+          "url": "https://github.com/verndale/ui-design-library/issues/83"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 80,
+          "url": "https://github.com/verndale/ui-design-library/issues/80"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 81,
+          "url": "https://github.com/verndale/ui-design-library/pull/81"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 58,
+          "url": "https://github.com/verndale/ui-design-library/issues/58"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 62,
+          "url": "https://github.com/verndale/ui-design-library/issues/62"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 64,
+          "url": "https://github.com/verndale/ui-design-library/pull/64"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 72,
+          "url": "https://github.com/verndale/ui-design-library/pull/72"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 74,
+          "url": "https://github.com/verndale/ui-design-library/pull/74"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 76,
+          "url": "https://github.com/verndale/ui-design-library/pull/76"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 78,
+          "url": "https://github.com/verndale/ui-design-library/pull/78"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 55,
+          "url": "https://github.com/verndale/ui-design-library/issues/55"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 56,
+          "url": "https://github.com/verndale/ui-design-library/pull/56"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 52,
+          "url": "https://github.com/verndale/ui-design-library/pull/52"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 49,
+          "url": "https://github.com/verndale/ui-design-library/issues/49"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 46,
+          "url": "https://github.com/verndale/ui-design-library/issues/46"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 47,
+          "url": "https://github.com/verndale/ui-design-library/pull/47"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 37,
+          "url": "https://github.com/verndale/ui-design-library/issues/37"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 38,
+          "url": "https://github.com/verndale/ui-design-library/pull/38"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 44,
+          "url": "https://github.com/verndale/ui-design-library/pull/44"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 31,
+          "url": "https://github.com/verndale/ui-design-library/issues/31"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 32,
+          "url": "https://github.com/verndale/ui-design-library/pull/32"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 35,
+          "url": "https://github.com/verndale/ui-design-library/pull/35"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 26,
+          "url": "https://github.com/verndale/ui-design-library/issues/26"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 18,
+          "url": "https://github.com/verndale/ui-design-library/issues/18"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 19,
+          "url": "https://github.com/verndale/ui-design-library/pull/19"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 4,
+          "url": "https://github.com/verndale/ui-design-library/issues/4"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 5,
+          "url": "https://github.com/verndale/ui-design-library/pull/5"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
+      "bytes": 8930,
+      "degree": 22
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -2130,6 +3165,26 @@
         "83",
         "46",
         "40"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 83,
+          "url": "https://github.com/verndale/ui-design-library/issues/83"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 46,
+          "url": "https://github.com/verndale/ui-design-library/issues/46"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 40,
+          "url": "https://github.com/verndale/ui-design-library/issues/40"
+        }
       ],
       "bytes": 8622,
       "degree": 32
@@ -2153,6 +3208,14 @@
       "issues": [
         "49"
       ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 49,
+          "url": "https://github.com/verndale/ui-design-library/issues/49"
+        }
+      ],
       "bytes": 19458,
       "degree": 61
     },
@@ -2168,6 +3231,8 @@
         "graphify",
         "code knowledge graph",
         "sigma.js viewer",
+        "wiki navigation",
+        "GitHub evidence",
         "wiki automation",
         "wiki-sync bot",
         "wiki-issue-sync bot",
@@ -2204,10 +3269,187 @@
         "2"
       ],
       "issues": [
+        "87",
         "83"
       ],
-      "bytes": 12987,
-      "degree": 39
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 87,
+          "url": "https://github.com/verndale/ui-design-library/issues/87"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 85,
+          "url": "https://github.com/verndale/ui-design-library/pull/85"
+        },
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 83,
+          "url": "https://github.com/verndale/ui-design-library/issues/83"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 81,
+          "url": "https://github.com/verndale/ui-design-library/pull/81"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 78,
+          "url": "https://github.com/verndale/ui-design-library/pull/78"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 76,
+          "url": "https://github.com/verndale/ui-design-library/pull/76"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 74,
+          "url": "https://github.com/verndale/ui-design-library/pull/74"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 72,
+          "url": "https://github.com/verndale/ui-design-library/pull/72"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 67,
+          "url": "https://github.com/verndale/ui-design-library/pull/67"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 64,
+          "url": "https://github.com/verndale/ui-design-library/pull/64"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 56,
+          "url": "https://github.com/verndale/ui-design-library/pull/56"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 52,
+          "url": "https://github.com/verndale/ui-design-library/pull/52"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 50,
+          "url": "https://github.com/verndale/ui-design-library/pull/50"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 47,
+          "url": "https://github.com/verndale/ui-design-library/pull/47"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 44,
+          "url": "https://github.com/verndale/ui-design-library/pull/44"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 41,
+          "url": "https://github.com/verndale/ui-design-library/pull/41"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 38,
+          "url": "https://github.com/verndale/ui-design-library/pull/38"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 35,
+          "url": "https://github.com/verndale/ui-design-library/pull/35"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 32,
+          "url": "https://github.com/verndale/ui-design-library/pull/32"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 29,
+          "url": "https://github.com/verndale/ui-design-library/pull/29"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 24,
+          "url": "https://github.com/verndale/ui-design-library/pull/24"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 19,
+          "url": "https://github.com/verndale/ui-design-library/pull/19"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 16,
+          "url": "https://github.com/verndale/ui-design-library/pull/16"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 13,
+          "url": "https://github.com/verndale/ui-design-library/pull/13"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 11,
+          "url": "https://github.com/verndale/ui-design-library/pull/11"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 8,
+          "url": "https://github.com/verndale/ui-design-library/pull/8"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 5,
+          "url": "https://github.com/verndale/ui-design-library/pull/5"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 2,
+          "url": "https://github.com/verndale/ui-design-library/pull/2"
+        }
+      ],
+      "bytes": 14811,
+      "degree": 51
     },
     {
       "id": "wiki/topics/package-distribution.md",
@@ -2224,6 +3466,14 @@
       "prs": [],
       "issues": [
         "83"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 83,
+          "url": "https://github.com/verndale/ui-design-library/issues/83"
+        }
       ],
       "bytes": 6782,
       "degree": 30
@@ -2254,7 +3504,39 @@
       "issues": [
         "83"
       ],
-      "bytes": 9871,
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 83,
+          "url": "https://github.com/verndale/ui-design-library/issues/83"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 38,
+          "url": "https://github.com/verndale/ui-design-library/pull/38"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 24,
+          "url": "https://github.com/verndale/ui-design-library/pull/24"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 19,
+          "url": "https://github.com/verndale/ui-design-library/pull/19"
+        }
+      ],
+      "bytes": 9874,
       "degree": 33
     },
     {
@@ -2287,6 +3569,50 @@
         "5"
       ],
       "issues": [],
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 69,
+          "url": "https://github.com/verndale/ui-design-library/pull/69"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 64,
+          "url": "https://github.com/verndale/ui-design-library/pull/64"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 41,
+          "url": "https://github.com/verndale/ui-design-library/pull/41"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 38,
+          "url": "https://github.com/verndale/ui-design-library/pull/38"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 32,
+          "url": "https://github.com/verndale/ui-design-library/pull/32"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 19,
+          "url": "https://github.com/verndale/ui-design-library/pull/19"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 5,
+          "url": "https://github.com/verndale/ui-design-library/pull/5"
+        }
+      ],
       "bytes": 5804,
       "degree": 15
     },
@@ -2307,6 +3633,7 @@
       ],
       "prs": [],
       "issues": [],
+      "githubRefs": [],
       "bytes": 4611,
       "degree": 20
     }
@@ -2384,7 +3711,17 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": ".github/workflows/test.yml",
+      "target": ".github/workflows/pr.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".github/workflows/quality.yml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".github/workflows/wiki-check.yml",
       "type": "covers"
     },
     {
@@ -2405,6 +3742,11 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": ".graphifyignore",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": ".husky/commit-msg",
       "type": "covers"
     },
     {
@@ -2454,7 +3796,22 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "package.json",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "pnpm-workspace.yaml",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "scripts/evals/graph-check.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/evals/wiki-parity-check.cjs",
       "type": "covers"
     },
     {
@@ -2484,7 +3841,22 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/graph/viewer/viewer.js",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "scripts/wiki/ci-journal-warn.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/wiki/lib/github.cjs",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/wiki/navigate.cjs",
       "type": "covers"
     },
     {
@@ -2544,7 +3916,7 @@
     },
     {
       "source": "wiki/topics/story-testing.md",
-      "target": ".github/workflows/test.yml",
+      "target": ".github/workflows/quality.yml",
       "type": "covers"
     },
     {
@@ -2633,19 +4005,12 @@
       "source": "AGENTS.md",
       "target": "wiki/INDEX.md",
       "type": "links-to",
-      "count": 1,
+      "count": 2,
       "anchors": []
     },
     {
       "source": "AGENTS.md",
       "target": "wiki/MECHANICS.md",
-      "type": "links-to",
-      "count": 1,
-      "anchors": []
-    },
-    {
-      "source": "AGENTS.md",
-      "target": "wiki/topics/graph-wiki-subsystem.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -2967,6 +4332,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -3199,6 +4571,13 @@
     {
       "source": "wiki/plans/INDEX.md",
       "target": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3506,7 +4885,21 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -3880,6 +5273,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md",
+      "target": "wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -4135,6 +5533,11 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -4282,6 +5685,11 @@
     {
       "source": "wiki/plans/2026-08-22-rich-text-authored-content-coverage.md",
       "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-08-23-wiki-parity-and-github-evidence.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
       "type": "topic"
     },
     {

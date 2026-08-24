@@ -1,6 +1,6 @@
 ---
 aliases: [story tests, play functions, addon-vitest, vitest browser mode, a11y gate, axe enforcement, reduced motion, prefers-reduced-motion, test setup]
-covers: [vitest.config.ts, vitest.motion.config.ts, vitest.shared.ts, .storybook/preview.ts, .github/workflows/test.yml]
+covers: [vitest.config.ts, vitest.motion.config.ts, vitest.shared.ts, .storybook/preview.ts, .github/workflows/quality.yml]
 ---
 # Story testing — Design History
 

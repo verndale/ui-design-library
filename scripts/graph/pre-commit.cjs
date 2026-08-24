@@ -36,6 +36,7 @@ function coversPaths() {
 
 function isGraphInput(file, covered) {
   if (["AGENTS.md", "README.md", "CONTRIBUTING.md", "CLAUDE.md"].includes(file)) return true;
+  if (["scripts/graph/build-graph.cjs", "scripts/wiki/lib/frontmatter.cjs", "scripts/wiki/lib/github.cjs"].includes(file)) return true;
   if (file === "src/tokens/semantic.css") return true;
   if (/^components\/[^/]+\/component\.json$/.test(file)) return true;
   if (file === "wiki/connections.md" || file.startsWith("wiki/connections/")) return false;

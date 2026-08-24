@@ -2354,11 +2354,19 @@
         "graph-wiki-subsystem"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "88"
+      ],
       "issues": [
         "87"
       ],
       "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 88,
+          "url": "https://github.com/verndale/ui-design-library/pull/88"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -2366,7 +2374,7 @@
           "url": "https://github.com/verndale/ui-design-library/issues/87"
         }
       ],
-      "bytes": 2881,
+      "bytes": 2927,
       "degree": 4
     },
     {
@@ -2891,7 +2899,9 @@
         "graph-wiki-subsystem"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "88"
+      ],
       "issues": [
         "87"
       ],
@@ -2901,9 +2911,15 @@
           "repository": "verndale/ui-design-library",
           "number": 87,
           "url": "https://github.com/verndale/ui-design-library/issues/87"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 88,
+          "url": "https://github.com/verndale/ui-design-library/pull/88"
         }
       ],
-      "bytes": 2693,
+      "bytes": 2818,
       "degree": 4
     },
     {
@@ -2914,6 +2930,7 @@
       "topics": [],
       "aliases": [],
       "prs": [
+        "88",
         "81",
         "64",
         "69",
@@ -2955,6 +2972,12 @@
           "repository": "verndale/ui-design-library",
           "number": 87,
           "url": "https://github.com/verndale/ui-design-library/issues/87"
+        },
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 88,
+          "url": "https://github.com/verndale/ui-design-library/pull/88"
         },
         {
           "kind": "issue",
@@ -3143,7 +3166,7 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 8930,
+      "bytes": 9022,
       "degree": 22
     },
     {
@@ -3240,6 +3263,7 @@
         "graph freshness"
       ],
       "prs": [
+        "88",
         "85",
         "81",
         "78",
@@ -3273,6 +3297,12 @@
         "83"
       ],
       "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 88,
+          "url": "https://github.com/verndale/ui-design-library/pull/88"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -3448,7 +3478,7 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 15491,
+      "bytes": 15649,
       "degree": 51
     },
     {
@@ -3496,6 +3526,7 @@
         "test setup"
       ],
       "prs": [
+        "88",
         "69",
         "38",
         "24",
@@ -3505,6 +3536,12 @@
         "83"
       ],
       "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 88,
+          "url": "https://github.com/verndale/ui-design-library/pull/88"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -3536,7 +3573,7 @@
           "url": "https://github.com/verndale/ui-design-library/pull/19"
         }
       ],
-      "bytes": 9874,
+      "bytes": 10032,
       "degree": 33
     },
     {

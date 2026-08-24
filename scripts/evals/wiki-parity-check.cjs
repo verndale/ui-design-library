@@ -14,7 +14,7 @@ const github = require("../wiki/lib/github.cjs");
 const merge = require("../wiki/on-merge-sync.cjs");
 const refresher = require("../wiki/refresh-issue-state.cjs");
 const { build, extractLinks, legacyGithubNumbers } = require("../graph/build-graph.cjs");
-const { formatRoute, resolveNode, route } = require("../graph/routing.cjs");
+const { formatRoute, policyProblems, resolveNode, route } = require("../graph/routing.cjs");
 const graphPrecommit = require("../graph/pre-commit.cjs");
 
 const results = [];
@@ -264,8 +264,11 @@ async function run() {
     { body: null },
     { mergedAt: 87 },
     { mergedAt: "not-a-date" },
+    { mergedAt: "2026" },
+    { mergedAt: "2026-02-30T10:00:00Z" },
     { merged_at: false },
     { merged_at: "not-a-date" },
+    { merged_at: "2026" },
   ];
   check(
     "merge reconciliation rejects non-string PR text and merge timestamps",
@@ -453,6 +456,8 @@ async function run() {
     nodes: [{ id: "a", type: "wiki-journal", bytes: 10 }, { id: "b", type: "wiki-topic", bytes: 10 }],
     edges: [{ source: "a", target: "b", type: "topic" }],
   };
+  const browserIntent = { preferredSourceTypes: ["wiki-journal"], preferredTargetTypes: ["wiki-topic"] };
+  const browserPolicy = { edgeCosts: { topic: 1 }, hubPenalty: 0, bytePenaltyPerKiB: 0, excludedIntermediateTypes: [], intents: { why: browserIntent, wiring: browserIntent, impact: browserIntent } };
   check(
     "viewer routing rejects missing and nonpositive costs for live edge kinds",
     !browserContext.window.KGRouting.hasSafeNumericPolicy({ edgeCosts: {}, hubPenalty: 0, bytePenaltyPerKiB: 0, excludedIntermediateTypes: [] }, browserGraph)
@@ -460,7 +465,14 @@ async function run() {
   );
   check(
     "viewer routing rejects exclusions that do not exist in the live graph",
-    !browserContext.window.KGRouting.hasSafeNumericPolicy({ edgeCosts: { topic: 1 }, hubPenalty: 0, bytePenaltyPerKiB: 0, excludedIntermediateTypes: ["missing"] }, browserGraph),
+    !browserContext.window.KGRouting.hasSafeNumericPolicy({ ...browserPolicy, excludedIntermediateTypes: ["missing"] }, browserGraph),
+  );
+  check(
+    "Node and viewer routing reject malformed type arrays",
+    policyProblems({ ...browserPolicy, excludedIntermediateTypes: [null] }, browserGraph).length > 0
+      && policyProblems({ ...browserPolicy, intents: { ...browserPolicy.intents, why: { ...browserIntent, preferredSourceTypes: [null] } } }, browserGraph).length > 0
+      && !browserContext.window.KGRouting.hasSafeNumericPolicy({ ...browserPolicy, excludedIntermediateTypes: [null] }, browserGraph)
+      && !browserContext.window.KGRouting.hasSafeNumericPolicy({ ...browserPolicy, intents: { ...browserPolicy.intents, why: { ...browserIntent, preferredSourceTypes: [null] } } }, browserGraph),
   );
   const budgetGraph = {
     nodes: [

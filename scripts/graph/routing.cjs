@@ -95,6 +95,8 @@ function policyProblems(policy, graph = null, { checkNodeTypes = true } = {}) {
   }
   if (!Array.isArray(policy.excludedIntermediateTypes)) {
     problems.push("excludedIntermediateTypes must be an array");
+  } else if (policy.excludedIntermediateTypes.some((type) => typeof type !== "string" || !type)) {
+    problems.push("excludedIntermediateTypes must contain non-empty strings");
   }
   if (!policy.intents || typeof policy.intents !== "object" || Array.isArray(policy.intents)) {
     problems.push("intents must be an object");

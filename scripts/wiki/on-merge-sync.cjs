@@ -38,6 +38,13 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function isValidMergeTimestamp(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(value)) return false;
+  const date = value.slice(0, 10);
+  const calendarDate = new Date(`${date}T00:00:00.000Z`);
+  return !Number.isNaN(new Date(value).getTime()) && !Number.isNaN(calendarDate.getTime()) && calendarDate.toISOString().slice(0, 10) === date;
+}
+
 function normalizeContext(input) {
   const ctx = input && typeof input === "object" ? input : {};
   if (ctx.schemaVersion != null && ctx.schemaVersion !== 1) throw new Error(`unsupported context schemaVersion: ${ctx.schemaVersion}`);
@@ -46,7 +53,7 @@ function normalizeContext(input) {
   }
   for (const key of ["mergedAt", "merged_at"]) {
     if (!Object.prototype.hasOwnProperty.call(ctx, key)) continue;
-    if (typeof ctx[key] !== "string" || !ctx[key].trim() || Number.isNaN(new Date(ctx[key]).getTime())) throw new Error(`context ${key} must be a valid timestamp string when provided`);
+    if (!isValidMergeTimestamp(ctx[key])) throw new Error(`context ${key} must be a valid timestamp string with a YYYY-MM-DD prefix when provided`);
   }
   const number = Number(ctx.number);
   if (!Number.isSafeInteger(number) || number <= 0) throw new Error("context number must be a positive integer");

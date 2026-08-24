@@ -4,6 +4,8 @@
 
 window.KGRouting = (() => {
   const key = (edge) => `${edge.source}\u0000${edge.target}\u0000${edge.type}`;
+  const requiredIntents = ["why", "wiring", "impact"];
+  const nonEmptyStringArray = (value) => Array.isArray(value) && value.length > 0 && value.every((type) => typeof type === "string" && type.length > 0);
 
   function normalizeGithubQuery(value) {
     const normalized = String(value || "").trim().toLowerCase();
@@ -17,13 +19,22 @@ window.KGRouting = (() => {
   function hasSafeNumericPolicy(policy, graph = null) {
     const structurallySafe = Boolean(
       policy &&
-      policy.edgeCosts &&
+      policy.edgeCosts && typeof policy.edgeCosts === "object" && !Array.isArray(policy.edgeCosts) &&
       Object.values(policy.edgeCosts).every((cost) => Number.isFinite(cost) && cost > 0) &&
       Number.isFinite(policy.hubPenalty) &&
       policy.hubPenalty >= 0 &&
       Number.isFinite(policy.bytePenaltyPerKiB) &&
       policy.bytePenaltyPerKiB >= 0 &&
-      Array.isArray(policy.excludedIntermediateTypes)
+      Array.isArray(policy.excludedIntermediateTypes) &&
+      policy.excludedIntermediateTypes.every((type) => typeof type === "string" && type.length > 0) &&
+      policy.intents && typeof policy.intents === "object" && !Array.isArray(policy.intents) &&
+      requiredIntents.every((intent) => {
+        const definition = policy.intents[intent];
+        return definition && typeof definition === "object" && !Array.isArray(definition)
+          && nonEmptyStringArray(definition.preferredSourceTypes)
+          && nonEmptyStringArray(definition.preferredTargetTypes)
+          && (definition.allowSourceAsTarget == null || typeof definition.allowSourceAsTarget === "boolean");
+      })
     );
     if (!structurallySafe || !graph) return structurallySafe;
     const nodeTypes = new Set(graph.nodes.map((node) => node.type));

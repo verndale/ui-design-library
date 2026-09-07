@@ -77,6 +77,24 @@ function componentCandidates(consumerRoot, installedManifest) {
     });
 }
 
+function sourceComponentCandidates() {
+  return fs.readdirSync(path.join(repoRoot, 'components'), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .filter((directory) => fs.existsSync(path.join(repoRoot, 'components', directory, 'component.json')))
+    .sort()
+    .map((directory) => {
+      const manifest = JSON.parse(fs.readFileSync(
+        path.join(repoRoot, 'components', directory, 'component.json'),
+        'utf8',
+      ));
+      return {
+        module: `@verndale/ui-design-library/components/${directory}`,
+        exportName: manifest.exportName,
+      };
+    });
+}
+
 function assertNativeImports(consumerRoot, installedManifest) {
   assert.equal(
     installedManifest.uiDesignLibrary?.reuseContractVersion,
@@ -84,7 +102,11 @@ function assertNativeImports(consumerRoot, installedManifest) {
     'packed package must declare reuse contract version 2',
   );
   const candidates = componentCandidates(consumerRoot, installedManifest);
-  assert.equal(candidates.length, 23, 'packed package must expose exactly 23 component candidates');
+  assert.deepEqual(
+    candidates,
+    sourceComponentCandidates(),
+    'packed package must expose every source component candidate',
+  );
   const source = `
     const candidates = ${JSON.stringify(candidates)};
     for (const candidate of candidates) {

@@ -1,0 +1,108 @@
+{
+  "canonical": "Datepicker",
+  "slug": "datepicker",
+  "exportName": "Datepicker",
+  "rendering": "client",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["label", "helperText", "message", "calendar"],
+  "variants": ["single", "range", "compact-range", "empty", "filled", "error", "disabled", "open"],
+  "reuseFingerprint": { "slots": ["field", "meta", "action"], "affordance": "input", "role": "container" },
+  "tokens": ["color-action-base", "color-surface-raised", "color-surface-sunken", "color-text-primary", "color-text-secondary", "color-text-inverse", "color-border-subtle", "color-border-focus", "color-tone-critical", "color-control-disabled-text", "radius-medium", "radius-pill", "size-touch-small", "spacing-s"],
+  "provenance": { "project": "snow", "run": "runs/snow/2026-09-06/", "source": "packages/ui/src/components/DatePicker/DatePicker.tsx" },
+  "declienting": [
+    "Renamed DatePicker to the canonical Datepicker export without retaining a duplicate alias export.",
+    "Replaced project Icon, IconButton, Text, InputField, Modal, media-query, portal, date-fns, and daypicker dependencies with a composed library TextInput, native controls, and local date helpers.",
+    "Replaced resort theme classes and SCSS modules with neutral semantic token utilities.",
+    "Preserved single and range entry, manual MM/DD/YYYY parsing, min/max constraints, month navigation, responsive drawer/popover placement, Escape/outside close, and trigger focus restoration."
+  ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "datepicker",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-09-07/components/datepicker",
+    "privateAuditDigest": "05b97a2b8b7f5691e1482686e6b734144b318df45452ea6b1a6f53e48a33c0b4",
+    "decisionIds": ["sp-datepicker-001"],
+    "representationDecisions": [{ "decisionId": "sp-datepicker-001", "implementationKey": "datepicker", "surfaces": ["ai-registry", "code", "figma", "storybook"] }],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "mode", "type": "enum", "required": false, "values": ["single", "range"], "default": "single" },
+      { "path": "variant", "type": "enum", "required": false, "values": ["default", "compact"], "default": "default" },
+      { "path": "value", "type": "collection", "required": true },
+      { "path": "onChange", "type": "callback", "required": true },
+      { "path": "label", "type": "node", "required": false },
+      { "path": "startLabel", "type": "node", "required": false },
+      { "path": "endLabel", "type": "node", "required": false },
+      { "path": "helperText", "type": "node", "required": false },
+      { "path": "error", "type": "boolean", "required": false, "default": false },
+      { "path": "errorMessage", "type": "node", "required": false },
+      { "path": "min", "type": "collection", "required": false },
+      { "path": "max", "type": "collection", "required": false },
+      { "path": "disabled", "type": "boolean", "required": false, "default": false },
+      { "path": "readOnly", "type": "boolean", "required": false, "default": false },
+      { "path": "required", "type": "boolean", "required": false, "default": false },
+      { "path": "placeholder", "type": "string", "required": false, "default": "MM/DD/YYYY" },
+      { "path": "onOpenChange", "type": "callback", "required": false },
+      { "path": "name", "type": "string", "required": false },
+      { "path": "startName", "type": "string", "required": false },
+      { "path": "endName", "type": "string", "required": false },
+      { "path": "className", "type": "string", "required": false },
+      { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false },
+      { "path": "classNames.fields", "type": "string", "required": false },
+      { "path": "classNames.field", "type": "string", "required": false },
+      { "path": "classNames.trigger", "type": "string", "required": false },
+      { "path": "classNames.popover", "type": "string", "required": false },
+      { "path": "classNames.calendar", "type": "string", "required": false },
+      { "path": "classNames.header", "type": "string", "required": false },
+      { "path": "classNames.grid", "type": "string", "required": false },
+      { "path": "classNames.day", "type": "string", "required": false },
+      { "path": "classNames.message", "type": "string", "required": false }
+    ],
+    "contentBindings": [
+      { "prop": "label", "node": "field" },
+      { "prop": "startLabel", "node": "field" },
+      { "prop": "endLabel", "node": "field" },
+      { "prop": "helperText", "node": "field" },
+      { "prop": "errorMessage", "node": "field" }
+    ],
+    "safeAttributes": [
+      { "prop": "disabled", "node": "trigger", "attribute": "disabled" },
+      { "prop": "required", "node": "field", "attribute": "required" }
+    ],
+    "styleSlots": [
+      { "path": "classNames.root", "node": "root", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.trigger", "node": "trigger", "protectedProperties": ["display", "visibility", "focus-indicator", "target-size", "semantics"] },
+      { "path": "classNames.popover", "node": "dialog", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.grid", "node": "grid", "protectedProperties": ["display", "visibility", "semantics"] },
+      { "path": "classNames.day", "node": "day", "protectedProperties": ["visibility", "focus-indicator", "target-size", "semantics"] }
+    ],
+    "dom": { "nodes": [
+      { "id": "root", "element": "div", "parent": null, "cardinality": "one" },
+      { "id": "fields", "element": "div", "parent": "root", "cardinality": "one" },
+      { "id": "field", "element": "div", "parent": "fields", "cardinality": "one-or-more", "repeat": { "state": "fieldCountByMode" } },
+      { "id": "trigger", "element": "button", "parent": "field", "cardinality": "one", "attributes": { "type": "button", "aria-haspopup": "dialog", "aria-expanded": { "state": "open" } } },
+      { "id": "dialog", "element": "div", "parent": "root", "cardinality": "zero-or-one", "condition": { "state": "open", "predicate": "truthy" }, "attributes": { "role": "dialog" } },
+      { "id": "header", "element": "div", "parent": "dialog", "cardinality": "one" },
+      { "id": "monthLabel", "element": "strong", "parent": "header", "cardinality": "one", "attributes": { "aria-live": "polite", "aria-atomic": "true" } },
+      { "id": "grid", "element": "div", "parent": "dialog", "cardinality": "one", "attributes": { "role": "grid" } },
+      { "id": "weekdayRow", "element": "div", "parent": "grid", "cardinality": "one", "attributes": { "role": "row" } },
+      { "id": "weekday", "element": "span", "parent": "weekdayRow", "cardinality": "one-or-more", "repeat": { "state": "weekdays" }, "attributes": { "role": "columnheader" } },
+      { "id": "weekRow", "element": "div", "parent": "grid", "cardinality": "one-or-more", "repeat": { "state": "calendarWeeks" }, "attributes": { "role": "row" } },
+      { "id": "day", "element": "button", "parent": "weekRow", "cardinality": "one-or-more", "repeat": { "state": "weekDays" }, "attributes": { "type": "button", "role": "gridcell" } }
+    ] },
+    "relationships": [
+      { "from": "trigger", "attribute": "aria-controls", "to": "dialog" }
+    ],
+    "behaviors": [
+      { "id": "datepicker.semantics.dialog", "kind": "semantics", "description": "Each field trigger controls a named calendar dialog with a labeled date grid.", "wcag": ["1.3.1", "4.1.2"], "evidence": "datepicker.semantics.dialog", "evidenceType": "storybook-step" },
+      { "id": "datepicker.keyboard.open-close", "kind": "keyboard", "description": "Enter opens the dialog and Escape closes it while restoring trigger focus.", "wcag": ["2.1.1", "2.4.3", "2.4.7"], "evidence": "datepicker.keyboard.open-close", "evidenceType": "storybook-step" },
+      { "id": "datepicker.range.selection", "kind": "state", "description": "Selecting two enabled dates commits an ordered range and closes the dialog.", "wcag": ["3.2.2", "4.1.2"], "evidence": "datepicker.range.selection", "evidenceType": "storybook-step" }
+    ],
+    "accessibility": { "standard": "WCAG-2.2-AA", "apgPattern": "dialog-datepicker", "consumerResponsibilities": ["accessible-copy", "token-contrast", "safe-class-overrides", "complete-page-assistive-technology-testing"] }
+  }
+}

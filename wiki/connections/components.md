@@ -4,7 +4,7 @@ Every component's declared dependency on the semantic token layer.
 
 Part of the [connections map](../connections.md), generated from the knowledge graph — **do not edit by hand**. Rebuilt on every `pnpm graph:build` and verified fresh by `pnpm evals:graph`.
 
-23 components declare tokens:
+27 components declare tokens:
 
 - [Accordion](../../components/accordion/component.json) — 8 tokens declared
 - [Alert](../../components/alert/component.json) — 8 tokens declared
@@ -14,6 +14,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Button](../../components/button/component.json) — 25 tokens declared
 - [Card](../../components/card/component.json) — 2 tokens declared
 - [Carousel](../../components/carousel/component.json) — 8 tokens declared
+- [Datepicker](../../components/datepicker/component.json) — 14 tokens declared
 - [Image](../../components/image/component.json) — 1 token declared
 - [In-page navigation (modal-drawer)](../../components/in-page-navigation--modal-drawer/component.json) — 17 tokens declared
 - [In-page navigation](../../components/in-page-navigation/component.json) — 10 tokens declared
@@ -24,8 +25,11 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Search input](../../components/search-input/component.json) — 9 tokens declared
 - [Search overlay](../../components/search-overlay/component.json) — 12 tokens declared
 - [Section header](../../components/section-header/component.json) — 5 tokens declared
+- [Segmented control](../../components/segmented-control/component.json) — 12 tokens declared
 - [Slider](../../components/slider/component.json) — 9 tokens declared
 - [Stat](../../components/stat/component.json) — 5 tokens declared
 - [Tabs (native-select)](../../components/tabs--native-select/component.json) — 13 tokens declared
 - [Tabs](../../components/tabs/component.json) — 11 tokens declared
+- [Text input](../../components/text-input/component.json) — 13 tokens declared
 - [Toast](../../components/toast/component.json) — 10 tokens declared
+- [Toggle](../../components/toggle/component.json) — 12 tokens declared

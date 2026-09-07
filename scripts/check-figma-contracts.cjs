@@ -307,6 +307,55 @@ function validateStateCoverage(component, { required, storySource }, fail) {
   }
 }
 
+function validatePresentationEvidence(component, fail) {
+  const prefix = `[${component.id ?? 'unknown'}]`;
+  const evidence = component.figma?.presentationEvidence;
+  if (!evidence) {
+    fail(`${prefix} figma.presentationEvidence is required for registrations outside the legacy baseline`);
+    return;
+  }
+  if (evidence.contractVersion !== 1) fail(`${prefix} presentationEvidence.contractVersion must equal 1`);
+  if (!FIGMA_NODE_ID_PATTERN.test(evidence.referencePageId ?? '') || !String(evidence.referencePageName ?? '').trim()) {
+    fail(`${prefix} presentationEvidence must name a stable live precedent page`);
+  }
+  const expected = { documentation: 1, main: 2, interactionStates: 3, publishSource: null };
+  for (const [role, order] of Object.entries(expected)) {
+    const section = evidence.sections?.[role];
+    if (!FIGMA_NODE_ID_PATTERN.test(section?.nodeId ?? '')) fail(`${prefix} presentationEvidence.sections.${role}.nodeId must use Figma's colon form`);
+    if ((section?.order ?? null) !== order) fail(`${prefix} presentationEvidence.sections.${role}.order must equal ${order}`);
+  }
+}
+
+function validateTokenBindingAudit(component, tokenPolicy, fail) {
+  const prefix = `[${component.id ?? 'unknown'}]`;
+  const audit = component.figma?.tokenBindingAudit;
+  if (!audit) {
+    fail(`${prefix} figma.tokenBindingAudit is required for registrations outside the legacy baseline`);
+    return;
+  }
+  if (audit.contractVersion !== 1) fail(`${prefix} tokenBindingAudit.contractVersion must equal 1`);
+  const states = new Set((component.figma?.stateCoverage?.states ?? []).map((state) => state.id));
+  const knownTokens = tokenPolicy.componentVariableIds ?? {};
+  const requirements = audit.stateRequirements;
+  const covered = component.figma?.stateCoverage?.status === 'covered';
+  if (!requirements || typeof requirements !== 'object' || Array.isArray(requirements) || (covered && Object.keys(requirements).length === 0)) {
+    fail(`${prefix} tokenBindingAudit.stateRequirements must be ${covered ? 'a non-empty' : 'an'} object`);
+    return;
+  }
+  for (const [stateId, tokens] of Object.entries(requirements)) {
+    if (!states.has(stateId)) fail(`${prefix} tokenBindingAudit references unknown state ${stateId}`);
+    if (!Array.isArray(tokens) || tokens.length === 0 || new Set(tokens).size !== tokens.length) {
+      fail(`${prefix} tokenBindingAudit state ${stateId} must list unique required semantic tokens`);
+      continue;
+    }
+    for (const token of tokens) {
+      if (!/^color\//.test(token) || !/^VariableID:\d+:\d+$/.test(knownTokens[token] ?? '')) {
+        fail(`${prefix} tokenBindingAudit state ${stateId} references unknown code-parity token ${token}`);
+      }
+    }
+  }
+}
+
 function check(options = {}) {
   const root = options.root ?? ROOT;
   const registryPath = options.registryPath ?? path.join(root, 'figma/library.json');
@@ -340,6 +389,17 @@ function check(options = {}) {
   if (library.publishing?.ci !== 'read-only-validation') fail('[publishing] CI must remain read-only validation');
   if (library.tokenPolicy?.componentSource !== 'src/tokens/semantic.css') fail('[tokens] Figma component styling must cite src/tokens/semantic.css');
   if (library.tokenPolicy?.componentVariableCollectionId !== '38:3') fail('[tokens] component variable collection identity drifted');
+  const componentVariableIds = library.tokenPolicy?.componentVariableIds ?? {};
+  if (Object.keys(componentVariableIds).length === 0 || Object.values(componentVariableIds).some((id) => !/^VariableID:\d+:\d+$/.test(id))) {
+    fail('[tokens] tokenPolicy.componentVariableIds must map semantic token names to stable Figma variable IDs');
+  }
+  if (new Set(Object.values(componentVariableIds)).size !== Object.values(componentVariableIds).length) {
+    fail('[tokens] tokenPolicy.componentVariableIds values must be unique');
+  }
+  const legacyBindingComponentIds = library.tokenPolicy?.legacyBindingComponentIds ?? [];
+  if (!Array.isArray(legacyBindingComponentIds) || new Set(legacyBindingComponentIds).size !== legacyBindingComponentIds.length) {
+    fail('[tokens] tokenPolicy.legacyBindingComponentIds must be a unique array');
+  }
   if (library.tokenPolicy?.documentationPresentationOnly !== true) fail('[tokens] Cumulative styling must remain documentation-only');
   if (library.tokenPolicy?.modeLimit !== 20 || library.tokenPolicy?.maximumActiveClientModes !== 19) {
     fail('[modes] Organization-tier mode limits must remain 1 Cumulative + at most 19 client modes');
@@ -574,6 +634,10 @@ function check(options = {}) {
     }
     if (!PRESENTATION_PATTERNS.has(figma.presentationPattern)) {
       fail(`${prefix} presentationPattern must be component-matrix, responsive-specimens, or responsive-full-viewport`);
+    }
+    if (!legacyBindingComponentIds.includes(component.id)) {
+      validatePresentationEvidence(component, fail);
+      validateTokenBindingAudit(component, library.tokenPolicy, fail);
     }
     if (figma.template !== undefined) fail(`${prefix} registry must not contain a Code Connect template`);
 

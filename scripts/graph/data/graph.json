@@ -1,23 +1,23 @@
 {
   "counts": {
-    "nodes": 167,
-    "edges": 375,
+    "nodes": 172,
+    "edges": 384,
     "byType": {
       "surface": 62,
       "root-doc": 4,
-      "component": 23,
+      "component": 27,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 47,
+      "wiki-journal": 48,
       "wiki-plan": 20,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 71,
-      "links-to": 168,
+      "links-to": 171,
       "plan": 28,
-      "topic": 85,
-      "uses-tokens": 23
+      "topic": 87,
+      "uses-tokens": 27
     }
   },
   "nodes": [
@@ -438,6 +438,19 @@
       "degree": 1
     },
     {
+      "id": "components/datepicker/component.json",
+      "label": "Datepicker",
+      "type": "component",
+      "dir": "components/datepicker",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 8642,
+      "degree": 1
+    },
+    {
       "id": "components/image/component.json",
       "label": "Image",
       "type": "component",
@@ -594,6 +607,19 @@
       "degree": 1
     },
     {
+      "id": "components/segmented-control/component.json",
+      "label": "Segmented control",
+      "type": "component",
+      "dir": "components/segmented-control",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 6693,
+      "degree": 1
+    },
+    {
       "id": "components/slider/component.json",
       "label": "Slider",
       "type": "component",
@@ -672,6 +698,19 @@
       "degree": 1
     },
     {
+      "id": "components/text-input/component.json",
+      "label": "Text input",
+      "type": "component",
+      "dir": "components/text-input",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 8562,
+      "degree": 1
+    },
+    {
       "id": "components/toast/component.json",
       "label": "Toast",
       "type": "component",
@@ -682,6 +721,19 @@
       "issues": [],
       "githubRefs": [],
       "bytes": 7530,
+      "degree": 1
+    },
+    {
+      "id": "components/toggle/component.json",
+      "label": "Toggle",
+      "type": "component",
+      "dir": "components/toggle",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 6567,
       "degree": 1
     },
     {
@@ -733,7 +785,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 167661,
+      "bytes": 192273,
       "degree": 1
     },
     {
@@ -759,7 +811,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 12098,
+      "bytes": 13081,
       "degree": 2
     },
     {
@@ -850,7 +902,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 39699,
+      "bytes": 43441,
       "degree": 1
     },
     {
@@ -876,7 +928,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 13174,
+      "bytes": 18758,
       "degree": 1
     },
     {
@@ -1019,7 +1071,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 6459,
+      "bytes": 7138,
       "degree": 2
     },
     {
@@ -1111,7 +1163,7 @@
       "issues": [],
       "githubRefs": [],
       "bytes": 4653,
-      "degree": 24
+      "degree": 28
     },
     {
       "id": "styles.css",
@@ -1201,8 +1253,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 16941,
-      "degree": 57
+      "bytes": 17253,
+      "degree": 58
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2402,6 +2454,22 @@
       "degree": 4
     },
     {
+      "id": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "label": "Add four Snow input controls and harden Figma promotion",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "component-architecture",
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 3143,
+      "degree": 5
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -3264,8 +3332,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/40"
         }
       ],
-      "bytes": 8622,
-      "degree": 32
+      "bytes": 9031,
+      "degree": 34
     },
     {
       "id": "wiki/topics/figma-code-connect.md",
@@ -3294,8 +3362,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/49"
         }
       ],
-      "bytes": 19458,
-      "degree": 61
+      "bytes": 20219,
+      "degree": 63
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -4445,6 +4513,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -4746,6 +4821,13 @@
     },
     {
       "source": "wiki/topics/component-architecture.md",
+      "target": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/component-architecture.md",
       "target": "wiki/plans/2026-08-12-executable-esm-reuse-contract-v2.md",
       "type": "links-to",
       "count": 2,
@@ -4908,6 +4990,13 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-08-22-expand-rich-text-authored-content.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-09-07-add-snow-input-controls.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5675,6 +5764,16 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "target": "wiki/topics/component-architecture.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -5883,6 +5982,12 @@
       "count": 8
     },
     {
+      "source": "components/datepicker/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 14
+    },
+    {
       "source": "components/image/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
@@ -5943,6 +6048,12 @@
       "count": 5
     },
     {
+      "source": "components/segmented-control/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 12
+    },
+    {
       "source": "components/slider/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
@@ -5967,10 +6078,22 @@
       "count": 11
     },
     {
+      "source": "components/text-input/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 13
+    },
+    {
       "source": "components/toast/component.json",
       "target": "src/tokens/semantic.css",
       "type": "uses-tokens",
       "count": 10
+    },
+    {
+      "source": "components/toggle/component.json",
+      "target": "src/tokens/semantic.css",
+      "type": "uses-tokens",
+      "count": 12
     }
   ]
 }

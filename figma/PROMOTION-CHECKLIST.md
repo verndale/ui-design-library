@@ -8,13 +8,14 @@ Use this checklist for every component promoted into the governed UI Design Libr
 - Create the master once. Edit a registered master in place; never delete and recreate it to reorganize a page.
 - Record the stable node ID and component key in `figma/library.json`. A replacement requires a `nodeMigrations` entry.
 - Register captured candidates as `unpublished`. Publication remains a separate explicit maintainer action after maturity review.
+- After intake, source parity, adversarial review, design review, and live validation pass, set the governed registry status to `ready-for-dev` by default. Native Figma Dev Mode readiness remains a manual maintainer step when the active writer API cannot set it.
 
 ## 2. Build the component from code contracts
 
 - Begin with the validated private source-parity artifact. Confirm its pinned source facts, classifications, decision IDs, and declared representation surfaces before changing a public contract.
 - Copy only the client-neutral source-parity contract version, audited family key, audit status, private reference/digest, decision IDs, decision-scoped implementation targets and representation surfaces, and their surface union into `component.json`, Storybook `parameters.sourceParityEvidence`, and `figma/library.json`. Never copy client names, private paths, or source excerpts into this repository.
 - Derive properties, allowed values, defaults, and optional content from the public TypeScript types and Storybook `argTypes`.
-- Bind component visuals to the semantic tokens in `src/tokens/semantic.css`. Do not approximate a code token with a Cumulative value or copy a raw color into the component.
+- Bind component visuals to the semantic tokens in `src/tokens/semantic.css` through the authoritative code-parity variable collection recorded by `library.tokenPolicy.componentVariableCollectionId` and `componentVariableIds`. Never select a variable by display name alone: duplicate names can exist in legacy collections. Do not approximate a code token with a Cumulative value or copy a raw color into the component.
 - Use strict Auto Layout and semantic layers inside the component. The layout should behave like its code implementation at the governed widths.
 - Use meaningful, production-like content that demonstrates the component's intended role and stress-tests wrapping.
 - Before any Figma write, run `pnpm test:code` and `pnpm build`. This exercises the complete code, SSR, Storybook behavior, Chromium/WebKit accessibility, modes, and reduced-motion surfaces without requiring a Figma registration.
@@ -61,11 +62,14 @@ Use the widths registered in `library.promotionPattern.viewportWidths` when the 
 ## 6. Audit before Ready for Dev
 
 - Compare the completed page at 100% zoom with Button, Section header, and Alert before accepting a new structure or naming convention.
+- Before writing, name the one live precedent page that matches the presentation pattern. After writing, record that precedent plus the Documentation, Main, Interaction states, and unnumbered Publish source section IDs in `figma.presentationEvidence`; a prose design-pass claim is not structural evidence.
 
 - Confirm every developer handoff target is a direct instance of the registered canonical master.
 - Check alignment, text alignment, margins, padding, label padding, inter-variant whitespace, and viewport-row spacing at 100% zoom.
 - Check wrapping, clipping, overflow, and parent containment at every governed width. No child may run outside its specimen, main canvas, or Ready for Dev Section.
 - Confirm component dimensions and visual tokens match the code implementation. Documentation styling may use Cumulative Foundations; component styling may not.
+- Record `figma.tokenBindingAudit` for every registration outside the closed legacy baseline and validate it against the authoritative code-parity token collection. Its state requirements must cite the code-parity token names for error, focus, selected/on, and other semantically meaningful states; the live validator rejects any master alias outside the authoritative collection.
+- The authoritative code-parity collection is enforced by `figma.tokenBindingAudit`; matching display names from legacy collections are never accepted as equivalent.
 - Confirm nested components remain real connected instances so their registered identity and property behavior stay inspectable.
 - Confirm every visible TEXT or BOOLEAN component property references the descendant layer it controls. Mark HTML-, runtime-, and accessibility-only mappings as `visualBinding: "nonvisual"` with a specific reason; do not use that marker to waive a visible binding.
 - Confirm semantic text has an applied Code/Tailwind text style and visible solid fills/strokes use semantic color-variable aliases.

@@ -22,6 +22,34 @@ const cases = [
     expect: (failures) => failures.length === 0,
   },
   {
+    name: 'new registrations require a structural Figma presentation record',
+    registry: (() => {
+      const registry = clone();
+      delete registry.components.find((component) => component.id === 'text-input').figma.presentationEvidence;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('figma.presentationEvidence is required')),
+  },
+  {
+    name: 'new registrations require an explicit code-token binding audit',
+    registry: (() => {
+      const registry = clone();
+      delete registry.components.find((component) => component.id === 'toggle').figma.tokenBindingAudit;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('figma.tokenBindingAudit is required')),
+  },
+  {
+    name: 'token binding audits cannot cite a legacy or unknown semantic token',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'segmented-control').figma.tokenBindingAudit
+        .stateRequirements['segmented-control.error'] = ['color/border/error'];
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('unknown code-parity token color/border/error')),
+  },
+  {
     name: 'pilot state coverage is required',
     registry: (() => {
       const registry = clone();
@@ -215,6 +243,15 @@ const cases = [
       return registry;
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('review.status')),
+  },
+  {
+    name: 'reviewed registrations must resolve to ready-for-dev',
+    registry: (() => {
+      const registry = clone();
+      registry.components.find((component) => component.id === 'text-input').figma.status = 'reviewed';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('Figma status must be ready-for-dev')),
   },
   {
     name: 'missing review evidence fails',

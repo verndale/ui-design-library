@@ -72,6 +72,11 @@
       "import": "./dist/components/carousel/index.js"
     },
     "./components/carousel/component.json": "./components/carousel/component.json",
+    "./components/datepicker": {
+      "types": "./dist/components/datepicker/index.d.ts",
+      "import": "./dist/components/datepicker/index.js"
+    },
+    "./components/datepicker/component.json": "./components/datepicker/component.json",
     "./components/image": {
       "types": "./dist/components/image/index.d.ts",
       "import": "./dist/components/image/index.js"
@@ -122,6 +127,11 @@
       "import": "./dist/components/section-header/index.js"
     },
     "./components/section-header/component.json": "./components/section-header/component.json",
+    "./components/segmented-control": {
+      "types": "./dist/components/segmented-control/index.d.ts",
+      "import": "./dist/components/segmented-control/index.js"
+    },
+    "./components/segmented-control/component.json": "./components/segmented-control/component.json",
     "./components/slider": {
       "types": "./dist/components/slider/index.d.ts",
       "import": "./dist/components/slider/index.js"
@@ -142,11 +152,21 @@
       "import": "./dist/components/tabs--native-select/index.js"
     },
     "./components/tabs--native-select/component.json": "./components/tabs--native-select/component.json",
+    "./components/text-input": {
+      "types": "./dist/components/text-input/index.d.ts",
+      "import": "./dist/components/text-input/index.js"
+    },
+    "./components/text-input/component.json": "./components/text-input/component.json",
     "./components/toast": {
       "types": "./dist/components/toast/index.d.ts",
       "import": "./dist/components/toast/index.js"
     },
     "./components/toast/component.json": "./components/toast/component.json",
+    "./components/toggle": {
+      "types": "./dist/components/toggle/index.d.ts",
+      "import": "./dist/components/toggle/index.js"
+    },
+    "./components/toggle/component.json": "./components/toggle/component.json",
     "./styles.css": "./styles.css",
     "./package.json": "./package.json"
   },

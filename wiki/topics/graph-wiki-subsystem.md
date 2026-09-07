@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-09-07 — feat(components): add Snow input controls ([verndale/ui-design-library PR #93](https://github.com/verndale/ui-design-library/pull/93))
 - 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #90](https://github.com/verndale/ui-design-library/pull/90))
 - 2026-08-24 — Replaced generic hand-authored traversal prose with the canonical headless managed block while retaining the component graph, Graphify, evidence, authoring, and maintainer boundaries outside it ([plan](../plans/2026-08-24-deterministic-route-first-wiki-guidance.md), [journal](../journal/2026-08-24-deterministic-agent-wiki-guidance.md)).
 - 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #88](https://github.com/verndale/ui-design-library/pull/88))

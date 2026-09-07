@@ -2,7 +2,7 @@
 date: 2026-09-07
 topics: [component-architecture, figma-code-connect]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/93
 ---
 # Add four Snow input controls and harden Figma promotion
 

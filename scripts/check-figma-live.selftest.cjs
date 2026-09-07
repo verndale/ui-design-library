@@ -8,7 +8,13 @@ const { auditLiveNodes } = require('./check-figma-live.cjs');
 const alias = { type: 'VARIABLE_ALIAS', id: 'VariableID:1:1' };
 const boundPaint = { type: 'SOLID', color: { r: 0, g: 0, b: 0 }, boundVariables: { color: alias } };
 const registry = {
-  library: { fileKey: 'fixture' },
+  library: {
+    fileKey: 'fixture',
+    tokenPolicy: {
+      componentVariableIds: { 'color/action/base': 'VariableID:1:1' },
+      legacyBindingComponentIds: ['example'],
+    },
+  },
   components: [
     {
       id: 'example',
@@ -262,6 +268,31 @@ const cases = [
       return { registry: stateRegistry, payload };
     })(),
     expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'state token audit accepts the registered code-parity variable',
+    ...(() => {
+      const { stateRegistry, payload } = withInteractionState();
+      stateRegistry.components[0].figma.tokenBindingAudit = {
+        contractVersion: 1,
+        stateRequirements: { 'example.hover': ['color/action/base'] },
+      };
+      return { registry: stateRegistry, payload };
+    })(),
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'state token audit rejects variables outside the code-parity collection',
+    ...(() => {
+      const { stateRegistry, payload } = withInteractionState();
+      stateRegistry.components[0].figma.tokenBindingAudit = {
+        contractVersion: 1,
+        stateRequirements: { 'example.hover': ['color/action/base'] },
+      };
+      payload.nodes['1:2'].document.boundVariables.itemSpacing = { type: 'VARIABLE_ALIAS', id: 'VariableID:9:9' };
+      return { registry: stateRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('outside the code-parity token collection')),
   },
   {
     name: 'interaction-state instance connection drift fails',

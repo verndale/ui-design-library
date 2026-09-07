@@ -90,6 +90,25 @@ function hasAlias(value) {
   return Object.values(value).some(hasAlias);
 }
 
+function collectAliasIds(root) {
+  const ids = new Set();
+  walk(root, (node) => {
+    const bindings = node.boundVariables ?? {};
+    const visit = (value) => {
+      if (!value) return;
+      if (Array.isArray(value)) return value.forEach(visit);
+      if (typeof value !== 'object') return;
+      if (value.type === 'VARIABLE_ALIAS' && typeof value.id === 'string') ids.add(value.id);
+      else Object.values(value).forEach(visit);
+    };
+    visit(bindings);
+    for (const field of ['fills', 'strokes']) {
+      for (const paint of Array.isArray(node[field]) ? node[field] : []) visit(paint?.boundVariables);
+    }
+  });
+  return ids;
+}
+
 function paintHasColorAlias(node, paint, field) {
   if (hasAlias(paint?.boundVariables?.color)) return true;
   const nodeBinding = node.boundVariables?.[field];
@@ -176,6 +195,10 @@ function auditLiveNodes({ registry, payload }) {
   const failures = [];
   const fail = (message) => failures.push(message);
   const components = Array.isArray(registry?.components) ? registry.components : [];
+  const tokenPolicy = registry?.library?.tokenPolicy ?? {};
+  const variableIds = tokenPolicy.componentVariableIds ?? {};
+  const allowedVariableIds = new Set(Object.values(variableIds));
+  const legacyBindingComponentIds = new Set(tokenPolicy.legacyBindingComponentIds ?? []);
 
   if (!payload || typeof payload !== 'object' || !payload.nodes) {
     return ['[live] Figma response does not contain a nodes object'];
@@ -230,6 +253,69 @@ function auditLiveNodes({ registry, payload }) {
     }
 
     auditVisualTree(component, root, fail);
+
+    const bindingAudit = expected.tokenBindingAudit;
+    if (!legacyBindingComponentIds.has(component.id) && !bindingAudit) {
+      fail(`${prefix} new component registration requires figma.tokenBindingAudit`);
+    }
+    if (bindingAudit) {
+      for (const aliasId of collectAliasIds(root)) {
+        if (!allowedVariableIds.has(aliasId)) {
+          fail(`${prefix} master uses variable ${aliasId} outside the code-parity token collection`);
+        }
+      }
+      const statesById = new Map((expected.stateCoverage?.states ?? []).map((state) => [state.id, state]));
+      for (const [stateId, tokens] of Object.entries(bindingAudit.stateRequirements ?? {})) {
+        const state = statesById.get(stateId);
+        const stateRoot = state ? payload.nodes?.[state.componentNodeId]?.document : null;
+        if (!stateRoot) {
+          fail(`${prefix} token-binding state ${stateId} has no live component node`);
+          continue;
+        }
+        const aliases = collectAliasIds(stateRoot);
+        for (const token of tokens) {
+          const variableId = variableIds[token];
+          if (!variableId || !aliases.has(variableId)) {
+            fail(`${prefix} token-binding state ${stateId} must use ${token}`);
+          }
+        }
+      }
+    }
+
+    const presentation = expected.presentationEvidence;
+    if (!legacyBindingComponentIds.has(component.id) && !presentation) {
+      fail(`${prefix} new component registration requires figma.presentationEvidence`);
+    }
+    if (presentation) {
+      const page = payload.nodes?.[expected.pageId]?.document;
+      const referencePage = payload.nodes?.[presentation.referencePageId]?.document;
+      if (!page || page.type !== 'CANVAS') fail(`${prefix} documented page ${expected.pageId} is missing or not a page`);
+      else if (page.name !== expected.pageName) fail(`${prefix} live page name is "${page.name}", expected "${expected.pageName}"`);
+      if (!referencePage || referencePage.name !== presentation.referencePageName) {
+        fail(`${prefix} presentation precedent ${presentation.referencePageId} does not match ${presentation.referencePageName}`);
+      }
+      const roles = ['documentation', 'main', 'interactionStates', 'publishSource'];
+      const sections = roles.map((role) => ({ role, evidence: presentation.sections?.[role], node: payload.nodes?.[presentation.sections?.[role]?.nodeId]?.document }));
+      for (const { role, evidence, node } of sections) {
+        if (!evidence || !node || node.type !== 'SECTION') fail(`${prefix} presentation ${role} section is missing or not a SECTION`);
+        else if (!containsNode(page, evidence.nodeId)) fail(`${prefix} presentation ${role} section is not on page ${expected.pageId}`);
+      }
+      const documentation = sections.find((entry) => entry.role === 'documentation')?.node;
+      const main = sections.find((entry) => entry.role === 'main')?.node;
+      const interaction = sections.find((entry) => entry.role === 'interactionStates')?.node;
+      const publish = sections.find((entry) => entry.role === 'publishSource')?.node;
+      if (documentation?.absoluteBoundingBox?.width !== 528) fail(`${prefix} documentation rail must be 528px wide`);
+      if (documentation && !/^✅ Ready for Dev \/ 01 • Documentation \/ /.test(documentation.name)) fail(`${prefix} documentation section name drifted from the governed grammar`);
+      if (main && !/^✅ Ready for Dev \/ 02 • Main components \/ /.test(main.name)) fail(`${prefix} main section name drifted from the governed grammar`);
+      if (interaction && !/^✅ Ready for Dev \/ 03 • Interaction states \/ /.test(interaction.name)) fail(`${prefix} Interaction states section name drifted from the governed grammar`);
+      if (publish && !/^Publish source \/ /.test(publish.name)) fail(`${prefix} Publish source section must remain unnumbered`);
+      if (publish && !containsNode(publish, expected.nodeId)) fail(`${prefix} Publish source section does not contain master ${expected.nodeId}`);
+      const ordered = (page?.children ?? []).map((node) => node.id);
+      const numbered = ['documentation', 'main', 'interactionStates'].map((role) => presentation.sections?.[role]?.nodeId);
+      if (numbered.some((id, index) => ordered.indexOf(id) < 0 || (index > 0 && ordered.indexOf(id) <= ordered.indexOf(numbered[index - 1])))) {
+        fail(`${prefix} numbered documentation sections are not in governed order`);
+      }
+    }
 
     const representations = component.sourceParity?.representations ?? [];
     for (const representation of representations) {
@@ -292,6 +378,9 @@ async function fetchLiveNodes({ registry, token, fetchImpl = fetch }) {
   const fileKey = registry.library?.fileKey;
   const ids = sorted(registry.components.flatMap((component) => [
     component.figma.nodeId,
+    component.figma.pageId,
+    component.figma.presentationEvidence?.referencePageId,
+    ...Object.values(component.figma.presentationEvidence?.sections ?? {}).map((section) => section.nodeId),
     ...(component.sourceParity?.representations ?? []).flatMap((representation) => [
       representation.masterNodeId,
       ...(representation.specimens ?? []).map((specimen) => specimen.nodeId),
@@ -301,7 +390,7 @@ async function fetchLiveNodes({ registry, token, fetchImpl = fetch }) {
       state.instanceNodeId,
       state.componentNodeId,
     ]).filter(Boolean),
-  ])).join(',');
+  ]).filter(Boolean)).join(',');
   const url = new URL(`${FIGMA_API}/files/${encodeURIComponent(fileKey)}/nodes`);
   url.searchParams.set('ids', ids);
 
@@ -351,6 +440,7 @@ if (require.main === module) {
 
 module.exports = {
   auditLiveNodes,
+  collectAliasIds,
   containsNode,
   duplicateDefinitionNames,
   fetchLiveNodes,

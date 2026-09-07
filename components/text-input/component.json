@@ -1,0 +1,114 @@
+{
+  "canonical": "Text input",
+  "slug": "text-input",
+  "exportName": "TextInput",
+  "rendering": "client",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["label", "labelSuffix", "leadingContent", "trailingContent", "message"],
+  "variants": ["default", "borderless", "empty", "filled", "error", "disabled", "read-only"],
+  "reuseFingerprint": { "slots": ["field", "meta", "action", "icon"], "affordance": "input", "role": "container" },
+  "tokens": [
+    "color-surface-raised", "color-surface-sunken", "color-text-primary", "color-text-secondary",
+    "color-border-subtle", "color-border-focus", "color-tone-critical", "color-control-disabled-bg",
+    "color-control-disabled-text", "radius-medium", "size-touch-large", "spacing-s", "spacing-2xs"
+  ],
+  "provenance": {
+    "project": "snow",
+    "run": "runs/snow/2026-09-06/",
+    "source": "packages/ui/src/components/InputField/InputField.tsx"
+  },
+  "declienting": [
+    "Renamed the project-specific InputField identity to the canonical Text input export without retaining an alias export.",
+    "Replaced project Text, Icon, Button, and Link primitives with native label, input, button-slot, and message composition.",
+    "Replaced resort theme classes and SCSS modules with neutral semantic token utilities.",
+    "Changed named icon props into leadingContent and trailingContent ReactNode slots so icon ownership stays with consumers.",
+    "Collapsed project-specific inner, outer, CTA, and text-link branches into composable labelSuffix and trailingContent slots.",
+    "Preserved native labeling, helper/error descriptions, role=alert errors, invalid, disabled, read-only, filled, and borderless states."
+  ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "text-input",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-09-07/components/text-input",
+    "privateAuditDigest": "f732aca01c0bb10d27ab1f219abe03ba0348931a73fd80387958c6058d07f109",
+    "decisionIds": ["sp-text-input-001"],
+    "representationDecisions": [{ "decisionId": "sp-text-input-001", "implementationKey": "text-input", "surfaces": ["ai-registry", "code", "figma", "storybook"] }],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "label", "type": "node", "required": false },
+      { "path": "labelSuffix", "type": "node", "required": false },
+      { "path": "helperText", "type": "node", "required": false },
+      { "path": "error", "type": "boolean", "required": false, "default": false },
+      { "path": "errorMessage", "type": "node", "required": false },
+      { "path": "leadingContent", "type": "node", "required": false },
+      { "path": "trailingContent", "type": "node", "required": false },
+      { "path": "variant", "type": "enum", "required": false, "values": ["default", "borderless"], "default": "default" },
+      { "path": "inputSize", "type": "number", "required": false },
+      { "path": "value", "type": "string", "required": false },
+      { "path": "defaultValue", "type": "string", "required": false },
+      { "path": "onChange", "type": "callback", "required": false },
+      { "path": "placeholder", "type": "string", "required": false },
+      { "path": "disabled", "type": "boolean", "required": false, "default": false },
+      { "path": "readOnly", "type": "boolean", "required": false, "default": false },
+      { "path": "required", "type": "boolean", "required": false, "default": false },
+      { "path": "name", "type": "string", "required": false },
+      { "path": "id", "type": "string", "required": false },
+      { "path": "aria-label", "type": "string", "required": false },
+      { "path": "aria-describedby", "type": "string", "required": false },
+      { "path": "className", "type": "string", "required": false },
+      { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false },
+      { "path": "classNames.labelRow", "type": "string", "required": false },
+      { "path": "classNames.label", "type": "string", "required": false },
+      { "path": "classNames.control", "type": "string", "required": false },
+      { "path": "classNames.leading", "type": "string", "required": false },
+      { "path": "classNames.input", "type": "string", "required": false },
+      { "path": "classNames.trailing", "type": "string", "required": false },
+      { "path": "classNames.message", "type": "string", "required": false },
+      { "path": "classNames.helper", "type": "string", "required": false },
+      { "path": "classNames.error", "type": "string", "required": false }
+    ],
+    "contentBindings": [
+      { "prop": "label", "node": "label" }, { "prop": "labelSuffix", "node": "labelSuffix" },
+      { "prop": "leadingContent", "node": "leading" }, { "prop": "trailingContent", "node": "trailing" },
+      { "prop": "helperText", "node": "message" }, { "prop": "errorMessage", "node": "message" }
+    ],
+    "safeAttributes": [
+      { "prop": "id", "node": "input", "attribute": "id" }, { "prop": "name", "node": "input", "attribute": "name" },
+      { "prop": "disabled", "node": "input", "attribute": "disabled" }, { "prop": "readOnly", "node": "input", "attribute": "readonly" },
+      { "prop": "required", "node": "input", "attribute": "required" }, { "prop": "aria-label", "node": "input", "attribute": "aria-label" }
+    ],
+    "styleSlots": [
+      { "path": "classNames.root", "node": "root", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.control", "node": "control", "protectedProperties": ["display", "visibility", "focus-indicator", "target-size"] },
+      { "path": "classNames.input", "node": "input", "protectedProperties": ["display", "visibility", "focus-indicator", "semantics"] },
+      { "path": "classNames.message", "node": "message", "protectedProperties": ["visibility", "semantics", "reading-order"] }
+    ],
+    "dom": { "nodes": [
+      { "id": "root", "element": "div", "parent": null, "cardinality": "one" },
+      { "id": "labelRow", "element": "div", "parent": "root", "cardinality": "zero-or-one", "condition": { "prop": "label", "predicate": "present" } },
+      { "id": "label", "element": "label", "parent": "labelRow", "cardinality": "zero-or-one", "condition": { "prop": "label", "predicate": "present" } },
+      { "id": "labelSuffix", "element": "span", "parent": "labelRow", "cardinality": "zero-or-one", "condition": { "prop": "labelSuffix", "predicate": "present" } },
+      { "id": "control", "element": "div", "parent": "root", "cardinality": "one" },
+      { "id": "leading", "element": "span", "parent": "control", "cardinality": "zero-or-one", "condition": { "prop": "leadingContent", "predicate": "present" }, "attributes": { "aria-hidden": true } },
+      { "id": "input", "element": "input", "parent": "control", "cardinality": "one", "attributes": { "aria-invalid": { "state": "error" } } },
+      { "id": "trailing", "element": "span", "parent": "control", "cardinality": "zero-or-one", "condition": { "prop": "trailingContent", "predicate": "present" } },
+      { "id": "message", "element": "p", "parent": "root", "cardinality": "zero-or-one", "condition": { "state": "message", "predicate": "truthy" } }
+    ] },
+    "relationships": [
+      { "from": "label", "attribute": "for", "to": "input" },
+      { "from": "input", "attribute": "aria-describedby", "to": "message" }
+    ],
+    "behaviors": [
+      { "id": "text-input.semantics.name", "kind": "semantics", "description": "A visible label programmatically names the native text field.", "wcag": ["1.3.1", "3.3.2", "4.1.2"], "evidence": "text-input.semantics.name", "evidenceType": "storybook-step" },
+      { "id": "text-input.description.message", "kind": "semantics", "description": "Helper text is referenced by aria-describedby.", "wcag": ["1.3.1", "3.3.2"], "evidence": "text-input.description.message", "evidenceType": "storybook-step" },
+      { "id": "text-input.state.invalid", "kind": "announcement", "description": "Invalid state and its alert message are exposed together.", "wcag": ["3.3.1", "4.1.3"], "evidence": "text-input.state.invalid", "evidenceType": "storybook-step" }
+    ],
+    "accessibility": { "standard": "WCAG-2.2-AA", "apgPattern": null, "consumerResponsibilities": ["accessible-copy", "token-contrast", "safe-class-overrides", "complete-page-assistive-technology-testing"] }
+  }
+}

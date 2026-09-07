@@ -1,0 +1,92 @@
+{
+  "canonical": "Segmented control",
+  "slug": "segmented-control",
+  "exportName": "SegmentedControl",
+  "rendering": "client",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["legend", "options", "message"],
+  "variants": ["first-selected", "second-selected", "no-selection", "disabled", "error"],
+  "reuseFingerprint": { "slots": ["field", "meta"], "affordance": "input", "role": "container" },
+  "tokens": ["color-surface-raised", "color-surface-sunken", "color-text-primary", "color-text-secondary", "color-border-subtle", "color-border-focus", "color-tone-critical", "color-control-disabled-text", "duration-fast", "ease-standard", "radius-pill", "size-touch-medium"],
+  "provenance": { "project": "snow", "run": "runs/snow/2026-09-06/", "source": "packages/ui/src/components/SegmentedRadioGroup/SegmentedRadioGroup.tsx" },
+  "declienting": [
+    "Renamed SegmentedRadioGroup to the canonical SegmentedControl export without retaining a duplicate alias export.",
+    "Replaced the project Text primitive and SCSS module with native fieldset, legend, label, radio, and message elements plus semantic token utilities.",
+    "Replaced the animated project indicator with native per-option selected surfaces while preserving radio-group semantics, keyboard selection, disabled options, helper text, and validation errors."
+  ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "segmented-control",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-09-07/components/segmented-control",
+    "privateAuditDigest": "0bcfc14a5f169dc405090c004ef169d1488f255393ee8a95ca71fc410db4a92c",
+    "decisionIds": ["sp-segmented-control-001"],
+    "representationDecisions": [{ "decisionId": "sp-segmented-control-001", "implementationKey": "segmented-control", "surfaces": ["ai-registry", "code", "figma", "storybook"] }],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "legend", "type": "node", "required": true },
+      { "path": "options", "type": "collection", "required": true },
+      { "path": "options[].value", "type": "string", "required": true },
+      { "path": "options[].label", "type": "node", "required": true },
+      { "path": "options[].disabled", "type": "boolean", "required": false, "default": false },
+      { "path": "value", "type": "string", "required": false },
+      { "path": "defaultValue", "type": "string", "required": false },
+      { "path": "onChange", "type": "callback", "required": false },
+      { "path": "name", "type": "string", "required": false },
+      { "path": "disabled", "type": "boolean", "required": false, "default": false },
+      { "path": "hideLegend", "type": "boolean", "required": false, "default": false },
+      { "path": "helperText", "type": "node", "required": false },
+      { "path": "error", "type": "boolean", "required": false, "default": false },
+      { "path": "errorMessage", "type": "node", "required": false },
+      { "path": "className", "type": "string", "required": false },
+      { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false },
+      { "path": "classNames.legend", "type": "string", "required": false },
+      { "path": "classNames.group", "type": "string", "required": false },
+      { "path": "classNames.option", "type": "string", "required": false },
+      { "path": "classNames.input", "type": "string", "required": false },
+      { "path": "classNames.segment", "type": "string", "required": false },
+      { "path": "classNames.helper", "type": "string", "required": false },
+      { "path": "classNames.error", "type": "string", "required": false }
+    ],
+    "contentBindings": [
+      { "prop": "legend", "node": "legend" },
+      { "prop": "options[].label", "node": "segment" },
+      { "prop": "helperText", "node": "message" },
+      { "prop": "errorMessage", "node": "message" }
+    ],
+    "safeAttributes": [
+      { "prop": "name", "node": "input", "attribute": "name" },
+      { "prop": "disabled", "node": "input", "attribute": "disabled" }
+    ],
+    "styleSlots": [
+      { "path": "classNames.root", "node": "root", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.group", "node": "group", "protectedProperties": ["display", "visibility", "semantics"] },
+      { "path": "classNames.input", "node": "input", "protectedProperties": ["visibility", "focus-indicator", "semantics", "target-size"] },
+      { "path": "classNames.segment", "node": "segment", "protectedProperties": ["visibility", "focus-indicator"] }
+    ],
+    "dom": { "nodes": [
+      { "id": "root", "element": "fieldset", "parent": null, "cardinality": "one" },
+      { "id": "legend", "element": "legend", "parent": "root", "cardinality": "one" },
+      { "id": "group", "element": "div", "parent": "root", "cardinality": "one" },
+      { "id": "option", "element": "label", "parent": "group", "cardinality": "one-or-more", "repeat": { "prop": "options" } },
+      { "id": "input", "element": "input", "parent": "option", "cardinality": "one", "attributes": { "type": "radio" } },
+      { "id": "segment", "element": "span", "parent": "option", "cardinality": "one" },
+      { "id": "message", "element": "p", "parent": "root", "cardinality": "zero-or-one", "condition": { "state": "message", "predicate": "truthy" } }
+    ] },
+    "relationships": [
+      { "from": "root", "attribute": "aria-describedby", "to": "message" }
+    ],
+    "behaviors": [
+      { "id": "segmented-control.semantics.radio", "kind": "semantics", "description": "A fieldset and legend name a native mutually exclusive radio group.", "wcag": ["1.3.1", "4.1.2"], "evidence": "segmented-control.semantics.radio", "evidenceType": "storybook-step" },
+      { "id": "segmented-control.keyboard.selection", "kind": "keyboard", "description": "Arrow keys move selection through native radio options.", "wcag": ["2.1.1", "2.4.7"], "evidence": "segmented-control.keyboard.selection", "evidenceType": "storybook-step" },
+      { "id": "segmented-control.state.invalid", "kind": "announcement", "description": "Validation copy is exposed as an alert and group description.", "wcag": ["3.3.1", "4.1.3"], "evidence": "segmented-control.state.invalid", "evidenceType": "storybook-step" }
+    ],
+    "accessibility": { "standard": "WCAG-2.2-AA", "apgPattern": "radio-group", "consumerResponsibilities": ["accessible-copy", "token-contrast", "safe-class-overrides", "complete-page-assistive-technology-testing"] }
+  }
+}

@@ -14,6 +14,61 @@
     "tokenPolicy": {
       "componentSource": "src/tokens/semantic.css",
       "componentVariableCollectionId": "38:3",
+      "componentVariableIds": {
+        "color/surface/base": "VariableID:52:7",
+        "color/surface/raised": "VariableID:65:5",
+        "color/surface/sunken": "VariableID:52:8",
+        "color/text/primary": "VariableID:52:9",
+        "color/text/secondary": "VariableID:61:7",
+        "color/text/inverse": "VariableID:52:10",
+        "color/border/subtle": "VariableID:65:6",
+        "color/border/strong": "VariableID:167:3",
+        "color/border/focus": "VariableID:191:3",
+        "color/border/accent": "VariableID:172:2",
+        "color/action/base": "VariableID:191:2",
+        "color/control/disabled/bg": "VariableID:39:10",
+        "color/control/disabled/text": "VariableID:39:11",
+        "color/tone/critical": "VariableID:65:8",
+        "spacing/3xs": "VariableID:40:2",
+        "spacing/2xs": "VariableID:40:3",
+        "spacing/xs": "VariableID:65:9",
+        "spacing/s": "VariableID:40:4",
+        "spacing/m": "VariableID:61:8",
+        "spacing/l": "VariableID:61:9",
+        "spacing/xl": "VariableID:74:7",
+        "radius/medium": "VariableID:65:10",
+        "radius/pill": "VariableID:40:5"
+      },
+      "legacyBindingComponentIds": [
+        "button-light",
+        "button-light-icon-only",
+        "button-dark",
+        "button-dark-icon-only",
+        "section-header",
+        "alert",
+        "card",
+        "card-media",
+        "modal",
+        "avatar",
+        "badge",
+        "link",
+        "image",
+        "quote",
+        "rich-text",
+        "stat",
+        "search-input",
+        "slider",
+        "breadcrumbs",
+        "accordion",
+        "tabs",
+        "tabs-native-select",
+        "toast",
+        "in-page-navigation",
+        "in-page-navigation-modal-drawer",
+        "carousel",
+        "carousel-multi-card-peek",
+        "search-overlay"
+      ],
       "documentationPresentation": "Cumulative Foundations",
       "documentationPresentationOnly": true,
       "modeLimit": 20,
@@ -265,8 +320,8 @@
         "nodeType": "COMPONENT_SET",
         "nodeName": "Button / Icon only",
         "status": "ready-for-dev",
-        "publicationStatus": "unpublished",
-        "review": {
+      "publicationStatus": "unpublished",
+      "review": {
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
@@ -432,8 +487,8 @@
         "nodeType": "COMPONENT_SET",
         "nodeName": "Button / Icon only",
         "status": "ready-for-dev",
-        "publicationStatus": "unpublished",
-        "review": {
+      "publicationStatus": "unpublished",
+      "review": {
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
@@ -986,8 +1041,8 @@
         "nodeType": "COMPONENT",
         "nodeName": "Avatar",
         "status": "ready-for-dev",
-        "publicationStatus": "unpublished",
-        "review": {
+      "publicationStatus": "unpublished",
+      "review": {
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
@@ -1039,8 +1094,8 @@
         "nodeType": "COMPONENT_SET",
         "nodeName": "Badge",
         "status": "ready-for-dev",
-        "publicationStatus": "unpublished",
-        "review": {
+      "publicationStatus": "unpublished",
+      "review": {
           "status": "passed",
           "standard": "button-standard-v1",
           "passes": ["source-parity", "adversarial", "design"],
@@ -2680,6 +2735,154 @@
         { "figmaProperty": "State", "kind": "enum", "codeProp": "query", "role": "condition", "values": ["Idle", "Active"] }
       ],
       "nestedDependencies": []
+    },
+    {
+      "id": "text-input",
+      "canonical": "Text input",
+      "slug": "text-input",
+      "exportName": "TextInput",
+      "publicImport": "@verndale/ui-design-library/components/text-input",
+      "componentPath": "components/text-input",
+      "storyPath": "components/text-input/TextInput.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["label", "labelSuffix", "helperText", "error", "errorMessage", "leadingContent", "trailingContent", "variant", "inputSize", "disabled", "readOnly", "required", "value", "defaultValue", "placeholder", "name", "id", "onChange", "aria-label", "aria-describedby", "className", "classNames"],
+      "codeOnlyProps": ["labelSuffix", "helperText", "leadingContent", "trailingContent", "inputSize", "disabled", "readOnly", "required", "defaultValue", "placeholder", "name", "id", "onChange", "aria-label", "aria-describedby", "className", "classNames"],
+      "fixedProps": [],
+      "familyPage": true,
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "text-input",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-09-07/components/text-input",
+        "privateAuditDigest": "f732aca01c0bb10d27ab1f219abe03ba0348931a73fd80387958c6058d07f109",
+        "decisionIds": ["sp-text-input-001"],
+        "representationDecisions": [{ "decisionId": "sp-text-input-001", "implementationKey": "text-input", "surfaces": ["ai-registry", "code", "figma", "storybook"] }],
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": [{ "decisionId": "sp-text-input-001", "kind": "component-property", "masterNodeId": "455:64", "publicProps": ["label", "value", "errorMessage", "error", "variant"], "specimens": [] }]
+      },
+      "figma": {
+        "pageId": "455:2", "pageName": "Text input", "nodeId": "455:64", "nodeKey": "b11f313fe56abb0ef7e85c8983e30e535bd1e7e5", "nodeType": "COMPONENT_SET", "nodeName": "Text input", "status": "ready-for-dev", "publicationStatus": "unpublished",
+        "presentationEvidence": { "contractVersion": 1, "referencePageId": "177:2", "referencePageName": "Search input", "sections": { "documentation": { "nodeId": "476:2", "order": 1 }, "main": { "nodeId": "476:36", "order": 2 }, "interactionStates": { "nodeId": "476:75", "order": 3 }, "publishSource": { "nodeId": "476:113", "order": null } } },
+        "tokenBindingAudit": { "contractVersion": 1, "stateRequirements": { "text-input.error": ["color/tone/critical"], "text-input.focus-visible": ["color/border/focus"] } },
+        "review": { "status": "passed", "standard": "button-standard-v1", "passes": ["source-parity", "adversarial", "design"], "evidence": "wiki/journal/2026-09-07-add-snow-input-controls.md" },
+        "handoffPattern": "direct-canonical-instance", "presentationPattern": "responsive-specimens",
+        "stateCoverage": { "status": "covered", "storyExport": "InteractionStates", "states": [
+          { "id": "text-input.empty", "label": "Empty", "target": "Text input control", "source": { "trigger": "public-prop", "value": "value=''" }, "classification": "already-represented", "frameNodeId": "455:89", "instanceNodeId": "455:91", "componentNodeId": "455:4" },
+          { "id": "text-input.filled", "label": "Filled", "target": "Text input control", "source": { "trigger": "public-prop", "value": "value='hello@example.com'" }, "classification": "already-represented", "frameNodeId": "455:96", "instanceNodeId": "455:98", "componentNodeId": "455:9" },
+          { "id": "text-input.error", "label": "Error", "target": "Text input and error message", "source": { "trigger": "public-prop", "value": "error=true" }, "classification": "already-represented", "frameNodeId": "455:103", "instanceNodeId": "455:105", "componentNodeId": "455:14" },
+          { "id": "text-input.disabled", "label": "Disabled", "target": "Text input control", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "455:110", "instanceNodeId": "455:112", "componentNodeId": "455:19" },
+          { "id": "text-input.read-only", "label": "Read only", "target": "Text input control", "source": { "trigger": "public-prop", "value": "readOnly=true" }, "classification": "already-represented", "frameNodeId": "455:117", "instanceNodeId": "455:119", "componentNodeId": "455:24" },
+          { "id": "text-input.focus-visible", "label": "Focus visible", "target": "Text input control", "source": { "trigger": "pseudo", "value": "input:focus-visible" }, "classification": "rendered", "frameNodeId": "455:124", "instanceNodeId": "455:126", "componentNodeId": "455:29" }
+        ] },
+        "properties": [{ "name": "Label", "type": "TEXT" }, { "name": "Value", "type": "TEXT" }, { "name": "Message", "type": "TEXT" }, { "name": "Show message", "type": "BOOLEAN" }, { "name": "State", "type": "VARIANT", "values": ["Empty", "Filled", "Error", "Disabled", "Read only", "Focus visible"] }, { "name": "Style", "type": "VARIANT", "values": ["Default", "Borderless"] }]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Value", "kind": "string", "codeProp": "value" },
+        { "figmaProperty": "Message", "kind": "string", "codeProp": "errorMessage" },
+        { "figmaProperty": "Show message", "kind": "boolean", "codeProp": "error" },
+        { "figmaProperty": "State", "kind": "enum", "codeProp": "value", "role": "condition", "values": ["Empty", "Filled", "Error", "Disabled", "Read only", "Focus visible"] },
+        { "figmaProperty": "Style", "kind": "enum", "codeProp": "variant", "values": ["Default", "Borderless"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "toggle",
+      "canonical": "Toggle",
+      "slug": "toggle",
+      "exportName": "Toggle",
+      "publicImport": "@verndale/ui-design-library/components/toggle",
+      "componentPath": "components/toggle",
+      "storyPath": "components/toggle/Toggle.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["label", "helperText", "checked", "defaultChecked", "onChange", "disabled", "required", "name", "value", "id", "aria-label", "aria-describedby", "className", "classNames"],
+      "codeOnlyProps": ["defaultChecked", "onChange", "disabled", "required", "name", "value", "id", "aria-label", "aria-describedby", "className", "classNames"],
+      "fixedProps": [], "familyPage": true,
+      "sourceParity": { "contractVersion": 1, "auditComponentKey": "toggle", "auditStatus": "cleared", "privateAuditRef": "library-source-parity:2026-09-07/components/toggle", "privateAuditDigest": "f25ccac72e47177222b35c398a5bd0e24eecbd94dad7c3c72121ed8ef87c184c", "decisionIds": ["sp-toggle-001"], "representationDecisions": [{ "decisionId": "sp-toggle-001", "implementationKey": "toggle", "surfaces": ["ai-registry", "code", "figma", "storybook"] }], "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"], "representations": [{ "decisionId": "sp-toggle-001", "kind": "component-property", "masterNodeId": "456:34", "publicProps": ["label", "helperText", "checked"], "specimens": [] }] },
+      "figma": {
+        "pageId": "456:2", "pageName": "Toggle", "nodeId": "456:34", "nodeKey": "cd96c769626daf5c7b79e969d375466997972fa6", "nodeType": "COMPONENT_SET", "nodeName": "Toggle", "status": "ready-for-dev", "publicationStatus": "unpublished",
+        "presentationEvidence": { "contractVersion": 1, "referencePageId": "11:5", "referencePageName": "Button — Light", "sections": { "documentation": { "nodeId": "477:2", "order": 1 }, "main": { "nodeId": "477:36", "order": 2 }, "interactionStates": { "nodeId": "477:75", "order": 3 }, "publishSource": { "nodeId": "477:113", "order": null } } },
+        "tokenBindingAudit": { "contractVersion": 1, "stateRequirements": { "toggle.on": ["color/action/base"], "toggle.focus-visible": ["color/border/focus"] } },
+        "review": { "status": "passed", "standard": "button-standard-v1", "passes": ["source-parity", "adversarial", "design"], "evidence": "wiki/journal/2026-09-07-add-snow-input-controls.md" },
+        "handoffPattern": "direct-canonical-instance", "presentationPattern": "responsive-specimens",
+        "stateCoverage": { "status": "covered", "storyExport": "InteractionStates", "states": [
+          { "id": "toggle.off", "label": "Off", "target": "Toggle track and thumb", "source": { "trigger": "public-prop", "value": "checked=false" }, "classification": "already-represented", "frameNodeId": "456:61", "instanceNodeId": "456:63", "componentNodeId": "456:4" },
+          { "id": "toggle.on", "label": "On", "target": "Toggle track and thumb", "source": { "trigger": "public-prop", "value": "checked=true" }, "classification": "already-represented", "frameNodeId": "456:69", "instanceNodeId": "456:71", "componentNodeId": "456:10" },
+          { "id": "toggle.disabled-off", "label": "Disabled off", "target": "Toggle control", "source": { "trigger": "public-prop", "value": "disabled=true; checked=false" }, "classification": "already-represented", "frameNodeId": "456:77", "instanceNodeId": "456:79", "componentNodeId": "456:16" },
+          { "id": "toggle.disabled-on", "label": "Disabled on", "target": "Toggle control", "source": { "trigger": "public-prop", "value": "disabled=true; checked=true" }, "classification": "already-represented", "frameNodeId": "456:85", "instanceNodeId": "456:87", "componentNodeId": "456:22" },
+          { "id": "toggle.focus-visible", "label": "Focus visible", "target": "Toggle track", "source": { "trigger": "pseudo", "value": "input:focus-visible" }, "classification": "rendered", "frameNodeId": "456:93", "instanceNodeId": "456:95", "componentNodeId": "456:28" }
+        ] },
+        "properties": [{ "name": "Label", "type": "TEXT" }, { "name": "Helper text", "type": "TEXT" }, { "name": "Show helper", "type": "BOOLEAN" }, { "name": "State", "type": "VARIANT", "values": ["Off", "On", "Disabled off", "Disabled on", "Focus visible"] }]
+      },
+      "mappings": [{ "figmaProperty": "Label", "kind": "string", "codeProp": "label" }, { "figmaProperty": "Helper text", "kind": "string", "codeProp": "helperText" }, { "figmaProperty": "Show helper", "kind": "boolean", "codeProp": "helperText", "role": "condition" }, { "figmaProperty": "State", "kind": "enum", "codeProp": "checked", "role": "condition", "values": ["Off", "On", "Disabled off", "Disabled on", "Focus visible"] }],
+      "nestedDependencies": []
+    },
+    {
+      "id": "segmented-control",
+      "canonical": "Segmented control",
+      "slug": "segmented-control",
+      "exportName": "SegmentedControl",
+      "publicImport": "@verndale/ui-design-library/components/segmented-control",
+      "componentPath": "components/segmented-control",
+      "storyPath": "components/segmented-control/SegmentedControl.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["legend", "options", "value", "defaultValue", "onChange", "name", "disabled", "hideLegend", "helperText", "error", "errorMessage", "className", "classNames"],
+      "codeOnlyProps": ["defaultValue", "onChange", "name", "disabled", "hideLegend", "helperText", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "options", "value": "segmentedControlOptions" }], "familyPage": true,
+      "sourceParity": { "contractVersion": 1, "auditComponentKey": "segmented-control", "auditStatus": "cleared", "privateAuditRef": "library-source-parity:2026-09-07/components/segmented-control", "privateAuditDigest": "0bcfc14a5f169dc405090c004ef169d1488f255393ee8a95ca71fc410db4a92c", "decisionIds": ["sp-segmented-control-001"], "representationDecisions": [{ "decisionId": "sp-segmented-control-001", "implementationKey": "segmented-control", "surfaces": ["ai-registry", "code", "figma", "storybook"] }], "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"], "representations": [{ "decisionId": "sp-segmented-control-001", "kind": "component-property", "masterNodeId": "457:52", "publicProps": ["legend", "options", "value", "error", "errorMessage"], "specimens": [] }] },
+      "figma": {
+        "pageId": "457:2", "pageName": "Segmented control", "nodeId": "457:52", "nodeKey": "ced29064c445dddf51f53b3da63e10c9b41ea734", "nodeType": "COMPONENT_SET", "nodeName": "Segmented control", "status": "ready-for-dev", "publicationStatus": "unpublished",
+        "presentationEvidence": { "contractVersion": 1, "referencePageId": "11:5", "referencePageName": "Button — Light", "sections": { "documentation": { "nodeId": "478:2", "order": 1 }, "main": { "nodeId": "478:36", "order": 2 }, "interactionStates": { "nodeId": "478:75", "order": 3 }, "publishSource": { "nodeId": "478:113", "order": null } } },
+        "tokenBindingAudit": { "contractVersion": 1, "stateRequirements": { "segmented-control.error": ["color/tone/critical"], "segmented-control.focus-visible": ["color/border/focus"] } },
+        "review": { "status": "passed", "standard": "button-standard-v1", "passes": ["source-parity", "adversarial", "design"], "evidence": "wiki/journal/2026-09-07-add-snow-input-controls.md" },
+        "handoffPattern": "direct-canonical-instance", "presentationPattern": "responsive-specimens",
+        "stateCoverage": { "status": "covered", "storyExport": "InteractionStates", "states": [
+          { "id": "segmented-control.first-selected", "label": "First selected", "target": "First radio segment", "source": { "trigger": "public-prop", "value": "value=day" }, "classification": "already-represented", "frameNodeId": "457:83", "instanceNodeId": "457:85", "componentNodeId": "457:4" },
+          { "id": "segmented-control.second-selected", "label": "Second selected", "target": "Second radio segment", "source": { "trigger": "public-prop", "value": "value=week" }, "classification": "already-represented", "frameNodeId": "457:93", "instanceNodeId": "457:95", "componentNodeId": "457:12" },
+          { "id": "segmented-control.no-selection", "label": "No selection", "target": "Segment group", "source": { "trigger": "public-prop", "value": "value=undefined" }, "classification": "already-represented", "frameNodeId": "457:103", "instanceNodeId": "457:105", "componentNodeId": "457:20" },
+          { "id": "segmented-control.disabled", "label": "Disabled", "target": "Segment group", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "457:113", "instanceNodeId": "457:115", "componentNodeId": "457:28" },
+          { "id": "segmented-control.error", "label": "Error", "target": "Segment group and error message", "source": { "trigger": "public-prop", "value": "error=true" }, "classification": "already-represented", "frameNodeId": "457:123", "instanceNodeId": "457:125", "componentNodeId": "457:36" },
+          { "id": "segmented-control.focus-visible", "label": "Focus visible", "target": "Radio segment", "source": { "trigger": "pseudo", "value": "input:focus-visible" }, "classification": "rendered", "frameNodeId": "457:133", "instanceNodeId": "457:135", "componentNodeId": "457:44" }
+        ] },
+        "properties": [{ "name": "Legend", "type": "TEXT" }, { "name": "First label", "type": "TEXT" }, { "name": "Second label", "type": "TEXT" }, { "name": "Message", "type": "TEXT" }, { "name": "Show message", "type": "BOOLEAN" }, { "name": "State", "type": "VARIANT", "values": ["First selected", "Second selected", "No selection", "Disabled", "Error", "Focus visible"] }]
+      },
+      "mappings": [{ "figmaProperty": "Legend", "kind": "string", "codeProp": "legend" }, { "figmaProperty": "First label", "kind": "string", "codeProp": "options" }, { "figmaProperty": "Second label", "kind": "string", "codeProp": "options" }, { "figmaProperty": "Message", "kind": "string", "codeProp": "errorMessage" }, { "figmaProperty": "Show message", "kind": "boolean", "codeProp": "error" }, { "figmaProperty": "State", "kind": "enum", "codeProp": "value", "role": "condition", "values": ["First selected", "Second selected", "No selection", "Disabled", "Error", "Focus visible"] }],
+      "nestedDependencies": []
+    },
+    {
+      "id": "datepicker",
+      "canonical": "Datepicker",
+      "slug": "datepicker",
+      "exportName": "Datepicker",
+      "publicImport": "@verndale/ui-design-library/components/datepicker",
+      "componentPath": "components/datepicker",
+      "storyPath": "components/datepicker/Datepicker.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["mode", "variant", "value", "onChange", "label", "helperText", "error", "errorMessage", "min", "max", "disabled", "readOnly", "required", "placeholder", "onOpenChange", "name", "startLabel", "endLabel", "startName", "endName", "className", "classNames"],
+      "codeOnlyProps": ["onChange", "helperText", "error", "errorMessage", "min", "max", "disabled", "readOnly", "required", "placeholder", "onOpenChange", "name", "startLabel", "endLabel", "startName", "endName", "className", "classNames"],
+      "fixedProps": [], "familyPage": true,
+      "sourceParity": { "contractVersion": 1, "auditComponentKey": "datepicker", "auditStatus": "cleared", "privateAuditRef": "library-source-parity:2026-09-07/components/datepicker", "privateAuditDigest": "05b97a2b8b7f5691e1482686e6b734144b318df45452ea6b1a6f53e48a33c0b4", "decisionIds": ["sp-datepicker-001"], "representationDecisions": [{ "decisionId": "sp-datepicker-001", "implementationKey": "datepicker", "surfaces": ["ai-registry", "code", "figma", "storybook"] }], "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"], "representations": [{ "decisionId": "sp-datepicker-001", "kind": "component-property", "masterNodeId": "458:148", "publicProps": ["mode", "variant", "value", "label"], "specimens": [] }] },
+      "figma": {
+        "pageId": "458:2", "pageName": "Datepicker", "nodeId": "458:148", "nodeKey": "f6b46a1387c3d0ac8bddaa01ae71b49ab31dc523", "nodeType": "COMPONENT_SET", "nodeName": "Datepicker", "status": "ready-for-dev", "publicationStatus": "unpublished",
+        "presentationEvidence": { "contractVersion": 1, "referencePageId": "177:2", "referencePageName": "Search input", "sections": { "documentation": { "nodeId": "479:2", "order": 1 }, "main": { "nodeId": "479:36", "order": 2 }, "interactionStates": { "nodeId": "479:75", "order": 3 }, "publishSource": { "nodeId": "479:113", "order": null } } },
+        "tokenBindingAudit": { "contractVersion": 1, "stateRequirements": { "datepicker.error": ["color/tone/critical"], "datepicker.open-calendar": ["color/action/base"] } },
+        "review": { "status": "passed", "standard": "button-standard-v1", "passes": ["source-parity", "adversarial", "design"], "evidence": "wiki/journal/2026-09-07-add-snow-input-controls.md" },
+        "handoffPattern": "direct-canonical-instance", "presentationPattern": "responsive-specimens",
+        "stateCoverage": { "status": "covered", "storyExport": "InteractionStates", "states": [
+          { "id": "datepicker.empty", "label": "Empty", "target": "Single date field", "source": { "trigger": "public-prop", "value": "mode=single; value=null" }, "classification": "already-represented", "frameNodeId": "458:353", "instanceNodeId": "458:355", "componentNodeId": "458:4" },
+          { "id": "datepicker.filled", "label": "Filled", "target": "Single date field", "source": { "trigger": "public-prop", "value": "mode=single; value=2026-01-15" }, "classification": "already-represented", "frameNodeId": "458:361", "instanceNodeId": "458:363", "componentNodeId": "458:10" },
+          { "id": "datepicker.error", "label": "Error", "target": "Date field and error message", "source": { "trigger": "public-prop", "value": "error=true" }, "classification": "already-represented", "frameNodeId": "458:369", "instanceNodeId": "458:371", "componentNodeId": "458:16" },
+          { "id": "datepicker.disabled", "label": "Disabled", "target": "Date field and trigger", "source": { "trigger": "public-prop", "value": "disabled=true" }, "classification": "already-represented", "frameNodeId": "458:378", "instanceNodeId": "458:380", "componentNodeId": "458:23" },
+          { "id": "datepicker.range", "label": "Range", "target": "Start and end fields", "source": { "trigger": "public-prop", "value": "mode=range; start=2026-01-12; end=2026-01-16" }, "classification": "already-represented", "frameNodeId": "458:386", "instanceNodeId": "458:388", "componentNodeId": "458:29" },
+          { "id": "datepicker.compact-range", "label": "Compact range", "target": "Compact start and end fields", "source": { "trigger": "public-prop", "value": "mode=range; variant=compact" }, "classification": "already-represented", "frameNodeId": "458:400", "instanceNodeId": "458:402", "componentNodeId": "458:41" },
+          { "id": "datepicker.open-calendar", "label": "Open calendar", "target": "Calendar dialog", "source": { "trigger": "derived-state", "value": "open=true" }, "classification": "rendered", "frameNodeId": "458:414", "instanceNodeId": "458:416", "componentNodeId": "458:53" },
+          { "id": "datepicker.keyboard-open-close", "label": "Keyboard open, close, and focus restoration", "target": "Date trigger and calendar dialog", "source": { "trigger": "behavior", "value": "Enter opens; Escape closes and restores trigger focus" }, "classification": "runtime-only", "reason": "The keyboard sequence and resulting focus transition require executable browser evidence." },
+          { "id": "datepicker.range-selection", "label": "Range selection sequence", "target": "Calendar days and range value", "source": { "trigger": "behavior", "value": "select start then end" }, "classification": "runtime-only", "reason": "The ordered two-step selection and dialog closure require executable browser evidence." }
+        ] },
+        "properties": [{ "name": "Label", "type": "TEXT" }, { "name": "Value", "type": "TEXT" }, { "name": "Mode", "type": "VARIANT", "values": ["Single", "Range"] }, { "name": "Appearance", "type": "VARIANT", "values": ["Default", "Compact"] }, { "name": "State", "type": "VARIANT", "values": ["Empty", "Filled", "Error", "Disabled", "Partial", "Open calendar"] }]
+      },
+      "mappings": [{ "figmaProperty": "Label", "kind": "string", "codeProp": "label" }, { "figmaProperty": "Value", "kind": "string", "codeProp": "value" }, { "figmaProperty": "Mode", "kind": "enum", "codeProp": "mode", "values": ["Single", "Range"] }, { "figmaProperty": "Appearance", "kind": "enum", "codeProp": "variant", "values": ["Default", "Compact"] }, { "figmaProperty": "State", "kind": "enum", "codeProp": "value", "role": "condition", "values": ["Empty", "Filled", "Error", "Disabled", "Partial", "Open calendar"] }],
+      "nestedDependencies": ["text-input"]
     }
   ]
 }

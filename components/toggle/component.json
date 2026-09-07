@@ -1,0 +1,72 @@
+{
+  "canonical": "Toggle",
+  "slug": "toggle",
+  "exportName": "Toggle",
+  "rendering": "client",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["label", "helperText"],
+  "variants": ["off", "on", "disabled-off", "disabled-on"],
+  "reuseFingerprint": { "slots": ["field", "meta"], "affordance": "input", "role": "container" },
+  "tokens": ["color-action-base", "color-border-strong", "color-border-focus", "color-surface-raised", "color-surface-sunken", "color-text-primary", "color-text-secondary", "color-control-disabled-bg", "color-control-disabled-text", "duration-fast", "ease-standard", "radius-pill"],
+  "provenance": { "project": "snow", "run": "runs/snow/2026-09-06/", "source": "packages/ui/src/components/ToggleSwitch/ToggleSwitch.tsx" },
+  "declienting": [
+    "Renamed ToggleSwitch to the canonical Toggle export without retaining a duplicate alias export.",
+    "Replaced the project Text primitive and SCSS module with native label/helper elements and semantic token utilities.",
+    "Removed resort theme inheritance while preserving the native checkbox, switch role, checked, disabled, helper, hover, and focus-visible states."
+  ],
+  "sourceParity": {
+    "contractVersion": 1, "auditComponentKey": "toggle", "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-09-07/components/toggle",
+    "privateAuditDigest": "f25ccac72e47177222b35c398a5bd0e24eecbd94dad7c3c72121ed8ef87c184c",
+    "decisionIds": ["sp-toggle-001"],
+    "representationDecisions": [{ "decisionId": "sp-toggle-001", "implementationKey": "toggle", "surfaces": ["ai-registry", "code", "figma", "storybook"] }],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "label", "type": "node", "required": false }, { "path": "helperText", "type": "node", "required": false },
+      { "path": "checked", "type": "boolean", "required": false }, { "path": "defaultChecked", "type": "boolean", "required": false },
+      { "path": "onChange", "type": "callback", "required": false }, { "path": "disabled", "type": "boolean", "required": false, "default": false },
+      { "path": "required", "type": "boolean", "required": false, "default": false }, { "path": "name", "type": "string", "required": false },
+      { "path": "value", "type": "string", "required": false }, { "path": "id", "type": "string", "required": false },
+      { "path": "aria-label", "type": "string", "required": false }, { "path": "aria-describedby", "type": "string", "required": false },
+      { "path": "className", "type": "string", "required": false }, { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false }, { "path": "classNames.control", "type": "string", "required": false },
+      { "path": "classNames.input", "type": "string", "required": false }, { "path": "classNames.track", "type": "string", "required": false },
+      { "path": "classNames.thumb", "type": "string", "required": false }, { "path": "classNames.content", "type": "string", "required": false },
+      { "path": "classNames.label", "type": "string", "required": false }, { "path": "classNames.helper", "type": "string", "required": false }
+    ],
+    "contentBindings": [{ "prop": "label", "node": "label" }, { "prop": "helperText", "node": "helper" }],
+    "safeAttributes": [
+      { "prop": "id", "node": "input", "attribute": "id" }, { "prop": "name", "node": "input", "attribute": "name" },
+      { "prop": "value", "node": "input", "attribute": "value" }, { "prop": "disabled", "node": "input", "attribute": "disabled" },
+      { "prop": "required", "node": "input", "attribute": "required" }, { "prop": "aria-label", "node": "input", "attribute": "aria-label" }
+    ],
+    "styleSlots": [
+      { "path": "classNames.root", "node": "root", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.input", "node": "input", "protectedProperties": ["visibility", "pointer-events", "focus-indicator", "semantics", "target-size"] },
+      { "path": "classNames.track", "node": "track", "protectedProperties": ["display", "visibility", "focus-indicator"] },
+      { "path": "classNames.label", "node": "label", "protectedProperties": ["visibility", "semantics", "reading-order"] }
+    ],
+    "dom": { "nodes": [
+      { "id": "root", "element": "div", "parent": null, "cardinality": "one" },
+      { "id": "control", "element": "span", "parent": "root", "cardinality": "one" },
+      { "id": "input", "element": "input", "parent": "control", "cardinality": "one", "attributes": { "type": "checkbox", "role": "switch" } },
+      { "id": "track", "element": "span", "parent": "control", "cardinality": "one", "attributes": { "aria-hidden": true } },
+      { "id": "thumb", "element": "span", "parent": "track", "cardinality": "one" },
+      { "id": "content", "element": "span", "parent": "root", "cardinality": "zero-or-one", "condition": { "state": "content", "predicate": "truthy" } },
+      { "id": "label", "element": "label", "parent": "content", "cardinality": "zero-or-one", "condition": { "prop": "label", "predicate": "present" } },
+      { "id": "helper", "element": "span", "parent": "content", "cardinality": "zero-or-one", "condition": { "prop": "helperText", "predicate": "present" } }
+    ] },
+    "relationships": [{ "from": "label", "attribute": "for", "to": "input" }, { "from": "input", "attribute": "aria-describedby", "to": "helper" }],
+    "behaviors": [
+      { "id": "toggle.semantics.switch", "kind": "semantics", "description": "The binary setting uses native checkbox state with switch semantics.", "wcag": ["1.3.1", "4.1.2"], "evidence": "toggle.semantics.switch", "evidenceType": "storybook-step" },
+      { "id": "toggle.keyboard.activation", "kind": "keyboard", "description": "Space toggles the focused native control.", "wcag": ["2.1.1", "2.4.7"], "evidence": "toggle.keyboard.activation", "evidenceType": "storybook-step" },
+      { "id": "toggle.description.helper", "kind": "semantics", "description": "Helper text is programmatically associated with the switch.", "wcag": ["1.3.1", "3.3.2"], "evidence": "toggle.description.helper", "evidenceType": "storybook-step" }
+    ],
+    "accessibility": { "standard": "WCAG-2.2-AA", "apgPattern": "switch", "consumerResponsibilities": ["accessible-copy", "token-contrast", "safe-class-overrides", "complete-page-assistive-technology-testing"] }
+  }
+}

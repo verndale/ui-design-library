@@ -2,7 +2,7 @@
 date: 2026-08-19
 topics: [figma-code-connect]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/95
 ---
 # Correct Tabs spacing and Search overlay containment
 

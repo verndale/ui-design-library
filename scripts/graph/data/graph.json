@@ -811,7 +811,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 13081,
+      "bytes": 13079,
       "degree": 2
     },
     {
@@ -2079,10 +2079,19 @@
         "figma-code-connect"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 1483,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 1529,
       "degree": 3
     },
     {

@@ -93,6 +93,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Add four Snow input controls and harden Figma promotion](../../wiki/journal/2026-09-07-add-snow-input-controls.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Add four Snow input controls and harden Figma promotion](../../wiki/journal/2026-09-07-add-snow-input-controls.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Normalize live Figma property identities](../../wiki/journal/2026-09-17-normalize-live-figma-property-identities.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
+- [Restore the live Figma contract](../../wiki/journal/2026-09-17-restore-live-figma-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Restore Vitest browser compatibility](../../wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)

@@ -36,6 +36,12 @@
         "spacing/m": "VariableID:61:8",
         "spacing/l": "VariableID:61:9",
         "spacing/xl": "VariableID:74:7",
+        "tailwind/spacing/none": "VariableID:681:2",
+        "tailwind/border-width/default": "VariableID:40:12",
+        "tailwind/font-family/sans": "VariableID:681:3",
+        "tailwind/font-style/normal": "VariableID:681:4",
+        "tailwind/font-size/base": "VariableID:681:5",
+        "tailwind/line-height/base": "VariableID:681:6",
         "radius/medium": "VariableID:65:10",
         "radius/pill": "VariableID:40:5"
       },

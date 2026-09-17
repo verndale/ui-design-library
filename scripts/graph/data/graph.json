@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 174,
-    "edges": 390,
+    "nodes": 175,
+    "edges": 393,
     "byType": {
       "surface": 62,
       "root-doc": 4,
       "component": 27,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 50,
+      "wiki-journal": 51,
       "wiki-plan": 20,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 71,
-      "links-to": 175,
+      "links-to": 177,
       "plan": 28,
-      "topic": 89,
+      "topic": 90,
       "uses-tokens": 27
     }
   },
@@ -785,7 +785,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 192273,
+      "bytes": 192614,
       "degree": 1
     },
     {
@@ -1253,8 +1253,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 17789,
-      "degree": 60
+      "bytes": 18032,
+      "degree": 61
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2494,6 +2494,21 @@
       "degree": 3
     },
     {
+      "id": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
+      "label": "Restore the live Figma contract",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 1802,
+      "degree": 3
+    },
+    {
       "id": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
       "label": "Restore Vitest browser compatibility",
       "type": "wiki-journal",
@@ -3391,9 +3406,16 @@
       ],
       "prs": [],
       "issues": [
+        "101",
         "49"
       ],
       "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 101,
+          "url": "https://github.com/verndale/ui-design-library/issues/101"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -3401,8 +3423,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/49"
         }
       ],
-      "bytes": 20773,
-      "degree": 65
+      "bytes": 21443,
+      "degree": 67
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -4573,6 +4595,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
       "type": "links-to",
       "count": 1,
@@ -5064,6 +5093,13 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5849,6 +5885,11 @@
     },
     {
       "source": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },

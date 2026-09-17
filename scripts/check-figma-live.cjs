@@ -42,6 +42,10 @@ function propertyName(key) {
   return String(key).replace(/#[^#]+$/, '');
 }
 
+function propertyIdentity(name) {
+  return propertyName(name).toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
 function walk(node, visit) {
   if (!node || typeof node !== 'object') return;
   visit(node);
@@ -131,27 +135,29 @@ function referencedPropertyKeys(root) {
 function definitionsByName(root) {
   const definitions = new Map();
   for (const [key, definition] of Object.entries(root.componentPropertyDefinitions ?? {})) {
-    definitions.set(definition.name ?? propertyName(key), { key, ...definition });
+    const liveName = definition.name ?? propertyName(key);
+    definitions.set(propertyIdentity(liveName), { key, liveName, ...definition });
   }
   return definitions;
 }
 
 function duplicateDefinitionNames(root) {
-  const seen = new Set();
+  const seen = new Map();
   const duplicates = new Set();
   for (const [key, definition] of Object.entries(root.componentPropertyDefinitions ?? {})) {
     const name = definition.name ?? propertyName(key);
-    if (seen.has(name)) duplicates.add(name);
-    seen.add(name);
+    const identity = propertyIdentity(name);
+    if (seen.has(identity)) duplicates.add(seen.get(identity));
+    else seen.set(identity, name);
   }
   return [...duplicates].sort();
 }
 
-function variantValues(root, name, definition) {
+function variantValues(root, definition) {
   if (Array.isArray(definition.variantOptions)) return definition.variantOptions;
   const values = [];
   for (const child of root.children ?? []) {
-    const value = child.variantProperties?.[name];
+    const value = child.variantProperties?.[definition.liveName];
     if (value !== undefined) values.push(value);
   }
   return values;
@@ -224,19 +230,19 @@ function auditLiveNodes({ registry, payload }) {
     if (duplicateNames.length > 0) {
       fail(`${prefix} live component property names are duplicated: ${duplicateNames.join(', ')}`);
     }
-    if (!sameSet(definitions.keys(), mappings.map((mapping) => mapping.figmaProperty))) {
+    if (!sameSet(definitions.keys(), mappings.map((mapping) => propertyIdentity(mapping.figmaProperty)))) {
       fail(`${prefix} live component property names drifted from registry mappings`);
     }
 
     for (const mapping of mappings) {
-      const definition = definitions.get(mapping.figmaProperty);
+      const definition = definitions.get(propertyIdentity(mapping.figmaProperty));
       if (!definition) continue;
       const expectedType = FIGMA_TYPE_BY_KIND[mapping.kind];
       if (definition.type !== expectedType) {
         fail(`${prefix} live property "${mapping.figmaProperty}" is ${definition.type}, expected ${expectedType}`);
       }
       if (mapping.kind === 'enum') {
-        const actualValues = variantValues(root, mapping.figmaProperty, definition);
+        const actualValues = variantValues(root, definition);
         if (!sameSet(actualValues, mapping.values ?? [])) {
           fail(`${prefix} live variant values for "${mapping.figmaProperty}" drifted from the registry`);
         }
@@ -246,7 +252,7 @@ function auditLiveNodes({ registry, payload }) {
     const references = referencedPropertyKeys(root);
     for (const mapping of mappings) {
       if (mapping.kind === 'enum' || mapping.visualBinding === 'nonvisual') continue;
-      const definition = definitions.get(mapping.figmaProperty);
+      const definition = definitions.get(propertyIdentity(mapping.figmaProperty));
       if (definition && !references.has(definition.key)) {
         fail(`${prefix} visual property "${mapping.figmaProperty}" is not referenced by a descendant layer`);
       }
@@ -447,4 +453,5 @@ module.exports = {
   hasAlias,
   isSemanticText,
   propertyName,
+  propertyIdentity,
 };

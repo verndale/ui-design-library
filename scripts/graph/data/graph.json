@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 172,
-    "edges": 384,
+    "nodes": 175,
+    "edges": 393,
     "byType": {
       "surface": 62,
       "root-doc": 4,
       "component": 27,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 48,
+      "wiki-journal": 51,
       "wiki-plan": 20,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 71,
-      "links-to": 171,
+      "links-to": 177,
       "plan": 28,
-      "topic": 87,
+      "topic": 90,
       "uses-tokens": 27
     }
   },
@@ -785,7 +785,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 192273,
+      "bytes": 192614,
       "degree": 1
     },
     {
@@ -811,7 +811,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 13081,
+      "bytes": 13077,
       "degree": 2
     },
     {
@@ -928,7 +928,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 18758,
+      "bytes": 19062,
       "degree": 1
     },
     {
@@ -1253,8 +1253,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 17253,
-      "degree": 58
+      "bytes": 18032,
+      "degree": 61
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2479,6 +2479,51 @@
       "degree": 5
     },
     {
+      "id": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "label": "Normalize live Figma property identities",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 1046,
+      "degree": 3
+    },
+    {
+      "id": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
+      "label": "Restore the live Figma contract",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 1802,
+      "degree": 3
+    },
+    {
+      "id": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
+      "label": "Restore Vitest browser compatibility",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "story-testing"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 925,
+      "degree": 3
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -3361,9 +3406,16 @@
       ],
       "prs": [],
       "issues": [
+        "101",
         "49"
       ],
       "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 101,
+          "url": "https://github.com/verndale/ui-design-library/issues/101"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -3371,8 +3423,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/49"
         }
       ],
-      "bytes": 20219,
-      "degree": 63
+      "bytes": 21443,
+      "degree": 67
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -3719,8 +3771,8 @@
           "url": "https://github.com/verndale/ui-design-library/pull/19"
         }
       ],
-      "bytes": 10032,
-      "degree": 33
+      "bytes": 10496,
+      "degree": 35
     },
     {
       "id": "wiki/topics/storybook-tooling.md",
@@ -4536,6 +4588,27 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -5019,6 +5092,20 @@
     },
     {
       "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/plans/2026-08-18-figma-adversarial-remediation.md",
       "type": "links-to",
       "count": 1,
@@ -5258,6 +5345,13 @@
     {
       "source": "wiki/topics/story-testing.md",
       "target": "wiki/journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/story-testing.md",
+      "target": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5787,6 +5881,21 @@
     {
       "source": "wiki/journal/2026-09-07-add-snow-input-controls.md",
       "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-17-restore-live-figma-contract.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
+      "target": "wiki/topics/story-testing.md",
       "type": "topic"
     },
     {

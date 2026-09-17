@@ -36,6 +36,8 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-09-17 — [Restore Vitest browser compatibility](journal/2026-09-17-restore-vitest-browser-compatibility.md) — keeps the core runner and browser adapters on one supported release line so accessibility, mode, and motion suites start reliably.
+
 - 2026-09-07 — [Add four Snow input controls and harden Figma promotion](journal/2026-09-07-add-snow-input-controls.md) — componentized Text input, Toggle, Segmented control, and Datepicker while enforcing current token IDs, precedent structure, live state-token evidence, and governed ready-for-dev status.
 - 2026-08-24 — [Make agent wiki guidance deterministic](journal/2026-08-24-deterministic-agent-wiki-guidance.md) — installs the canonical headless route-first contract while preserving component-graph and Graphify ownership.
 - 2026-08-23 — [Standardize wiki navigation and GitHub evidence](journal/2026-08-23-standardize-wiki-navigation-and-github-evidence.md) — repo-qualified offline evidence, compact routes, safe viewer links, hardened reconciliation, and canonical CI/hook identities for issue #87.

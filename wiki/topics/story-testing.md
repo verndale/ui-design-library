@@ -10,13 +10,14 @@ Stories are the test suite. Every story renders in a real Chromium, runs its `pl
 
 - `pnpm test` includes contract/architecture/SSR checks plus Chromium accessibility, WebKit accessibility, accessibility modes, and reduced motion. Every invocation is a gate, not a report.
 - `pnpm accessibility` and `pnpm test:a11y:webkit` run every story through `@storybook/addon-vitest` in real browser engines. WebKit is a Safari-engine regression proxy; it is not a substitute for a human VoiceOver session.
-- `pnpm test:a11y:modes` applies deterministic checks for IDREF resolution, live-region shape, inert focus reachability, target size, 320px reflow/text spacing, forced-colors control/focus visibility, and decorative SVG exclusion.
+- `pnpm test:a11y:modes` applies deterministic checks for IDREF resolution, live-region shape, inert focus reachability, target size, 320px reflow/text spacing, forced-colors control/focus visibility, and SVG semantics: decorative graphics stay excluded while meaningful graphics require `role="img"`, a resolvable accessible name, and a non-empty title.
 - `pnpm test:motion` re-runs only `motion`-tagged stories with Playwright emulating `prefers-reduced-motion: reduce`. Those stories branch on `matchMedia` inside one `play` function so a single story asserts the correct outcome under both preferences.
 - `a11y: { test: 'error' }` in `.storybook/preview.ts` makes an axe violation fail the story test. Where a rule is genuinely wrong for one story, it is scoped off **on that story** with a reason — never loosened globally. Badge's disabled state is the worked example: WCAG 1.4.3 exempts inactive components from contrast, and axe cannot tell a disabled control from low-contrast text.
 - The Interactions panel is core in Storybook 10 — `play` functions get a replayable step-by-step view with no addon involved. addon-vitest adds the runner, the sidebar Testing widget, and the a11y gate on top.
 - Two Vitest configs share a factory in `vitest.shared.ts`. They must be separate invocations, not two projects in one config.
 - Vitest, `@vitest/browser`, and `@vitest/browser-playwright` are pinned to the same exact release because their browser-server peer contract does not tolerate an independently upgraded core runner.
 - Library CI installs Chromium and WebKit with its own cache, since browsers live outside the pnpm store. Consuming repositories do not inherit this dependency; they own their own browser and assistive-technology test plans.
+- Gauge chart and Pie chart stories assert bounded/proportional SVG data, synchronized visible and accessible text, complete label-mode states, and reduced-motion behavior through the same `motion`-tagged browser suite.
 
 ## Assertion rules
 
@@ -30,6 +31,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-09-17 — Kept chart evidence in Storybook play steps: values/proportions and text equivalence are asserted in the default stories, all stable label/value states appear in `InteractionStates`, and reduced-motion timing is exercised by the existing motion project ([journal](../journal/2026-09-17-add-governed-data-visualizations.md)).
 - 2026-09-17 — Kept Vitest and both browser adapters on the same 4.1.10 release line because a Vitest 5-only upgrade broke browser-server startup before any Storybook assertion could run ([journal](../journal/2026-09-17-restore-vitest-browser-compatibility.md)).
 - 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #88](https://github.com/verndale/ui-design-library/pull/88))
 - 2026-08-22 — Kept Chromium/WebKit accessibility, display-mode, and reduced-motion story suites blocking in `Quality / quality` while excluding those costly browser runs from the fast pre-push gate; no story or accessibility evidence became advisory ([issue #83](https://github.com/verndale/ui-design-library/issues/83), [plan](../plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md), [journal](../journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md)).

@@ -59,6 +59,18 @@
   --color-tone-positive: #067647;
   --color-tone-critical: #b42318;
 
+  /* Data visualization. Ordered, client-neutral defaults for categorical chart
+     series. Consumers may re-theme the palette, but must preserve order and
+     distinguishability. Labels and text equivalents remain required because
+     color never carries meaning alone. */
+  --color-chart-data-1: #1d4ed8;
+  --color-chart-data-2: #047857;
+  --color-chart-data-3: #92400e;
+  --color-chart-data-4: #7e22ce;
+  --color-chart-data-5: #be123c;
+  --color-chart-data-6: #0f766e;
+  --color-chart-track: #e3e6ea;
+
   /* Link */
   --color-link: #1d2025;
 
@@ -102,6 +114,7 @@
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --animate-fade-in: fade-in var(--duration-base) var(--ease-standard);
   --animate-scale-in: scale-in var(--duration-base) var(--ease-standard);
+  --animate-chart-draw: chart-draw var(--duration-base) var(--ease-standard) both;
 }
 
 :root {
@@ -140,5 +153,11 @@
   from {
     opacity: 0;
     scale: 0.96;
+  }
+}
+
+@keyframes chart-draw {
+  from {
+    stroke-dasharray: 0 100;
   }
 }

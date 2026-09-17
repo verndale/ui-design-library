@@ -1,0 +1,139 @@
+{
+  "canonical": "Gauge chart",
+  "slug": "gauge-chart",
+  "exportName": "GaugeChart",
+  "rendering": "server",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["value", "label", "scale"],
+  "variants": ["solid", "gradient"],
+  "reuseFingerprint": {
+    "slots": ["stat", "caption"],
+    "affordance": "display",
+    "role": "metric"
+  },
+  "tokens": [
+    "color-chart-data-1",
+    "color-chart-data-2",
+    "color-chart-data-3",
+    "color-chart-data-4",
+    "color-chart-data-5",
+    "color-chart-data-6",
+    "color-chart-track",
+    "color-text-primary",
+    "color-text-secondary",
+    "duration-base",
+    "ease-standard",
+    "spacing-3xs",
+    "spacing-l"
+  ],
+  "provenance": {
+    "project": "dtcc",
+    "run": "runs/dtcc/2026-09-17/",
+    "source": "src/components/blocks/dtcc/GaugeChartBlock/GaugeChart.tsx"
+  },
+  "declienting": [
+    "Removed the CMS Block wrapper, content-link identity, generated field casing, and fill aliases in favor of typed public props.",
+    "Replaced project chart, text, and typography variables with governed library chart, surface, text, motion, and easing tokens.",
+    "Removed Next dynamic loading, Highcharts, Framer Motion, project path aliases, and chart-card DOM coupling in favor of a dependency-free server-rendered SVG.",
+    "Replaced project fallback copy with a required accessible label plus optional display value and unit."
+  ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "gauge-chart",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-09-17/components/gauge-chart",
+    "privateAuditDigest": "b6f996f0bd58b1f196cdeec6a6f59b1b980799effc238a207794bdaccd959f7a",
+    "decisionIds": [
+      "sp-gauge-chart-001",
+      "sp-gauge-chart-002",
+      "sp-gauge-chart-003",
+      "sp-gauge-chart-004",
+      "sp-gauge-chart-005"
+    ],
+    "representationDecisions": [
+      { "decisionId": "sp-gauge-chart-001", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+      { "decisionId": "sp-gauge-chart-002", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+      { "decisionId": "sp-gauge-chart-003", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "storybook"] },
+      { "decisionId": "sp-gauge-chart-004", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] }
+    ],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "value", "type": "number", "required": true },
+      { "path": "label", "type": "string", "required": true },
+      { "path": "min", "type": "number", "required": false, "default": 0 },
+      { "path": "max", "type": "number", "required": false, "default": 100 },
+      { "path": "displayValue", "type": "string", "required": false },
+      { "path": "unit", "type": "string", "required": false },
+      { "path": "fill", "type": "enum", "required": false, "values": ["solid", "gradient"], "default": "solid" },
+      { "path": "color", "type": "enum", "required": false, "values": ["data-1", "data-2", "data-3", "data-4", "data-5", "data-6"], "default": "data-1" },
+      { "path": "animate", "type": "boolean", "required": false, "default": true },
+      { "path": "className", "type": "string", "required": false },
+      { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false },
+      { "path": "classNames.chart", "type": "string", "required": false },
+      { "path": "classNames.value", "type": "string", "required": false },
+      { "path": "classNames.label", "type": "string", "required": false }
+    ],
+    "contentBindings": [
+      { "prop": "displayValue", "node": "valueText" },
+      { "prop": "label", "node": "label" }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      { "path": "classNames.root", "node": "root", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.chart", "node": "chart", "protectedProperties": ["display", "visibility", "semantics"] },
+      { "path": "classNames.value", "node": "valueText", "protectedProperties": ["visibility", "semantics", "reading-order"] },
+      { "path": "classNames.label", "node": "label", "protectedProperties": ["visibility", "semantics", "reading-order"] }
+    ],
+    "dom": {
+      "nodes": [
+        { "id": "root", "element": "figure", "parent": null, "cardinality": "one" },
+        { "id": "chart", "element": "svg", "parent": "root", "cardinality": "one" },
+        { "id": "title", "element": "title", "parent": "chart", "cardinality": "one" },
+        { "id": "track", "element": "path", "parent": "chart", "cardinality": "one" },
+        { "id": "valueArc", "element": "path", "parent": "chart", "cardinality": "one" },
+        { "id": "caption", "element": "figcaption", "parent": "root", "cardinality": "one" },
+        { "id": "valueText", "element": "span", "parent": "caption", "cardinality": "one" },
+        { "id": "label", "element": "span", "parent": "caption", "cardinality": "one" },
+        { "id": "scale", "element": "span", "parent": "caption", "cardinality": "one" }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "gauge.value.bounds",
+        "kind": "state",
+        "description": "The visual arc clamps to the declared bounds while the exact value, bounds, and unit remain available in text.",
+        "wcag": ["1.3.1", "1.4.1"],
+        "evidence": "gauge.value.bounds",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "gauge.semantics.text-equivalent",
+        "kind": "semantics",
+        "description": "The chart has a synchronized accessible name and a visible text equivalent for its value and scale.",
+        "wcag": ["1.1.1", "1.3.1", "4.1.2"],
+        "evidence": "gauge.semantics.text-equivalent",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "gauge.motion.preference",
+        "kind": "motion",
+        "description": "Optional arc motion uses library duration and easing tokens and collapses under reduced motion.",
+        "wcag": ["2.3.3"],
+        "evidence": "gauge.motion.preference",
+        "evidenceType": "storybook-step"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": ["accessible-copy", "dynamic-content", "token-contrast", "safe-class-overrides", "complete-page-assistive-technology-testing"]
+    }
+  }
+}

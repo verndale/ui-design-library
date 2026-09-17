@@ -23,10 +23,12 @@ How public component facades preserve stable imports while implementation trees 
 - `pnpm architecture` enforces shape and boundaries; `pnpm test:ssr` checks DOM-free rendering.
 - Modal and Search overlay share a document-level overlay stack. Only its top entry traps focus, handles Escape, and exposes modal semantics; scroll locking is reference-counted across the stack.
 - Carousel renders nothing for an empty slide list, so it never announces an impossible position or exposes inert controls.
+- Gauge chart and Pie chart remain server-rendered SVG components: numeric normalization, arcs, slices, visible text equivalents, and semantic chart tokens require no browser-only charting or motion dependency.
 - The core rejects `next/*` imports. Next is a development-only compiled-package consumer fixture run by `pnpm test:next` through `pnpm verify`.
 
 ## Decisions
 
+- 2026-09-17 — Added dependency-free server-rendered Gauge chart and Pie chart trees with typed data props, semantic SVG output, visible text equivalents, and CSS-token motion that collapses under reduced motion; excluded project CMS wrappers, Highcharts, Framer Motion, and card selectors from the reusable contract ([journal](../journal/2026-09-17-add-governed-data-visualizations.md)).
 - 2026-09-07 — Added Text input, Toggle, Segmented control, and Datepicker as closed public components with dedicated types and meaningful internal modules; Datepicker composes Text input through its public API, while each control keeps native form semantics and project-specific primitives, copy, assets, and theme classes outside the package ([journal](../journal/2026-09-07-add-snow-input-controls.md)).
 - 2026-08-22 — Made TypeScript plus the existing architecture, contract, registry/export, release-preflight, and SSR checks the blocking side-effect-free pre-push gate, leaving browser, build, and packed-consumer verification to the complete CI gate ([issue #83](https://github.com/verndale/ui-design-library/issues/83), [plan](../plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md), [journal](../journal/2026-08-22-standardize-lint-commitlint-and-graph-automation.md)).
 - 2026-08-20 — Extracted one Tabs selection/ID/keyboard controller for the default tablist and responsive native-select sibling; CSS owns breakpoint exclusion while one client effect moves focus only when the active control becomes hidden ([plan](../plans/2026-08-19-source-parity-audit-and-remediation.md), [journal](../journal/2026-08-20-tabs-source-parity.md)).

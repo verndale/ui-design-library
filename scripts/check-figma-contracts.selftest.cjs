@@ -245,6 +245,15 @@ const cases = [
     expect: (failures) => failures.some((failure) => failure.includes('review.status')),
   },
   {
+    name: 'unregistered review standards fail',
+    registry: (() => {
+      const registry = clone();
+      registry.components[0].figma.review.standard = 'invented-standard-v1';
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('registered review standard')),
+  },
+  {
     name: 'reviewed registrations must resolve to ready-for-dev',
     registry: (() => {
       const registry = clone();

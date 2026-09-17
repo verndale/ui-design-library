@@ -1,0 +1,138 @@
+{
+  "canonical": "Pie chart",
+  "slug": "pie-chart",
+  "exportName": "PieChart",
+  "rendering": "server",
+  "framework": "react",
+  "styling": "tailwind",
+  "slots": ["segments", "center", "legend"],
+  "variants": ["legend", "segments", "hover", "none"],
+  "reuseFingerprint": {
+    "slots": ["media", "caption"],
+    "affordance": "display",
+    "role": "metric"
+  },
+  "tokens": [
+    "color-chart-data-1",
+    "color-chart-data-2",
+    "color-chart-data-3",
+    "color-chart-data-4",
+    "color-chart-data-5",
+    "color-chart-data-6",
+    "color-chart-track",
+    "color-surface-raised",
+    "color-text-primary",
+    "color-text-secondary",
+    "duration-base",
+    "duration-fast",
+    "ease-standard",
+    "radius-small",
+    "spacing-2xs",
+    "spacing-xs",
+    "spacing-s"
+  ],
+  "provenance": {
+    "project": "dtcc",
+    "run": "runs/dtcc/2026-09-17/",
+    "source": "src/components/blocks/dtcc/PieChartBlock/PieChart.tsx"
+  },
+  "declienting": [
+    "Removed CMS content-link segment wrappers, generated types, card-level key plumbing, and display parsing in favor of a typed segment collection.",
+    "Replaced project chart, surface, text, and typography variables with governed library chart, surface, text, motion, and easing tokens.",
+    "Removed Next dynamic loading, Highcharts, Framer Motion, project path aliases, and chart-card DOM coupling in favor of a dependency-free server-rendered SVG and text legend.",
+    "Replaced project fallback copy with a required accessible label and plain consumer-owned segment labels and values."
+  ],
+  "sourceParity": {
+    "contractVersion": 1,
+    "auditComponentKey": "pie-chart",
+    "auditStatus": "cleared",
+    "privateAuditRef": "library-source-parity:2026-09-17/components/pie-chart",
+    "privateAuditDigest": "87abd33f94ec883c659f6e579eaa06988d8063b3502a0c48bc43d8ab39dbd6b1",
+    "decisionIds": [
+      "sp-pie-chart-001",
+      "sp-pie-chart-002",
+      "sp-pie-chart-003",
+      "sp-pie-chart-004",
+      "sp-pie-chart-005",
+      "sp-pie-chart-006"
+    ],
+    "representationDecisions": [
+      { "decisionId": "sp-pie-chart-001", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+      { "decisionId": "sp-pie-chart-002", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+      { "decisionId": "sp-pie-chart-003", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+      { "decisionId": "sp-pie-chart-004", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "storybook"] },
+      { "decisionId": "sp-pie-chart-005", "implementationKey": "pie-chart", "surfaces": ["figma", "storybook"] }
+    ],
+    "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"]
+  },
+  "maturity": "candidate",
+  "realization": {
+    "version": 1,
+    "props": [
+      { "path": "segments", "type": "collection", "required": true },
+      { "path": "label", "type": "string", "required": true },
+      { "path": "centerLabel", "type": "string", "required": false },
+      { "path": "labelMode", "type": "enum", "required": false, "values": ["legend", "segments", "hover", "none"], "default": "legend" },
+      { "path": "animate", "type": "boolean", "required": false, "default": true },
+      { "path": "className", "type": "string", "required": false },
+      { "path": "classNames", "type": "collection", "required": false },
+      { "path": "classNames.root", "type": "string", "required": false },
+      { "path": "classNames.chart", "type": "string", "required": false },
+      { "path": "classNames.legend", "type": "string", "required": false }
+    ],
+    "contentBindings": [
+      { "prop": "label", "node": "title" },
+      { "prop": "centerLabel", "node": "centerLabel" }
+    ],
+    "safeAttributes": [],
+    "styleSlots": [
+      { "path": "classNames.root", "node": "root", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] },
+      { "path": "classNames.chart", "node": "chart", "protectedProperties": ["display", "visibility", "semantics"] },
+      { "path": "classNames.legend", "node": "legend", "protectedProperties": ["display", "visibility", "semantics", "reading-order"] }
+    ],
+    "dom": {
+      "nodes": [
+        { "id": "root", "element": "figure", "parent": null, "cardinality": "one" },
+        { "id": "chart", "element": "svg", "parent": "root", "cardinality": "one" },
+        { "id": "title", "element": "title", "parent": "chart", "cardinality": "one" },
+        { "id": "slice", "element": "circle", "parent": "chart", "cardinality": "one-or-more", "repeat": { "prop": "segments" } },
+        { "id": "centerLabel", "element": "text", "parent": "chart", "cardinality": "zero-or-one", "condition": { "prop": "centerLabel", "predicate": "truthy" } },
+        { "id": "legend", "element": "figcaption", "parent": "root", "cardinality": "one" },
+        { "id": "legendList", "element": "ul", "parent": "legend", "cardinality": "one" },
+        { "id": "legendItem", "element": "li", "parent": "legendList", "cardinality": "one-or-more", "repeat": { "prop": "segments" } }
+      ]
+    },
+    "relationships": [],
+    "behaviors": [
+      {
+        "id": "pie.data.proportions",
+        "kind": "state",
+        "description": "Non-negative segment values determine proportional slices in the same order as the text legend.",
+        "wcag": ["1.3.1", "1.4.1"],
+        "evidence": "pie.data.proportions",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "pie.semantics.text-equivalent",
+        "kind": "semantics",
+        "description": "The chart has a synchronized accessible name and an ordered text equivalent with every segment label and value.",
+        "wcag": ["1.1.1", "1.3.1", "4.1.2"],
+        "evidence": "pie.semantics.text-equivalent",
+        "evidenceType": "storybook-step"
+      },
+      {
+        "id": "pie.motion.preference",
+        "kind": "motion",
+        "description": "Optional slice motion uses library duration and easing tokens and collapses under reduced motion.",
+        "wcag": ["2.3.3"],
+        "evidence": "pie.motion.preference",
+        "evidenceType": "storybook-step"
+      }
+    ],
+    "accessibility": {
+      "standard": "WCAG-2.2-AA",
+      "apgPattern": null,
+      "consumerResponsibilities": ["accessible-copy", "dynamic-content", "token-contrast", "safe-class-overrides", "complete-page-assistive-technology-testing"]
+    }
+  }
+}

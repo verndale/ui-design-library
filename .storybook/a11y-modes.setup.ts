@@ -108,7 +108,20 @@ afterEach(() => {
 
   for (const graphic of document.querySelectorAll<SVGElement>('[data-component] svg')) {
     const hidden = graphic.getAttribute('aria-hidden') === 'true' || graphic.closest('[aria-hidden="true"]');
-    expect(hidden, 'decorative component graphics must remain outside the accessibility tree').toBeTruthy();
+    const labelledBy = graphic.getAttribute('aria-labelledby')
+      ?.trim()
+      .split(/\s+/)
+      .map((id) => document.getElementById(id)?.textContent?.trim())
+      .filter(Boolean)
+      .join(' ');
+    const accessibleName = graphic.getAttribute('aria-label')?.trim() || labelledBy;
+    const semantic = graphic.getAttribute('role') === 'img'
+      && Boolean(accessibleName)
+      && Boolean(graphic.querySelector('title')?.textContent?.trim());
+    expect(
+      hidden || semantic,
+      'component graphics must be decorative or an explicitly named image with a title',
+    ).toBeTruthy();
   }
   document.getElementById(modeStyleId)?.remove();
 });

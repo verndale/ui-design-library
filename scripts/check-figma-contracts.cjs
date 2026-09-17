@@ -57,6 +57,56 @@ const REQUIRED_PROMOTION_RULES = {
   canonicalLayerNaming: 'ui-design-brain',
   autoLayoutRequired: true,
 };
+const REQUIRED_COMPONENT_PAGE = {
+  version: 'components-group-button-template-v1',
+  referencePageId: '458:2',
+  referencePageName: 'Datepicker',
+  referenceSectionIds: {
+    documentation: '479:2',
+    main: '479:36',
+    interactionStates: '479:75',
+    publishSource: '479:113',
+  },
+  groupStartPageId: '31:3',
+  groupStartPageName: '❖ Components',
+  groupEndPageId: '31:5',
+  groupEndPageName: '---',
+  documentation: {
+    sectionX: 0,
+    sectionY: 0,
+    sectionWidth: 528,
+    frameX: 24,
+    frameY: 48,
+    frameWidth: 480,
+    requiredChildren: [
+      'Accent',
+      'Eyebrow',
+      'Title',
+      'Description',
+      'Public import',
+      'Properties heading',
+      'Properties',
+      'Guidance',
+      'Code only',
+    ],
+    propertyRows: 5,
+  },
+  presentation: {
+    mainX: 568,
+    mainY: 0,
+    minimumWidth: 1272,
+    frameX: 24,
+    frameY: 48,
+    frameHorizontalInset: 48,
+    interactionGap: 40,
+    publishGap: 40,
+    publishWidth: 1272,
+    masterX: 40,
+    masterY: 64,
+    masterGap: 24,
+    masterPadding: 24,
+  },
+};
 const REQUIRED_INTERACTION_STATE_RULES = {
   presentationName: 'Interaction states',
   storyExport: 'InteractionStates',
@@ -409,6 +459,9 @@ function check(options = {}) {
   const promotionPattern = library.promotionPattern ?? {};
   for (const [field, expected] of Object.entries(REQUIRED_PROMOTION_RULES)) {
     if (promotionPattern[field] !== expected) fail(`[promotion] ${field} must equal ${JSON.stringify(expected)}`);
+  }
+  if (JSON.stringify(promotionPattern.componentPage) !== JSON.stringify(REQUIRED_COMPONENT_PAGE)) {
+    fail('[promotion] componentPage must preserve the Components group and Button-template machine contract');
   }
   if (JSON.stringify(promotionPattern.viewportWidths) !== JSON.stringify(REQUIRED_VIEWPORT_WIDTHS)) {
     fail('[promotion] viewportWidths must remain Desktop 1440, Tablet Large 1024, Tablet Small 768, and Mobile 390');

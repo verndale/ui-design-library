@@ -2,6 +2,8 @@
 
 Registered standards make the design review named, repeatable, and mechanically rejectable when a component claims an unknown checklist.
 
+Every review standard inherits `library.promotionPattern.componentPage.version = "components-group-button-template-v1"`. The live audit enforces its page boundaries, reference-section fills/strokes, exact Button-derived structure, and presentation-child containment before a design review can pass; no review standard or prose finding may authorize a different page location or presentation shell.
+
 ## button-standard-v1
 
 Use for general interactive and presentational components.

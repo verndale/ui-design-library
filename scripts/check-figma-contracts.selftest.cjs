@@ -216,6 +216,15 @@ const cases = [
     expect: (failures) => failures.some((failure) => failure.includes('viewportWidths must remain')),
   },
   {
+    name: 'component page placement and template contract drift fails',
+    registry: (() => {
+      const registry = clone();
+      registry.library.promotionPattern.componentPage.presentation.masterX = 0;
+      return registry;
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('componentPage must preserve')),
+  },
+  {
     name: 'Figma token snapshot drift fails',
     registry: (() => {
       const registry = clone();

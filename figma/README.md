@@ -5,7 +5,8 @@ The governed Figma source is the [UI Design Library](https://www.figma.com/desig
 ## File rules
 
 - Every promoted master keeps the exact ui-design-brain canonical name. Do not rename, delete, or recreate a registered master.
-- `✅ Ready for Dev` sections stay at the top of each page. The 528px documentation rail stays at x=0 and uses the Button Light template exactly: accent, eyebrow, title, description, public import, five property rows, side-by-side Usage and Accessibility cards, then code-only props. Main, responsive specimens, and publish sources stay to its right.
+- Every governed component page is ordered after page `31:3` (`❖ Components`) and before page `31:5` (`---`). `library.promotionPattern.componentPage` is the executable source of truth for that placement and for the Button-derived page geometry; prose, visual similarity, and model judgment cannot waive it.
+- `✅ Ready for Dev` sections stay at the top of each page. The 528px documentation rail stays at x=0 and uses the Button Light template exactly: accent, eyebrow, title, description, public import, five property rows, side-by-side Usage and Accessibility cards, then code-only props. Main, responsive specimens, interaction states, and publish sources stay at their registered coordinates to its right.
 - Master components live once. Catalog and documentation surfaces use instances.
 - The developer handoff target is the direct canonical component instance. Do not wrap it in a `Dev frame` or add instructions such as `COPY THIS FRAME` to its layer name. Labels and viewport scaffolding stay outside the component-only instance.
 - Component visuals bind to the library's Tailwind semantic tokens from `src/tokens/semantic.css`. Cumulative Foundations is presentation styling for documentation only.
@@ -24,7 +25,7 @@ The only manual prerequisite before the first release is confirming that the tar
 
 ## Promotion presentation pattern
 
-The governed pattern is recorded in `library.promotionPattern` and applied through three master presentation types:
+The governed pattern is recorded in `library.promotionPattern`. Its `componentPage` contract fixes the Components page boundaries, live reference-section appearance, documentation child names and geometry, presentation section coordinates, gaps, descendant containment, and direct-master publish grid. Captures clone that structure and must pass the live audit; they do not reinterpret the pattern from prose. The pattern is applied through three master presentation types:
 
 - `component-matrix` for compact, finite combinations such as Button.
 - `responsive-specimens` for components whose layout responds to a container.
@@ -70,7 +71,7 @@ pnpm figma:live:selftest      # fixture tests for property, style, token, spacin
 pnpm figma:validate           # local checks plus the live audit when FIGMA_REST_TOKEN is present
 ```
 
-The live audit reads the registered masters, source-parity specimens, and interaction-state specimens through Figma's [file-nodes endpoint](https://developers.figma.com/docs/rest-api/files/) and checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, spacing aliases, representation master type, registered responsive widths, state frame/instance/component identity, and connected-instance containment. The separate design review verifies differentiation, focus visibility, disabled treatment, spacing, labels, clipping, and semantic bindings. The audit never mutates the file.
+The live audit reads file page order plus the registered masters, source-parity specimens, and interaction-state specimens through Figma's [file endpoints](https://developers.figma.com/docs/rest-api/files/). It rejects a governed page outside the Components boundaries, section fill/stroke appearance that differs from the registered live precedent, missing or wrapped sections, nonstandard documentation children or geometry, displaced Main/Interaction/Publish source regions, presentation descendants that overflow their containers, a nested canonical master, and a publish grid that is not the registered horizontal wrapped 24px layout. It also checks identity, property definitions, descendant property references, applied text styles, color-variable aliases, spacing aliases, representation master type, registered responsive widths, state frame/instance/component identity, and connected-instance containment. The separate design review verifies differentiation, focus visibility, disabled treatment, spacing, labels, clipping, and semantic bindings. The audit never mutates the file.
 
 CI requires only `FIGMA_REST_TOKEN` with `file_content:read` for the live node audit. A temporary personal token works but should be replaced with a read-only [Organization Plan Access Token](https://developers.figma.com/docs/rest-api/plan-access-tokens/) when IT provisions one. The contract checker rejects Code Connect dependencies, scripts, configuration, registry templates, and CI references.
 

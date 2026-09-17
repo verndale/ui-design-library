@@ -23,6 +23,8 @@ Use this checklist for every component promoted into the governed UI Design Libr
 
 ## 3. Place family implementations and presentations on the canonical page
 
+- Place every governed component page after `library.promotionPattern.componentPage.groupStartPageId` and before `groupEndPageId`. A page outside that interval, including one after Archive, is a failed capture.
+- Clone the exact `componentPage.version` structure. Do not synthesize documentation chrome or section geometry from prose, screenshots, or memory; the live audit must prove the registered child names, coordinates, widths, gaps, direct-master containment, and publish-grid layout.
 - Keep the default Ready for Dev section first. Put qualified structural alternates below in separately labeled Ready for Dev sections on the same page.
 - Keep the default master name and stable identity. Name an alternate `<Canonical> / <Variant label>` and register its distinct `components/<slug>--<variant>` import.
 - Keep `sourceParity.auditComponentKey` on the audited family key when the alternate lives at `components/<slug>--<variant>`; a structural implementation does not invent a second private audit identity. Set the decision's `implementationKey` to that exact compound directory only when it exists, and carry the identical source-parity projection on every implementation in the family.
@@ -61,12 +63,13 @@ Use the widths registered in `library.promotionPattern.viewportWidths` when the 
 
 ## 6. Audit before Ready for Dev
 
-- Compare the completed page at 100% zoom with Button, Section header, and Alert before accepting a new structure or naming convention.
+- Run `pnpm figma:live` before accepting the page. It must prove the machine-readable `library.promotionPattern.componentPage` contract, including Components-group ordering, live-reference fills and strokes, exact Button-derived presentation structure, and descendant containment; screenshots and prose review cannot substitute for this gate.
+- Compare the completed page at 100% zoom with Button, Section header, and Alert only after the structural gate passes, then review visual quality without inventing a new page pattern.
 - Before writing, name the one live precedent page that matches the presentation pattern. After writing, record that precedent plus the Documentation, Main, Interaction states, and unnumbered Publish source section IDs in `figma.presentationEvidence`; a prose design-pass claim is not structural evidence.
 
 - Confirm every developer handoff target is a direct instance of the registered canonical master.
 - Check alignment, text alignment, margins, padding, label padding, inter-variant whitespace, and viewport-row spacing at 100% zoom.
-- Check wrapping, clipping, overflow, and parent containment at every governed width. No child may run outside its specimen, main canvas, or Ready for Dev Section.
+- Check wrapping, clipping, overflow, and parent containment at every governed width. No presentation child may run outside its card, matrix, main canvas, or Ready for Dev Section; the live validator performs this check recursively until the connected component boundary.
 - Confirm component dimensions, typography, border widths, and visual tokens match the code implementation. Documentation styling may use Cumulative Foundations; component styling may not.
 - Record `figma.tokenBindingAudit` for every registration outside the closed legacy baseline and validate it against the authoritative code-parity token collection. Its state requirements must cite the code-parity token names for error, focus, selected/on, and other semantically meaningful states; the live validator rejects any master alias outside the authoritative collection.
 - The authoritative code-parity collection is enforced by `figma.tokenBindingAudit`; matching display names from legacy collections are never accepted as equivalent.

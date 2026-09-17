@@ -157,6 +157,21 @@ const cases = [
     expect: (failures) => failures.length === 0,
   },
   {
+    name: 'REST property keys match registry display labels without definition names',
+    payload: (() => {
+      const payload = clone();
+      const root = payload.nodes['1:2'].document;
+      root.componentPropertyDefinitions = {
+        'title#1:0': root.componentPropertyDefinitions['Title#1:0'],
+        'ariaLabel#1:1': root.componentPropertyDefinitions['Aria label#1:1'],
+        state: root.componentPropertyDefinitions.State,
+      };
+      root.children[0].componentPropertyReferences.characters = 'title#1:0';
+      return payload;
+    })(),
+    expect: (failures) => failures.length === 0,
+  },
+  {
     name: 'missing visual property reference fails',
     payload: (() => {
       const payload = clone();

@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 173,
-    "edges": 387,
+    "nodes": 174,
+    "edges": 390,
     "byType": {
       "surface": 62,
       "root-doc": 4,
       "component": 27,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 49,
+      "wiki-journal": 50,
       "wiki-plan": 20,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 71,
-      "links-to": 173,
+      "links-to": 175,
       "plan": 28,
-      "topic": 88,
+      "topic": 89,
       "uses-tokens": 27
     }
   },
@@ -928,7 +928,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 18758,
+      "bytes": 19062,
       "degree": 1
     },
     {
@@ -1253,8 +1253,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 17505,
-      "degree": 59
+      "bytes": 17789,
+      "degree": 60
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2479,6 +2479,21 @@
       "degree": 5
     },
     {
+      "id": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "label": "Normalize live Figma property identities",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 1046,
+      "degree": 3
+    },
+    {
       "id": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
       "label": "Restore Vitest browser compatibility",
       "type": "wiki-journal",
@@ -3386,8 +3401,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/49"
         }
       ],
-      "bytes": 20219,
-      "degree": 63
+      "bytes": 20773,
+      "degree": 65
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -4551,6 +4566,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md",
       "type": "links-to",
       "count": 1,
@@ -5035,6 +5057,13 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5815,6 +5844,11 @@
     },
     {
       "source": "wiki/journal/2026-09-07-add-snow-input-controls.md",
+      "target": "wiki/topics/figma-code-connect.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
       "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },

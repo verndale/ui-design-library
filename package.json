@@ -77,6 +77,11 @@
       "import": "./dist/components/datepicker/index.js"
     },
     "./components/datepicker/component.json": "./components/datepicker/component.json",
+    "./components/gauge-chart": {
+      "types": "./dist/components/gauge-chart/index.d.ts",
+      "import": "./dist/components/gauge-chart/index.js"
+    },
+    "./components/gauge-chart/component.json": "./components/gauge-chart/component.json",
     "./components/image": {
       "types": "./dist/components/image/index.d.ts",
       "import": "./dist/components/image/index.js"
@@ -102,6 +107,11 @@
       "import": "./dist/components/modal/index.js"
     },
     "./components/modal/component.json": "./components/modal/component.json",
+    "./components/pie-chart": {
+      "types": "./dist/components/pie-chart/index.d.ts",
+      "import": "./dist/components/pie-chart/index.js"
+    },
+    "./components/pie-chart/component.json": "./components/pie-chart/component.json",
     "./components/quote": {
       "types": "./dist/components/quote/index.d.ts",
       "import": "./dist/components/quote/index.js"

@@ -36,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-09-17 — [Add governed Gauge chart and Pie chart components](journal/2026-09-17-add-governed-data-visualizations.md) — adds dependency-free chart implementations, a registered data-visualization review standard, complete unpublished Figma variants/states, and matching style-guide rules.
 - 2026-09-17 — [Restore the live Figma contract](journal/2026-09-17-restore-live-figma-contract.md) — preserves governed master identities while normalizing Search input variants and moving new controls onto typed Code/Tailwind variables.
 - 2026-09-17 — [Restore Vitest browser compatibility](journal/2026-09-17-restore-vitest-browser-compatibility.md) — keeps the core runner and browser adapters on one supported release line so accessibility, mode, and motion suites start reliably.
 - 2026-09-17 — [Normalize live Figma property identities](journal/2026-09-17-normalize-live-figma-property-identities.md) — matches lower-camel REST keys without display names to governed registry labels while preserving duplicate, type, variant, and descendant-reference checks.

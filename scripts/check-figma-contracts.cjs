@@ -42,6 +42,7 @@ const STATE_CLASSIFICATIONS = new Set(['rendered', 'already-represented', 'runti
 const STATE_SOURCE_TRIGGERS = new Set(['pseudo', 'public-prop', 'derived-state', 'behavior']);
 const FIGMA_NODE_ID_PATTERN = /^[0-9]+:[0-9]+$/;
 const PRESENTATION_PATTERNS = new Set(['component-matrix', 'responsive-specimens', 'responsive-full-viewport']);
+const REVIEW_STANDARDS = new Set(['button-standard-v1', 'data-visualization-standard-v1']);
 const REQUIRED_VIEWPORT_WIDTHS = {
   desktop: 1440,
   tabletLarge: 1024,
@@ -597,8 +598,8 @@ function check(options = {}) {
     }
     const review = figma.review ?? {};
     if (review.status !== 'passed') fail(`${prefix} review.status must equal "passed"`);
-    if (review.standard !== 'button-standard-v1') {
-      fail(`${prefix} review.standard must equal "button-standard-v1"`);
+    if (!REVIEW_STANDARDS.has(review.standard)) {
+      fail(`${prefix} review.standard must be a registered review standard`);
     }
     const componentKey = path.basename(component.componentPath ?? '');
     const isGrandfathered = sourceParityBaseline?.remainingKeys.includes(componentKey) ?? false;

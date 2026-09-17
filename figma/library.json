@@ -15,6 +15,13 @@
       "componentSource": "src/tokens/semantic.css",
       "componentVariableCollectionId": "38:3",
       "componentVariableIds": {
+        "color/chart/data/1": "VariableID:685:2",
+        "color/chart/data/2": "VariableID:685:3",
+        "color/chart/data/3": "VariableID:685:4",
+        "color/chart/data/4": "VariableID:685:5",
+        "color/chart/data/5": "VariableID:685:6",
+        "color/chart/data/6": "VariableID:685:7",
+        "color/chart/track": "VariableID:685:8",
         "color/surface/base": "VariableID:52:7",
         "color/surface/raised": "VariableID:65:5",
         "color/surface/sunken": "VariableID:52:8",
@@ -33,6 +40,7 @@
         "spacing/2xs": "VariableID:40:3",
         "spacing/xs": "VariableID:65:9",
         "spacing/s": "VariableID:40:4",
+        "spacing/page-margin": "VariableID:74:6",
         "spacing/m": "VariableID:61:8",
         "spacing/l": "VariableID:61:9",
         "spacing/xl": "VariableID:74:7",
@@ -42,6 +50,7 @@
         "tailwind/font-style/normal": "VariableID:681:4",
         "tailwind/font-size/base": "VariableID:681:5",
         "tailwind/line-height/base": "VariableID:681:6",
+        "radius/small": "VariableID:164:2",
         "radius/medium": "VariableID:65:10",
         "radius/pill": "VariableID:40:5"
       },
@@ -2889,6 +2898,147 @@
       },
       "mappings": [{ "figmaProperty": "Label", "kind": "string", "codeProp": "label" }, { "figmaProperty": "Value", "kind": "string", "codeProp": "value" }, { "figmaProperty": "Mode", "kind": "enum", "codeProp": "mode", "values": ["Single", "Range"] }, { "figmaProperty": "Appearance", "kind": "enum", "codeProp": "variant", "values": ["Default", "Compact"] }, { "figmaProperty": "State", "kind": "enum", "codeProp": "value", "role": "condition", "values": ["Empty", "Filled", "Error", "Disabled", "Partial", "Open calendar"] }],
       "nestedDependencies": ["text-input"]
+    },
+    {
+      "id": "gauge-chart",
+      "canonical": "Gauge chart",
+      "slug": "gauge-chart",
+      "exportName": "GaugeChart",
+      "publicImport": "@verndale/ui-design-library/components/gauge-chart",
+      "componentPath": "components/gauge-chart",
+      "storyPath": "components/gauge-chart/GaugeChart.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["value", "label", "min", "max", "displayValue", "unit", "fill", "color", "animate", "className", "classNames"],
+      "codeOnlyProps": ["displayValue", "animate", "className", "classNames"],
+      "fixedProps": [
+        { "codeProp": "min", "value": 0 },
+        { "codeProp": "max", "value": 100 }
+      ],
+      "familyPage": true,
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "gauge-chart",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-09-17/components/gauge-chart",
+        "privateAuditDigest": "b6f996f0bd58b1f196cdeec6a6f59b1b980799effc238a207794bdaccd959f7a",
+        "decisionIds": ["sp-gauge-chart-001", "sp-gauge-chart-002", "sp-gauge-chart-003", "sp-gauge-chart-004", "sp-gauge-chart-005"],
+        "representationDecisions": [
+          { "decisionId": "sp-gauge-chart-001", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+          { "decisionId": "sp-gauge-chart-002", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+          { "decisionId": "sp-gauge-chart-003", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "storybook"] },
+          { "decisionId": "sp-gauge-chart-004", "implementationKey": "gauge-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] }
+        ],
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": [
+          { "decisionId": "sp-gauge-chart-001", "kind": "component-property", "masterNodeId": "689:368", "publicProps": ["value", "min", "max"], "specimens": [] },
+          { "decisionId": "sp-gauge-chart-002", "kind": "component-property", "masterNodeId": "689:368", "publicProps": ["label", "unit"], "specimens": [] },
+          { "decisionId": "sp-gauge-chart-004", "kind": "component-property-responsive", "masterNodeId": "689:368", "publicProps": ["fill", "color"], "specimens": [
+            { "componentNodeId": "689:368", "nodeId": "689:384", "viewportWidth": 1440 },
+            { "componentNodeId": "689:368", "nodeId": "689:396", "viewportWidth": 1024 },
+            { "componentNodeId": "689:368", "nodeId": "689:408", "viewportWidth": 768 },
+            { "componentNodeId": "689:368", "nodeId": "689:420", "viewportWidth": 390 }
+          ] }
+        ]
+      },
+      "figma": {
+        "pageId": "689:2", "pageName": "Gauge chart", "nodeId": "689:368", "nodeKey": "b3cf46843e17c8c11377696a6347666de549dcf2", "nodeType": "COMPONENT_SET", "nodeName": "Gauge chart", "status": "ready-for-dev", "publicationStatus": "unpublished",
+        "presentationEvidence": { "contractVersion": 1, "referencePageId": "11:5", "referencePageName": "Button — Light", "sections": { "documentation": { "nodeId": "689:3", "order": 1 }, "main": { "nodeId": "689:4", "order": 2 }, "interactionStates": { "nodeId": "689:5", "order": 3 }, "publishSource": { "nodeId": "689:6", "order": null } } },
+        "tokenBindingAudit": { "contractVersion": 1, "stateRequirements": { "gauge.value.empty": ["color/chart/track"], "gauge.value.partial": ["color/chart/data/1", "color/chart/track"], "gauge.value.complete": ["color/chart/data/1"] } },
+        "review": { "status": "passed", "standard": "data-visualization-standard-v1", "passes": ["source-parity", "adversarial", "design"], "evidence": "wiki/journal/2026-09-17-add-governed-data-visualizations.md" },
+        "handoffPattern": "direct-canonical-instance", "presentationPattern": "responsive-specimens",
+        "stateCoverage": { "status": "covered", "storyExport": "InteractionStates", "states": [
+          { "id": "gauge.value.empty", "label": "Minimum value", "target": "Gauge value arc", "source": { "trigger": "derived-state", "value": "value <= min renders an empty value arc" }, "classification": "rendered", "frameNodeId": "689:436", "instanceNodeId": "689:438", "componentNodeId": "689:8" },
+          { "id": "gauge.value.partial", "label": "Partial value", "target": "Gauge value arc", "source": { "trigger": "derived-state", "value": "min < value < max renders a proportional value arc" }, "classification": "rendered", "frameNodeId": "689:447", "instanceNodeId": "689:449", "componentNodeId": "689:17" },
+          { "id": "gauge.value.complete", "label": "Maximum value", "target": "Gauge value arc", "source": { "trigger": "derived-state", "value": "value >= max renders a complete value arc" }, "classification": "rendered", "frameNodeId": "689:459", "instanceNodeId": "689:461", "componentNodeId": "689:27" },
+          { "id": "gauge.motion.reduced", "label": "Reduced motion", "target": "Gauge arc motion lifecycle", "source": { "trigger": "behavior", "value": "prefers-reduced-motion disables arc animation" }, "classification": "runtime-only", "reason": "A reduced-motion preference changes transition timing across time and has no honest static appearance." }
+        ] },
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Unit", "type": "TEXT" },
+          { "name": "Show unit", "type": "BOOLEAN" },
+          { "name": "Fill", "type": "VARIANT", "values": ["Solid", "Gradient"] },
+          { "name": "Color", "type": "VARIANT", "values": ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6"] },
+          { "name": "State", "type": "VARIANT", "values": ["Minimum", "Partial", "Maximum"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Unit", "kind": "string", "codeProp": "unit" },
+        { "figmaProperty": "Show unit", "kind": "boolean", "codeProp": "unit", "role": "condition" },
+        { "figmaProperty": "Fill", "kind": "enum", "codeProp": "fill", "values": ["Solid", "Gradient"] },
+        { "figmaProperty": "Color", "kind": "enum", "codeProp": "color", "values": ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6"] },
+        { "figmaProperty": "State", "kind": "enum", "codeProp": "value", "role": "condition", "values": ["Minimum", "Partial", "Maximum"] }
+      ],
+      "nestedDependencies": []
+    },
+    {
+      "id": "pie-chart",
+      "canonical": "Pie chart",
+      "slug": "pie-chart",
+      "exportName": "PieChart",
+      "publicImport": "@verndale/ui-design-library/components/pie-chart",
+      "componentPath": "components/pie-chart",
+      "storyPath": "components/pie-chart/PieChart.stories.tsx",
+      "storyParity": "exact",
+      "storyProps": ["segments", "label", "centerLabel", "labelMode", "animate", "className", "classNames"],
+      "codeOnlyProps": ["animate", "className", "classNames"],
+      "fixedProps": [{ "codeProp": "segments", "value": "pieChartSegments" }],
+      "familyPage": true,
+      "sourceParity": {
+        "contractVersion": 1,
+        "auditComponentKey": "pie-chart",
+        "auditStatus": "cleared",
+        "privateAuditRef": "library-source-parity:2026-09-17/components/pie-chart",
+        "privateAuditDigest": "87abd33f94ec883c659f6e579eaa06988d8063b3502a0c48bc43d8ab39dbd6b1",
+        "decisionIds": ["sp-pie-chart-001", "sp-pie-chart-002", "sp-pie-chart-003", "sp-pie-chart-004", "sp-pie-chart-005", "sp-pie-chart-006"],
+        "representationDecisions": [
+          { "decisionId": "sp-pie-chart-001", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+          { "decisionId": "sp-pie-chart-002", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+          { "decisionId": "sp-pie-chart-003", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "figma", "storybook"] },
+          { "decisionId": "sp-pie-chart-004", "implementationKey": "pie-chart", "surfaces": ["ai-registry", "code", "storybook"] },
+          { "decisionId": "sp-pie-chart-005", "implementationKey": "pie-chart", "surfaces": ["figma", "storybook"] }
+        ],
+        "requiredRepresentationSurfaces": ["ai-registry", "code", "figma", "storybook"],
+        "representations": [
+          { "decisionId": "sp-pie-chart-001", "kind": "structural-master", "masterNodeId": "691:126", "publicProps": [], "specimens": [] },
+          { "decisionId": "sp-pie-chart-002", "kind": "component-property", "masterNodeId": "691:126", "publicProps": ["labelMode"], "specimens": [] },
+          { "decisionId": "sp-pie-chart-003", "kind": "component-property", "masterNodeId": "691:126", "publicProps": ["label", "centerLabel"], "specimens": [] },
+          { "decisionId": "sp-pie-chart-005", "kind": "responsive-specimens", "masterNodeId": "691:126", "publicProps": [], "specimens": [
+            { "componentNodeId": "691:126", "nodeId": "691:144", "viewportWidth": 1440 },
+            { "componentNodeId": "691:126", "nodeId": "691:175", "viewportWidth": 1024 },
+            { "componentNodeId": "691:126", "nodeId": "691:206", "viewportWidth": 768 },
+            { "componentNodeId": "691:126", "nodeId": "691:237", "viewportWidth": 390 }
+          ] }
+        ]
+      },
+      "figma": {
+        "pageId": "691:2", "pageName": "Pie chart", "nodeId": "691:126", "nodeKey": "9ae2d435718a4f50415c8d1e9b4083fae800e770", "nodeType": "COMPONENT_SET", "nodeName": "Pie chart", "status": "ready-for-dev", "publicationStatus": "unpublished",
+        "presentationEvidence": { "contractVersion": 1, "referencePageId": "11:5", "referencePageName": "Button — Light", "sections": { "documentation": { "nodeId": "691:3", "order": 1 }, "main": { "nodeId": "691:4", "order": 2 }, "interactionStates": { "nodeId": "691:5", "order": 3 }, "publishSource": { "nodeId": "691:6", "order": null } } },
+        "tokenBindingAudit": { "contractVersion": 1, "stateRequirements": { "pie.labels.visible": ["color/chart/data/1", "color/chart/data/2", "color/chart/data/3", "color/chart/data/4"], "pie.labels.hidden": ["color/chart/data/1", "color/chart/data/2", "color/chart/data/3", "color/chart/data/4"], "pie.labels.reveal": ["color/chart/data/1", "color/chart/data/2", "color/chart/data/3", "color/chart/data/4"] } },
+        "review": { "status": "passed", "standard": "data-visualization-standard-v1", "passes": ["source-parity", "adversarial", "design"], "evidence": "wiki/journal/2026-09-17-add-governed-data-visualizations.md" },
+        "handoffPattern": "direct-canonical-instance", "presentationPattern": "responsive-specimens",
+        "stateCoverage": { "status": "covered", "storyExport": "InteractionStates", "states": [
+          { "id": "pie.labels.visible", "label": "Labels visible", "target": "Segment labels", "source": { "trigger": "public-prop", "value": "labelMode=segments" }, "classification": "already-represented", "frameNodeId": "691:272", "instanceNodeId": "691:274", "componentNodeId": "691:66" },
+          { "id": "pie.labels.hidden", "label": "Labels hidden", "target": "Segment labels", "source": { "trigger": "public-prop", "value": "labelMode=none" }, "classification": "already-represented", "frameNodeId": "691:286", "instanceNodeId": "691:288", "componentNodeId": "691:110" },
+          { "id": "pie.labels.reveal", "label": "Hover or focus label reveal", "target": "Segment labels", "source": { "trigger": "pseudo", "value": ":hover or :focus-within when labelMode=hover" }, "classification": "rendered", "frameNodeId": "691:296", "instanceNodeId": "691:298", "componentNodeId": "691:98" },
+          { "id": "pie.motion.reduced", "label": "Reduced motion", "target": "Pie slice motion lifecycle", "source": { "trigger": "behavior", "value": "prefers-reduced-motion disables slice animation" }, "classification": "runtime-only", "reason": "A reduced-motion preference changes transition timing across time and has no honest static appearance." }
+        ] },
+        "properties": [
+          { "name": "Label", "type": "TEXT" },
+          { "name": "Center label", "type": "TEXT" },
+          { "name": "Show center", "type": "BOOLEAN" },
+          { "name": "Label mode", "type": "VARIANT", "values": ["Legend", "Segments", "Hover", "None"] },
+          { "name": "State", "type": "VARIANT", "values": ["Default", "Active"] }
+        ]
+      },
+      "mappings": [
+        { "figmaProperty": "Label", "kind": "string", "codeProp": "label" },
+        { "figmaProperty": "Center label", "kind": "string", "codeProp": "centerLabel" },
+        { "figmaProperty": "Show center", "kind": "boolean", "codeProp": "centerLabel", "role": "condition" },
+        { "figmaProperty": "Label mode", "kind": "enum", "codeProp": "labelMode", "values": ["Legend", "Segments", "Hover", "None"] },
+        { "figmaProperty": "State", "kind": "enum", "codeProp": "labelMode", "role": "condition", "values": ["Default", "Active"] }
+      ],
+      "nestedDependencies": []
     }
   ]
 }

@@ -4,7 +4,7 @@ Every component's declared dependency on the semantic token layer.
 
 Part of the [connections map](../connections.md), generated from the knowledge graph — **do not edit by hand**. Rebuilt on every `pnpm graph:build` and verified fresh by `pnpm evals:graph`.
 
-27 components declare tokens:
+29 components declare tokens:
 
 - [Accordion](../../components/accordion/component.json) — 8 tokens declared
 - [Alert](../../components/alert/component.json) — 8 tokens declared
@@ -15,11 +15,13 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Card](../../components/card/component.json) — 2 tokens declared
 - [Carousel](../../components/carousel/component.json) — 8 tokens declared
 - [Datepicker](../../components/datepicker/component.json) — 14 tokens declared
+- [Gauge chart](../../components/gauge-chart/component.json) — 13 tokens declared
 - [Image](../../components/image/component.json) — 1 token declared
 - [In-page navigation (modal-drawer)](../../components/in-page-navigation--modal-drawer/component.json) — 17 tokens declared
 - [In-page navigation](../../components/in-page-navigation/component.json) — 10 tokens declared
 - [Link](../../components/link/component.json) — 6 tokens declared
 - [Modal](../../components/modal/component.json) — 13 tokens declared
+- [Pie chart](../../components/pie-chart/component.json) — 17 tokens declared
 - [Quote](../../components/quote/component.json) — 4 tokens declared
 - [Rich text](../../components/rich-text/component.json) — 10 tokens declared
 - [Search input](../../components/search-input/component.json) — 9 tokens declared

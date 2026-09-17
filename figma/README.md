@@ -38,6 +38,8 @@ The Figma `Interaction states` frame is a documentation and handoff specimen, no
 
 Follow [`PROMOTION-CHECKLIST.md`](PROMOTION-CHECKLIST.md) for the exact layer, spacing, containment, content, and visual-audit requirements. The checklist is part of promotion definition of done for all future components.
 
+Every passing capture names one governed review standard from [`REVIEW-STANDARDS.md`](REVIEW-STANDARDS.md). `button-standard-v1` remains the general component standard; `data-visualization-standard-v1` adds ordered chart roles, text equivalence, responsive legend/label behavior, and reduced-motion requirements for governed charts.
+
 Every candidate or supported code component must have a reviewed primary registration. Candidates enter this governed file during capture but remain unpublished. `pnpm figma:coverage` enforces that code-to-Figma handoff and rejects published candidate registrations.
 
 ## Source-parity contract

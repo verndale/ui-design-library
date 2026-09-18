@@ -167,6 +167,218 @@ function nodeLabel(node) {
   return `${node.name || 'Unnamed'} (${node.id || 'unknown'})`;
 }
 
+function directChild(root, name, type) {
+  return (root?.children ?? []).find((node) => node.name === name && (!type || node.type === type));
+}
+
+function childNames(root) {
+  return (root?.children ?? []).map((node) => node.name);
+}
+
+function boxValue(node, field) {
+  return node?.absoluteBoundingBox?.[field];
+}
+
+function relativeBoxValue(node, parent, field) {
+  const value = boxValue(node, field);
+  const parentValue = boxValue(parent, field);
+  return typeof value === 'number' && typeof parentValue === 'number' ? value - parentValue : undefined;
+}
+
+function stableValue(value) {
+  if (Array.isArray(value)) return value.map(stableValue);
+  if (!value || typeof value !== 'object') return value;
+  return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableValue(value[key])]));
+}
+
+function sectionAppearance(node) {
+  return stableValue({
+    fills: node?.fills ?? [],
+    strokes: node?.strokes ?? [],
+    strokeWeight: node?.strokeWeight,
+    cornerRadius: node?.cornerRadius,
+  });
+}
+
+function auditSectionAppearance({ prefix, role, section, reference, fail }) {
+  if (!reference || reference.type !== 'SECTION') {
+    fail(`${prefix} ${role} appearance reference is missing or not a SECTION`);
+    return;
+  }
+  if (JSON.stringify(sectionAppearance(section)) !== JSON.stringify(sectionAppearance(reference))) {
+    fail(`${prefix} ${role} section appearance drifted from the governed live precedent`);
+  }
+}
+
+function auditDescendantContainment({ prefix, role, root, fail }) {
+  const tolerance = 0.5;
+  const visit = (parent) => {
+    const parentBox = parent?.absoluteBoundingBox;
+    if (!parentBox || !Array.isArray(parent.children)) return;
+    for (const child of parent.children) {
+      const childBox = child?.absoluteBoundingBox;
+      if (childBox && isVisible(child)) {
+        if (childBox.x < parentBox.x - tolerance || childBox.y < parentBox.y - tolerance ||
+            childBox.x + childBox.width > parentBox.x + parentBox.width + tolerance ||
+            childBox.y + childBox.height > parentBox.y + parentBox.height + tolerance) {
+          fail(`${prefix} ${role} child ${nodeLabel(child)} overflows ${nodeLabel(parent)}`);
+        }
+      }
+      if (!['INSTANCE', 'COMPONENT', 'COMPONENT_SET'].includes(child.type)) visit(child);
+    }
+  };
+  visit(root);
+}
+
+function auditComponentPage({ component, expected, presentation, payload, contract, fail }) {
+  const prefix = `[${component.id}]`;
+  if (!contract) {
+    fail(`${prefix} live response is missing the component-page machine contract`);
+    return;
+  }
+
+  const pageOrder = payload.pageOrder ?? [];
+  const startIndex = pageOrder.findIndex((page) => page.id === contract.groupStartPageId && page.name === contract.groupStartPageName);
+  const endIndex = pageOrder.findIndex((page) => page.id === contract.groupEndPageId && page.name === contract.groupEndPageName);
+  const pageIndex = pageOrder.findIndex((page) => page.id === expected.pageId && page.name === expected.pageName);
+  if (startIndex < 0 || endIndex <= startIndex) {
+    fail(`${prefix} Components group boundary pages are missing or out of order`);
+  } else if (pageIndex <= startIndex || pageIndex >= endIndex) {
+    fail(`${prefix} page ${expected.pageName} is not inside the governed Components group`);
+  }
+
+  const page = payload.nodes?.[expected.pageId]?.document;
+  if (!page) return;
+  const roles = ['documentation', 'main', 'interactionStates', 'publishSource'];
+  const sections = Object.fromEntries(roles.map((role) => [role, payload.nodes?.[presentation.sections?.[role]?.nodeId]?.document]));
+  for (const role of roles) {
+    if (sections[role] && !(page.children ?? []).some((node) => node.id === sections[role].id)) {
+      fail(`${prefix} ${role} section must be a direct child of page ${expected.pageId}`);
+    }
+  }
+
+  const documentation = sections.documentation;
+  const main = sections.main;
+  const interaction = sections.interactionStates;
+  const publish = sections.publishSource;
+  const documentationContract = contract.documentation;
+  const presentationContract = contract.presentation;
+  const referenceSections = Object.fromEntries(roles.map((role) => [
+    role,
+    payload.nodes?.[contract.referenceSectionIds?.[role]]?.document,
+  ]));
+
+  for (const role of roles) {
+    if (sections[role]) auditSectionAppearance({ prefix, role, section: sections[role], reference: referenceSections[role], fail });
+  }
+
+  if (documentation) {
+    if (documentation.name !== `✅ Ready for Dev / 01 • Documentation / ${expected.pageName}`) {
+      fail(`${prefix} documentation section name must exactly match the governed component template`);
+    }
+    if (boxValue(documentation, 'x') !== documentationContract.sectionX ||
+        boxValue(documentation, 'y') !== documentationContract.sectionY ||
+        boxValue(documentation, 'width') !== documentationContract.sectionWidth) {
+      fail(`${prefix} documentation rail geometry drifted from the governed component template`);
+    }
+    const frame = directChild(documentation, `Documentation / ${expected.pageName}`, 'FRAME');
+    if (!frame) fail(`${prefix} documentation rail is missing its canonical template frame`);
+    else {
+      if (relativeBoxValue(frame, documentation, 'x') !== documentationContract.frameX ||
+          relativeBoxValue(frame, documentation, 'y') !== documentationContract.frameY ||
+          boxValue(frame, 'width') !== documentationContract.frameWidth) {
+        fail(`${prefix} documentation template frame geometry drifted`);
+      }
+      if (JSON.stringify(childNames(frame)) !== JSON.stringify(documentationContract.requiredChildren)) {
+        fail(`${prefix} documentation template children must exactly match Button Light`);
+      }
+      const properties = directChild(frame, 'Properties', 'FRAME');
+      if (!properties || (properties.children ?? []).length !== documentationContract.propertyRows ||
+          (properties.children ?? []).some((row) => row.type !== 'FRAME' || !directChild(row, 'Property', 'TEXT') || !directChild(row, 'Values', 'TEXT'))) {
+        fail(`${prefix} documentation properties must contain exactly ${documentationContract.propertyRows} governed rows`);
+      }
+    }
+  }
+
+  if (main) {
+    if (main.name !== `✅ Ready for Dev / 02 • Main components / ${expected.pageName}`) {
+      fail(`${prefix} main section name must exactly match the governed component template`);
+    }
+    if (boxValue(main, 'x') !== presentationContract.mainX ||
+        boxValue(main, 'y') !== presentationContract.mainY ||
+        boxValue(main, 'width') < presentationContract.minimumWidth) {
+      fail(`${prefix} main section geometry drifted from the governed component template`);
+    }
+    const frame = directChild(main, `Main components / ${expected.pageName}`, 'FRAME');
+    if (!frame) fail(`${prefix} main section is missing its canonical template frame`);
+    else {
+      if (relativeBoxValue(frame, main, 'x') !== presentationContract.frameX ||
+          relativeBoxValue(frame, main, 'y') !== presentationContract.frameY ||
+          boxValue(frame, 'width') !== boxValue(main, 'width') - presentationContract.frameHorizontalInset) {
+        fail(`${prefix} main template frame geometry drifted`);
+      }
+      const expectedChildren = ['Eyebrow', 'Title', 'Description', 'Variant badge', `Responsive specimens / ${expected.pageName}`];
+      if (JSON.stringify(childNames(frame)) !== JSON.stringify(expectedChildren)) {
+        fail(`${prefix} main template children drifted from the governed component standard`);
+      }
+      auditDescendantContainment({ prefix, role: 'main', root: frame, fail });
+    }
+  }
+
+  if (interaction && main) {
+    if (interaction.name !== `✅ Ready for Dev / 03 • Interaction states / ${expected.pageName}`) {
+      fail(`${prefix} interaction section name must exactly match the governed component template`);
+    }
+    if (boxValue(interaction, 'x') !== boxValue(main, 'x') ||
+        boxValue(interaction, 'y') !== boxValue(main, 'y') + boxValue(main, 'height') + presentationContract.interactionGap ||
+        boxValue(interaction, 'width') !== boxValue(main, 'width')) {
+      fail(`${prefix} interaction section geometry drifted from the governed component template`);
+    }
+    const frame = directChild(interaction, `Interaction states / ${expected.pageName}`, 'FRAME');
+    if (!frame) fail(`${prefix} interaction section is missing its canonical template frame`);
+    else {
+      if (relativeBoxValue(frame, interaction, 'x') !== presentationContract.frameX ||
+          relativeBoxValue(frame, interaction, 'y') !== presentationContract.frameY ||
+          boxValue(frame, 'width') !== boxValue(interaction, 'width') - presentationContract.frameHorizontalInset) {
+        fail(`${prefix} interaction template frame geometry drifted`);
+      }
+      const expectedChildren = ['Header / Interaction states', `State matrices / ${expected.pageName}`];
+      if (JSON.stringify(childNames(frame)) !== JSON.stringify(expectedChildren)) {
+        fail(`${prefix} interaction template children drifted from the governed component standard`);
+      }
+      const header = directChild(frame, 'Header / Interaction states', 'FRAME');
+      if (!header || JSON.stringify(childNames(header)) !== JSON.stringify(['Title', 'Description'])) {
+        fail(`${prefix} interaction header must contain only Title and Description`);
+      }
+      auditDescendantContainment({ prefix, role: 'interaction', root: frame, fail });
+    }
+  }
+
+  if (publish && main) {
+    if (publish.name !== `Publish source / ${expected.pageName}`) {
+      fail(`${prefix} publish-source section name must exactly match the governed component template`);
+    }
+    if (boxValue(publish, 'x') !== boxValue(main, 'x') + boxValue(main, 'width') + presentationContract.publishGap ||
+        boxValue(publish, 'y') !== 0 || boxValue(publish, 'width') !== presentationContract.publishWidth) {
+      fail(`${prefix} publish-source section geometry drifted from the governed component template`);
+    }
+    const master = (publish.children ?? []).find((node) => node.id === expected.nodeId);
+    if (!master || publish.children.length !== 1) {
+      fail(`${prefix} publish-source section must contain only the direct canonical master`);
+    } else {
+      if (relativeBoxValue(master, publish, 'x') !== presentationContract.masterX ||
+          relativeBoxValue(master, publish, 'y') !== presentationContract.masterY) {
+        fail(`${prefix} canonical master inset drifted from the governed component template`);
+      }
+      if (master.type === 'COMPONENT_SET' && (master.layoutMode !== 'HORIZONTAL' || master.layoutWrap !== 'WRAP' ||
+          master.itemSpacing !== presentationContract.masterGap || master.counterAxisSpacing !== presentationContract.masterGap ||
+          ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'].some((field) => master[field] !== presentationContract.masterPadding))) {
+        fail(`${prefix} component-set publish source must use the governed wrapped 24px master grid`);
+      }
+    }
+  }
+}
+
 function auditVisualTree(component, root, fail) {
   const prefix = `[${component.id}]`;
   walk(root, (node) => {
@@ -321,6 +533,14 @@ function auditLiveNodes({ registry, payload }) {
       if (numbered.some((id, index) => ordered.indexOf(id) < 0 || (index > 0 && ordered.indexOf(id) <= ordered.indexOf(numbered[index - 1])))) {
         fail(`${prefix} numbered documentation sections are not in governed order`);
       }
+      auditComponentPage({
+        component,
+        expected,
+        presentation,
+        payload,
+        contract: registry.library?.promotionPattern?.componentPage,
+        fail,
+      });
     }
 
     const representations = component.sourceParity?.representations ?? [];
@@ -382,7 +602,11 @@ function auditLiveNodes({ registry, payload }) {
 
 async function fetchLiveNodes({ registry, token, fetchImpl = fetch }) {
   const fileKey = registry.library?.fileKey;
-  const ids = sorted(registry.components.flatMap((component) => [
+  const componentPage = registry.library?.promotionPattern?.componentPage;
+  const ids = sorted([
+    componentPage?.referencePageId,
+    ...Object.values(componentPage?.referenceSectionIds ?? {}),
+    ...registry.components.flatMap((component) => [
     component.figma.nodeId,
     component.figma.pageId,
     component.figma.presentationEvidence?.referencePageId,
@@ -396,21 +620,34 @@ async function fetchLiveNodes({ registry, token, fetchImpl = fetch }) {
       state.instanceNodeId,
       state.componentNodeId,
     ]).filter(Boolean),
-  ]).filter(Boolean)).join(',');
+    ]),
+  ].filter(Boolean)).join(',');
   const url = new URL(`${FIGMA_API}/files/${encodeURIComponent(fileKey)}/nodes`);
   url.searchParams.set('ids', ids);
 
-  const response = await fetchImpl(url, {
+  const request = {
     headers: {
       Accept: 'application/json',
       'X-Figma-Token': token,
     },
-  });
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Figma REST request failed (${response.status}): ${body.slice(0, 500)}`);
+  };
+  const fileUrl = new URL(`${FIGMA_API}/files/${encodeURIComponent(fileKey)}`);
+  fileUrl.searchParams.set('depth', '1');
+  const [response, fileResponse] = await Promise.all([
+    fetchImpl(url, request),
+    fetchImpl(fileUrl, request),
+  ]);
+  for (const candidate of [response, fileResponse]) {
+    if (!candidate.ok) {
+      const body = await candidate.text();
+      throw new Error(`Figma REST request failed (${candidate.status}): ${body.slice(0, 500)}`);
+    }
   }
-  return response.json();
+  const [payload, file] = await Promise.all([response.json(), fileResponse.json()]);
+  payload.pageOrder = (file.document?.children ?? [])
+    .filter((node) => node.type === 'CANVAS')
+    .map((node) => ({ id: node.id, name: node.name }));
+  return payload;
 }
 
 async function main() {

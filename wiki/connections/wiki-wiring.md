@@ -95,6 +95,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Add governed Gauge chart and Pie chart components](../../wiki/journal/2026-09-17-add-governed-data-visualizations.md) → [Component architecture — Design History](../../wiki/topics/component-architecture.md)
 - [Add governed Gauge chart and Pie chart components](../../wiki/journal/2026-09-17-add-governed-data-visualizations.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Add governed Gauge chart and Pie chart components](../../wiki/journal/2026-09-17-add-governed-data-visualizations.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
+- [Enforce the governed Figma component-page standard](../../wiki/journal/2026-09-17-enforce-figma-component-page-standard.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Normalize live Figma property identities](../../wiki/journal/2026-09-17-normalize-live-figma-property-identities.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Restore the live Figma contract](../../wiki/journal/2026-09-17-restore-live-figma-contract.md) → [Figma library — Design History](../../wiki/topics/figma-code-connect.md)
 - [Restore Vitest browser compatibility](../../wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)

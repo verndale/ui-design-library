@@ -3,7 +3,12 @@
 
 'use strict';
 
+const fs = require('node:fs');
+const path = require('node:path');
 const { auditLiveNodes } = require('./check-figma-live.cjs');
+
+const COMPONENT_PAGE = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'figma', 'library.json'), 'utf8'))
+  .library.promotionPattern.componentPage;
 
 const alias = { type: 'VARIABLE_ALIAS', id: 'VariableID:1:1' };
 const boundPaint = { type: 'SOLID', color: { r: 0, g: 0, b: 0 }, boundVariables: { color: alias } };
@@ -149,6 +154,136 @@ const withInteractionState = () => {
   };
   payload.nodes['3:2'] = { document: payload.nodes['3:1'].document.children[0] };
   return { stateRegistry, payload };
+};
+const withPresentation = () => {
+  const presentationRegistry = structuredClone(registry);
+  presentationRegistry.library.promotionPattern = { componentPage: structuredClone(COMPONENT_PAGE) };
+  const component = presentationRegistry.components[0];
+  component.figma.pageId = '4:2';
+  component.figma.pageName = 'Example';
+  component.figma.presentationEvidence = {
+    contractVersion: 1,
+    referencePageId: '4:1',
+    referencePageName: 'Button — Light',
+    sections: {
+      documentation: { nodeId: '5:1', order: 1 },
+      main: { nodeId: '5:2', order: 2 },
+      interactionStates: { nodeId: '5:3', order: 3 },
+      publishSource: { nodeId: '5:4', order: null },
+    },
+  };
+  const payload = clone();
+  const whiteSection = {
+    fills: [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 }, opacity: 1 }],
+    strokes: [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 }, opacity: 0.1 }],
+    strokeWeight: 1,
+    cornerRadius: 2,
+  };
+  const documentationSection = {
+    ...structuredClone(whiteSection),
+    fills: [{ type: 'SOLID', color: { r: 0.941, g: 0.976, b: 0.953 }, opacity: 1 }],
+  };
+  const text = (id, name) => ({ id, name, type: 'TEXT' });
+  const propertyRows = Array.from({ length: 5 }, (_, index) => ({
+    id: `6:${index + 20}`,
+    name: `Row ${index + 1}`,
+    type: 'FRAME',
+    children: [text(`6:${index + 30}`, 'Property'), text(`6:${index + 40}`, 'Values')],
+  }));
+  const documentationFrame = {
+    id: '6:1',
+    name: 'Documentation / Example',
+    type: 'FRAME',
+    absoluteBoundingBox: { x: 24, y: 48, width: 480, height: 1200 },
+    children: [
+      { id: '6:2', name: 'Accent', type: 'RECTANGLE' },
+      text('6:3', 'Eyebrow'),
+      text('6:4', 'Title'),
+      text('6:5', 'Description'),
+      { id: '6:6', name: 'Public import', type: 'FRAME' },
+      text('6:7', 'Properties heading'),
+      { id: '6:8', name: 'Properties', type: 'FRAME', children: propertyRows },
+      { id: '6:9', name: 'Guidance', type: 'FRAME' },
+      text('6:10', 'Code only'),
+    ],
+  };
+  const documentation = {
+    ...structuredClone(documentationSection),
+    id: '5:1',
+    name: '✅ Ready for Dev / 01 • Documentation / Example',
+    type: 'SECTION',
+    absoluteBoundingBox: { x: 0, y: 0, width: 528, height: 1376 },
+    children: [documentationFrame],
+  };
+  const mainFrame = {
+    id: '6:11',
+    name: 'Main components / Example',
+    type: 'FRAME',
+    absoluteBoundingBox: { x: 592, y: 48, width: 1224, height: 304 },
+    children: [
+      text('6:12', 'Eyebrow'),
+      text('6:13', 'Title'),
+      text('6:14', 'Description'),
+      { id: '6:15', name: 'Variant badge', type: 'FRAME' },
+      { id: '6:16', name: 'Responsive specimens / Example', type: 'FRAME' },
+    ],
+  };
+  const main = {
+    ...structuredClone(whiteSection),
+    id: '5:2',
+    name: '✅ Ready for Dev / 02 • Main components / Example',
+    type: 'SECTION',
+    absoluteBoundingBox: { x: 568, y: 0, width: 1272, height: 400 },
+    children: [mainFrame],
+  };
+  const interactionFrame = {
+    id: '6:17',
+    name: 'Interaction states / Example',
+    type: 'FRAME',
+    absoluteBoundingBox: { x: 592, y: 488, width: 1224, height: 228 },
+    children: [
+      { id: '6:18', name: 'Header / Interaction states', type: 'FRAME', children: [text('6:50', 'Title'), text('6:51', 'Description')] },
+      { id: '6:19', name: 'State matrices / Example', type: 'FRAME' },
+    ],
+  };
+  const interaction = {
+    ...structuredClone(whiteSection),
+    id: '5:3',
+    name: '✅ Ready for Dev / 03 • Interaction states / Example',
+    type: 'SECTION',
+    absoluteBoundingBox: { x: 568, y: 440, width: 1272, height: 300 },
+    children: [interactionFrame],
+  };
+  const master = payload.nodes['1:2'].document;
+  master.absoluteBoundingBox = { x: 1920, y: 64, width: 200, height: 100 };
+  const publish = {
+    ...structuredClone(whiteSection),
+    id: '5:4',
+    name: 'Publish source / Example',
+    type: 'SECTION',
+    absoluteBoundingBox: { x: 1880, y: 0, width: 1272, height: 296 },
+    children: [master],
+  };
+  const page = { id: '4:2', name: 'Example', type: 'CANVAS', children: [documentation, main, interaction, publish] };
+  payload.nodes['4:1'] = { document: { id: '4:1', name: 'Button — Light', type: 'CANVAS', children: [] } };
+  payload.nodes['4:2'] = { document: page };
+  payload.nodes['5:1'] = { document: documentation };
+  payload.nodes['5:2'] = { document: main };
+  payload.nodes['5:3'] = { document: interaction };
+  payload.nodes['5:4'] = { document: publish };
+  payload.nodes[COMPONENT_PAGE.referencePageId] = {
+    document: { id: COMPONENT_PAGE.referencePageId, name: COMPONENT_PAGE.referencePageName, type: 'CANVAS', children: [] },
+  };
+  for (const [role, id] of Object.entries(COMPONENT_PAGE.referenceSectionIds)) {
+    const style = role === 'documentation' ? documentationSection : whiteSection;
+    payload.nodes[id] = { document: { id, name: `Reference ${role}`, type: 'SECTION', ...structuredClone(style) } };
+  }
+  payload.pageOrder = [
+    { id: COMPONENT_PAGE.groupStartPageId, name: COMPONENT_PAGE.groupStartPageName },
+    { id: '4:2', name: 'Example' },
+    { id: COMPONENT_PAGE.groupEndPageId, name: COMPONENT_PAGE.groupEndPageName },
+  ];
+  return { presentationRegistry, payload };
 };
 const cases = [
   {
@@ -327,6 +462,71 @@ const cases = [
       return { registry: stateRegistry, payload };
     })(),
     expect: (failures) => failures.some((failure) => failure.includes('does not contain instance 3:2')),
+  },
+  {
+    name: 'governed component page passes the machine template',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.length === 0,
+  },
+  {
+    name: 'component pages outside the Components group fail',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      payload.pageOrder = [payload.pageOrder[0], payload.pageOrder[2], payload.pageOrder[1]];
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('is not inside the governed Components group')),
+  },
+  {
+    name: 'ad hoc documentation chrome fails the machine template',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      payload.nodes['5:1'].document.children[0].children.shift();
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('documentation template children must exactly match')),
+  },
+  {
+    name: 'wrapped publish masters fail direct handoff placement',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      const publish = payload.nodes['5:4'].document;
+      publish.children = [{ id: '9:1', name: 'Wrapper', type: 'FRAME', children: publish.children }];
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('must contain only the direct canonical master')),
+  },
+  {
+    name: 'component section geometry drift fails',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      payload.nodes['5:2'].document.absoluteBoundingBox.x = 600;
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('main section geometry drifted')),
+  },
+  {
+    name: 'component section appearance drift fails',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      payload.nodes['5:2'].document.fills[0].color = { r: 0.267, g: 0.267, b: 0.267 };
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('main section appearance drifted')),
+  },
+  {
+    name: 'interaction-state descendants cannot overflow their containers',
+    ...(() => {
+      const { presentationRegistry, payload } = withPresentation();
+      const interactionFrame = payload.nodes['5:3'].document.children[0];
+      const matrix = interactionFrame.children[1];
+      matrix.absoluteBoundingBox = { x: 500, y: 600, width: 1400, height: 100 };
+      return { registry: presentationRegistry, payload };
+    })(),
+    expect: (failures) => failures.some((failure) => failure.includes('interaction child') && failure.includes('overflows')),
   },
 ];
 

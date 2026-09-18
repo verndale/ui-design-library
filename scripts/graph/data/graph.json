@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 179,
-    "edges": 403,
+    "nodes": 180,
+    "edges": 406,
     "byType": {
       "surface": 63,
       "root-doc": 4,
       "component": 29,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 52,
+      "wiki-journal": 53,
       "wiki-plan": 20,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 72,
-      "links-to": 181,
+      "links-to": 183,
       "plan": 28,
-      "topic": 93,
+      "topic": 94,
       "uses-tokens": 29
     }
   },
@@ -811,7 +811,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 206194,
+      "bytes": 207602,
       "degree": 1
     },
     {
@@ -824,7 +824,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 1500,
+      "bytes": 1899,
       "degree": 1
     },
     {
@@ -941,7 +941,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 43536,
+      "bytes": 44809,
       "degree": 1
     },
     {
@@ -967,7 +967,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 19062,
+      "bytes": 31035,
       "degree": 1
     },
     {
@@ -1292,8 +1292,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 18330,
-      "degree": 62
+      "bytes": 18609,
+      "degree": 63
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2535,6 +2535,21 @@
       "degree": 7
     },
     {
+      "id": "wiki/journal/2026-09-17-enforce-figma-component-page-standard.md",
+      "label": "Enforce the governed Figma component-page standard",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "figma-code-connect"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 2092,
+      "degree": 3
+    },
+    {
       "id": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
       "label": "Normalize live Figma property identities",
       "type": "wiki-journal",
@@ -3463,10 +3478,17 @@
       ],
       "prs": [],
       "issues": [
+        "106",
         "101",
         "49"
       ],
       "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 106,
+          "url": "https://github.com/verndale/ui-design-library/issues/106"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -3480,8 +3502,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/49"
         }
       ],
-      "bytes": 21946,
-      "degree": 70
+      "bytes": 23227,
+      "degree": 72
     },
     {
       "id": "wiki/topics/graph-wiki-subsystem.md",
@@ -4657,6 +4679,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-17-enforce-figma-component-page-standard.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-09-17-normalize-live-figma-property-identities.md",
       "type": "links-to",
       "count": 1,
@@ -5169,6 +5198,13 @@
     {
       "source": "wiki/topics/figma-code-connect.md",
       "target": "wiki/journal/2026-09-17-add-governed-data-visualizations.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/figma-code-connect.md",
+      "target": "wiki/journal/2026-09-17-enforce-figma-component-page-standard.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5986,6 +6022,11 @@
     {
       "source": "wiki/journal/2026-09-17-add-governed-data-visualizations.md",
       "target": "wiki/topics/story-testing.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-17-enforce-figma-component-page-standard.md",
+      "target": "wiki/topics/figma-code-connect.md",
       "type": "topic"
     },
     {

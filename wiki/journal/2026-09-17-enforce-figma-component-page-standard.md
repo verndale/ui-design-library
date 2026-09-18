@@ -2,7 +2,9 @@
 date: 2026-09-17
 topics: [figma-code-connect]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/107
+issue: https://github.com/verndale/ui-design-library/issues/106
+issues: ["https://github.com/verndale/ui-design-library/issues/106"]
 ---
 # Enforce the governed Figma component-page standard
 

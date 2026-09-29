@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 185,
-    "edges": 424,
+    "nodes": 186,
+    "edges": 427,
     "byType": {
       "surface": 64,
       "root-doc": 4,
       "component": 29,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 56,
+      "wiki-journal": 57,
       "wiki-plan": 21,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 73,
-      "links-to": 193,
+      "links-to": 195,
       "plan": 29,
-      "topic": 100,
+      "topic": 101,
       "uses-tokens": 29
     }
   },
@@ -83,7 +83,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 4258,
+      "bytes": 4296,
       "degree": 2
     },
     {
@@ -1006,7 +1006,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 28322,
+      "bytes": 28468,
       "degree": 1
     },
     {
@@ -1305,8 +1305,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 19161,
-      "degree": 66
+      "bytes": 19330,
+      "degree": 67
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2727,6 +2727,30 @@
       "degree": 3
     },
     {
+      "id": "wiki/journal/2026-09-29-preserve-release-handoff.md",
+      "label": "Preserve tested main release handoff",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "121"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 121,
+          "url": "https://github.com/verndale/ui-design-library/issues/121"
+        }
+      ],
+      "bytes": 818,
+      "degree": 3
+    },
+    {
       "id": "wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md",
       "label": "Restore wiki replay for existing bot PRs",
       "type": "wiki-journal",
@@ -4024,9 +4048,16 @@
       ],
       "prs": [],
       "issues": [
+        "121",
         "83"
       ],
       "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 121,
+          "url": "https://github.com/verndale/ui-design-library/issues/121"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -4034,8 +4065,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/83"
         }
       ],
-      "bytes": 7049,
-      "degree": 34
+      "bytes": 7436,
+      "degree": 36
     },
     {
       "id": "wiki/topics/story-testing.md",
@@ -4992,6 +5023,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-29-preserve-release-handoff.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md",
       "type": "links-to",
       "count": 1,
@@ -5713,6 +5751,13 @@
     },
     {
       "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/journal/2026-09-29-preserve-release-handoff.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 2,
@@ -6403,6 +6448,11 @@
     {
       "source": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
       "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-29-preserve-release-handoff.md",
+      "target": "wiki/topics/package-distribution.md",
       "type": "topic"
     },
     {

@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-09-17 — feat(charts): add governed data visualizations ([verndale/ui-design-library PR #104](https://github.com/verndale/ui-design-library/pull/104))
 - 2026-09-29 — fix(wiki): update existing bot PRs through REST ([verndale/ui-design-library PR #119](https://github.com/verndale/ui-design-library/pull/119))
 - 2026-09-17 — fix(figma): restore library validation ([verndale/ui-design-library PR #100](https://github.com/verndale/ui-design-library/pull/100))
 - 2026-09-29 — Existing wiki bot PRs are found and edited through repository REST endpoints so the repo-scoped BOT_TOKEN can replay them without GraphQL organization scope ([journal](../journal/2026-09-29-restore-existing-wiki-pr-replay.md)).

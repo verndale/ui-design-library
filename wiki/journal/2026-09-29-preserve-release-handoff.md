@@ -10,11 +10,11 @@ issues: ["https://github.com/verndale/ui-design-library/issues/121"]
 
 ## Why
 
-A wiki-only main push could cancel the full Quality run for an earlier substantive merge. Release requires that successful push-event Quality result and cannot release from the later wiki-only revision alone.
+A wiki-only main push could cancel the full Quality run for an earlier substantive merge. Release requires a successful Quality result on the current main commit.
 
 ## What changed
 
-Quality now cancels superseded pull-request runs while allowing every main push run to finish. Npm Release is temporarily paused for this test and returns to normal afterward.
+Quality stopped canceling an in-progress main push run while continuing to cancel superseded pull-request runs. [Issue #124](https://github.com/verndale/ui-design-library/issues/124) addresses pending-run replacement and verification of unreleased history.
 
 ## Files
 

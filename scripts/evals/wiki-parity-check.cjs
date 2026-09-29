@@ -400,7 +400,9 @@ async function run() {
     issue: read(".github/workflows/wiki-issue-sync.yml"),
   };
   check("Quality/quality workflow identity is stable", /^name: Quality$/m.test(workflows.quality) && /^ {2}quality:$/m.test(workflows.quality));
-  check("Quality preserves main release handoffs", workflows.quality.includes("cancel-in-progress: ${{ github.event_name == 'pull_request' }}"));
+  check("Quality preserves main release handoffs", workflows.quality.includes("group: quality-${{ github.event.pull_request.number || github.run_id }}")
+    && workflows.quality.includes("cancel-in-progress: ${{ github.event_name == 'pull_request' }}")
+    && workflows.quality.includes("git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]*' --abbrev=0 \"$HEAD_SHA\""));
   check("Commit message lint/commitlint workflow identity is stable", /^name: Commit message lint$/m.test(workflows.commitlint) && /^ {2}commitlint:$/m.test(workflows.commitlint));
   check("Wiki integrity/check workflow identity is stable", /^name: Wiki integrity$/m.test(workflows.check) && /^ {2}check:$/m.test(workflows.check));
   check("Sync context wiki/sync workflow identity is stable", /^name: Sync context wiki$/m.test(workflows.sync) && /^ {2}sync:$/m.test(workflows.sync));

@@ -192,7 +192,7 @@ See [`figma/README.md`](figma/README.md) for file organization, node migration, 
 
 ## Releases
 
-Every merge to `main` runs the full test/build/pack gate and semantic-release. A breaking change publishes a major, `feat` publishes a minor, and every other permitted conventional-commit type publishes a patch. Tags and GitHub releases use `v<version>`; the source `package.json` stays `0.0.0-development`.
+Every merge to `main` runs Quality; successful Quality for the current main commit triggers Release and semantic-release. A breaking change publishes a major, `feat` publishes a minor, and every other permitted conventional-commit type publishes a patch. Tags and GitHub releases use `v<version>`; the source `package.json` stays `0.0.0-development`.
 
 Publishing uses npm trusted publishing for the `verndale/ui-design-library` repository and `.github/workflows/release.yml`. The workflow requests `id-token: write` and carries no long-lived npm token. Configure that trusted publisher before merging a release-producing PR, then remove any obsolete `NPM_TOKEN` repository secret.
 

@@ -84,13 +84,13 @@ Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright i
 - **Generated wiring map**: [`wiki/connections.md`](wiki/connections.md) is a routed index for component↔token, journal↔plan, topic↔surface, and cross-area seams. Open only the section named by the itinerary. Do not hand-edit it; `pnpm graph:build` rebuilds it and `pnpm run wiki:check` verifies it.
 - **Human graph exploration**: `pnpm graph:view` opens the curated Sigma viewer. Search and click a node to focus its neighborhood, or select Source and Target and choose **Show route** for the weighted shortest route. The CLI navigator is the token-efficient agent path; the viewer is not a second knowledge source.
 - **Write**: capturing history is part of a substantive change in the same delivery: add a journal entry, archive the executed plan, update the affected topic Decisions, and refresh the indexes per [`wiki/MECHANICS.md`](wiki/MECHANICS.md). Investigations that found nothing still qualify.
-- **Automation**: the advisory pre-commit hook skips graph rebuilding when unstaged or untracked graph inputs could contaminate the commit. The merge and issue workflows are a safety net for out-of-session reconciliation; they need `secrets.PR_BOT_TOKEN`, store repo-qualified citations in Markdown, and rebuild offline `githubRefs` metadata. Agents still author the history they create.
+- **Automation**: the advisory pre-commit hook skips graph rebuilding when unstaged or untracked graph inputs could contaminate the commit. The merge and issue workflows are a safety net for out-of-session reconciliation; they need `secrets.BOT_TOKEN`, store repo-qualified citations in Markdown, and rebuild offline `githubRefs` metadata. Agents still author the history they create.
 
-## Commits & release
+## Git delivery and release
 
-**Permission boundary:** edit under `components/` and `src/` freely. An agent may commit and push an issue branch only when the maintainer explicitly authorizes those actions.
+Create a labeled GitHub issue with the `github-issue-creator` skill, fetch and update `main`, and create an issue branch from the updated commit. Make scoped Conventional Commits with `git commit`; standalone Commitlint validates messages locally and the PR title plus immutable commit range in CI. Draft the six-section PR body from `.github/pull_request_template.md`, include `Closes #<issue-number>`, and run `pnpm run lint:pr`. Push the branch, open a PR against `main`, verify its saved title/body/issue link and required checks, and leave it open for review. Do not merge the PR.
 
-Without explicit maintainer authorization, make the changes, run `pnpm test` and `pnpm build`, then stop and hand back. When commit and push are authorized, use `pnpm commit` and push only the issue branch so repository automation can create the draft PR. **Do not merge, tag, release, or publish.** A merge to `main` is the only release trigger. Before a release-producing merge, the maintainer must confirm npm trusted publishing names this repository and `.github/workflows/release.yml`; the workflow intentionally has no `NPM_TOKEN` fallback.
+After a merge to `main`, `Quality / quality` runs first. A successful Quality run triggers `Release / release` for the tested main commit. npm publishing uses trusted publishing for this repository and `.github/workflows/release.yml`; no `NPM_TOKEN` is used.
 
 ## graphify
 

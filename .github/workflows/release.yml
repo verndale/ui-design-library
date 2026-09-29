@@ -1,8 +1,9 @@
 name: Release
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: [Quality]
+    types: [completed]
 
 permissions:
   contents: write
@@ -17,12 +18,26 @@ env:
 
 jobs:
   release:
+    name: release
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Verify tested commit is current main
+        env:
+          QUALITY_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$QUALITY_HEAD_SHA"
+          git fetch --no-tags origin main
+          test "$(git rev-parse origin/main)" = "$QUALITY_HEAD_SHA"
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -61,8 +76,8 @@ jobs:
       - name: Reject aggregated breaking-change bodies
         run: pnpm release:preflight
 
-      - name: Verify package and packed Next consumer
-        run: pnpm verify
+      - name: Verify release policy self-tests
+        run: pnpm run release:preflight:selftest
 
       - name: Inspect packed artifact
         # package.json intentionally stays on a prerelease development version;
@@ -72,4 +87,5 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          HUSKY: '0'
         run: pnpm exec semantic-release

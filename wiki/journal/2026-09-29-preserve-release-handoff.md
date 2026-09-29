@@ -2,7 +2,7 @@
 date: 2026-09-29
 topics: [package-distribution]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/122
 issue: https://github.com/verndale/ui-design-library/issues/121
 issues: ["https://github.com/verndale/ui-design-library/issues/121"]
 ---

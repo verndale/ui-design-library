@@ -2,8 +2,9 @@
 date: 2026-09-29
 topics: [graph-wiki-subsystem]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/119
 issue: https://github.com/verndale/ui-design-library/issues/118
+issues: ["https://github.com/verndale/ui-design-library/issues/118"]
 ---
 # Restore wiki replay for existing bot PRs
 

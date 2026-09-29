@@ -185,6 +185,7 @@
     "lint:commit": "commitlint --config commitlint.config.cjs",
     "lint:commits:last": "pnpm run lint:commit --last",
     "lint:pr": "node scripts/validate_pr_body.cjs",
+    "test:pr-body": "node --test scripts/tests/pr-body.test.cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "exports:sync": "node scripts/build-exports.cjs --write",
@@ -236,7 +237,7 @@
     "test:code": "pnpm typecheck && pnpm lint && pnpm architecture && pnpm architecture:selftest && pnpm contracts:code && pnpm contracts:code:selftest && pnpm accessibility:report && pnpm release:preflight:selftest && pnpm exports:check && pnpm test:ssr && pnpm accessibility && pnpm test:a11y:webkit && pnpm test:a11y:modes && pnpm test:motion",
     "test": "pnpm typecheck && pnpm lint && pnpm architecture && pnpm architecture:selftest && pnpm contracts && pnpm contracts:selftest && pnpm accessibility:report && pnpm release:preflight:selftest && pnpm exports:check && pnpm test:ssr && pnpm accessibility && pnpm test:a11y:webkit && pnpm test:a11y:modes && pnpm test:motion",
     "verify:push": "pnpm typecheck && pnpm run test:fast",
-    "verify:ci": "pnpm test && pnpm run graph:check && pnpm build && pnpm test:next",
+    "verify:ci": "pnpm run test:pr-body && pnpm test && pnpm run graph:check && pnpm build && pnpm test:next",
     "verify": "pnpm run verify:ci"
   },
   "peerDependencies": {

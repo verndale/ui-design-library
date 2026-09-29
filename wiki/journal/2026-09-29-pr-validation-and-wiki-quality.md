@@ -2,8 +2,9 @@
 date: 2026-09-29
 topics: [graph-wiki-subsystem]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/116
 issue: https://github.com/verndale/ui-design-library/issues/115
+issues: ["https://github.com/verndale/ui-design-library/issues/115"]
 ---
 # Visible PR validation and wiki-only Quality
 

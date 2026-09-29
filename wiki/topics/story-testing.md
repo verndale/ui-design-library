@@ -31,6 +31,7 @@ These exist because each one has already produced a test that passed while the b
 
 ## Decisions
 
+- 2026-09-29 — ci(git): scope wiki quality and validate PR bodies ([verndale/ui-design-library PR #116](https://github.com/verndale/ui-design-library/pull/116))
 - 2026-09-29 — chore(git): standardize repository delivery ([verndale/ui-design-library PR #110](https://github.com/verndale/ui-design-library/pull/110))
 - 2026-09-17 — Kept chart evidence in Storybook play steps: values/proportions and text equivalence are asserted in the default stories, all stable label/value states appear in `InteractionStates`, and reduced-motion timing is exercised by the existing motion project ([journal](../journal/2026-09-17-add-governed-data-visualizations.md)).
 - 2026-09-17 — Kept Vitest and both browser adapters on the same 4.1.10 release line because a Vitest 5-only upgrade broke browser-server startup before any Storybook assertion could run ([journal](../journal/2026-09-17-restore-vitest-browser-compatibility.md)).

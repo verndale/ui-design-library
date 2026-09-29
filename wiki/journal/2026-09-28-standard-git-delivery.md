@@ -2,7 +2,9 @@
 date: 2026-09-28
 topics: [graph-wiki-subsystem, package-distribution]
 plan: plans/2026-09-28-standard-git-delivery.md
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/110
+issue: https://github.com/verndale/ui-design-library/issues/109
+issues: ["https://github.com/verndale/ui-design-library/issues/109"]
 ---
 # Standard Git delivery
 

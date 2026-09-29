@@ -1,7 +1,10 @@
 ---
 status: implemented
 executed: 2026-09-28
-evidence: ["verndale/ui-design-library issue #109", "verndale/ui-design-library PR pending"]
+evidence:
+  - "verndale/ui-design-library issue #109"
+  - "verndale/ui-design-library PR pending"
+  - "verndale/ui-design-library PR #110 https://github.com/verndale/ui-design-library/pull/110 (merged 2026-09-29)"
 source_tool: codex
 source: user-approved cross-repository Git delivery plan
 topics: [graph-wiki-subsystem, package-distribution]

@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-09-29 — Wiki issue-state reconciliation now runs Mondays at 11:30 UTC with manual replay retained ([journal](../journal/2026-09-28-standard-git-delivery.md)).
 - 2026-09-28 — Replaced the push-triggered PR helper with issue-linked PR delivery and direct BOT_TOKEN wiki bot PRs so automation preserves the existing reconciliation flow without AI tooling ([plan](../plans/2026-09-28-standard-git-delivery.md), [journal](../journal/2026-09-28-standard-git-delivery.md)).
 - 2026-09-07 — feat(components): add Snow input controls ([verndale/ui-design-library PR #93](https://github.com/verndale/ui-design-library/pull/93))
 - 2026-08-24 — fix(wiki): validate timestamps and route policy ([verndale/ui-design-library PR #90](https://github.com/verndale/ui-design-library/pull/90))

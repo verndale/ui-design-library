@@ -122,7 +122,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 3110,
+      "bytes": 3112,
       "degree": 1
     },
     {
@@ -1006,7 +1006,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 27976,
+      "bytes": 27978,
       "degree": 1
     },
     {
@@ -2620,7 +2620,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 1010,
+      "bytes": 1108,
       "degree": 6
     },
     {
@@ -2633,7 +2633,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 7585,
+      "bytes": 7586,
       "degree": 7
     },
     {
@@ -3807,7 +3807,7 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 16649,
+      "bytes": 16817,
       "degree": 60
     },
     {
@@ -5396,7 +5396,7 @@
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-09-28-standard-git-delivery.md",
       "type": "links-to",
-      "count": 1,
+      "count": 2,
       "anchors": []
     },
     {

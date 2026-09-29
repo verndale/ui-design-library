@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-09-29 — fix(ci): preserve main Quality release handoff ([verndale/ui-design-library PR #122](https://github.com/verndale/ui-design-library/pull/122))
 - 2026-09-18 — fix(figma): enforce component page standard ([verndale/ui-design-library PR #107](https://github.com/verndale/ui-design-library/pull/107))
 - 2026-09-17 — feat(charts): add governed data visualizations ([verndale/ui-design-library PR #104](https://github.com/verndale/ui-design-library/pull/104))
 - 2026-09-29 — fix(wiki): update existing bot PRs through REST ([verndale/ui-design-library PR #119](https://github.com/verndale/ui-design-library/pull/119))

@@ -2735,11 +2735,19 @@
         "package-distribution"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "122"
+      ],
       "issues": [
         "121"
       ],
       "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 122,
+          "url": "https://github.com/verndale/ui-design-library/pull/122"
+        },
         {
           "kind": "issue",
           "repository": "verndale/ui-design-library",
@@ -2747,7 +2755,7 @@
           "url": "https://github.com/verndale/ui-design-library/issues/121"
         }
       ],
-      "bytes": 818,
+      "bytes": 865,
       "degree": 3
     },
     {
@@ -3753,6 +3761,7 @@
         "graph freshness"
       ],
       "prs": [
+        "122",
         "107",
         "104",
         "119",
@@ -3796,6 +3805,12 @@
         "83"
       ],
       "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 122,
+          "url": "https://github.com/verndale/ui-design-library/pull/122"
+        },
         {
           "kind": "pull-request",
           "repository": "verndale/ui-design-library",
@@ -4031,7 +4046,7 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 18492,
+      "bytes": 18651,
       "degree": 64
     },
     {
@@ -4086,6 +4101,7 @@
         "test setup"
       ],
       "prs": [
+        "122",
         "116",
         "110",
         "88",
@@ -4098,6 +4114,12 @@
         "83"
       ],
       "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 122,
+          "url": "https://github.com/verndale/ui-design-library/pull/122"
+        },
         {
           "kind": "pull-request",
           "repository": "verndale/ui-design-library",
@@ -4147,7 +4169,7 @@
           "url": "https://github.com/verndale/ui-design-library/pull/19"
         }
       ],
-      "bytes": 11501,
+      "bytes": 11660,
       "degree": 37
     },
     {

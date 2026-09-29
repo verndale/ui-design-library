@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 180,
-    "edges": 406,
+    "nodes": 183,
+    "edges": 418,
     "byType": {
-      "surface": 63,
+      "surface": 64,
       "root-doc": 4,
       "component": 29,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 53,
-      "wiki-plan": 20,
+      "wiki-journal": 54,
+      "wiki-plan": 21,
       "wiki-topic": 7
     },
     "byEdgeType": {
-      "covers": 72,
-      "links-to": 183,
-      "plan": 28,
-      "topic": 94,
+      "covers": 73,
+      "links-to": 189,
+      "plan": 29,
+      "topic": 98,
       "uses-tokens": 29
     }
   },
@@ -35,6 +35,19 @@
       "degree": 1
     },
     {
+      "id": ".github/pull_request_template.md",
+      "label": "pull_request_template.md",
+      "type": "surface",
+      "dir": ".github",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 838,
+      "degree": 1
+    },
+    {
       "id": ".github/workflows/commitlint.yml",
       "label": "commitlint.yml",
       "type": "surface",
@@ -44,7 +57,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 1894,
+      "bytes": 1781,
       "degree": 1
     },
     {
@@ -61,19 +74,6 @@
       "degree": 1
     },
     {
-      "id": ".github/workflows/pr.yml",
-      "label": "pr.yml",
-      "type": "surface",
-      "dir": ".github/workflows",
-      "topics": [],
-      "aliases": [],
-      "prs": [],
-      "issues": [],
-      "githubRefs": [],
-      "bytes": 2036,
-      "degree": 1
-    },
-    {
       "id": ".github/workflows/quality.yml",
       "label": "quality.yml",
       "type": "surface",
@@ -83,7 +83,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 2060,
+      "bytes": 2089,
       "degree": 2
     },
     {
@@ -96,7 +96,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 2028,
+      "bytes": 2672,
       "degree": 1
     },
     {
@@ -122,7 +122,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 2862,
+      "bytes": 3110,
       "degree": 1
     },
     {
@@ -135,7 +135,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 5463,
+      "bytes": 5724,
       "degree": 1
     },
     {
@@ -174,7 +174,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 55,
+      "bytes": 51,
       "degree": 1
     },
     {
@@ -291,7 +291,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 16641,
+      "bytes": 16767,
       "degree": 4
     },
     {
@@ -317,7 +317,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 49,
+      "bytes": 1656,
       "degree": 1
     },
     {
@@ -772,7 +772,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 7577,
+      "bytes": 7616,
       "degree": 0
     },
     {
@@ -850,7 +850,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 13561,
+      "bytes": 13569,
       "degree": 2
     },
     {
@@ -863,7 +863,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 60,
+      "bytes": 18,
       "degree": 1
     },
     {
@@ -876,7 +876,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 20663,
+      "bytes": 20706,
       "degree": 3
     },
     {
@@ -1006,7 +1006,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 28297,
+      "bytes": 27976,
       "degree": 1
     },
     {
@@ -1112,6 +1112,19 @@
       "githubRefs": [],
       "bytes": 7138,
       "degree": 2
+    },
+    {
+      "id": "scripts/validate_pr_body.cjs",
+      "label": "validate_pr_body.cjs",
+      "type": "surface",
+      "dir": "scripts",
+      "topics": [],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 3352,
+      "degree": 1
     },
     {
       "id": "scripts/wiki/ci-journal-warn.cjs",
@@ -1292,8 +1305,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 18609,
-      "degree": 63
+      "bytes": 18785,
+      "degree": 64
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2595,6 +2608,22 @@
       "degree": 3
     },
     {
+      "id": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "label": "Standard Git delivery",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem",
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 1010,
+      "degree": 6
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -2604,7 +2633,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 7580,
+      "bytes": 7585,
       "degree": 7
     },
     {
@@ -3164,6 +3193,22 @@
       "degree": 4
     },
     {
+      "id": "wiki/plans/2026-09-28-standard-git-delivery.md",
+      "label": "Standard Git delivery",
+      "type": "wiki-plan",
+      "dir": "wiki/plans",
+      "topics": [
+        "graph-wiki-subsystem",
+        "package-distribution"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [],
+      "githubRefs": [],
+      "bytes": 856,
+      "degree": 6
+    },
+    {
       "id": "wiki/plans/INDEX.md",
       "label": "Plan Audit",
       "type": "wiki-index",
@@ -3194,6 +3239,7 @@
         "2"
       ],
       "issues": [
+        "109",
         "87",
         "83",
         "80",
@@ -3209,6 +3255,12 @@
         "4"
       ],
       "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 109,
+          "url": "https://github.com/verndale/ui-design-library/issues/109"
+        },
         {
           "kind": "pull-request",
           "repository": "verndale/ui-design-library",
@@ -3414,8 +3466,8 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 9359,
-      "degree": 23
+      "bytes": 9581,
+      "degree": 24
     },
     {
       "id": "wiki/topics/component-architecture.md",
@@ -3755,8 +3807,8 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 16315,
-      "degree": 55
+      "bytes": 16649,
+      "degree": 60
     },
     {
       "id": "wiki/topics/package-distribution.md",
@@ -3782,8 +3834,8 @@
           "url": "https://github.com/verndale/ui-design-library/issues/83"
         }
       ],
-      "bytes": 6782,
-      "degree": 30
+      "bytes": 7049,
+      "degree": 34
     },
     {
       "id": "wiki/topics/story-testing.md",
@@ -4025,12 +4077,12 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": ".github/workflows/commitlint.yml",
+      "target": ".github/pull_request_template.md",
       "type": "covers"
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
-      "target": ".github/workflows/pr.yml",
+      "target": ".github/workflows/commitlint.yml",
       "type": "covers"
     },
     {
@@ -4161,6 +4213,11 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "scripts/graph/viewer/viewer.js",
+      "type": "covers"
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "scripts/validate_pr_body.cjs",
       "type": "covers"
     },
     {
@@ -4707,6 +4764,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -4953,6 +5017,13 @@
     {
       "source": "wiki/plans/INDEX.md",
       "target": "wiki/plans/2026-08-24-deterministic-route-first-wiki-guidance.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/plans/INDEX.md",
+      "target": "wiki/plans/2026-09-28-standard-git-delivery.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5323,6 +5394,13 @@
     },
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
       "type": "links-to",
       "count": 1,
@@ -5338,6 +5416,13 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/plans/2026-08-24-deterministic-route-first-wiki-guidance.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/plans/2026-09-28-standard-git-delivery.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5379,6 +5464,13 @@
     },
     {
       "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-05-npm-package-and-ai-reuse.md",
       "type": "links-to",
       "count": 2,
@@ -5408,6 +5500,13 @@
     {
       "source": "wiki/topics/package-distribution.md",
       "target": "wiki/plans/2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/package-distribution.md",
+      "target": "wiki/plans/2026-09-28-standard-git-delivery.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -5735,6 +5834,11 @@
       "type": "plan"
     },
     {
+      "source": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "target": "wiki/plans/2026-09-28-standard-git-delivery.md",
+      "type": "plan"
+    },
+    {
       "source": "wiki/journal/2026-07-26-storybook-docs-audit.md",
       "target": "wiki/topics/storybook-tooling.md",
       "type": "topic"
@@ -6045,6 +6149,16 @@
       "type": "topic"
     },
     {
+      "source": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-28-standard-git-delivery.md",
+      "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
       "source": "wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md",
       "target": "wiki/topics/story-testing.md",
       "type": "topic"
@@ -6202,6 +6316,16 @@
     {
       "source": "wiki/plans/2026-08-24-deterministic-route-first-wiki-guidance.md",
       "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-09-28-standard-git-delivery.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/plans/2026-09-28-standard-git-delivery.md",
+      "target": "wiki/topics/package-distribution.md",
       "type": "topic"
     },
     {

@@ -398,14 +398,12 @@ async function run() {
     check: read(".github/workflows/wiki-check.yml"),
     sync: read(".github/workflows/wiki-sync.yml"),
     issue: read(".github/workflows/wiki-issue-sync.yml"),
-    pr: read(".github/workflows/pr.yml"),
   };
   check("Quality/quality workflow identity is stable", /^name: Quality$/m.test(workflows.quality) && /^ {2}quality:$/m.test(workflows.quality));
   check("Commit message lint/commitlint workflow identity is stable", /^name: Commit message lint$/m.test(workflows.commitlint) && /^ {2}commitlint:$/m.test(workflows.commitlint));
   check("Wiki integrity/check workflow identity is stable", /^name: Wiki integrity$/m.test(workflows.check) && /^ {2}check:$/m.test(workflows.check));
   check("Sync context wiki/sync workflow identity is stable", /^name: Sync context wiki$/m.test(workflows.sync) && /^ {2}sync:$/m.test(workflows.sync));
   check("Sync wiki issue state/sync workflow identity is stable", /^name: Sync wiki issue state$/m.test(workflows.issue) && /^ {2}sync:$/m.test(workflows.issue));
-  check("Create or update PR/pr helper identity is stable", /^name: Create or update PR$/m.test(workflows.pr) && /^ {2}pr:$/m.test(workflows.pr));
   check(
     "Wiki integrity covers PR, main push, and manual replay",
     /pull_request:[\s\S]*push:[\s\S]*workflow_dispatch: \{\}/.test(workflows.check),
@@ -419,21 +417,21 @@ async function run() {
   check("Commit message lint uses the canonical PR trigger", /pull_request:\n {4}branches: \[main\]/.test(workflows.commitlint) && /types: \[opened, synchronize, reopened, edited\]/.test(workflows.commitlint));
   check("merged wiki sync supports closed events and numbered manual replay", /pull_request:\n {4}types: \[closed\]/.test(workflows.sync) && /workflow_dispatch:[\s\S]*pr_number:/.test(workflows.sync));
   check("Wiki integrity delegates to the one canonical check script", (workflows.check.match(/pnpm run wiki:check/g) || []).length === 1);
-  check("commitlint workflow uses the hoisted provider runner twice", (workflows.commitlint.match(/pnpm exec commitlint --config commitlint\.config\.cjs/g) || []).length === 2);
+  check("commitlint workflow validates title, commit range, and PR body", (workflows.commitlint.match(/pnpm run lint:commit/g) || []).length === 2 && workflows.commitlint.includes("pnpm run lint:pr"));
   check("merged PR context paginates and slurps files and commits", (workflows.sync.match(/--paginate --slurp/g) || []).length === 2);
   check("merged PR context is versioned and repo-qualified", workflows.sync.includes("schemaVersion: 1") && workflows.sync.includes("repository: $repository"));
   check("manual replay rejects unmerged and bot wiki PRs", workflows.sync.includes(".merged == true") && workflows.sync.includes("Refusing to replay bot wiki PR"));
   check("writer workflows disable Graphify hooks", workflows.sync.includes('GRAPHIFY_SKIP_HOOK: "1"') && workflows.issue.includes('GRAPHIFY_SKIP_HOOK: "1"'));
-  check("writer workflows use explicit bot auth and lease-safe pushes", [workflows.sync, workflows.issue].every((text) => text.includes("PR_BOT_TOKEN") && text.includes("--force-with-lease")));
+  check("writer workflows use explicit bot auth and lease-safe pushes", [workflows.sync, workflows.issue].every((text) => text.includes("BOT_TOKEN") && text.includes("--force-with-lease")));
   check("issue refresh uses the exact UTC schedule and manual trigger", workflows.issue.includes('- cron: "30 11 * * *" # Daily at 11:30 UTC') && workflows.issue.includes("workflow_dispatch: {}"));
-  check("PR helper ignores and rejects bot/wiki branches", workflows.pr.includes('"bot/wiki-**"') && workflows.pr.includes("!startsWith(github.ref_name, 'bot/wiki-')"));
+  check("PR helper is removed", !fs.existsSync(path.join(REPO_ROOT, ".github/workflows/pr.yml")));
 
   const pkg = JSON.parse(read("package.json"));
   const workspace = read("pnpm-workspace.yaml");
-  check("ai-commit 2.7.0 is the sole direct commitlint provider", pkg.devDependencies["@verndale/ai-commit"] === "2.7.0" && !pkg.devDependencies["@commitlint/cli"]);
-  check("pnpm exposes only ai-commit's bundled commitlint CLI", /publicHoistPattern:\s*\n\s*- "@commitlint\/cli"/.test(workspace));
-  check("commitlint configuration is the exact one-line provider export", read("commitlint.config.cjs") === 'module.exports = require("@verndale/ai-commit");\n');
-  check("commit-msg hook invokes the sole provider literally", read(".husky/commit-msg").trim().split("\n").at(-1) === 'pnpm exec ai-commit lint --edit "$1"');
+  check("standalone Commitlint is the direct provider", pkg.devDependencies["@commitlint/cli"] === "20.5.3" && pkg.devDependencies["@commitlint/config-conventional"] === "20.5.3");
+  check("workspace has no provider hoist", !workspace.includes("publicHoistPattern"));
+  check("commitlint configuration uses the standalone provider", read("commitlint.config.cjs").includes("@commitlint/config-conventional"));
+  check("commit-msg hook invokes standalone Commitlint", read(".husky/commit-msg").includes('pnpm run lint:commit --edit "$1"'));
 
   const viewer = read("scripts/graph/viewer/viewer.js");
   check("viewer searches repo-qualified GitHub evidence", viewer.includes("node.githubRefs") && viewer.includes("ref.repository"));

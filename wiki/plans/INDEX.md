@@ -16,12 +16,13 @@ Every agent plan executed for this repo, with whether it actually shipped. Imple
 - **not-implemented** — nothing shipped; may still be actionable.
 - **out-of-scope** — targets another repo/product.
 
-Totals: 15 implemented, 5 partial (20 plans).
+Totals: 16 implemented, 5 partial (21 plans).
 
 ## Plans
 
 | Date | Plan | Status | Evidence | Topics |
 | --- | --- | --- | --- | --- |
+| 2026-09-28 | [Standard Git delivery](2026-09-28-standard-git-delivery.md) | implemented | [issue #109](https://github.com/verndale/ui-design-library/issues/109), PR pending | graph-wiki-subsystem, package-distribution |
 | 2026-08-24 | [Deterministic, Route-First Wiki Guidance and PR 127 Recovery](2026-08-24-deterministic-route-first-wiki-guidance.md) | implemented | canonical headless `AGENTS.md` block installed with zero-drift dry run, [verndale/ui-design-library PR #90](https://github.com/verndale/ui-design-library/pull/90) | graph-wiki-subsystem |
 | 2026-08-23 | [Wiki parity, GitHub evidence, and CI workflow standard](2026-08-23-wiki-parity-and-github-evidence.md) | implemented | [issue #87](https://github.com/verndale/ui-design-library/issues/87), working tree, focused and full verification, PR pending, [verndale/ui-design-library PR #88](https://github.com/verndale/ui-design-library/pull/88) | graph-wiki-subsystem |
 | 2026-08-22 | [Cross-repository lint, Commitlint, and graph standardization](2026-08-22-cross-repository-lint-commitlint-and-graph-standardization.md) | implemented | [issue #83](https://github.com/verndale/ui-design-library/issues/83), isolated issue worktree, lint/push/CI/graph/Graphify verification | graph-wiki-subsystem, component-architecture, story-testing, package-distribution |

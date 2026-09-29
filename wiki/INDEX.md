@@ -36,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-09-28 — [Standard Git delivery](journal/2026-09-28-standard-git-delivery.md) — standalone Commitlint, issue-linked PRs, BOT_TOKEN wiki bots, and Quality-gated Release.
 - 2026-09-17 — [Enforce the governed Figma component-page standard](journal/2026-09-17-enforce-figma-component-page-standard.md) — makes Components-group placement and the exact Button-derived presentation structure a live, fixture-tested contract instead of prose guidance.
 - 2026-09-17 — [Add governed Gauge chart and Pie chart components](journal/2026-09-17-add-governed-data-visualizations.md) — adds dependency-free chart implementations, a registered data-visualization review standard, complete unpublished Figma variants/states, and matching style-guide rules.
 - 2026-09-17 — [Restore the live Figma contract](journal/2026-09-17-restore-live-figma-contract.md) — preserves governed master identities while normalizing Search input variants and moving new controls onto typed Code/Tailwind variables.
@@ -106,4 +107,4 @@ This wiki is modelled on [`ui-design-brain`](https://github.com/verndale/ui-desi
 - **No catalog manifest, no see-also convention.** This repo has no single file listing every component, and components don't cross-reference each other in markdown the way ui-design-brain's patterns do. The graph's `uses-tokens` edge (component → the token layer) replaces `catalogs`/`see-also`/`references` as the structural spine.
 - **No `archive-plan.cjs` / `find-unarchived-plans.cjs`.** Plans are archived by hand, per the template in [MECHANICS.md](MECHANICS.md) — there is no CLI and no `~/.claude/plans`-scanning backstop.
 - **CI freshness is explicit.** `pnpm graph:check` runs inside the required `Quality / quality` PR gate; the guarded pre-commit refresh is convenience rather than the only drift protection.
-- **The bot workflows need configuration.** `wiki-sync.yml` and `wiki-issue-sync.yml` require `secrets.PR_BOT_TOKEN` (and optionally the `WIKI_AI*` vars) set in the GitHub repo before they can run.
+- **The bot workflows need configuration.** `wiki-sync.yml` and `wiki-issue-sync.yml` require `secrets.BOT_TOKEN` (and optionally the `WIKI_AI*` vars) set in the GitHub repo before they can run.

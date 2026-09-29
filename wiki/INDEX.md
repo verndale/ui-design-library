@@ -36,6 +36,7 @@ Why this repo is the way it is: executed plans, decisions, and change history. R
 
 ## Journal
 
+- 2026-09-29 — [Restore wiki replay for existing bot PRs](journal/2026-09-29-restore-existing-wiki-pr-replay.md) — uses repository PR endpoints so BOT_TOKEN can update its review branches.
 - 2026-09-29 — [Visible PR validation and wiki-only Quality](journal/2026-09-29-pr-validation-and-wiki-quality.md) — rejects hidden PR headings and keeps bot wiki checks focused.
 - 2026-09-28 — [Standard Git delivery](journal/2026-09-28-standard-git-delivery.md) — standalone Commitlint, issue-linked PRs, BOT_TOKEN wiki bots, and Quality-gated Release.
 - 2026-09-17 — [Enforce the governed Figma component-page standard](journal/2026-09-17-enforce-figma-component-page-standard.md) — makes Components-group placement and the exact Button-derived presentation structure a live, fixture-tested contract instead of prose guidance.

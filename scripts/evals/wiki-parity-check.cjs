@@ -423,6 +423,10 @@ async function run() {
   check("manual replay rejects unmerged and bot wiki PRs", workflows.sync.includes(".merged == true") && workflows.sync.includes("Refusing to replay bot wiki PR"));
   check("writer workflows disable Graphify hooks", workflows.sync.includes('GRAPHIFY_SKIP_HOOK: "1"') && workflows.issue.includes('GRAPHIFY_SKIP_HOOK: "1"'));
   check("writer workflows use explicit bot auth and lease-safe pushes", [workflows.sync, workflows.issue].every((text) => text.includes("BOT_TOKEN") && text.includes("--force-with-lease")));
+  check("existing wiki PR updates use repository REST endpoints", [workflows.sync, workflows.issue].every((text) =>
+    text.includes('gh api -X GET "repos/${GITHUB_REPOSITORY}/pulls"')
+      && text.includes('gh api -X PATCH "repos/${GITHUB_REPOSITORY}/pulls/${open}"')
+      && !text.includes("gh pr list") && !text.includes("gh pr edit")));
   check("issue refresh uses the exact UTC schedule and manual trigger", workflows.issue.includes('- cron: "30 11 * * 1" # Mondays at 11:30 UTC') && workflows.issue.includes("workflow_dispatch: {}"));
   check("PR helper is removed", !fs.existsSync(path.join(REPO_ROOT, ".github/workflows/pr.yml")));
 

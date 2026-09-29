@@ -45,6 +45,8 @@ What did **not** come over: `scripts/wiki/archive-plan.cjs` and `find-unarchived
 
 Both bot workflows need `secrets.BOT_TOKEN` configured in the GitHub repo to write bot branches and open PRs — that's account-side configuration, not something a commit can set up. Both set `GRAPHIFY_SKIP_HOOK=1`, use explicit bot authentication, and push with `--force-with-lease`.
 
+Existing bot PR lookup and updates use the repository pull request REST endpoints, which the repository-scoped BOT_TOKEN can access without an organization-read scope.
+
 The practical consequence without that token: `pr: pending` stays pending until somebody replays the merge workflow after configuration or edits it by hand.
 
 ## Content rules

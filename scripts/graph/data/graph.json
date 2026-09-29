@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 183,
-    "edges": 418,
+    "nodes": 184,
+    "edges": 421,
     "byType": {
       "surface": 64,
       "root-doc": 4,
       "component": 29,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 54,
+      "wiki-journal": 55,
       "wiki-plan": 21,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 73,
-      "links-to": 189,
+      "links-to": 191,
       "plan": 29,
-      "topic": 98,
+      "topic": 99,
       "uses-tokens": 29
     }
   },
@@ -83,7 +83,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 2089,
+      "bytes": 4258,
       "degree": 2
     },
     {
@@ -850,7 +850,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 13569,
+      "bytes": 13660,
       "degree": 2
     },
     {
@@ -1123,7 +1123,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 3352,
+      "bytes": 5041,
       "degree": 1
     },
     {
@@ -1305,8 +1305,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 18785,
-      "degree": 64
+      "bytes": 18968,
+      "degree": 65
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2641,6 +2641,30 @@
       "degree": 6
     },
     {
+      "id": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
+      "label": "Visible PR validation and wiki-only Quality",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "115"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 115,
+          "url": "https://github.com/verndale/ui-design-library/issues/115"
+        }
+      ],
+      "bytes": 1199,
+      "degree": 3
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -2650,7 +2674,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 7586,
+      "bytes": 7724,
       "degree": 7
     },
     {
@@ -3854,8 +3878,8 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 17133,
-      "degree": 60
+      "bytes": 17458,
+      "degree": 62
     },
     {
       "id": "wiki/topics/package-distribution.md",
@@ -4825,6 +4849,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -5451,6 +5482,13 @@
       "target": "wiki/journal/2026-09-28-standard-git-delivery.md",
       "type": "links-to",
       "count": 2,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
+      "type": "links-to",
+      "count": 1,
       "anchors": []
     },
     {
@@ -6210,6 +6248,11 @@
     {
       "source": "wiki/journal/2026-09-28-standard-git-delivery.md",
       "target": "wiki/topics/package-distribution.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
       "type": "topic"
     },
     {

@@ -88,9 +88,9 @@ Node 24+ and pnpm 10+ via Corepack; `pnpm install`, then `pnpm exec playwright i
 
 ## Git delivery and release
 
-Create a labeled GitHub issue with the `github-issue-creator` skill, fetch and update `main`, and create an issue branch from the updated commit. Make scoped Conventional Commits with `git commit`; standalone Commitlint validates messages locally and the PR title plus immutable commit range in CI. Draft the six-section PR body from `.github/pull_request_template.md`, include `Closes #<issue-number>`, and run `pnpm run lint:pr`. Push the branch, open a PR against `main`, verify its saved title/body/issue link and required checks, and leave it open for review. Do not merge the PR.
+For repository maintenance, create a labeled GitHub issue with the `github-issue-creator` skill, fetch and update `main`, and create an issue branch from the updated commit. Make scoped Conventional Commits with `git commit`; standalone Commitlint validates messages locally and the PR title plus immutable commit range in CI. Draft the six-section PR body from `.github/pull_request_template.md`, include `Closes #<issue-number>`, and run `pnpm run lint:pr`. Push the branch, open a PR against `main`, verify its saved title/body/issue link and required checks, and leave it open for review. Do not merge a repository maintenance PR. Project-retrospective action-owned PRs follow its bespoke publication contract: merge after required checks by default, or stop at the PR or working tree when that mode was explicitly selected.
 
-After a merge to `main`, `Quality / quality` runs first. A successful Quality run triggers `Release / release` for the tested main commit. npm publishing uses trusted publishing for this repository and `.github/workflows/release.yml`; no `NPM_TOKEN` is used.
+After a merge to `main`, `Quality / quality` runs first. A successful Quality run triggers `Release / release` for the tested main commit. Before a release-producing merge, confirm npm trusted publishing names this repository and `.github/workflows/release.yml`. No `NPM_TOKEN` is used.
 
 ## graphify
 

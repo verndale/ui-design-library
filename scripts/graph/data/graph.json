@@ -1,22 +1,22 @@
 {
   "counts": {
-    "nodes": 184,
-    "edges": 421,
+    "nodes": 185,
+    "edges": 424,
     "byType": {
       "surface": 64,
       "root-doc": 4,
       "component": 29,
       "token-layer": 1,
       "wiki-index": 3,
-      "wiki-journal": 55,
+      "wiki-journal": 56,
       "wiki-plan": 21,
       "wiki-topic": 7
     },
     "byEdgeType": {
       "covers": 73,
-      "links-to": 191,
+      "links-to": 193,
       "plan": 29,
-      "topic": 99,
+      "topic": 100,
       "uses-tokens": 29
     }
   },
@@ -122,7 +122,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 3112,
+      "bytes": 3225,
       "degree": 1
     },
     {
@@ -135,7 +135,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 5724,
+      "bytes": 5837,
       "degree": 1
     },
     {
@@ -1006,7 +1006,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 27978,
+      "bytes": 28322,
       "degree": 1
     },
     {
@@ -1305,8 +1305,8 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 18968,
-      "degree": 65
+      "bytes": 19161,
+      "degree": 66
     },
     {
       "id": "wiki/journal/2026-07-26-storybook-docs-audit.md",
@@ -2727,6 +2727,30 @@
       "degree": 3
     },
     {
+      "id": "wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md",
+      "label": "Restore wiki replay for existing bot PRs",
+      "type": "wiki-journal",
+      "dir": "wiki/journal",
+      "topics": [
+        "graph-wiki-subsystem"
+      ],
+      "aliases": [],
+      "prs": [],
+      "issues": [
+        "118"
+      ],
+      "githubRefs": [
+        {
+          "kind": "issue",
+          "repository": "verndale/ui-design-library",
+          "number": 118,
+          "url": "https://github.com/verndale/ui-design-library/issues/118"
+        }
+      ],
+      "bytes": 1123,
+      "degree": 3
+    },
+    {
       "id": "wiki/MECHANICS.md",
       "label": "Wiki Mechanics",
       "type": "wiki-index",
@@ -2736,7 +2760,7 @@
       "prs": [],
       "issues": [],
       "githubRefs": [],
-      "bytes": 7724,
+      "bytes": 7893,
       "degree": 7
     },
     {
@@ -3947,8 +3971,8 @@
           "url": "https://github.com/verndale/ui-design-library/pull/2"
         }
       ],
-      "bytes": 17621,
-      "degree": 62
+      "bytes": 17866,
+      "degree": 64
     },
     {
       "id": "wiki/topics/package-distribution.md",
@@ -4932,6 +4956,13 @@
     },
     {
       "source": "wiki/INDEX.md",
+      "target": "wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/INDEX.md",
       "target": "wiki/MECHANICS.md",
       "type": "links-to",
       "count": 1,
@@ -5563,6 +5594,13 @@
     {
       "source": "wiki/topics/graph-wiki-subsystem.md",
       "target": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
+      "type": "links-to",
+      "count": 1,
+      "anchors": []
+    },
+    {
+      "source": "wiki/topics/graph-wiki-subsystem.md",
+      "target": "wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md",
       "type": "links-to",
       "count": 1,
       "anchors": []
@@ -6328,6 +6366,11 @@
     },
     {
       "source": "wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md",
+      "target": "wiki/topics/graph-wiki-subsystem.md",
+      "type": "topic"
+    },
+    {
+      "source": "wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md",
       "target": "wiki/topics/graph-wiki-subsystem.md",
       "type": "topic"
     },

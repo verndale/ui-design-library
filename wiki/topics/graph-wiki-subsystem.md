@@ -27,6 +27,7 @@ The deterministic knowledge graph + Sigma.js viewer, and the wiki-sync / wiki-is
 
 ## Decisions
 
+- 2026-09-29 — Existing wiki bot PRs are found and edited through repository REST endpoints so the repo-scoped BOT_TOKEN can replay them without GraphQL organization scope ([journal](../journal/2026-09-29-restore-existing-wiki-pr-replay.md)).
 - 2026-09-29 — ci(git): scope wiki quality and validate PR bodies ([verndale/ui-design-library PR #116](https://github.com/verndale/ui-design-library/pull/116))
 - 2026-09-29 — Validate visible PR sections and run focused Quality for wiki-only changes while preserving the full gate for code, workflow, and unknown ranges ([journal](../journal/2026-09-29-pr-validation-and-wiki-quality.md)).
 - 2026-09-29 — docs(git): preserve retrospective merge handoff ([verndale/ui-design-library PR #113](https://github.com/verndale/ui-design-library/pull/113))

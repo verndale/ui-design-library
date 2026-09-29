@@ -103,6 +103,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Standard Git delivery](../../wiki/journal/2026-09-28-standard-git-delivery.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Standard Git delivery](../../wiki/journal/2026-09-28-standard-git-delivery.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Visible PR validation and wiki-only Quality](../../wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
+- [Restore wiki replay for existing bot PRs](../../wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Add story tests and enforce accessibility](../../wiki/plans/2026-07-26-add-story-tests-and-enforce-a11y.md) → [Storybook tooling — Design History](../../wiki/topics/storybook-tooling.md)
 - [Storybook review addons and reduced-motion coverage](../../wiki/plans/2026-07-27-storybook-review-addons-and-reduced-motion.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)

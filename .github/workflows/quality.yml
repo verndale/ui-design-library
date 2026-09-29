@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: quality-${{ github.event.pull_request.number || github.ref }}
+  group: quality-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
@@ -42,11 +42,12 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           BASE_SHA: ${{ github.event.pull_request.base.sha || '' }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-          BEFORE_SHA: ${{ github.event.before || '' }}
         run: |
           full=true; reason='manual dispatch'
           if [ "$EVENT_NAME" = 'pull_request' ] || [ "$EVENT_NAME" = 'push' ]; then
-            if [ "$EVENT_NAME" = 'push' ]; then BASE_SHA="$BEFORE_SHA"; fi
+            if [ "$EVENT_NAME" = 'push' ]; then
+              BASE_SHA="$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]*' --abbrev=0 "$HEAD_SHA" 2>/dev/null || true)"
+            fi
             if [ -z "$BASE_SHA" ] || [ "$BASE_SHA" = '0000000000000000000000000000000000000000' ] || ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
               echo 'full=true' >> "$GITHUB_OUTPUT"; echo 'reason=change range unavailable' >> "$GITHUB_OUTPUT"; exit 0
             fi

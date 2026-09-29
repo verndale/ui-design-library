@@ -102,6 +102,7 @@ Part of the [connections map](../connections.md), generated from the knowledge g
 - [Restore Vitest browser compatibility](../../wiki/journal/2026-09-17-restore-vitest-browser-compatibility.md) → [Story testing — Design History](../../wiki/topics/story-testing.md)
 - [Standard Git delivery](../../wiki/journal/2026-09-28-standard-git-delivery.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Standard Git delivery](../../wiki/journal/2026-09-28-standard-git-delivery.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
+- [Gate release on fully verified main history](../../wiki/journal/2026-09-29-gate-verified-release.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Visible PR validation and wiki-only Quality](../../wiki/journal/2026-09-29-pr-validation-and-wiki-quality.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)
 - [Preserve tested main release handoff](../../wiki/journal/2026-09-29-preserve-release-handoff.md) → [Package distribution — Design History](../../wiki/topics/package-distribution.md)
 - [Restore wiki replay for existing bot PRs](../../wiki/journal/2026-09-29-restore-existing-wiki-pr-replay.md) → [Knowledge graph & wiki automation — Design History](../../wiki/topics/graph-wiki-subsystem.md)

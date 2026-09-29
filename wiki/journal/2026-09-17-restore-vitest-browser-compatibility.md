@@ -2,7 +2,7 @@
 date: 2026-09-17
 topics: [story-testing]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/95
 ---
 # Restore Vitest browser compatibility
 

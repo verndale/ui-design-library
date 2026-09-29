@@ -2131,10 +2131,19 @@
         "figma-code-connect"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 1483,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 1529,
       "degree": 3
     },
     {
@@ -2541,10 +2550,19 @@
         "story-testing"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 2661,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 2707,
       "degree": 7
     },
     {
@@ -2556,10 +2574,19 @@
         "figma-code-connect"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 2092,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 2138,
       "degree": 3
     },
     {
@@ -2571,10 +2598,19 @@
         "figma-code-connect"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 1046,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 1092,
       "degree": 3
     },
     {
@@ -2586,10 +2622,19 @@
         "figma-code-connect"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 1802,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 1848,
       "degree": 3
     },
     {
@@ -2601,10 +2646,19 @@
         "story-testing"
       ],
       "aliases": [],
-      "prs": [],
+      "prs": [
+        "95"
+      ],
       "issues": [],
-      "githubRefs": [],
-      "bytes": 925,
+      "githubRefs": [
+        {
+          "kind": "pull-request",
+          "repository": "verndale/ui-design-library",
+          "number": 95,
+          "url": "https://github.com/verndale/ui-design-library/pull/95"
+        }
+      ],
+      "bytes": 971,
       "degree": 3
     },
     {

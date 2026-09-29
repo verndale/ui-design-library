@@ -2,7 +2,7 @@
 date: 2026-09-17
 topics: [figma-code-connect, component-architecture, story-testing]
 plan: none
-pr: pending
+pr: https://github.com/verndale/ui-design-library/pull/95
 ---
 # Add governed Gauge chart and Pie chart components
 
